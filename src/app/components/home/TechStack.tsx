@@ -1,52 +1,74 @@
+import React from 'react';
 import { motion } from 'framer-motion';
+import { Cpu, Cloud, Code2, Cpu as AutomationIcon, Server, ShieldCheck, Database, Network, Sparkles } from 'lucide-react';
 
 const technologies = [
-    { name: 'AI & ML', category: 'Intelligence', color: 'text-blue-600' },
-    { name: 'Cloud Computing', category: 'Infrastructure', color: 'text-sky-500' },
-    { name: 'Web Development', category: 'Engineering', color: 'text-indigo-500' },
-    { name: 'Automation', category: 'Process Ops', color: 'text-emerald-500' },
-    { name: 'Enterprise Platforms', category: 'Integration', color: 'text-purple-500' },
-    { name: 'Cyber Security', category: 'Protection', color: 'text-red-500' },
-    { name: 'Data Engineering', category: 'Analytics', color: 'text-amber-500' },
+    { name: 'AI & Neural Modeling', category: 'Intelligence', icon: Cpu, color: 'text-blue-600', bg: 'bg-blue-50/80', border: 'border-blue-100' },
+    { name: 'Multi-Region Cloud', category: 'Infrastructure', icon: Cloud, color: 'text-sky-600', bg: 'bg-sky-50/80', border: 'border-sky-100' },
+    { name: 'Full-Stack Engineering', category: 'Engineering', icon: Code2, color: 'text-indigo-600', bg: 'bg-indigo-50/80', border: 'border-indigo-100' },
+    { name: 'Autonomous Process Ops', category: 'Automation', icon: Network, color: 'text-emerald-600', bg: 'bg-emerald-50/80', border: 'border-emerald-100' },
+    { name: 'Enterprise Integrations', category: 'Integration', icon: Server, color: 'text-purple-600', bg: 'bg-purple-50/80', border: 'border-purple-100' },
+    { name: 'Zero-Trust Cyber Security', category: 'Protection', icon: ShieldCheck, color: 'text-red-600', bg: 'bg-red-50/80', border: 'border-red-100' },
+    { name: 'Predictive Data Mesh', category: 'Analytics', icon: Database, color: 'text-amber-600', bg: 'bg-amber-50/80', border: 'border-amber-100' },
 ];
 
 export default function TechStack() {
     return (
-        <section className="py-20 md:py-24 lg:py-32 bg-white relative overflow-hidden" id="offerings">
+        <section className="py-20 md:py-28 bg-white relative overflow-hidden border-b border-slate-200" id="tech-stack">
             {/* Background elements */}
-            <div className="absolute inset-0 bg-dot-slate-200 opacity-50 pointer-events-none"></div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none"></div>
+            <div className="absolute inset-0 bg-dot-slate-200 opacity-40 pointer-events-none"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-600/5 rounded-full blur-[140px] pointer-events-none"></div>
             
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 lg:mb-20">
-                    <div className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-700 font-semibold text-xs tracking-widest uppercase mb-6 shadow-sm">
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+                    <div className="inline-flex items-center justify-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 font-bold text-xs tracking-wider uppercase mb-4 shadow-sm">
+                        <Sparkles className="w-3.5 h-3.5" />
                         Technology Infrastructure
                     </div>
-                    <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
-                        Enterprise Grade Technology
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight font-heading">
+                        Enterprise-Grade <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Technology Architecture</span>
                     </h2>
-                    <p className="text-lg text-slate-600 font-medium max-w-2xl mx-auto">
-                        Built on scalable, secure, and modern infrastructure designed to handle millions of data points autonomously and securely.
+                    <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto">
+                        Built on scalable, secure, and modern infrastructure designed to handle millions of telemetry events and transactions autonomously.
                     </p>
                 </div>
 
-                <div className="flex flex-wrap justify-center gap-4 lg:gap-6 relative z-10 max-w-5xl mx-auto">
-                    {technologies.map((tech, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.4, delay: index * 0.05 }}
-                            whileHover={{ scale: 1.05 }}
-                            className="group bg-slate-50 px-6 py-4 rounded-2xl border border-slate-200 hover:border-blue-200 transition-all duration-300 flex flex-col items-center cursor-default shadow-sm hover:shadow-md hover:bg-white"
-                        >
-                            <div className="text-[10px] font-bold text-slate-400 tracking-widest uppercase mb-1">{tech.category}</div>
-                            <div className={`text-lg md:text-xl font-bold tracking-tight text-slate-800 group-hover:${tech.color} transition-colors duration-300`}>{tech.name}</div>
-                        </motion.div>
-                    ))}
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto">
+                    {technologies.map((tech, index) => {
+                        const Icon = tech.icon;
+                        return (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.4, delay: index * 0.05 }}
+                                whileHover={{ y: -4 }}
+                                className="group bg-slate-50/80 p-5 sm:p-6 rounded-2xl border border-slate-200/90 hover:border-blue-300 hover:bg-white transition-all duration-300 flex flex-col justify-between shadow-xs hover:shadow-xl hover:shadow-blue-600/5"
+                            >
+                                <div className="flex items-center justify-between mb-4">
+                                    <div className={`w-10 h-10 rounded-xl ${tech.bg} border ${tech.border} flex items-center justify-center ${tech.color} shadow-xs`}>
+                                        <Icon className="w-5 h-5" />
+                                    </div>
+                                    <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">
+                                        // 0{index + 1}
+                                    </span>
+                                </div>
+                                
+                                <div>
+                                    <div className="text-[10px] font-bold text-slate-500 tracking-wider uppercase font-mono mb-1">
+                                        {tech.category}
+                                    </div>
+                                    <div className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                                        {tech.name}
+                                    </div>
+                                </div>
+                            </motion.div>
+                        );
+                    })}
                 </div>
             </div>
         </section>
     );
 }
+

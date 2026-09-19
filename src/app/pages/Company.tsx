@@ -17,6 +17,8 @@ import {
 import { Reveal } from '../components/ui/Reveal';
 import { Button } from '../components/ui/button';
 import LeadershipSection from '../components/LeadershipSection';
+import CompanyCarousel from '../components/CompanyCarousel';
+import LeadCaptureSection from '../components/LeadCaptureSection';
 
 export default function Company() {
     const location = useLocation();
@@ -41,82 +43,22 @@ export default function Company() {
 
     // SEO & Meta Title
     useEffect(() => {
-        document.title = "About TrustGrid AI | AI Revenue Acceleration Platform";
+        document.title = "About ProfitMachines | AI Revenue Acceleration Platform";
         const metaDescription = document.querySelector('meta[name="description"]');
         if (metaDescription) {
-            metaDescription.setAttribute('content', 'Learn about TrustGrid AI — the AI-powered revenue acceleration platform helping enterprises scale pipeline, close deals faster, and grow ARR predictably.');
+            metaDescription.setAttribute('content', 'Learn about ProfitMachines — the AI-powered revenue acceleration platform helping enterprises scale pipeline, close deals faster, and grow ARR predictably.');
         } else {
             const meta = document.createElement('meta');
             meta.name = 'description';
-            meta.content = 'Learn about TrustGrid AI — the AI-powered revenue acceleration platform helping enterprises scale pipeline, close deals faster, and grow ARR predictably.';
+            meta.content = 'Learn about ProfitMachines — the AI-powered revenue acceleration platform helping enterprises scale pipeline, close deals faster, and grow ARR predictably.';
             document.head.appendChild(meta);
         }
     }, []);
 
     return (
         <div className="min-h-screen bg-slate-50 font-sans text-slate-900 overflow-hidden">
-
-            {/* 1. Premium Hero Section */}
-            <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-40 border-b border-slate-200">
-                <div className="absolute inset-0 z-0 pointer-events-none">
-                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-multiply"></div>
-                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3"></div>
-                    <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[80px]"></div>
-                </div>
-
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-                    <Reveal width="100%">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm mb-8">
-                            <Building2 className="w-4 h-4 text-blue-600" />
-                            <span className="text-xs font-bold text-slate-700 tracking-wide uppercase">Enterprise Revenue Intelligence</span>
-                        </div>
-
-                        <h1 className="text-5xl md:text-6xl lg:text-[5rem] font-extrabold mb-8 tracking-tight leading-[1.05] text-slate-900 drop-shadow-sm max-w-5xl mx-auto">
-                            The Science of <br className="hidden md:block" />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
-                                Predictable Growth
-                            </span>
-                        </h1>
-
-                        <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
-                            TrustGrid AI is the foundational revenue acceleration platform helping modern organizations build predictable pipeline, close deals faster, and scale ARR using artificial intelligence.
-                        </p>
-
-                        <div className="flex flex-col sm:flex-row gap-5 justify-center mb-16">
-                            <Link to="/book-consultation">
-                                <Button className="bg-slate-900 hover:bg-slate-800 text-white px-10 py-6 text-lg h-auto rounded-full shadow-lg hover:-translate-y-0.5 transition-all w-full sm:w-auto">
-                                    Book a Consultation
-                                </Button>
-                            </Link>
-                            <Link to="/talk-to-expert">
-                                <Button variant="outline" className="border-slate-200 text-slate-700 hover:bg-white hover:text-slate-900 px-10 py-6 text-lg h-auto rounded-full transition-all bg-transparent w-full sm:w-auto font-semibold">
-                                    Talk to a Revenue Expert
-                                </Button>
-                            </Link>
-                        </div>
-
-                        {/* Real World Company Headquarters Showcase */}
-                        <div className="relative max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-slate-200 group">
-                            <img 
-                                src="/images/company-hero.png" 
-                                alt="ProfitMachines Global Headquarters & AI Intelligence Command Center"
-                                className="w-full h-[400px] md:h-[500px] object-cover transform transition-transform duration-700 group-hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                            <div className="absolute bottom-6 left-6 right-6 flex flex-col md:flex-row items-start md:items-center justify-between text-left gap-4 bg-slate-900/80 backdrop-blur-md p-6 rounded-2xl border border-slate-700/60">
-                                <div>
-                                    <div className="text-xs font-bold text-blue-400 uppercase tracking-widest font-mono">Global Innovation Hub</div>
-                                    <h3 className="text-xl font-bold text-white mt-1">Autonomous Revenue Intelligence Operating System</h3>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <span className="px-3 py-1 bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-semibold rounded-full">SOC2 Certified</span>
-                                    <span className="px-3 py-1 bg-blue-500/20 border border-blue-500/40 text-blue-300 text-xs font-semibold rounded-full">Fortune 500 Trusted</span>
-                                </div>
-                            </div>
-                        </div>
-                    </Reveal>
-                </div>
-            </section>
+            {/* 1. Autonomous Company Hero Carousel */}
+            <CompanyCarousel />
 
             {/* 2. Bento Grid About Us */}
             <section id="about-us" className="py-32 relative scroll-mt-32">
@@ -134,7 +76,7 @@ export default function Company() {
                                 </h2>
                                 <div className="space-y-6 text-lg text-slate-600 font-medium leading-relaxed font-sans max-w-3xl">
                                     <p>
-                                        At TrustGrid AI, we believe that revenue growth shouldn't be a guessing game. It's an engineering problem solvable with data, intelligence, and precision execution.
+                                        At ProfitMachines, we believe that revenue growth shouldn't be a guessing game. It's an engineering problem solvable with data, intelligence, and precision execution.
                                     </p>
                                     <p>
                                         Born from a convergence of enterprise sales expertise and advanced machine learning, we've built the world's most comprehensive Revenue Intelligence Platform. We provide the <strong>flow</strong>—the seamless connection between market signals, sales execution, and predictable revenue outcomes.
@@ -326,27 +268,27 @@ export default function Company() {
                             {
                                 country: 'US Office',
                                 address: ['501 E Kennedy Blvd Suite 1400', 'Tampa, FL 33602', 'United States'],
-                                email: 'connect@trustgrid.ai',
+                                email: 'connect@profitmachines.com',
                                 phone: '+91 9513288612',
                                 color: 'blue'
                             },
                             {
                                 country: 'Singapore Office',
                                 address: ['5 Temasek Boulevard, 17th Floor', 'Singapore 038985'],
-                                email: 'connect@trustgrid.ai',
+                                email: 'connect@profitmachines.com',
                                 phone: '+65 6050 5235',
                                 color: 'indigo'
                             },
                             {
                                 country: 'India Office',
                                 address: ['Suite : 32 , 235, BINNAMANGALA', '2nd Floor, 13th Cross Road', 'Bengaluru – 560038 , India'],
-                                sub: 'TRUSTGRID.AI INNOVATION PVT LTD',
+                                sub: 'PROFITMACHINES INNOVATION PVT LTD',
                                 color: 'emerald'
                             },
                             {
                                 country: 'Mumbai Office',
                                 address: ['WeWork, Raheja Platinum', 'off Andheri - Kurla Road', 'Mumbai, Maharashtra 400059'],
-                                email: 'cs@trustgrid.in',
+                                email: 'cs@profitmachines.com',
                                 phone: '+91 9513088612',
                                 color: 'purple'
                             }
@@ -382,6 +324,9 @@ export default function Company() {
                     </div>
                 </div>
             </section>
+
+            {/* Quick Diagnostic Lead Capture Form */}
+            <LeadCaptureSection />
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import HeroSection from '../components/home/HeroSection';
+import HomeFeatureSlider from '../components/home/HomeFeatureSlider';
 import TrustedBySection from '../components/home/TrustedBySection';
 import WhyChooseSection from '../components/home/WhyChooseSection';
 import ServicesOverview from '../components/home/ServicesOverview';
@@ -22,8 +22,8 @@ export default function Home() {
 
     return (
         <main className="bg-background min-h-screen overflow-hidden">
-            {/* 1. Hero Banner */}
-            <HeroSection />
+            {/* 1. Autonomous Revenue OS 6-Slider Hero Section */}
+            <HomeFeatureSlider />
             {/* 2. Client Logos */}
             <TrustedBySection />
             {/* 3. Company Overview */}

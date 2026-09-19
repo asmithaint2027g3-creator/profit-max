@@ -24,9 +24,8 @@ import { Card } from '../components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { Reveal } from '../components/ui/Reveal';
 import OfferingsCarousel from '../components/OfferingsCarousel';
-import discoveryLayersImg from '../../assets/image (7).png';
-import b2bImg from '../../assets/1.png';
-import b2cImg from '../../assets/2.png';
+import ProfitPoolDiscoveryDiagram from '../components/ProfitPoolDiscoveryDiagram';
+import LeadCaptureSection from '../components/LeadCaptureSection';
 
 export default function Offerings() {
     const location = useLocation();
@@ -1033,7 +1032,7 @@ export default function Offerings() {
                         <Reveal width="100%">
                             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-5">Autonomous Revenue Engineering</h2>
                             <p className="text-xl text-slate-600 leading-relaxed font-medium">
-                                TrustGrid AI delivers a comprehensive suite of AI-native offerings designed to modernize the enterprise revenue stack. We transform manual, siloed processes into a unified, predictive engine that accelerates growth at every stage of the customer lifecycle.
+                                ProfitMachines delivers a comprehensive suite of AI-native offerings designed to modernize the enterprise revenue stack. We transform manual, siloed processes into a unified, predictive engine that accelerates growth at every stage of the customer lifecycle.
                             </p>
                         </Reveal>
                     </div>
@@ -1047,7 +1046,7 @@ export default function Offerings() {
                             <div>
                                 <h2 className="text-4xl font-bold text-slate-900 mb-6 tracking-tight">One Intelligence Platform. <br /> <span className="text-indigo-600">Infinite Growth.</span></h2>
                                 <p className="text-lg text-slate-600 mb-8 font-medium leading-relaxed">
-                                    TrustGrid AI unifies marketing, sales, and customer success into a single intelligent revenue engine, replacing siloed tools with a unified nervous system.
+                                    ProfitMachines unifies marketing, sales, and customer success into a single intelligent revenue engine, replacing siloed tools with a unified nervous system.
                                 </p>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6">
                                     {[
@@ -1160,11 +1159,7 @@ export default function Offerings() {
                         {/* Image Diagram */}
                         {activePoolTab === 'overview' && (
                             <div className="flex justify-center my-12">
-                                <img 
-                                    src={discoveryLayersImg} 
-                                    alt="AI Driven Profit Pool Discovery Layers"
-                                    className="w-full max-w-5xl h-auto rounded-[2rem] shadow-2xl border border-slate-200/80 hover:shadow-indigo-200/50 transition-all duration-300"
-                                />
+                                <ProfitPoolDiscoveryDiagram />
                             </div>
                         )}
                     </div>
@@ -1476,9 +1471,9 @@ export default function Offerings() {
                                 </ul>
                             </div>
 
-                            {/* The TrustGrid.ai Difference */}
+                            {/* The ProfitMachines Difference */}
                             <div className="bg-white border border-slate-200 rounded-3xl p-8 hover:border-indigo-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group shadow-sm">
-                                <h3 className="text-xl font-bold mb-6 text-slate-900 group-hover:text-indigo-700 transition-colors">The TrustGrid.ai Difference</h3>
+                                <h3 className="text-xl font-bold mb-6 text-slate-900 group-hover:text-indigo-700 transition-colors">The ProfitMachines Difference</h3>
                                 <p className="text-slate-600 text-sm mb-6 leading-relaxed font-medium">Transforming your organization from reactive to proactive:</p>
                                 <ul className="space-y-4">
                                     {[
@@ -1501,7 +1496,7 @@ export default function Offerings() {
                             <div className="bg-gradient-to-br from-blue-600 to-indigo-700 border border-blue-500 rounded-3xl p-8 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 hover:-translate-y-1 relative overflow-hidden">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl pointer-events-none -mt-10 -mr-10"></div>
                                 <h3 className="text-xl font-bold mb-6 text-white relative z-10">Measurable Impact</h3>
-                                <p className="text-blue-100 text-sm mb-6 leading-relaxed font-medium relative z-10">Companies using TrustGrid.ai achieve:</p>
+                                <p className="text-blue-100 text-sm mb-6 leading-relaxed font-medium relative z-10">Companies using ProfitMachines achieve:</p>
                                 <ul className="space-y-4 relative z-10">
                                     {[
                                         "40-60% faster revenue growth",
@@ -1528,11 +1523,14 @@ export default function Offerings() {
                     </div>
                 </div>
 
+                {/* Quick Diagnostic Lead Capture Form */}
+                <LeadCaptureSection />
+
                 {/* Footer CTA */}
                 <div className="text-center max-w-3xl mx-auto px-4 pb-32 pt-16">
                     <h2 className="text-4xl font-extrabold text-slate-900 mb-6 tracking-tight">Ready to Scale?</h2>
                     <p className="text-xl text-slate-600 mb-10 font-medium leading-relaxed">
-                        Join the forward-thinking enterprises building their predictable revenue engine with TrustGrid AI.
+                        Join the forward-thinking enterprises building their predictable revenue engine with ProfitMachines.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-5 justify-center">
                         <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 h-auto text-lg shadow-xl shadow-blue-500/20 rounded-full font-bold transition-transform hover:-translate-y-1">

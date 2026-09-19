@@ -1,4 +1,13 @@
+import { useState, useEffect, useCallback } from 'react';
 import { Users } from 'lucide-react';
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselPrevious,
+    CarouselNext,
+    type CarouselApi,
+} from './ui/carousel';
 
 const teamMembers = [
     { name: "Balaji Venkatraman", role: "Director Growth" },
@@ -25,6 +34,26 @@ const teamMembers = [
 ];
 
 export default function LeadershipSection() {
+    const [api, setApi] = useState<CarouselApi>();
+    const [selectedIndex, setSelectedIndex] = useState(0);
+    const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+    const onSelect = useCallback((emblaApi: CarouselApi) => {
+        if (!emblaApi) return;
+        setSelectedIndex(emblaApi.selectedScrollSnap());
+    }, []);
+
+    useEffect(() => {
+        if (!api) return;
+        setScrollSnaps(api.scrollSnapList());
+        onSelect(api);
+        api.on('select', onSelect);
+        api.on('reInit', () => {
+            setScrollSnaps(api.scrollSnapList());
+            onSelect(api);
+        });
+    }, [api, onSelect]);
+
     return (
         <section className="py-24 bg-white relative overflow-hidden border-t border-slate-200">
             {/* Background Effects */}
@@ -35,7 +64,7 @@ export default function LeadershipSection() {
             </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="text-center mb-20">
+                <div className="text-center mb-16">
                     <div className="inline-flex items-center justify-center p-2 bg-blue-50 rounded-xl mb-4 border border-blue-100 backdrop-blur-sm">
                         <Users className="w-5 h-5 text-blue-600 mr-2" />
                         <span className="text-blue-700 font-semibold text-sm tracking-wide uppercase">World-Class Talent</span>
@@ -48,29 +77,54 @@ export default function LeadershipSection() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {teamMembers.map((member, index) => (
-                        <div key={index} className="group relative bg-white border border-slate-200 rounded-2xl p-6 hover:bg-slate-50 hover:border-slate-300 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <Carousel
+                    setApi={setApi}
+                    opts={{ align: 'start', loop: true, slidesToScroll: 'auto' }}
+                    className="px-1 sm:px-2"
+                >
+                    <CarouselContent>
+                        {teamMembers.map((member, index) => (
+                            <CarouselItem key={index} className="basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                                <div className="group relative bg-white border border-slate-200 rounded-2xl p-6 h-full hover:bg-slate-50 hover:border-slate-300 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
-                            <div className="flex items-start gap-4 relative z-10">
-                                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 flex items-center justify-center shrink-0 group-hover:border-blue-200 transition-colors">
-                                    <span className="text-blue-600 font-bold text-sm">
-                                        {member.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
-                                    </span>
+                                    <div className="flex items-start gap-4 relative z-10">
+                                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 flex items-center justify-center shrink-0 group-hover:border-blue-200 group-hover:scale-110 transition-transform duration-300">
+                                            <span className="text-blue-600 font-bold text-sm">
+                                                {member.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
+                                            </span>
+                                        </div>
+                                        <div className="min-w-0">
+                                            <h3 className="text-slate-900 font-bold text-base truncate pr-2 group-hover:text-blue-700 transition-colors">
+                                                {member.name}
+                                            </h3>
+                                            <p className="text-sm text-slate-600 font-medium truncate mt-0.5">
+                                                {member.role}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="min-w-0">
-                                    <h3 className="text-slate-900 font-bold text-base truncate pr-2 group-hover:text-blue-700 transition-colors">
-                                        {member.name}
-                                    </h3>
-                                    <p className="text-sm text-slate-600 font-medium truncate mt-0.5">
-                                        {member.role}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+
+                    <CarouselPrevious className="hidden sm:flex -left-4 lg:-left-6 bg-white" />
+                    <CarouselNext className="hidden sm:flex -right-4 lg:-right-6 bg-white" />
+                </Carousel>
+
+                {/* Pagination Dots */}
+                {scrollSnaps.length > 1 && (
+                    <div className="flex flex-wrap items-center justify-center gap-2 mt-10 px-4">
+                        {scrollSnaps.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => api?.scrollTo(index)}
+                                aria-label={`Go to slide ${index + 1}`}
+                                className={`h-2 rounded-full transition-all duration-300 ${selectedIndex === index ? 'w-6 bg-blue-600' : 'w-2 bg-slate-300 hover:bg-slate-400'}`}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
         </section>
     );

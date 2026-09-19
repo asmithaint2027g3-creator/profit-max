@@ -186,31 +186,31 @@ export default function Footer() {
                             {
                                 title: 'US Office',
                                 address: ['501 E Kennedy Blvd Suite 1400,', 'Tampa, FL 33602, United States'],
-                                email: 'connect@trustgrid.ai',
+                                email: 'connect@profitmachines.com',
                                 phone: '+91 9513288612'
                             },
                             {
                                 title: 'Singapore Office',
                                 address: ['5 Temasek Boulevard, 17th Floor,', 'Singapore 038985'],
-                                email: 'connect@trustgrid.ai',
+                                email: 'connect@profitmachines.com',
                                 phone: '+65 6050 5235'
                             },
                             {
                                 title: 'India Office',
-                                address: ['TRUSTGRID.AI INNOVATION PVT LTD', 'Suite: 32, 235, Binnamangala, 2nd Floor,', '13th Cross Road, Indira Nagar 2nd Stage,', 'Hoysala Nagar, Bengaluru – 560038, India'],
-                                email: 'connect@trustgrid.ai',
+                                address: ['PROFITMACHINES INNOVATION PVT LTD', 'Suite: 32, 235, Binnamangala, 2nd Floor,', '13th Cross Road, Indira Nagar 2nd Stage,', 'Hoysala Nagar, Bengaluru – 560038, India'],
+                                email: 'connect@profitmachines.com',
                                 phone: '+91 9513288612'
                             },
                             {
                                 title: 'Mumbai Office',
                                 address: ['WeWork, Raheja Platinum, Sag Baug,', 'Marol, Andheri East, Mumbai 400059'],
-                                email: 'cs@trustgrid.in',
+                                email: 'cs@profitmachines.com',
                                 phone: '+91 9513088612'
                             },
                             {
                                 title: 'Bangalore Office',
                                 address: ['WeWork, 13th floor, Tin Factory,', 'Old Madras Rd, Bengaluru 560016'],
-                                email: 'cs@trustgrid.in',
+                                email: 'cs@profitmachines.com',
                                 phone: '+91 9513088612'
                             }
                         ].map((office, idx) => (

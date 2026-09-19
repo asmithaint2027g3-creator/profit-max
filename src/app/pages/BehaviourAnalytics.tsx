@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 
 export default function BehaviourAnalytics() {
     useEffect(() => {
-        document.title = "Behaviour Analytics | TrustGrid AI";
+        document.title = "Behaviour Analytics | ProfitMachines";
         window.scrollTo(0, 0);
     }, []);
 
@@ -147,7 +147,7 @@ export default function BehaviourAnalytics() {
                     </h1>
 
                     <p className="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto mb-10 leading-relaxed font-semibold">
-                        Don't just track clicks. Understand intent. TrustGrid AI maps every interaction to reveal the hidden patterns of your highest-value users.
+                        Don't just track clicks. Understand intent. ProfitMachines maps every interaction to reveal the hidden patterns of your highest-value users.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-5 justify-center">

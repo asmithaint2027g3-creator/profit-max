@@ -33,6 +33,7 @@ const AILeadSalesTransformation = lazy(() => import('./pages/AILeadSalesTransfor
 const AIRevenueOperations = lazy(() => import('./pages/AIRevenueOperations'));
 const AIRevenueAcceleration = lazy(() => import('./pages/AIRevenueAcceleration'));
 const BehaviourAnalytics = lazy(() => import('./pages/BehaviourAnalytics'));
+const AnalyticsDashboard = lazy(() => import('./pages/AnalyticsDashboard'));
 const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
 const ServicePage = lazy(() => import('./pages/ServicePage'));
 const Pricing = lazy(() => import('./pages/Pricing'));
@@ -124,7 +125,6 @@ export default function App() {
               <Route path="/services/competitive-discovery" element={<ServicePage />} />
               <Route path="/services/product-market-fit" element={<ServicePage />} />
               {/* ── New top-level routes ── */}
-              <Route path="/about" element={<Navigate to="/company" replace />} />
               <Route path="/case-studies" element={<Navigate to="/#case-studies" replace />} />
               <Route path="/blog" element={<Navigate to="/resources" replace />} />
               <Route path="/company" element={<Company />} />
@@ -146,6 +146,7 @@ export default function App() {
               <Route path="/ai-revenue-operations" element={<Navigate to="/solutions#ai-revenue-operations" replace />} />
               <Route path="/ai-revenue-acceleration" element={<Navigate to="/solutions#ai-revenue-acceleration" replace />} />
               <Route path="/behaviour-analytics" element={<BehaviourAnalytics />} />
+              <Route path="/analytics" element={<AnalyticsDashboard />} />
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/ai-brand-acceleration" element={<Navigate to="/solutions#ai-brand-acceleration" replace />} />
               <Route path="/ai-reputation-acceleration" element={<Navigate to="/solutions#ai-reputation-acceleration" replace />} />

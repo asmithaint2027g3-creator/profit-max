@@ -4,6 +4,7 @@ import { Send, Calendar, CheckCircle2 } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { submitToSheet } from '../../lib/sheets';
+import { validateBusinessEmail, validatePhone, FormErrorBanner, HoneypotField } from './forms/FormFeedback';
 
 
 export default function LeadCaptureSection() {
@@ -13,27 +14,49 @@ export default function LeadCaptureSection() {
     phone: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submissionId, setSubmissionId] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [emailError, setEmailError] = useState<string | null>(null);
+  const [phoneError, setPhoneError] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [honeypot, setHoneypot] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
+    if (honeypot) return; // silently drop bot submissions
+    setEmailError(null);
+    setPhoneError(null);
+    setSubmitError(null);
+
+    const emailVal = validateBusinessEmail(formData.email);
+    if (!emailVal.valid) {
+      setEmailError(emailVal.message || 'Invalid email');
+      return;
+    }
+    const phoneVal = validatePhone(formData.phone);
+    if (!phoneVal.valid) {
+      setPhoneError(phoneVal.message || 'Invalid phone number');
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
-      await submitToSheet('Inbound Leads', {
-        "First Name": formData.name.split(' ')[0] || formData.name,
-        "Last Name": formData.name.split(' ').slice(1).join(' ') || '-',
-        "Email": formData.email,
-        "Phone": formData.phone,
-        "Status": "New",
-        "Source": "Get Started Section"
+      const res = await submitToSheet('Inbound Leads', {
+        formName: 'AI Sales Diagnostic Consultation',
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        source: 'Get Started Section'
       });
 
+      setSubmissionId(res.submissionId);
       setSubmitted(true);
       setFormData({ name: '', email: '', phone: '' });
     } catch (error: any) {
       console.error("Error submitting form:", error);
-      alert(`Submission Failed: ${error.message || "Please check your internet connection."}`);
+      setSubmitError("We couldn't submit your request just now. Please try again in a moment.");
     } finally {
       setIsSubmitting(false);
     }
@@ -78,9 +101,14 @@ export default function LeadCaptureSection() {
                 <h3 className="text-2xl font-bold text-slate-900 mb-3">
                   Request Received!
                 </h3>
-                <p className="text-slate-600 mb-6 font-medium">
+                <p className="text-slate-600 mb-4 font-medium">
                   We'll get back to you within 24 hours to schedule your free AI diagnostic consultation.
                 </p>
+                {submissionId && (
+                  <div className="inline-block p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono font-bold text-slate-700 mb-4">
+                    Reference ID: <span className="text-blue-600">{submissionId}</span>
+                  </div>
+                )}
               </div>
             ) : (
               /* Form */
@@ -118,6 +146,9 @@ export default function LeadCaptureSection() {
                       placeholder="john@company.com"
                       className="bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500"
                     />
+                    {emailError && (
+                      <p className="text-xs text-red-600 font-semibold">{emailError}</p>
+                    )}
                   </div>
                 </div>
 
@@ -136,7 +167,16 @@ export default function LeadCaptureSection() {
                     placeholder="+1 (555) 000-0000"
                     className="bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500"
                   />
+                  {phoneError && (
+                    <p className="text-xs text-red-600 font-semibold">{phoneError}</p>
+                  )}
                 </div>
+
+                <HoneypotField value={honeypot} onChange={setHoneypot} />
+
+                {submitError && (
+                  <FormErrorBanner message={submitError} onDismiss={() => setSubmitError(null)} />
+                )}
 
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">

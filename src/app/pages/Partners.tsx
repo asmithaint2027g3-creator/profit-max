@@ -21,12 +21,14 @@ import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { Textarea } from '../components/ui/textarea';
 import { submitToSheet } from '../../lib/sheets';
+import { trackEvent } from '../../lib/analytics';
+import { FormSuccessModal, validateBusinessEmail, FormErrorBanner, HoneypotField } from '../components/forms/FormFeedback';
 
 export default function Partners() {
     const [activePartnerCat, setActivePartnerCat] = useState<string>('all');
     const [selectedModalPartner, setSelectedModalPartner] = useState<any | null>(null);
     useEffect(() => {
-        document.title = "Partners | TrustGrid AI";
+        document.title = "Partners | ProfitMachines AI";
     }, []);
 
     // Scroll to hash section on load or navigation
@@ -54,11 +56,15 @@ export default function Partners() {
         email: '',
         website: '',
         company: '',
-        partnerType: '',
+        partnerType: 'Solution Partner',
         message: ''
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
+    const [submissionId, setSubmissionId] = useState('');
+    const [emailError, setEmailError] = useState<string | null>(null);
+    const [submitError, setSubmitError] = useState<string | null>(null);
+    const [honeypot, setHoneypot] = useState('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -66,28 +72,41 @@ export default function Partners() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (isSubmitting) return;
+        if (honeypot) return; // silently drop bot submissions
+        setEmailError(null);
+        setSubmitError(null);
+
+        const emailVal = validateBusinessEmail(formData.email);
+        if (!emailVal.valid) {
+            setEmailError(emailVal.message || 'Invalid email');
+            return;
+        }
+
         setIsSubmitting(true);
+        trackEvent({ eventName: 'PARTNER_FORM_SUBMIT', category: 'PARTNERSHIP' });
 
         try {
-            await submitToSheet('Partners', {
-                "First Name": formData.firstName,
-                "Last Name": formData.lastName,
-                "Email": formData.email,
-                "Company Name": formData.company,
-                "Website": formData.website,
-                "Partner Type": formData.partnerType,
-                "Message": formData.message,
-                "Status": "New"
+            const res = await submitToSheet('Partners', {
+                formName: 'Partnership Program Application',
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+                email: formData.email,
+                company: formData.company,
+                website: formData.website,
+                partnerType: formData.partnerType,
+                interest: formData.partnerType,
+                message: formData.message,
+                source: 'Partners Page'
             });
+            setSubmissionId(res.submissionId);
             setSubmitted(true);
-
         } catch (error: any) {
             console.error(error);
-            alert(error.message || "Something went wrong. Please try again.");
+            setSubmitError(error.message || "We couldn't submit your application just now. Please try again.");
         } finally {
             setIsSubmitting(false);
         }
-
     };
 
     return (
@@ -109,7 +128,7 @@ export default function Partners() {
                         </div>
 
                         <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-8 tracking-tight leading-[1.1] text-slate-900 drop-shadow-sm">
-                            Grow with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">TrustGrid AI</span>
+                            Grow with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">ProfitMachines</span>
                         </h1>
 
                         <p className="text-xl sm:text-2xl text-slate-600 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
@@ -182,7 +201,7 @@ export default function Partners() {
 
                                 <div className="space-y-6">
                                     {[
-                                        { id: "solution-partners", title: "Solution Partners", desc: "Consultancies and SIs implementation TrustGrid AI." },
+                                        { id: "solution-partners", title: "Solution Partners", desc: "Consultancies and SIs implementation ProfitMachines." },
                                         { id: "technology-partners", title: "Technology Partners", desc: "ISVs and Tech platforms integrating with our ecosystem." },
                                         { id: "referral-partners", title: "Referral Partners", desc: "Agencies and individuals referring qualified leads." }
                                     ].map((prog, i) => (
@@ -215,7 +234,7 @@ export default function Partners() {
                                     <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-500/20 rounded-full blur-[80px] -mr-20 -mt-20"></div>
                                     <QuoteIcon className="w-12 h-12 text-blue-400 mb-6 opacity-50" />
                                     <blockquote className="text-2xl font-medium leading-relaxed mb-8 relative z-10">
-                                        "Partnering with TrustGrid AI has been a game-changer for our agency. We've not only increased our revenue but also deepened our client relationships by delivering tangible ROI."
+                                        "Partnering with ProfitMachines has been a game-changer for our agency. We've not only increased our revenue but also deepened our client relationships by delivering tangible ROI."
                                     </blockquote>
                                     <div className="flex items-center gap-4">
                                         <div className="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center text-xl font-bold">
@@ -254,7 +273,7 @@ export default function Partners() {
                                     </div>
                                     <h3 className="text-2xl font-bold text-slate-900 mb-4">Application Received!</h3>
                                     <p className="text-lg text-slate-600 max-w-md mx-auto mb-8">
-                                        Thank you for your interest in partnering with TrustGrid AI. Our partnership team will review your application and be in touch shortly.
+                                        Thank you for your interest in partnering with ProfitMachines. Our partnership team will review your application and be in touch shortly.
                                     </p>
                                     <Button onClick={() => setSubmitted(false)} variant="outline">
                                         Submit Another Application
@@ -292,6 +311,9 @@ export default function Partners() {
                                                 placeholder="john@company.com"
                                                 className="h-11"
                                             />
+                                            {emailError && (
+                                                <p className="text-xs text-red-600 font-semibold">{emailError}</p>
+                                            )}
                                         </div>
                                         <div className="space-y-2">
                                             <Label htmlFor="company">Company Name</Label>
@@ -349,6 +371,12 @@ export default function Partners() {
                                     >
                                         {isSubmitting ? 'Submitting Application...' : 'Apply to Partner Program'}
                                     </Button>
+
+                                    <HoneypotField value={honeypot} onChange={setHoneypot} />
+
+                                    {submitError && (
+                                        <FormErrorBanner message={submitError} onDismiss={() => setSubmitError(null)} />
+                                    )}
                                 </form>
                             )}
                         </div>
@@ -416,6 +444,16 @@ export default function Partners() {
                     </div>
                 </div>
             )}
+
+            {/* Success Reference Confirmation Modal */}
+            <FormSuccessModal
+                isOpen={submitted}
+                onClose={() => setSubmitted(false)}
+                submissionId={submissionId}
+                email={formData.email}
+                title="Partner Application Received"
+                message="Your partnership application has been registered with our Alliances & Channel Strategy team. We will review your submission and reach out shortly."
+            />
         </div>
     );
 }

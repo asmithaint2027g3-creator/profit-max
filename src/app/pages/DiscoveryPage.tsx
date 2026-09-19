@@ -8,9 +8,7 @@ import {
 } from 'lucide-react';
 import { Reveal } from '../components/ui/Reveal';
 import { submitToSheet } from '../../lib/sheets';
-import discoveryLayersImg from '../../assets/image (7).png';
-import b2bImg from '../../assets/1.png';
-import b2cImg from '../../assets/2.png';
+import ProfitPoolDiscoveryDiagram from '../components/ProfitPoolDiscoveryDiagram';
 
 interface DiscoveryData {
     title: string;
@@ -1934,11 +1932,7 @@ export default function DiscoveryPage() {
 
                     {activePoolTab === 'overview' && (
                         <div className="flex justify-center my-8">
-                            <img 
-                                src={discoveryLayersImg} 
-                                alt="AI Driven Profit Pool Discovery Layers"
-                                className="w-full max-w-5xl h-auto rounded-[2rem] shadow-2xl border border-slate-200/80 hover:shadow-indigo-200/50 transition-all duration-300"
-                            />
+                            <ProfitPoolDiscoveryDiagram />
                         </div>
                     )}
                 </div>

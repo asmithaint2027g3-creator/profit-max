@@ -21,6 +21,8 @@ import {
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Reveal } from '../components/ui/Reveal';
+import SolutionsCarousel from '../components/SolutionsCarousel';
+import LeadCaptureSection from '../components/LeadCaptureSection';
 
 export default function Solutions() {
     const location = useLocation();
@@ -71,6 +73,7 @@ export default function Solutions() {
             window.scrollTo(0, 0);
         }
     }, [location.search, location.hash]);
+
 
     const solutions = [
         {
@@ -181,65 +184,25 @@ export default function Solutions() {
 
     return (
         <div className="bg-slate-50 min-h-screen">
-            {/* Hero Section - Compact */}
-            <div className="relative pt-20 pb-16 md:pt-24 md:pb-20 lg:pt-28 lg:pb-24 overflow-hidden bg-slate-50 text-slate-900 border-b border-slate-200">
-                {/* Background Slideshow */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-                    {/* Premium Unified Overlay - Matched with AI Lead Gen Visibility */}
-                    <div className="absolute inset-0 bg-white/30 bg-gradient-to-b from-white/80 via-white/20 to-white/80" />
-                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-multiply"></div>
-                </div>
+            {/* 1. Autonomous Hero Slider */}
+            <SolutionsCarousel />
 
-                <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <Reveal width="100%">
-                        {(() => {
-                            const hash = location.hash.substring(1) || '';
-                            const solutionTitleMap: Record<string, { title: string; subtitle: string }> = {
-                                'strategy': {
-                                    title: "Strategy & Growth Solutions",
-                                    subtitle: "Predictive ICP modeling, demand forecasting, growth hacking, and market prioritization engineered for enterprise scaling."
-                                },
-                                'sales-ops': {
-                                    title: "Sales & Operations Solutions",
-                                    subtitle: "Autonomous sales pilot execution, RevOps data orchestration, process optimization, and sales velocity acceleration."
-                                },
-                                'intelligence': {
-                                    title: "Demand & Intelligence Solutions",
-                                    subtitle: "Intent signal discovery, hidden revenue capture, pre-RFP sensing, and predictive deal intelligence."
-                                },
-                                'brand-reputation': {
-                                    title: "Brand & Reputation Solutions",
-                                    subtitle: "AI-driven brand positioning, continuous trust audit acceleration, and automated reputation defense systems."
-                                }
-                            };
-
-                            const info = solutionTitleMap[hash] || {
-                                title: "AI Strategy, Growth & Revenue Solutions",
-                                subtitle: "Modular, composable AI revenue systems engineered to automate growth execution across the entire enterprise revenue lifecycle."
-                            };
-
-                            return (
-                                <>
-                                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold uppercase tracking-wider mb-6">
-                                        <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-                                        {hash ? `Solution Suite: ${info.title}` : "Enterprise Revenue Architecture"}
-                                    </div>
-                                    <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight text-slate-900 leading-[1.1] font-heading">
-                                        {info.title}
-                                    </h1>
-                                    <p className="text-xl sm:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-medium">
-                                        {info.subtitle}
-                                    </p>
-                                </>
-                            );
-                        })()}
-                    </Reveal>
-                </div>
-            </div>
-
-            {/* Solutions Grid - Compact & Clean */}
+            {/* Solutions Grid - Symmetric 2-Column Responsive Layout */}
             <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24">
-                <div className="flex flex-col gap-8">
+                <div className="text-center max-w-3xl mx-auto mb-14">
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold uppercase tracking-wider mb-4">
+                        <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                        Modular Revenue Engines
+                    </div>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+                        Engineered for High-Velocity Growth
+                    </h2>
+                    <p className="text-lg text-slate-600 font-medium">
+                        Explore our modular AI revenue architectures. Each system integrates seamlessly with your existing tech stack or deploys as an end-to-end autonomous engine.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
                     {solutions.map((solution, index) => {
                         const Icon = solution.icon;
                         const mainId = solution.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
@@ -256,153 +219,92 @@ export default function Solutions() {
                         const aliases = aliasMap[index] || [];
 
                         return (
-                            <Reveal key={index} width="100%" delay={index * 0.1}>
+                            <Reveal key={index} width="100%" delay={index * 0.05} className="h-full">
                                 {aliases.map(a => (
                                     <div key={a} id={a} className="scroll-mt-32" />
                                 ))}
-                                <div id={mainId} className="group relative scroll-mt-32">
+                                <div id={mainId} className="group relative scroll-mt-32 h-full flex flex-col">
                                     <div className="absolute -inset-1 bg-gradient-to-r from-blue-100 to-purple-100 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                    <div className="relative bg-white border border-slate-200 rounded-2xl p-6 lg:p-8 hover:border-blue-300 transition-all duration-300 shadow-sm hover:shadow-lg">
-                                        <div className="flex flex-col lg:flex-row gap-8 items-start">
-
-                                            {/* Header & Icon */}
-                                            <div className="lg:w-1/3 space-y-4">
-                                                <div className="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center border border-blue-100 group-hover:bg-blue-100 transition-colors">
-                                                    <Icon className="w-7 h-7 text-blue-600" />
+                                    <div className="relative bg-white border border-slate-200 rounded-2xl p-6 lg:p-8 hover:border-blue-300 transition-all duration-300 shadow-sm hover:shadow-lg flex flex-col justify-between h-full">
+                                        
+                                        {/* Top Info */}
+                                        <div>
+                                            <div className="flex items-center justify-between gap-4 mb-4">
+                                                <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center border border-blue-100 group-hover:bg-blue-100 transition-colors">
+                                                    <Icon className="w-6 h-6 text-blue-600" />
                                                 </div>
-                                                <div>
-                                                    <div className="text-blue-600 font-bold text-xs mb-1 uppercase tracking-wider">Solution 0{index + 1}</div>
-                                                    <h2 className="text-2xl font-bold text-slate-900 mb-2">
-                                                        {solution.title}
-                                                    </h2>
-                                                    <p className="text-slate-600 text-base font-medium leading-relaxed italic">
-                                                        "{solution.tagline}"
+                                                <span className="text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 bg-slate-100 rounded-full text-slate-700">
+                                                    Solution 0{index + 1}
+                                                </span>
+                                            </div>
+
+                                            <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                                                {solution.title}
+                                            </h3>
+                                            <p className="text-slate-600 text-sm sm:text-base font-medium leading-relaxed mb-6">
+                                                {solution.tagline}
+                                            </p>
+
+                                            {/* Outcome KPIs Highlight */}
+                                            {solution.details.outcomes && (
+                                                <div className="p-4 rounded-xl bg-emerald-50/60 border border-emerald-100 mb-6">
+                                                    <h4 className="text-xs font-bold text-emerald-800 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                                                        <TrendingUp className="w-3.5 h-3.5 text-emerald-600" /> Verified Target Lift
+                                                    </h4>
+                                                    <div className="grid grid-cols-2 gap-2">
+                                                        {solution.details.outcomes.slice(0, 4).map((outcome, idx) => (
+                                                            <div key={idx} className="flex items-center gap-1.5 text-xs font-bold text-emerald-900">
+                                                                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                                                                <span className="truncate">{outcome}</span>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            {/* Offerings Summary */}
+                                            {solution.details.offerings && (
+                                                <div className="space-y-2 mb-6">
+                                                    <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+                                                        <Shield className="w-3.5 h-3.5 text-blue-600" /> Core Engine Architecture
+                                                    </h4>
+                                                    <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+                                                        {solution.details.offerings[0]}
                                                     </p>
                                                 </div>
+                                            )}
 
-                                                {/* Outcome KPIs */}
-                                                {solution.details.outcomes && (
-                                                    <div className="p-5 rounded-xl bg-blue-50 border border-blue-100 mt-4">
-                                                        <h4 className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-3 flex items-center gap-2">
-                                                            <Zap className="w-3 h-3" /> Outcome KPIs
-                                                        </h4>
-                                                        <div className="space-y-2">
-                                                            {solution.details.outcomes.map((outcome, idx) => (
-                                                                <div key={idx} className="flex items-center gap-2">
-                                                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                                                                    <span className="text-slate-700 text-sm font-semibold">{outcome}</span>
-                                                                </div>
-                                                            ))}
-                                                        </div>
+                                            {/* Problem KPIs at Risk */}
+                                            {solution.details.problemKpis && (
+                                                <div className="p-3.5 rounded-xl bg-amber-50/60 border border-amber-100 mb-6">
+                                                    <h4 className="text-[11px] font-bold text-amber-800 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                                                        <AlertCircle className="w-3.5 h-3.5 text-amber-600" /> Common Revenue Failure Points
+                                                    </h4>
+                                                    <div className="flex flex-wrap gap-1.5">
+                                                        {solution.details.problemKpis.slice(0, 3).map((item, idx) => (
+                                                            <span key={idx} className="text-[11px] font-medium bg-white/80 border border-amber-200 text-amber-900 px-2 py-0.5 rounded-md">
+                                                                {item}
+                                                            </span>
+                                                        ))}
                                                     </div>
-                                                )}
-                                            </div>
-
-                                            {/* Detailed Content Grid */}
-                                            <div className="lg:w-2/3 grid md:grid-cols-2 gap-8">
-
-                                                {/* Offerings */}
-                                                {solution.details.offerings && (
-                                                    <div className="space-y-3">
-                                                        <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                                                            <Shield className="w-4 h-4 text-purple-600" />
-                                                            Offering
-                                                        </h3>
-                                                        <ul className="space-y-2">
-                                                            {solution.details.offerings.map((item, idx) => (
-                                                                <li key={idx} className="flex items-start gap-2 text-slate-600 text-sm font-medium leading-relaxed">
-                                                                    <CheckCircle2 className="w-4 h-4 text-purple-500 mt-0.5 flex-shrink-0" />
-                                                                    <span>{item}</span>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </div>
-                                                )}
-
-                                                {/* Situations */}
-                                                {solution.details.situations && (
-                                                    <div className="space-y-3">
-                                                        <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                                                            <AlertCircle className="w-4 h-4 text-amber-500" />
-                                                            Situations
-                                                        </h3>
-                                                        <ul className="space-y-2">
-                                                            {solution.details.situations.map((item, idx) => (
-                                                                <li key={idx} className="flex items-start gap-2 text-slate-600 text-sm font-medium">
-                                                                    <div className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-1.5 flex-shrink-0" />
-                                                                    <span>{item}</span>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </div>
-                                                )}
-
-                                                {/* Challenges */}
-                                                {solution.details.challenges && (
-                                                    <div className="space-y-3">
-                                                        <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                                                            <Target className="w-4 h-4 text-orange-500" />
-                                                            Challenges
-                                                        </h3>
-                                                        <ul className="space-y-2">
-                                                            {solution.details.challenges.map((item, idx) => (
-                                                                <li key={idx} className="flex items-start gap-2 text-slate-600 text-sm font-medium">
-                                                                    <div className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-1.5 flex-shrink-0" />
-                                                                    <span>{item}</span>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </div>
-                                                )}
-
-                                                {/* Benefits */}
-                                                {solution.details.benefits && (
-                                                    <div className="space-y-3">
-                                                        <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                                                            <Rocket className="w-4 h-4 text-emerald-600" />
-                                                            Benefits
-                                                        </h3>
-                                                        <ul className="space-y-2">
-                                                            {solution.details.benefits.map((item, idx) => (
-                                                                <li key={idx} className="flex items-start gap-2 text-slate-600 text-sm font-medium">
-                                                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 flex-shrink-0" />
-                                                                    <span>{item}</span>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </div>
-                                                )}
-
-                                                {/* Problem KPIs */}
-                                                {solution.details.problemKpis && (
-                                                    <div className="space-y-3 md:col-span-2 bg-red-50/50 p-4 rounded-xl border border-red-100">
-                                                        <h3 className="text-base font-bold text-red-900 flex items-center gap-2 mb-2">
-                                                            <LineChart className="w-4 h-4 text-red-600" />
-                                                            KPIs at Risk (Without This Solution)
-                                                        </h3>
-                                                        <div className="grid sm:grid-cols-2 gap-x-8 gap-y-2">
-                                                            {solution.details.problemKpis.map((item, idx) => (
-                                                                <div key={idx} className="flex items-center gap-2 text-slate-700 text-sm font-medium">
-                                                                    <div className="w-1.5 h-1.5 rounded-full bg-red-400" />
-                                                                    <span>{item}</span>
-                                                                </div>
-                                                            ))}
-                                                        </div>
-                                                    </div>
-                                                )}
-
-                                                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                                                    <button
-                                                        onClick={() => setSelectedModalSolution(solution)}
-                                                        className="inline-flex items-center gap-2 text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors"
-                                                    >
-                                                        <span>Explore Solution Specification</span>
-                                                        <ArrowRight className="w-3.5 h-3.5" />
-                                                    </button>
                                                 </div>
-
-                                            </div>
+                                            )}
                                         </div>
+
+                                        {/* Bottom Action Strip */}
+                                        <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
+                                            <button
+                                                onClick={() => setSelectedModalSolution(solution)}
+                                                className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors"
+                                            >
+                                                <span>Specification</span>
+                                                <ArrowRight className="w-3.5 h-3.5" />
+                                            </button>
+                                            <Button asChild size="sm" className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-full px-4">
+                                                <Link to="/book-consultation">Deploy</Link>
+                                            </Button>
+                                        </div>
+
                                     </div>
                                 </div>
                             </Reveal>
@@ -411,7 +313,7 @@ export default function Solutions() {
                 </div>
             </div>
 
-            {/* Detailed Solution Specification Modal (Like Offerings) */}
+            {/* Detailed Solution Specification Modal */}
             {selectedModalSolution && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-md animate-in fade-in duration-200">
                     <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl shadow-2xl border border-slate-200 p-6 sm:p-8 space-y-6">
@@ -495,6 +397,9 @@ export default function Solutions() {
                     </div>
                 </div>
             )}
+
+            {/* Quick Diagnostic Lead Capture Form */}
+            <LeadCaptureSection />
 
             {/* CTA Section - Compact */}
             <div className="py-20 relative overflow-hidden bg-white border-t border-slate-200">

@@ -36,7 +36,7 @@ export default function Terms() {
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div className="prose prose-slate prose-lg max-w-none">
                     <p className="text-xl text-slate-600 leading-relaxed mb-12">
-                        By accessing or using TrustGrid's website and services, you agree to these Terms. Please read them carefully.
+                        By accessing or using ProfitMachines' website and services, you agree to these Terms. Please read them carefully.
                     </p>
 
                     <div className="space-y-12">
@@ -55,7 +55,7 @@ export default function Terms() {
                                 </div>
                                 <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
                                     <h3 className="font-bold text-slate-900 mb-2">Services Provided</h3>
-                                    <p className="text-slate-600 text-sm mb-2">TrustGrid provides AI-driven growth, revenue acceleration, and business automation solutions.</p>
+                                    <p className="text-slate-600 text-sm mb-2">ProfitMachines provides AI-driven growth, revenue acceleration, and business automation solutions.</p>
                                     <p className="text-xs text-slate-500 italic">We reserve the right to modify, suspend, or discontinue any part of the service.</p>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@ export default function Terms() {
                             <div className="space-y-6">
                                 <div>
                                     <h3 className="text-lg font-bold text-white mb-2">Intellectual Property</h3>
-                                    <p className="text-sm opacity-80">All content, branding, software, and materials belong to TrustGrid and are protected by intellectual property laws.</p>
+                                    <p className="text-sm opacity-80">All content, branding, software, and materials belong to ProfitMachines and are protected by intellectual property laws.</p>
                                 </div>
                                 <div className="h-px bg-white/10 w-full"></div>
                                 <div>
@@ -103,7 +103,7 @@ export default function Terms() {
                                 <div className="h-px bg-white/10 w-full"></div>
                                 <div>
                                     <h3 className="text-lg font-bold text-white mb-2">Limitation of Liability</h3>
-                                    <p className="text-sm opacity-80">TrustGrid shall not be liable for indirect, incidental, or consequential damages.</p>
+                                    <p className="text-sm opacity-80">ProfitMachines shall not be liable for indirect, incidental, or consequential damages.</p>
                                 </div>
                             </div>
                         </section>
@@ -127,7 +127,7 @@ export default function Terms() {
                                 <h3 className="font-bold text-slate-900">Have questions about our Terms?</h3>
                                 <p className="text-slate-500 text-sm">Our legal team is here to help.</p>
                             </div>
-                            <a href="mailto:connect@trustgrid.ai" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-blue-600 font-bold rounded-lg border border-blue-200 hover:bg-blue-600 hover:text-white transition-all shadow-sm">
+                            <a href="mailto:connect@profitmachines.com" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-blue-600 font-bold rounded-lg border border-blue-200 hover:bg-blue-600 hover:text-white transition-all shadow-sm">
                                 <span>Contact Us</span>
                                 <ArrowLeft className="w-4 h-4 rotate-180" />
                             </a>

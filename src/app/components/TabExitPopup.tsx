@@ -130,7 +130,7 @@ export default function TabExitPopup() {
                     </h2>
 
                     <p className="text-slate-600 text-lg mb-8 leading-relaxed max-w-md">
-                        Industry leaders are using Trustgrid.ai to capture demand competitors can't see. Explore our impact:
+                        Industry leaders are using ProfitMachines to capture demand competitors can't see. Explore our impact:
                     </p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
@@ -171,7 +171,7 @@ export default function TabExitPopup() {
                         <div className="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100">
                             <TrendingUp className="w-3.5 h-3.5 text-emerald-600" />
                         </div>
-                        Join 200+ companies scaling with Trustgrid
+                        Join 200+ companies scaling with ProfitMachines
                     </div>
                 </div>
             </div>

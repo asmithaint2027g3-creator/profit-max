@@ -197,7 +197,7 @@ const navItems = [
                 { title: "Careers", desc: "Join our team", path: "/careers" }
             ],
             highlight: {
-                title: "Trustgrid AI",
+                title: "ProfitMachines",
                 desc: "We are engineering growth and automating scale.",
                 image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&q=80",
                 linkText: "Meet the Team",
@@ -219,7 +219,7 @@ const generateContentForService = (category, name, slug) => {
     return `
         title: ${JSON.stringify(name)},
         category: ${JSON.stringify(category)},
-        heroDescription: ${JSON.stringify(`Empower your organization with TrustGrid's enterprise-grade ${name} capabilities. We deliver autonomous AI agents, predictive deal dynamics, and scalable infrastructure designed to increase revenue velocity by 5X.`)},
+        heroDescription: ${JSON.stringify(`Empower your organization with ProfitMachines' enterprise-grade ${name} capabilities. We deliver autonomous AI agents, predictive deal dynamics, and scalable infrastructure designed to increase revenue velocity by 5X.`)},
         features: [
             { title: ${JSON.stringify(`Predictive ${name} Intelligence`)}, description: ${JSON.stringify(`Deploy proprietary AI models trained to identify high-intent buyer behavior and automate ${name} execution.`)} },
             { title: "Autonomous Execution Agents", description: ${JSON.stringify(`Self-healing workflow agents that continuously optimize pipeline conversion, deal prioritization, and engagement.`)} },
@@ -233,8 +233,8 @@ const generateContentForService = (category, name, slug) => {
             ${JSON.stringify(`Enterprise bank-grade security & ISO 27001 / SOC2 compliance`)}
         ],
         faqs: [
-            { question: ${JSON.stringify(`How quickly can TrustGrid deploy ${name}?`)}, answer: ${JSON.stringify(`Initial setup and data ingestion take under 14 days, with full AI model calibration achieved within 4 weeks.`)} },
-            { question: "What infrastructure integrations are supported?", answer: ${JSON.stringify(`TrustGrid seamlessly connects with leading CRMs, ERPs, Data Warehouses, and Communication platforms out-of-the-box.`)} },
+            { question: ${JSON.stringify(`How quickly can ProfitMachines deploy ${name}?`)}, answer: ${JSON.stringify(`Initial setup and data ingestion take under 14 days, with full AI model calibration achieved within 4 weeks.`)} },
+            { question: "What infrastructure integrations are supported?", answer: ${JSON.stringify(`ProfitMachines seamlessly connects with leading CRMs, ERPs, Data Warehouses, and Communication platforms out-of-the-box.`)} },
             { question: "Is my corporate data kept confidential and secure?", answer: "Yes, all customer data is processed in dedicated single-tenant environments with end-to-end encryption." }
         ],
         useCases: [

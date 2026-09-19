@@ -37,6 +37,7 @@ import VerticalBlock from '../components/VerticalBlock';
 import { Reveal } from '../components/ui/Reveal';
 import IndustriesCarousel from '../components/IndustriesCarousel';
 import { verticalsContent } from '../../data/verticalsContent';
+import LeadCaptureSection from '../components/LeadCaptureSection';
 
 export default function Industries() {
     const location = useLocation();
@@ -688,7 +689,7 @@ export default function Industries() {
                             const sectionTitleMap: Record<string, { title: string; subtitle: string }> = {
                                 'all': {
                                     title: "Vertical-Specific Revenue Engineering",
-                                    subtitle: "TrustGrid AI provides deep industry-specific expertise, integrating autonomous demand engines with vertical growth mechanics. We architect the entire revenue lifecycle for your specific market nuances."
+                                    subtitle: "ProfitMachines provides deep industry-specific expertise, integrating autonomous demand engines with vertical growth mechanics. We architect the entire revenue lifecycle for your specific market nuances."
                                 },
                                 'b2b': {
                                     title: "B2B Focus Architecture",
@@ -943,6 +944,9 @@ export default function Industries() {
                     </Reveal>
                 ))}
             </div>
+
+            {/* Quick Diagnostic Lead Capture Form */}
+            <LeadCaptureSection />
 
             {/* CTA Section */}
             <div className="max-w-5xl mx-auto px-4 pb-24 pt-12 relative z-10">

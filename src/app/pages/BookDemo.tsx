@@ -14,6 +14,7 @@ import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
 import { Label } from '../components/ui/label';
 import { submitToSheet } from '../../lib/sheets';
+import { validateBusinessEmail, validatePhone, FormErrorBanner, HoneypotField } from '../components/forms/FormFeedback';
 
 export default function BookDemo() {
     React.useEffect(() => {
@@ -36,9 +37,32 @@ export default function BookDemo() {
 
     const [submitted, setSubmitted] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [emailError, setEmailError] = useState<string | null>(null);
+    const [phoneError, setPhoneError] = useState<string | null>(null);
+    const [submitError, setSubmitError] = useState<string | null>(null);
+    const [honeypot, setHoneypot] = useState('');
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (isSubmitting) return;
+        if (honeypot) return; // silently drop bot submissions
+        setEmailError(null);
+        setPhoneError(null);
+        setSubmitError(null);
+
+        const emailVal = validateBusinessEmail(formData.email);
+        if (!emailVal.valid) {
+            setEmailError(emailVal.message || 'Invalid email');
+            return;
+        }
+        if (formData.phone) {
+            const phoneVal = validatePhone(formData.phone);
+            if (!phoneVal.valid) {
+                setPhoneError(phoneVal.message || 'Invalid phone number');
+                return;
+            }
+        }
+
         setIsSubmitting(true);
 
         try {
@@ -59,7 +83,7 @@ export default function BookDemo() {
             setSubmitted(true);
         } catch (error: any) {
             console.error("Error submitting form:", error);
-            alert("Submission failed. Please try again or contact us directly.");
+            setSubmitError("We couldn't submit your request just now. Please try again in a moment, or contact us directly.");
         } finally {
             setIsSubmitting(false);
         }
@@ -97,7 +121,7 @@ export default function BookDemo() {
                                     </span>
                                 </h1>
                                 <p className="text-xl text-slate-600 leading-relaxed font-medium max-w-lg">
-                                    Book a personalized consulting session with our revenue architects. See how TrustGrid AI can transform your unstructured data into predictable growth.
+                                    Book a personalized consulting session with our revenue architects. See how ProfitMachines can transform your unstructured data into predictable growth.
                                 </p>
                             </div>
                         </Reveal>
@@ -229,6 +253,9 @@ export default function BookDemo() {
                                                 placeholder="name@company.com"
                                                 className="h-10 md:h-11"
                                             />
+                                            {emailError && (
+                                                <p className="text-xs text-red-600 font-semibold">{emailError}</p>
+                                            )}
                                         </div>
                                         <div className="space-y-2">
                                             <Label htmlFor="phone">Phone Number</Label>
@@ -238,6 +265,9 @@ export default function BookDemo() {
                                                 placeholder="+1 (555) 000-0000"
                                                 className="h-10 md:h-11"
                                             />
+                                            {phoneError && (
+                                                <p className="text-xs text-red-600 font-semibold">{phoneError}</p>
+                                            )}
                                         </div>
                                     </div>
 
@@ -323,6 +353,12 @@ export default function BookDemo() {
                                     >
                                         {isSubmitting ? 'Submitting...' : 'Schedule Free Consultation'}
                                     </Button>
+
+                                    <HoneypotField value={honeypot} onChange={setHoneypot} />
+
+                                    {submitError && (
+                                        <FormErrorBanner message={submitError} onDismiss={() => setSubmitError(null)} />
+                                    )}
 
                                     <p className="text-xs text-center text-slate-500 mt-4">
                                         By submitting this form, you agree to our Terms of Service and Privacy Policy.

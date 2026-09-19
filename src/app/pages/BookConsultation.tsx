@@ -1,26 +1,30 @@
-
 import React, { useState } from 'react';
 import {
-    CheckCircle2,
     Calendar,
     Building2,
     Users,
     TrendingUp,
-    Shield
+    Shield,
+    CheckCircle2,
+    Sparkles,
+    Lock,
+    ArrowRight,
+    Clock,
+    Globe
 } from 'lucide-react';
-import { Reveal } from '../components/ui/Reveal';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
 import { Label } from '../components/ui/label';
 import { submitToSheet } from '../../lib/sheets';
+import { trackEvent } from '../../lib/analytics';
+import { FormSuccessModal, validateBusinessEmail, validatePhone, FormErrorBanner, HoneypotField } from '../components/forms/FormFeedback';
 
 export default function BookConsultation() {
     React.useEffect(() => {
         window.scrollTo(0, 0);
+        trackEvent({ eventName: 'PAGE_VIEW_BOOK_CONSULTATION', category: 'CONVERSION' });
     }, []);
-
-    const [consultationCategory, setConsultationCategory] = useState<string>('growth-strategy');
 
     const [formData, setFormData] = useState({
         firstName: '',
@@ -29,39 +33,68 @@ export default function BookConsultation() {
         phone: '',
         company: '',
         jobTitle: '',
-        revenue: '',
-        interest: 'Growth & Revenue Strategy',
+        revenue: '$10M - $50M ARR',
+        interest: 'AI Revenue Engine & Autonomous SDR',
         message: '',
         date: '',
-        time: ''
+        time: 'Morning (9:00 AM - 12:00 PM EST)',
+        consent: true
     });
 
+    const [emailError, setEmailError] = useState<string | null>(null);
+    const [phoneError, setPhoneError] = useState<string | null>(null);
+    const [submitError, setSubmitError] = useState<string | null>(null);
+    const [honeypot, setHoneypot] = useState('');
     const [submitted, setSubmitted] = useState(false);
+    const [submissionId, setSubmissionId] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (isSubmitting) return;
+        if (honeypot) return; // silently drop bot submissions
+        setEmailError(null);
+        setPhoneError(null);
+        setSubmitError(null);
+
+        const emailVal = validateBusinessEmail(formData.email);
+        if (!emailVal.valid) {
+            setEmailError(emailVal.message || 'Invalid email');
+            return;
+        }
+
+        const phoneVal = validatePhone(formData.phone);
+        if (!phoneVal.valid) {
+            setPhoneError(phoneVal.message || 'Invalid phone number');
+            return;
+        }
+
         setIsSubmitting(true);
+        trackEvent({ eventName: 'FORM_SUBMIT_START', category: 'LEAD', label: 'Book Consultation' });
 
         try {
-            await submitToSheet('Book for Consultation', {
-                "First Name": formData.firstName,
-                "Last Name": formData.lastName,
-                "Email": formData.email,
-                "Phone": formData.phone,
-                "Company": formData.company,
-                "Status": "New",
-                "Source": "Consulting Booking Page",
-                "Annual Revenue": formData.revenue,
-                "Interest": formData.interest,
-                "Message": formData.message,
-                "Preferred Date": formData.date,
-                "Preferred Time": formData.time
+            const res = await submitToSheet('Book for Consultation', {
+                formName: 'Executive Consultation Booking',
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+                email: formData.email,
+                phone: formData.phone,
+                company: formData.company,
+                designation: formData.jobTitle,
+                revenue: formData.revenue,
+                interest: formData.interest,
+                message: formData.message,
+                preferredDate: formData.date,
+                preferredTime: formData.time,
+                source: 'Book Consultation Page'
             });
+
+            setSubmissionId(res.submissionId);
             setSubmitted(true);
+            trackEvent({ eventName: 'FORM_SUBMIT_SUCCESS', category: 'LEAD', label: res.submissionId });
         } catch (error: any) {
             console.error("Error submitting form:", error);
-            alert("Submission failed. Please try again or contact us directly.");
+            setSubmitError("We couldn't reach our scheduling system just now. Please try again in a moment, or email us directly.");
         } finally {
             setIsSubmitting(false);
         }
@@ -75,244 +108,251 @@ export default function BookConsultation() {
     };
 
     return (
-        <div className="pt-20 lg:pt-28 pb-16 min-h-screen bg-slate-50 text-slate-900 overflow-hidden">
-            {/* Background Decorative Blobs */}
-            <div className="absolute top-0 right-0 -mr-40 -mt-40 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[100px] pointer-events-none mix-blend-multiply" />
-            <div className="absolute bottom-0 left-0 -ml-40 -mb-40 w-[600px] h-[600px] bg-purple-100/40 rounded-full blur-[100px] pointer-events-none mix-blend-multiply" />
-
+        <div className="pt-24 lg:pt-32 pb-20 min-h-screen bg-slate-50 text-slate-900 relative overflow-hidden">
+            {/* Ambient Enterprise Grid & Radial Accents */}
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-600/5 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
 
-                    {/* Left Column: Value Prop */}
-                    <div className="lg:w-1/2 space-y-10">
-                        <Reveal width="100%">
-                            <div>
-                                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 text-blue-700 font-bold text-xs uppercase tracking-wider mb-6 border border-blue-100 shadow-sm">
-                                    <Calendar className="w-4 h-4" />
-                                    Schedule a Consultation
+                    {/* Left Column: Strategic Positioning */}
+                    <div className="lg:w-1/2 space-y-8">
+                        <div>
+                            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 text-blue-700 font-bold text-xs uppercase tracking-wider mb-4 border border-blue-100 shadow-sm">
+                                <Calendar className="w-3.5 h-3.5" />
+                                Executive Architecture Briefing
+                            </span>
+                            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.08] mb-6">
+                                Architect Your <br />
+                                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                                    AI Revenue Engine
                                 </span>
-                                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-slate-900 mb-6 tracking-tighter leading-[1.05]">
-                                    Architect Your <br />
-                                    <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                                        AI Revenue Engine
-                                    </span>
-                                </h1>
-                                <p className="text-xl text-slate-600 leading-relaxed font-medium max-w-lg">
-                                    Book a personalized consulting session with our revenue architects. See how TrustGrid AI can transform your unstructured data into predictable growth.
-                                </p>
-                            </div>
-                        </Reveal>
-
-                        <div className="space-y-6">
-                            <Reveal width="100%" delay={0.2}>
-                                <h3 className="text-xl font-bold text-slate-900 tracking-tight">What you'll get:</h3>
-                                <ul className="space-y-4">
-                                    {[
-                                        { text: "Full platform walkthrough customized to your vertical", icon: Users },
-                                        { text: "AI readiness assessment for your current stack", icon: Shield },
-                                        { text: "Revenue acceleration roadmap & ROI projection", icon: TrendingUp },
-                                        { text: "Competitive whitespace analysis preview", icon: Building2 }
-                                    ].map((item, idx) => (
-                                        <li key={idx} className="flex items-start gap-4 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-blue-200 hover:shadow-md transition-all group">
-                                            <div className="bg-blue-50 p-2.5 rounded-xl text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                                                <item.icon className="w-5 h-5" />
-                                            </div>
-                                            <span className="text-slate-700 font-semibold text-lg leading-snug">{item.text}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </Reveal>
+                            </h1>
+                            <p className="text-lg text-slate-600 leading-relaxed font-normal">
+                                Schedule a 1-on-1 strategy session with our Enterprise AI Architects to map your revenue leaks, audit intent signals, and evaluate automated growth models.
+                            </p>
                         </div>
 
-                        <div className="pt-8 border-t border-slate-200/60">
-                            <Reveal width="100%" delay={0.3}>
-                                <div className="flex items-center gap-5">
-                                    <div className="flex -space-x-4">
-                                        {[1, 2, 3, 4].map((i) => (
-                                            <div key={i} className="w-12 h-12 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center overflow-hidden shadow-sm">
-                                                
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <div>
-                                        <div className="flex items-center gap-0.5 mb-1.5">
-                                            {[1, 2, 3, 4, 5].map(i => (
-                                                <svg key={i} className="w-4 h-4 text-amber-400 fill-current drop-shadow-sm" viewBox="0 0 20 20">
-                                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                </svg>
-                                            ))}
-                                        </div>
-                                        <p className="text-sm font-bold text-slate-700 tracking-wide">Trusted by 500+ Revenue Leaders</p>
-                                    </div>
-                                </div>
-                            </Reveal>
+                        {/* Value Metric Pillars */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm">
+                                <div className="text-2xl font-bold text-slate-900 font-mono text-blue-600 mb-1">45-Minute</div>
+                                <div className="text-sm font-bold text-slate-800">Deep Architecture Review</div>
+                                <div className="text-xs text-slate-500 mt-1">Full audit of tech stack, pipeline velocity, and conversion blockers.</div>
+                            </div>
+                            <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm">
+                                <div className="text-2xl font-bold text-slate-900 font-mono text-emerald-600 mb-1">Tailored</div>
+                                <div className="text-sm font-bold text-slate-800">Custom Implementation Blueprint</div>
+                                <div className="text-xs text-slate-500 mt-1">Receive concrete projections on CAC reduction and speed to ARR.</div>
+                            </div>
+                        </div>
+
+                        {/* Trust Badges */}
+                        <div className="p-6 rounded-2xl bg-slate-900 text-white shadow-xl">
+                            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-400 mb-3">
+                                <Shield className="w-4 h-4" />
+                                Enterprise Engagement Guarantee
+                            </div>
+                            <ul className="space-y-2.5 text-xs text-slate-300">
+                                <li className="flex items-center gap-2">
+                                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                                    Zero-pressure technical evaluation with Principal Consultants
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                                    Mutual NDA and strict enterprise data confidentiality
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                                    Compatible with Salesforce, HubSpot, Snowflake, and BigQuery
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
-                    {/* Right Column: Form */}
-                    <div className="lg:w-1/2">
-                        <Reveal width="100%" delay={0.2}>
-                            <div className="bg-white rounded-[2rem] shadow-2xl shadow-slate-200/50 border border-slate-100 p-8 sm:p-12 relative overflow-hidden ring-1 ring-slate-900/5 mx-auto w-full max-w-lg lg:max-w-none hover:shadow-3xl transition-shadow duration-500">
-                                {submitted ? (
-                                    <div className="absolute inset-0 z-20 bg-white/95 backdrop-blur-md flex flex-col items-center justify-center text-center p-8 animate-in fade-in zoom-in duration-300">
-                                        <div className="w-24 h-24 bg-green-50 rounded-full flex items-center justify-center mb-6 shadow-sm border border-green-100 animate-bounce">
-                                            <CheckCircle2 className="w-12 h-12 text-green-600" />
-                                        </div>
-                                        <h2 className="text-3xl font-bold text-slate-900 mb-4 tracking-tight">Request Received!</h2>
-                                        <p className="text-lg text-slate-600 max-w-md mx-auto mb-8 font-medium">
-                                            Thanks for your interest, {formData.firstName}. Our revenue architects will review your profile and contact you shortly.
-                                        </p>
-                                        <Button
-                                            onClick={() => setSubmitted(false)}
-                                            variant="outline"
-                                            className="border-slate-300 text-slate-700 h-12 px-8 text-base font-bold hover:bg-slate-50 hover:text-slate-900 rounded-xl"
-                                        >
-                                            Submit Another Request
-                                        </Button>
-                                    </div>
-                                ) : null}
+                    {/* Right Column: Standardized Enterprise Booking Form */}
+                    <div className="lg:w-1/2 w-full">
+                        <div className="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200/90 shadow-2xl shadow-slate-900/5 relative">
+                            <div className="mb-6 border-b border-slate-100 pb-5">
+                                <h3 className="text-2xl font-bold text-slate-900">Request Executive Consultation</h3>
+                                <p className="text-xs text-slate-500 mt-1">Please provide your corporate details to route to the appropriate sector practice.</p>
+                            </div>
 
-                                <div className="relative z-10 mb-8">
-                                    <h2 className="text-2xl font-bold text-slate-900 mb-2">Schedule Free Consultation</h2>
-                                    <p className="text-slate-500">Fill out the form below to schedule your consulting session.</p>
-                                </div>
-
-                                <form onSubmit={handleSubmit} className="relative z-10 space-y-5">
-                                    <div className="grid grid-cols-2 gap-4">
-                                        <div className="space-y-2">
-                                            <Label htmlFor="firstName">First name</Label>
-                                            <Input
-                                                id="firstName" name="firstName" required
-                                                value={formData.firstName} onChange={handleChange}
-                                                placeholder="John"
-                                                className="h-10 md:h-11"
-                                            />
-                                        </div>
-                                        <div className="space-y-2">
-                                            <Label htmlFor="lastName">Last name</Label>
-                                            <Input
-                                                id="lastName" name="lastName" required
-                                                value={formData.lastName} onChange={handleChange}
-                                                placeholder="Doe"
-                                                className="h-10 md:h-11"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div className="space-y-2">
-                                            <Label htmlFor="email">Work Email</Label>
-                                            <Input
-                                                id="email" name="email" type="email" required
-                                                value={formData.email} onChange={handleChange}
-                                                placeholder="name@company.com"
-                                                className="h-10 md:h-11"
-                                            />
-                                        </div>
-                                        <div className="space-y-2">
-                                            <Label htmlFor="phone">Phone Number</Label>
-                                            <Input
-                                                id="phone" name="phone" type="tel"
-                                                value={formData.phone} onChange={handleChange}
-                                                placeholder="+1 (555) 000-0000"
-                                                className="h-10 md:h-11"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div className="space-y-2">
-                                            <Label htmlFor="company">Company</Label>
-                                            <Input
-                                                id="company" name="company" required
-                                                value={formData.company} onChange={handleChange}
-                                                placeholder="Acme Corp"
-                                                className="h-10 md:h-11"
-                                            />
-                                        </div>
-                                        <div className="space-y-2">
-                                            <Label htmlFor="revenue">Annual Revenue</Label>
-                                            <div className="relative">
-                                                <select
-                                                    id="revenue" name="revenue"
-                                                    value={formData.revenue} onChange={handleChange}
-                                                    className={`flex h-10 md:h-11 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${formData.revenue === "" ? "text-slate-500" : "text-slate-900"}`}
-                                                >
-                                                    <option value="" className="text-slate-400">Select Range</option>
-                                                    <option value="Seed - Series A">Seed - Series A</option>
-                                                    <option value="Series B - C ($10M - $50M)">Series B - C ($10M - $50M)</option>
-                                                    <option value="Enterprise ($50M+)">Enterprise ($50M+)</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div className="space-y-2">
-                                            <Label htmlFor="date">Preferred Date</Label>
-                                            <Input
-                                                id="date" name="date" type="date" required
-                                                value={formData.date} onChange={handleChange}
-                                                className="h-10 md:h-11"
-                                            />
-                                        </div>
-                                        <div className="space-y-2">
-                                            <Label htmlFor="time">Preferred Time</Label>
-                                            <Input
-                                                id="time" name="time" type="time" required
-                                                value={formData.time} onChange={handleChange}
-                                                className="h-10 md:h-11"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="space-y-2">
-                                        <Label htmlFor="interest">Primary Interest</Label>
-                                        <div className="relative">
-                                            <select
-                                                id="interest" name="interest" required
-                                                value={formData.interest} onChange={handleChange}
-                                                className={`flex h-10 md:h-11 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${formData.interest === "" ? "text-slate-500" : "text-slate-900"}`}
-                                            >
-                                                <option value="" className="text-slate-400">Select a Solution</option>
-                                                <option value="AI Sales Acceleration">AI Sales Acceleration</option>
-                                                <option value="Demand Discovery Engine">Demand Discovery Engine</option>
-                                                <option value="Revenue Operations (RevOps)">Revenue Operations (RevOps)</option>
-                                                <option value="Performance Marketing">Performance Marketing</option>
-                                                <option value="Other / General Inquiry">Other / General Inquiry</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div className="space-y-2">
-                                        <Label htmlFor="message">Message (Optional)</Label>
-                                        <Textarea
-                                            id="message" name="message"
-                                            value={formData.message} onChange={handleChange}
-                                            className="min-h-[100px] resize-none"
-                                            placeholder="Tell us about your current challenges..."
+                            <form onSubmit={handleSubmit} className="space-y-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <Label className="text-xs font-bold text-slate-700">First Name *</Label>
+                                        <Input
+                                            required
+                                            name="firstName"
+                                            value={formData.firstName}
+                                            onChange={handleChange}
+                                            placeholder="Sarah"
+                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
                                         />
                                     </div>
+                                    <div>
+                                        <Label className="text-xs font-bold text-slate-700">Last Name *</Label>
+                                        <Input
+                                            required
+                                            name="lastName"
+                                            value={formData.lastName}
+                                            onChange={handleChange}
+                                            placeholder="Jenkins"
+                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                        />
+                                    </div>
+                                </div>
 
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <Label className="text-xs font-bold text-slate-700">Corporate Work Email *</Label>
+                                        <Input
+                                            required
+                                            type="email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            placeholder="sarah@enterprise.com"
+                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                        />
+                                        {emailError && (
+                                            <p className="text-[11px] text-red-600 font-semibold mt-1">{emailError}</p>
+                                        )}
+                                    </div>
+                                    <div>
+                                        <Label className="text-xs font-bold text-slate-700">Phone Number *</Label>
+                                        <Input
+                                            required
+                                            type="tel"
+                                            name="phone"
+                                            value={formData.phone}
+                                            onChange={handleChange}
+                                            placeholder="+1 (555) 000-0000"
+                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                        />
+                                        {phoneError && (
+                                            <p className="text-[11px] text-red-600 font-semibold mt-1">{phoneError}</p>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <Label className="text-xs font-bold text-slate-700">Company Name *</Label>
+                                        <Input
+                                            required
+                                            name="company"
+                                            value={formData.company}
+                                            onChange={handleChange}
+                                            placeholder="Acme Global Inc."
+                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                        />
+                                    </div>
+                                    <div>
+                                        <Label className="text-xs font-bold text-slate-700">Designation / Title *</Label>
+                                        <Input
+                                            required
+                                            name="jobTitle"
+                                            value={formData.jobTitle}
+                                            onChange={handleChange}
+                                            placeholder="Chief Revenue Officer / VP"
+                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <Label className="text-xs font-bold text-slate-700">Annual Revenue Stage</Label>
+                                        <select
+                                            name="revenue"
+                                            value={formData.revenue}
+                                            onChange={handleChange}
+                                            className="w-full mt-1 h-11 px-3 rounded-xl bg-slate-50/70 border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                        >
+                                            <option value="Under $5M ARR">Under $5M ARR</option>
+                                            <option value="$5M - $20M ARR">$5M - $20M ARR</option>
+                                            <option value="$20M - $100M ARR">$20M - $100M ARR</option>
+                                            <option value="$100M+ Enterprise">$100M+ Enterprise</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <Label className="text-xs font-bold text-slate-700">Primary Strategic Focus</Label>
+                                        <select
+                                            name="interest"
+                                            value={formData.interest}
+                                            onChange={handleChange}
+                                            className="w-full mt-1 h-11 px-3 rounded-xl bg-slate-50/70 border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                        >
+                                            <option value="AI Revenue Engine & Autonomous SDR">AI Revenue Engine & Autonomous SDR</option>
+                                            <option value="Intent Demand Discovery">Intent Demand Discovery</option>
+                                            <option value="Hidden Revenue & Leak Capture">Hidden Revenue & Leak Capture</option>
+                                            <option value="Brand & Reputation Acceleration">Brand & Reputation Acceleration</option>
+                                            <option value="B2B / Web3 Enterprise Scale">B2B / Web3 Enterprise Scale</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <Label className="text-xs font-bold text-slate-700">Specific Architecture Goals or Requirements</Label>
+                                    <Textarea
+                                        name="message"
+                                        rows={3}
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        placeholder="Outline your primary growth bottleneck, existing stack, or target timeline..."
+                                        className="mt-1 rounded-xl bg-slate-50/70 border-slate-200 text-xs leading-relaxed"
+                                    />
+                                </div>
+
+                                <HoneypotField value={honeypot} onChange={setHoneypot} />
+
+                                {submitError && (
+                                    <FormErrorBanner message={submitError} onDismiss={() => setSubmitError(null)} />
+                                )}
+
+                                <div className="pt-2">
                                     <Button
                                         type="submit"
-                                        size="lg"
-                                        className="btn-cta-primary w-full mt-4"
                                         disabled={isSubmitting}
+                                        className="w-full py-3.5 h-12 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-600/25 transition-all flex items-center justify-center gap-2 group"
                                     >
-                                        {isSubmitting ? 'Submitting...' : 'Schedule Free Consultation'}
+                                        {isSubmitting ? (
+                                            <div className="flex items-center gap-2">
+                                                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                                <span>Connecting to Enterprise Gateway...</span>
+                                            </div>
+                                        ) : (
+                                            <>
+                                                <span>Confirm Consultation Request</span>
+                                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                            </>
+                                        )}
                                     </Button>
+                                </div>
 
-                                    <p className="text-xs text-center text-slate-500 mt-4">
-                                        By submitting this form, you agree to our Terms of Service and Privacy Policy.
-                                    </p>
-                                </form>
-                            </div>
-                        </Reveal>
+                                <div className="flex items-center justify-center gap-2 text-[11px] text-slate-400 text-center pt-2">
+                                    <Lock className="w-3.5 h-3.5 text-slate-400" />
+                                    <span>Encrypted submission • Protected by Mutual Enterprise NDA</span>
+                                </div>
+                            </form>
+                        </div>
                     </div>
+
                 </div>
             </div>
+
+            {/* Success Reference Confirmation Modal */}
+            <FormSuccessModal
+                isOpen={submitted}
+                onClose={() => setSubmitted(false)}
+                submissionId={submissionId}
+                email={formData.email}
+                title="Consultation Request Logged"
+                message="Your consultation request has been registered in the ProfitMachines executive queue. A Principal AI Strategist has been assigned and will connect with your scheduling link."
+            />
         </div>
     );
 }

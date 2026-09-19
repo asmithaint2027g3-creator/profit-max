@@ -17,6 +17,8 @@ import { Card, CardContent, CardHeader, CardFooter } from '../components/ui/card
 import OutcomeBlock from '../components/OutcomeBlock';
 import { salesAccelerationContent, growthEnginesContent } from '../../data/outcomesContent';
 import { Reveal } from '../components/ui/Reveal';
+import OutcomesCarousel from '../components/OutcomesCarousel';
+import LeadCaptureSection from '../components/LeadCaptureSection';
 
 export default function Outcomes() {
     const location = useLocation();
@@ -39,68 +41,8 @@ export default function Outcomes() {
 
     return (
         <div className="min-h-screen bg-white text-slate-900">
-            {/* Hero Section with Moving Backgrounds */}
-            <div className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-50">
-                {/* Background Slideshow */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-                    {/* Premium Unified Overlay - Matched with AI Lead Gen Visibility */}
-                    <div className="absolute inset-0 bg-white/30 bg-gradient-to-b from-white/80 via-white/20 to-white/80" />
-                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-multiply"></div>
-                </div>
-
-                <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-                    <Reveal width="100%">
-                        <div className="text-center max-w-4xl mx-auto">
-                            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-slate-900 mb-8 tracking-tight leading-[1.1]">
-                                Real Business Outcomes <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 drop-shadow-sm">Powered by AI Revenue Acceleration</span>
-                            </h1>
-                            <p className="text-xl sm:text-2xl text-slate-600 mb-10 font-medium leading-relaxed max-w-3xl mx-auto">
-                                See how TrustGrid AI helps enterprises accelerate pipeline, close deals faster, reduce costs, and scale revenue with predictable growth.
-                            </p>
-
-                            {/* Real-World Outcomes ROI & Revenue Dashboard Showcase */}
-                            <div className="relative max-w-5xl mx-auto mt-12 rounded-3xl overflow-hidden shadow-2xl border border-slate-200 group">
-                                <img 
-                                    src="/images/outcomes-metrics.png" 
-                                    alt="ProfitMachines Executive ROI Metrics & Revenue Growth Acceleration Dashboard" 
-                                    className="w-full h-[400px] md:h-[500px] object-cover transform transition-transform duration-700 group-hover:scale-105"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                                <div className="absolute bottom-6 left-6 right-6 flex flex-col md:flex-row items-start md:items-center justify-between text-left gap-4 bg-slate-900/90 backdrop-blur-md p-6 rounded-2xl border border-slate-800">
-                                    <div>
-                                        <div className="text-xs font-bold text-emerald-400 font-mono uppercase tracking-widest flex items-center gap-2">
-                                            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                                            Verified Benchmark Report
-                                        </div>
-                                        <h3 className="text-xl font-bold text-white mt-1">Enterprise ARR Growth & Pipeline Velocity Analytics</h3>
-                                    </div>
-                                    <div className="flex items-center gap-3">
-                                        <span className="px-3.5 py-1.5 bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-mono font-bold rounded-full">
-                                            10× Average ROI
-                                        </span>
-                                        <span className="px-3.5 py-1.5 bg-blue-500/20 border border-blue-400/40 text-blue-300 text-xs font-mono font-bold rounded-full">
-                                            54-Day Sales Cycle
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="flex flex-col sm:flex-row gap-5 justify-center">
-                                <Link to="/book-consultation">
-                                    <Button className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-8 py-7 h-auto shadow-[0_10px_30px_rgba(37,99,235,0.2)] hover:shadow-[0_20px_40px_rgba(37,99,235,0.3)] transition-all rounded-full font-bold">
-                                        Book for Consultation
-                                    </Button>
-                                </Link>
-                                <Link to="/talk-to-expert">
-                                    <Button variant="outline" className="text-lg px-8 py-7 h-auto bg-white/50 border-slate-200 text-slate-600 hover:bg-white hover:text-slate-900 hover:border-slate-300 rounded-full font-medium backdrop-blur-sm shadow-sm transition-all">
-                                        Talk to a Revenue Expert
-                                    </Button>
-                                </Link>
-                            </div>
-                        </div>
-                    </Reveal>
-                </div>
-            </div>
+            {/* 1. Autonomous Outcomes Hero Carousel */}
+            <OutcomesCarousel />
 
             {/* Section 1: Revenue Impact Overview */}
             <div className="bg-slate-50 py-20 border-y border-slate-200 mb-20">
@@ -109,7 +51,7 @@ export default function Outcomes() {
                         <div className="text-center mb-12">
                             <h2 className="text-3xl font-bold text-slate-900 mb-4">Proven Revenue Results Across Industries</h2>
                             <p className="text-lg text-slate-600 max-w-3xl mx-auto font-medium">
-                                TrustGrid AI delivers measurable, boardroom-ready outcomes for modern revenue teams. Our AI-powered revenue acceleration platform helps enterprises build predictable pipelines, increase deal velocity, and drive compounding ARR growth.
+                                ProfitMachines delivers measurable, boardroom-ready outcomes for modern revenue teams. Our AI-powered revenue acceleration platform helps enterprises build predictable pipelines, increase deal velocity, and drive compounding ARR growth.
                             </p>
                         </div>
                     </Reveal>
@@ -207,7 +149,7 @@ export default function Outcomes() {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-slate-800 mb-2 text-sm uppercase tracking-wider">Solution</h4>
-                                    <p className="text-slate-600 font-medium">Implemented TrustGrid AI’s AI-driven sales acceleration and demand generation platform.</p>
+                                    <p className="text-slate-600 font-medium">Implemented ProfitMachines’s AI-driven sales acceleration and demand generation platform.</p>
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-slate-800 mb-3 text-sm uppercase tracking-wider">Results</h4>
@@ -256,14 +198,14 @@ export default function Outcomes() {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-slate-800 mb-2 text-sm uppercase tracking-wider">Solution</h4>
-                                    <p className="text-slate-600 font-medium">Implemented TrustGrid AI’s sales automation and AI demand generation engine.</p>
+                                    <p className="text-slate-600 font-medium">Implemented ProfitMachines’s sales automation and AI demand generation engine.</p>
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-slate-800 mb-3 text-sm uppercase tracking-wider">Results</h4>
                                     <ul className="space-y-2">
                                         {[
                                             "65% reduction in cost of sales",
-                                            "80% of SQLs auto-generated using TrustGrid AI",
+                                            "80% of SQLs auto-generated using ProfitMachines",
                                             "Faster deal velocity and improved sales efficiency"
                                         ].map((item, i) => (
                                             <li key={i} className="flex items-start gap-2">
@@ -310,7 +252,7 @@ export default function Outcomes() {
                 </div>
             </div>
 
-            {/* Section 4: Why Enterprises Choose TrustGrid AI */}
+            {/* Section 4: Why Enterprises Choose ProfitMachines */}
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-24 text-center">
                 <Reveal width="100%">
                     <h2 className="text-3xl font-bold text-slate-900 mb-10">Built for Predictable, Scalable Growth</h2>
@@ -333,6 +275,8 @@ export default function Outcomes() {
                 </Reveal>
             </div>
 
+            {/* Quick Diagnostic Lead Capture Form */}
+            <LeadCaptureSection />
 
             {/* Section 5: Call To Action */}
             <div className="text-center max-w-4xl mx-auto px-4 pb-20">
@@ -342,9 +286,9 @@ export default function Outcomes() {
                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
                         <div className="relative z-10">
-                            <h2 className="text-3xl md:text-4xl font-bold mb-6">Build Your Predictable Revenue Engine with TrustGrid AI</h2>
+                            <h2 className="text-3xl md:text-4xl font-bold mb-6">Build Your Predictable Revenue Engine with ProfitMachines</h2>
                             <p className="text-xl text-blue-50 mb-10 max-w-2xl mx-auto font-medium">
-                                Whether you're scaling from $1M to $100M ARR or optimizing a complex enterprise revenue motion, TrustGrid AI gives you the intelligence, automation, and execution power to win.
+                                Whether you're scaling from $1M to $100M ARR or optimizing a complex enterprise revenue motion, ProfitMachines gives you the intelligence, automation, and execution power to win.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                                 <Link to="/book-consultation" className="w-full sm:w-auto">

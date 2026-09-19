@@ -9,6 +9,7 @@ import {
     Handshake, Info, Target, FileText, Phone, ChevronRight
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'motion/react';
 import { smNavItems } from '../../data/navigationContent';
 
 const Icons: any = {
@@ -30,7 +31,22 @@ export default function Navigation() {
     const [activeOfferingGroup, setActiveOfferingGroup] = useState("profit-pools");
     const [activeIndustryGroup, setActiveIndustryGroup] = useState("b2b");
     const [activeMenuCat, setActiveMenuCat] = useState<Record<string, string>>({});
+    const [dropdownPos, setDropdownPos] = useState<{ left: number; width: number } | null>(null);
     const location = useLocation();
+
+    // Positions the mega-menu so it always stays within the viewport, regardless of
+    // where the trigger sits in the nav (replaces brittle hardcoded per-item offsets).
+    const openDropdown = (name: string, triggerEl: HTMLElement) => {
+        setHoveredItem(name);
+        const margin = 16;
+        const rect = triggerEl.getBoundingClientRect();
+        const width = Math.min(820, window.innerWidth - margin * 2);
+        const desiredViewportLeft = rect.left;
+        const minViewportLeft = margin;
+        const maxViewportLeft = window.innerWidth - width - margin;
+        const clampedViewportLeft = Math.min(Math.max(desiredViewportLeft, minViewportLeft), maxViewportLeft);
+        setDropdownPos({ left: clampedViewportLeft - rect.left, width });
+    };
 
     // Handle scroll effect
     useEffect(() => {
@@ -73,7 +89,7 @@ export default function Navigation() {
                                 <div
                                     key={item.name}
                                     className="group h-full flex items-center relative"
-                                    onMouseEnter={() => setHoveredItem(item.name)}
+                                    onMouseEnter={(e) => openDropdown(item.name, e.currentTarget)}
                                     onMouseLeave={() => setHoveredItem(null)}
                                 >
                                     <Link
@@ -91,14 +107,10 @@ export default function Navigation() {
 
                                     {item.dropdown && (
                                         <div
+                                            style={hoveredItem === item.name && dropdownPos ? { left: dropdownPos.left, width: dropdownPos.width } : undefined}
                                             className={`
                                                 absolute top-[calc(100%)] w-[820px] max-w-[calc(100vw-32px)] bg-white border border-slate-200 shadow-2xl rounded-[12px]
-                                                transition-all duration-200 ease-out origin-top overflow-hidden flex min-h-[380px] z-50
-                                                ${item.name === 'Offerings' ? 'left-0 translate-x-0 origin-top-left' : ''}
-                                                ${item.name === 'Industries' ? 'left-[-80px] xl:left-[-60px] translate-x-0 origin-top-left' : ''}
-                                                ${item.name === 'Solutions' ? 'left-[-180px] xl:left-[-140px] translate-x-0 origin-top-left' : ''}
-                                                ${item.name === 'Crypto' ? 'left-[-240px] xl:left-[-200px] translate-x-0 origin-top-left' : ''}
-                                                ${(item.name === 'Company' || item.name === 'Partners') ? 'left-auto right-0 translate-x-0 origin-top-right' : ''}
+                                                transition-all duration-200 ease-out origin-top-left overflow-hidden flex min-h-[380px] z-50
                                                 ${hoveredItem === item.name ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-2 invisible pointer-events-none'}
                                             `}
                                         >
@@ -179,7 +191,7 @@ export default function Navigation() {
                                                                 const b2cItems = item.dropdown.categories?.find((cat: any) => cat.id === "profit-pools")?.b2cItems || [];
                                                                 
                                                                 return (
-                                                                    <div className="grid grid-cols-2 gap-8 w-full">
+                                                                    <div key={`offerings-${activeOfferingGroup}`} className="grid grid-cols-2 gap-8 w-full">
                                                                         {/* B2B Column */}
                                                                         <div className="flex flex-col gap-2 min-w-0">
                                                                             <Link
@@ -197,7 +209,8 @@ export default function Navigation() {
                                                                                             key={sIdx}
                                                                                             to={sub.path}
                                                                                             onClick={() => setHoveredItem(null)}
-                                                                                            className="flex items-center gap-2.5 p-1.5 rounded-lg text-[12.5px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all hover:translate-x-1 duration-200"
+                                                                                            style={{ animationDelay: `${sIdx * 30}ms` }}
+                                                                                            className="animate-in fade-in-0 slide-in-from-left-1 fill-mode-both duration-300 flex items-center gap-2.5 p-1.5 rounded-lg text-[12.5px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all hover:translate-x-1 duration-200"
                                                                                         >
                                                                                             <IconComponent className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                                                                                             <span className="truncate">{sub.name}</span>
@@ -224,7 +237,8 @@ export default function Navigation() {
                                                                                             key={sIdx}
                                                                                             to={sub.path}
                                                                                             onClick={() => setHoveredItem(null)}
-                                                                                            className="flex items-center gap-2.5 p-1.5 rounded-lg text-[12.5px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all hover:translate-x-1 duration-200"
+                                                                                            style={{ animationDelay: `${sIdx * 30}ms` }}
+                                                                                            className="animate-in fade-in-0 slide-in-from-left-1 fill-mode-both duration-300 flex items-center gap-2.5 p-1.5 rounded-lg text-[12.5px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all hover:translate-x-1 duration-200"
                                                                                         >
                                                                                             <IconComponent className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                                                                                             <span className="truncate">{sub.name}</span>
@@ -239,7 +253,7 @@ export default function Navigation() {
 
                                                             const selectedItems = item.dropdown.categories?.find((cat: any) => cat.id === activeOfferingGroup)?.items || [];
                                                             return (
-                                                                <div className="grid grid-cols-1 gap-1.5 w-full max-w-md">
+                                                                <div key={`offerings-sel-${activeOfferingGroup}`} className="grid grid-cols-1 gap-1.5 w-full max-w-md">
                                                                     {selectedItems.map((sub: any, sIdx: number) => {
                                                                         const IconComponent = Icons[sub.icon] || ArrowRight;
                                                                         return (
@@ -247,7 +261,8 @@ export default function Navigation() {
                                                                                 key={sIdx}
                                                                                 to={sub.path}
                                                                                 onClick={() => setHoveredItem(null)}
-                                                                                className="flex items-center gap-3 p-2 rounded-lg text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all hover:translate-x-1 duration-200"
+                                                                                style={{ animationDelay: `${sIdx * 30}ms` }}
+                                                                                className="animate-in fade-in-0 slide-in-from-left-1 fill-mode-both duration-300 flex items-center gap-3 p-2 rounded-lg text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all hover:translate-x-1 duration-200"
                                                                             >
                                                                                 <div className="bg-slate-50 text-blue-600 p-1.5 rounded-lg shrink-0">
                                                                                     <IconComponent className="w-4 h-4" />
@@ -265,7 +280,7 @@ export default function Navigation() {
                                                             const activeCatId = activeMenuCat[menuKey] ?? item.dropdown.categories[0]?.id;
                                                             const selectedItems = item.dropdown.categories.find((cat: any) => cat.id === activeCatId)?.items || [];
                                                             return (
-                                                                <div className="grid grid-cols-1 gap-1.5 w-full max-w-md animate-in fade-in-50 duration-300">
+                                                                <div key={`${menuKey}-${activeCatId}`} className="grid grid-cols-1 gap-1.5 w-full max-w-md animate-in fade-in-50 duration-300">
                                                                     {selectedItems.map((sub: any, sIdx: number) => {
                                                                         const IconComponent = Icons[sub.icon] || ArrowRight;
                                                                         return (
@@ -273,7 +288,8 @@ export default function Navigation() {
                                                                                 key={sIdx}
                                                                                 to={sub.path}
                                                                                 onClick={() => setHoveredItem(null)}
-                                                                                className="flex items-center gap-3 p-2 rounded-lg text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all hover:translate-x-1 duration-200"
+                                                                                style={{ animationDelay: `${sIdx * 30}ms` }}
+                                                                                className="animate-in fade-in-0 slide-in-from-left-1 fill-mode-both duration-300 flex items-center gap-3 p-2 rounded-lg text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all hover:translate-x-1 duration-200"
                                                                             >
                                                                                 <div className="bg-slate-50 text-blue-600 p-1.5 rounded-lg shrink-0">
                                                                                     <IconComponent className="w-4 h-4" />
@@ -346,33 +362,44 @@ export default function Navigation() {
                                     )}
                                 </div>
                                 
-                                            {item.dropdown && expandedItems.includes(item.name) && (
-                                                <div className="pl-4 pb-4 space-y-4">
-                                                    <div className="flex flex-col space-y-3 pl-2 border-l-2 border-slate-100">
-                                                        {item.dropdown.categories ? (
-                                                            <>
-                                                                {item.dropdown.categories.map((cat: any, cIdx: number) => (
-                                                                    <div key={cIdx} className="mb-3">
-                                                                        <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 mb-1.5 mt-1">{cat.title}</div>
-                                                                        <div className="flex flex-col space-y-1">
-                                                                            {(cat as any).items.map((sub: any, subIdx: number) => (
-                                                                                <Link
-                                                                                    key={subIdx}
-                                                                                    to={sub.path}
-                                                                                    onClick={() => setMobileMenuOpen(false)}
-                                                                                    className="text-slate-600 font-semibold py-1 hover:text-blue-600 transition-colors text-xs block"
-                                                                                >
-                                                                                    {sub.name}
-                                                                                </Link>
-                                                                            ))}
-                                                                        </div>
+                                <AnimatePresence initial={false}>
+                                    {item.dropdown && expandedItems.includes(item.name) && (
+                                        <motion.div
+                                            key="submenu"
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: 'auto', opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.25, ease: 'easeInOut' }}
+                                            className="overflow-hidden"
+                                        >
+                                            <div className="pl-4 pb-4 space-y-4">
+                                                <div className="flex flex-col space-y-3 pl-2 border-l-2 border-slate-100">
+                                                    {item.dropdown.categories ? (
+                                                        <>
+                                                            {item.dropdown.categories.map((cat: any, cIdx: number) => (
+                                                                <div key={cIdx} className="mb-3">
+                                                                    <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 mb-1.5 mt-1">{cat.title}</div>
+                                                                    <div className="flex flex-col space-y-1">
+                                                                        {(cat as any).items.map((sub: any, subIdx: number) => (
+                                                                            <Link
+                                                                                key={subIdx}
+                                                                                to={sub.path}
+                                                                                onClick={() => setMobileMenuOpen(false)}
+                                                                                className="text-slate-600 font-semibold py-1 hover:text-blue-600 transition-colors text-xs block"
+                                                                            >
+                                                                                {sub.name}
+                                                                            </Link>
+                                                                        ))}
                                                                     </div>
-                                                                ))}
-                                                            </>
-                                                        ) : null}
-                                                    </div>
+                                                                </div>
+                                                            ))}
+                                                        </>
+                                                    ) : null}
                                                 </div>
-                                            )}
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
 
                             </div>
                         ))}

@@ -1,23 +1,51 @@
-
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { analytics } from '../lib/analytics';
-
+import { trackPageView, trackEvent, captureCurrentUTMs } from '../lib/analytics';
 
 export const useTrafficAnalysis = () => {
     const location = useLocation();
 
     useEffect(() => {
-        // Log page view through the main service
-        analytics.setPreviousPage(sessionStorage.getItem('tg_last_page') || '');
-        analytics.track('page_view', 'navigation', 'view', {
-            title: document.title
-        });
+        // Capture any landing UTMs
+        captureCurrentUTMs();
 
-        // Update session storage for sequence tracking
-        const pages = parseInt(sessionStorage.getItem('tg_pages_viewed') || '0') + 1;
-        sessionStorage.setItem('tg_pages_viewed', pages.toString());
-        sessionStorage.setItem('tg_last_page', location.pathname);
+        // Track SPA Route View
+        trackPageView(location.pathname, document.title);
 
-    }, [location.pathname]); // Run on every route change
+        // Track Scroll Milestones (50% and 90%)
+        let fired50 = false;
+        let fired90 = false;
+
+        const handleScroll = () => {
+            const h = document.documentElement;
+            const b = document.body;
+            const st = 'scrollTop';
+            const sh = 'scrollHeight';
+            const percent = ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100;
+
+            if (percent >= 50 && !fired50) {
+                fired50 = true;
+                trackEvent({
+                    eventName: 'SCROLL_50',
+                    category: 'ENGAGEMENT',
+                    label: location.pathname,
+                    value: 50
+                });
+            }
+
+            if (percent >= 90 && !fired90) {
+                fired90 = true;
+                trackEvent({
+                    eventName: 'SCROLL_90',
+                    category: 'ENGAGEMENT',
+                    label: location.pathname,
+                    value: 90
+                });
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+
+    }, [location.pathname]);
 };

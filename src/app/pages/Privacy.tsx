@@ -38,7 +38,7 @@ export default function Privacy() {
                     {/* Introduction */}
                     <div className="p-8 sm:p-10 border-b border-slate-100 bg-slate-50/50">
                         <p className="text-slate-600 leading-relaxed text-lg">
-                            At <strong>TRUSTGRID.AI</strong>, we are committed to protecting your privacy and ensuring the responsible handling of your personal and business information. This Privacy Policy explains what information we collect, how we use it, with whom we share it, and the rights you have in relation to your data.
+                            At <strong>PROFITMACHINES</strong>, we are committed to protecting your privacy and ensuring the responsible handling of your personal and business information. This Privacy Policy explains what information we collect, how we use it, with whom we share it, and the rights you have in relation to your data.
                         </p>
                     </div>
 
@@ -73,7 +73,7 @@ export default function Privacy() {
                                         <li>System configuration settings, Usage metadata, Platform interaction logs</li>
                                     </ul>
                                     <div className="mt-3 text-xs text-slate-500 bg-slate-50 p-3 rounded border border-slate-100 inline-block">
-                                        Note: TRUSTGRID.AI acts as a Data Processor for enterprise customer data and processes such data solely in accordance with our Data Processing Agreement (DPA) and your instructions.
+                                        Note: PROFITMACHINES acts as a Data Processor for enterprise customer data and processes such data solely in accordance with our Data Processing Agreement (DPA) and your instructions.
                                     </div>
                                 </div>
 
@@ -209,7 +209,7 @@ export default function Privacy() {
                                     <ul className="list-disc pl-5 space-y-1 text-slate-600 text-sm marker:text-teal-500">
                                         <li>Trusted third-party service providers</li>
                                         <li>Legal authorities when required by law</li>
-                                        <li>Protect rights/safety of TRUSTGRID.AI</li>
+                                        <li>Protect rights/safety of PROFITMACHINES</li>
                                         <li>Aggregated/anonymized forms</li>
                                     </ul>
                                 </div>
@@ -293,7 +293,7 @@ export default function Privacy() {
                             </div>
                             <div>
                                 <p className="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Email Support</p>
-                                <a href="mailto:compliance@trustgrid.ai" className="text-lg font-bold text-white hover:text-blue-400 transition-colors">compliance@trustgrid.ai</a>
+                                <a href="mailto:compliance@profitmachines.com" className="text-lg font-bold text-white hover:text-blue-400 transition-colors">compliance@profitmachines.com</a>
                             </div>
                         </div>
                     </div>

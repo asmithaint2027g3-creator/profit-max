@@ -24,14 +24,24 @@ import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 import { Textarea } from "../components/ui/textarea";
 
+import { FormSuccessModal, validateBusinessEmail, FormErrorBanner, HoneypotField } from '../components/forms/FormFeedback';
+import { trackEvent } from '../../lib/analytics';
+
 export default function Career() {
     useEffect(() => {
-        document.title = "Careers | TrustGrid AI";
+        document.title = "Careers | ProfitMachines AI";
+        window.scrollTo(0, 0);
     }, []);
-
 
     const [isApplyOpen, setIsApplyOpen] = useState(false);
     const [selectedRole, setSelectedRole] = useState("");
+    const [submissionId, setSubmissionId] = useState("");
+    const [submitted, setSubmitted] = useState(false);
+    const [applicantEmail, setApplicantEmail] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [emailError, setEmailError] = useState<string | null>(null);
+    const [submitError, setSubmitError] = useState<string | null>(null);
+    const [honeypot, setHoneypot] = useState('');
 
     const handleApply = (roleTitle: string) => {
         setSelectedRole(roleTitle);
@@ -40,24 +50,45 @@ export default function Career() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (isSubmitting) return;
+        if (honeypot) return; // silently drop bot submissions
+        setEmailError(null);
+        setSubmitError(null);
         const form = e.currentTarget as HTMLFormElement;
         const formData = new FormData(form);
+        const email = String(formData.get('email') || '');
+
+        const emailVal = validateBusinessEmail(email);
+        if (!emailVal.valid) {
+            setEmailError(emailVal.message || 'Invalid email');
+            return;
+        }
+
+        setIsSubmitting(true);
+        trackEvent({ eventName: 'JOB_APPLICATION_SUBMIT', category: 'CAREERS', label: selectedRole });
 
         try {
-            await submitToSheet('Job Applications', {
-                "First Name": formData.get('firstName'),
-                "Last Name": formData.get('lastName'),
-                "Email": formData.get('email'),
-                "LinkedIn Profile": formData.get('linkedin'),
-                "Role Applied For": selectedRole,
-                "Cover Letter": formData.get('coverLetter'),
-                "Status": "New"
+            const res = await submitToSheet('Job Applications', {
+                formName: `Job Application - ${selectedRole}`,
+                firstName: String(formData.get('firstName') || ''),
+                lastName: String(formData.get('lastName') || ''),
+                email: email,
+                phone: String(formData.get('phone') || ''),
+                company: String(formData.get('linkedin') || ''),
+                designation: selectedRole,
+                interest: `Engineering / ${selectedRole}`,
+                message: String(formData.get('coverLetter') || ''),
+                source: 'Careers Page'
             });
-            alert(`Application for ${selectedRole} submitted successfully!`);
+            setSubmissionId(res.submissionId);
+            setApplicantEmail(email);
+            setSubmitted(true);
             setIsApplyOpen(false);
         } catch (error) {
             console.error(error);
-            alert("Application failed. Please try again.");
+            setSubmitError("We couldn't submit your application just now. Please try again in a moment.");
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -210,7 +241,7 @@ export default function Career() {
 
                     <div className="mt-12 text-center">
                         <p className="text-slate-600 text-lg font-medium">
-                            Don't see your role? <a href="mailto:careers@trustgrid.ai" className="text-blue-600 hover:underline">Email us</a> your resume.
+                            Don't see your role? <a href="mailto:careers@profitmachines.com" className="text-blue-600 hover:underline">Email us</a> your resume.
                         </p>
                     </div>
                 </div>
@@ -239,6 +270,9 @@ export default function Career() {
                         <div className="space-y-2">
                             <Label htmlFor="email">Email</Label>
                             <Input id="email" name="email" type="email" placeholder="jane@example.com" required />
+                            {emailError && (
+                                <p className="text-xs text-red-600 font-semibold">{emailError}</p>
+                            )}
                         </div>
 
                         <div className="space-y-2">
@@ -257,7 +291,7 @@ export default function Career() {
                             <Textarea
                                 id="coverLetter"
                                 name="coverLetter"
-                                placeholder="Tell us why you want to join TrustGrid AI..."
+                                placeholder="Tell us why you want to join ProfitMachines AI..."
                                 className="min-h-[100px]"
                             />
                         </div>
@@ -266,13 +300,29 @@ export default function Career() {
                             <Button type="button" variant="outline" onClick={() => setIsApplyOpen(false)}>
                                 Cancel
                             </Button>
-                            <Button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white">
-                                Submit Application
+                            <Button type="submit" disabled={isSubmitting} className="bg-blue-600 hover:bg-blue-700 text-white font-bold">
+                                {isSubmitting ? 'Transmitting Application...' : 'Submit Application'}
                             </Button>
                         </DialogFooter>
+
+                        <HoneypotField value={honeypot} onChange={setHoneypot} />
+
+                        {submitError && (
+                            <FormErrorBanner message={submitError} onDismiss={() => setSubmitError(null)} />
+                        )}
                     </form>
                 </DialogContent>
             </Dialog>
+
+            {/* Success Reference Confirmation Modal */}
+            <FormSuccessModal
+                isOpen={submitted}
+                onClose={() => setSubmitted(false)}
+                submissionId={submissionId}
+                email={applicantEmail}
+                title="Application Registered"
+                message={`Your application for ${selectedRole} has been securely logged in our talent system. Our technical hiring leads will review your portfolio and reach out.`}
+            />
         </div>
     );
 }

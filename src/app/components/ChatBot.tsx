@@ -18,7 +18,7 @@ const QUICK_ACTIONS = [
     { label: "Speak to our Experts", text: "I'd like to speak to your experts." },
     { label: "Our Offerings", text: "Can you tell me about your offerings?" },
     { label: "Thought Leadership", text: "I'd like to explore your thought leadership content." },
-    { label: "Partner with us", text: "I'm interested in partnering with Trustgrid AI." },
+    { label: "Partner with us", text: "I'm interested in partnering with ProfitMachines." },
     { label: "Job Openings", text: "Do you have any job openings?" },
     { label: "Just Browsing", text: "I'm just browsing, thanks!" }
 ];
@@ -139,13 +139,13 @@ export default function ChatBot() {
         }
 
         if (lowerText.includes('feature') || lowerText.includes('what does') || lowerText.includes('how does')) {
-            return "Trustgrid AI specializes in AI-driven sales acceleration. Our key features include:\n✨ Automated Lead Generation\n✨ Predictive Revenue Insights\n✨ Real-time Objection Handling\nWhich of these would you like to explore further?";
+            return "ProfitMachines specializes in AI-driven sales acceleration. Our key features include:\n✨ Automated Lead Generation\n✨ Predictive Revenue Insights\n✨ Real-time Objection Handling\nWhich of these would you like to explore further?";
         }
         if (lowerText.includes('support') || lowerText.includes('help')) {
-            return "For support inquiries, you can reach our team directly at support@trustgrid.ai 📧, or I can have someone contact you. Would you like me to arrange a callback?";
+            return "For support inquiries, you can reach our team directly at support@profitmachines.com 📧, or I can have someone contact you. Would you like me to arrange a callback?";
         }
 
-        return "I understand. Trustgrid AI helps B2B teams accelerate conversions and optimize processes. 💡\nWould you like to see a specific use case or schedule a consultation to see it in action?";
+        return "I understand. ProfitMachines helps B2B teams accelerate conversions and optimize processes. 💡\nWould you like to see a specific use case or schedule a consultation to see it in action?";
     };
 
     // ── Chatbot Lead Tracking ─────────────────────────────────────────
@@ -276,12 +276,12 @@ export default function ChatBot() {
                             <div className="flex items-center gap-3.5">
                                 <div className="relative">
                                     <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-[0_2px_10px_rgba(0,0,0,0.06)] overflow-hidden border border-slate-100 p-1">
-                                        <img loading="lazy" decoding="async" width="800" height="600" src={logo} alt="Trustgrid AI" className="w-full h-full object-contain pointer-events-none" />
+                                        <img loading="lazy" decoding="async" width="800" height="600" src={logo} alt="ProfitMachines" className="w-full h-full object-contain pointer-events-none" />
                                     </div>
                                     <span className="absolute bottom-0 right-0.5 w-3.5 h-3.5 bg-[#22c55e] border-2 border-white rounded-full"></span>
                                 </div>
                                 <div className="flex flex-col">
-                                    <h3 className="font-bold text-[#0f172a] text-[15px] leading-none pointer-events-none" style={{ letterSpacing: '0.12em' }}>TRUSTGRID.AI</h3>
+                                    <h3 className="font-bold text-[#0f172a] text-[15px] leading-none pointer-events-none" style={{ letterSpacing: '0.12em' }}>PROFITMACHINES</h3>
                                     <p className="text-[#64748b] text-[11px] -mt-0.5 pointer-events-none font-medium leading-none">{agentName} • {agentRole}</p>
                                 </div>
                             </div>
@@ -407,7 +407,7 @@ export default function ChatBot() {
                             <div className="flex justify-center mt-3">
                                 <span className="text-[10px] text-slate-400 flex items-center gap-1.5">
                                     <Sparkles className="w-3 h-3 text-slate-300" />
-                                    Powered by TRUSTGRID.AI
+                                    Powered by PROFITMACHINES
                                 </span>
                             </div>
                         </div>

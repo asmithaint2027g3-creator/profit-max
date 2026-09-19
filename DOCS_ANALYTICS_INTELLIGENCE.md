@@ -1,6 +1,6 @@
-# DeepTrust Analytics: Intelligence Architecture
+# ProfitMachines Analytics: Intelligence Architecture
 
-The implemented analytics system is not just for tracking; it is the foundation for DeepTrust's intelligence layers.
+The implemented analytics system is not just for tracking; it is the foundation for ProfitMachines' intelligence layers.
 
 ## Layer 1: User Behavior Analytics
 - **Data Source**: Granular events (`scroll`, `click`, `rage_click`).
@@ -11,12 +11,12 @@ The implemented analytics system is not just for tracking; it is the foundation 
 - **Example**: If a user has a `scroll_75` event on the "Crypto" page, the UI can dynamically highlight the "AI-Native Revenue Protocol" section in the navigation or show a targeted "Book a Demo" modal.
 
 ## Layer 3: Predictive Content Delivery
-- **Mechanism**: Airtable's historical data for `user_id`.
-- **Function**: By analyzing which `navigation_path` leads to the highest `engagement_score`, DeepTrust can predict which content a returning anonymous user wants to see next.
+- **Mechanism**: The Google Sheets `VISITORS`/`PAGE_VIEWS` historical data for `visitor_id`.
+- **Function**: By analyzing which `navigation_path` leads to the highest `engagement_score`, ProfitMachines can predict which content a returning anonymous user wants to see next.
 
 ## Layer 5: Adaptive UI/UX Optimization
 - **Mechanism**: Rage click and scroll depth data.
-- **Function**: Automatically flagging sections that are consistently ignored (low scroll depth) or causing frustration (rage clicks). This powers the "AI-Driven UX Optimization" signal in the Airtable dashboard.
+- **Function**: Automatically flagging sections that are consistently ignored (low scroll depth) or causing frustration (rage clicks). This powers the "AI-Driven UX Optimization" signal in the Google Sheets / Analytics Dashboard.
 
 ---
 

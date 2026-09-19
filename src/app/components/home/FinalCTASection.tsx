@@ -1,80 +1,72 @@
-import { ArrowRight } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, ShieldCheck, CheckCircle2, Sparkles, Lock } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Button } from '../ui/button';
+import { trackEvent } from '../../../lib/analytics';
 
 export default function FinalCTASection() {
     return (
-        <section className="relative py-20 md:py-24 lg:py-32 overflow-hidden bg-white border-t border-slate-200">
-            {/* Background Grid Pattern */}
-            <div className="absolute inset-0 z-0 bg-slate-50 overflow-hidden">
-                {/* CSS grid overlay */}
-                <div className="absolute inset-0 opacity-10" style={{
-                    backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)',
-                    backgroundSize: '24px 24px'
-                }}></div>
+        <section className="relative py-20 md:py-28 overflow-hidden bg-slate-900 text-white">
+            {/* Subtle mesh background */}
+            <div className="absolute inset-0 pointer-events-none opacity-20">
+                <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-600 rounded-full blur-[140px]" />
+                <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-indigo-600 rounded-full blur-[140px]" />
             </div>
 
-            <div className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="bg-white/90 backdrop-blur-md border border-slate-200 rounded-[3rem] p-12 md:p-20 shadow-xl"
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    className="p-10 sm:p-16 rounded-3xl bg-slate-950/80 border border-slate-800 shadow-2xl backdrop-blur-xl"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 mb-8 backdrop-blur-sm">
-                        <span className="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
-                        <span className="text-xs font-bold text-blue-700 tracking-[0.2em] uppercase">Enterprise Ready</span>
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6">
+                        <span className="flex h-2 w-2 rounded-full bg-blue-400 animate-pulse" />
+                        <span className="text-xs font-bold text-blue-400 tracking-wider uppercase">Enterprise Ingestion Ready</span>
                     </div>
 
-                    <h2 className="text-4xl md:text-6xl lg:text-[4.5rem] font-extrabold text-slate-900 mb-6 tracking-tight leading-[1.1] drop-shadow-sm">
-                        Ready to Automate Your <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Revenue Engine?</span>
+                    <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight leading-[1.1]">
+                        Ready to Deploy Your <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400">
+                            Autonomous Revenue OS?
+                        </span>
                     </h2>
                     
-                    <p className="text-xl md:text-2xl text-slate-600 mb-12 max-w-3xl mx-auto font-medium leading-relaxed">
-                        Join 50+ enterprise leaders who have replaced fragmented tools with a unified, self-learning AI infrastructure.
+                    <p className="text-base sm:text-xl text-slate-300 mb-10 max-w-2xl mx-auto font-normal leading-relaxed">
+                        Join forward-thinking enterprise teams replacing fragmented tools with a unified, self-learning GTM intelligence infrastructure.
                     </p>
                     
-                    <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-8">
-                        <Link to="/book-consultation" className="btn-cta-primary w-full sm:w-auto !min-h-[64px] !px-10 text-lg group shadow-[0_0_40px_-10px_rgba(37,99,235,0.3)] group-hover:shadow-[0_0_50px_-5px_rgba(37,99,235,0.5)]">
-                            <span className="flex items-center">
-                                Build Your AI Solution
-                                <ArrowRight className="ml-3 w-6 h-6 transition-transform group-hover:translate-x-1" />
-                            </span>
+                    <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
+                        <Link 
+                            to="/book-consultation" 
+                            onClick={() => trackEvent({ eventName: 'FINAL_CTA_BOOK_CLICK' })}
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-blue-600/30 transition-all hover:-translate-y-0.5 group"
+                        >
+                            <span>Schedule Executive Consultation</span>
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </Link>
-                        <Link to="/contact" className="btn-cta-secondary w-full sm:w-auto !min-h-[64px] !px-10 text-lg group text-slate-700 border-slate-200 hover:bg-slate-100 hover:text-slate-900 hover:border-slate-300">
-                            <span className="flex items-center">
-                                Talk to an AI Expert
-                            </span>
+                        <Link 
+                            to="/talk-to-expert" 
+                            onClick={() => trackEvent({ eventName: 'FINAL_CTA_EXPERT_CLICK' })}
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-8 py-4 rounded-xl border border-slate-700 transition-all hover:-translate-y-0.5"
+                        >
+                            <span>Talk to Principal Architect</span>
                         </Link>
                     </div>
                     
-                    <p className="text-sm text-slate-500 mb-10 font-medium tracking-wide">
-                        Join companies seeing <span className="text-blue-600 font-bold">5x ROI</span> in their first 90 days.
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm font-medium text-slate-600 border-t border-slate-200 pt-8">
+                    <div className="flex flex-wrap items-center justify-center gap-6 text-xs font-medium text-slate-400 border-t border-slate-800/80 pt-6">
                         <div className="flex items-center gap-2">
-                            <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center">
-                                <svg className="w-3 h-3 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
-                            </div>
-                            No Credit Card Required
+                            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                            No Long-Term Lock-in
                         </div>
-                        <div className="hidden sm:block w-1 h-1 bg-slate-300 rounded-full"></div>
                         <div className="flex items-center gap-2">
-                            <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center">
-                                <svg className="w-3 h-3 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
-                            </div>
+                            <ShieldCheck className="w-4 h-4 text-emerald-400" />
                             SOC2 Type II Certified
                         </div>
-                        <div className="hidden sm:block w-1 h-1 bg-slate-300 rounded-full"></div>
                         <div className="flex items-center gap-2">
-                            <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center">
-                                <svg className="w-3 h-3 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
-                            </div>
-                            Setup in Minutes
+                            <Lock className="w-4 h-4 text-emerald-400" />
+                            Mutual Enterprise NDA
                         </div>
                     </div>
                 </motion.div>

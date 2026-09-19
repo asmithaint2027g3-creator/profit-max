@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import {
     BookOpen,
@@ -7,91 +7,169 @@ import {
     Users,
     Briefcase,
     Target,
-    TrendingUp
+    TrendingUp,
+    Download,
+    ArrowRight,
+    Sparkles,
+    ShieldCheck
 } from 'lucide-react';
 import { Reveal } from '../components/ui/Reveal';
-import { } from '../components/ui/button';
+import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
+import ResourcesCarousel from '../components/ResourcesCarousel';
+import LeadCaptureSection from '../components/LeadCaptureSection';
 
 export default function Resources() {
     const categories = [
-        { icon: <BookOpen className="w-8 h-8 text-blue-600" />, title: "AI Revenue Playbooks" },
-        { icon: <Target className="w-8 h-8 text-purple-600" />, title: "Demand Generation Frameworks" },
-        { icon: <Briefcase className="w-8 h-8 text-indigo-600" />, title: "Sales Transformation Guides" },
-        { icon: <BarChart className="w-8 h-8 text-green-600" />, title: "Revenue Operations Best Practices" },
-        { icon: <TrendingUp className="w-8 h-8 text-pink-600" />, title: "ARR Growth Strategies" },
-        { icon: <Users className="w-8 h-8 text-yellow-600" />, title: "Case Studies & Success Stories" },
-        { icon: <FileText className="w-8 h-8 text-orange-600" />, title: "Whitepapers & Research Reports" },
+        {
+            icon: <BookOpen className="w-7 h-7 text-blue-600" />,
+            badge: "Executive",
+            count: "12 Playbooks",
+            title: "AI Revenue Playbooks",
+            description: "Step-by-step architectural roadmaps for scaling B2B and enterprise ARR with predictable pipeline pacing.",
+            link: "/book-consultation"
+        },
+        {
+            icon: <Target className="w-7 h-7 text-purple-600" />,
+            badge: "Demand Ops",
+            count: "8 Frameworks",
+            title: "Demand Generation Frameworks",
+            description: "Sensing dark funnel intent signals, buying committee mapping, and competitive displacement triggers.",
+            link: "/demand-pulse"
+        },
+        {
+            icon: <Briefcase className="w-7 h-7 text-indigo-600" />,
+            badge: "Sales Ops",
+            count: "15 Guides",
+            title: "Sales Transformation Guides",
+            description: "Autonomous SDR deployment patterns, dynamic deal desks, and automated RFP response intelligence.",
+            link: "/solutions#sales-ops"
+        },
+        {
+            icon: <BarChart className="w-7 h-7 text-emerald-600" />,
+            badge: "RevOps",
+            count: "10 Standards",
+            title: "RevOps Best Practices",
+            description: "Data orchestration, pipeline hygiene automation, and unified multi-channel telemetry governance.",
+            link: "/offerings"
+        },
+        {
+            icon: <TrendingUp className="w-7 h-7 text-pink-600" />,
+            badge: "ARR Scaling",
+            count: "14 Strategies",
+            title: "ARR Growth Strategies",
+            description: "Mathematical models for CAC compression, net retention expansion, and account propensity scoring.",
+            link: "/outcomes"
+        },
+        {
+            icon: <Users className="w-7 h-7 text-amber-600" />,
+            badge: "Case Studies",
+            count: "24 Stories",
+            title: "Case Studies & Success",
+            description: "Verified customer outcomes, ROI metrics, and sales cycle compression benchmarks from global enterprises.",
+            link: "/outcomes"
+        },
+        {
+            icon: <FileText className="w-7 h-7 text-orange-600" />,
+            badge: "Research",
+            count: "18 Reports",
+            title: "Whitepapers & Benchmarks",
+            description: "Deep research papers on multi-agent cognitive architecture, neural revenue models, and data security.",
+            link: "/book-consultation"
+        },
+        {
+            icon: <ShieldCheck className="w-7 h-7 text-cyan-600" />,
+            badge: "Governance",
+            count: "6 Audits",
+            title: "Security & Trust Reports",
+            description: "SOC-2 Type II verification, zero-trust infrastructure blueprints, and GDPR compliance architecture.",
+            link: "/company"
+        }
     ];
 
     return (
         <div className="bg-white text-slate-900 font-sans min-h-screen">
-            {/* Hero Section */}
-            <div className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-50 border-b border-slate-200">
-                {/* Background Slideshow */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-                    <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/50 to-white/90" />
-                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-multiply"></div>
+            {/* 1. Autonomous Resources Hero Carousel */}
+            <ResourcesCarousel />
+
+            {/* 2. Symmetrical Resources Grid */}
+            <section id="resources-grid" className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 scroll-mt-28">
+                <div className="text-center max-w-3xl mx-auto mb-16">
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold uppercase tracking-wider mb-4">
+                        <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                        <span>Knowledge Architecture</span>
+                    </div>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+                        Executive Revenue Knowledge Hub
+                    </h2>
+                    <p className="text-lg text-slate-600 font-medium leading-relaxed">
+                        Curated intelligence, architecture blueprints, and empirical benchmarks engineered for founders, CROs, and revenue leaders.
+                    </p>
                 </div>
 
-                <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <Reveal width="100%">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm text-xs font-bold text-slate-700 uppercase tracking-widest mb-8">
-                            <BookOpen className="w-4 h-4 text-blue-600" />
-                            Resources Hub
-                        </div>
-
-                        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-slate-900 mb-8 tracking-tight leading-[1.1]">
-                            Revenue Intelligence & <br className="hidden sm:block" />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
-                                Growth Insights
-                            </span>
-                        </h1>
-                        <p className="text-xl sm:text-2xl text-slate-600 leading-relaxed max-w-3xl mx-auto font-medium mb-10">
-                            ProfitMachines is building a comprehensive knowledge hub for modern revenue leaders. Our resources are designed to help founders, CROs, and revenue teams build predictable, scalable growth engines.
-                        </p>
-                    </Reveal>
-                </div>
-            </div>
-
-            {/* Resources Categories Section */}
-            <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 mb-24">
-                <Reveal width="100%">
-                    <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">What You’ll Find Here</h2>
-                </Reveal>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {categories.map((item, index) => (
-                        <Reveal key={index} width="100%" delay={index * 0.1}>
-                            <Card className="hover:shadow-xl hover:shadow-blue-900/5 transition-all hover:-translate-y-1 cursor-pointer border-slate-200 bg-white hover:border-blue-300 group">
-                                <CardContent className="p-6 flex flex-col items-center text-center h-full justify-center min-h-[200px]">
-                                    <div className="mb-4 p-4 bg-slate-50 rounded-full group-hover:bg-blue-50 transition-colors border border-slate-100">
-                                        {React.cloneElement(item.icon, { className: 'w-8 h-8 text-blue-600' })}
+                        <Reveal key={index} width="100%" delay={index * 0.05} className="h-full">
+                            <Card className="h-full hover:shadow-xl hover:shadow-blue-900/5 transition-all hover:-translate-y-1.5 border-slate-200 bg-white hover:border-blue-300 group flex flex-col justify-between rounded-2xl p-6">
+                                <div>
+                                    <div className="flex items-center justify-between gap-2 mb-6">
+                                        <div className="p-3 bg-slate-50 rounded-xl group-hover:bg-blue-50 transition-colors border border-slate-100">
+                                            {item.icon}
+                                        </div>
+                                        <div className="flex items-center gap-1.5">
+                                            <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-slate-100 rounded-full text-slate-600">
+                                                {item.badge}
+                                            </span>
+                                            <span className="text-[11px] font-mono font-semibold text-blue-600">
+                                                {item.count}
+                                            </span>
+                                        </div>
                                     </div>
-                                    <h3 className="text-lg font-bold text-slate-900">{item.title}</h3>
-                                </CardContent>
+                                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                                        {item.title}
+                                    </h3>
+                                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium mb-6">
+                                        {item.description}
+                                    </p>
+                                </div>
+
+                                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                                    <Link
+                                        to={item.link}
+                                        className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors"
+                                    >
+                                        <span>Access Suite</span>
+                                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                                    </Link>
+                                    <span className="text-[11px] text-slate-400 font-medium">Free Access</span>
+                                </div>
                             </Card>
                         </Reveal>
                     ))}
                 </div>
-            </div>
+            </section>
 
-            {/* Designed For Section */}
+            {/* 3. Designed For Section */}
             <div className="bg-slate-50 py-20 lg:py-28 border-y border-slate-200">
                 <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
                     <Reveal width="100%">
-                        <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Built For</h2>
-                        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+                        <div className="text-center max-w-2xl mx-auto mb-14">
+                            <h2 className="text-3xl font-bold text-slate-900 mb-3">Engineered For Growth Leaders</h2>
+                            <p className="text-slate-600 font-medium">Every guide and playbook is battle-tested by enterprise practitioners.</p>
+                        </div>
+                        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
                             {[
-                                "Founders & CEOs",
-                                "CROs & Revenue Leaders",
-                                "Sales & Marketing Teams",
-                                "Growth & RevOps Leaders"
+                                { title: "Founders & CEOs", desc: "Predictable revenue blueprints and valuation drivers" },
+                                { title: "CROs & Revenue Leaders", desc: "Pipeline pacing and multi-agent SDR acceleration" },
+                                { title: "Sales & Marketing Teams", desc: "High-conversion deal desks and buyer intent telemetry" },
+                                { title: "Growth & RevOps Leaders", desc: "Unified revenue data models and automated hygiene" }
                             ].map((role, index) => (
-                                <div key={index} className="flex items-center gap-3 p-4 bg-white rounded-lg border border-slate-200 hover:border-blue-400 transition-colors shadow-sm">
-                                    <div className="bg-blue-50 p-2 rounded-full border border-blue-100">
+                                <div key={index} className="p-6 bg-white rounded-2xl border border-slate-200 hover:border-blue-400 transition-all shadow-sm hover:shadow-md">
+                                    <div className="bg-blue-50 w-10 h-10 rounded-xl border border-blue-100 flex items-center justify-center mb-4">
                                         <Users className="w-5 h-5 text-blue-600" />
                                     </div>
-                                    <span className="font-bold text-slate-900">{role}</span>
+                                    <h4 className="font-bold text-slate-900 text-base mb-1">{role.title}</h4>
+                                    <p className="text-xs text-slate-500 font-medium">{role.desc}</p>
                                 </div>
                             ))}
                         </div>
@@ -99,20 +177,29 @@ export default function Resources() {
                 </div>
             </div>
 
-            {/* CTA Section */}
+            {/* 4. Quick Diagnostic Lead Capture Form */}
+            <LeadCaptureSection />
+
+            {/* 5. CTA Section */}
             <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28 text-center">
                 <Reveal width="100%">
-                    <div className="bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 rounded-[20px] p-12 text-white shadow-2xl border border-white/10 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
-                        <div className="relative z-10">
-                            <h2 className="text-3xl font-bold mb-8">Start Building Your Revenue Engine</h2>
+                    <div className="bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 rounded-[2.5rem] p-12 lg:p-16 text-white shadow-2xl border border-white/10 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                        <div className="absolute bottom-0 left-0 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+                        <div className="relative z-10 max-w-2xl mx-auto">
+                            <h2 className="text-3xl sm:text-4xl font-extrabold mb-6 tracking-tight">
+                                Start Building Your Predictable Revenue Engine
+                            </h2>
+                            <p className="text-base sm:text-lg text-slate-300 font-medium mb-10 leading-relaxed">
+                                Join leading enterprise revenue organizations executing autonomous growth motions with ProfitMachines.
+                            </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <Link to="/offerings" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-all duration-200 shadow-lg shadow-blue-900/50 hover:-translate-y-0.5">
-                                    Explore Offerings
+                                <Link to="/offerings" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-500 transition-all duration-200 shadow-lg shadow-blue-900/50 hover:-translate-y-0.5">
+                                    Explore All Offerings
+                                    <ArrowRight className="w-4 h-4" />
                                 </Link>
-                                <Link to="/book-consultation" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 text-white font-bold rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-200">
-                                    Book Consultation
+                                <Link to="/book-consultation" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 text-white font-bold rounded-full border border-white/20 hover:bg-white/20 transition-all duration-200 backdrop-blur-sm">
+                                    Book Diagnostic Consultation
                                 </Link>
                             </div>
                         </div>

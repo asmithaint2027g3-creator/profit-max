@@ -22,7 +22,7 @@ This document provides step-by-step instructions to configure and deploy the **P
 ## 2. Install the Google Apps Script
 
 1. In your Google Sheet, navigate to **Extensions > Apps Script**.
-2. Replace any default code in `Code.gs` with the contents of [`google-apps-script/Code.gs`](file:///c:/Users/srimp/Downloads/Profit%20machines/microvectors-master/google-apps-script/Code.gs).
+2. Replace any default code in `Code.gs` with the contents of [`google-apps-script/Code.gs`](file:///d:/profit-vector--main/google-apps-script/Code.gs) (or [`google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.js`](file:///d:/profit-vector--main/google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.js)).
 3. (Optional) Customize `CONFIG.NOTIFICATION_EMAIL` with your designated executive notification email address.
 4. Click the **Save** icon (💾).
 

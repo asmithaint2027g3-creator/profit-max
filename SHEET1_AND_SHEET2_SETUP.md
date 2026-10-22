@@ -8,8 +8,8 @@ This guide documents the enterprise-grade **95-Column Behavioral Telemetry & Int
 
 | Script File | Target Spreadsheet | Purpose |
 | :--- | :--- | :--- |
-| [`google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.js`](file:///c:/Users/srimp/Downloads/Profit%20machines/microvectors-master/google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.js) | **Sheet 1** (Data Collection & Webhook) | Ingests the complete 95-column telemetry payload, 18 form tables, Google Drive resume archiving, and high-priority HTML emails. |
-| [`google-apps-script/SHEET2_ANALYTICS_PROCESSING.js`](file:///c:/Users/srimp/Downloads/Profit%20machines/microvectors-master/google-apps-script/SHEET2_ANALYTICS_PROCESSING.js) | **Sheet 2** (Executive & Behavioral Analytics) | 16-tab executive intelligence suite with automated data sanitization (localhost purging), daily/weekly briefs, and custom menu controls. |
+| [`google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.js`](file:///d:/profit-vector--main/google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.js) | **Sheet 1** (Data Collection & Webhook) | Ingests the complete 95-column telemetry payload, 18 form tables, Google Drive resume archiving, and high-priority HTML emails. |
+| [`google-apps-script/SHEET2_ANALYTICS_PROCESSING.js`](file:///d:/profit-vector--main/google-apps-script/SHEET2_ANALYTICS_PROCESSING.js) | **Sheet 2** (Executive & Behavioral Analytics) | 16-tab executive intelligence suite with automated data sanitization (localhost purging), daily/weekly briefs, and custom menu controls. |
 
 ---
 
@@ -86,7 +86,7 @@ The database in Sheet 1 (`Live_Traffic_Events`) captures the exact 95 granular a
 
 1. Open your **Sheet 1 Spreadsheet** (`1fdZl2it4O86OUB92DvBaeeEM75fXue1yqjcvLq51gVs`).
 2. Go to **Extensions $\rightarrow$ Apps Script**.
-3. Paste [`google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.js`](file:///c:/Users/srimp/Downloads/Profit%20machines/microvectors-master/google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.js).
+3. Paste [`google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.js`](file:///d:/profit-vector--main/google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.js).
 4. In the Apps Script toolbar function dropdown:
    - Select **`initializeMasterTelemetrySheet`** and click **Run** (Creates the 95-column `Live_Traffic_Events` table with cyber styling).
    - Select **`initializeAllDatabaseTables`** and click **Run** (Pre-creates all dedicated form tables).
@@ -101,7 +101,7 @@ The database in Sheet 1 (`Live_Traffic_Events`) captures the exact 95 granular a
 
 1. Open your **Sheet 2 Spreadsheet** (`1NSnGji4KqVuWaM1jGEjX87mkjFsoVN9u5SG6TJ0qZoU`).
 2. Go to **Extensions $\rightarrow$ Apps Script**.
-3. Paste [`google-apps-script/SHEET2_ANALYTICS_PROCESSING.js`](file:///c:/Users/srimp/Downloads/Profit%20machines/microvectors-master/google-apps-script/SHEET2_ANALYTICS_PROCESSING.js).
+3. Paste [`google-apps-script/SHEET2_ANALYTICS_PROCESSING.js`](file:///d:/profit-vector--main/google-apps-script/SHEET2_ANALYTICS_PROCESSING.js).
 4. Verify `DATA_SHEET_ID` is set to your Sheet 1 ID (`1fdZl2it4O86OUB92DvBaeeEM75fXue1yqjcvLq51gVs`). Note: `SITE_BASE_URL` is empty (`""`) and can be populated once the production website URL is deployed.
 5. Refresh the spreadsheet page. A custom top menu **🚀 PROFIT MACHINES ANALYTICS** will appear:
    - Click **🧠 Run Deep Behavioral Analysis** to generate the 6 behavioral tabs:

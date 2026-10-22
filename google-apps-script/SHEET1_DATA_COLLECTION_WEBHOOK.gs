@@ -4,7 +4,7 @@
  * =========================================================================================
  * Production Webhook Receiver & Executive Automation Engine for PROFIT MACHINES
  * 
- * Sender Identity: Profit Machines Executive Analytics <poojasri.aram@gmail.com>
+ * Sender Identity: Profit Machines Executive Analytics <asmitha.int2027g3@gmail.com>
  * Organization: PROFIT MACHINES
  * 
  * Features:
@@ -13,7 +13,7 @@
  * 3. Drive Resume Archiving: Automatically stores career applicant resumes into Google Drive.
  * 4. Monthly Career Digest: Monthly scheduled forwarder of candidate applications & resumes.
  * 5. Advanced Analytics & Reporting: Daily & weekly automated digests with KPI cards and metrics.
- * 6. Strict Recipient Routing: Exclusively delivers to poojasri.aram@gmail.com & bv@trustflow.in.
+ * 6. Strict Recipient Routing: Exclusively delivers to asmitha.int2027g3@gmail.com & bv@trustflow.in.
  * =========================================================================================
  */
 
@@ -36,30 +36,30 @@ const EMAIL_CONFIG = {
   name: "PROFIT MACHINES Business Intelligence",
   companyName: "PROFIT MACHINES",
   website: "", // Set production website URL once deployed
-  replyTo: "poojasri.aram@gmail.com",
-  adminEmail: "poojasri.aram@gmail.com",
+  replyTo: "asmitha.int2027g3@gmail.com",
+  adminEmail: "asmitha.int2027g3@gmail.com",
   
   // Recipients for Lead & Sales Inquiries (Strictly limited to authorized team)
   salesEmails: [
-    "poojasri.aram@gmail.com",
+    "asmitha.int2027g3@gmail.com",
     "bv@trustflow.in"
   ],
   
   // Recipients for Ad Campaign Lead Generation
   adCampaignEmails: [
-    "poojasri.aram@gmail.com",
+    "asmitha.int2027g3@gmail.com",
     "bv@trustflow.in"
   ],
 
   // Recipients for Career Applications & Monthly Resumes
   careerEmails: [
-    "poojasri.aram@gmail.com",
+    "asmitha.int2027g3@gmail.com",
     "bv@trustflow.in"
   ],
 
   // Recipients for Daily, Weekly & Monthly Analytics Reports
   reportEmails: [
-    "poojasri.aram@gmail.com",
+    "asmitha.int2027g3@gmail.com",
     "bv@trustflow.in"
   ],
 
@@ -741,7 +741,7 @@ function sendLeadEmails(data, sheetName, spreadsheetUrl) {
 
   var isTest = data.testMode === true || data.isInternalTest === true || data.testMode === "true";
   
-  // Strict recipient routing: poojasri.aram@gmail.com and bv@trustflow.in
+  // Strict recipient routing: asmitha.int2027g3@gmail.com and bv@trustflow.in
   var targetRecipients = uniqueEmails(isTest
     ? [userEmail || EMAIL_CONFIG.reportEmails[0]]
     : (leadMeta.recipients || EMAIL_CONFIG.salesEmails));
@@ -1183,7 +1183,7 @@ function buildInternalLeadHtml(meta, data, spreadsheetUrl) {
     '    <!-- FOOTER -->',
     '    <div style="background: #f8fafc; padding: 20px 25px; border-top: 1px solid #e2e8f0; font-size: 11px; color: #94a3b8; text-align: center; line-height: 1.5;">',
     '      &copy; ' + new Date().getFullYear() + ' PROFIT MACHINES. All rights reserved.<br>',
-    '      Direct Inquiries: <strong>poojasri.aram@gmail.com</strong><br>',
+    '      Direct Inquiries: <strong>asmitha.int2027g3@gmail.com</strong><br>',
     '      Confidential Notification &bull; Distributed to authorized Profit Machines team members only.',
     '    </div>',
     '  </div>',
@@ -1275,7 +1275,7 @@ function buildUserConfirmationHtml(name, categoryName, messageStr, phone) {
     '    <!-- FOOTER -->',
     '    <div style="background: #0d1117; padding: 20px 25px; text-align: center; font-size: 12px; color: #6b7280; border-top: 1px solid #1f2937; line-height: 1.5;">',
     '      &copy; ' + new Date().getFullYear() + ' PROFIT MACHINES. All rights reserved.<br>',
-    '      Direct Architect & Support: <strong>poojasri.aram@gmail.com</strong>',
+    '      Direct Architect & Support: <strong>asmitha.int2027g3@gmail.com</strong>',
     '    </div>',
     '  </div>',
     '</body>',
@@ -1316,7 +1316,7 @@ function buildCareerVideoRequestHtml(name) {
     '    </div>',
     '    <div style="background: #0d1117; padding: 20px 25px; text-align: center; font-size: 12px; color: #6b7280; border-top: 1px solid #1f2937; line-height: 1.5;">',
     '      &copy; ' + new Date().getFullYear() + ' PROFIT MACHINES. All rights reserved.<br>',
-    '      Direct Talent Team Contact: <strong>poojasri.aram@gmail.com</strong>',
+    '      Direct Talent Team Contact: <strong>asmitha.int2027g3@gmail.com</strong>',
     '    </div>',
     '  </div>',
     '</body>',
@@ -2245,7 +2245,7 @@ function buildExecutiveAnalyticsBriefHtml(data, periodType) {
     '    </div>',
     '    <div style="background: #f8fafc; padding: 16px 20px; border-top: 1px solid #e2e8f0; font-size: 11px; color: #94a3b8; text-align: center;">',
     '      &copy; ' + new Date().getFullYear() + ' PROFIT MACHINES. Confidential Executive Analytics Report.<br>',
-    '      Direct Inquiries: <strong>poojasri.aram@gmail.com</strong>',
+    '      Direct Inquiries: <strong>asmitha.int2027g3@gmail.com</strong>',
     '    </div>',
     '  </div>',
     '</body>',
@@ -2514,7 +2514,7 @@ function SEND_ALL_PROFIT_MACHINES_NOTIFICATION_PREVIEWS() {
   // 2. Career Application Sample with Resume
   var cData = {
     name: "Poojasri",
-    email: "poojasri.aram@gmail.com",
+    email: "asmitha.int2027g3@gmail.com",
     phone: "+91 98765 43210",
     jobTitle: "AI/ML Governance & Red Teaming Engineer",
     coverLetter: "Passionate about autonomous agent safety, adversarial LLM testing, and building trustworthy AI architectures.",

@@ -1,6 +1,6 @@
 
-const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbxnpkQyIM_BYBc9mdR8SskAbzb74v8idiwUMbzLuqKlCGRExzNkwRLloL63KQ-uhRqCYA/exec";
-const GOOGLE_ANALYTICS_SCRIPT_URL = process.env.GOOGLE_ANALYTICS_SCRIPT_URL || process.env.VITE_GOOGLE_ANALYTICS_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbz1gK24YtOmFpuTspRub3iQ5YGEhyvW_S3SqEmIwUg-OmFRbu4WRstiLEaQtOB32U5y/exec";
+const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbzWtOiEWIBxZnB6s0LAZbwqUnEcBxYcMlp2dFmQMwMBvwGJxKttxV59jT35Esdvph6QJw/exec";
+const GOOGLE_ANALYTICS_SCRIPT_URL = process.env.GOOGLE_ANALYTICS_SCRIPT_URL || process.env.VITE_GOOGLE_ANALYTICS_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbx7R9VaqLbn0fv6E10n4t2ppOpQ46DpfxQv_xo0Eh29NbqWwveJNK1SkPvrrwzA1G9_pw/exec";
 const ANALYTICS_API_KEY = process.env.ANALYTICS_API_KEY;
 
 export async function submitToGoogleScript(payload: any) {

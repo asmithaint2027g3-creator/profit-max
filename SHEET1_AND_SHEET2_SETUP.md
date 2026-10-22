@@ -82,7 +82,7 @@ The database in Sheet 1 (`Live_Traffic_Events`) captures the exact 95 granular a
 
 ### 1️⃣ Sheet 1 Configuration (Data Collection & Webhook)
 - **Live Spreadsheet**: [`1fdZl2it4O86OUB92DvBaeeEM75fXue1yqjcvLq51gVs`](https://docs.google.com/spreadsheets/d/1fdZl2it4O86OUB92DvBaeeEM75fXue1yqjcvLq51gVs/edit)
-- **Live Web App Webhook URL**: `https://script.google.com/macros/s/AKfycbxnpkQyIM_BYBc9mdR8SskAbzb74v8idiwUMbzLuqKlCGRExzNkwRLloL63KQ-uhRqCYA/exec`
+- **Live Web App Webhook URL**: `https://script.google.com/macros/s/AKfycbzWtOiEWIBxZnB6s0LAZbwqUnEcBxYcMlp2dFmQMwMBvwGJxKttxV59jT35Esdvph6QJw/exec`
 
 1. Open your **Sheet 1 Spreadsheet** (`1fdZl2it4O86OUB92DvBaeeEM75fXue1yqjcvLq51gVs`).
 2. Go to **Extensions $\rightarrow$ Apps Script**.
@@ -90,14 +90,14 @@ The database in Sheet 1 (`Live_Traffic_Events`) captures the exact 95 granular a
 4. In the Apps Script toolbar function dropdown:
    - Select **`initializeMasterTelemetrySheet`** and click **Run** (Creates the 95-column `Live_Traffic_Events` table with cyber styling).
    - Select **`initializeAllDatabaseTables`** and click **Run** (Pre-creates all dedicated form tables).
-   - Select **`setupAllProfitMachinesTriggers`** and click **Run** (Schedules daily, weekly, and monthly automated reports to `poojasri.aram@gmail.com`).
+   - Select **`setupAllProfitMachinesTriggers`** and click **Run** (Schedules daily, weekly, and monthly automated reports to `asmitha.int2027g3@gmail.com`).
 5. Click **Deploy $\rightarrow$ Manage Deployments $\rightarrow$ New Version** to ensure the live Web App URL receives data.
 
 ---
 
 ### 2️⃣ Sheet 2 Configuration (Behavioral Analytics Hub)
 - **Live Spreadsheet**: [`1NSnGji4KqVuWaM1jGEjX87mkjFsoVN9u5SG6TJ0qZoU`](https://docs.google.com/spreadsheets/d/1NSnGji4KqVuWaM1jGEjX87mkjFsoVN9u5SG6TJ0qZoU/edit)
-- **Live Web App Analytics API URL**: `https://script.google.com/macros/s/AKfycbz1gK24YtOmFpuTspRub3iQ5YGEhyvW_S3SqEmIwUg-OmFRbu4WRstiLEaQtOB32U5y/exec`
+- **Live Web App Analytics API URL**: `https://script.google.com/macros/s/AKfycbx7R9VaqLbn0fv6E10n4t2ppOpQ46DpfxQv_xo0Eh29NbqWwveJNK1SkPvrrwzA1G9_pw/exec`
 
 1. Open your **Sheet 2 Spreadsheet** (`1NSnGji4KqVuWaM1jGEjX87mkjFsoVN9u5SG6TJ0qZoU`).
 2. Go to **Extensions $\rightarrow$ Apps Script**.

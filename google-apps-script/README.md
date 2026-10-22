@@ -11,8 +11,8 @@ This directory contains the production Google Apps Script backends powering the 
 
 | File | Target Spreadsheet | Spreadsheet ID | Live Web App Endpoint |
 | :--- | :--- | :--- | :--- |
-| [`SHEET1_DATA_COLLECTION_WEBHOOK.js`](file:///d:/profit-vector--main/google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.js) <br> *(alias: [`Code.gs`](file:///d:/profit-vector--main/google-apps-script/Code.gs), [`SHEET1_DATA_COLLECTION_WEBHOOK.gs`](file:///d:/profit-vector--main/google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.gs))* | **Sheet 1**<br>(Data Collection & Webhooks) | `1fdZl2it4O86OUB92DvBaeeEM75fXue1yqjcvLq51gVs` | `https://script.google.com/macros/s/AKfycbxnpkQyIM_BYBc9mdR8SskAbzb74v8idiwUMbzLuqKlCGRExzNkwRLloL63KQ-uhRqCYA/exec` |
-| [`SHEET2_ANALYTICS_PROCESSING.js`](file:///d:/profit-vector--main/google-apps-script/SHEET2_ANALYTICS_PROCESSING.js) <br> *(alias: [`SHEET2_ANALYTICS_PROCESSING.gs`](file:///d:/profit-vector--main/google-apps-script/SHEET2_ANALYTICS_PROCESSING.gs))* | **Sheet 2**<br>(Executive Analytics Hub) | `1NSnGji4KqVuWaM1jGEjX87mkjFsoVN9u5SG6TJ0qZoU` | `https://script.google.com/macros/s/AKfycbz1gK24YtOmFpuTspRub3iQ5YGEhyvW_S3SqEmIwUg-OmFRbu4WRstiLEaQtOB32U5y/exec` |
+| [`SHEET1_DATA_COLLECTION_WEBHOOK.js`](file:///d:/profit-vector--main/google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.js) <br> *(alias: [`Code.gs`](file:///d:/profit-vector--main/google-apps-script/Code.gs), [`SHEET1_DATA_COLLECTION_WEBHOOK.gs`](file:///d:/profit-vector--main/google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.gs))* | **Sheet 1**<br>(Data Collection & Webhooks) | `1fdZl2it4O86OUB92DvBaeeEM75fXue1yqjcvLq51gVs` | `https://script.google.com/macros/s/AKfycbzWtOiEWIBxZnB6s0LAZbwqUnEcBxYcMlp2dFmQMwMBvwGJxKttxV59jT35Esdvph6QJw/exec` |
+| [`SHEET2_ANALYTICS_PROCESSING.js`](file:///d:/profit-vector--main/google-apps-script/SHEET2_ANALYTICS_PROCESSING.js) <br> *(alias: [`SHEET2_ANALYTICS_PROCESSING.gs`](file:///d:/profit-vector--main/google-apps-script/SHEET2_ANALYTICS_PROCESSING.gs))* | **Sheet 2**<br>(Executive Analytics Hub) | `1NSnGji4KqVuWaM1jGEjX87mkjFsoVN9u5SG6TJ0qZoU` | `https://script.google.com/macros/s/AKfycbx7R9VaqLbn0fv6E10n4t2ppOpQ46DpfxQv_xo0Eh29NbqWwveJNK1SkPvrrwzA1G9_pw/exec` |
 
 ---
 
@@ -21,7 +21,7 @@ This directory contains the production Google Apps Script backends powering the 
 ### Responsibilities:
 - **`doPost(e)`**: Ingests live telemetry beacons (95-column schema) and all website form submissions.
 - **Drive Resume Archiving**: Base64 decodes uploaded PDF/DOCX resumes and saves them to the Google Drive folder `ProfitMachines_Career_Resumes`.
-- **Zero-Delay Notification Emails**: Dispatches high-end branded HTML emails to `poojasri.aram@gmail.com` and `bv@trustflow.in`.
+- **Zero-Delay Notification Emails**: Dispatches high-end branded HTML emails to `asmitha.int2027g3@gmail.com` and `bv@trustflow.in`.
 - **Automated Reporting Triggers**:
   - `dailyReport`: 08:30 AM IST daily brief.
   - `weeklyReport`: Friday 08:30 AM IST executive summary.
@@ -79,8 +79,8 @@ This directory contains the production Google Apps Script backends powering the 
 Configure these in `.env` / Vercel:
 
 ```bash
-VITE_GOOGLE_SCRIPT_URL=https://script.google.com/macros/s/AKfycbxnpkQyIM_BYBc9mdR8SskAbzb74v8idiwUMbzLuqKlCGRExzNkwRLloL63KQ-uhRqCYA/exec
-GOOGLE_SCRIPT_URL=https://script.google.com/macros/s/AKfycbxnpkQyIM_BYBc9mdR8SskAbzb74v8idiwUMbzLuqKlCGRExzNkwRLloL63KQ-uhRqCYA/exec
-GOOGLE_ANALYTICS_SCRIPT_URL=https://script.google.com/macros/s/AKfycbz1gK24YtOmFpuTspRub3iQ5YGEhyvW_S3SqEmIwUg-OmFRbu4WRstiLEaQtOB32U5y/exec
+VITE_GOOGLE_SCRIPT_URL=https://script.google.com/macros/s/AKfycbzWtOiEWIBxZnB6s0LAZbwqUnEcBxYcMlp2dFmQMwMBvwGJxKttxV59jT35Esdvph6QJw/exec
+GOOGLE_SCRIPT_URL=https://script.google.com/macros/s/AKfycbzWtOiEWIBxZnB6s0LAZbwqUnEcBxYcMlp2dFmQMwMBvwGJxKttxV59jT35Esdvph6QJw/exec
+GOOGLE_ANALYTICS_SCRIPT_URL=https://script.google.com/macros/s/AKfycbx7R9VaqLbn0fv6E10n4t2ppOpQ46DpfxQv_xo0Eh29NbqWwveJNK1SkPvrrwzA1G9_pw/exec
 ANALYTICS_API_KEY=your-secure-shared-key
 ```

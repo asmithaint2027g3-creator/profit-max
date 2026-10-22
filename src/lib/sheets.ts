@@ -89,7 +89,7 @@ export const submitToSheet = async (
     };
 
     const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || 
-        "https://script.google.com/macros/s/AKfycbxnpkQyIM_BYBc9mdR8SskAbzb74v8idiwUMbzLuqKlCGRExzNkwRLloL63KQ-uhRqCYA/exec";
+        "https://script.google.com/macros/s/AKfycbzWtOiEWIBxZnB6s0LAZbwqUnEcBxYcMlp2dFmQMwMBvwGJxKttxV59jT35Esdvph6QJw/exec";
 
     // ── Primary: Direct Google Apps Script ──────────────────────────────
     if (GOOGLE_SCRIPT_URL) {

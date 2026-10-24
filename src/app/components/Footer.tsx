@@ -14,7 +14,17 @@ export default function Footer() {
         'Case Studies': '/#case-studies',
         'Blogs': '/#blogs',
         'Careers': '/career',
+        'ICO Acceleration': '/ico-acceleration',
         'Contact Us': '/book-consultation'
+    };
+
+    const icoLinks: { [key: string]: string } = {
+        'ICO Protocol Hub': '/ico-acceleration',
+        'Demand Intelligence': '/ico-acceleration/intelligence',
+        '7-Phase Launch Playbook': '/ico-acceleration/launch-growth',
+        'Web3 Commercial Models': '/ico-acceleration/solutions-engagement',
+        'Trust & Compliance': '/ico-acceleration/trust-performance',
+        'Sales Enablement': '/ico-acceleration/sales-enablement'
     };
 
     const solutionsLinks: { [key: string]: string } = {
@@ -114,8 +124,8 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Navigation Grid - 4 Columns */}
-                    <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+                    {/* Navigation Grid - 5 Columns */}
+                    <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-6">
 
                         {/* Column 1: Quick Links */}
                         <div className="space-y-4">
@@ -166,6 +176,20 @@ export default function Footer() {
                                 {Object.keys(techLinks).map((item, i) => (
                                     <li key={i}>
                                         <Link to={techLinks[item]} className="text-slate-400 hover:text-blue-400 transition-all duration-300 block hover:translate-x-1 font-medium">
+                                            {item}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* Column 5: Web3 & Token */}
+                        <div className="space-y-4">
+                            <h3 className="text-[11px] font-bold text-slate-300 uppercase tracking-widest border-b border-white/10 pb-3">Web3 & Token</h3>
+                            <ul className="space-y-3 text-[13px]">
+                                {Object.keys(icoLinks).map((item, i) => (
+                                    <li key={i}>
+                                        <Link to={icoLinks[item]} className="text-slate-400 hover:text-blue-400 transition-all duration-300 block hover:translate-x-1 font-medium">
                                             {item}
                                         </Link>
                                     </li>

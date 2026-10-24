@@ -116,12 +116,14 @@ export default function Sitemap() {
                     ]
                 },
                 {
-                    name: "Crypto & Web3",
-                    path: "/crypto",
+                    name: "ICO Acceleration Hub",
+                    path: "/ico-acceleration",
                     sections: [
-                        "Web3 Growth Strategies",
-                        "Tokenomics & Community",
-                        "DeFi Marketing"
+                        "Market & Demand Intelligence (/ico-acceleration/intelligence)",
+                        "7-Phase Launch & Growth (/ico-acceleration/launch-growth)",
+                        "Web3 Solutions & Commercial Models (/ico-acceleration/solutions-engagement)",
+                        "Trust, Security & ROI Attribution (/ico-acceleration/trust-performance)",
+                        "Sales Enablement & Objections (/ico-acceleration/sales-enablement)"
                     ]
                 }
             ]

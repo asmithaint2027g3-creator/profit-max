@@ -234,19 +234,9 @@ export default function Engagement() {
                   </div>
                 </div>
 
-                <div className="p-6 space-y-3.5">
-                  <div className="text-xs text-slate-400 font-medium">
+                <div className="p-6">
+                  <div className="text-xs text-slate-400 font-medium leading-relaxed">
                     Pre-tested engagement architectures calibrated for risk, urgency, and metric attribution.
-                  </div>
-                  <div className="grid grid-cols-2 gap-3 pt-2">
-                    <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-center">
-                      <div className="text-xl font-extrabold font-mono text-white">08</div>
-                      <div className="text-[11px] text-slate-400">Engagement Models</div>
-                    </div>
-                    <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-center">
-                      <div className="text-xl font-extrabold font-mono text-white">07</div>
-                      <div className="text-[11px] text-slate-400">Discovery Layers</div>
-                    </div>
                   </div>
                 </div>
               </div>

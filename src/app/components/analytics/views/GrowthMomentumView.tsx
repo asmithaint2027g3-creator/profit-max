@@ -133,11 +133,11 @@ export default function GrowthMomentumView({ data }: Props) {
       </div>
 
       {/* 2. Primary Stacked Area Chart */}
-      <div className="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl">
+      <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950/40 to-slate-900 border border-blue-900/40 shadow-xl">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
           <div>
             <h4 className="text-lg font-bold text-white">Compound Funnel Trajectory ({activeFrequency.toUpperCase()})</h4>
-            <p className="text-xs text-slate-400">Traffic, sessions, visitors, and verified lead flow progression</p>
+            <p className="text-xs text-slate-300">Traffic, sessions, visitors, and verified lead flow progression</p>
           </div>
           <div className="flex items-center gap-3 text-xs font-mono">
             <span className="inline-flex items-center gap-1.5 text-blue-400">
@@ -157,7 +157,7 @@ export default function GrowthMomentumView({ data }: Props) {
 
         <div className="h-80 w-full">
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={displayTimeline} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
+            <AreaChart data={displayTimeline} margin={{ top: 15, right: 20, left: 0, bottom: 15 }}>
               <defs>
                 <linearGradient id="colorTraffic" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.4} />
@@ -172,15 +172,15 @@ export default function GrowthMomentumView({ data }: Props) {
                   <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-              <XAxis dataKey="period" stroke="#64748b" tick={{ fontSize: 11 }} />
-              <YAxis stroke="#64748b" tick={{ fontSize: 11 }} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#2563eb" strokeOpacity={0.2} />
+              <XAxis dataKey="period" stroke="#93c5fd" tick={{ fill: '#cbd5e1', fontSize: 11 }} dy={6} />
+              <YAxis stroke="#93c5fd" tick={{ fill: '#cbd5e1', fontSize: 11 }} dx={-4} />
               <Tooltip
-                contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '12px', fontSize: '12px' }}
+                contentStyle={{ backgroundColor: '#0c1a32', borderColor: '#2563eb', borderRadius: '12px', fontSize: '12px', color: '#ffffff' }}
               />
               <Area type="monotone" dataKey="traffic" stroke="#3b82f6" fillOpacity={1} fill="url(#colorTraffic)" strokeWidth={2} />
-              <Area type="monotone" dataKey="sessions" stroke="#6366f1" fillOpacity={1} fill="url(#colorSessions)" strokeWidth={2} />
-              <Area type="monotone" dataKey="visitors" stroke="#10b981" fillOpacity={1} fill="url(#colorVisitors)" strokeWidth={2} />
+              <Area type="monotone" dataKey="sessions" stroke="#60a5fa" fillOpacity={1} fill="url(#colorSessions)" strokeWidth={2} />
+              <Area type="monotone" dataKey="visitors" stroke="#38bdf8" fillOpacity={1} fill="url(#colorVisitors)" strokeWidth={2} />
             </AreaChart>
           </ResponsiveContainer>
         </div>

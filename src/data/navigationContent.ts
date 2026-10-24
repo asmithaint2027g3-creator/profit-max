@@ -2051,76 +2051,84 @@ export const servicesData: Record<string, ServiceData> = {
 
 export const smNavItems = [
     {
-        "name": "Home",
-        "path": "/"
-    },
-    {
         "name": "Offerings",
         "path": "/offerings",
         "dropdown": {
             "categories": [
                 {
-                    "id": "profit-pools",
-                    "title": "Profit Pools",
-                    "desc": "Maximize industry profit share",
+                    "id": "discovery-stack",
+                    "title": "Revenue Discovery",
+                    "path": "/offerings/discovery-stack",
+                    "desc": "Seven strategic areas from Market to PMF",
                     "items": [
-                        { "name": "Market Discovery", "path": "/offerings/profit-pool-discovery/market-discovery", "icon": "Search" },
-                        { "name": "Demand Discovery", "path": "/offerings/profit-pool-discovery/demand-discovery", "icon": "Target" },
-                        { "name": "Value Discovery", "path": "/offerings/profit-pool-discovery/value-discovery", "icon": "DollarSign" },
-                        { "name": "Channel Discovery", "path": "/offerings/profit-pool-discovery/channel-discovery", "icon": "Network" },
-                        { "name": "Competitive Discovery", "path": "/offerings/profit-pool-discovery/competitive-discovery", "icon": "ShieldCheck" },
-                        { "name": "Customer Discovery", "path": "/offerings/profit-pool-discovery/customer-discovery", "icon": "Users" },
-                        { "name": "Product-Market Fit Discovery", "path": "/offerings/profit-pool-discovery/product-market-fit-discovery", "icon": "Sparkles" }
-                    ],
-                    "b2bItems": [
-                        { "name": "B2B Market Discovery", "path": "/offerings/b2b/market-discovery", "icon": "Search" },
-                        { "name": "B2B Demand Discovery", "path": "/offerings/b2b/demand-discovery", "icon": "Target" },
-                        { "name": "B2B Value Discovery", "path": "/offerings/b2b/value-discovery", "icon": "DollarSign" },
-                        { "name": "B2B Channel Discovery", "path": "/offerings/b2b/channel-discovery", "icon": "Network" },
-                        { "name": "B2B Competitive Discovery", "path": "/offerings/b2b/competitive-discovery", "icon": "ShieldCheck" },
-                        { "name": "B2B Customer Discovery", "path": "/offerings/b2b/customer-discovery", "icon": "Users" },
-                        { "name": "B2B Product-Market Fit Discovery", "path": "/offerings/b2b/product-market-fit-discovery", "icon": "Sparkles" }
-                    ],
-                    "b2cItems": [
-                        { "name": "B2C Market Discovery", "path": "/offerings/b2c/market-discovery", "icon": "Search" },
-                        { "name": "B2C Demand Discovery", "path": "/offerings/b2c/demand-discovery", "icon": "Target" },
-                        { "name": "B2C Value Discovery", "path": "/offerings/b2c/value-discovery", "icon": "DollarSign" },
-                        { "name": "B2C Channel Discovery", "path": "/offerings/b2c/channel-discovery", "icon": "Network" },
-                        { "name": "B2C Competitive Discovery", "path": "/offerings/b2c/competitive-discovery", "icon": "ShieldCheck" },
-                        { "name": "B2C Customer Discovery", "path": "/offerings/b2c/customer-discovery", "icon": "Users" },
-                        { "name": "B2C Product-Market Fit Discovery", "path": "/offerings/b2c/product-market-fit-discovery", "icon": "Sparkles" }
+                        { "name": "Market & Opportunity Discovery", "path": "/offerings/discovery-stack#market-opportunity", "icon": "Search" },
+                        { "name": "Demand & Pipeline Development", "path": "/offerings/discovery-stack#demand-pipeline", "icon": "Target" },
+                        { "name": "Value & Deal Effectiveness", "path": "/offerings/discovery-stack#value-deal", "icon": "DollarSign" },
+                        { "name": "Channel & Distribution Strategy", "path": "/offerings/discovery-stack#channel-distribution", "icon": "Network" },
+                        { "name": "Competitive Positioning", "path": "/offerings/discovery-stack#competitive-positioning", "icon": "ShieldCheck" },
+                        { "name": "Customer & Buying Intent", "path": "/offerings/discovery-stack#customer-buying-intent", "icon": "Users" },
+                        { "name": "Product-Market Fit & Revenue", "path": "/offerings/discovery-stack#pmf-revenue-architecture", "icon": "Sparkles" }
                     ]
                 },
                 {
-                    "id": "ai-growth",
-                    "title": "AI Growth Engines",
-                    "path": "/offerings/ai-growth",
-                    "desc": "Automated pipeline & market expansion",
+                    "id": "offering-families",
+                    "title": "Our Services",
+                    "path": "/offerings/families",
+                    "desc": "34 capabilities across Consulting & AI Automation",
                     "items": [
-                        { "name": "AI Demand Discovery", "path": "/offerings/ai-growth/ai-demand-discovery", "icon": "Search" },
-                        { "name": "AI-Driven Revenue Acceleration", "path": "/offerings/ai-growth/revenue-acceleration", "icon": "TrendingUp" },
-                        { "name": "AI-Driven Growth Hacking", "path": "/offerings/ai-growth/growth-hacking", "icon": "Rocket" },
-                        { "name": "AI-Driven Performance Marketing", "path": "/offerings/ai-growth/performance-marketing", "icon": "BarChart" }
+                        { "name": "Market & Whitespace Discovery", "path": "/offerings/families#market-whitespace", "icon": "Search" },
+                        { "name": "Demand & Pipeline Discovery", "path": "/offerings/families#demand-pipeline", "icon": "Target" },
+                        { "name": "Value & Deal Discovery", "path": "/offerings/families#value-deal", "icon": "DollarSign" },
+                        { "name": "Channel & Distribution Discovery", "path": "/offerings/families#channel-distribution", "icon": "Network" },
+                        { "name": "Competitive & Positioning Discovery", "path": "/offerings/families#competitive-positioning", "icon": "ShieldCheck" },
+                        { "name": "Customer & Propensity Discovery", "path": "/offerings/families#customer-propensity", "icon": "Users" },
+                        { "name": "Product-Market Fit & Offers", "path": "/offerings/families#pmf-architecture", "icon": "Sparkles" }
                     ]
                 },
                 {
-                    "id": "sales-acceleration",
-                    "title": "Sales Acceleration",
-                    "path": "/offerings/sales-acceleration",
-                    "desc": "High-velocity sales execution",
+                    "id": "delivery-tracks",
+                    "title": "How We Deliver",
+                    "path": "/offerings/delivery-tracks",
+                    "desc": "Strategy Consulting & AI-Driven Automation",
                     "items": [
-                        { "name": "Enterprise Sales Acceleration", "path": "/offerings/sales-acceleration/enterprise-sales", "icon": "Building2" },
-                        { "name": "Digital & Inside Sales", "path": "/offerings/sales-acceleration/digital-sales", "icon": "Layout" },
-                        { "name": "D2C & High-Velocity Sales", "path": "/offerings/sales-acceleration/d2c-sales", "icon": "ShoppingBag" },
-                        { "name": "BFSI Sales Acceleration", "path": "/offerings/sales-acceleration/bfsi-sales", "icon": "Landmark" }
+                        { "name": "Strategy & Consulting Track", "path": "/offerings/delivery-tracks", "icon": "UserCheck" },
+                        { "name": "AI & Automation Track", "path": "/offerings/delivery-tracks", "icon": "Cpu" },
+                        { "name": "Track Comparison Matrix", "path": "/offerings/delivery-tracks", "icon": "Sliders" },
+                        { "name": "Interactive Delivery Assessment", "path": "/offerings/delivery-tracks", "icon": "HelpCircle" }
+                    ]
+                },
+                {
+                    "id": "segment-matrix",
+                    "title": "By Business Type",
+                    "path": "/offerings/segments",
+                    "desc": "Services, Retail, Platform & Adjacent",
+                    "items": [
+                        { "name": "Services Companies", "path": "/offerings/segments", "icon": "Briefcase" },
+                        { "name": "Retail & Commerce", "path": "/offerings/segments", "icon": "ShoppingBag" },
+                        { "name": "Platform Companies", "path": "/offerings/segments", "icon": "Building2" },
+                        { "name": "Adjacent Segments", "path": "/offerings/segments", "icon": "Sliders" }
+                    ]
+                },
+                {
+                    "id": "micro-segment-kits",
+                    "title": "Focused Engagement Packages",
+                    "path": "/offerings/micro-segment-kits",
+                    "desc": "Eight fixed-scope fast-start kits",
+                    "items": [
+                        { "name": "Agency Margin Kit", "path": "/offerings/micro-segment-kits#agency-margin-kit", "icon": "Briefcase" },
+                        { "name": "DTC Margin Kit", "path": "/offerings/micro-segment-kits#dtc-margin-kit", "icon": "ShoppingBag" },
+                        { "name": "Vertical SaaS Whitespace Kit", "path": "/offerings/micro-segment-kits#vertical-saas-whitespace-kit", "icon": "Building2" },
+                        { "name": "PLG Conversion Kit", "path": "/offerings/micro-segment-kits#plg-conversion-kit", "icon": "Sparkles" },
+                        { "name": "Enterprise Motion Kit", "path": "/offerings/micro-segment-kits#enterprise-motion-kit", "icon": "Layers" },
+                        { "name": "Pricing & Packaging Kit", "path": "/offerings/micro-segment-kits#pricing-packaging-kit", "icon": "DollarSign" }
                     ]
                 }
             ],
             "highlight": {
-                "title": "Enterprise Offerings",
-                "desc": "Turnkey AI sales engines and revenue intelligence.",
+                "title": "Revenue Architecture Solutions",
+                "desc": "Explore our complete discovery stack, service families, delivery models, and tailored packages.",
                 "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80",
-                "linkText": "View All Offerings",
+                "linkText": "Offerings Overview",
                 "linkPath": "/offerings"
             }
         }
@@ -2213,146 +2221,101 @@ export const smNavItems = [
         }
     },
     {
-        "name": "Solutions",
-        "path": "/solutions",
+        "name": "Engagement Model",
+        "path": "/engagement-model",
         "dropdown": {
-            "highlight": {
-                "title": "Comprehensive Solutions",
-                "desc": "End-to-end AI-driven growth capabilities & solutions for enterprises.",
-                "linkText": "View Solutions",
-                "linkPath": "/solutions"
-            },
             "categories": [
                 {
-                    "id": "strategy",
-                    "title": "Strategy & Growth",
-                    "desc": "Market intelligence and growth planning",
-                    "path": "/solutions/strategy",
+                    "id": "models",
+                    "title": "Architecture & Models",
+                    "path": "/engagement-model/models",
+                    "desc": "One continuum. Eight ways to buy certainty.",
                     "items": [
-                        { "name": "AI Business Growth Strategy", "path": "/solutions/strategy#ai-business-strategy", "icon": "TrendingUp" },
-                        { "name": "AI Market Strategy & Demand", "path": "/solutions/strategy#ai-market-strategy", "icon": "Target" },
-                        { "name": "AI-Driven Growth Hacking", "path": "/solutions/strategy#growth-hacking", "icon": "Rocket" },
-                        { "name": "AI-Driven Performance Marketing", "path": "/solutions/strategy#performance-marketing", "icon": "BarChart" }
+                        { "name": "Overview & Continuum", "path": "/engagement-model", "icon": "Layers" },
+                        { "name": "Eight Engagement Models", "path": "/engagement-model/models", "icon": "Target" },
+                        { "name": "Discovery Stack (L1–L7)", "path": "/engagement-model/discovery-stack", "icon": "Search" },
+                        { "name": "Delivery Tracks (A & B)", "path": "/engagement-model/delivery-tracks", "icon": "Cpu" }
                     ]
                 },
                 {
-                    "id": "sales-ops",
-                    "title": "Sales & Operations",
-                    "desc": "Autonomous sales execution and revenue ops",
-                    "path": "/solutions/sales-ops",
+                    "id": "stages",
+                    "title": "Playbooks & Journeys",
+                    "path": "/engagement-model/stage-playbooks",
+                    "desc": "Stage & situation matched sequences",
                     "items": [
-                        { "name": "AI Auto Sales Pilot", "path": "/solutions/sales-ops#ai-auto-sales-pilot", "icon": "Bot" },
-                        { "name": "AI Sales Process Optimization", "path": "/solutions/sales-ops#sales-optimization", "icon": "Settings" },
-                        { "name": "AI Revenue Operations", "path": "/solutions/sales-ops#ai-revenue-operations", "icon": "Server" },
-                        { "name": "AI Revenue Acceleration", "path": "/solutions/sales-ops#ai-revenue-acceleration", "icon": "Zap" }
+                        { "name": "Stage Playbooks (S1–S6)", "path": "/engagement-model/stage-playbooks", "icon": "Layers" },
+                        { "name": "Situation Playbooks (B1–B15)", "path": "/engagement-model/business-situations", "icon": "Sliders" },
+                        { "name": "Engagement Journeys (A–E)", "path": "/engagement-model/journeys", "icon": "TrendingUp" }
                     ]
                 },
                 {
-                    "id": "intelligence",
-                    "title": "Demand & Intelligence",
-                    "desc": "Predictive deal and demand signals",
-                    "path": "/solutions/intelligence",
+                    "id": "commercials",
+                    "title": "Commercials & Measurement",
+                    "path": "/engagement-model/commercials",
+                    "desc": "Pricing, guardrails & interactive engine",
                     "items": [
-                        { "name": "Demand Discovery & Acceleration", "path": "/solutions/intelligence#ai-demand-discovery", "icon": "Search" },
-                        { "name": "Hidden Revenue Capture", "path": "/solutions/intelligence#hidden-revenue-capture", "icon": "TrendingUp" },
-                        { "name": "AI Revenue Acceleration", "path": "/solutions/intelligence#revenue-acceleration", "icon": "Zap" }
+                        { "name": "Commercial Terms (Table 8.0)", "path": "/engagement-model/commercials", "icon": "DollarSign" },
+                        { "name": "Seven Standard Guardrails", "path": "/engagement-model/commercials", "icon": "Shield" },
+                        { "name": "Interactive Model Selector", "path": "/engagement-model/model-selector", "icon": "Bot" },
+                        { "name": "KPI Library & Baselines", "path": "/engagement-model/kpi-library", "icon": "Target" }
                     ]
                 },
                 {
-                    "id": "brand-reputation",
-                    "title": "Brand & Reputation",
-                    "desc": "AI-driven brand and reputation engines",
-                    "path": "/solutions/brand-reputation",
+                    "id": "onboarding",
+                    "title": "Mobilization & Reference",
+                    "path": "/engagement-model/onboarding",
+                    "desc": "Charter, delivery cadence, glossary & FAQ",
                     "items": [
-                        { "name": "AI Brand Acceleration", "path": "/solutions/brand-reputation#ai-brand-acceleration", "icon": "Sparkles" },
-                        { "name": "AI Reputation Acceleration", "path": "/solutions/brand-reputation#ai-reputation-acceleration", "icon": "ShieldCheck" },
-                        { "name": "Autonomous Sales Pilot", "path": "/solutions/brand-reputation#ai-auto-sales-pilot", "icon": "Bot" }
+                        { "name": "How an Engagement Starts", "path": "/engagement-model/onboarding", "icon": "Clock" },
+                        { "name": "Glossary (14 Definitions)", "path": "/engagement-model/glossary-faq", "icon": "BookOpen" },
+                        { "name": "Frequently Asked Questions", "path": "/engagement-model/glossary-faq", "icon": "HelpCircle" },
+                        { "name": "Request Proposal", "path": "/book-consultation", "icon": "ArrowRight" }
                     ]
                 }
-            ]
+            ],
+            "highlight": {
+                "title": "Engagement Architecture",
+                "desc": "From low-commitment advisory sprints to joint risk-sharing partnerships.",
+                "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&q=80",
+                "linkText": "Explore Engagement Overview",
+                "linkPath": "/engagement-model"
+            }
         }
     },
     {
-        "name": "Crypto",
-        "path": "/crypto",
-        "dropdown": {
-            "highlight": {
-                "title": "High-Velocity Web3",
-                "desc": "Built for High-Velocity Web3 & Crypto Ecosystems.",
-                "linkText": "Explore Solutions",
-                "linkPath": "/crypto"
-            },
-            "categories": [
-                {
-                    "id": "crypto-growth",
-                    "title": "Growth & Revenue",
-                    "desc": "Accelerate revenue in Web3 ecosystems",
-                    "path": "/crypto#crypto-growth",
-                    "items": [
-                        { "name": "Crypto Revenue Acceleration", "path": "/crypto#crypto-revenue", "icon": "TrendingUp" },
-                        { "name": "Crypto Performance Revenue", "path": "/crypto#crypto-performance", "icon": "Coins" },
-                        { "name": "Crypto Growth Acceleration", "path": "/crypto#crypto-growth", "icon": "Rocket" }
-                    ]
-                },
-                {
-                    "id": "crypto-intelligence",
-                    "title": "Intelligence & Discovery",
-                    "desc": "Market insights for Web3 ventures",
-                    "path": "/crypto#crypto-intelligence",
-                    "items": [
-                        { "name": "Crypto Demand Discovery", "path": "/crypto#crypto-demand-discovery", "icon": "Search" },
-                        { "name": "Market Validation Intelligence", "path": "/crypto#crypto-market-validation", "icon": "Target" },
-                        { "name": "Customer Journey Intelligence", "path": "/crypto#crypto-journey", "icon": "MapPin" },
-                        { "name": "Startup MVP Acceleration", "path": "/crypto#crypto-startup", "icon": "Lightbulb" }
-                    ]
-                }
-            ]
-        }
+        "name": "ICO Acceleration",
+        "path": "/ico-acceleration"
     },
     {
-        "name": "Partners",
-        "path": "/partners",
-        "dropdown": {
-            "highlight": {
-                "title": "Global Partner Ecosystem",
-                "desc": "Co-sell and build next-gen AI revenue systems together.",
-                "linkText": "Become a Partner",
-                "linkPath": "/partners"
-            },
-            "categories": [
-                {
-                    "id": "partner-types",
-                    "title": "Partner Types",
-                    "desc": "Different ways to partner with us",
-                    "path": "/partners",
-                    "items": [
-                        { "name": "Partner Program Overview", "path": "/partners#overview", "icon": "Handshake" },
-                        { "name": "Solution Partners", "path": "/partners#solution-partners", "icon": "Building2" },
-                        { "name": "Technology Partners", "path": "/partners#technology-partners", "icon": "Cpu" },
-                        { "name": "Referral Partners", "path": "/partners#referral-partners", "icon": "UserPlus" }
-                    ]
-                }
-            ]
-        }
+        "name": "SaaS Sales",
+        "path": "/saas-sales"
     },
     {
-        "name": "Company",
-        "path": "/company",
+        "name": "Global Market Acceleration",
+        "path": "/global-market-acceleration"
+    },
+    {
+        "name": "Use Cases",
+        "path": "/use-cases"
+    },
+    {
+        "name": "About Us",
+        "path": "/about",
         "dropdown": {
             "highlight": {
                 "title": "ProfitMachines",
-                "desc": "We are engineering growth and automating scale.",
-                "linkText": "Meet the Team",
-                "linkPath": "/company"
+                "desc": "Sales acceleration, consulting, and AI-driven growth services.",
+                "linkText": "Learn About Us",
+                "linkPath": "/about"
             },
             "categories": [
                 {
                     "id": "about",
                     "title": "About Us",
                     "desc": "Who we are and what drives us",
-                    "path": "/company",
+                    "path": "/about",
                     "items": [
-                        { "name": "About Us", "path": "/company#about", "icon": "Info" },
+                        { "name": "About Us", "path": "/about", "icon": "Info" },
                         { "name": "Mission", "path": "/company#mission", "icon": "Target" },
                         { "name": "Leadership & Culture", "path": "/company#leadership", "icon": "Users" },
                         { "name": "Our Offices", "path": "/company#offices", "icon": "MapPin" }
@@ -2363,15 +2326,11 @@ export const smNavItems = [
                     "title": "Connect",
                     "desc": "Careers, contact, and partnership",
                     "items": [
-                        { "name": "Careers", "path": "/careers", "icon": "Briefcase" },
+                        { "name": "Careers", "path": "/career", "icon": "Briefcase" },
                         { "name": "Contact Us", "path": "/book-consultation", "icon": "Phone" }
                     ]
                 }
             ]
         }
-    },
-    {
-        "name": "Contact Us",
-        "path": "/book-consultation"
     }
 ];

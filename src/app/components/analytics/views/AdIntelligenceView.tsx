@@ -91,57 +91,57 @@ export default function AdIntelligenceView({ data }: Props) {
       {/* 2. Channel Performance Bar Chart & Multi-Source Trend */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Visits & Leads by Channel */}
-        <div className="lg:col-span-7 p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl">
+        <div className="lg:col-span-7 p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950/40 to-slate-900 border border-blue-900/40 shadow-xl">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h4 className="text-lg font-bold text-white">Channel Acquisition & Leads</h4>
-              <p className="text-xs text-slate-400">Google, Meta, YouTube, Affiliate, Organic, Community, Direct</p>
+              <p className="text-xs text-slate-300">Google, Meta, YouTube, Affiliate, Organic, Community, Direct</p>
             </div>
           </div>
 
           <div className="h-72 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={channels} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                <XAxis dataKey="channel" stroke="#94a3b8" tick={{ fontSize: 11 }} />
-                <YAxis stroke="#64748b" tick={{ fontSize: 11 }} />
+              <BarChart data={channels} margin={{ top: 15, right: 20, left: 0, bottom: 15 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#2563eb" strokeOpacity={0.2} />
+                <XAxis dataKey="channel" stroke="#93c5fd" tick={{ fill: '#cbd5e1', fontSize: 11 }} dy={6} />
+                <YAxis stroke="#93c5fd" tick={{ fill: '#cbd5e1', fontSize: 11 }} dx={-4} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '12px', fontSize: '12px' }}
+                  contentStyle={{ backgroundColor: '#0c1a32', borderColor: '#2563eb', borderRadius: '12px', fontSize: '12px', color: '#ffffff' }}
                 />
                 <Bar dataKey="visits" name="Visits" fill="#3b82f6" radius={[4, 4, 0, 0]}>
                   {channels.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={channelColors[entry.channel] || '#3b82f6'} />
                   ))}
                 </Bar>
-                <Bar dataKey="leads" name="Leads" fill="#10b981" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="leads" name="Leads" fill="#38bdf8" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
 
         {/* 4-Week Acquisition Channel Trend */}
-        <div className="lg:col-span-5 p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl">
+        <div className="lg:col-span-5 p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950/40 to-slate-900 border border-blue-900/40 shadow-xl">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h4 className="text-lg font-bold text-white">Channel Momentum Trend</h4>
-              <p className="text-xs text-slate-400">Weekly progression of primary paid & organic engines</p>
+              <p className="text-xs text-slate-300">Weekly progression of primary paid & organic engines</p>
             </div>
           </div>
 
           <div className="h-72 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={trend} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                <XAxis dataKey="date" stroke="#64748b" tick={{ fontSize: 11 }} />
-                <YAxis stroke="#64748b" tick={{ fontSize: 11 }} />
+              <LineChart data={trend} margin={{ top: 15, right: 20, left: 0, bottom: 15 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#2563eb" strokeOpacity={0.2} />
+                <XAxis dataKey="date" stroke="#93c5fd" tick={{ fill: '#cbd5e1', fontSize: 11 }} dy={6} />
+                <YAxis stroke="#93c5fd" tick={{ fill: '#cbd5e1', fontSize: 11 }} dx={-4} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '12px', fontSize: '12px' }}
+                  contentStyle={{ backgroundColor: '#0c1a32', borderColor: '#2563eb', borderRadius: '12px', fontSize: '12px', color: '#ffffff' }}
                 />
-                <Legend wrapperStyle={{ fontSize: '11px' }} />
-                <Line type="monotone" dataKey="google" name="Google" stroke="#3b82f6" strokeWidth={2} dot={false} />
-                <Line type="monotone" dataKey="meta" name="Meta" stroke="#8b5cf6" strokeWidth={2} dot={false} />
-                <Line type="monotone" dataKey="organic" name="Organic" stroke="#10b981" strokeWidth={2} dot={false} />
-                <Line type="monotone" dataKey="direct" name="Direct" stroke="#64748b" strokeWidth={2} dot={false} />
+                <Legend wrapperStyle={{ fontSize: '11px', paddingTop: '8px' }} />
+                <Line type="monotone" dataKey="google" name="Google" stroke="#3b82f6" strokeWidth={2.5} dot={false} />
+                <Line type="monotone" dataKey="meta" name="Meta" stroke="#60a5fa" strokeWidth={2} dot={false} />
+                <Line type="monotone" dataKey="organic" name="Organic" stroke="#38bdf8" strokeWidth={2} dot={false} />
+                <Line type="monotone" dataKey="direct" name="Direct" stroke="#93c5fd" strokeWidth={2} dot={false} />
               </LineChart>
             </ResponsiveContainer>
           </div>

@@ -67,30 +67,30 @@ export default function ExecutiveKPIsView({ data }: Props) {
       {/* 2. Top 5 Pages & Top Pages by Time Spent Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Top 5 Pages Bar Chart */}
-        <div className="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl">
+        <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950/40 to-slate-900 border border-blue-900/40 shadow-xl">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h4 className="text-lg font-bold text-white">Top 5 Pages by Traffic</h4>
-              <p className="text-xs text-slate-400">Visit volume and total share from Sheet 2 Executive_KPIs</p>
+              <p className="text-xs text-slate-300">Visit volume and total share from Sheet 2 Executive_KPIs</p>
             </div>
-            <span className="text-xs font-mono text-blue-400 bg-blue-950/60 px-2.5 py-1 rounded-full border border-blue-800/40">
+            <span className="text-xs font-mono text-blue-300 bg-blue-950/80 px-2.5 py-1 rounded-full border border-blue-800/50">
               Ranked
             </span>
           </div>
 
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={top5Pages} layout="vertical" margin={{ top: 5, right: 30, left: 40, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" horizontal={false} />
-                <XAxis type="number" stroke="#64748b" tick={{ fontSize: 11 }} />
-                <YAxis dataKey="page" type="category" stroke="#94a3b8" tick={{ fontSize: 11 }} width={80} />
+              <BarChart data={top5Pages} layout="vertical" margin={{ top: 10, right: 35, left: 20, bottom: 10 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#2563eb" strokeOpacity={0.2} horizontal={false} />
+                <XAxis type="number" stroke="#93c5fd" tick={{ fill: '#cbd5e1', fontSize: 11 }} />
+                <YAxis dataKey="page" type="category" stroke="#93c5fd" tick={{ fill: '#cbd5e1', fontSize: 11 }} width={110} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '12px', fontSize: '12px' }}
+                  contentStyle={{ backgroundColor: '#0c1a32', borderColor: '#2563eb', borderRadius: '12px', fontSize: '12px', color: '#ffffff' }}
                   formatter={(val: any) => [`${Number(val).toLocaleString()} visits`, 'Traffic']}
                 />
                 <Bar dataKey="visits" fill="#3b82f6" radius={[0, 6, 6, 0]}>
                   {top5Pages.map((_, index) => (
-                    <Cell key={`cell-${index}`} fill={index === 0 ? '#3b82f6' : '#6366f1'} />
+                    <Cell key={`cell-${index}`} fill={index === 0 ? '#3b82f6' : '#60a5fa'} />
                   ))}
                 </Bar>
               </BarChart>
@@ -99,28 +99,28 @@ export default function ExecutiveKPIsView({ data }: Props) {
         </div>
 
         {/* Top Pages by Time Spent Bar Chart */}
-        <div className="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl">
+        <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950/40 to-slate-900 border border-blue-900/40 shadow-xl">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h4 className="text-lg font-bold text-white">Top Pages by Average Time Spent</h4>
-              <p className="text-xs text-slate-400">Engagement depth indicating high buying intent</p>
+              <p className="text-xs text-slate-300">Engagement depth indicating high buying intent</p>
             </div>
-            <span className="text-xs font-mono text-emerald-400 bg-emerald-950/60 px-2.5 py-1 rounded-full border border-emerald-800/40">
+            <span className="text-xs font-mono text-blue-300 bg-blue-950/80 px-2.5 py-1 rounded-full border border-blue-800/50">
               Deep Dwell
             </span>
           </div>
 
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={topPagesByTime} layout="vertical" margin={{ top: 5, right: 30, left: 40, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" horizontal={false} />
-                <XAxis type="number" stroke="#64748b" tick={{ fontSize: 11 }} unit="s" />
-                <YAxis dataKey="page" type="category" stroke="#94a3b8" tick={{ fontSize: 11 }} width={80} />
+              <BarChart data={topPagesByTime} layout="vertical" margin={{ top: 10, right: 35, left: 20, bottom: 10 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#2563eb" strokeOpacity={0.2} horizontal={false} />
+                <XAxis type="number" stroke="#93c5fd" tick={{ fill: '#cbd5e1', fontSize: 11 }} unit="s" />
+                <YAxis dataKey="page" type="category" stroke="#93c5fd" tick={{ fill: '#cbd5e1', fontSize: 11 }} width={110} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '12px', fontSize: '12px' }}
+                  contentStyle={{ backgroundColor: '#0c1a32', borderColor: '#2563eb', borderRadius: '12px', fontSize: '12px', color: '#ffffff' }}
                   formatter={(val: any, _, item: any) => [item?.payload?.avgTimeFormatted || `${val}s`, 'Avg Dwell Time']}
                 />
-                <Bar dataKey="avgTimeSeconds" fill="#10b981" radius={[0, 6, 6, 0]} />
+                <Bar dataKey="avgTimeSeconds" fill="#38bdf8" radius={[0, 6, 6, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>

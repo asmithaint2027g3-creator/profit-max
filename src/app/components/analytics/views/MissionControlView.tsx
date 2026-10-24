@@ -183,20 +183,20 @@ export default function MissionControlView({ data }: Props) {
         </div>
 
         {/* Radar: Traffic Acquisition Radar */}
-        <div className="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl flex flex-col justify-between">
+        <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950/50 to-slate-900 border border-blue-900/40 shadow-xl flex flex-col justify-between">
           <div>
-            <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 mb-1">
+            <div className="text-xs font-mono font-bold uppercase tracking-wider text-blue-400 mb-1">
               Multi-Channel Balance
             </div>
             <h4 className="text-lg font-bold text-white mb-2">Traffic Acquisition Radar</h4>
           </div>
 
-          <div className="h-48 w-full">
+          <div className="h-48 w-full my-2">
             <ResponsiveContainer width="100%" height="100%">
               <RadarChart data={acquisitionRadar}>
-                <PolarGrid stroke="#334155" />
-                <PolarAngleAxis dataKey="source" stroke="#94a3b8" tick={{ fontSize: 10 }} />
-                <PolarRadiusAxis stroke="#475569" angle={30} domain={[0, 40]} />
+                <PolarGrid stroke="#2563eb" strokeOpacity={0.3} />
+                <PolarAngleAxis dataKey="source" stroke="#93c5fd" tick={{ fill: '#cbd5e1', fontSize: 11 }} />
+                <PolarRadiusAxis stroke="#3b82f6" strokeOpacity={0.4} angle={30} domain={[0, 40]} />
                 <Radar
                   name="Channel Share %"
                   dataKey="value"
@@ -208,7 +208,7 @@ export default function MissionControlView({ data }: Props) {
             </ResponsiveContainer>
           </div>
 
-          <div className="pt-3 border-t border-slate-800/80 text-[11px] text-slate-400 flex items-center justify-between">
+          <div className="pt-3 border-t border-blue-900/30 text-[11px] text-slate-300 flex items-center justify-between">
             <span>Primary Driver</span>
             <span className="text-blue-400 font-mono font-bold">Organic Search (34%)</span>
           </div>
@@ -218,20 +218,20 @@ export default function MissionControlView({ data }: Props) {
       {/* 3. Trends & Acquisition Breakdown */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Trend Graph: Traffic, Sessions, Visitors */}
-        <div className="lg:col-span-8 p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl">
+        <div className="lg:col-span-8 p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950/40 to-slate-900 border border-blue-900/40 shadow-xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
             <div>
               <h4 className="text-lg font-bold text-white">Daily Traffic & Velocity Trends</h4>
-              <p className="text-xs text-slate-400">7-day rolling view of gross traffic, sessions, and verified visitors</p>
+              <p className="text-xs text-slate-300">7-day rolling view of gross traffic, sessions, and verified visitors</p>
             </div>
             <div className="flex items-center gap-3 text-xs font-mono">
-              <span className="inline-flex items-center gap-1.5 text-blue-400">
+              <span className="inline-flex items-center gap-1.5 text-blue-400 font-semibold">
                 <span className="w-2.5 h-2.5 rounded-full bg-blue-500" /> Traffic
               </span>
-              <span className="inline-flex items-center gap-1.5 text-indigo-400">
+              <span className="inline-flex items-center gap-1.5 text-indigo-400 font-semibold">
                 <span className="w-2.5 h-2.5 rounded-full bg-indigo-500" /> Sessions
               </span>
-              <span className="inline-flex items-center gap-1.5 text-emerald-400">
+              <span className="inline-flex items-center gap-1.5 text-emerald-400 font-semibold">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" /> Visitors
               </span>
             </div>
@@ -239,29 +239,29 @@ export default function MissionControlView({ data }: Props) {
 
           <div className="h-72 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={trafficTrend} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                <XAxis dataKey="date" stroke="#64748b" tick={{ fontSize: 12 }} />
-                <YAxis stroke="#64748b" tick={{ fontSize: 12 }} />
+              <LineChart data={trafficTrend} margin={{ top: 15, right: 20, left: 0, bottom: 15 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#2563eb" strokeOpacity={0.2} />
+                <XAxis dataKey="date" stroke="#93c5fd" tick={{ fill: '#cbd5e1', fontSize: 12 }} dy={6} />
+                <YAxis stroke="#93c5fd" tick={{ fill: '#cbd5e1', fontSize: 12 }} dx={-4} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '12px', fontSize: '12px' }}
+                  contentStyle={{ backgroundColor: '#0c1a32', borderColor: '#2563eb', borderRadius: '12px', fontSize: '12px', color: '#ffffff' }}
                 />
-                <Line type="monotone" dataKey="traffic" stroke="#3b82f6" strokeWidth={2.5} dot={{ r: 3 }} />
-                <Line type="monotone" dataKey="sessions" stroke="#6366f1" strokeWidth={2} dot={{ r: 3 }} />
-                <Line type="monotone" dataKey="visitors" stroke="#10b981" strokeWidth={2} dot={{ r: 3 }} />
+                <Line type="monotone" dataKey="traffic" stroke="#3b82f6" strokeWidth={2.5} dot={{ r: 4 }} />
+                <Line type="monotone" dataKey="sessions" stroke="#60a5fa" strokeWidth={2} dot={{ r: 3 }} />
+                <Line type="monotone" dataKey="visitors" stroke="#38bdf8" strokeWidth={2} dot={{ r: 3 }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
         </div>
 
         {/* Acquisition Donut Distribution */}
-        <div className="lg:col-span-4 p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl flex flex-col justify-between">
+        <div className="lg:col-span-4 p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950/40 to-slate-900 border border-blue-900/40 shadow-xl flex flex-col justify-between">
           <div>
             <h4 className="text-lg font-bold text-white mb-1">Acquisition Distribution</h4>
-            <p className="text-xs text-slate-400 mb-4">Traffic source split calculated by Sheet 2</p>
+            <p className="text-xs text-slate-300 mb-4">Traffic source split calculated by Sheet 2</p>
           </div>
 
-          <div className="h-56 w-full relative flex items-center justify-center">
+          <div className="h-56 w-full relative flex items-center justify-center my-2">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
@@ -278,7 +278,7 @@ export default function MissionControlView({ data }: Props) {
                   ))}
                 </Pie>
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '12px', fontSize: '12px' }}
+                  contentStyle={{ backgroundColor: '#0c1a32', borderColor: '#2563eb', borderRadius: '12px', fontSize: '12px', color: '#ffffff' }}
                 />
               </PieChart>
             </ResponsiveContainer>

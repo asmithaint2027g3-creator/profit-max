@@ -62,22 +62,22 @@ export default function LeadScoringView({ data }: Props) {
       {/* 2. Lead Score Distribution Chart & High-Impact Intent Signals */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Tier Volume Bar Chart */}
-        <div className="lg:col-span-6 p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl">
+        <div className="lg:col-span-6 p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950/40 to-slate-900 border border-blue-900/40 shadow-xl">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h4 className="text-lg font-bold text-white">Lead Intent Distribution</h4>
-              <p className="text-xs text-slate-400">Sheet 2 scored pipeline volume categorized into intent tiers</p>
+              <p className="text-xs text-slate-300">Sheet 2 scored pipeline volume categorized into intent tiers</p>
             </div>
           </div>
 
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={chartData} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                <XAxis dataKey="tier" stroke="#94a3b8" tick={{ fontSize: 11 }} />
-                <YAxis stroke="#64748b" tick={{ fontSize: 11 }} />
+              <BarChart data={chartData} margin={{ top: 15, right: 20, left: 0, bottom: 15 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#2563eb" strokeOpacity={0.2} />
+                <XAxis dataKey="tier" stroke="#93c5fd" tick={{ fill: '#cbd5e1', fontSize: 11 }} dy={6} />
+                <YAxis stroke="#93c5fd" tick={{ fill: '#cbd5e1', fontSize: 11 }} dx={-4} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '12px', fontSize: '12px' }}
+                  contentStyle={{ backgroundColor: '#0c1a32', borderColor: '#2563eb', borderRadius: '12px', fontSize: '12px', color: '#ffffff' }}
                 />
                 <Bar dataKey="count" radius={[4, 4, 0, 0]}>
                   {chartData.map((entry, index) => (
@@ -90,7 +90,7 @@ export default function LeadScoringView({ data }: Props) {
         </div>
 
         {/* Intent Signals */}
-        <div className="lg:col-span-6 p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl flex flex-col justify-between">
+        <div className="lg:col-span-6 p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950/40 to-slate-900 border border-blue-900/40 shadow-xl flex flex-col justify-between">
           <div>
             <h4 className="text-lg font-bold text-white mb-1">Top Conversion Intent Signals</h4>
             <p className="text-xs text-slate-400 mb-4">Behaviors with the highest correlation to closed enterprise contracts</p>

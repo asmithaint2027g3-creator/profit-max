@@ -65,11 +65,11 @@ export default function ParetoView({ data }: Props) {
       </div>
 
       {/* 2. Pareto Dual-Axis Visualization */}
-      <div className="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl">
+      <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950/40 to-slate-900 border border-blue-900/40 shadow-xl">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
           <div>
             <h4 className="text-lg font-bold text-white">Pareto 80/20 Activity Curve</h4>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-300">
               Bars denote individual contribution; line traces cumulative impact against the 80% benchmark line
             </p>
           </div>
@@ -88,13 +88,13 @@ export default function ParetoView({ data }: Props) {
 
         <div className="h-80 w-full">
           <ResponsiveContainer width="100%" height="100%">
-            <ComposedChart data={items} margin={{ top: 10, right: 30, left: 10, bottom: 25 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-              <XAxis dataKey="name" stroke="#94a3b8" tick={{ fontSize: 10 }} angle={-15} textAnchor="end" />
-              <YAxis yAxisId="left" stroke="#3b82f6" tick={{ fontSize: 11 }} />
-              <YAxis yAxisId="right" orientation="right" stroke="#f59e0b" domain={[0, 100]} unit="%" tick={{ fontSize: 11 }} />
+            <ComposedChart data={items} margin={{ top: 15, right: 35, left: 10, bottom: 35 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#2563eb" strokeOpacity={0.2} />
+              <XAxis dataKey="name" stroke="#93c5fd" tick={{ fill: '#cbd5e1', fontSize: 11 }} angle={-15} textAnchor="end" dy={6} />
+              <YAxis yAxisId="left" stroke="#93c5fd" tick={{ fill: '#cbd5e1', fontSize: 11 }} />
+              <YAxis yAxisId="right" orientation="right" stroke="#f59e0b" domain={[0, 100]} unit="%" tick={{ fill: '#fcd34d', fontSize: 11 }} />
               <Tooltip
-                contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '12px', fontSize: '12px' }}
+                contentStyle={{ backgroundColor: '#0c1a32', borderColor: '#2563eb', borderRadius: '12px', fontSize: '12px', color: '#ffffff' }}
                 formatter={(val: any, name: string) => [
                   name === 'cumulativePct' ? `${val}%` : Number(val).toLocaleString(),
                   name === 'cumulativePct' ? 'Cumulative %' : 'Contribution'

@@ -13,6 +13,23 @@ const Solutions = lazy(() => import('./pages/Solutions'));
 const Capabilities = lazy(() => import('./pages/Capabilities'));
 const Industries = lazy(() => import('./pages/Industries'));
 const Offerings = lazy(() => import('./pages/Offerings'));
+const OfferingsDiscoveryStack = lazy(() => import('./pages/OfferingsDiscoveryStack'));
+const OfferingsFamilies = lazy(() => import('./pages/OfferingsFamilies'));
+const OfferingsDeliveryTracks = lazy(() => import('./pages/OfferingsDeliveryTracks'));
+const OfferingsSegments = lazy(() => import('./pages/OfferingsSegments'));
+const OfferingsMicroSegmentKits = lazy(() => import('./pages/OfferingsMicroSegmentKits'));
+const Engagement = lazy(() => import('./pages/Engagement'));
+const EngagementModels = lazy(() => import('./pages/engagement/EngagementModels'));
+const EngagementDiscoveryStack = lazy(() => import('./pages/engagement/EngagementDiscoveryStack'));
+const EngagementDeliveryTracks = lazy(() => import('./pages/engagement/EngagementDeliveryTracks'));
+const EngagementStagePlaybooks = lazy(() => import('./pages/engagement/EngagementStagePlaybooks'));
+const EngagementBusinessSituations = lazy(() => import('./pages/engagement/EngagementBusinessSituations'));
+const EngagementJourneys = lazy(() => import('./pages/engagement/EngagementJourneys'));
+const EngagementCommercials = lazy(() => import('./pages/engagement/EngagementCommercials'));
+const EngagementModelSelector = lazy(() => import('./pages/engagement/EngagementModelSelector'));
+const EngagementKpiLibrary = lazy(() => import('./pages/engagement/EngagementKpiLibrary'));
+const EngagementOnboarding = lazy(() => import('./pages/engagement/EngagementOnboarding'));
+const EngagementGlossaryFaq = lazy(() => import('./pages/engagement/EngagementGlossaryFaq'));
 const Resources = lazy(() => import('./pages/Resources'));
 const Company = lazy(() => import('./pages/Company'));
 const Privacy = lazy(() => import('./pages/Privacy'));
@@ -114,6 +131,25 @@ export default function App() {
               <Route path="/capabilities" element={<Navigate to="/solutions" replace />} />
               <Route path="/industries" element={<Industries />} />
               <Route path="/offerings" element={<Offerings />} />
+              <Route path="/offerings/discovery-stack" element={<OfferingsDiscoveryStack />} />
+              <Route path="/offerings/families" element={<OfferingsFamilies />} />
+              <Route path="/offerings/delivery-tracks" element={<OfferingsDeliveryTracks />} />
+              <Route path="/offerings/segments" element={<OfferingsSegments />} />
+              <Route path="/offerings/micro-segment-kits" element={<OfferingsMicroSegmentKits />} />
+              <Route path="/engagement" element={<Engagement />} />
+              <Route path="/engagement-model" element={<Engagement />} />
+              <Route path="/engagement-models" element={<Navigate to="/engagement-model" replace />} />
+              <Route path="/engagement-model/models" element={<EngagementModels />} />
+              <Route path="/engagement-model/discovery-stack" element={<EngagementDiscoveryStack />} />
+              <Route path="/engagement-model/delivery-tracks" element={<EngagementDeliveryTracks />} />
+              <Route path="/engagement-model/stage-playbooks" element={<EngagementStagePlaybooks />} />
+              <Route path="/engagement-model/business-situations" element={<EngagementBusinessSituations />} />
+              <Route path="/engagement-model/journeys" element={<EngagementJourneys />} />
+              <Route path="/engagement-model/commercials" element={<EngagementCommercials />} />
+              <Route path="/engagement-model/model-selector" element={<EngagementModelSelector />} />
+              <Route path="/engagement-model/kpi-library" element={<EngagementKpiLibrary />} />
+              <Route path="/engagement-model/onboarding" element={<EngagementOnboarding />} />
+              <Route path="/engagement-model/glossary-faq" element={<EngagementGlossaryFaq />} />
               <Route path="/resources" element={<Resources />} />
               {/* ── New consolidated service routes ── */}
               <Route path="/services" element={<Navigate to="/offerings" replace />} />

@@ -6,7 +6,7 @@ import {
     FileCode2, Coins, Boxes, Server, Image, TrendingUp, PieChart, Settings, Smile, Layers, DollarSign,
     Brain, CloudRain, Building, AppWindow, Code2, ShieldCheck, Users, HeartPulse, Landmark, ShoppingBag,
     Factory, GraduationCap, Truck, Home, Radio, Wrench, CloudCog, UserPlus, Layout, Search, LifeBuoy, BookOpen,
-    Handshake, Info, Target, FileText, Phone, ChevronRight
+    Handshake, Info, Target, FileText, Phone, ChevronRight, Clock, Sliders, HelpCircle
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
@@ -17,7 +17,7 @@ const Icons: any = {
     Link: LinkIcon, Globe, FileCode2, Coins, Boxes, Server, Image, MessageSquare, TrendingUp, BarChart, PieChart, Settings,
     Smile, Layers, Cpu, DollarSign, Brain, CloudRain, Building, AppWindow, Zap, Code2, ShieldCheck, Users, HeartPulse,
     Landmark, ShoppingBag, Factory, GraduationCap, Truck, Home, Radio, Lightbulb, Wrench, CloudCog, UserPlus, Layout,
-    Search, LifeBuoy, BookOpen, Handshake, Info, Target, FileText, Phone, Rocket, Lock, MapPin
+    Search, LifeBuoy, BookOpen, Handshake, Info, Target, FileText, Phone, Rocket, Lock, MapPin, Clock, Sliders, HelpCircle
 };
 
 export default function Navigation() {
@@ -79,7 +79,7 @@ export default function Navigation() {
                     </div>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden lg:flex items-center h-full gap-5 xl:gap-6">
+                    <div className="hidden lg:flex items-center h-full gap-3 xl:gap-4 2xl:gap-6">
                         {/* @ts-ignore */}
                         {smNavItems.map((item) => {
                             // @ts-ignore
@@ -89,13 +89,13 @@ export default function Navigation() {
                                 <div
                                     key={item.name}
                                     className="group h-full flex items-center relative"
-                                    onMouseEnter={(e) => openDropdown(item.name, e.currentTarget)}
+                                    onMouseEnter={(e) => item.dropdown && openDropdown(item.name, e.currentTarget)}
                                     onMouseLeave={() => setHoveredItem(null)}
                                 >
                                     <Link
                                         to={item.path}
                                         onClick={() => setHoveredItem(item.name)}
-                                        className={`text-[14px] xl:text-[15px] font-semibold transition-colors flex items-center gap-1.5 h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-sm
+                                        className={`text-[13px] xl:text-[14px] 2xl:text-[15px] font-semibold transition-colors flex items-center gap-1 h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-sm
                                             ${isActive ? 'text-blue-600' : 'text-slate-700 hover:text-blue-600'}
                                         `}
                                     >
@@ -119,40 +119,12 @@ export default function Navigation() {
                                             
                                             {/* Left Column: Categories */}
                                             <div className="w-[35%] bg-slate-50/80 border-r border-slate-100 p-5 flex flex-col gap-1.5 shrink-0 justify-center">
-                                                {item.name === "Offerings" ? (
-                                                    <div className="flex flex-col gap-1.5">
-                                                        <Link
-                                                            to="/offerings/profit-pool-discovery"
-                                                            onClick={() => setHoveredItem(null)}
-                                                            onMouseEnter={() => setActiveOfferingGroup("profit-pools")}
-                                                            className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-[13.5px] font-bold transition-all text-left focus:outline-none ${activeOfferingGroup === 'profit-pools' || activeOfferingGroup === 'b2b' || activeOfferingGroup === 'b2c' ? 'bg-blue-600 text-white' : 'text-slate-700 hover:bg-slate-100 hover:translate-x-1'}`}
-                                                        >
-                                                            <span>Profit Pools</span>
-                                                            <ChevronRight className="w-3.5 h-3.5 shrink-0" />
-                                                        </Link>
-                                                        
-                                                        {item.dropdown.categories?.filter((cat: any) => cat.id !== "profit-pools").map((cat: any, cIdx: number) => {
-                                                            const targetPath = cat.path || `/offerings/${cat.id}`;
-                                                            return (
-                                                                <Link
-                                                                    key={cIdx}
-                                                                    to={targetPath}
-                                                                    onClick={() => setHoveredItem(null)}
-                                                                    onMouseEnter={() => setActiveOfferingGroup(cat.id)}
-                                                                    className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-[13.5px] font-bold transition-all text-left focus:outline-none ${activeOfferingGroup === cat.id ? 'bg-blue-600 text-white' : 'text-slate-700 hover:bg-slate-100 hover:translate-x-1'}`}
-                                                                >
-                                                                    <span>{cat.title}</span>
-                                                                    <ChevronRight className="w-3.5 h-3.5 shrink-0" />
-                                                                </Link>
-                                                            );
-                                                        })}
-                                                    </div>
-                                                ) : item.dropdown.categories ? (
+                                                {item.dropdown.categories ? (
                                                     <div className="flex flex-col gap-1.5">
                                                         {item.dropdown.categories.map((cat: any, cIdx: number) => {
                                                             const menuKey = item.name;
                                                             const activeCat = activeMenuCat[menuKey] ?? item.dropdown.categories[0]?.id;
-                                                            const targetPath = cat.path || `/${item.name.toLowerCase()}/${cat.id}`;
+                                                            const targetPath = cat.path || `/${item.name.toLowerCase().replace(/\s+/g, '-')}/${cat.id}`;
                                                             return (
                                                                 <Link
                                                                     key={cIdx}
@@ -182,99 +154,7 @@ export default function Navigation() {
                                             {/* Right Column: Display Centered Content */}
                                             <div className="flex-1 bg-white p-6 flex flex-col justify-center items-center overflow-y-auto">
                                                 <div className="w-full max-w-2xl flex flex-col gap-2 justify-center items-center">
-                                                    {item.name === "Offerings" ? (
-                                                        (() => {
-                                                            if (activeOfferingGroup === "b2b" || activeOfferingGroup === "b2c" || activeOfferingGroup === "profit-pools") {
-                                                                // @ts-ignore
-                                                                const b2bItems = item.dropdown.categories?.find((cat: any) => cat.id === "profit-pools")?.b2bItems || [];
-                                                                // @ts-ignore
-                                                                const b2cItems = item.dropdown.categories?.find((cat: any) => cat.id === "profit-pools")?.b2cItems || [];
-                                                                
-                                                                return (
-                                                                    <div key={`offerings-${activeOfferingGroup}`} className="grid grid-cols-2 gap-8 w-full">
-                                                                        {/* B2B Column */}
-                                                                        <div className="flex flex-col gap-2 min-w-0">
-                                                                            <Link
-                                                                                to="/offerings/b2b"
-                                                                                onClick={() => setHoveredItem(null)}
-                                                                                className="text-[12px] font-extrabold uppercase tracking-[0.15em] text-blue-600 border-b pb-2 border-slate-100 block hover:text-blue-800 hover:border-blue-300 transition-colors"
-                                                                            >
-                                                                                B2B Profit Pools
-                                                                            </Link>
-                                                                            <div className="flex flex-col gap-1">
-                                                                                {b2bItems.map((sub: any, sIdx: number) => {
-                                                                                    const IconComponent = Icons[sub.icon] || ArrowRight;
-                                                                                    return (
-                                                                                        <Link
-                                                                                            key={sIdx}
-                                                                                            to={sub.path}
-                                                                                            onClick={() => setHoveredItem(null)}
-                                                                                            style={{ animationDelay: `${sIdx * 30}ms` }}
-                                                                                            className="animate-in fade-in-0 slide-in-from-left-1 fill-mode-both duration-300 flex items-center gap-2.5 p-1.5 rounded-lg text-[12.5px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all hover:translate-x-1 duration-200"
-                                                                                        >
-                                                                                            <IconComponent className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                                                                                            <span className="truncate">{sub.name}</span>
-                                                                                        </Link>
-                                                                                    );
-                                                                                })}
-                                                                            </div>
-                                                                        </div>
-
-                                                                        {/* B2C Column */}
-                                                                        <div className="flex flex-col gap-2 min-w-0">
-                                                                            <Link
-                                                                                to="/offerings/b2c"
-                                                                                onClick={() => setHoveredItem(null)}
-                                                                                className="text-[12px] font-extrabold uppercase tracking-[0.15em] text-indigo-600 border-b pb-2 border-slate-100 block hover:text-indigo-800 hover:border-indigo-300 transition-colors"
-                                                                            >
-                                                                                B2C Profit Pools
-                                                                            </Link>
-                                                                            <div className="flex flex-col gap-1">
-                                                                                {b2cItems.map((sub: any, sIdx: number) => {
-                                                                                    const IconComponent = Icons[sub.icon] || ArrowRight;
-                                                                                    return (
-                                                                                        <Link
-                                                                                            key={sIdx}
-                                                                                            to={sub.path}
-                                                                                            onClick={() => setHoveredItem(null)}
-                                                                                            style={{ animationDelay: `${sIdx * 30}ms` }}
-                                                                                            className="animate-in fade-in-0 slide-in-from-left-1 fill-mode-both duration-300 flex items-center gap-2.5 p-1.5 rounded-lg text-[12.5px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all hover:translate-x-1 duration-200"
-                                                                                        >
-                                                                                            <IconComponent className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                                                                                            <span className="truncate">{sub.name}</span>
-                                                                                        </Link>
-                                                                                    );
-                                                                                })}
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                );
-                                                            }
-
-                                                            const selectedItems = item.dropdown.categories?.find((cat: any) => cat.id === activeOfferingGroup)?.items || [];
-                                                            return (
-                                                                <div key={`offerings-sel-${activeOfferingGroup}`} className="grid grid-cols-1 gap-1.5 w-full max-w-md">
-                                                                    {selectedItems.map((sub: any, sIdx: number) => {
-                                                                        const IconComponent = Icons[sub.icon] || ArrowRight;
-                                                                        return (
-                                                                            <Link
-                                                                                key={sIdx}
-                                                                                to={sub.path}
-                                                                                onClick={() => setHoveredItem(null)}
-                                                                                style={{ animationDelay: `${sIdx * 30}ms` }}
-                                                                                className="animate-in fade-in-0 slide-in-from-left-1 fill-mode-both duration-300 flex items-center gap-3 p-2 rounded-lg text-[13px] font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-all hover:translate-x-1 duration-200"
-                                                                            >
-                                                                                <div className="bg-slate-50 text-blue-600 p-1.5 rounded-lg shrink-0">
-                                                                                    <IconComponent className="w-4 h-4" />
-                                                                                </div>
-                                                                                <span className="truncate">{sub.name}</span>
-                                                                            </Link>
-                                                                        );
-                                                                    })}
-                                                                </div>
-                                                            );
-                                                        })()
-                                                    ) : item.dropdown.categories ? (
+                                                    {item.dropdown.categories ? (
                                                         (() => {
                                                             const menuKey = item.name;
                                                             const activeCatId = activeMenuCat[menuKey] ?? item.dropdown.categories[0]?.id;

@@ -45,11 +45,11 @@ export default function TechProfileView({ data }: Props) {
       {/* 1. Viewports & Operating Systems Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Operating Systems Bar Chart */}
-        <div className="lg:col-span-7 p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl">
+        <div className="lg:col-span-7 p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950/40 to-slate-900 border border-blue-900/40 shadow-xl">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h4 className="text-lg font-bold text-white">Operating System Landscape</h4>
-              <p className="text-xs text-slate-400">Enterprise OS distribution detected across visitor sessions</p>
+              <p className="text-xs text-slate-300">Enterprise OS distribution detected across visitor sessions</p>
             </div>
             <div className="p-2 rounded-lg bg-blue-500/10 text-blue-400">
               <Laptop className="w-4 h-4" />
@@ -58,12 +58,12 @@ export default function TechProfileView({ data }: Props) {
 
           <div className="h-60 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={operatingSystems} layout="vertical" margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" horizontal={false} />
-                <XAxis type="number" stroke="#64748b" tick={{ fontSize: 11 }} />
-                <YAxis dataKey="name" type="category" stroke="#94a3b8" tick={{ fontSize: 11 }} width={70} />
+              <BarChart data={operatingSystems} layout="vertical" margin={{ top: 10, right: 35, left: 15, bottom: 10 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#2563eb" strokeOpacity={0.2} horizontal={false} />
+                <XAxis type="number" stroke="#93c5fd" tick={{ fill: '#cbd5e1', fontSize: 11 }} />
+                <YAxis dataKey="name" type="category" stroke="#93c5fd" tick={{ fill: '#cbd5e1', fontSize: 11 }} width={85} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '12px', fontSize: '12px' }}
+                  contentStyle={{ backgroundColor: '#0c1a32', borderColor: '#2563eb', borderRadius: '12px', fontSize: '12px', color: '#ffffff' }}
                   formatter={(val: any, _, item: any) => [`${Number(val).toLocaleString()} visits (${item?.payload?.share})`, 'Volume']}
                 />
                 <Bar dataKey="count" fill="#3b82f6" radius={[0, 6, 6, 0]} />
@@ -73,13 +73,13 @@ export default function TechProfileView({ data }: Props) {
         </div>
 
         {/* Viewport Category Donut */}
-        <div className="lg:col-span-5 p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl flex flex-col justify-between">
+        <div className="lg:col-span-5 p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950/40 to-slate-900 border border-blue-900/40 shadow-xl flex flex-col justify-between">
           <div>
             <h4 className="text-lg font-bold text-white mb-1">Viewport Form Factor</h4>
-            <p className="text-xs text-slate-400 mb-4">Desktop vs Mobile vs Tablet client viewports</p>
+            <p className="text-xs text-slate-300 mb-4">Desktop vs Mobile vs Tablet client viewports</p>
           </div>
 
-          <div className="h-48 w-full relative flex items-center justify-center">
+          <div className="h-48 w-full relative flex items-center justify-center my-2">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
@@ -96,7 +96,7 @@ export default function TechProfileView({ data }: Props) {
                   ))}
                 </Pie>
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '12px', fontSize: '12px' }}
+                  contentStyle={{ backgroundColor: '#0c1a32', borderColor: '#2563eb', borderRadius: '12px', fontSize: '12px', color: '#ffffff' }}
                   formatter={(val: any) => [Number(val).toLocaleString(), 'Sessions']}
                 />
               </PieChart>

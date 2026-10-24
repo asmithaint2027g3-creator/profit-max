@@ -8,6 +8,8 @@ export default function Footer() {
 
     const quickLinks: { [key: string]: string } = {
         'Home': '/',
+        'Offerings': '/offerings',
+        'Engagement Model': '/engagement-model',
         'About Us': '/#about-us',
         'Case Studies': '/#case-studies',
         'Blogs': '/#blogs',
@@ -54,7 +56,7 @@ export default function Footer() {
                 {/* Footer CTA Section */}
                 <div className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 mb-16 text-center lg:text-left flex flex-col lg:flex-row items-center justify-between gap-8">
                     <div className="max-w-2xl">
-                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Ready to Build Your Next AI Product?</h2>
+                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Build Your Next Enterprise AI Revenue Engine</h2>
                         <p className="text-slate-400 text-lg">Let's discuss your requirements and recommend the right AI solution.</p>
                     </div>
                     <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 w-full lg:w-auto">

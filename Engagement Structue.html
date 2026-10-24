@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProfitMachines — Revenue Discovery & Engagement Model Dossier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300&family=DM+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2EEE6;
+  --paper-2:#E8E2D4;
+  --paper-3:#DCD4C2;
+  --ink:#16130F;
+  --ink-soft:#3B342B;
+  --muted:#7A7161;
+  --accent:#D6421F;
+  --accent-deep:#A32E12;
+  --forest:#1E4436;
+  --gold:#B98A28;
+  --rule:rgba(22,19,15,.16);
+  --rule-strong:rgba(22,19,15,.38);
+  --maxw:1320px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Source Serif 4",Georgia,serif;
+  font-size:16.5px;
+  line-height:1.68;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+::selection{background:var(--accent);color:var(--paper)}
+h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:700;line-height:1.06;letter-spacing:-.015em}
+a{color:inherit}
+.mono{font-family:"DM Mono",monospace}
+.kicker{
+  font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--accent);display:block;margin-bottom:14px;
+}
+.kicker.dim{color:var(--muted)}
+
+/* ---------- TOP BAR ---------- */
+.topbar{
+  position:sticky;top:0;z-index:200;background:rgba(242,238,230,.94);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--rule-strong);
+}
+.topbar-inner{
+  max-width:var(--maxw);margin:0 auto;padding:11px 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.brand{display:flex;align-items:baseline;gap:12px;text-decoration:none}
+.brand-mark{
+  font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.18em;
+  background:var(--ink);color:var(--paper);padding:5px 9px;text-transform:uppercase;
+}
+.brand-name{font-family:"Fraunces",serif;font-weight:700;font-size:17px;letter-spacing:-.01em}
+.brand-name em{font-style:normal;color:var(--accent)}
+.topnav{display:flex;gap:20px;flex-wrap:wrap}
+.topnav a{
+  font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.13em;
+  text-transform:uppercase;text-decoration:none;color:var(--ink-soft);
+  padding-bottom:2px;border-bottom:1px solid transparent;transition:.22s;
+}
+.topnav a:hover{color:var(--accent);border-color:var(--accent)}
+@media(max-width:1020px){.topnav{display:none}}
+
+/* ---------- HERO ---------- */
+.hero{
+  border-bottom:1px solid var(--rule-strong);
+  background:
+    linear-gradient(180deg,rgba(242,238,230,0) 60%,rgba(220,212,194,.55) 100%),
+    repeating-linear-gradient(90deg,transparent 0 118px,var(--rule) 118px 119px);
+}
+.hero-inner{
+  max-width:var(--maxw);margin:0 auto;padding:88px 28px 66px;
+  display:grid;grid-template-columns:1.35fr .95fr;gap:56px;align-items:end;
+}
+.hero h1{
+  font-size:clamp(46px,7.2vw,104px);font-weight:700;letter-spacing:-.035em;line-height:.92;
+}
+.hero h1 .ital{font-style:italic;font-weight:300;color:var(--accent)}
+.hero h1 .outline{
+  color:transparent;-webkit-text-stroke:1.4px var(--ink);
+}
+.hero-lede{font-size:19px;color:var(--ink-soft);max-width:46ch;margin-top:28px}
+.hero-meta{
+  border-top:2px solid var(--ink);padding-top:18px;
+  display:grid;grid-template-columns:1fr 1fr;gap:22px 26px;
+}
+.hero-meta dt{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.hero-meta dd{font-family:"Fraunces",serif;font-size:26px;font-weight:700;letter-spacing:-.02em}
+.hero-meta dd span{font-family:"DM Mono",monospace;font-size:11px;font-weight:400;display:block;letter-spacing:.06em;color:var(--muted);margin-top:2px}
+.hero-tags{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.tag{
+  font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+  border:1px solid var(--rule-strong);padding:6px 11px;
+}
+.tag.solid{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tag.accent{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr;padding:56px 22px 44px}}
+
+/* ---------- LAYOUT ---------- */
+.shell{max-width:var(--maxw);margin:0 auto;padding:0 28px;display:grid;grid-template-columns:212px 1fr;gap:54px}
+@media(max-width:1020px){.shell{grid-template-columns:1fr;gap:0;padding:0 22px}}
+.sidenav{position:sticky;top:64px;align-self:start;padding:52px 0;max-height:calc(100vh - 64px);overflow-y:auto}
+.sidenav::-webkit-scrollbar{width:3px}
+.sidenav::-webkit-scrollbar-thumb{background:var(--rule-strong)}
+.sidenav h5{
+  font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);margin:22px 0 10px;
+}
+.sidenav a{
+  display:block;text-decoration:none;font-family:"DM Mono",monospace;font-size:11px;
+  letter-spacing:.03em;color:var(--ink-soft);padding:5px 0 5px 12px;
+  border-left:2px solid var(--rule);transition:.2s;line-height:1.5;
+}
+.sidenav a:hover{border-color:var(--accent);color:var(--accent);padding-left:16px}
+.sidenav a.active{border-color:var(--accent);color:var(--accent);font-weight:500}
+@media(max-width:1020px){.sidenav{position:static;padding:32px 0 0;max-height:none}
+  .sidenav .navgroups{display:flex;flex-wrap:wrap;gap:4px 14px}
+  .sidenav h5{width:100%;margin:14px 0 4px}
+  .sidenav a{border-left:0;border-bottom:2px solid transparent;padding:4px 0}
+  .sidenav a:hover,.sidenav a.active{padding-left:0;border-bottom-color:var(--accent)}
+}
+.content{padding:52px 0 90px;min-width:0}
+
+/* ---------- SECTIONS ---------- */
+.section{padding:58px 0;border-top:1px solid var(--rule-strong)}
+.section:first-child{border-top:0;padding-top:14px}
+.sec-head{margin-bottom:38px;max-width:74ch}
+.sec-head h2{font-size:clamp(31px,4vw,50px);letter-spacing:-.03em;margin-bottom:16px}
+.sec-head p{font-size:18px;color:var(--ink-soft)}
+.sec-num{
+  font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.24em;color:var(--accent);
+  display:block;margin-bottom:12px;
+}
+.sec-num b{color:var(--muted);font-weight:400}
+
+/* ---------- CONTINUUM ---------- */
+.continuum{
+  display:grid;grid-template-columns:repeat(8,1fr);border:1px solid var(--ink);
+  margin:10px 0 26px;overflow:hidden;
+}
+.cont-cell{
+  padding:16px 11px 18px;border-right:1px solid var(--rule-strong);
+  background:var(--paper);position:relative;transition:.25s;cursor:default;
+}
+.cont-cell:last-child{border-right:0}
+.cont-cell:hover{background:var(--ink);color:var(--paper)}
+.cont-cell:hover .cont-q{color:rgba(242,238,230,.6)}
+.cont-cell .cid{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.16em;color:var(--accent);display:block;margin-bottom:8px}
+.cont-cell:hover .cid{color:var(--paper-3)}
+.cont-cell h4{font-size:14.5px;line-height:1.22;letter-spacing:-.01em}
+.cont-q{font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.05em;color:var(--muted);margin-top:8px;line-height:1.5}
+.cont-rail{
+  display:flex;justify-content:space-between;font-family:"DM Mono",monospace;
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:10px;
+}
+.cont-gradient{height:7px;background:linear-gradient(90deg,var(--paper-3),var(--gold),var(--accent),var(--accent-deep));margin:14px 0 0}
+@media(max-width:980px){.continuum{grid-template-columns:repeat(2,1fr)}.cont-cell{border-bottom:1px solid var(--rule-strong)}}
+
+/* ---------- TABLES ---------- */
+.tablewrap{overflow-x:auto;margin:22px 0;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+thead th{
+  font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  text-align:left;color:var(--paper);background:var(--ink);padding:11px 13px;font-weight:500;
+  vertical-align:bottom;border-right:1px solid rgba(242,238,230,.16);
+}
+thead th:last-child{border-right:0}
+tbody td{padding:11px 13px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.55}
+tbody tr:nth-child(even){background:rgba(220,212,194,.34)}
+tbody tr:hover{background:rgba(214,66,31,.07)}
+tbody td:first-child{font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:.02em;white-space:nowrap}
+td .mini{display:block;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.06em;color:var(--muted);margin-top:3px}
+table.tight tbody td{padding:9px 12px;font-size:13.5px}
+caption{
+  caption-side:top;text-align:left;font-family:"DM Mono",monospace;font-size:10.5px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding:0 0 10px;
+}
+.pill{
+  display:inline-block;font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.11em;
+  text-transform:uppercase;padding:3px 8px;border:1px solid var(--rule-strong);margin:1px 3px 1px 0;
+  white-space:nowrap;
+}
+.pill.a{border-color:var(--forest);color:var(--forest)}
+.pill.b{border-color:var(--accent);color:var(--accent)}
+.pill.r{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.pill.k{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.pill.g{background:var(--forest);color:var(--paper);border-color:var(--forest)}
+
+/* ---------- MODEL CARDS ---------- */
+.model{
+  border:1px solid var(--ink);margin:30px 0;background:var(--paper);
+}
+.model-top{
+  display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;
+  padding:20px 24px;border-bottom:1px solid var(--ink);background:var(--ink);color:var(--paper);
+}
+.model-code{
+  font-family:"DM Mono",monospace;font-size:26px;letter-spacing:.04em;
+  border:1px solid rgba(242,238,230,.4);padding:8px 13px;
+}
+.model-top h3{font-size:24px;letter-spacing:-.02em}
+.model-top h3 span{display:block;font-family:"DM Mono",monospace;font-size:11px;font-weight:400;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--paper-3);margin-top:6px}
+.model-risk{
+  text-align:right;font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--paper-3);line-height:1.9;
+}
+.model-risk b{display:block;font-size:12px;letter-spacing:.1em;color:var(--paper)}
+.model-body{padding:26px 24px}
+.model-quote{
+  font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:22px;
+  letter-spacing:-.015em;color:var(--accent-deep);margin-bottom:22px;padding-left:16px;
+  border-left:3px solid var(--accent);
+}
+.attr{display:grid;grid-template-columns:170px 1fr;gap:0}
+.attr dt{
+  font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--muted);padding:11px 14px 11px 0;border-bottom:1px solid var(--rule);
+}
+.attr dd{padding:11px 0;border-bottom:1px solid var(--rule);font-size:15px;line-height:1.6}
+@media(max-width:680px){.attr{grid-template-columns:1fr}.attr dt{padding-bottom:2px;border-bottom:0}}
+.subpkg{margin-top:24px}
+.subpkg h4{
+  font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:12px;
+}
+
+/* ---------- GRID CARDS ---------- */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:24px 0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:24px 0}
+@media(max-width:900px){.grid2,.grid3{grid-template-columns:1fr}}
+.card{border:1px solid var(--rule-strong);padding:22px 20px;background:var(--paper)}
+.card.dark{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.card.dark .card-k{color:var(--paper-3)}
+.card.accentbg{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.card-k{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:block}
+.card h4{font-size:19px;margin-bottom:10px;letter-spacing:-.02em}
+.card p{font-size:14.5px;line-height:1.62;color:var(--ink-soft)}
+.card.dark p{color:rgba(242,238,230,.72)}
+.card ul{margin:10px 0 0 18px;font-size:14px;line-height:1.72}
+.card ul li{margin-bottom:5px}
+.card.dark ul{color:rgba(242,238,230,.78)}
+
+/* ---------- JOURNEY STEPS ---------- */
+.journey{border:1px solid var(--ink);margin:22px 0}
+.journey-head{
+  padding:15px 20px;background:var(--paper-2);border-bottom:1px solid var(--ink);
+  display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.journey-head h4{font-size:19px}
+.journey-head .jtag{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent)}
+.journey-steps{display:flex;overflow-x:auto}
+.jstep{flex:1;min-width:170px;padding:20px 18px;border-right:1px dashed var(--rule-strong);position:relative}
+.jstep:last-child{border-right:0}
+.jstep .jn{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.15em;color:var(--muted);display:block;margin-bottom:8px}
+.jstep strong{font-family:"Fraunces",serif;font-size:17px;display:block;letter-spacing:-.015em;margin-bottom:6px}
+.jstep span.jd{font-family:"DM Mono",monospace;font-size:10.5px;color:var(--accent);letter-spacing:.08em;display:block;margin-bottom:8px}
+.jstep p{font-size:13px;line-height:1.6;color:var(--ink-soft)}
+.jstep::after{content:"→";position:absolute;right:-9px;top:50%;transform:translateY(-50%);font-family:"DM Mono",monospace;color:var(--accent);background:var(--paper);padding:2px;z-index:2}
+.jstep:last-child::after{content:""}
+
+/* ---------- SELECTOR ---------- */
+.selector{border:2px solid var(--ink);background:var(--paper-2);padding:30px 26px;margin:28px 0}
+.sel-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;align-items:end}
+@media(max-width:820px){.sel-grid{grid-template-columns:1fr}}
+.field label{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px}
+.field select{
+  width:100%;padding:12px 13px;border:1px solid var(--ink);background:var(--paper);
+  font-family:"DM Mono",monospace;font-size:12.5px;color:var(--ink);border-radius:0;
+  appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);
+  background-position:calc(100% - 18px) 20px,calc(100% - 13px) 20px;background-size:5px 5px,5px 5px;background-repeat:no-repeat;cursor:pointer;
+}
+.btn{
+  display:inline-block;background:var(--ink);color:var(--paper);border:0;cursor:pointer;
+  font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.17em;text-transform:uppercase;
+  padding:15px 22px;transition:.25s;width:100%;
+}
+.btn:hover{background:var(--accent);letter-spacing:.23em}
+.sel-out{
+  margin-top:22px;border-top:1px dashed var(--rule-strong);padding-top:22px;
+  display:none;
+}
+.sel-out.show{display:block;animation:fadeUp .5s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.sel-out .out-seq{font-family:"Fraunces",serif;font-size:22px;letter-spacing:-.02em;margin:8px 0 12px}
+.sel-out .out-seq .arrow{color:var(--accent);font-family:"DM Mono",monospace;font-size:15px;margin:0 6px}
+.sel-out p{font-size:15px;color:var(--ink-soft);max-width:70ch}
+
+/* ---------- MISC BLOCKS ---------- */
+.pullquote{
+  font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:clamp(24px,3.2vw,38px);
+  line-height:1.28;letter-spacing:-.025em;color:var(--ink);
+  border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  padding:36px 0;margin:42px 0;max-width:26ch;
+}
+.pullquote b{font-style:normal;font-weight:700;color:var(--accent)}
+.ruleband{
+  background:var(--ink);color:var(--paper);padding:40px 30px;margin:40px 0;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:26px;
+}
+@media(max-width:820px){.ruleband{grid-template-columns:1fr 1fr}}
+.ruleband .rb-k{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(242,238,230,.55);margin-bottom:8px}
+.ruleband .rb-v{font-family:"Fraunces",serif;font-size:34px;letter-spacing:-.03em;line-height:1}
+.ruleband .rb-v small{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.06em;display:block;color:rgba(242,238,230,.6);margin-top:7px;font-weight:400}
+.note{
+  border-left:3px solid var(--gold);background:rgba(185,138,40,.09);padding:16px 18px;
+  font-size:14px;line-height:1.62;margin:20px 0;color:var(--ink-soft);
+}
+.note b{color:var(--ink)}
+.stackflow{counter-reset:flow;margin:24px 0}
+.flowrow{
+  display:grid;grid-template-columns:56px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--rule);
+}
+.flowrow::before{
+  counter-increment:flow;content:"0" counter(flow);
+  font-family:"DM Mono",monospace;font-size:13px;letter-spacing:.1em;color:var(--accent);padding-top:3px;
+}
+.flowrow h4{font-size:17px;margin-bottom:5px}
+.flowrow p{font-size:14.5px;color:var(--ink-soft)}
+.faq{border-top:1px solid var(--rule-strong)}
+.faq details{border-bottom:1px solid var(--rule);padding:18px 0}
+.faq summary{
+  cursor:pointer;font-family:"Fraunces",serif;font-size:18px;font-weight:700;
+  letter-spacing:-.015em;list-style:none;display:flex;justify-content:space-between;gap:18px;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:"DM Mono",monospace;color:var(--accent);font-size:19px;line-height:1;transition:.25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin-top:12px;font-size:15px;color:var(--ink-soft);max-width:80ch}
+.gloss{display:grid;grid-template-columns:1fr 1fr;gap:0 34px}
+@media(max-width:820px){.gloss{grid-template-columns:1fr}}
+.gloss div{padding:12px 0;border-bottom:1px solid var(--rule)}
+.gloss dt{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.gloss dd{font-size:14px;color:var(--ink-soft);line-height:1.6}
+.footer{
+  background:var(--ink);color:var(--paper);margin-top:0;
+}
+.footer-inner{max-width:var(--maxw);margin:0 auto;padding:70px 28px 40px}
+.footer h2{font-size:clamp(34px,5vw,64px);letter-spacing:-.035em;max-width:18ch}
+.footer h2 em{font-style:italic;font-weight:300;color:var(--accent)}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin:46px 0 40px;padding-top:36px;border-top:1px solid rgba(242,238,230,.22)}
+@media(max-width:820px){.footer-grid{grid-template-columns:1fr}}
+.footer-grid h5{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,238,230,.5);margin-bottom:14px}
+.footer-grid p,.footer-grid li{font-size:14.5px;color:rgba(242,238,230,.75);line-height:1.72}
+.footer-grid ul{list-style:none}
+.footer-grid ul li{padding:4px 0;border-bottom:1px solid rgba(242,238,230,.1)}
+.footer-cta{
+  display:inline-block;background:var(--accent);color:var(--paper);text-decoration:none;
+  font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+  padding:18px 30px;margin-top:22px;transition:.3s;
+}
+.footer-cta:hover{background:var(--paper);color:var(--ink);letter-spacing:.27em}
+.footer-base{
+  border-top:1px solid rgba(242,238,230,.18);padding-top:22px;display:flex;
+  justify-content:space-between;gap:18px;flex-wrap:wrap;
+  font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(242,238,230,.45);
+}
+.footer-base a{text-decoration:none;color:rgba(242,238,230,.7)}
+.footer-base a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark">PM</span>
+      <span class="brand-name">Profit<em>Machines</em></span>
+    </a>
+    <nav class="topnav">
+      <a href="#part1">Continuum</a>
+      <a href="#part2">Models</a>
+      <a href="#part3">Discovery Stack</a>
+      <a href="#part4">Segments</a>
+      <a href="#part5">Stages</a>
+      <a href="#part6">Situations</a>
+      <a href="#part7">Journeys</a>
+      <a href="#part8">Commercials</a>
+      <a href="#part9">Selector</a>
+      <a href="#part10">Glossary</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <span class="kicker">Revenue Architecture Dossier · Edition 2026</span>
+      <h1>Revenue<br><span class="outline">Discovery</span><br><span class="ital">Engagements.</span></h1>
+      <p class="hero-lede">
+        The complete commercial and delivery architecture of ProfitMachines — a sales acceleration,
+        consulting and services firm. Eight engagement models, seven discovery layers,
+        and a matched playbook for every segment, sub-segment, micro-segment,
+        company stage and business situation.
+      </p>
+    </div>
+    <dl class="hero-meta">
+      <div><dt>Engagement Models</dt><dd>08<span>Advisory → Risk-Sharing</span></dd></div>
+      <div><dt>Discovery Layers</dt><dd>07<span>L1 Market → L7 PMF</span></dd></div>
+      <div><dt>Offering Families</dt><dd>07<span>F1 – F7, Tracks A &amp; B</span></dd></div>
+      <div><dt>Micro-Segment Kits</dt><dd>08<span>Fixed-scope fast starts</span></dd></div>
+      <div class="hero-tags">
+        <span class="tag solid">Consulting Services</span>
+        <span class="tag accent">AI-Driven Automation</span>
+        <span class="tag">Services Sector</span>
+        <span class="tag">Retail &amp; Commerce</span>
+        <span class="tag">Platform Companies</span>
+        <span class="tag">Sales · Revenue · GTM · Demand</span>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ SHELL ============ -->
+<div class="shell">
+
+  <!-- ---------- SIDE NAV ---------- -->
+  <aside class="sidenav">
+    <div class="navgroups">
+      <h5>// Part 01 — Framing</h5>
+      <a href="#part1">Engagement Continuum</a>
+      <a href="#scope">Scope Definition</a>
+      <h5>// Part 02 — Models</h5>
+      <a href="#part2">Model Deep-Dives</a>
+      <a href="#m-e1">E1 Advisory</a>
+      <a href="#m-e2">E2 Consulting</a>
+      <a href="#m-e3">E3 PoV / PoP</a>
+      <a href="#m-e4">E4 Transformation</a>
+      <a href="#m-e5">E5 Outcome-Based</a>
+      <a href="#m-e6">E6 Risk-Sharing</a>
+      <a href="#m-e7">E7 Growth Architects</a>
+      <a href="#m-e8">E8 Forward Deployed</a>
+      <h5>// Part 03 — Offerings</h5>
+      <a href="#part3">Discovery Stack L1–L7</a>
+      <a href="#families">Offering Families F1–F7</a>
+      <h5>// Part 04 — Segmentation</h5>
+      <a href="#part4">Segment Matrix</a>
+      <a href="#micro">Micro-Segment Kits</a>
+      <h5>// Part 05 — Stages</h5>
+      <a href="#part5">Stage Playbooks</a>
+      <h5>// Part 06 — Situations</h5>
+      <a href="#part6">Situation Playbooks</a>
+      <h5>// Part 07 — Journeys</h5>
+      <a href="#part7">Engagement Journeys</a>
+      <h5>// Part 08 — Commercials</h5>
+      <a href="#part8">Pricing &amp; Guardrails</a>
+      <a href="#team">Team Architecture</a>
+      <a href="#framework">Decision Framework</a>
+      <h5>// Part 09 — Tools</h5>
+      <a href="#part9">Model Selector</a>
+      <a href="#kpis">KPI Library</a>
+      <h5>// Part 10 — Reference</h5>
+      <a href="#onboarding">Onboarding Process</a>
+      <a href="#part10">Glossary</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Engage</a>
+    </div>
+  </aside>
+
+  <!-- ---------- CONTENT ---------- -->
+  <main class="content">
+
+    <!-- ================= PART 1 ================= -->
+    <section class="section" id="part1">
+      <div class="sec-head">
+        <span class="sec-num">Part 01 <b>/ 10</b> — Framing</span>
+        <h2>One continuum. Eight ways to buy certainty.</h2>
+        <p>
+          Every ProfitMachines engagement sits on a single risk-and-commitment continuum —
+          from zero-risk advisory counsel to fully risk-coupled economic partnerships.
+          The right model is not a matter of budget size. It is a matter of how much
+          evidence, urgency, and shared downside the situation demands.
+        </p>
+      </div>
+
+      <div class="continuum">
+        <div class="cont-cell"><span class="cid">E1</span><h4>Advisory &amp; Insight</h4><div class="cont-q">Decision confidence</div></div>
+        <div class="cont-cell"><span class="cid">E2</span><h4>Consulting Services</h4><div class="cont-q">Playbooks &amp; architecture</div></div>
+        <div class="cont-cell"><span class="cid">E3</span><h4>Proof of Value / Performance</h4><div class="cont-q">Evidence of lift</div></div>
+        <div class="cont-cell"><span class="cid">E4</span><h4>Transformation</h4><div class="cont-q">GTM system installed</div></div>
+        <div class="cont-cell"><span class="cid">E5</span><h4>Outcome-Based</h4><div class="cont-q">Verified metric movement</div></div>
+        <div class="cont-cell"><span class="cid">E6</span><h4>Joint Risk-Sharing</h4><div class="cont-q">Aligned revenue growth</div></div>
+        <div class="cont-cell"><span class="cid">E7</span><h4>Resident Growth Architects</h4><div class="cont-q">Capability + output</div></div>
+        <div class="cont-cell"><span class="cid">E8</span><h4>Forward Deployed Accelerators</h4><div class="cont-q">Live pipeline in-market</div></div>
+      </div>
+      <div class="cont-rail"><span>◀ Low commitment · Low risk-share</span><span>High commitment · High risk-share ▶</span></div>
+      <div class="cont-gradient"></div>
+
+      <div class="tablewrap">
+        <table class="tight">
+          <caption>Table 1.0 — Engagement model summary</caption>
+          <thead>
+            <tr><th>#</th><th>Model</th><th>Risk Allocation</th><th>Fee Structure</th><th>Primary Outcome</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>E1</td><td>Advisory &amp; Insight Engagements</td><td>Client 100%</td><td>Fixed / retainer</td><td>Decision confidence</td></tr>
+            <tr><td>E2</td><td>Consulting Services</td><td>Client 100%</td><td>Fixed / T&amp;M</td><td>Playbooks &amp; architecture</td></tr>
+            <tr><td>E3</td><td>Proof of Value / Proof of Performance</td><td>Shared validation risk</td><td>Fixed, small &amp; creditable</td><td>Evidence of measured lift</td></tr>
+            <tr><td>E4</td><td>Transformation Engagements</td><td>Client 80% / PM 20%</td><td>Milestone fixed + adoption KPI</td><td>GTM system installed</td></tr>
+            <tr><td>E5</td><td>Outcome-Based Engagement</td><td>PM carries delivery risk</td><td>Reduced base + success fee</td><td>Verified metric movement</td></tr>
+            <tr><td>E6</td><td>Joint Risk-Sharing Engagement</td><td>50/50 economic coupling</td><td>Co-investment + P&amp;L share</td><td>Aligned revenue growth</td></tr>
+            <tr><td>E7</td><td>Resident Growth Architects (RGA)</td><td>Client 70% / PM 30%</td><td>Monthly embedded rate</td><td>In-house capability + output</td></tr>
+            <tr><td>E8</td><td>Forward Deployed Sales Accelerators (FDA)</td><td>PM carries execution risk</td><td>Base + performance accelerator</td><td>Live pipeline in-market</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ruleband">
+        <div><div class="rb-k">Speed to first impact</div><div class="rb-v">1–2<small>weeks · E8 FDA &amp; E3 PoV</small></div></div>
+        <div><div class="rb-k">Typical lift band</div><div class="rb-v">40–60%<small>faster revenue growth · client-reported</small></div></div>
+        <div><div class="rb-k">Return horizon</div><div class="rb-v">3–5×<small>ROI within first 12 months</small></div></div>
+        <div><div class="rb-k">Forecast accuracy</div><div class="rb-v">+50%<small>vs. rep-commit baseline</small></div></div>
+      </div>
+    </section>
+
+    <!-- SCOPE -->
+    <section class="section" id="scope">
+      <div class="sec-head">
+        <span class="sec-num">Part 01.b <b>/ 10</b> — Scope Definition</span>
+        <h2>What this catalog covers. And what it deliberately does not.</h2>
+      </div>
+      <div class="grid2">
+        <div class="card dark">
+          <span class="card-k">In scope</span>
+          <h4>Sales · Revenue · GTM · Demand</h4>
+          <ul>
+            <li>Market, demand, value, channel, competitive, customer &amp; PMF discovery</li>
+            <li>Pipeline architecture, GTM motion design, sales execution systems</li>
+            <li>Revenue intelligence, forecasting, deal velocity</li>
+            <li>Buyer intent, ICP, segmentation, whitespace &amp; micro-segment economics</li>
+            <li>Pricing, packaging &amp; offer architecture</li>
+            <li>Expansion &amp; cross-sell revenue discovery</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="card-k">Out of scope</span>
+          <h4>Handled by other ProfitMachines practices</h4>
+          <ul>
+            <li>Enterprise AI governance &amp; SOC2 / ISO programs</li>
+            <li>Back-office, finance &amp; HR automation</li>
+            <li>Post-sale support operations (except expansion revenue)</li>
+            <li>General cloud, infrastructure &amp; platform engineering</li>
+            <li>Security operations &amp; zero-trust architecture</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note">
+        <b>Two delivery tracks run through every offering.</b> Track A — <b>Consulting Services</b>:
+        human-led diagnostics, strategy, playbooks, enablement, governance. Track B — <b>AI-Driven Automation
+        Engagements</b>: agentic systems, ML models, workflow automation, telemetry pipelines.
+        Track A is about deciding what to do. Track B is about building the machine that does it.
+      </div>
+    </section>
+
+    <!-- ================= PART 2 ================= -->
+    <section class="section" id="part2">
+      <div class="sec-head">
+        <span class="sec-num">Part 02 <b>/ 10</b> — Model Deep-Dives</span>
+        <h2>The eight engagement models.</h2>
+        <p>
+          Each model below is defined by five things: how it is structured, who staffs it,
+          what it produces, who carries the risk, and when it is the right answer.
+          Sub-packages are pre-scoped variants that reduce sales friction and time-to-kickoff.
+        </p>
+      </div>
+
+      <!-- E1 -->
+      <article class="model" id="m-e1">
+        <div class="model-top">
+          <div class="model-code">E1</div>
+          <h3>Advisory &amp; Insight Engagements<span>Low commitment · Client carries execution</span></h3>
+          <div class="model-risk">We carry<b>Reputation only</b>Client carries<b>100% of execution</b></div>
+        </div>
+        <div class="model-body">
+          <div class="model-quote">"Give us the answer and the confidence to act."</div>
+          <dl class="attr">
+            <dt>Structure</dt><dd>2–6 week time-boxed sprints, or a quarterly advisory retainer (2–4 sessions per month)</dd>
+            <dt>Team</dt><dd>Principal / Partner + research analyst. No implementation resources deployed.</dd>
+            <dt>Deliverables</dt><dd>Discovery scorecard, market / whitespace thesis, decision memo, executive readout, board-ready narrative</dd>
+            <dt>Commercial</dt><dd>Fixed fee (sprint) or monthly retainer. 100% client-funded. 30–60 day out-clause on retainers.</dd>
+            <dt>Best for</dt><dd>Pre-decision moments: market entry, M&amp;A GTM diligence, pricing strategy, board or investor pressure</dd>
+            <dt>Best segments</dt><dd>Enterprise, Platform (API / Infra), Financial Services, Services (consultancies)</dd>
+            <dt>Conversion path</dt><dd>E1 Advisory → E3 PoV (validate the thesis) → E4 Transformation / E5 Outcome</dd>
+          </dl>
+          <div class="subpkg">
+            <h4>Sub-packages</h4>
+            <div class="tablewrap">
+              <table class="tight">
+                <thead><tr><th>ID</th><th>Sub-Package</th><th>Duration</th><th>Focus</th></tr></thead>
+                <tbody>
+                  <tr><td>E1-A</td><td>Executive Discovery Sprint</td><td>2 weeks</td><td>One discovery layer, one decision</td></tr>
+                  <tr><td>E1-B</td><td>Board &amp; Investor Revenue Diligence</td><td>3–4 weeks</td><td>Forecast defensibility, GTM health audit</td></tr>
+                  <tr><td>E1-C</td><td>Quarterly Growth Advisory Retainer</td><td>Ongoing</td><td>Recurring strategic counsel + early-warning signals</td></tr>
+                  <tr><td>E1-D</td><td>War-Room Advisory</td><td>1–2 weeks</td><td>Rapid response: competitor move, pipeline collapse, pricing pressure</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- E2 -->
+      <article class="model" id="m-e2">
+        <div class="model-top">
+          <div class="model-code">E2</div>
+          <h3>Consulting Services<span>Design the system · Client executes</span></h3>
+          <div class="model-risk">We carry<b>Quality of deliverables</b>Client carries<b>Adoption &amp; execution</b></div>
+        </div>
+        <div class="model-body">
+          <div class="model-quote">"Design the system. Hand us the blueprint."</div>
+          <dl class="attr">
+            <dt>Structure</dt><dd>4–12 week project-based engagements, phased: Diagnostic → Architecture → Playbook → Enablement</dd>
+            <dt>Team</dt><dd>Engagement lead + consultants + specialist (pricing / RevOps / messaging). Client team executes.</dd>
+            <dt>Deliverables</dt><dd>GTM architecture blueprint, ICP &amp; segmentation framework, demand &amp; messaging system, sales stage &amp; qualification system, channel economics model, enablement curriculum, tech matrix</dd>
+            <dt>Commercial</dt><dd>Fixed fee per phase with stage gates. Optional T&amp;M for open-scope work. 100% client-funded.</dd>
+            <dt>Best for</dt><dd>Organizations with capable teams that lack the method, framework, or bandwidth to design</dd>
+            <dt>Best segments</dt><dd>Services (all), Retail (omnichannel, luxury), Platform (vertical SaaS), Manufacturing, Healthcare</dd>
+            <dt>Conversion path</dt><dd>E2 Consulting → E4 Transformation (we help implement) or E7 RGA (we embed to execute)</dd>
+          </dl>
+          <div class="subpkg">
+            <h4>Sub-packages</h4>
+            <div class="tablewrap">
+              <table class="tight">
+                <thead><tr><th>ID</th><th>Sub-Package</th><th>Duration</th><th>Output</th></tr></thead>
+                <tbody>
+                  <tr><td>E2-A</td><td>Revenue Leak Diagnostic</td><td>2–3 weeks</td><td>Full funnel teardown + leak scorecard</td></tr>
+                  <tr><td>E2-B</td><td>GTM Architecture Engagement</td><td>6–8 weeks</td><td>Segmentation, ICP, motion design, channel mix</td></tr>
+                  <tr><td>E2-C</td><td>Sales System Design</td><td>4–6 weeks</td><td>Stages, qualification, forecasting method, coaching system</td></tr>
+                  <tr><td>E2-D</td><td>Demand &amp; Messaging Architecture</td><td>4–6 weeks</td><td>Category language, offer engineering, channel plan</td></tr>
+                  <tr><td>E2-E</td><td>Pricing &amp; Packaging Engagement</td><td>4–5 weeks</td><td>Value-to-price alignment, discount governance</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- E3 -->
+      <article class="model" id="m-e3">
+        <div class="model-top">
+          <div class="model-code">E3</div>
+          <h3>Proof of Value (PoV) / Proof of Performance (PoP)<span>Shared validation risk · Gate before scale</span></h3>
+          <div class="model-risk">We carry<b>Proof risk</b>Client carries<b>Small capped cost</b></div>
+        </div>
+        <div class="model-body">
+          <div class="model-quote">"Let's prove the lift before you scale the bet."</div>
+          <dl class="attr">
+            <dt>Structure</dt><dd>4–8 week time-boxed, hypothesis-driven, single-scope experiment with a pre-agreed success metric</dd>
+            <dt>Team</dt><dd>PoV lead + automation engineer + analyst. A named client-side counterpart is mandatory.</dd>
+            <dt>Method</dt><dd><b>Baseline → Hypothesis → Intervention → Measure → Gate Decision.</b> Success criteria locked in a PoV Charter before kickoff.</dd>
+            <dt>Commercial</dt><dd>Small fixed fee, 50–100% creditable against the subsequent larger engagement.</dd>
+            <dt>Gate</dt><dd>Explicit Go / No-Go at week 4–8 with statistical lift validation before any scale commitment</dd>
+            <dt>Best for</dt><dd>First-time buyers, skeptical boards, new segments or motions, automation buy-in</dd>
+          </dl>
+
+          <div class="subpkg">
+            <h4>PoV vs PoP — the distinction</h4>
+            <div class="tablewrap">
+              <table class="tight">
+                <thead><tr><th></th><th>PoV — Proof of Value</th><th>PoP — Proof of Performance</th></tr></thead>
+                <tbody>
+                  <tr><td>Question</td><td>"Does this capability create value at all?"</td><td>"Does this capability perform against committed numbers?"</td></tr>
+                  <tr><td>Metric</td><td>Directional lift (e.g. +25% reply rate)</td><td>Contracted performance (e.g. 40 SQLs/month at defined quality)</td></tr>
+                  <tr><td>Stage</td><td>Discovery / first-time validation</td><td>Pre-scale / pre-retainer commitment</td></tr>
+                  <tr><td>Exit</td><td>Design decision</td><td>Scale decision or performance guarantee trigger</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="subpkg">
+            <h4>Sub-packages</h4>
+            <div class="tablewrap">
+              <table class="tight">
+                <thead><tr><th>ID</th><th>Sub-Package</th><th>Duration</th><th>Test</th></tr></thead>
+                <tbody>
+                  <tr><td>E3-A</td><td>Autonomous SDR PoV</td><td>6 weeks</td><td>Agentic outbound vs. control on a defined segment</td></tr>
+                  <tr><td>E3-B</td><td>Propensity Model PoV</td><td>4–6 weeks</td><td>Scoring lift vs. current lead qualification</td></tr>
+                  <tr><td>E3-C</td><td>Pricing &amp; Offer PoV</td><td>4 weeks</td><td>A/B price / packaging test on a live segment</td></tr>
+                  <tr><td>E3-D</td><td>Channel Mix PoV</td><td>6 weeks</td><td>Reallocation experiment across two demand channels</td></tr>
+                  <tr><td>E3-E</td><td>Forecast Accuracy PoP</td><td>8 weeks</td><td>Algorithmic forecast vs. rep commit on a live quarter</td></tr>
+                  <tr><td>E3-F</td><td>Deal Velocity PoP</td><td>8 weeks</td><td>Stage-slip intervention measured on cycle time</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- E4 -->
+      <article class="model" id="m-e4">
+        <div class="model-top">
+          <div class="model-code">E4</div>
+          <h3>Transformation Engagements<span>Structural change · Time-boxed program</span></h3>
+          <div class="model-risk">We carry<b>20% at adoption KPIs</b>Client carries<b>80% + change risk</b></div>
+        </div>
+        <div class="model-body">
+          <div class="model-quote">"Install a revenue operating system across the GTM organization."</div>
+          <dl class="attr">
+            <dt>Structure</dt><dd>4–9 month programs, phased: Discover → Architect → Build → Deploy → Enable → Transfer</dd>
+            <dt>Team</dt><dd>Program director + workstream leads + automation engineers + enablement. Full RACI co-owned with the client.</dd>
+            <dt>Deliverables</dt><dd>Complete discovery stack (L1–L7), GTM operating model, automation layer in production, trained teams, governance cadence, measured lift vs. baseline</dd>
+            <dt>Commercial</dt><dd>Milestone-based fixed fees — 20% kickoff / 30% design / 30% deployment / 20% transfer &amp; adoption. 80% client-funded, 20% at-risk against adoption KPIs.</dd>
+            <dt>Best for</dt><dd>Companies with executive mandate and budget that need structural change, not just advice</dd>
+            <dt>Best segments</dt><dd>Enterprise, Mid-Market scale-ups, Platform (scale stage), Retail (scale stage), Financial Services</dd>
+            <dt>Typical trigger</dt><dd>New CRO / CGO, post-funding, board GTM mandate, post-M&amp;A integration</dd>
+          </dl>
+          <div class="subpkg">
+            <h4>Sub-packages</h4>
+            <div class="tablewrap">
+              <table class="tight">
+                <thead><tr><th>ID</th><th>Sub-Package</th><th>Duration</th><th>Scope</th></tr></thead>
+                <tbody>
+                  <tr><td>E4-A</td><td>Revenue OS Transformation</td><td>6–9 months</td><td>Full L1–L7 discovery + automation + enablement</td></tr>
+                  <tr><td>E4-B</td><td>Enterprise Motion Transformation</td><td>4–6 months</td><td>Upmarket GTM rebuild: segmentation, value engineering, deal intelligence, forecasting</td></tr>
+                  <tr><td>E4-C</td><td>Demand Engine Transformation</td><td>4–6 months</td><td>Inbound / outbound / ABM rebuild with agentic layer</td></tr>
+                  <tr><td>E4-D</td><td>Post-M&amp;A GTM Integration</td><td>5–7 months</td><td>Territory, stack, messaging, coverage consolidation</td></tr>
+                  <tr><td>E4-E</td><td>PLG → Sales-Assist Transformation</td><td>4–5 months</td><td>Hybrid motion design + conversion telemetry</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- E5 -->
+      <article class="model" id="m-e5">
+        <div class="model-top">
+          <div class="model-code">E5</div>
+          <h3>Outcome-Based Engagement<span>Performance-tied economics</span></h3>
+          <div class="model-risk">We carry<b>Primary delivery risk</b>Client carries<b>Base fee + access duty</b></div>
+        </div>
+        <div class="model-body">
+          <div class="model-quote">"We get paid when the metric moves."</div>
+          <dl class="attr">
+            <dt>Structure</dt><dd>6–12 month engagement: lower base fee + success fee tied to a verified metric</dd>
+            <dt>Team</dt><dd>Full delivery pod + dedicated analytics resource for independent verification</dd>
+            <dt>Metric design</dt><dd>Single or dual committed metric — qualified pipeline $, SQL volume, CAC reduction, win-rate lift, forecast accuracy, cycle-time reduction</dd>
+            <dt>Commercial</dt><dd><b>Base fee</b> (40–60% of standard rate) + <b>success fee</b> (1.5–3× base, paid against verified movement). KPIs, measurement window, and attribution rules locked in an <b>Outcome Charter</b> pre-signature.</dd>
+            <dt>Guardrails</dt><dd>Minimum client-side preconditions — data quality, CRM access, named counterpart availability. If unmet, KPI obligations are void.</dd>
+            <dt>Best for</dt><dd>Metric-driven cultures, PE-backed companies, operators who want aligned incentives</dd>
+            <dt>Best segments</dt><dd>Mid-Market, Platform (SaaS scale-ups), Retail (DTC), Staffing, Managed Services</dd>
+          </dl>
+          <div class="subpkg">
+            <h4>Sub-packages</h4>
+            <div class="tablewrap">
+              <table class="tight">
+                <thead><tr><th>ID</th><th>Sub-Package</th><th>Committed Metric</th></tr></thead>
+                <tbody>
+                  <tr><td>E5-A</td><td>Pipeline Generation Outcome</td><td>Qualified pipeline $ per quarter</td></tr>
+                  <tr><td>E5-B</td><td>CAC Efficiency Outcome</td><td>CAC reduction or LTV:CAC improvement</td></tr>
+                  <tr><td>E5-C</td><td>Win-Rate &amp; Deal Velocity Outcome</td><td>Lift in win rate + cycle time</td></tr>
+                  <tr><td>E5-D</td><td>Forecast Accuracy Outcome</td><td>Variance reduction vs. actuals</td></tr>
+                  <tr><td>E5-E</td><td>Expansion Revenue Outcome</td><td>NRR / upsell contribution</td></tr>
+                  <tr><td>E5-F</td><td>Demand Attribution Outcome</td><td>Attributable-sourced revenue %</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- E6 -->
+      <article class="model" id="m-e6">
+        <div class="model-top">
+          <div class="model-code">E6</div>
+          <h3>Joint Risk-Sharing Engagement<span>Co-investment · Shared P&amp;L</span></h3>
+          <div class="model-risk">We carry<b>~50% of economics</b>Client carries<b>~50% + authority</b></div>
+        </div>
+        <div class="model-body">
+          <div class="model-quote">"We co-invest. We share the upside. We share the downside."</div>
+          <dl class="attr">
+            <dt>Structure</dt><dd>9–18 month strategic partnership under a joint business plan with shared P&amp;L economics</dd>
+            <dt>Team</dt><dd>Integrated joint team, shared governance board (bi-weekly steering), co-located leads</dd>
+            <dt>Economics</dt><dd><b>Co-investment:</b> reduced fees from us + committed budget and effort from the client. <b>Shared upside:</b> 15–30% of incremental gross margin above an agreed baseline. <b>Shared downside:</b> capped loss both ways — our fee converts to a reduced rate if the baseline is missed.</dd>
+            <dt>Commercial</dt><dd>Hybrid: cost-recovery base + variable share + gain-share multiplier above stretch targets</dd>
+            <dt>Best for</dt><dd>Category-defining bets, new market creation, platform launches, transformations too large for a fee</dd>
+            <dt>Best segments</dt><dd>Enterprise, Platform (new verticals), Retail (new categories / geographies), Services (productization)</dd>
+          </dl>
+          <div class="subpkg">
+            <h4>Sub-packages</h4>
+            <div class="tablewrap">
+              <table class="tight">
+                <thead><tr><th>ID</th><th>Sub-Package</th><th>Shared Bet</th></tr></thead>
+                <tbody>
+                  <tr><td>E6-A</td><td>New Market Creation Partnership</td><td>Co-invest in building a category or geography demand engine</td></tr>
+                  <tr><td>E6-B</td><td>Product Launch Revenue Partnership</td><td>Revenue share on a new product or service line</td></tr>
+                  <tr><td>E6-C</td><td>Channel &amp; Ecosystem Partnership</td><td>Co-sell model with shared pipeline economics</td></tr>
+                  <tr><td>E6-D</td><td>Turnaround Partnership</td><td>Distress situation (pipeline collapse) with contingent recovery economics</td></tr>
+                  <tr><td>E6-E</td><td>Growth Equity / PE Portfolio Partnership</td><td>Multi-company rollout under one shared framework</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- E7 -->
+      <article class="model" id="m-e7">
+        <div class="model-top">
+          <div class="model-code">E7</div>
+          <h3>Resident Growth Architects (RGA)<span>Embedded capability · Builds the system</span></h3>
+          <div class="model-risk">We carry<b>30% at workstream KPIs</b>Client carries<b>70% + internal authority</b></div>
+        </div>
+        <div class="model-body">
+          <div class="model-quote">"Our expert sits inside your org and builds with your team."</div>
+          <dl class="attr">
+            <dt>Structure</dt><dd>6–18 month embedded assignment. RGA works inside the client org (3 days/week to full-time) with a delivery backbench at ProfitMachines</dd>
+            <dt>Team</dt><dd>1 Resident Growth Architect (senior, 8–15 yrs experience) + part-time automation engineer + quarterly principal review</dd>
+            <dt>Role</dt><dd>Owns a revenue workstream end-to-end — designs and executes alongside client teams, and transfers capability so the org can run it independently</dd>
+            <dt>Commercial</dt><dd>Monthly embedded rate with quarterly commitment. 70% guaranteed / 30% tied to workstream KPIs.</dd>
+            <dt>Best for</dt><dd>Senior capability without a full-time hire; capability-building mandates; sustained execution</dd>
+            <dt>Best segments</dt><dd>Services (scale-ups), Platform (traction &amp; scale), Retail (multi-channel), Financial Services, Healthcare</dd>
+            <dt>E7 vs E8</dt><dd>An RGA builds the <i>system</i> and the <i>team</i>. A Forward Deployed Accelerator drives <i>live deals</i>.</dd>
+          </dl>
+          <div class="subpkg">
+            <h4>Sub-packages</h4>
+            <div class="tablewrap">
+              <table class="tight">
+                <thead><tr><th>ID</th><th>Sub-Package</th><th>Workstream Owned</th></tr></thead>
+                <tbody>
+                  <tr><td>E7-A</td><td>RGA — Demand &amp; Pipeline Architect</td><td>Demand discovery &amp; pipeline telemetry</td></tr>
+                  <tr><td>E7-B</td><td>RGA — Sales System Architect</td><td>Stage design, qualification, forecasting, coaching</td></tr>
+                  <tr><td>E7-C</td><td>RGA — Revenue Intelligence Architect</td><td>Data mesh, attribution, deal intelligence</td></tr>
+                  <tr><td>E7-D</td><td>RGA — Pricing &amp; Packaging Architect</td><td>Offer architecture, discount governance</td></tr>
+                  <tr><td>E7-E</td><td>RGA — Growth Analytics Architect</td><td>Measurement, KPI governance, PoV / PoP design</td></tr>
+                  <tr><td>E7-F</td><td>RGA Pod</td><td>2–3 RGAs covering multiple workstreams at enterprise scale</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- E8 -->
+      <article class="model" id="m-e8">
+        <div class="model-top">
+          <div class="model-code">E8</div>
+          <h3>Forward Deployed Sales Accelerators (FDA)<span>In the field · In the deals</span></h3>
+          <div class="model-risk">We carry<b>Execution risk</b>Client carries<b>Base + rep alignment</b></div>
+        </div>
+        <div class="model-body">
+          <div class="model-quote">"We are in the field, in the deals, driving measurable pipeline this quarter."</div>
+          <dl class="attr">
+            <dt>Structure</dt><dd>3–6 month forward deployments. FDA operators run live sales motions in-market alongside client reps: outbound, qualification, deal acceleration, account penetration</dd>
+            <dt>Team</dt><dd>1–3 FDA operators (quota-carrying experience + automation tooling) + enablement lead + agentic automation layer</dd>
+            <dt>What we do live</dt><dd>Multi-channel outbound execution, ICP validation in real time, objection capture, deal-room construction, competitive displacement plays, pipeline generation and progression</dd>
+            <dt>Commercial</dt><dd>Base deployment fee + <b>performance accelerator</b> per verified metric (meetings booked, SQLs, pipeline $, deals progressed). Monthly payout against verified numbers.</dd>
+            <dt>Best for</dt><dd>Urgent pipeline needs, new motion validation, entering new segments, rep ramp augmentation, competitive displacement</dd>
+            <dt>Best segments</dt><dd>Every segment where speed to pipeline matters — strongest in Platform (traction &amp; scale), Services, Staffing, Mid-Market</dd>
+          </dl>
+          <div class="subpkg">
+            <h4>Sub-packages</h4>
+            <div class="tablewrap">
+              <table class="tight">
+                <thead><tr><th>ID</th><th>Squad</th><th>Duration</th><th>Mission</th></tr></thead>
+                <tbody>
+                  <tr><td>E8-A</td><td>New Market Entry Squad</td><td>3–6 months</td><td>Validate ICP &amp; demand in a new geography or vertical</td></tr>
+                  <tr><td>E8-B</td><td>Pipeline Rescue Squad</td><td>3 months</td><td>Immediate pipeline generation during drought</td></tr>
+                  <tr><td>E8-C</td><td>Enterprise Deal Acceleration</td><td>4–6 months</td><td>Forward-deployed on named strategic accounts</td></tr>
+                  <tr><td>E8-D</td><td>Rep Ramp Augmentation</td><td>3–4 months</td><td>Productivity support during hiring / onboarding lag</td></tr>
+                  <tr><td>E8-E</td><td>Competitive Displacement Squad</td><td>3–6 months</td><td>Targeted win-back and displacement plays</td></tr>
+                  <tr><td>E8-F</td><td>Product Launch Go-To-Market Squad</td><td>3–4 months</td><td>First-wave market response for new launches</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ================= PART 3 ================= -->
+    <section class="section" id="part3">
+      <div class="sec-head">
+        <span class="sec-num">Part 03 <b>/ 10</b> — Offerings</span>
+        <h2>The Discovery Stack.</h2>
+        <p>
+          Seven discovery layers form the spine of every offering. Each layer answers one
+          revenue question, and each is delivered through two tracks: consulting (A)
+          and AI-driven automation (B).
+        </p>
+      </div>
+
+      <div class="tablewrap">
+        <table>
+          <caption>Table 3.0 — Discovery layers L1–L7</caption>
+          <thead><tr><th>Layer</th><th>Core Question</th><th>Track A — Consulting</th><th>Track B — Automation</th></tr></thead>
+          <tbody>
+            <tr><td>L1 Market</td><td>"Where is the revenue we haven't mapped?"</td><td>TAM / whitespace mapping</td><td>Intent telemetry &amp; sizing models</td></tr>
+            <tr><td>L2 Demand</td><td>"What are buyers struggling to articulate?"</td><td>Demand &amp; message architecture</td><td>Signal-to-demand agents</td></tr>
+            <tr><td>L3 Value</td><td>"How do we prove ROI before the PO?"</td><td>Value engineering, business-case design</td><td>ROI model generators, deal intelligence</td></tr>
+            <tr><td>L4 Channel</td><td>"How do we distribute without dependency?"</td><td>Channel &amp; partner economics design</td><td>Channel mix optimizers</td></tr>
+            <tr><td>L5 Competitive</td><td>"Why do we win / lose?"</td><td>Win-loss, positioning teardown</td><td>Real-time competitive intel agents</td></tr>
+            <tr><td>L6 Customer</td><td>"Who is actually ready to buy?"</td><td>ICP &amp; buying-committee mapping</td><td>Propensity &amp; lookalike engines</td></tr>
+            <tr><td>L7 PMF</td><td>"What should we sell, to whom, at what price?"</td><td>Offer, packaging &amp; price architecture</td><td>Usage → revenue signal pipelines</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pullquote">
+        Most companies experience these challenges as isolated pains. They are
+        <b>interconnected symptoms</b> of one system that was never designed.
+      </div>
+
+      <div id="families">
+        <h3 style="font-size:28px;letter-spacing:-.025em;margin:44px 0 8px">Offering Families F1–F7</h3>
+        <p style="color:var(--ink-soft);max-width:72ch;margin-bottom:26px">
+          Each family maps to one discovery layer. Sub-offerings carry a track code:
+          <span class="pill a">A · Consulting</span> <span class="pill b">B · Automation</span>
+        </p>
+
+        <!-- F1 -->
+        <div class="tablewrap">
+          <table>
+            <caption>F1 — Market &amp; Whitespace Discovery (L1)</caption>
+            <thead><tr><th>ID</th><th>Sub-Offering</th><th>Track</th><th>Focus</th></tr></thead>
+            <tbody>
+              <tr><td>F1-A1</td><td>TAM / SAM / SOM &amp; Profit Pool Mapping</td><td><span class="pill a">Consulting</span></td><td>Sized whitespace, margin-driver map</td></tr>
+              <tr><td>F1-A2</td><td>Segment Attractiveness &amp; Entry Thesis</td><td><span class="pill a">Consulting</span></td><td>Prioritized entry order, risk / benefit</td></tr>
+              <tr><td>F1-A3</td><td>Micro-Segment Margin Mapping</td><td><span class="pill a">Consulting</span></td><td>Sub-segment economics</td></tr>
+              <tr><td>F1-B1</td><td>Predictive Market Sizing Engine</td><td><span class="pill b">Automation</span></td><td>ML-based TAM with live re-scoring</td></tr>
+              <tr><td>F1-B2</td><td>Dark-Funnel &amp; Intent Telemetry</td><td><span class="pill b">Automation</span></td><td>Unseen demand capture</td></tr>
+              <tr><td>F1-B3</td><td>Whitespace Alerting Agents</td><td><span class="pill b">Automation</span></td><td>Accounts / regions slipping out of coverage</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- F2 -->
+        <div class="tablewrap">
+          <table>
+            <caption>F2 — Demand &amp; Pipeline Discovery (L2)</caption>
+            <thead><tr><th>ID</th><th>Sub-Offering</th><th>Track</th><th>Focus</th></tr></thead>
+            <tbody>
+              <tr><td>F2-A1</td><td>Demand Architecture &amp; Channel Mix Design</td><td><span class="pill a">Consulting</span></td><td>Where demand comes from, and why</td></tr>
+              <tr><td>F2-A2</td><td>Messaging &amp; Offer Engineering</td><td><span class="pill a">Consulting</span></td><td>Category language, unarticulated needs</td></tr>
+              <tr><td>F2-A3</td><td>Pipeline Motion Design (Outbound / Inbound / ABM / PLG-assist)</td><td><span class="pill a">Consulting</span></td><td>Motion selection &amp; sequencing</td></tr>
+              <tr><td>F2-B1</td><td>Autonomous SDR / Demand Agent Fleet</td><td><span class="pill b">Automation</span></td><td>Multi-channel agentic outbound</td></tr>
+              <tr><td>F2-B2</td><td>Dynamic Messaging Mesh</td><td><span class="pill b">Automation</span></td><td>Personalization at scale</td></tr>
+              <tr><td>F2-B3</td><td>Pipeline Velocity Telemetry</td><td><span class="pill b">Automation</span></td><td>Stage-slip detection, real-time flow metrics</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- F3 -->
+        <div class="tablewrap">
+          <table>
+            <caption>F3 — Value &amp; Deal Discovery (L3)</caption>
+            <thead><tr><th>ID</th><th>Sub-Offering</th><th>Track</th><th>Focus</th></tr></thead>
+            <tbody>
+              <tr><td>F3-A1</td><td>Value Engineering &amp; ROI Business Case Studio</td><td><span class="pill a">Consulting</span></td><td>Pre-PO proof architecture</td></tr>
+              <tr><td>F3-A2</td><td>Pricing &amp; Packaging Architecture</td><td><span class="pill a">Consulting</span></td><td>Price-to-value alignment</td></tr>
+              <tr><td>F3-A3</td><td>Sales Stage &amp; Qualification System</td><td><span class="pill a">Consulting</span></td><td>MEDDPICC, deal rigor</td></tr>
+              <tr><td>F3-B1</td><td>Deal Intelligence &amp; Win-Probability Engine</td><td><span class="pill b">Automation</span></td><td>Risk scoring, next-best-action</td></tr>
+              <tr><td>F3-B2</td><td>Dynamic Deal Room &amp; ROI Model Agent</td><td><span class="pill b">Automation</span></td><td>Auto-generated business cases</td></tr>
+              <tr><td>F3-B3</td><td>Forecast Algorithm</td><td><span class="pill b">Automation</span></td><td>Commit / upside rigor, verifiable precision</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- F4 -->
+        <div class="tablewrap">
+          <table>
+            <caption>F4 — Channel &amp; Distribution Discovery (L4)</caption>
+            <thead><tr><th>ID</th><th>Sub-Offering</th><th>Track</th><th>Focus</th></tr></thead>
+            <tbody>
+              <tr><td>F4-A1</td><td>Channel Economics &amp; Partner Program Design</td><td><span class="pill a">Consulting</span></td><td>Margin, dependency, coverage</td></tr>
+              <tr><td>F4-A2</td><td>Coverage Model &amp; Territory Design</td><td><span class="pill a">Consulting</span></td><td>Field / inside / hybrid, quota, comp</td></tr>
+              <tr><td>F4-B1</td><td>Channel Mix Optimization Engine</td><td><span class="pill b">Automation</span></td><td>Budget &amp; effort reallocation</td></tr>
+              <tr><td>F4-B2</td><td>Partner Sourcing &amp; Performance Agents</td><td><span class="pill b">Automation</span></td><td>Partner scoring, co-sell routing</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- F5 -->
+        <div class="tablewrap">
+          <table>
+            <caption>F5 — Competitive &amp; Positioning Discovery (L5)</caption>
+            <thead><tr><th>ID</th><th>Sub-Offering</th><th>Track</th><th>Focus</th></tr></thead>
+            <tbody>
+              <tr><td>F5-A1</td><td>Win / Loss Teardown &amp; Positioning Thesis</td><td><span class="pill a">Consulting</span></td><td>Why deals resolve the way they do</td></tr>
+              <tr><td>F5-A2</td><td>Objection &amp; Negotiation Playbook</td><td><span class="pill a">Consulting</span></td><td>Late-stage loss prevention</td></tr>
+              <tr><td>F5-B1</td><td>Competitive Intelligence Agent</td><td><span class="pill b">Automation</span></td><td>Live pricing / messaging change alerts</td></tr>
+              <tr><td>F5-B2</td><td>Battlecard &amp; Objection-Response Autopilot</td><td><span class="pill b">Automation</span></td><td>Rep-surface competitive content</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- F6 -->
+        <div class="tablewrap">
+          <table>
+            <caption>F6 — Customer &amp; Propensity Discovery (L6)</caption>
+            <thead><tr><th>ID</th><th>Sub-Offering</th><th>Track</th><th>Focus</th></tr></thead>
+            <tbody>
+              <tr><td>F6-A1</td><td>ICP &amp; Buying-Committee Diagnostic</td><td><span class="pill a">Consulting</span></td><td>Who buys, who blocks, who champions</td></tr>
+              <tr><td>F6-A2</td><td>Account Tiering &amp; Coverage Strategy</td><td><span class="pill a">Consulting</span></td><td>Effort-to-propensity allocation</td></tr>
+              <tr><td>F6-B1</td><td>Propensity &amp; Lookalike Engine</td><td><span class="pill b">Automation</span></td><td>Neural scoring of the total addressable base</td></tr>
+              <tr><td>F6-B2</td><td>Buying Signal Aggregation &amp; Routing</td><td><span class="pill b">Automation</span></td><td>Sub-second lead-to-rep routing</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- F7 -->
+        <div class="tablewrap">
+          <table>
+            <caption>F7 — PMF, Offer &amp; Revenue Architecture Discovery (L7)</caption>
+            <thead><tr><th>ID</th><th>Sub-Offering</th><th>Track</th><th>Focus</th></tr></thead>
+            <tbody>
+              <tr><td>F7-A1</td><td>Offer &amp; Bundle Architecture</td><td><span class="pill a">Consulting</span></td><td>What to sell to whom at what price</td></tr>
+              <tr><td>F7-A2</td><td>R&amp;D-to-Revenue Alignment Review</td><td><span class="pill a">Consulting</span></td><td>Kill / scale / defend decisions</td></tr>
+              <tr><td>F7-A3</td><td>Expansion &amp; Cross-Sell Revenue Mapping</td><td><span class="pill a">Consulting</span></td><td>Installed-base revenue discovery</td></tr>
+              <tr><td>F7-B1</td><td>Usage → Revenue Signal Pipeline</td><td><span class="pill b">Automation</span></td><td>Product telemetry linked to revenue</td></tr>
+              <tr><td>F7-B2</td><td>Next-Best-Offer / Expansion Propensity Engine</td><td><span class="pill b">Automation</span></td><td>Timing of upsell motions</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PART 4 ================= -->
+    <section class="section" id="part4">
+      <div class="sec-head">
+        <span class="sec-num">Part 04 <b>/ 10</b> — Segmentation</span>
+        <h2>Segments, sub-segments, micro-segments.</h2>
+        <p>
+          The micro-segment — not the industry headline — determines which sub-offerings
+          get emphasized and how the engagement is structured. Track mix shown as
+          <b>A% Consulting / B% Automation</b>.
+        </p>
+      </div>
+
+      <h3 style="font-size:23px;margin:34px 0 6px">01 · Services Companies</h3>
+      <p style="color:var(--muted);font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">Agencies · SIs · Consultancies · Staffing · Managed Services</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Sub-Segment</th><th>Micro-Segment Examples</th><th>Priority Sub-Offerings</th><th>Track Mix</th><th>Key Discovery Question</th></tr></thead>
+          <tbody>
+            <tr><td>Creative / Marketing Agencies</td><td>Boutique, performance agency, brand studio, production house</td><td><span class="pill">F2-A2</span><span class="pill">F1-A3</span><span class="pill">F3-A2</span><span class="pill">F7-A1</span></td><td>70 / 30</td><td>"Which service lines actually carry margin?"</td></tr>
+            <tr><td>IT Services / System Integrators</td><td>Offshore dev shop, cloud SI, boutique engineering firm</td><td><span class="pill">F4-A1</span><span class="pill">F3-A1</span><span class="pill">F6-A1</span><span class="pill">F1-A1</span></td><td>55 / 45</td><td>"Which accounts hide multi-year services revenue?"</td></tr>
+            <tr><td>Management / Strategy Consultancies</td><td>Niche advisory, transformation boutique</td><td><span class="pill">F5-A1</span><span class="pill">F3-A2</span><span class="pill">F6-A2</span></td><td>75 / 25</td><td>"How do we productize and price our IP?"</td></tr>
+            <tr><td>Staffing &amp; Recruiting</td><td>Tech staffing, RPO, executive search</td><td><span class="pill">F2-A3</span><span class="pill">F6-B1</span><span class="pill">F4-A2</span><span class="pill">F2-B1</span></td><td>35 / 65</td><td>"Where is repeatable demand per role vertical?"</td></tr>
+            <tr><td>Managed Services / Outsourcing</td><td>BPO, ITO, security MSSP, cloud MSP</td><td><span class="pill">F4-A1</span><span class="pill">F7-A3</span><span class="pill">F3-B3</span><span class="pill">F1-B1</span></td><td>45 / 55</td><td>"Which contracts mask unprofitable delivery?"</td></tr>
+            <tr><td>Freelance / Micro-Consultancy</td><td>Independent operators, small pods</td><td><span class="pill">F2-A2</span><span class="pill">F7-A1</span></td><td>85 / 15</td><td>"What is my one-sentence differentiated offer?"</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size:23px;margin:34px 0 6px">02 · Retail &amp; Commerce</h3>
+      <p style="color:var(--muted);font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">B2C · DTC · Omnichannel · Marketplaces</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Sub-Segment</th><th>Micro-Segment Examples</th><th>Priority Sub-Offerings</th><th>Track Mix</th><th>Key Discovery Question</th></tr></thead>
+          <tbody>
+            <tr><td>DTC / E-Commerce Brands</td><td>Apparel, beauty, supplements, home goods</td><td><span class="pill">F1-A3</span><span class="pill">F2-B2</span><span class="pill">F4-B1</span><span class="pill">F6-B1</span></td><td>30 / 70</td><td>"Which micro-segments carry contribution margin after CAC?"</td></tr>
+            <tr><td>Marketplace Sellers / Aggregators</td><td>Amazon FBA, marketplace operators, roll-ups</td><td><span class="pill">F1-B2</span><span class="pill">F4-B1</span><span class="pill">F5-B1</span><span class="pill">F2-B2</span></td><td>25 / 75</td><td>"Which channels are we silently dependent on?"</td></tr>
+            <tr><td>Omnichannel / Chain Retail</td><td>Regional chains, department, specialty retail</td><td><span class="pill">F4-A1</span><span class="pill">F1-A2</span><span class="pill">F2-A1</span><span class="pill">F7-B1</span></td><td>50 / 50</td><td>"How do store and digital demand cannibalize or compound?"</td></tr>
+            <tr><td>Luxury / Premium Retail</td><td>Designer, jewelry, high-end lifestyle</td><td><span class="pill">F5-A1</span><span class="pill">F2-A2</span><span class="pill">F6-A2</span></td><td>70 / 30</td><td>"How do we protect price integrity while growing?"</td></tr>
+            <tr><td>Quick Commerce / Subscription</td><td>Meal kits, subscription boxes, on-demand delivery</td><td><span class="pill">F7-B1</span><span class="pill">F6-B1</span><span class="pill">F3-B2</span><span class="pill">F2-B2</span></td><td>25 / 75</td><td>"What signals predict churn vs. expansion?"</td></tr>
+            <tr><td>Retail Media &amp; Retail-as-a-Service</td><td>Retailer ad networks, white-label commerce</td><td><span class="pill">F7-A1</span><span class="pill">F3-A2</span><span class="pill">F1-A1</span><span class="pill">F7-B2</span></td><td>50 / 50</td><td>"How do we price media inventory against real demand?"</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size:23px;margin:34px 0 6px">03 · Platform Companies</h3>
+      <p style="color:var(--muted);font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">SaaS · Marketplaces · PLG · API &amp; Infrastructure</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Sub-Segment</th><th>Micro-Segment Examples</th><th>Priority Sub-Offerings</th><th>Track Mix</th><th>Key Discovery Question</th></tr></thead>
+          <tbody>
+            <tr><td>Horizontal SaaS</td><td>CRM-adjacent, HR tech, collaboration, finance SaaS</td><td><span class="pill">F3-B3</span><span class="pill">F2-A3</span><span class="pill">F6-B1</span><span class="pill">F7-A1</span></td><td>40 / 60</td><td>"Which verticals hide our highest win-rate?"</td></tr>
+            <tr><td>Vertical SaaS</td><td>Construction, legal tech, health tech, edtech</td><td><span class="pill">F1-A1</span><span class="pill">F3-A1</span><span class="pill">F6-A1</span><span class="pill">F4-A1</span></td><td>55 / 45</td><td>"Where is the un-mapped workflow we can own?"</td></tr>
+            <tr><td>PLG / Self-Serve SaaS</td><td>Dev tools, freemium productivity, design tools</td><td><span class="pill">F7-B1</span><span class="pill">F2-A3</span><span class="pill">F3-B1</span><span class="pill">F7-B2</span></td><td>25 / 75</td><td>"Which usage patterns predict paid conversion?"</td></tr>
+            <tr><td>Marketplaces (B2B / B2C)</td><td>Two-sided platforms, service marketplaces</td><td><span class="pill">F4-A1</span><span class="pill">F6-B1</span><span class="pill">F1-B1</span><span class="pill">F4-B2</span></td><td>40 / 60</td><td>"Which side of the marketplace is actually monetizable?"</td></tr>
+            <tr><td>API / Infrastructure Platforms</td><td>Payments, data infra, cloud tooling, ML ops</td><td><span class="pill">F3-A1</span><span class="pill">F5-A1</span><span class="pill">F2-A2</span><span class="pill">F3-B2</span></td><td>50 / 50</td><td>"How do we sell consumption into enterprise buying committees?"</td></tr>
+            <tr><td>Platform-in-Company</td><td>Retailer-built platforms, bank-built fintech rails</td><td><span class="pill">F7-A2</span><span class="pill">F1-A2</span><span class="pill">F3-A2</span></td><td>70 / 30</td><td>"How do we price an internal platform as a product?"</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size:23px;margin:34px 0 6px">04 · Adjacent Segments</h3>
+      <div class="tablewrap">
+        <table class="tight">
+          <thead><tr><th>Sub-Segment</th><th>Micro-Segment</th><th>Priority Sub-Offerings</th><th>Mix</th></tr></thead>
+          <tbody>
+            <tr><td>Manufacturing / Industrial</td><td>Components, OEM, industrial equipment, distribution</td><td><span class="pill">F4-A1</span><span class="pill">F3-A1</span><span class="pill">F4-A2</span><span class="pill">F6-A1</span></td><td>60 / 40</td></tr>
+            <tr><td>Financial Services</td><td>Payments, lending, insurance, wealth, fintech</td><td><span class="pill">F6-A1</span><span class="pill">F3-A1</span><span class="pill">F5-A1</span><span class="pill">F6-B2</span></td><td>55 / 45</td></tr>
+            <tr><td>Healthcare &amp; Life Sciences</td><td>Providers, medtech, digital health, pharma commercial</td><td><span class="pill">F6-A1</span><span class="pill">F2-A1</span><span class="pill">F3-A1</span></td><td>65 / 35</td></tr>
+            <tr><td>Media / Education / Info</td><td>Publishers, course creators, events, B2B media</td><td><span class="pill">F2-A2</span><span class="pill">F7-A1</span><span class="pill">F2-B2</span><span class="pill">F7-B2</span></td><td>40 / 60</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- MICRO KITS -->
+      <div id="micro">
+        <h3 style="font-size:23px;margin:40px 0 6px">Micro-Segment Discovery Kits</h3>
+        <p style="color:var(--ink-soft);max-width:72ch;margin-bottom:6px">
+          Pre-packaged, fixed-scope fast starts for micro-segments we see repeatedly. They cut
+          scoping time and start delivery inside two weeks.
+        </p>
+        <div class="tablewrap">
+          <table>
+            <thead><tr><th>Kit</th><th>Built For</th><th>Contents</th><th>Track</th><th>Duration</th></tr></thead>
+            <tbody>
+              <tr><td>Agency Margin Kit</td><td>Boutique &amp; mid-size agencies</td><td>F1-A3 + F7-A1 + F3-A2</td><td><span class="pill a">A</span></td><td>3 weeks</td></tr>
+              <tr><td>DTC Margin Kit</td><td>DTC &amp; e-commerce brands</td><td>F1-A3 + F2-B2 + F4-B1 + F6-B1</td><td><span class="pill b">B-heavy</span></td><td>6 weeks</td></tr>
+              <tr><td>Vertical SaaS Whitespace Kit</td><td>Vertical SaaS scale-ups</td><td>F1-A1 + F3-A1 + F6-A1</td><td><span class="pill a">A</span></td><td>4 weeks</td></tr>
+              <tr><td>PLG Conversion Kit</td><td>Self-serve / freemium platforms</td><td>F7-B1 + F6-B1 + F3-B1</td><td><span class="pill b">B</span></td><td>6 weeks</td></tr>
+              <tr><td>Enterprise Motion Kit</td><td>Any segment moving upmarket</td><td>F3-A1 + F6-A1 + F3-B2</td><td><span class="pill">A + B</span></td><td>10 weeks</td></tr>
+              <tr><td>Marketplace Liquidity Kit</td><td>Two-sided platforms</td><td>F4-A1 + F6-B1 + F1-B1</td><td><span class="pill">A + B</span></td><td>8 weeks</td></tr>
+              <tr><td>Channel De-Risk Kit</td><td>Platform-dependent sellers</td><td>F4-A1 + F4-B1 + F1-B2</td><td><span class="pill">A + B</span></td><td>8 weeks</td></tr>
+              <tr><td>Pricing &amp; Packaging Kit</td><td>SaaS &amp; services with discount creep</td><td>F3-A2 + F7-A1 + F3-B2</td><td><span class="pill a">A</span></td><td>5 weeks</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PART 5 ================= -->
+    <section class="section" id="part5">
+      <div class="sec-head">
+        <span class="sec-num">Part 05 <b>/ 10</b> — Company &amp; Product Stages</span>
+        <h2>Stage playbooks by product-line type.</h2>
+        <p>
+          Stages run <b>S1 Formation → S2 PMF → S3 Traction → S4 Scale → S5 Mature → S6 Reinvention</b>.
+          The same stage means very different things for a services firm, a retail brand, and a platform
+          company — so the playbook changes with the product line.
+        </p>
+      </div>
+
+      <h3 style="font-size:21px;margin:30px 0 10px">Services Companies</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Stage</th><th>Signature Situation</th><th>Discovery Focus</th><th>Recommended Bundle</th></tr></thead>
+          <tbody>
+            <tr><td>S1 Formation</td><td>Founder-led sales, undefined offer</td><td>L7 + L2</td><td>F7-A1 + F2-A2 <span class="mini">Consulting sprint · 3 weeks</span></td></tr>
+            <tr><td>S2 PMF</td><td>First repeatable clients, pricing unclear</td><td>L3 + L7</td><td>F3-A2 + F7-A1 + F3-A1</td></tr>
+            <tr><td>S3 Traction</td><td>Referral-dependent pipeline</td><td>L2 + L4</td><td>F2-A3 + F4-A1 + F2-B1</td></tr>
+            <tr><td>S4 Scale</td><td>Multi-service-line, capacity mismatch</td><td>L1 + L4 + L6</td><td>F1-A3 + F4-A2 + F6-B1 + F3-B3</td></tr>
+            <tr><td>S5 Mature</td><td>Margin erosion, partner dependence</td><td>L4 + L7</td><td>F4-A1 + F7-A3 + F3-A2</td></tr>
+            <tr><td>S6 Reinvention</td><td>Service lines commoditizing</td><td>L1 + L5</td><td>F1-A1 + F5-A1 + F7-A2</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size:21px;margin:30px 0 10px">Retail &amp; Commerce</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Stage</th><th>Signature Situation</th><th>Discovery Focus</th><th>Recommended Bundle</th></tr></thead>
+          <tbody>
+            <tr><td>S1 Formation</td><td>Launch, unknown demand pockets</td><td>L2 + L6</td><td>F2-B2 + F6-B1 <span class="mini">Automation-first · 6 weeks</span></td></tr>
+            <tr><td>S2 PMF</td><td>Product-market fit in one micro-segment</td><td>L1 + L6</td><td>F1-A3 + F6-B1 + F2-B2</td></tr>
+            <tr><td>S3 Traction</td><td>Scaling paid acquisition, CAC climbing</td><td>L2 + L4</td><td>F2-B2 + F4-B1 + F3-B1</td></tr>
+            <tr><td>S4 Scale</td><td>Multi-channel, channel conflict</td><td>L4 + L1</td><td>F4-A1 + F1-A2 + F4-B1 + F1-B2</td></tr>
+            <tr><td>S5 Mature</td><td>Saturation, margin pressure</td><td>L3 + L7</td><td>F3-A2 + F7-A1 + F7-B2</td></tr>
+            <tr><td>S6 Reinvention</td><td>New category / new geography</td><td>L1 + L2</td><td>F1-A1 + F1-A2 + F2-A1</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size:21px;margin:30px 0 10px">Platform Companies</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Stage</th><th>Signature Situation</th><th>Discovery Focus</th><th>Recommended Bundle</th></tr></thead>
+          <tbody>
+            <tr><td>S1 Formation</td><td>Pre-revenue, usage signals unclear</td><td>L7 + L6</td><td>F7-B1 + F6-A1</td></tr>
+            <tr><td>S2 PMF</td><td>Early paid conversion, PLG noise</td><td>L6 + L7</td><td>F7-B1 + F6-B1 + F3-B1</td></tr>
+            <tr><td>S3 Traction</td><td>Outbound layer added to PLG</td><td>L2 + L3</td><td>F2-A3 + F2-B1 + F3-A3 + F3-B3</td></tr>
+            <tr><td>S4 Scale</td><td>Enterprise motion, complex deals</td><td>L3 + L6</td><td>F3-A1 + F6-A1 + F3-B2 + F5-B2</td></tr>
+            <tr><td>S5 Mature</td><td>NRR focus, expansion engine</td><td>L7 + L6</td><td>F7-A3 + F7-B2 + F6-B1</td></tr>
+            <tr><td>S6 Reinvention</td><td>Platform extension / new vertical</td><td>L1 + L5</td><td>F1-A1 + F5-A1 + F7-A2</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        <b>Why product-line matters more than industry.</b> A services firm monetizes people-hours and
+        relationships. A retail brand monetizes margin per transaction and channel economics. A platform
+        monetizes usage, seats and consumption. The revenue question that unlocks growth is structurally
+        different in each — which is why identical industries can require opposite engagement designs.
+      </div>
+    </section>
+
+    <!-- ================= PART 6 ================= -->
+    <section class="section" id="part6">
+      <div class="sec-head">
+        <span class="sec-num">Part 06 <b>/ 10</b> — Business Situations</span>
+        <h2>When the company is in X, run Y.</h2>
+        <p>
+          Fifteen recurring business situations, cross-segment. Each playbook names the trigger
+          signals, the engagement sequence, and the time to first measurable movement.
+        </p>
+      </div>
+
+      <div class="tablewrap">
+        <table>
+          <caption>Table 6.0 — Situation playbooks B1–B15</caption>
+          <thead><tr><th>#</th><th>Situation</th><th>Trigger Signals</th><th>Engagement</th><th>Duration</th></tr></thead>
+          <tbody>
+            <tr><td>B1</td><td>Pipeline drought</td><td>Flat or declining pipeline, low reply rates</td><td>F1-B2 + F2-B2 + F2-B1 + F2-A3</td><td>6–8 wks</td></tr>
+            <tr><td>B2</td><td>High CAC / inefficient growth</td><td>CAC up, LTV:CAC down, budget pressure</td><td>F6-B1 + F4-B1 + F1-A3</td><td>8 wks</td></tr>
+            <tr><td>B3</td><td>Low win rate / stalled deals</td><td>Late-stage losses, discounting</td><td>F5-A1 + F5-A2 + F3-B1 + F3-A3</td><td>6 wks</td></tr>
+            <tr><td>B4</td><td>Forecast unreliability</td><td>Commit misses, investor / board scrutiny</td><td>F3-B3 + F3-A3 + F2-B3</td><td>6–10 wks</td></tr>
+            <tr><td>B5</td><td>New market / segment entry</td><td>Expansion bet, unknown demand</td><td>F1-A1 + F1-A2 + F1-B1</td><td>4–8 wks</td></tr>
+            <tr><td>B6</td><td>New product / service line launch</td><td>R&amp;D spend without pipeline clarity</td><td>F7-A1 + F7-A2 + F2-A2</td><td>4–6 wks</td></tr>
+            <tr><td>B7</td><td>Channel dependency risk</td><td>Single platform &gt;40% of revenue</td><td>F4-A1 + F4-B1 + F1-B2</td><td>8 wks</td></tr>
+            <tr><td>B8</td><td>Moving upmarket / enterprise motion</td><td>Deals growing, cycles lengthening</td><td>F3-A1 + F6-A1 + F3-B2 + F5-B2</td><td>12 wks</td></tr>
+            <tr><td>B9</td><td>Moving downmarket / velocity motion</td><td>Deals too expensive to serve</td><td>F7-A1 + F2-A3 + F2-B1</td><td>6 wks</td></tr>
+            <tr><td>B10</td><td>Post-M&amp;A GTM integration</td><td>Overlapping territories, duplicated stacks</td><td>F4-A2 + F6-A2 + F1-A3</td><td>12–16 wks</td></tr>
+            <tr><td>B11</td><td>Competitive displacement pressure</td><td>Win rate vs. a specific rival falling</td><td>F5-A1 + F5-B1 + F5-B2</td><td>6 wks</td></tr>
+            <tr><td>B12</td><td>Pricing underperformance</td><td>Discount creep, margin compression</td><td>F3-A2 + F3-B2 + F7-A1</td><td>6–8 wks</td></tr>
+            <tr><td>B13</td><td>Expansion revenue underperformance</td><td>Flat NRR, cross-sell misses</td><td>F7-A3 + F7-B2 + F6-B1</td><td>8 wks</td></tr>
+            <tr><td>B14</td><td>Demand invisibility</td><td>Deals "appear" without attributable source</td><td>F1-B2 + F2-B3 + F4-B1</td><td>8 wks</td></tr>
+            <tr><td>B15</td><td>Sales team ramp failure</td><td>Slow rep productivity, quota misses</td><td>F3-A3 + F5-A2 + F5-B2</td><td>6–10 wks</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size:21px;margin:34px 0 12px">Situation → Engagement Model Sequence</h3>
+      <div class="tablewrap">
+        <table class="tight">
+          <thead><tr><th>Situation</th><th>Recommended Model Sequence</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td>Pipeline drought</td><td><span class="pill r">E8 FDA</span> → <span class="pill">E5 Outcome</span></td><td>Speed first, structure later</td></tr>
+            <tr><td>High CAC / efficiency mandate</td><td><span class="pill">E3 PoV</span> → <span class="pill">E5 Outcome</span></td><td>Prove optimization before scaling commitment</td></tr>
+            <tr><td>Low win rate / stalled deals</td><td><span class="pill">E2</span> + <span class="pill r">E8 FDA</span></td><td>Design the system + live execution on open deals</td></tr>
+            <tr><td>Forecast unreliability</td><td><span class="pill">E3-F PoP</span> → <span class="pill">E5-D</span></td><td>Performance-proof the fix before scaling</td></tr>
+            <tr><td>New market / geo entry</td><td><span class="pill">E1</span> → <span class="pill">E3</span> → <span class="pill">E6</span></td><td>Validate → prove → co-invest</td></tr>
+            <tr><td>New product / service launch</td><td><span class="pill">E3</span> → <span class="pill r">E8-E</span> → <span class="pill">E5-E</span></td><td>Test → launch → scale with shared economics</td></tr>
+            <tr><td>Channel dependency risk</td><td><span class="pill">E2</span> + <span class="pill">E4-D</span></td><td>Structural diversification required</td></tr>
+            <tr><td>Moving upmarket</td><td><span class="pill">E2</span> + <span class="pill">E7 RGA</span> + <span class="pill">E3-B</span></td><td>Capability build + validation</td></tr>
+            <tr><td>Moving downmarket / velocity</td><td><span class="pill r">E8 FDA</span> + <span class="pill">E5</span></td><td>Volume motion, performance-tied</td></tr>
+            <tr><td>Post-M&amp;A GTM integration</td><td><span class="pill k">E4-D</span></td><td>Multi-workstream structural change</td></tr>
+            <tr><td>Competitive displacement pressure</td><td><span class="pill r">E8-E FDA</span> + <span class="pill">E3 PoV</span></td><td>Live tactical response + proof</td></tr>
+            <tr><td>Pricing underperformance</td><td><span class="pill">E2-E</span> + <span class="pill">E3-C PoV</span></td><td>Design + live market validation</td></tr>
+            <tr><td>Expansion underperformance</td><td><span class="pill">E5-E</span> + <span class="pill">E7-D RGA</span></td><td>Aligned economics + embedded capability</td></tr>
+            <tr><td>Demand invisibility</td><td><span class="pill">E3 PoV</span> → <span class="pill k">E4</span></td><td>Instrument first, then rebuild</td></tr>
+            <tr><td>Rep ramp failure</td><td><span class="pill r">E8-D FDA</span> + <span class="pill">E2-C</span></td><td>Augment now, systematize later</td></tr>
+            <tr><td>PE portfolio GTM uplift</td><td><span class="pill g">E6-E</span> + <span class="pill">E5</span></td><td>Shared framework + outcome alignment</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ================= PART 7 ================= -->
+    <section class="section" id="part7">
+      <div class="sec-head">
+        <span class="sec-num">Part 07 <b>/ 10</b> — Journeys</span>
+        <h2>Models chain. Clients rarely buy one.</h2>
+        <p>
+          Most engagements progress through a sequenced journey. The starting model matters less
+          than the direction of travel — and every journey is designed so the client's risk
+          decreases as evidence accumulates.
+        </p>
+      </div>
+
+      <div class="journey">
+        <div class="journey-head"><h4>Journey A — "Prove then Scale"</h4><span class="jtag">Most common · Skeptical buyers</span></div>
+        <div class="journey-steps">
+          <div class="jstep"><span class="jn">STEP 01</span><strong>E1 Advisory</strong><span class="jd">2 WEEKS</span><p>Frame the question. Build the thesis.</p></div>
+          <div class="jstep"><span class="jn">STEP 02</span><strong>E3 PoV</strong><span class="jd">6 WEEKS</span><p>Prove directional lift against a baseline.</p></div>
+          <div class="jstep"><span class="jn">STEP 03</span><strong>E4 Transformation</strong><span class="jd">6 MONTHS</span><p>Install the system across the GTM org.</p></div>
+          <div class="jstep"><span class="jn">STEP 04</span><strong>E5 Outcome</strong><span class="jd">ONGOING</span><p>Operate against committed metrics.</p></div>
+        </div>
+      </div>
+
+      <div class="journey">
+        <div class="journey-head"><h4>Journey B — "Speed First"</h4><span class="jtag">Urgent pipeline · New motion</span></div>
+        <div class="journey-steps">
+          <div class="jstep"><span class="jn">STEP 01</span><strong>E8 FDA</strong><span class="jd">3 MONTHS</span><p>Operators in-market, pipeline live.</p></div>
+          <div class="jstep"><span class="jn">STEP 02</span><strong>E2 Consulting</strong><span class="jd">PARALLEL</span><p>Design the system while selling.</p></div>
+          <div class="jstep"><span class="jn">STEP 03</span><strong>E7 RGA</strong><span class="jd">6–12 MONTHS</span><p>Embed and transfer capability.</p></div>
+        </div>
+      </div>
+
+      <div class="journey">
+        <div class="journey-head"><h4>Journey C — "Partnership Path"</h4><span class="jtag">Strategic bets · Market creation</span></div>
+        <div class="journey-steps">
+          <div class="jstep"><span class="jn">STEP 01</span><strong>E2 Consulting</strong><span class="jd">2 MONTHS</span><p>Architecture and joint thesis.</p></div>
+          <div class="jstep"><span class="jn">STEP 02</span><strong>E3 PoP</strong><span class="jd">2 MONTHS</span><p>Performance proof against committed numbers.</p></div>
+          <div class="jstep"><span class="jn">STEP 03</span><strong>E6 Risk-Sharing</strong><span class="jd">12–18 MONTHS</span><p>Co-invest and share the economics.</p></div>
+        </div>
+      </div>
+
+      <div class="journey">
+        <div class="journey-head"><h4>Journey D — "Capability Build"</h4><span class="jtag">Own it long-term</span></div>
+        <div class="journey-steps">
+          <div class="jstep"><span class="jn">STEP 01</span><strong>E2 Consulting</strong><span class="jd">DESIGN</span><p>Method, framework, blueprint.</p></div>
+          <div class="jstep"><span class="jn">STEP 02</span><strong>E7 RGA</strong><span class="jd">BUILD</span><p>Execute alongside the team, transfer skill.</p></div>
+          <div class="jstep"><span class="jn">STEP 03</span><strong>E1 Advisory</strong><span class="jd">ONGOING</span><p>Counsel on retainer as the org runs it.</p></div>
+        </div>
+      </div>
+
+      <div class="journey">
+        <div class="journey-head"><h4>Journey E — "Transformation with Skin in the Game"</h4><span class="jtag">Enterprise scale · Deepening commitment</span></div>
+        <div class="journey-steps">
+          <div class="jstep"><span class="jn">STEP 01</span><strong>E1 Advisory</strong><span class="jd">DIAGNOSIS</span><p>Executive-level truth finding.</p></div>
+          <div class="jstep"><span class="jn">STEP 02</span><strong>E4 Transformation</strong><span class="jd">80 / 20 RISK</span><p>Install the operating system.</p></div>
+          <div class="jstep"><span class="jn">STEP 03</span><strong>E5 Outcome</strong><span class="jd">PERFORMANCE</span><p>Full tie to verified metrics.</p></div>
+          <div class="jstep"><span class="jn">STEP 04</span><strong>E6 (optional)</strong><span class="jd">DEEPENING</span><p>Convert to shared-economics partnership.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PART 8 ================= -->
+    <section class="section" id="part8">
+      <div class="sec-head">
+        <span class="sec-num">Part 08 <b>/ 10</b> — Commercials</span>
+        <h2>Commercial mechanics &amp; guardrails.</h2>
+        <p>
+          Alignment is engineered, not hoped for. Every model has a defined pricing structure,
+          a pre-signature charter where risk is involved, and a clean off-ramp.
+        </p>
+      </div>
+
+      <div class="tablewrap">
+        <table>
+          <caption>Table 8.0 — Pricing structures by model</caption>
+          <thead><tr><th>Model</th><th>Base</th><th>Variable</th><th>Payment Terms</th><th>Minimum Commitment</th></tr></thead>
+          <tbody>
+            <tr><td>E1 Advisory</td><td>Fixed / retainer</td><td>—</td><td>50% upfront or monthly</td><td>2 wks (sprint) / 3 mo (retainer)</td></tr>
+            <tr><td>E2 Consulting</td><td>Fixed per phase</td><td>T&amp;M for open scope</td><td>Milestone-based</td><td>1 project phase</td></tr>
+            <tr><td>E3 PoV / PoP</td><td>Small fixed</td><td>Creditable against scale</td><td>50% upfront</td><td>4–8 weeks</td></tr>
+            <tr><td>E4 Transformation</td><td>Milestone fixed</td><td>20% tied to adoption KPIs</td><td>Phase gates</td><td>4 months</td></tr>
+            <tr><td>E5 Outcome</td><td>Reduced base (40–60%)</td><td>Success fee 1.5–3× base</td><td>Monthly base + quarterly success</td><td>2 measurement cycles</td></tr>
+            <tr><td>E6 Risk-Sharing</td><td>Cost-recovery base</td><td>Revenue / margin share</td><td>Monthly + quarterly true-up</td><td>9 months</td></tr>
+            <tr><td>E7 RGA</td><td>Monthly embedded rate</td><td>30% tied to workstream KPIs</td><td>Monthly</td><td>6 months</td></tr>
+            <tr><td>E8 FDA</td><td>Deployment fee</td><td>Per-metric accelerators</td><td>Monthly</td><td>3 months</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size:21px;margin:32px 0 12px">Seven Standard Guardrails</h3>
+      <div class="stackflow">
+        <div class="flowrow"><div><h4>PoV / PoP Charter</h4><p>Success metric, baseline, attribution method, and gate criteria are defined and signed <i>before</i> kickoff — never retrofitted.</p></div></div>
+        <div class="flowrow"><div><h4>Outcome Charter</h4><p>For E5 / E6: KPIs, measurement window, data access, and client preconditions are locked pre-signature. Protects both parties.</p></div></div>
+        <div class="flowrow"><div><h4>Data &amp; Access Precondition</h4><p>All outcome- and risk-bearing models require CRM access, clean baseline data, and a named counterpart. If unmet, KPI obligations are void.</p></div></div>
+        <div class="flowrow"><div><h4>Attribution Rules</h4><p>What counts as sourced vs. influenced is agreed before measurement begins — not negotiated after the number lands.</p></div></div>
+        <div class="flowrow"><div><h4>Conversion Credit</h4><p>PoV and PoP fees credit 50–100% against a subsequent larger engagement. Proof should never be paid for twice.</p></div></div>
+        <div class="flowrow"><div><h4>Exit &amp; Off-Ramp</h4><p>Every model carries a defined exit: PoV go/no-go gate, quarterly out-clause on retainers, milestone exit on transformations.</p></div></div>
+        <div class="flowrow"><div><h4>Capability Transfer Clause</h4><p>On E4, E7 and E8, all enablement content and playbooks transfer to client IP at completion. We build machines you can own.</p></div></div>
+      </div>
+
+      <!-- TEAM -->
+      <div id="team">
+        <h3 style="font-size:21px;margin:38px 0 12px">Team &amp; Role Architecture</h3>
+        <div class="tablewrap">
+          <table class="tight">
+            <thead><tr><th>Role</th><th>Attached Models</th><th>Responsibility</th></tr></thead>
+            <tbody>
+              <tr><td>Principal / Partner</td><td>E1, E6 governance</td><td>Strategic counsel, decision memos, board readouts</td></tr>
+              <tr><td>Engagement Lead</td><td>E2, E4</td><td>Program ownership, deliverable quality, client management</td></tr>
+              <tr><td>Resident Growth Architect (RGA)</td><td>E7</td><td>Embedded workstream ownership + capability transfer</td></tr>
+              <tr><td>Forward Deployed Sales Accelerator (FDA)</td><td>E8</td><td>In-market execution, live pipeline generation</td></tr>
+              <tr><td>Automation Engineer</td><td>E3, E4, E5, E8</td><td>Agentic systems, telemetry, scoring models</td></tr>
+              <tr><td>Revenue Analyst</td><td>E3, E5, E7</td><td>KPI instrumentation, lift validation, attribution</td></tr>
+              <tr><td>Enablement Lead</td><td>E2, E4, E8</td><td>Training, playbook rollout, adoption measurement</td></tr>
+              <tr><td>Performance Auditor</td><td>E5, E6</td><td>Independent metric verification — fairness for both sides</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- FRAMEWORK -->
+      <div id="framework">
+        <h3 style="font-size:21px;margin:38px 0 12px">Model Selection — Eight Questions</h3>
+        <div class="grid2">
+          <div class="card"><span class="card-k">Q1</span><h4>Is the client in a decision, not yet committed to action?</h4><p>→ Start with <b>E1 Advisory</b>. Speed of clarity is the product.</p></div>
+          <div class="card"><span class="card-k">Q2</span><h4>Is the need structural design with an in-house team to execute?</h4><p>→ Start with <b>E2 Consulting</b>. We design, they run.</p></div>
+          <div class="card"><span class="card-k">Q3</span><h4>Is there skepticism, a first-time bet, or a need for evidence before scale?</h4><p>→ Start with <b>E3 PoV / PoP</b>. Small fee, hard gate.</p></div>
+          <div class="card"><span class="card-k">Q4</span><h4>Is there executive mandate + budget for multi-workstream change?</h4><p>→ Start with <b>E4 Transformation</b>. Milestone-gated program.</p></div>
+          <div class="card"><span class="card-k">Q5</span><h4>Is the client unwilling to pay full fee without performance assurance?</h4><p>→ Start with <b>E5 Outcome-Based</b>. Aligned economics.</p></div>
+          <div class="card"><span class="card-k">Q6</span><h4>Is the opportunity large enough to justify co-investment and shared upside?</h4><p>→ Start with <b>E6 Joint Risk-Sharing</b>. Skin in the game.</p></div>
+          <div class="card"><span class="card-k">Q7</span><h4>Does the client need senior capability embedded without hiring?</h4><p>→ Start with <b>E7 Resident Growth Architects</b>.</p></div>
+          <div class="card accentbg"><span class="card-k" style="color:rgba(242,238,230,.8)">Q8</span><h4>Is there urgency for live pipeline or closed deals this quarter?</h4><p style="color:rgba(242,238,230,.9)">→ Start with <b>E8 Forward Deployed Sales Accelerators</b>. In the field this week.</p></div>
+        </div>
+      </div>
+
+      <!-- COMPARISON -->
+      <div class="tablewrap">
+        <table>
+          <caption>Table 8.2 — Model comparison card (for sales use)</caption>
+          <thead><tr><th>Model</th><th>Speed to Start</th><th>Speed to Impact</th><th>Client Risk</th><th>Our Risk</th><th>Expansion Potential</th><th>Typical Deal Size</th></tr></thead>
+          <tbody>
+            <tr><td>E1 Advisory</td><td>Immediate</td><td>Slow (advisory only)</td><td>Low</td><td>Very low</td><td>Low–Medium</td><td>$</td></tr>
+            <tr><td>E2 Consulting</td><td>1–2 weeks</td><td>Medium</td><td>Medium</td><td>Low</td><td>Medium</td><td>$$</td></tr>
+            <tr><td>E3 PoV / PoP</td><td>2 weeks</td><td>Fast (4–8 wks)</td><td>Very low</td><td>Medium</td><td>High (gateway)</td><td> (creditable)</td></tr>
+            <tr><td>E4 Transformation</td><td>3–4 weeks</td><td>Slow (months)</td><td>Medium–High</td><td>Medium</td><td>Very high</td><td>$$$$$$</td></tr>
+            <tr><td>E5 Outcome</td><td>2–3 weeks</td><td>Medium</td><td>Low (base only)</td><td>High</td><td>High</td><td>$$ + upside</td></tr>
+            <tr><td>E6 Risk-Sharing</td><td>4–6 weeks</td><td>Slow</td><td>Medium</td><td>High</td><td>Very high</td><td>$ + share</td></tr>
+            <tr><td>E7 RGA</td><td>2 weeks</td><td>Medium</td><td>Medium</td><td>Medium</td><td>High</td><td>$$ (recurring)</td></tr>
+            <tr><td>E8 FDA</td><td>1–2 weeks</td><td>Very fast</td><td>Low</td><td>High</td><td>High</td><td>$$$$ + accelerator</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ================= PART 9 ================= -->
+    <section class="section" id="part9">
+      <div class="sec-head">
+        <span class="sec-num">Part 09 <b>/ 10</b> — Tools</span>
+        <h2>Model selector.</h2>
+        <p>Select a segment and a business situation. The engine returns the recommended engagement model sequence from the matrices in Parts 04 and 06.</p>
+      </div>
+
+      <div class="selector">
+        <div class="sel-grid">
+          <div class="field">
+            <label for="sel-segment">Segment / Product Line</label>
+            <select id="sel-segment">
+              <option value="services">Services Company</option>
+              <option value="retail">Retail &amp; Commerce</option>
+              <option value="platform">Platform Company</option>
+              <option value="industrial">Manufacturing / Industrial</option>
+              <option value="finserv">Financial Services</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="sel-situation">Business Situation</label>
+            <select id="sel-situation">
+              <option value="B1">B1 — Pipeline drought</option>
+              <option value="B2">B2 — High CAC / inefficient growth</option>
+              <option value="B3">B3 — Low win rate / stalled deals</option>
+              <option value="B4">B4 — Forecast unreliability</option>
+              <option value="B5">B5 — New market / segment entry</option>
+              <option value="B6">B6 — New product / service line launch</option>
+              <option value="B7">B7 — Channel dependency risk</option>
+              <option value="B8">B8 — Moving upmarket</option>
+              <option value="B9">B9 — Moving downmarket / velocity</option>
+              <option value="B10">B10 — Post-M&amp;A GTM integration</option>
+              <option value="B11">B11 — Competitive displacement pressure</option>
+              <option value="B12">B12 — Pricing underperformance</option>
+              <option value="B13">B13 — Expansion underperformance</option>
+              <option value="B14">B14 — Demand invisibility</option>
+              <option value="B15">B15 — Sales team ramp failure</option>
+            </select>
+          </div>
+          <div class="field">
+            <button class="btn" id="sel-run">Generate Recommendation</button>
+          </div>
+        </div>
+        <div class="sel-out" id="sel-out">
+          <span class="kicker" id="out-kicker">Recommended engagement sequence</span>
+          <div class="out-seq" id="out-seq"></div>
+          <p id="out-note"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- KPI LIBRARY -->
+    <section class="section" id="kpis">
+      <div class="sec-head">
+        <span class="sec-num">Part 09.b <b>/ 10</b> — KPI Library</span>
+        <h2>What we measure. By discovery layer.</h2>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Layer</th><th>Leading Indicators</th><th>Lagging Indicators</th><th>Typical PoV Success Bar</th></tr></thead>
+          <tbody>
+            <tr><td>L1 Market</td><td>Whitespace accounts identified, intent signal volume</td><td>New-segment sourced pipeline $</td><td>≥ 200 qualified whitespace accounts mapped</td></tr>
+            <tr><td>L2 Demand</td><td>Reply rate, meeting rate, signal-to-MQL conversion</td><td>Pipeline created, CAC</td><td>+25% reply rate vs. control</td></tr>
+            <tr><td>L3 Value</td><td>Business-case attach rate, POC conversion</td><td>Win rate, average deal size, cycle time</td><td>+15pts POC-to-close conversion</td></tr>
+            <tr><td>L4 Channel</td><td>Channel-attributed demand share, partner-sourced SQLs</td><td>Blended CAC, margin per channel</td><td>−20% dependency on top channel</td></tr>
+            <tr><td>L5 Competitive</td><td>Competitive mentions handled, battlecard usage</td><td>Win rate vs. target competitor</td><td>+10pts win rate in contested deals</td></tr>
+            <tr><td>L6 Customer</td><td>Propensity score coverage, routing speed</td><td>SQL-to-close rate, CAC</td><td>2× qualification accuracy vs. baseline</td></tr>
+            <tr><td>L7 PMF</td><td>Usage-to-revenue signal coverage</td><td>NRR, expansion revenue, R&amp;D efficiency</td><td>Measurable conversion lift in one cohort</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ONBOARDING -->
+    <section class="section" id="onboarding">
+      <div class="sec-head">
+        <span class="sec-num">Part 09.c <b>/ 10</b> — Onboarding</span>
+        <h2>How an engagement starts.</h2>
+      </div>
+      <div class="grid3">
+        <div class="card"><span class="card-k">Week 0</span><h4>Fit &amp; Frame</h4><p>60-minute working session. Situation, segment, stage. We name the discovery layer with the highest leverage and the model that fits the risk profile.</p></div>
+        <div class="card"><span class="card-k">Week 0–1</span><h4>Charter</h4><p>Scope, success metric, baseline, attribution rules, preconditions, and off-ramp. Signed before any delivery resource is scheduled.</p></div>
+        <div class="card"><span class="card-k">Week 1</span><h4>Baseline Lock</h4><p>Data access, CRM instrumentation, metric baseline frozen. Everything after this point is measured against a fixed reference.</p></div>
+        <div class="card"><span class="card-k">Week 1–2</span><h4>Deployment</h4><p>Team assigned by model: principal, engagement lead, RGA, FDA squad, or automation pod. Kickoff with client counterparts.</p></div>
+        <div class="card"><span class="card-k">Weekly</span><h4>Working Cadence</h4><p>Weekly delivery sync, live telemetry dashboard, and a running decision log. No surprises at the readout.</p></div>
+        <div class="card"><span class="card-k">Gate</span><h4>Go / No-Go &amp; Scale</h4><p>Formal gate review against the charter. Options: scale, iterate, transfer, or exit cleanly — with credit applied to the next engagement.</p></div>
+      </div>
+    </section>
+
+    <!-- ================= PART 10 ================= -->
+    <section class="section" id="part10">
+      <div class="sec-head">
+        <span class="sec-num">Part 10 <b>/ 10</b> — Reference</span>
+        <h2>Glossary.</h2>
+      </div>
+      <dl class="gloss">
+        <div><dt>PoV — Proof of Value</dt><dd>A time-boxed, hypothesis-driven experiment testing whether a capability creates directional value before scale commitment.</dd></div>
+        <div><dt>PoP — Proof of Performance</dt><dd>A test against contracted performance numbers — the gate before a performance-tied or retainer engagement.</dd></div>
+        <div><dt>RGA — Resident Growth Architect</dt><dd>A senior ProfitMachines operator embedded inside the client org to own a revenue workstream and transfer capability.</dd></div>
+        <div><dt>FDA — Forward Deployed Sales Accelerator</dt><dd>A quota-experienced operator deployed in-market to run live sales motions and generate measurable pipeline.</dd></div>
+        <div><dt>Track A / Track B</dt><dd>Track A = Consulting Services (human-led). Track B = AI-Driven Automation Engagements (systems-led).</dd></div>
+        <div><dt>L1–L7 Discovery Stack</dt><dd>The seven revenue discovery layers: Market, Demand, Value, Channel, Competitive, Customer, PMF.</dd></div>
+        <div><dt>ICP</dt><dd>Ideal Customer Profile — the firmographic, behavioral and intent definition of accounts most likely to buy and expand.</dd></div>
+        <div><dt>MEDDPICC</dt><dd>Qualification framework: Metrics, Economic buyer, Decision criteria, Decision process, Paper process, Identify pain, Champion, Competition.</dd></div>
+        <div><dt>NRR / NRR erosion</dt><dd>Net Revenue Retention — expansion minus contraction and churn within the installed base.</dd></div>
+        <div><dt>Outcome Charter</dt><dd>The pre-signature document locking KPIs, measurement window, attribution rules and preconditions for outcome-based models.</dd></div>
+        <div><dt>Dark funnel</dt><dd>Demand activity invisible to standard attribution — communities, dark social, private research, untracked intent.</dd></div>
+        <div><dt>Profit Pool</dt><dd>The location of disproportionate margin inside a market — the target of Discovery Layer L1.</dd></div>
+        <div><dt>Micro-Segment Kit</dt><dd>A pre-packaged, fixed-scope fast-start engagement built for a recurring micro-segment.</dd></div>
+        <div><dt>Gain-share multiplier</dt><dd>The variable uplift applied to shared economics when stretch targets are exceeded in E6 partnerships.</dd></div>
+      </dl>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="sec-head">
+        <span class="sec-num">Part 10.b <b>/ 10</b> — FAQ</span>
+        <h2>Frequently asked.</h2>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>Can we start small and expand later?</summary>
+          <p>That is the designed path. Most clients enter through a Micro-Segment Kit or an E3 Proof of Value, where 50–100% of the fee credits against the next engagement. The entire model architecture is built to let risk decrease as evidence accumulates.</p>
+        </details>
+        <details>
+          <summary>How is "verified" performance actually verified?</summary>
+          <p>Baseline is locked before deployment. A dedicated Revenue Analyst instruments the measurement, and for E5 / E6 engagements a Performance Auditor — independent of the delivery pod — signs off the numbers before any success fee is invoiced. Attribution rules are written into the charter before kickoff.</p>
+        </details>
+        <details>
+          <summary>What happens if our data or CRM is a mess?</summary>
+          <p>It is more common than not. Outcome- and risk-bearing models (E5, E6, E8 accelerators) list data access and baseline quality as contractual preconditions. Where those are unmet, we either start with an E2-A Revenue Leak Diagnostic to establish the baseline, or restructure the engagement to consulting terms until instrumentation exists.</p>
+        </details>
+        <details>
+          <summary>Do you replace our sales team?</summary>
+          <p>No. E8 Forward Deployed operators work <i>alongside</i> your reps on defined motions and segments, with a hard capability-transfer clause at completion. E7 Residents are explicitly measured on how fast the client team can run the workstream without us.</p>
+        </details>
+        <details>
+          <summary>We are not a SaaS company. Does this still apply?</summary>
+          <p>Yes. The catalog is segmented by product-line economics — Services, Retail &amp; Commerce, Platform — because the revenue mechanics differ structurally between selling people-hours, transactions, and usage. The discovery layers are constant; the emphasis and engagement design are not.</p>
+        </details>
+        <details>
+          <summary>How fast can something start?</summary>
+          <p>E1 Advisory and E8 FDA can start inside one week. E3 PoV typically kicks off within two weeks of charter signature. E4 Transformation programs take three to four weeks to mobilize properly — rushing that phase is the most common cause of adoption failure.</p>
+        </details>
+        <details>
+          <summary>What is the smallest engagement you sell?</summary>
+          <p>A Micro-Segment Kit — three weeks, fixed scope, fixed fee — or an E1-D War-Room Advisory of one to two weeks. Both exist to answer one question decisively.</p>
+        </details>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" id="contact">
+  <div class="footer-inner">
+    <span class="kicker">Engage</span>
+    <h2>From guesswork to <em>predictive revenue intelligence.</em></h2>
+    <div class="footer-grid">
+      <div>
+        <h5>// Start an engagement</h5>
+        <p>
+          Send us the situation, the segment, and the stage. We will return a recommended
+          model sequence, a charter outline, and a proposed baseline lock date within
+          three business days.
+        </p>
+        <a class="footer-cta" href="mailto:growth@profitmachines.ai">Request Engagement Proposal</a>
+      </div>
+      <div>
+        <h5>// Engagement Models</h5>
+        <ul>
+          <li>E1 — Advisory &amp; Insight</li>
+          <li>E2 — Consulting Services</li>
+          <li>E3 — Proof of Value / Performance</li>
+          <li>E4 — Transformation Engagements</li>
+          <li>E5 — Outcome-Based</li>
+          <li>E6 — Joint Risk-Sharing</li>
+          <li>E7 — Resident Growth Architects</li>
+          <li>E8 — Forward Deployed Accelerators</li>
+        </ul>
+      </div>
+      <div>
+        <h5>// Discovery Layers</h5>
+        <ul>
+          <li>L1 — Market Discovery</li>
+          <li>L2 — Demand Discovery</li>
+          <li>L3 — Value Discovery</li>
+          <li>L4 — Channel Discovery</li>
+          <li>L5 — Competitive Discovery</li>
+          <li>L6 — Customer Discovery</li>
+          <li>L7 — PMF Discovery</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>ProfitMachines — Sales Acceleration, Consulting &amp; Services</span>
+      <span>Revenue Architecture Dossier · Edition 2026</span>
+      <span><a href="#top">Back to top ↑</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- Scroll-spy for side navigation ---------- */
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.sidenav a'));
+  var map = {};
+  links.forEach(function(l){
+    var id = l.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if(el){ map[id] = l; }
+  });
+  var targets = Object.keys(map).map(function(id){ return document.getElementById(id); });
+  if(!('IntersectionObserver' in window) || targets.length === 0) return;
+  var visible = {};
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      visible[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0;
+    });
+    var bestId = null, bestVal = 0;
+    Object.keys(visible).forEach(function(id){
+      if(visible[id] > bestVal){ bestVal = visible[id]; bestId = id; }
+    });
+    links.forEach(function(l){ l.classList.remove('active'); });
+    if(bestId && map[bestId]){ map[bestId].classList.add('active'); }
+  }, { rootMargin: '-15% 0px -55% 0px', threshold: [0, .25, .5, 1] });
+  targets.forEach(function(t){ obs.observe(t); });
+})();
+
+/* ---------- Engagement model selector ---------- */
+(function(){
+  var btn = document.getElementById('sel-run');
+  if(!btn) return;
+
+  var models = {
+    e1:'E1 Advisory', e2:'E2 Consulting', e3:'E3 PoV / PoP', e4:'E4 Transformation',
+    e5:'E5 Outcome-Based', e6:'E6 Joint Risk-Sharing', e7:'E7 Resident Growth Architects',
+    e8:'E8 Forward Deployed Accelerators'
+  };
+
+  /* Base sequences per situation (Part 06 matrix) */
+  var bySituation = {
+    B1:  { seq:['e8','e5'],            note:'Speed first, structure later. An FDA squad generates pipeline immediately while an outcome-based layer sustains it.' },
+    B2:  { seq:['e3','e5'],            note:'Prove the optimization on a contained scope before scaling the commitment.' },
+    B3:  { seq:['e2','e8'],            note:'Redesign the sales system while FDA operators work the open pipeline live.' },
+    B4:  { seq:['e3','e5'],            note:'Performance-proof the forecast fix with a PoP, then convert to an outcome commitment.' },
+    B5:  { seq:['e1','e3','e6'],       note:'Validate the thesis, prove demand, then co-invest in the market build.' },
+    B6:  { seq:['e3','e8','e5'],       note:'Test the offer, launch with a GTM squad, then scale on shared economics.' },
+    B7:  { seq:['e2','e4'],            note:'Structural diversification requires architecture plus a multi-workstream program.' },
+    B8:  { seq:['e2','e7','e3'],       note:'Build the enterprise motion capability, embed an architect, and validate the propensity model.' },
+    B9:  { seq:['e8','e5'],            note:'Volume motion needs in-market execution with performance-tied economics.' },
+    B10: { seq:['e4'],                 note:'Post-M&A GTM integration is a single, multi-workstream transformation program.' },
+    B11: { seq:['e8','e3'],            note:'Live tactical displacement now, proof of the play before it scales.' },
+    B12: { seq:['e2','e3'],            note:'Redesign pricing and packaging, then validate with a live A/B PoV.' },
+    B13: { seq:['e5','e7'],            note:'Align economics to expansion, and embed an architect to build the engine.' },
+    B14: { seq:['e3','e4'],            note:'Instrument demand visibility first, then rebuild the engine with attribution in place.' },
+    B15: { seq:['e8','e2'],            note:'Augment rep productivity immediately, then systematize the sales motion.' }
+  };
+
+  /* Segment refinements */
+  var segmentNotes = {
+    services: {
+      mix:'Track mix tends toward consulting-heavy delivery (55–75% Track A) — services economics live in relationships, pricing, and service-line margin.',
+      adj:function(s){ return s; }
+    },
+    retail: {
+      mix:'Track mix tends toward automation-heavy delivery (25–50% Track A) — retail economics live in CAC, channel mix, and micro-segment margin.',
+      adj:function(s){ return s; }
+    },
+    platform: {
+      mix:'Track mix is balanced-to-automated (25–55% Track A) — platform economics live in usage signals, propensity, and expansion.',
+      adj:function(s){ return s; }
+    },
+    industrial: {
+      mix:'Track mix leans consulting (60/40) — channel economics, coverage design, and long-cycle deal rigor dominate.',
+      adj:function(s){ if(s[0]==='e3'){ return ['e2'].concat(s); } return s; }
+    },
+    finserv: {
+      mix:'Track mix leans consulting (55/45) with governance-heavy delivery — compliance constraints require charter precision.',
+      adj:function(s){ return s; }
+    }
+  };
+
+  var segSel = document.getElementById('sel-segment');
+  var sitSel = document.getElementById('sel-situation');
+  var out    = document.getElementById('sel-out');
+  var outSeq = document.getElementById('out-seq');
+  var outNote= document.getElementById('out-note');
+  var outKick= document.getElementById('out-kicker');
+
+  btn.addEventListener('click', function(){
+    var seg = segSel.value;
+    var sit = sitSel.value;
+    var base = bySituation[sit];
+    if(!base){ return; }
+    var segCfg = segmentNotes[seg] || segmentNotes.services;
+    var seq = segCfg.adj(base.seq.slice());
+    var html = seq.map(function(k){ return models[k]; })
+                  .join('<span class="arrow">▸</span>');
+    outSeq.innerHTML = html;
+    outNote.textContent = base.note + ' ' + segCfg.mix;
+    outKick.textContent = 'Recommended sequence — ' +
+      sitSel.options[sitSel.selectedIndex].text + ' · ' +
+      segSel.options[segSel.selectedIndex].text;
+    out.classList.remove('show');
+    void out.offsetWidth;
+    out.classList.add('show');
+    out.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  });
+})();
+</script>
+
+</body>
+</html>

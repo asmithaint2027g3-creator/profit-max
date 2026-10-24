@@ -24,9 +24,9 @@ export default function EngagementDeliveryTracks() {
           <img
             src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2000&q=80"
             alt="Delivery Track Systems"
-            className="w-full h-full object-cover object-center opacity-25"
+            className="w-full h-full object-cover object-center opacity-60"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-900/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/70 to-slate-900/50" />
           <div className="absolute inset-0 bg-radial-at-t from-blue-950/40 via-transparent to-transparent pointer-events-none" />
         </div>
 
@@ -95,7 +95,7 @@ export default function EngagementDeliveryTracks() {
                     Primary Engagement Model Alignment:
                   </span>
                   <p className="text-xs text-slate-700 font-medium">
-                    E1 Advisory & Insight, E2 Consulting Services, E7 Resident Growth Architects (Workstream Strategy).
+                    Advisory & Insight, Consulting Services, Resident Growth Architects (Workstream Strategy).
                   </p>
                 </div>
               </div>
@@ -145,7 +145,7 @@ export default function EngagementDeliveryTracks() {
                     Primary Engagement Model Alignment:
                   </span>
                   <p className="text-xs text-slate-300 font-medium">
-                    E3 Proof of Value / PoP, E5 Outcome-Based Engagement, E8 Forward Deployed Accelerators.
+                    Proof of Value / PoP, Outcome-Based Engagement, Forward Deployed Accelerators.
                   </p>
                 </div>
               </div>

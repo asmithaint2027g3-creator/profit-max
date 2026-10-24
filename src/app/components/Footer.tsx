@@ -175,75 +175,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* Our Offices - Premium Minimalist */}
-                <div className="border-t border-white/10 py-10 mt-6">
-                    <div className="flex items-center justify-center mb-10">
-                        <h3 className="font-bold text-slate-300 text-xs tracking-[0.2em] uppercase px-6 border border-white/10 py-2 rounded-full bg-white/5 backdrop-blur-sm">
-                            Global Presence
-                        </h3>
-                    </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12 text-left justify-items-center">
-                        {[
-                            {
-                                title: 'US Office',
-                                address: ['501 E Kennedy Blvd Suite 1400,', 'Tampa, FL 33602, United States'],
-                                email: 'connect@profitmachines.com',
-                                phone: '+91 9513288612'
-                            },
-                            {
-                                title: 'Singapore Office',
-                                address: ['5 Temasek Boulevard, 17th Floor,', 'Singapore 038985'],
-                                email: 'connect@profitmachines.com',
-                                phone: '+65 6050 5235'
-                            },
-                            {
-                                title: 'India Office',
-                                address: ['PROFITMACHINES INNOVATION PVT LTD', 'Suite: 32, 235, Binnamangala, 2nd Floor,', '13th Cross Road, Indira Nagar 2nd Stage,', 'Hoysala Nagar, Bengaluru – 560038, India'],
-                                email: 'connect@profitmachines.com',
-                                phone: '+91 9513288612'
-                            },
-                            {
-                                title: 'Mumbai Office',
-                                address: ['WeWork, Raheja Platinum, Sag Baug,', 'Marol, Andheri East, Mumbai 400059'],
-                                email: 'cs@profitmachines.com',
-                                phone: '+91 9513088612'
-                            },
-                            {
-                                title: 'Bangalore Office',
-                                address: ['WeWork, 13th floor, Tin Factory,', 'Old Madras Rd, Bengaluru 560016'],
-                                email: 'cs@profitmachines.com',
-                                phone: '+91 9513088612'
-                            }
-                        ].map((office, idx) => (
-                            <div key={idx} className="group flex flex-col items-start w-full max-w-xs">
-                                <h4 className="flex items-center gap-3 font-bold text-slate-200 text-[13px] uppercase tracking-wide mb-4">
-                                    <MapPin className="w-4 h-4 text-blue-400 shrink-0" />
-                                    {office.title}
-                                </h4>
-
-                                <div className="mb-5 pl-7 border-l border-white/5 group-hover:border-blue-500/50 transition-colors">
-                                    {office.address.map((line, i) => (
-                                        <p key={i} className="text-slate-400 text-[13px] leading-relaxed">
-                                            {line}
-                                        </p>
-                                    ))}
-                                </div>
-
-                                <div className="space-y-3 pl-7">
-                                    <a href={`mailto:${office.email}`} className="flex items-center gap-3 text-slate-400 hover:text-blue-400 transition-colors text-[13px] group/item">
-                                        <Mail className="w-3.5 h-3.5" />
-                                        <span>{office.email}</span>
-                                    </a>
-                                    <a href={`tel:${office.phone.replace(/ /g, '')}`} className="flex items-center gap-3 text-slate-400 hover:text-blue-400 transition-colors text-[13px] group/item">
-                                        <Phone className="w-3.5 h-3.5" />
-                                        <span>{office.phone}</span>
-                                    </a>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
 
                 {/* Partners & Recognition */}
                 <div className="border-t border-white/10 py-6">

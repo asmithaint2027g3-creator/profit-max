@@ -33,9 +33,9 @@ export default function EngagementCommercials() {
           <img
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80"
             alt="Commercial Architecture Systems"
-            className="w-full h-full object-cover object-center opacity-25"
+            className="w-full h-full object-cover object-center opacity-60"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-900/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/70 to-slate-900/50" />
           <div className="absolute inset-0 bg-radial-at-t from-blue-950/40 via-transparent to-transparent pointer-events-none" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
@@ -106,7 +106,7 @@ export default function EngagementCommercials() {
                   <p className="text-xs text-slate-400">Preserved from Revenue Architecture Dossier · Table 8.0</p>
                 </div>
                 <span className="text-xs font-mono px-3 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700 self-start sm:self-auto">
-                  E1 through E8
+                  Eight Engagement Models
                 </span>
               </div>
 
@@ -125,7 +125,7 @@ export default function EngagementCommercials() {
                     {pricingStructuresTable.map((row, idx) => (
                       <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
                         <td className="py-4 px-5 font-bold font-mono text-slate-900 whitespace-nowrap bg-slate-50/50">
-                          {row.model}
+                          {row.model.replace(/^E\d+\s*[-·]?\s*/, '')}
                         </td>
                         <td className="py-4 px-5 font-medium text-slate-800">
                           {row.base}

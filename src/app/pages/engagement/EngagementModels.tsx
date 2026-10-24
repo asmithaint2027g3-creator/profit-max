@@ -49,9 +49,9 @@ export default function EngagementModels() {
           <img
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80"
             alt="Enterprise Revenue Architecture"
-            className="w-full h-full object-cover object-center opacity-25"
+            className="w-full h-full object-cover object-center opacity-60"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-900/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/70 to-slate-900/50" />
           <div className="absolute inset-0 bg-radial-at-t from-blue-950/40 via-transparent to-transparent pointer-events-none" />
         </div>
 
@@ -75,7 +75,7 @@ export default function EngagementModels() {
                   href={`#${m.id.toLowerCase()}`}
                   className="bg-slate-900/90 hover:bg-slate-800 text-slate-200 px-3 py-1.5 rounded-lg font-semibold transition-colors border border-slate-700"
                 >
-                  {m.id} · {m.name}
+                  {m.name}
                 </a>
               ))}
             </div>
@@ -96,7 +96,7 @@ export default function EngagementModels() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-3">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
-                    {model.id} · {model.subtitle}
+                    {model.subtitle}
                   </span>
                 </div>
                 <Link
@@ -238,13 +238,13 @@ export default function EngagementModels() {
               <tbody className="divide-y divide-slate-100">
                 {modelComparisonTable.map((row, rIdx) => (
                   <tr key={rIdx} className="hover:bg-slate-50/50">
-                    <td className="p-4 font-bold text-slate-900">{row.model}</td>
+                    <td className="p-4 font-bold text-slate-900">{row.model.replace(/^E\d+\s*[-·]?\s*/, '')}</td>
                     <td className="p-4 text-slate-600">{row.speedToStart}</td>
                     <td className="p-4 text-slate-600">{row.speedToImpact}</td>
                     <td className="p-4 text-slate-600">{row.clientRisk}</td>
-                    <td className="p-4 text-slate-600">{row.profitMachinesRisk}</td>
+                    <td className="p-4 text-slate-600">{row.ourRisk}</td>
                     <td className="p-4 text-slate-600">{row.expansionPotential}</td>
-                    <td className="p-4 font-mono text-slate-700 font-semibold">{row.typicalDealBand}</td>
+                    <td className="p-4 font-mono text-slate-700 font-semibold">{row.typicalDealSize}</td>
                   </tr>
                 ))}
               </tbody>

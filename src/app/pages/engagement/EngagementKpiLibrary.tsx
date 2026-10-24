@@ -30,9 +30,9 @@ export default function EngagementKpiLibrary() {
           <img
             src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2000&q=80"
             alt="KPI Measurement Telemetry"
-            className="w-full h-full object-cover object-center opacity-25"
+            className="w-full h-full object-cover object-center opacity-60"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-900/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/70 to-slate-900/50" />
           <div className="absolute inset-0 bg-radial-at-t from-blue-950/40 via-transparent to-transparent pointer-events-none" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
@@ -64,17 +64,26 @@ export default function EngagementKpiLibrary() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400 mr-2 shrink-0">Filter Layer:</span>
-            {['all', 'L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7'].map((lvl) => (
+            {[
+              { id: 'all', label: 'All 7 Layers' },
+              { id: 'Market', label: 'Market' },
+              { id: 'Demand', label: 'Demand' },
+              { id: 'Value', label: 'Value' },
+              { id: 'Channel', label: 'Channel' },
+              { id: 'Competitive', label: 'Competitive' },
+              { id: 'Customer', label: 'Customer' },
+              { id: 'PMF', label: 'Product-Market Fit' }
+            ].map((lvl) => (
               <button
-                key={lvl}
-                onClick={() => setActiveLayerFilter(lvl)}
+                key={lvl.id}
+                onClick={() => setActiveLayerFilter(lvl.id)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-colors ${
-                  activeLayerFilter === lvl
+                  activeLayerFilter === lvl.id
                     ? 'bg-blue-600 text-white'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                 }`}
               >
-                {lvl === 'all' ? 'All 7 Layers' : lvl}
+                {lvl.label}
               </button>
             ))}
           </div>
@@ -90,7 +99,7 @@ export default function EngagementKpiLibrary() {
               <p className="text-xs text-slate-400">Preserved from Revenue Architecture Dossier · Edition 2026</p>
             </div>
             <span className="text-xs font-mono px-3 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700 self-start sm:self-auto">
-              L1 through L7
+              Seven Diagnostic Layers
             </span>
           </div>
 
@@ -108,7 +117,7 @@ export default function EngagementKpiLibrary() {
                 {filteredKpis.map((row, idx) => (
                   <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
                     <td className="py-4 px-5 font-mono font-bold text-blue-900 whitespace-nowrap bg-blue-50/30">
-                      {row.layer}
+                      {row.layer.replace(/^L\d+\s*[-·]?\s*/, '')}
                     </td>
                     <td className="py-4 px-5 text-slate-800 text-xs sm:text-sm">
                       {row.leadingIndicators}

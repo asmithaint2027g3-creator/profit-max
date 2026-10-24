@@ -86,9 +86,9 @@ export default function OfferingsDiscoveryStack() {
           <img
             src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2000&q=80"
             alt="Diagnostic Telemetry Architecture"
-            className="w-full h-full object-cover object-center opacity-25"
+            className="w-full h-full object-cover object-center opacity-60"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-900/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/70 to-slate-900/50" />
           <div className="absolute inset-0 bg-radial-at-t from-blue-950/40 via-transparent to-transparent pointer-events-none" />
         </div>
 
@@ -149,7 +149,7 @@ export default function OfferingsDiscoveryStack() {
                   <span className="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold">
                     Sequential Roadmap
                   </span>
-                  <span className="text-xs text-slate-500 font-semibold">L1–L7</span>
+                  <span className="text-xs text-slate-500 font-semibold">7 Stages</span>
                 </div>
 
               {discoveryAreas.map((area, idx) => {

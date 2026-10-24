@@ -159,9 +159,9 @@ export default function Engagement() {
           <img
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80"
             alt="Enterprise Revenue Architecture"
-            className="w-full h-full object-cover object-center opacity-25"
+            className="w-full h-full object-cover object-center opacity-60"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-900/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/70 to-slate-900/50" />
           <div className="absolute inset-0 bg-radial-at-t from-blue-950/40 via-transparent to-transparent pointer-events-none" />
         </div>
 
@@ -241,7 +241,7 @@ export default function Engagement() {
                   <div className="grid grid-cols-2 gap-3 pt-2">
                     <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-center">
                       <div className="text-xl font-extrabold font-mono text-white">08</div>
-                      <div className="text-[11px] text-slate-400">Models E1–E8</div>
+                      <div className="text-[11px] text-slate-400">Engagement Models</div>
                     </div>
                     <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-center">
                       <div className="text-xl font-extrabold font-mono text-white">07</div>
@@ -830,7 +830,7 @@ export default function Engagement() {
           <div className="bg-slate-800/80 rounded-2xl border border-slate-700 overflow-hidden shadow-xl mb-12">
             <div className="px-6 py-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
               <span className="font-bold text-sm text-white">Table 8.0 — Commercial Terms Matrix</span>
-              <span className="text-xs font-mono text-slate-400">Models E1–E8</span>
+              <span className="text-xs font-mono text-slate-400">Eight Engagement Models</span>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-xs">

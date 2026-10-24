@@ -426,7 +426,7 @@ export default function ChatBot() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setIsOpen(true)}
-                    className="fixed bottom-20 right-6 z-[999] w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-full shadow-2xl shadow-blue-600/30 flex items-center justify-center text-white cursor-pointer hover:shadow-blue-600/50 transition-all ring-2 ring-white/20"
+                    className="fixed bottom-8 right-6 z-[999] w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-full shadow-2xl shadow-blue-600/30 flex items-center justify-center text-white cursor-pointer hover:shadow-blue-600/50 transition-all ring-2 ring-white/20"
                 >
                     <MessageSquare className="w-7 h-7" strokeWidth={2.5} />
                     <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-green-500 border-[2.5px] border-white rounded-full"></span>

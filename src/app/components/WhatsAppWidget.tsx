@@ -11,7 +11,7 @@ export default function WhatsAppWidget() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Chat with ProfitMachines on WhatsApp"
-            className="fixed bottom-24 right-5 z-40 group flex items-center gap-2.5 transition-all duration-300"
+            className="fixed bottom-28 right-6 z-40 group flex items-center gap-2.5 transition-all duration-300"
         >
             {/* Tooltip label */}
             <span className="hidden sm:flex bg-white text-slate-800 text-sm font-bold px-3 py-1.5 rounded-lg shadow-lg border border-slate-200 opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-300 whitespace-nowrap">

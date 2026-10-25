@@ -1,9 +1,8 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
-  Compass,
-  ArrowRight,
   Search,
+  ArrowRight,
   Sparkles,
   Target,
   Users,
@@ -18,15 +17,21 @@ import {
   ChevronRight,
   ArrowUpRight,
   Clock,
-  Radar
+  Radar,
+  FileSpreadsheet,
+  Layers,
+  MessageSquare,
+  AlertCircle,
+  HelpCircle,
+  Briefcase
 } from 'lucide-react';
-import IcoSubNav from '../../components/IcoSubNav';
 
 export default function IcoIntelligence() {
   const location = useLocation();
 
+  // Handle in-page smooth hash scrolling on load or change
   useEffect(() => {
-    document.title = 'Intelligence | ProfitMachines Crypto Protocol';
+    document.title = 'Intelligence & Market Strategy | ProfitMachines Crypto Protocol';
     if (location.hash) {
       const id = location.hash.replace('#', '');
       const el = document.getElementById(id);
@@ -38,581 +43,748 @@ export default function IcoIntelligence() {
     } else {
       window.scrollTo(0, 0);
     }
-  }, [location.hash, location.pathname]);
+  }, [location.hash]);
 
   const deliverablesCards = [
     {
       title: 'Market Readiness',
-      deliverable: 'Market Validation Report & Go/No-Go Recommendation',
-      description: 'Comprehensive scoring of market demand liquidity, timing suitability, and regulatory clarity across key launch jurisdictions.',
+      deliverable: 'Market Validation Report & Prioritized Recommendations',
+      description: 'Comprehensive assessment of target opportunity, competitor mapping, audience profiles, and launch-readiness criteria.',
       icon: Search,
-      badge: 'Layer 0'
+      badge: 'Submenu 01'
     },
     {
       title: 'Narrative Readiness',
-      deliverable: 'Token Narrative & Messaging Architecture',
-      description: 'Unified one-sentence narrative, investor deck alignment, utility documentation, and public launch communication guide.',
+      deliverable: 'Token Narrative & Messaging Framework',
+      description: 'Unified one-sentence narrative, utility documentation, communication brief, and risk & claims review.',
       icon: Sparkles,
-      badge: 'Core Brand'
+      badge: 'Submenu 02'
     },
     {
       title: 'Demand Intelligence',
-      deliverable: 'Wallet-Level Demand Scoring & Intent Feeds',
-      description: 'On-chain telemetry mapping verified addresses, historical transaction intent, and capital deployment capacity.',
+      deliverable: 'Audience Segments & Demand Discovery Report',
+      description: 'Empirical audience segmentation, community discussions, channel mapping, and message testing hypotheses.',
       icon: Target,
-      badge: 'Layer 1'
+      badge: 'Submenu 04'
     },
     {
       title: 'Competitive Intelligence',
-      deliverable: 'Competitive Displacement Map & Community Signals',
-      description: 'Real-time monitoring of competitor sentiment, user friction indicators, migration vectors, and whitespace positioning.',
+      deliverable: 'Competitive Comparison Matrix & Differentiation Framework',
+      description: 'Systematic comparison of comparable protocols, feature matrix, verified differentiation, and positioning guidance.',
       icon: Radar,
-      badge: 'Radar'
+      badge: 'Submenu 06'
     }
   ];
 
   return (
     <div className="min-h-screen bg-slate-50/50 text-slate-900 pt-16 lg:pt-[72px]">
-      <IcoSubNav />
-
-      {/* ── HERO SECTION ── */}
-      <section className="relative bg-slate-950 text-white py-20 lg:py-28 overflow-hidden border-b border-slate-800">
+      {/* ── HERO SECTION (MATCHES OFFERINGS / ENGAGEMENT PATTERN) ── */}
+      <section className="relative bg-slate-950 text-white py-16 lg:py-24 overflow-hidden border-b border-slate-800">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2000&q=80"
-            alt="Crypto Intelligence"
-            className="w-full h-full object-cover object-center opacity-35 mix-blend-luminosity"
+            alt="Crypto Intelligence & Market Strategy"
+            className="w-full h-full object-cover object-center opacity-40 mix-blend-luminosity"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-slate-900/65" />
-          <div className="absolute inset-0 bg-radial-at-t from-blue-900/30 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/75 to-slate-900/60" />
+          <div className="absolute inset-0 bg-radial-at-t from-blue-950/40 via-transparent to-transparent pointer-events-none" />
         </div>
 
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/40 text-blue-300 text-xs font-semibold uppercase tracking-wider mb-6 shadow-sm">
-              <Search className="w-3.5 h-3.5 text-blue-400" />
-              <span>Layer 0 & Layer 1 Intelligence</span>
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08] mb-6 font-heading">
-              Intelligence That Informs Every <span className="text-blue-400">Launch Decision</span>
-            </h1>
-
-            <p className="text-lg sm:text-xl text-slate-300 leading-relaxed font-normal mb-10 max-w-2xl">
-              ProfitMachines helps crypto teams assess market readiness, discover on-chain demand, and eliminate guesswork before committing treasury spend to TGE campaigns.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-4">
-              <Link
-                to="/book-consultation"
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg border border-blue-400/40 text-base group"
-              >
-                <span>Request Intelligence Diagnostic</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                to="/ico-acceleration/launch-growth"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-4 rounded-xl transition-all text-base border border-white/30 backdrop-blur-sm shadow-md"
-              >
-                <span>Explore Launch & Growth</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION A: MARKET VALIDATION INTELLIGENCE ── */}
-      <section id="market-validation" className="py-20 lg:py-24 bg-white border-b border-slate-200/80">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div className="lg:col-span-5">
-              <div className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-2">Section A · Layer 0</div>
-              <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4 font-heading">
-                Market Validation Intelligence
-              </h2>
-              <p className="text-slate-600 text-base leading-relaxed mb-6">
-                Launching into an unvalidated market is the single highest cause of post-TGE treasury impairment. We run quantitative validation diagnostics to benchmark readiness against active macroeconomic and regulatory conditions.
-              </p>
-              
-              <div className="bg-slate-50 border border-slate-200/90 rounded-xl p-5 mb-6">
-                <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Standard Deliverable</div>
-                <div className="text-base font-bold text-slate-900 mb-1 font-heading">Market Validation Report & Go/No-Go Scorecard</div>
-                <p className="text-xs text-slate-600">
-                  Comprehensive audit delivering an actuarial Go/No-Go readiness score, risk factors, and recommended launch window timing.
-                </p>
-              </div>
-
-              <Link
-                to="/book-consultation"
-                className="inline-flex items-center gap-1.5 text-sm font-bold text-blue-600 hover:text-blue-700"
-              >
-                <span>Order Market Validation Assessment</span>
-                <ChevronRight className="w-4 h-4" />
-              </Link>
-            </div>
-
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="bg-slate-50 rounded-xl border border-slate-200/80 p-6">
-                <div className="w-9 h-9 rounded-lg bg-blue-100 flex items-center justify-center text-blue-700 mb-4">
-                  <BarChart3 className="w-5 h-5" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2 font-heading">Demand-Readiness Assessment</h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  Quantitative evaluation of real liquidity interest, community velocity, and organic engagement ratios compared against historical top-quartile launches.
-                </p>
-              </div>
-
-              <div className="bg-slate-50 rounded-xl border border-slate-200/80 p-6">
-                <div className="w-9 h-9 rounded-lg bg-blue-100 flex items-center justify-center text-blue-700 mb-4">
-                  <Radar className="w-5 h-5" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2 font-heading">Competitive Landscape Analysis</h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  Deep-dive mapping of adjacent protocols, TVL distributions, market share dynamics, and whitespace opportunities within your target sector.
-                </p>
-              </div>
-
-              <div className="bg-slate-50 rounded-xl border border-slate-200/80 p-6">
-                <div className="w-9 h-9 rounded-lg bg-blue-100 flex items-center justify-center text-blue-700 mb-4">
-                  <CheckCircle2 className="w-5 h-5" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2 font-heading">Go/No-Go Scoring Matrix</h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  A disciplined 100-point gating framework across tokenomics health, community authenticity, legal clearances, and exchange readiness.
-                </p>
-              </div>
-
-              <div className="bg-slate-50 rounded-xl border border-slate-200/80 p-6">
-                <div className="w-9 h-9 rounded-lg bg-blue-100 flex items-center justify-center text-blue-700 mb-4">
-                  <Clock className="w-5 h-5" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2 font-heading">Launch-Timing Optimization</h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  Cross-referencing broader crypto market cycles, liquidity conditions, upcoming competitor launches, and jurisdictional regulatory gates.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION B: TOKENOMICS & NARRATIVE STUDIO ── */}
-      <section id="narrative-studio" className="py-20 lg:py-24 bg-slate-50 border-b border-slate-200/80">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div className="lg:col-span-5 order-1 lg:order-2">
-              <div className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-2">Section B · Engine 3</div>
-              <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4 font-heading">
-                Tokenomics & Narrative Studio
-              </h2>
-              <p className="text-slate-600 text-base leading-relaxed mb-6">
-                A tokenomics model without a crisp, memorable narrative fails to capture attention. A compelling story without sustainable token mechanics fails to retain capital. We unite both into a unified communication framework.
-              </p>
-
-              <div className="bg-white border border-slate-200/90 rounded-xl p-5 mb-6 shadow-xs">
-                <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Standard Deliverable</div>
-                <div className="text-base font-bold text-slate-900 mb-1 font-heading">Token Narrative & Messaging Framework</div>
-                <p className="text-xs text-slate-600">
-                  Full messaging playbook containing your one-sentence narrative, tier-1 investor narrative, community FAQ, and public tokenomics kit.
-                </p>
-              </div>
-
-              <Link
-                to="/book-consultation"
-                className="inline-flex items-center gap-1.5 text-sm font-bold text-blue-600 hover:text-blue-700"
-              >
-                <span>Structure Your Token Narrative</span>
-                <ChevronRight className="w-4 h-4" />
-              </Link>
-            </div>
-
-            <div className="lg:col-span-7 order-2 lg:order-1 space-y-4">
-              <div className="bg-white rounded-xl border border-slate-200/80 p-6 flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
-                  <Target className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-slate-900 font-heading mb-1">Token Purpose & Intended Audience</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Clearly segmenting token utility across users, validators, liquidity providers, and governance participants, preventing conflicting economic incentives.
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-xl border border-slate-200/80 p-6 flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
-                  <Sparkles className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-slate-900 font-heading mb-1">The One-Sentence Token Narrative</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Distilling complex cryptographic and economic architecture into a single, punchy proposition that creators, journalists, and exchanges immediately repeat.
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-xl border border-slate-200/80 p-6 flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
-                  <Coins className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-slate-900 font-heading mb-1">Tokenomics Messaging Kit</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Transparent, mathematically defensible visual explanations of circulating supply, emission curves, lockup schedules, and fee sink mechanics.
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-xl border border-slate-200/80 p-6 flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
-                  <FileText className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-slate-900 font-heading mb-1">Consistent Launch Communications</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Standardized PR boilerplates, founder quote guides, Discord announcement copy, and exchange submission documentation ensuring zero narrative divergence.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION C: STARTUP MVP ACCELERATION ENGINE ── */}
-      <section id="mvp-acceleration" className="py-20 lg:py-24 bg-white border-b border-slate-200/80">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14">
-            <div className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-2">Section C · Engine 2</div>
-            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4 font-heading">
-              Startup MVP Acceleration Engine
-            </h2>
-            <p className="text-slate-600 text-base leading-relaxed">
-              Designed for early-stage teams moving from concept to testnet. We validate developer interest, harvest early demand signals, and structure investor materials before public exposure.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div className="bg-slate-50 rounded-xl border border-slate-200/80 p-6">
-              <div className="text-2xl font-black text-blue-600 mb-2 font-mono">01</div>
-              <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Idea-to-MVP Planning</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Scoping critical path deliverables, testnet milestones, and architectural requirements for early protocol adoption.
-              </p>
-            </div>
-
-            <div className="bg-slate-50 rounded-xl border border-slate-200/80 p-6">
-              <div className="text-2xl font-black text-blue-600 mb-2 font-mono">02</div>
-              <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Early Demand Signals</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Tracking developer repo forks, early testnet faucet requests, and whitelist registrations to prove initial traction.
-              </p>
-            </div>
-
-            <div className="bg-slate-50 rounded-xl border border-slate-200/80 p-6">
-              <div className="text-2xl font-black text-blue-600 mb-2 font-mono">03</div>
-              <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Investor Narrative</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Institutional-grade pitch deck development, token economics modeling, and competitive moat justification for private rounds.
-              </p>
-            </div>
-
-            <div className="bg-slate-50 rounded-xl border border-slate-200/80 p-6">
-              <div className="text-2xl font-black text-blue-600 mb-2 font-mono">04</div>
-              <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">GTM Readiness Blueprint</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Establishing the commercial operational roadmap required to transition from closed testnet to public testnet and TGE.
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div>
-              <span className="text-xs font-bold text-blue-700 uppercase tracking-wider">Deliverable:</span>
-              <span className="text-sm font-bold text-slate-900 ml-2">MVP and GTM Readiness Blueprint (Ready for Seed/Series A Diligence)</span>
-            </div>
-            <Link
-              to="/ico-acceleration/solutions-engagement#model-5"
-              className="text-xs font-bold text-blue-600 hover:text-blue-700 shrink-0 inline-flex items-center gap-1"
-            >
-              <span>View Model 5 Package</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION D: CRYPTO DEMAND DISCOVERY ENGINE ── */}
-      <section id="demand-discovery" className="py-20 lg:py-24 bg-slate-50 border-b border-slate-200/80">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6">
-              <div className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-2">Section D · Engine 1</div>
-              <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4 font-heading">
-                Crypto Demand Discovery Engine
-              </h2>
-              <p className="text-slate-600 text-base leading-relaxed mb-6">
-                Web3 demand is not measured in website pageviews—it lives on-chain. Our proprietary engine analyzes wallet histories, liquidity patterns, and smart-contract interactions to identify committed capital before campaign launch.
-              </p>
-
-              <div className="space-y-3 mb-6">
-                <div className="flex items-start gap-2.5 text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                  <span><strong>Wallet-Level Demand Scoring:</strong> Profiling wallet holding durations, historical staking, and cross-chain bridge activity.</span>
-                </div>
-                <div className="flex items-start gap-2.5 text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                  <span><strong>On-Chain Intent Mining:</strong> Identifying active users moving capital into related testnets and staking contracts.</span>
-                </div>
-                <div className="flex items-start gap-2.5 text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                  <span><strong>Live Demand Feeds:</strong> Continuous telemetry streaming high-intent wallet cohorts directly into your whitelist pipelines.</span>
-                </div>
-                <div className="flex items-start gap-2.5 text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                  <span><strong>Market-Timing Inputs:</strong> Correlating macro gas costs, liquidity pool depths, and token velocity with launch schedules.</span>
-                </div>
+            
+            {/* Left Content Column */}
+            <div className="lg:col-span-8">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/40 text-blue-300 text-xs font-semibold uppercase tracking-wider mb-6 font-mono shadow-sm">
+                <Search className="w-3.5 h-3.5 text-blue-400" />
+                <span>Page 01 · Intelligence & Market Strategy</span>
               </div>
 
-              <div className="p-4 bg-white rounded-lg border border-slate-200 text-xs text-slate-600">
-                <strong className="text-slate-900">Deliverable:</strong> Demand Intelligence Report with verified wallet segments, intent scores, and optimal activation dates.
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08] mb-6">
+                Intelligence & <span className="text-blue-400">Market Strategy</span>
+              </h1>
+
+              <div className="text-lg sm:text-xl text-blue-200/90 font-medium mb-4 leading-relaxed max-w-3xl">
+                Build an evidence-based foundation for your Web3 launch through market validation, tokenomics positioning, demand discovery, and competitive intelligence.
               </div>
-            </div>
 
-            <div className="lg:col-span-6">
-              <div className="bg-slate-900 rounded-2xl p-6 text-white border border-slate-800 shadow-xl">
-                <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
-                  <div className="flex items-center gap-2">
-                    <Activity className="w-4 h-4 text-cyan-400" />
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-300">On-Chain Demand Scoring</span>
-                  </div>
-                  <span className="text-xs font-mono text-emerald-400">STATUS: ACTIVE TELEMETRY</span>
-                </div>
-                <div className="space-y-3 font-mono text-xs">
-                  <div className="bg-slate-950/80 p-3 rounded-lg border border-slate-800/80 flex justify-between items-center">
-                    <div>
-                      <div className="text-slate-400 text-[10px]">COHORT A: L1 ECOSYSTEM MIGRATORS</div>
-                      <div className="text-white font-bold text-sm">48,200 High-Intent Wallets</div>
-                    </div>
-                    <span className="text-emerald-400 font-bold bg-emerald-950/80 px-2.5 py-1 rounded border border-emerald-800/50">Score: 92/100</span>
-                  </div>
-                  <div className="bg-slate-950/80 p-3 rounded-lg border border-slate-800/80 flex justify-between items-center">
-                    <div>
-                      <div className="text-slate-400 text-[10px]">COHORT B: DEFI LIQUIDITY PROVIDERS</div>
-                      <div className="text-white font-bold text-sm">14,800 Sticky LP Addresses</div>
-                    </div>
-                    <span className="text-emerald-400 font-bold bg-emerald-950/80 px-2.5 py-1 rounded border border-emerald-800/50">Score: 88/100</span>
-                  </div>
-                  <div className="bg-slate-950/80 p-3 rounded-lg border border-slate-800/80 flex justify-between items-center">
-                    <div>
-                      <div className="text-slate-400 text-[10px]">COHORT C: MERCENARY AIRDROP FARMERS</div>
-                      <div className="text-rose-400 font-bold text-sm">31,500 Flagged Sybil Addresses</div>
-                    </div>
-                    <span className="text-rose-400 font-bold bg-rose-950/80 px-2.5 py-1 rounded border border-rose-800/50">Filtered (Excluded)</span>
-                  </div>
-                </div>
-                <div className="mt-4 pt-3 border-t border-slate-800 text-[11px] text-slate-400 text-center">
-                  Live filtering separates authentic adoption from Sybil drain prior to token distribution.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION E: COMMUNITY SIGNAL COMMAND CENTER ── */}
-      <section id="community-signals" className="py-20 lg:py-24 bg-white border-b border-slate-200/80">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14">
-            <div className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-2">Section E · Signal Intelligence</div>
-            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4 font-heading">
-              Community Signal Command Center
-            </h2>
-            <p className="text-slate-600 text-base leading-relaxed">
-              Moving beyond vanity follower numbers to monitor genuine participant quality, developer dialogue, and smart-money positioning across Telegram, Discord, and X.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div className="bg-slate-50 rounded-xl border border-slate-200/80 p-6">
-              <Users className="w-8 h-8 text-blue-600 mb-3" />
-              <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Sentiment Telemetry</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Algorithmic sentiment scoring across Telegram chat logs, Discord dev channels, and X mentions to measure genuine optimism vs. orchestrated hype.
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal mb-8 max-w-3xl">
+                ProfitMachines helps Web3 teams understand their market, identify their audience, clarify their value proposition, and prepare a stronger foundation for launch. The Intelligence page brings together research, strategic positioning, product validation, and community insights to support informed decisions before major launch investments.
               </p>
-            </div>
 
-            <div className="bg-slate-50 rounded-xl border border-slate-200/80 p-6">
-              <ShieldCheck className="w-8 h-8 text-blue-600 mb-3" />
-              <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Member-Quality Indicators</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Bot-filtering algorithms identifying real community participants, technical contributors, and repetitive spam networks.
-              </p>
-            </div>
-
-            <div className="bg-slate-50 rounded-xl border border-slate-200/80 p-6">
-              <TrendingUp className="w-8 h-8 text-blue-600 mb-3" />
-              <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Engagement Trends</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Tracking daily active chatter, question frequency, governance proposal feedback, and genuine retention velocity.
-              </p>
-            </div>
-
-            <div className="bg-slate-50 rounded-xl border border-slate-200/80 p-6">
-              <Coins className="w-8 h-8 text-blue-600 mb-3" />
-              <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Whale & Smart Money Signals</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Monitoring high-net-worth wallet clustering, notable fund addresses, and influencer accumulation where public data is suitable.
-              </p>
-            </div>
-          </div>
-
-          <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-700 flex items-center justify-between">
-            <span><strong>Deliverable:</strong> Community Signal Weekly Report & Real-Time Alert Dashboard</span>
-            <span className="text-slate-500 font-mono">Deliverable Code: DL-INT-04</span>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION F: COMPETITIVE DISPLACEMENT RADAR ── */}
-      <section id="competitive-radar" className="py-20 lg:py-24 bg-slate-50 border-b border-slate-200/80">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14">
-            <div className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-2">Section F · Strategic Positioning</div>
-            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4 font-heading">
-              Competitive Displacement Radar
-            </h2>
-            <p className="text-slate-600 text-base leading-relaxed">
-              Pinpoint competitor vulnerabilities, community dissatisfaction, and migration triggers to position your token as the logical superior alternative.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div className="bg-white rounded-xl border border-slate-200/80 p-7">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold">1</div>
-                <h3 className="text-lg font-bold text-slate-900 font-heading">Competitor-Community Signals</h3>
-              </div>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Monitoring competitor Telegram and Discord channels for community complaints regarding governance impasses, token dilution, fee hikes, and delayed roadmaps.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-xl border border-slate-200/80 p-7">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold">2</div>
-                <h3 className="text-lg font-bold text-slate-900 font-heading">Dissatisfaction & Migration Triggers</h3>
-              </div>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Detecting when key builders, validators, and liquidity providers begin seeking alternative protocols due to high fees, network congestion, or poor developer support.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-xl border border-slate-200/80 p-7">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold">3</div>
-                <h3 className="text-lg font-bold text-slate-900 font-heading">Competitive Positioning Opportunities</h3>
-              </div>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Arming your founders and community leaders with clear, factual comparative battlecards highlighting your throughput, fee structure, and developer ergonomics.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-xl border border-slate-200/80 p-7">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold">4</div>
-                <h3 className="text-lg font-bold text-slate-900 font-heading">Adoption Opportunities Validation</h3>
-              </div>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Qualifying specific dApps and development studios expressing interest in cross-chain expansion before initiating foundation outreach.
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-xl border border-slate-200/90 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div>
-              <span className="text-xs font-bold text-blue-700 uppercase tracking-wider">Deliverable:</span>
-              <span className="text-sm font-bold text-slate-900 ml-2">Competitive Opportunity Map & Displacement Battlecards</span>
-            </div>
-            <Link
-              to="/book-consultation"
-              className="text-xs font-bold text-blue-600 hover:text-blue-700 shrink-0 inline-flex items-center gap-1"
-            >
-              <span>Commission Displacement Analysis</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION G: DELIVERABLES SUMMARY & CTA ── */}
-      <section className="py-20 lg:py-24 bg-white border-b border-slate-200/80">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14 text-center mx-auto">
-            <div className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-2">Section G · Synthesis</div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4 font-heading">
-              Intelligence Deliverables Summary
-            </h2>
-            <p className="text-slate-600 text-base leading-relaxed">
-              Every intelligence engagement delivers four concrete, audit-grade artifacts that de-risk the entire launch journey.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {deliverablesCards.map((d, idx) => {
-              const Icon = d.icon;
-              return (
-                <div
-                  key={idx}
-                  className="bg-slate-50/70 rounded-2xl border border-slate-200 p-6 flex flex-col justify-between hover:bg-white hover:border-blue-400 hover:shadow-lg transition-all"
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-4">
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg border border-blue-400/40 text-sm sm:text-base group"
                 >
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700">
-                        <Icon className="w-5 h-5" />
-                      </div>
-                      <span className="text-[10px] font-extrabold uppercase tracking-wider text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200 font-mono">
-                        {d.badge}
-                      </span>
-                    </div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-2 font-heading">{d.title}</h3>
-                    <div className="text-xs font-bold text-blue-600 mb-3">{d.deliverable}</div>
-                    <p className="text-xs text-slate-600 leading-relaxed mb-4">{d.description}</p>
-                  </div>
-                  <div className="pt-3 border-t border-slate-200/60 text-[11px] font-semibold text-slate-500">
-                    Audit-Grade Document & Live Telemetry
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Forward CTA to Page Two */}
-          <div className="bg-slate-950 text-white rounded-2xl p-8 sm:p-12 text-center max-w-4xl mx-auto shadow-xl relative overflow-hidden">
-            <div className="relative z-10">
-              <h3 className="text-2xl sm:text-3xl font-extrabold mb-4 font-heading">Ready to Turn Intelligence into Coordinated Execution?</h3>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-8 font-normal">
-                Review the 7-phase TGE launch playbook, 20–50 creator sequencing architecture, exchange operations, and post-launch retention systems.
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-4">
+                  <span>Request Intelligence Diagnostic</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Link>
                 <Link
                   to="/ico-acceleration/launch-growth"
-                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-3.5 rounded-xl transition-all shadow-md text-sm group"
+                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-4 rounded-xl transition-all text-sm sm:text-base border border-white/30 backdrop-blur-sm shadow-md"
+                >
+                  <span>Explore Launch & Growth</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Architectural Preview Card */}
+            <div className="lg:col-span-4">
+              <div className="bg-slate-900/90 text-white rounded-3xl overflow-hidden shadow-2xl border border-slate-800 relative">
+                <div className="h-44 w-full relative overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+                    alt="Market Strategy"
+                    className="w-full h-full object-cover opacity-60"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
+                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-blue-400 font-bold bg-slate-900/80 px-2.5 py-1 rounded-md border border-slate-700">
+                      Layer 0 & 1 Intelligence
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/60">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                      Verified Gating
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-6 space-y-4">
+                  <div className="text-xs text-slate-300 font-medium leading-relaxed">
+                    Quantitative pre-launch validation assessing real liquidity demand, positioning boundaries, and competitive differentiation.
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3 pt-2 border-t border-slate-800">
+                    <div className="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                      <div className="text-lg font-black text-white font-mono">6 Submenus</div>
+                      <div className="text-[11px] text-slate-400">Research modules</div>
+                    </div>
+                    <div className="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                      <div className="text-lg font-black text-white font-mono">4 Reports</div>
+                      <div className="text-[11px] text-slate-400">Audit-grade outputs</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ── MAIN CONTENT ── */}
+      <main className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 space-y-16 lg:space-y-24">
+            
+            {/* ── SUBMENU 1: MARKET VALIDATION INTELLIGENCE ── */}
+            <section id="market-validation" className="scroll-mt-28 bg-white rounded-3xl border border-slate-200/90 p-8 sm:p-10 shadow-xs">
+              <div className="max-w-3xl mb-8">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
+                  Submenu 01 · Pre-Launch Validation
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                  Market Validation Intelligence
+                </h2>
+                <div className="text-sm font-bold text-slate-700 uppercase tracking-wide mb-2">
+                  Purpose: Understand the market opportunity before committing significant resources.
+                </div>
+                <p className="text-base text-slate-600 leading-relaxed font-normal">
+                  Launching into an unvalidated market is the single highest cause of post-TGE treasury impairment. We run quantitative validation diagnostics to benchmark readiness against active macroeconomic and regulatory conditions.
+                </p>
+              </div>
+
+              {/* 5 Core Pillars */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="bg-slate-50/80 rounded-2xl border border-slate-200/80 p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-9 h-9 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-xs font-mono">
+                      01
+                    </div>
+                    <h3 className="text-lg font-extrabold text-slate-900 tracking-tight">Market Opportunity Assessment</h3>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Define the core problem, target audience, market segment, and potential demand under current Web3 liquidity conditions.
+                  </p>
+                </div>
+
+                <div className="bg-slate-50/80 rounded-2xl border border-slate-200/80 p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-9 h-9 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-xs font-mono">
+                      02
+                    </div>
+                    <h3 className="text-lg font-extrabold text-slate-900 tracking-tight">Competitor Mapping</h3>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Identify comparable protocols, competing solutions, positioning differences, and unaddressed market gaps.
+                  </p>
+                </div>
+
+                <div className="bg-slate-50/80 rounded-2xl border border-slate-200/80 p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-9 h-9 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-xs font-mono">
+                      03
+                    </div>
+                    <h3 className="text-lg font-extrabold text-slate-900 tracking-tight">Audience Validation</h3>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Understand user needs, adoption barriers, developer requirements, and relevant community sub-segments.
+                  </p>
+                </div>
+
+                <div className="bg-slate-50/80 rounded-2xl border border-slate-200/80 p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-9 h-9 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-xs font-mono">
+                      04
+                    </div>
+                    <h3 className="text-lg font-extrabold text-slate-900 tracking-tight">Launch Readiness Assessment</h3>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Audit gaps in positioning, product readiness, audience understanding, and launch preparation against 100-point gating criteria.
+                  </p>
+                </div>
+
+                <div className="md:col-span-2 bg-slate-50/80 rounded-2xl border border-slate-200/80 p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-9 h-9 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-xs font-mono">
+                      05
+                    </div>
+                    <h3 className="text-lg font-extrabold text-slate-900 tracking-tight">Strategic Recommendations</h3>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Convert research findings into actionable priorities, Go/No-Go milestones, and an optimal TGE execution window.
+                  </p>
+                </div>
+              </div>
+
+              {/* Output Deliverable Card */}
+              <div className="bg-blue-50/70 border border-blue-200/90 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-blue-700 mb-1">
+                    Suggested Output Artifact
+                  </div>
+                  <div className="text-base font-extrabold text-slate-900">
+                    Market Validation Report, Competitor Map, Audience Profile & Prioritized Recommendations
+                  </div>
+                </div>
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-800 bg-white px-4 py-2.5 rounded-xl border border-blue-200 shadow-xs shrink-0"
+                >
+                  <span>Request Assessment</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </section>
+
+            {/* ── SUBMENU 2: TOKENOMICS & NARRATIVE STUDIO ── */}
+            <section id="tokenomics-narrative" className="scroll-mt-28 bg-white rounded-3xl border border-slate-200/90 p-8 sm:p-10 shadow-xs">
+              <div className="max-w-3xl mb-8">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
+                  Submenu 02 · Narrative & Economics
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                  Tokenomics & Narrative Studio
+                </h2>
+                <div className="text-sm font-bold text-slate-700 uppercase tracking-wide mb-2">
+                  Purpose: Align token utility, project positioning, and communication.
+                </div>
+                <p className="text-base text-slate-600 leading-relaxed font-normal">
+                  A tokenomics model without a crisp, memorable narrative fails to capture attention. A compelling story without sustainable token mechanics fails to retain capital. We unite both into a unified communication framework.
+                </p>
+              </div>
+
+              <div className="space-y-4 mb-8">
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 shrink-0 mt-0.5">
+                    <Coins className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-extrabold text-slate-900 mb-1">Token Utility Mapping</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      Explain the intended function and utility of the token within the ecosystem across governance, fee discounts, staking, and network security.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 shrink-0 mt-0.5">
+                    <BarChart3 className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-extrabold text-slate-900 mb-1">Tokenomics Communication</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      Present token supply, allocation, vesting, and distribution information accurately and transparently without ambiguous jargon.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 shrink-0 mt-0.5">
+                    <Sparkles className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-extrabold text-slate-900 mb-1">Project Narrative</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      Develop a clear, persuasive explanation of the core problem, cryptographic solution, sustainable differentiation, and broader ecosystem value.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 shrink-0 mt-0.5">
+                    <FileText className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-extrabold text-slate-900 mb-1">Messaging Framework</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      Create consistent messages for the website, community channels, partners, and launch campaigns to ensure zero narrative drift.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-700 shrink-0 mt-0.5">
+                    <AlertCircle className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-extrabold text-slate-900 mb-1">Risk and Claims Review</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      Identify unsupported statements and avoid misleading token-related claims. In strict adherence to compliance rules, we do not invent token allocations, tokenomics parameters, returns, or investment projections.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Output Deliverable Box */}
+              <div className="bg-blue-50/70 border border-blue-200/90 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-blue-700 mb-1">
+                    Suggested Output Artifact
+                  </div>
+                  <div className="text-base font-extrabold text-slate-900">
+                    Token Narrative Document, Messaging Framework & Tokenomics Communication Brief
+                  </div>
+                </div>
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-800 bg-white px-4 py-2.5 rounded-xl border border-blue-200 shadow-xs shrink-0"
+                >
+                  <span>Build Narrative Studio</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </section>
+
+            {/* ── SUBMENU 3: STARTUP MVP ACCELERATION ENGINE ── */}
+            <section id="mvp-acceleration" className="scroll-mt-28 bg-white rounded-3xl border border-slate-200/90 p-8 sm:p-10 shadow-xs">
+              <div className="max-w-3xl mb-8">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
+                  Submenu 03 · Idea to Testnet
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                  Startup MVP Acceleration Engine
+                </h2>
+                <div className="text-sm font-bold text-slate-700 uppercase tracking-wide mb-2">
+                  Purpose: Help early-stage Web3 teams turn their core idea into a testable product direction.
+                </div>
+                <p className="text-base text-slate-600 leading-relaxed font-normal">
+                  Designed for pre-TGE teams navigating product-market fit. We clarify scope, validate assumptions with early adopters, and align milestones for testnet and investor diligence.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="bg-slate-50/80 rounded-2xl border border-slate-200/80 p-6">
+                  <div className="text-xs font-mono font-bold text-blue-600 uppercase mb-2">Phase 01</div>
+                  <h3 className="text-lg font-extrabold text-slate-900 mb-2">Problem Definition</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Identify the primary user problem, friction points, and the intended cryptographic or operational outcome.
+                  </p>
+                </div>
+
+                <div className="bg-slate-50/80 rounded-2xl border border-slate-200/80 p-6">
+                  <div className="text-xs font-mono font-bold text-blue-600 uppercase mb-2">Phase 02</div>
+                  <h3 className="text-lg font-extrabold text-slate-900 mb-2">MVP Scope</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Separate essential launch features from later enhancements to accelerate time-to-testnet and preserve runway.
+                  </p>
+                </div>
+
+                <div className="bg-slate-50/80 rounded-2xl border border-slate-200/80 p-6">
+                  <div className="text-xs font-mono font-bold text-blue-600 uppercase mb-2">Phase 03</div>
+                  <h3 className="text-lg font-extrabold text-slate-900 mb-2">User Journey Mapping</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Define the key steps a user or developer takes through wallet connection, contract interaction, and daily utility.
+                  </p>
+                </div>
+
+                <div className="bg-slate-50/80 rounded-2xl border border-slate-200/80 p-6">
+                  <div className="text-xs font-mono font-bold text-blue-600 uppercase mb-2">Phase 04</div>
+                  <h3 className="text-lg font-extrabold text-slate-900 mb-2">Validation Milestones</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Establish measurable milestones for testing assumptions, tracking testnet faucet usage, and developer repo forks.
+                  </p>
+                </div>
+
+                <div className="md:col-span-2 bg-slate-50/80 rounded-2xl border border-slate-200/80 p-6">
+                  <div className="text-xs font-mono font-bold text-blue-600 uppercase mb-2">Phase 05</div>
+                  <h3 className="text-lg font-extrabold text-slate-900 mb-2">Iteration Planning</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Use feedback and product observations to guide improvements prior to public token launch.
+                  </p>
+                </div>
+              </div>
+
+              {/* Output Deliverable Box */}
+              <div className="bg-blue-50/70 border border-blue-200/90 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-blue-700 mb-1">
+                    Suggested Output Artifact
+                  </div>
+                  <div className="text-base font-extrabold text-slate-900">
+                    MVP Scope Document, User Journey, Validation Checklist & Milestone Plan
+                  </div>
+                </div>
+                <Link
+                  to="/ico-acceleration/solutions-engagement#model-5"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-800 bg-white px-4 py-2.5 rounded-xl border border-blue-200 shadow-xs shrink-0"
+                >
+                  <span>Explore Model 5 Blueprint</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </section>
+
+            {/* ── SUBMENU 4: CRYPTO DEMAND DISCOVERY ENGINE ── */}
+            <section id="demand-discovery" className="scroll-mt-28 bg-white rounded-3xl border border-slate-200/90 p-8 sm:p-10 shadow-xs">
+              <div className="max-w-3xl mb-8">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
+                  Submenu 04 · On-Chain & Market Intent
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                  Crypto Demand Discovery Engine
+                </h2>
+                <div className="text-sm font-bold text-slate-700 uppercase tracking-wide mb-2">
+                  Purpose: Identify where relevant users are located and what motivates them to engage.
+                </div>
+                <p className="text-base text-slate-600 leading-relaxed font-normal">
+                  Authentic Web3 demand is not measured in website pageviews—it lives on-chain and within active communities. We map real engagement signals to identify high-intent cohorts before launch capital is deployed.
+                </p>
+              </div>
+
+              <div className="space-y-4 mb-8">
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 shrink-0 mt-0.5">
+                    <Users className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-extrabold text-slate-900 mb-1">Audience Segmentation</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      Define distinct user groups according to interests, technical needs, holding behavior, staking habits, and protocol use cases.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 shrink-0 mt-0.5">
+                    <Activity className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-extrabold text-slate-900 mb-1">Demand Signals</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      Examine relevant community discussions, testnet feedback, validator requests, and on-chain liquidity activity.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 shrink-0 mt-0.5">
+                    <Target className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-extrabold text-slate-900 mb-1">Channel Discovery</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      Identify high-affinity Discord servers, Telegram groups, X discussion circles, and developer forums where relevant participants congregate.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 shrink-0 mt-0.5">
+                    <MessageSquare className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-extrabold text-slate-900 mb-1">Message Testing</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      Compare messaging approaches using controlled campaign experiments, organic community polls, and content testbeds.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 shrink-0 mt-0.5">
+                    <TrendingUp className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-extrabold text-slate-900 mb-1">Demand Insights</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      Summarize empirical findings and recommend prioritized marketing channels and messaging angles for the launch sprint.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Output Deliverable Box */}
+              <div className="bg-blue-50/70 border border-blue-200/90 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-blue-700 mb-1">
+                    Suggested Output Artifact
+                  </div>
+                  <div className="text-base font-extrabold text-slate-900">
+                    Audience Segments, Channel Map, Message Hypotheses & Demand Discovery Report
+                  </div>
+                </div>
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-800 bg-white px-4 py-2.5 rounded-xl border border-blue-200 shadow-xs shrink-0"
+                >
+                  <span>Request Demand Discovery</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </section>
+
+            {/* ── SUBMENU 5: COMMUNITY SIGNAL COMMAND CENTER ── */}
+            <section id="community-signals" className="scroll-mt-28 bg-white rounded-3xl border border-slate-200/90 p-8 sm:p-10 shadow-xs">
+              <div className="max-w-3xl mb-8">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
+                  Submenu 05 · Community Intelligence
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                  Community Signal Command Center
+                </h2>
+                <div className="text-sm font-bold text-slate-700 uppercase tracking-wide mb-2">
+                  Purpose: Organize community feedback into useful insights for marketing and product decisions.
+                </div>
+                <p className="text-base text-slate-600 leading-relaxed font-normal">
+                  Move beyond vanity member counts. Using aggregate insights and privacy-compliant monitoring, we distill organic sentiment, recurring friction points, and product questions across Telegram, Discord, and X.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="bg-slate-50/80 rounded-2xl border border-slate-200/80 p-6">
+                  <h3 className="text-lg font-extrabold text-slate-900 mb-2">Community Monitoring</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Review relevant discussions, developer chat channels, and recurring community questions across approved project spaces.
+                  </p>
+                </div>
+
+                <div className="bg-slate-50/80 rounded-2xl border border-slate-200/80 p-6">
+                  <h3 className="text-lg font-extrabold text-slate-900 mb-2">Sentiment Themes</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Categorize feedback into positive themes, user concerns, technical inquiries, and emerging operational bottlenecks.
+                  </p>
+                </div>
+
+                <div className="bg-slate-50/80 rounded-2xl border border-slate-200/80 p-6">
+                  <h3 className="text-lg font-extrabold text-slate-900 mb-2">FAQ Discovery</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Identify the most common questions, terminology confusion, and documentation gaps requiring clarification.
+                  </p>
+                </div>
+
+                <div className="bg-slate-50/80 rounded-2xl border border-slate-200/80 p-6">
+                  <h3 className="text-lg font-extrabold text-slate-900 mb-2">Engagement Opportunities</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Find timely topics suitable for founder AMAs, technical deep-dives, developer bounties, and community education.
+                  </p>
+                </div>
+
+                <div className="md:col-span-2 bg-slate-50/80 rounded-2xl border border-slate-200/80 p-6">
+                  <h3 className="text-lg font-extrabold text-slate-900 mb-2">Feedback Reporting</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Produce structured summaries for the marketing, product, and leadership teams to rapidly address sentiment trends.
+                  </p>
+                </div>
+              </div>
+
+              {/* Output Deliverable Box */}
+              <div className="bg-blue-50/70 border border-blue-200/90 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-blue-700 mb-1">
+                    Suggested Output Artifact
+                  </div>
+                  <div className="text-base font-extrabold text-slate-900">
+                    Community Insights Report, Master FAQ List & Engagement Recommendations
+                  </div>
+                </div>
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-800 bg-white px-4 py-2.5 rounded-xl border border-blue-200 shadow-xs shrink-0"
+                >
+                  <span>Setup Signal Center</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </section>
+
+            {/* ── SUBMENU 6: COMPETITIVE DISPLACEMENT RADAR ── */}
+            <section id="competitive-radar" className="scroll-mt-28 bg-white rounded-3xl border border-slate-200/90 p-8 sm:p-10 shadow-xs">
+              <div className="max-w-3xl mb-8">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
+                  Submenu 06 · Strategic Differentiation
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                  Competitive Displacement Radar
+                </h2>
+                <div className="text-sm font-bold text-slate-700 uppercase tracking-wide mb-2">
+                  Purpose: Identify opportunities to differentiate the project from alternative solutions.
+                </div>
+                <p className="text-base text-slate-600 leading-relaxed font-normal">
+                  Pinpoint competitor limitations, community dissatisfaction, and migration opportunities to position your protocol on verified technical superiority and clear economic alignment.
+                </p>
+              </div>
+
+              <div className="space-y-4 mb-8">
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 shrink-0 mt-0.5">
+                    <Radar className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-extrabold text-slate-900 mb-1">Competitive Landscape</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      Identify relevant direct alternatives, comparable protocols, and adjacent ecosystems competing for the same user liquidity.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 shrink-0 mt-0.5">
+                    <FileSpreadsheet className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-extrabold text-slate-900 mb-1">Feature Comparison</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      Compare documented throughput, gas models, tokenomics, developer SDKs, and security architecture against market standards.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 shrink-0 mt-0.5">
+                    <CheckCircle2 className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-extrabold text-slate-900 mb-1">Differentiation Mapping</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      Articulate the project's verified strengths, intended market niche, and sustainable competitive moat.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 shrink-0 mt-0.5">
+                    <FileText className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-extrabold text-slate-900 mb-1">Competitive Messaging</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      Create evidence-based messaging and battlecards that communicate meaningful, verified technical differences to users and investors.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 shrink-0 mt-0.5">
+                    <Target className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-extrabold text-slate-900 mb-1">Opportunity Prioritization</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      Recommend specific tactical areas where the project can rapidly gain market share and win developer adoption.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Output Deliverable Box */}
+              <div className="bg-blue-50/70 border border-blue-200/90 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-blue-700 mb-1">
+                    Suggested Output Artifact
+                  </div>
+                  <div className="text-base font-extrabold text-slate-900">
+                    Competitive Comparison Matrix, Differentiation Framework & Messaging Recommendations
+                  </div>
+                </div>
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-800 bg-white px-4 py-2.5 rounded-xl border border-blue-200 shadow-xs shrink-0"
+                >
+                  <span>Build Radar Matrix</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </section>
+
+            {/* ── INTELLIGENCE DELIVERABLES SYNTHESIS & NEXT PAGE CTA ── */}
+            <section className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-80 h-80 bg-radial from-blue-600/20 to-transparent pointer-events-none" />
+              
+              <div className="max-w-3xl mb-10 relative z-10">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700 inline-block mb-4">
+                  Synthesis & Deliverables
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">
+                  Summary of Intelligence Deliverables
+                </h3>
+                <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                  Every intelligence engagement produces four concrete, evidence-backed deliverables to remove guesswork from your launch timeline.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10 relative z-10">
+                {deliverablesCards.map((d, idx) => {
+                  const Icon = d.icon;
+                  return (
+                    <div
+                      key={idx}
+                      className="bg-slate-800/70 rounded-2xl border border-slate-700/80 p-6 flex flex-col justify-between"
+                    >
+                      <div>
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center">
+                            <Icon className="w-5 h-5" />
+                          </div>
+                          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-300 bg-blue-900/60 px-2 py-0.5 rounded border border-blue-700/60">
+                            {d.badge}
+                          </span>
+                        </div>
+                        <h4 className="text-lg font-bold text-white mb-1">{d.title}</h4>
+                        <div className="text-xs font-semibold text-blue-300 mb-2">{d.deliverable}</div>
+                        <p className="text-xs text-slate-300 leading-relaxed">{d.description}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-6 relative z-10">
+                <div>
+                  <div className="text-lg font-bold text-white">Next Step: Launch & Growth Acceleration</div>
+                  <div className="text-xs text-slate-400">Review execution engines, creator orchestration, and the 7-phase launch playbook.</div>
+                </div>
+                <Link
+                  to="/ico-acceleration/launch-growth"
+                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-7 py-3.5 rounded-xl transition-all shadow-md text-sm border border-blue-400/40 group shrink-0"
                 >
                   <span>Explore Launch & Growth</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link
-                  to="/book-consultation"
-                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold px-7 py-3.5 rounded-xl transition-all text-sm border border-white/20"
-                >
-                  <span>Schedule Diagnostic</span>
-                </Link>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            </section>
+
+      </main>
     </div>
   );
 }

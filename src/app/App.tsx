@@ -5,15 +5,10 @@ import ChatBot from './components/ChatBot';
 import Footer from './components/Footer';
 
 import Home from './pages/Home';
+import ScrollToTopAndHash from './components/ScrollToTopAndHash';
 
 const BookConsultation = lazy(() => import('./pages/BookConsultation'));
 const Crypto = lazy(() => import('./pages/Crypto'));
-const IcoLanding = lazy(() => import('./pages/ico/IcoLanding'));
-const IcoIntelligence = lazy(() => import('./pages/ico/IcoIntelligence'));
-const IcoLaunchGrowth = lazy(() => import('./pages/ico/IcoLaunchGrowth'));
-const IcoSolutionsEngagement = lazy(() => import('./pages/ico/IcoSolutionsEngagement'));
-const IcoTrustPerformance = lazy(() => import('./pages/ico/IcoTrustPerformance'));
-const IcoSalesEnablement = lazy(() => import('./pages/ico/IcoSalesEnablement'));
 const Outcomes = lazy(() => import('./pages/Outcomes'));
 const Solutions = lazy(() => import('./pages/Solutions'));
 const Capabilities = lazy(() => import('./pages/Capabilities'));
@@ -64,6 +59,12 @@ const AIBrandAcceleration = lazy(() => import('./pages/AIBrandAcceleration'));
 const AIReputationAcceleration = lazy(() => import('./pages/AIReputationAcceleration'));
 const DiscoveryPage = lazy(() => import('./pages/DiscoveryPage'));
 const CookieConsent = lazy(() => import('./components/CookieConsent'));
+const IcoLanding = lazy(() => import('./pages/ico/IcoLanding'));
+const IcoIntelligence = lazy(() => import('./pages/ico/IcoIntelligence'));
+const IcoLaunchGrowth = lazy(() => import('./pages/ico/IcoLaunchGrowth'));
+const IcoSolutionsEngagement = lazy(() => import('./pages/ico/IcoSolutionsEngagement'));
+const IcoTrustPerformance = lazy(() => import('./pages/ico/IcoTrustPerformance'));
+const IcoSalesEnablement = lazy(() => import('./pages/ico/IcoSalesEnablement'));
 import TabExitPopup from './components/TabExitPopup';
 import StickyCtaBar from './components/StickyCtaBar';
 import WhatsAppWidget from './components/WhatsAppWidget';
@@ -122,6 +123,7 @@ function NavigateToSolutionsSection() {
 export default function App() {
   return (
     <Router>
+      <ScrollToTopAndHash />
       <AnalyticsTracker />
       <div className="min-h-screen bg-white pb-20 lg:pb-0">
         <Navigation />
@@ -137,7 +139,11 @@ export default function App() {
               <Route path="/ico-acceleration/solutions-engagement" element={<IcoSolutionsEngagement />} />
               <Route path="/ico-acceleration/trust-performance" element={<IcoTrustPerformance />} />
               <Route path="/ico-acceleration/sales-enablement" element={<IcoSalesEnablement />} />
+              <Route path="/ai-driven-sales-transformation" element={<AILeadSalesTransformation />} />
+              <Route path="/growth-acceleration-science" element={<AIRevenueAcceleration />} />
+              <Route path="/global-market-acceleration" element={<DemandPulse />} />
               <Route path="/outcomes" element={<Outcomes />} />
+              <Route path="/use-cases" element={<Outcomes />} />
               <Route path="/solutions" element={<Solutions />} />
               <Route path="/solutions/:slug" element={<NavigateToSolutionsSection />} />
               <Route path="/capabilities" element={<Navigate to="/solutions" replace />} />

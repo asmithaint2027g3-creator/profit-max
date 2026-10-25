@@ -138,44 +138,36 @@ export default function EnterpriseDashboardNavigation({
                     shortDesc: 'End-to-end tokenomics, launch ops, and compliance architecture.',
                     cards: [
                         {
-                            title: 'Launch Intelligence & Discovery',
-                            description: 'Market validation diagnostics, on-chain demand intent scoring, and tokenomics narrative studio.',
-                            path: '/ico-acceleration/intelligence',
-                            badge: 'Layer 0 & 1',
-                            icon: Search,
-                            tags: ['Demand Scoring', 'Narrative Studio']
-                        },
-                        {
-                            title: '7-Phase TGE Launch & Growth',
-                            description: 'Synchronized TGE command: 20–50 creator sequencing, listing ops, and 90-day retention machines.',
-                            path: '/ico-acceleration/launch-growth',
-                            badge: '7-Phase Playbook',
+                            title: 'ICO Acceleration Hub',
+                            description: 'Complete Web3 protocol for guaranteed capital formation, liquidity velocity, and governance.',
+                            path: '/ico-acceleration',
+                            badge: 'Protocol Suite',
                             icon: Rocket,
-                            tags: ['T-16w to T+90d', 'KOL Orchestration']
+                            tags: ['Pre-TGE', 'TGE Apex', 'Post-TGE']
                         },
                         {
-                            title: 'Segment Solutions & 6 Models',
-                            description: 'Engineered packages for L1/L2s, DeFi, Gaming, and CEXs across six transparent commercial tiers.',
-                            path: '/ico-acceleration/solutions-engagement',
-                            badge: 'Engagement Models',
-                            icon: Layers,
-                            tags: ['Diagnostic Sprint', 'TGE Command']
+                            title: '7-Phase Launch Lifecycle',
+                            description: 'Rigorous 180-day operational roadmap from foundation architecture to secondary exchange expansion.',
+                            path: '/ico-acceleration/launch-growth#lifecycle-phases',
+                            badge: 'Roadmap Execution',
+                            icon: Clock,
+                            tags: ['T-16w to T+180d', 'MM Coordination']
                         },
                         {
-                            title: 'Compliance by Design Trust Layer',
-                            description: 'Active promotional guardrails (MiCA, VARA, ASCI), KYC/AML workflows, and Token-Adjusted RQL.',
+                            title: 'Liquidity Generation Engine',
+                            description: 'DEX pool seeding, market-maker SLA coordination, and anti-dump vesting mechanics.',
+                            path: '/ico-acceleration/launch-growth#liquidity-engine',
+                            badge: 'Capital Formation',
+                            icon: Coins,
+                            tags: ['Order Book Depth', 'Slippage Control']
+                        },
+                        {
+                            title: 'Trust & Compliance Guardrails',
+                            description: 'Compliance by Design: EU MiCA, UAE VARA, US SEC, and multi-touch ROI attribution.',
                             path: '/ico-acceleration/trust-performance',
-                            badge: 'Trust & RQL',
+                            badge: 'Regulatory Hygiene',
                             icon: ShieldCheck,
-                            tags: ['MiCA / VARA', 'Token RQL']
-                        },
-                        {
-                            title: 'SPICED Sales Enablement',
-                            description: 'Structured 5-dimension qualification framework, objection handling playbooks, and discovery outputs.',
-                            path: '/ico-acceleration/sales-enablement',
-                            badge: 'Sales Enablement',
-                            icon: Target,
-                            tags: ['SPICED Diagnostic', 'Objection Handling']
+                            tags: ['MiCA / VARA', 'Audit Proofs']
                         }
                     ]
                 }

@@ -22,16 +22,20 @@ import {
   Clock,
   Briefcase,
   Sliders,
-  DollarSign
+  DollarSign,
+  AlertTriangle,
+  FileText,
+  Workflow,
+  Sparkles,
+  ArrowUpRight
 } from 'lucide-react';
-import IcoSubNav from '../../components/IcoSubNav';
 
 export default function IcoLaunchGrowth() {
   const location = useLocation();
   const [activePhaseTab, setActivePhaseTab] = useState<number>(0);
 
   useEffect(() => {
-    document.title = 'Launch & Growth | ProfitMachines Crypto Protocol';
+    document.title = 'Launch & Growth Acceleration | ProfitMachines Crypto Protocol';
     if (location.hash) {
       const id = location.hash.replace('#', '');
       const el = document.getElementById(id);
@@ -43,533 +47,877 @@ export default function IcoLaunchGrowth() {
     } else {
       window.scrollTo(0, 0);
     }
-  }, [location.hash, location.pathname]);
-
-  const executionModules = [
-    {
-      id: 'growth-acceleration',
-      title: 'Growth Acceleration Engine',
-      subtitle: 'Original Engine 4',
-      icon: TrendingUp,
-      description:
-        'Continuously identifies conversion bottlenecks across testnet, token sale, and dapp interactions. Implements structured growth experiments to optimize funnel throughput and liquidity participation.',
-      capabilities: [
-        'Funnel breakpoint detection & leak plugging',
-        'Growth experiment planning & sprint cycles',
-        'Community & wallet readiness scoring',
-        'Protocol adoption and liquidity yield opportunities'
-      ]
-    },
-    {
-      id: 'kol-orchestration',
-      title: 'KOL & Creator Orchestration',
-      subtitle: 'Execution Engine',
-      icon: Users,
-      description:
-        'Replaces predatory one-off sponsored posts with coordinated, phased creator sequencing. Deploys 20–50 verified crypto creators (scaled to scope & budget) on structured performance milestones.',
-      capabilities: [
-        'Micro-first creator sequencing (technical builders before macro hype)',
-        'Phased campaigns across X, YouTube, and Telegram alpha channels',
-        'Performance-based creator evaluation (wallet referral attribution)',
-        'Strict disclosure enforcement & compliance guardrails'
-      ]
-    },
-    {
-      id: 'exchange-operations',
-      title: 'Exchange & Listing Operations',
-      subtitle: 'Execution Engine',
-      icon: Building2,
-      description:
-        'Synchronizes CEX and DEX listing pipelines, legal documentation, market maker SLAs, and launch announcement windows to prevent volatility slippage.',
-      capabilities: [
-        'Tier-1 and Tier-2 listing pipeline management',
-        'Listing-readiness diligence & technical integration coordination',
-        'Coordinated announcement timing (T-21 to T-7 subject to exchange agreements)',
-        'Market-maker SLA coordination (spreads, depth & inventory planning)'
-      ]
-    },
-    {
-      id: 'incentive-engineering',
-      title: 'Airdrop & Incentive Engineering',
-      subtitle: 'Execution Engine',
-      icon: Gift,
-      description:
-        'Architects Sybil-resistant token distribution mechanisms that reward authentic early adopters while eliminating mercenary airdrop farmers.',
-      capabilities: [
-        'Airdrop & whitelist tiering architecture',
-        'Eligibility qualification rules & on-chain activity thresholds',
-        'Multi-layer Sybil resistance & wallet clustering filtration',
-        'Incentive retention telemetry tracking token hold duration'
-      ]
-    },
-    {
-      id: 'omnichannel-performance',
-      title: 'Omnichannel Performance Engine',
-      subtitle: 'Original Engine 5',
-      icon: BarChart3,
-      description:
-        'Provides real-time attribution and spend efficiency reporting across digital channels, measuring true acquisition cost per active wallet and protocol deposit.',
-      capabilities: [
-        'End-to-end multi-touch channel attribution',
-        'Real-time campaign spend efficiency reporting',
-        'Dynamic budget reallocation based on high-yield channels',
-        'Empirical ROI measurement where verified on-chain data is available'
-      ]
-    },
-    {
-      id: 'revenue-acceleration',
-      title: 'Revenue Acceleration Engine',
-      subtitle: 'Original Engine 6',
-      icon: Coins,
-      description:
-        'Aligns tokenomics with sustainable cash flows. Structures transaction fee sharing, staking yield models, and enterprise API monetization to build lasting treasury reserves.',
-      capabilities: [
-        'Token and transaction fee monetization models',
-        'Expansion and wallet retention signal detection',
-        'Forward-looking treasury and fee revenue forecasting',
-        'Protocol revenue prioritization & capital allocation'
-      ]
-    },
-    {
-      id: 'journey-intelligence',
-      title: 'Customer Journey Intelligence',
-      subtitle: 'Original Engine 7',
-      icon: Cpu,
-      description:
-        'Maps wallet lifecycles from initial testnet interaction to daily protocol usage. Automates targeted engagement to prevent post-TGE dropoff.',
-      capabilities: [
-        'Wallet journey lifecycle mapping & milestone tracking',
-        'Early churn-risk signals and inactive wallet alerts',
-        'Expansion opportunities (cross-protocol staking, lending)',
-        'Lifecycle messaging automation triggered by on-chain events'
-      ]
-    },
-    {
-      id: 'institutional-bd',
-      title: 'Institutional & BD Sales Engine',
-      subtitle: 'Original Engine 8',
-      icon: Briefcase,
-      description:
-        'Accelerates enterprise and ecosystem partnerships, institutional liquidity onboarding, foundation grant pipelines, and real-world asset (RWA) tokenization.',
-      capabilities: [
-        'Exchange and ecosystem strategic partnership sourcing',
-        'Foundation grant opportunity tracking & application support',
-        'L2 rollup integrations & cross-chain bridge partnerships',
-        'Institutional custody & RWA tokenization deal pipeline'
-      ]
-    },
-    {
-      id: 'retention-machine',
-      title: 'Post-TGE Retention Machine',
-      subtitle: 'Lifecycle Engine',
-      icon: Activity,
-      description:
-        'A structured 90-day operational execution framework deployed immediately following TGE to ensure initial token holders convert into permanent protocol participants.',
-      capabilities: [
-        'Structured 90-day content, education & community activation calendar',
-        'Product utility tutorials, developer documentation & hackathons',
-        'Staking, yield, and decentralized governance onboarding sequences',
-        'DAU, TVL, and wallet retention cohort monitoring'
-      ]
-    }
-  ];
+  }, [location.hash]);
 
   const playbookPhases = [
     {
       phaseNumber: '01',
-      name: 'Phase 1 — Foundation',
+      name: 'Foundation & Strategy',
       timeframe: 'T-16 to T-12 Weeks',
-      leadEngines: 'Tokenomics & Narrative Studio, Market Validation Intelligence',
-      objective: 'Audit fundamentals, structure messaging, and map compliance requirements before capital deployment.',
+      objective: 'Validate positioning, objectives, tokenomics communication, and launch requirements before deploying capital.',
       actions: [
-        'Comprehensive tokenomics audit: emission curves, vesting schedules, and circulating float calculation',
-        'Jurisdictional legal & compliance review (MiCA / VARA / ASCI promotional boundaries)',
-        'Token narrative finalization and core value proposition definition',
-        'Initial distribution and treasury allocation planning',
-        'Core infrastructure audit: website, documentation, smart contract security roadmap'
+        'Comprehensive tokenomics audit and circulating float distribution modeling',
+        'Jurisdictional marketing review (MiCA / VARA / ASCI promotional boundaries)',
+        'Core project narrative finalization and audience value proposition clarity',
+        'Core documentation roadmap and smart contract security verification'
       ],
-      proposedKpis: [
-        'Finalized & legally reviewed tokenomics blueprint',
-        'Go/No-Go score exceeding 85/100 threshold',
-        'Completed token narrative documentation & developer litepaper'
-      ]
+      dependencies: 'Completed market validation report and legal counsel engagement',
+      deliverables: 'Launch roadmap blueprint, token narrative framework, and compliance intake log.'
     },
     {
       phaseNumber: '02',
-      name: 'Phase 2 — Community Build',
-      timeframe: 'T-90 to T-61 Days',
-      leadEngines: 'Community Signal Command, Customer Journey Intelligence',
-      objective: 'Establish high-signal developer and early adopter channels with strict anti-bot filtration.',
+      name: 'Product & Narrative Readiness',
+      timeframe: 'T-12 to T-8 Weeks',
+      objective: 'Prepare core product messaging, user onboarding journeys, and developer documentation.',
       actions: [
-        'Discord and Telegram server architecture with bot-filtering and role gating',
-        'Website, interactive litepaper, and technical documentation public launch',
-        'Community moderation onboarding and 24/7 coverage protocol establishment',
-        'Initial organic community development through technical developer bounties',
-        'Content preparation: explanatory guides, technical deep-dives, founder podcasts'
+        'Interactive litepaper, technical documentation, and testnet tutorials publication',
+        'Developer onboarding SDKs and faucet infrastructure optimization',
+        'Website conversion funnel optimization and messaging consistency audit',
+        'Seed/private investor narrative alignment and tokenomics disclosure kit'
       ],
-      proposedKpis: [
-        'Organic community growth with >70% human-verified member ratio',
-        'Initial testnet faucet requests / developer GitHub activity baseline established',
-        'Active Discord engagement rate >18% on technical and roadmap channels'
-      ]
+      dependencies: 'Finalized token utility architecture and testnet stability',
+      deliverables: 'Public documentation hub, user journey maps, and investor briefing pack.'
     },
     {
       phaseNumber: '03',
-      name: 'Phase 3 — Momentum & Distribution',
-      timeframe: 'T-60 to T-31 Days',
-      leadEngines: 'KOL & Creator Orchestration, Crypto Demand Discovery Engine',
-      objective: 'Seed early narrative through technical creators and open verified whitelist registration.',
+      name: 'Community Foundation',
+      timeframe: 'T-8 to T-5 Weeks',
+      objective: 'Organize official community channels, FAQs, and engagement planning with strict anti-bot filtration.',
       actions: [
-        'Phase 1 creator seeding: technical and builder KOLs conducting product walkthroughs',
-        'Crypto PR outreach across major industry publications and podcast circuits',
-        'Whitelist application launch with multi-step on-chain qualification criteria',
-        'Sybil screening deployment to filter bot farms from whitelist cohorts',
-        'Strategic ecosystem partnership announcements (L1/L2 grants, security audit seals)'
+        'Discord and Telegram server architecture with bot-filtering and role gating',
+        'Community moderation protocol onboarding and 24/7 global coverage setup',
+        'Core community FAQ list and educational content series publication',
+        'Organic early adopter bounties and developer feedback incentives'
       ],
-      proposedKpis: [
-        '20+ creator deliverables published with verifiable engagement attribution',
-        'Whitelist target reached with >80% verified on-chain wallet histories',
-        'Tier-1 audit firm completion and public report publication'
-      ]
+      dependencies: 'Documentation release and social channel governance',
+      deliverables: 'Configured community hubs, master FAQ repository, and moderation handbook.'
     },
     {
       phaseNumber: '04',
-      name: 'Phase 4 — Activation',
-      timeframe: 'T-30 to T-1 Days',
-      leadEngines: 'Exchange & Listing Operations, Airdrop & Incentive Engineering',
-      objective: 'Lock exchange listings, coordinate market makers, and build public launch countdown momentum.',
+      name: 'Audience & Partner Activation',
+      timeframe: 'T-5 to T-2 Weeks',
+      objective: 'Coordinate approved creator, ecosystem, and partnership activities across relevant crypto channels.',
       actions: [
-        'Exchange listing agreements finalized and deposit testing completed (T-21 to T-7 announcements)',
-        'Market maker liquidity deployment SLAs, spreads, and depth commitments confirmed',
-        'Phase 2 creator amplification: macro crypto influencers and YouTube deep-dives',
-        'Whitelist verification closure, allocation confirmation, and claim instructions publication',
-        'Founder AMAs across top Twitter Spaces, Telegram channels, and partner communities'
+        'Phase 1 creator sequencing: technical builders and research analysts walkthroughs',
+        'Whitelist registration portal opening with Sybil verification and qualification rules',
+        'Ecosystem partnership announcements (L1/L2 grants, security audit completions)',
+        'Podcast circuits and founder AMA schedules across top Twitter Spaces'
       ],
-      proposedKpis: [
-        'Confirmed Tier-1/Tier-2 exchange listing schedule with synchronized announcement dates',
-        'Market maker collateral and algorithmic liquidity pools fully funded and staged',
-        'Total addressable audience reach across creator activations matching target benchmarks'
-      ]
+      dependencies: 'Approved creative assets, disclosure compliance, and whitelist gating',
+      deliverables: 'Creator campaign briefs, verified whitelist registry, and partnership releases.'
     },
     {
       phaseNumber: '05',
-      name: 'Phase 5 — TGE Week',
-      timeframe: 'Launch Day to Day 7',
-      leadEngines: 'TGE Command Center, Omnichannel Performance Engine',
-      objective: 'Execute flawless synchronized token listing, liquidity injection, and live crisis management.',
+      name: 'Launch Readiness',
+      timeframe: 'T-2 Weeks to T-1 Day',
+      objective: 'Review communications, operational dependencies, and launch checklists prior to opening bell.',
       actions: [
-        'Coordinated listing announcements across exchanges, official channels, and partner dApps',
-        'Live founder Spaces, continuous community moderation, and technical support escalation',
-        'Phase 3 creator momentum: launch day trading and utility demonstration coverage',
-        'Real-time sentiment monitoring, DEX liquidity rebalancing, and gas price tracking',
-        'Airdrop claim portal opening with Sybil-resistant claiming smart contracts'
+        'Exchange listing documentation finalization and deposit testing (subject to exchange approvals)',
+        'Market maker liquidity deployment SLAs, spreads, and depth commitments confirmed',
+        'Whitelist closure, allocation confirmation, and claim instructions publication',
+        'Final multi-party operational dry run and community crisis response protocol'
       ],
-      proposedKpis: [
-        'Zero downtime across claim portals, exchange deposit gateways, and RPC nodes',
-        'Liquidity pools established within target spread and depth tolerance across pairs',
-        'Community sentiment maintaining >75% positive ratio during initial trading hours'
-      ]
+      dependencies: 'Exchange agreements, liquidity staging, and contract audits',
+      deliverables: 'Launch readiness checklist, operational runbook, and claim schedule.'
     },
     {
       phaseNumber: '06',
-      name: 'Phase 6 — Post-TGE Compound',
-      timeframe: 'T+1 to T+90 Days',
-      leadEngines: 'Post-TGE Retention Machine, Revenue Acceleration Engine',
-      objective: 'Prevent post-launch volume dropoff by transitioning token holders into active protocol users.',
+      name: 'TGE & Listing Coordination',
+      timeframe: 'Launch Day to Day 7',
+      objective: 'Coordinate approved launch communications and relevant exchange trading activities.',
       actions: [
-        'Rollout of 90-day post-launch content, developer hackathons, and product tutorials',
-        'Staking contracts, yield mechanisms, and decentralized governance onboarding',
-        'Ecosystem partnership announcements, grant program deployment, and integrations',
-        'Weekly community updates, product sprint reviews, and institutional transparency reports',
-        'Cohort retention telemetry tracking wallet hold times and protocol fee generation'
+        'Synchronized listing announcements across exchanges, official channels, and partner dApps',
+        'Live founder Spaces, continuous community support, and rapid issue escalation',
+        'Phase 2 creator momentum: trading access and protocol utility demonstration',
+        'Real-time sentiment monitoring, liquidity depth telemetry, and claim portal stability'
       ],
-      proposedKpis: [
-        'Targeted 30-day and 60-day wallet retention benchmarks met or exceeded',
-        'Staking / protocol lockup percentage reaching target circulating supply ratio',
-        'Protocol transaction fee volume showing sustainable monthly upward trajectory'
-      ]
+      dependencies: 'Exchange opening approvals, token contract deployment, and liquidity injection',
+      deliverables: 'Live launch command report, liquidity depth telemetry, and claim logs.'
     },
     {
       phaseNumber: '07',
-      name: 'Phase 7 — Scale & Institutionalization',
-      timeframe: 'T+90 Days Onward',
-      leadEngines: 'Institutional & BD Sales Engine, Performance & Forecasting',
-      objective: 'Expand institutional partnerships, secure secondary tier-1 listings, and establish recurring revenue.',
+      name: 'Post-TGE Optimization',
+      timeframe: 'T+7 to T+90 Days & Onward',
+      objective: 'Review performance, community feedback, retention, and next-step growth priorities.',
       actions: [
-        'Institutional BD pipeline execution: hedge funds, family offices, and enterprise partners',
-        'Secondary tier-1 CEX listing applications supported by verified volume data',
-        'Cross-chain deployments, L2 expansion, and RWA tokenization initiatives',
-        'Quarterly financial, treasury, and revenue forecasting audits',
-        'Transitioning core governance towards community and foundation autonomy'
+        'Execution of 90-day post-launch content, developer hackathons, and product tutorials',
+        'Rollout of staking, utility incentives, and decentralized governance onboarding',
+        'Ongoing wallet cohort retention monitoring and transaction fee optimization',
+        'Quarterly performance review, treasury runway updates, and ecosystem expansion'
       ],
-      proposedKpis: [
-        'Self-sustaining protocol fee revenue covering ongoing operational expenses',
-        'Diversified institutional treasury holding and multi-exchange volume distribution',
-        'Multi-chain developer ecosystem building proprietary integrations independently'
-      ]
+      dependencies: 'Live token trading and on-chain protocol activity',
+      deliverables: 'Post-TGE engagement calendar, retention reports, and quarterly growth priorities.'
     }
   ];
 
   return (
     <div className="min-h-screen bg-slate-50/50 text-slate-900 pt-16 lg:pt-[72px]">
-      <IcoSubNav />
-
       {/* ── HERO SECTION ── */}
-      <section className="relative bg-slate-950 text-white py-20 lg:py-28 overflow-hidden border-b border-slate-800">
+      <section className="relative bg-slate-950 text-white py-16 lg:py-24 overflow-hidden border-b border-slate-800">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=80"
-            alt="Launch and Growth Execution"
-            className="w-full h-full object-cover object-center opacity-35 mix-blend-luminosity"
+            alt="Launch & Growth Acceleration"
+            className="w-full h-full object-cover object-center opacity-40 mix-blend-luminosity"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-slate-900/65" />
-          <div className="absolute inset-0 bg-radial-at-t from-blue-900/30 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/75 to-slate-900/60" />
+          <div className="absolute inset-0 bg-radial-at-t from-blue-950/40 via-transparent to-transparent pointer-events-none" />
         </div>
 
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/40 text-blue-300 text-xs font-semibold uppercase tracking-wider mb-6 shadow-sm">
-              <Rocket className="w-3.5 h-3.5 text-blue-400" />
-              <span>Layer 2 & Layer 3 Execution</span>
-            </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div className="lg:col-span-8">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/40 text-blue-300 text-xs font-semibold uppercase tracking-wider mb-6 font-mono shadow-sm">
+                <Rocket className="w-3.5 h-3.5 text-blue-400" />
+                <span>Page 02 · Launch & Growth Acceleration</span>
+              </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08] mb-6 font-heading">
-              Engineer the Launch. <span className="text-blue-400">Build What Comes Next.</span>
-            </h1>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08] mb-6">
+                Launch & <span className="text-blue-400">Growth Acceleration</span>
+              </h1>
 
-            <p className="text-lg sm:text-xl text-slate-300 leading-relaxed font-normal mb-10 max-w-2xl">
-              Coordinated TGE orchestration, creator sequencing, exchange operations, and post-launch retention systems designed to turn transient hype into permanent liquidity.
-            </p>
+              <div className="text-lg sm:text-xl text-blue-200/90 font-medium mb-4 leading-relaxed max-w-3xl">
+                Coordinate launch preparation, audience acquisition, exchange readiness, campaign execution, and post-launch engagement.
+              </div>
 
-            <div className="flex flex-wrap items-center gap-4">
-              <Link
-                to="/book-consultation"
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg border border-blue-400/40 text-base group"
-              >
-                <span>Plan Your Launch and Growth Strategy</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                to="#playbook"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-4 rounded-xl transition-all text-base border border-white/30 backdrop-blur-sm shadow-md"
-              >
-                <span>View 7-Phase Playbook</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal mb-8 max-w-3xl">
+                The Launch & Growth page organizes the activities required to prepare and execute a Web3 launch. It connects campaign planning, creator partnerships, exchange coordination, incentive programs, performance measurement, business development, and retention into a structured operating process.
+              </p>
 
-      {/* ── EXECUTION ENGINES & MODULES ── */}
-      <section className="py-20 lg:py-24 bg-white border-b border-slate-200/80">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-16">
-            <div className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-2">
-              Modular Operating Engines
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4 font-heading">
-              Nine Specialized Launch & Retention Engines
-            </h2>
-            <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
-              Every engine addresses a critical point of friction in crypto go-to-market. Deployed modularly or synchronized in full TGE Command.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {executionModules.map((m, idx) => {
-              const Icon = m.icon;
-              return (
-                <div
-                  key={idx}
-                  id={m.id}
-                  className="bg-slate-50/70 rounded-2xl border border-slate-200 p-8 hover:bg-white hover:border-blue-400 hover:shadow-xl transition-all flex flex-col justify-between"
+              <div className="flex flex-wrap items-center gap-4">
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg border border-blue-400/40 text-sm sm:text-base group"
                 >
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-11 h-11 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700">
-                        <Icon className="w-5 h-5" />
-                      </div>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
-                        {m.subtitle}
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3 font-heading">{m.title}</h3>
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">{m.description}</p>
-                    
-                    <div className="space-y-2 mb-6">
-                      <div className="text-xs font-bold uppercase tracking-wider text-slate-900">Key Capabilities:</div>
-                      {m.capabilities.map((c, ci) => (
-                        <div key={ci} className="flex items-start gap-2 text-xs text-slate-700">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />
-                          <span>{c}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="pt-4 border-t border-slate-200/60">
-                    <Link
-                      to="/book-consultation"
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-700"
-                    >
-                      <span>Deploy This Engine</span>
-                      <ChevronRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-600 leading-relaxed max-w-4xl mx-auto text-center">
-            <strong>KOL & Creator Scale Note:</strong> While our standard blueprint models 20–50 coordinated creators, final creator roster size, tier allocation, and platform focus are customized based on project category, target liquidity depth, and allocated media budget.
-          </div>
-        </div>
-      </section>
-
-      {/* ── SEVEN-PHASE ICO/TGE LAUNCH PLAYBOOK ── */}
-      <section id="playbook" className="py-20 lg:py-28 bg-slate-50 border-b border-slate-200/80">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-16">
-            <div className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-2">
-              The Seven-Phase Blueprint
+                  <span>Plan Your Launch Strategy</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  to="/ico-acceleration/solutions-engagement"
+                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-4 rounded-xl transition-all text-sm sm:text-base border border-white/30 backdrop-blur-sm shadow-md"
+                >
+                  <span>Explore Solutions & Engagement</span>
+                </Link>
+              </div>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4 font-heading">
-              Complete Seven-Phase ICO/TGE Launch Timeline
-            </h2>
-            <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
-              From initial tokenomics diligence at T-16 weeks to post-launch liquidity compounding at T+90 days onward. Each phase defines clear actions, responsible engines, and measurable exit criteria.
-            </p>
-          </div>
 
-          {/* Phase Selector Tabs */}
-          <div className="flex gap-2 overflow-x-auto no-scrollbar pb-4 mb-8">
-            {playbookPhases.map((p, idx) => (
-              <button
-                key={idx}
-                onClick={() => setActivePhaseTab(idx)}
-                className={`px-4 py-3 rounded-xl text-xs font-bold whitespace-nowrap transition-all border text-left shrink-0 ${
-                  activePhaseTab === idx
-                    ? 'bg-blue-600 text-white border-blue-600 shadow-md'
-                    : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
-                }`}
-              >
-                <div className="text-[10px] opacity-75 font-mono">PHASE {p.phaseNumber}</div>
-                <div>{p.name.split('—')[1]}</div>
-              </button>
-            ))}
-          </div>
-
-          {/* Active Phase Card */}
-          {playbookPhases[activePhaseTab] && (() => {
-            const phase = playbookPhases[activePhaseTab];
-            return (
-              <div className="bg-white rounded-2xl border border-slate-200 p-8 sm:p-10 shadow-md">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-100 mb-8">
-                  <div>
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="text-xs font-extrabold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-200 font-mono">
-                        {phase.timeframe}
-                      </span>
-                      <span className="text-xs font-semibold text-slate-500">
-                        Lead Engines: <span className="text-slate-900 font-medium">{phase.leadEngines}</span>
-                      </span>
-                    </div>
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading">{phase.name}</h3>
-                  </div>
-                  <div className="text-4xl font-black text-slate-200 font-mono hidden md:block">
-                    {phase.phaseNumber}
+            <div className="lg:col-span-4">
+              <div className="bg-slate-900/90 text-white rounded-3xl overflow-hidden shadow-2xl border border-slate-800 relative">
+                <div className="h-44 w-full relative overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+                    alt="Execution Engine"
+                    className="w-full h-full object-cover opacity-60"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
+                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-blue-400 font-bold bg-slate-900/80 px-2.5 py-1 rounded-md border border-slate-700">
+                      Execution Architecture
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/60">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                      Ready to Deploy
+                    </span>
                   </div>
                 </div>
 
-                <div className="mb-8">
-                  <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Phase Objective:</div>
-                  <p className="text-base text-slate-800 font-medium leading-relaxed">{phase.objective}</p>
-                </div>
-
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
-                  {/* Actions Column */}
-                  <div className="lg:col-span-7 bg-slate-50 rounded-xl p-6 border border-slate-200/80">
-                    <div className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-4 flex items-center gap-2">
-                      <Sliders className="w-4 h-4 text-blue-600" />
-                      <span>Operational Actions & Deliverables:</span>
-                    </div>
-                    <div className="space-y-3">
-                      {phase.actions.map((act, ai) => (
-                        <div key={ai} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 leading-relaxed">
-                          <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                          <span>{act}</span>
-                        </div>
-                      ))}
-                    </div>
+                <div className="p-6 space-y-4">
+                  <div className="text-xs text-slate-300 font-medium leading-relaxed">
+                    End-to-end operational coordination linking creator distribution, exchange listing pipelines, and compounding retention loops.
                   </div>
 
-                  {/* Proposed Exit Criteria Column */}
-                  <div className="lg:col-span-5 bg-blue-50/70 rounded-xl p-6 border border-blue-200/80">
-                    <div className="text-xs font-bold uppercase tracking-wider text-blue-900 mb-4 flex items-center gap-2">
-                      <ShieldCheck className="w-4 h-4 text-blue-700" />
-                      <span>Proposed Exit Measurement Criteria:</span>
+                  <div className="grid grid-cols-2 gap-3 pt-2 border-t border-slate-800">
+                    <div className="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                      <div className="text-lg font-black text-white font-mono">10 Modules</div>
+                      <div className="text-[11px] text-slate-400">Execution submenus</div>
                     </div>
-                    <p className="text-[11px] text-blue-800 mb-4 leading-normal">
-                      Labeled as proposed targets and quantitative gating criteria rather than guaranteed outcomes:
-                    </p>
-                    <div className="space-y-3">
-                      {phase.proposedKpis.map((kpi, ki) => (
-                        <div key={ki} className="flex items-start gap-2.5 text-xs sm:text-sm text-blue-950 font-semibold leading-relaxed">
-                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0 mt-2" />
-                          <span>{kpi}</span>
-                        </div>
-                      ))}
+                    <div className="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                      <div className="text-lg font-black text-white font-mono">7 Phases</div>
+                      <div className="text-[11px] text-slate-400">TGE launch timeline</div>
                     </div>
                   </div>
-                </div>
-
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-100">
-                  <div className="text-xs text-slate-500">
-                    Ready to schedule Phase {phase.phaseNumber} deliverables?
-                  </div>
-                  <Link
-                    to="/book-consultation"
-                    className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-sm text-sm"
-                  >
-                    <span>Initiate {phase.name.split('—')[1]}</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
                 </div>
               </div>
-            );
-          })()}
-        </div>
-      </section>
-
-      {/* ── FINAL CTA ── */}
-      <section className="py-20 lg:py-24 bg-slate-950 text-white relative overflow-hidden">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 font-heading">
-              Plan Your Launch and Growth Strategy
-            </h2>
-            <p className="text-slate-300 text-base leading-relaxed mb-8 font-normal">
-              Schedule a comprehensive launch architecture briefing. We evaluate your current runway, listing timeline, and creator requirements.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <Link
-                to="/book-consultation"
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg text-base group"
-              >
-                <span>Schedule Launch Briefing</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link
-                to="/ico-acceleration/solutions-engagement"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-4 rounded-xl transition-all text-base border border-white/20"
-              >
-                <span>View Solutions by Segment</span>
-              </Link>
             </div>
+
           </div>
         </div>
       </section>
+
+      {/* ── MAIN CONTENT ── */}
+      <main className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 space-y-16 lg:space-y-24">
+            
+            {/* ── SUBMENU 1: GROWTH ACCELERATION ENGINE ── */}
+            <section id="growth-acceleration" className="scroll-mt-28 bg-white rounded-3xl border border-slate-200/90 p-8 sm:p-10 shadow-xs">
+              <div className="max-w-3xl mb-8">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
+                  Submenu 01 · Funnel & Experimentation
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                  Growth Acceleration Engine
+                </h2>
+                <p className="text-base text-slate-600 leading-relaxed font-normal">
+                  Continuously identifies conversion bottlenecks across testnet, token sale, and dapp interactions. Implements structured growth experiments to optimize funnel throughput and liquidity participation.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-2">Launch Objectives & Audience Segments</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Define clear quantitative launch milestones and select high-priority user and liquidity cohorts.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-2">Channel Selection</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Select acquisition channels based on validated audience fit, developer density, and cost-efficiency.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-2">Campaign Themes & Distribution</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Develop multi-channel campaign themes, content assets, and distribution schedules across digital touchpoints.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-2">Controlled Experiments & Metrics</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Establish hypothesis-driven campaign experiments, tracking metrics, and weekly sprint reviews to prioritize improvements.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-blue-50/70 border border-blue-200/90 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-blue-700 mb-1">
+                    Deliverables
+                  </div>
+                  <div className="text-base font-extrabold text-slate-900">
+                    Growth Strategy, Channel Plan, Campaign Calendar & Performance Review Framework
+                  </div>
+                </div>
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-800 bg-white px-4 py-2.5 rounded-xl border border-blue-200 shadow-xs shrink-0"
+                >
+                  <span>Deploy Growth Engine</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </section>
+
+            {/* ── SUBMENU 2: KOL & CREATOR ORCHESTRATION ── */}
+            <section id="kol-orchestration" className="scroll-mt-28 bg-white rounded-3xl border border-slate-200/90 p-8 sm:p-10 shadow-xs">
+              <div className="max-w-3xl mb-8">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
+                  Submenu 02 · Creator Distribution
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                  KOL & Creator Orchestration
+                </h2>
+                <p className="text-base text-slate-600 leading-relaxed font-normal">
+                  Replaces one-off paid tweets with sequenced creator campaigns. We match, brief, review, and evaluate creators based on authentic technical relevance and verifiable audience engagement.
+                </p>
+              </div>
+
+              <div className="space-y-4 mb-8">
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-1">Targeted Creator Matching</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Identify Web3 analysts, researchers, and creators whose genuine followers match the project's developer and user profile.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-1">Due Diligence & Disclosure</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Evaluate audience relevance, bot percentages, content quality, and commercial disclosure practices (#ad).
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-1">Briefs, Reviews & Scheduling</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Coordinate factual campaign briefs, technical reviews, and phased publishing schedules to amplify major roadmap milestones.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-1">Performance Tracking & Policy</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Track agreed campaign metrics and document results. Note: In strict compliance with our standards, we do not guarantee creator reach, token demand, or campaign returns.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-blue-50/70 border border-blue-200/90 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-blue-700 mb-1">
+                    Deliverables
+                  </div>
+                  <div className="text-base font-extrabold text-slate-900">
+                    Creator Shortlist, Outreach Plan, Campaign Briefs & Creator Performance Reports
+                  </div>
+                </div>
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-800 bg-white px-4 py-2.5 rounded-xl border border-blue-200 shadow-xs shrink-0"
+                >
+                  <span>Coordinate Creators</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </section>
+
+            {/* ── SUBMENU 3: EXCHANGE & LISTING OPERATIONS ── */}
+            <section id="exchange-operations" className="scroll-mt-28 bg-white rounded-3xl border border-slate-200/90 p-8 sm:p-10 shadow-xs">
+              <div className="max-w-3xl mb-8">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
+                  Submenu 03 · Venue Operations
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                  Exchange & Listing Operations
+                </h2>
+                <p className="text-base text-slate-600 leading-relaxed font-normal">
+                  Prepare documentation, organize listing-readiness materials, and coordinate communications with relevant exchange contacts. Clearly stated: exchange listings are subject to the exchange's independent review and approval. Do not guarantee a listing.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-2">Documentation & Diligence Dossier</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Organize tokenomics models, legal opinion letters, smart contract audit reports, and technical node specs.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-2">Communication Coordination</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Coordinate communications with authorized exchange listing managers, tracking outstanding diligence actions.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-2">Market Maker SLAs</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Facilitate operational alignment on order book depth, spread requirements, and inventory staging where applicable.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-2">Announcement Synchronization</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Coordinate launch timing and public communications strictly in accordance with exchange partner agreements.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-blue-50/70 border border-blue-200/90 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-blue-700 mb-1">
+                    Deliverables
+                  </div>
+                  <div className="text-base font-extrabold text-slate-900">
+                    Listing-Readiness Checklist, Documentation Tracker, Communication Plan & Launch Schedule
+                  </div>
+                </div>
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-800 bg-white px-4 py-2.5 rounded-xl border border-blue-200 shadow-xs shrink-0"
+                >
+                  <span>Prepare Listing Dossier</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </section>
+
+            {/* ── SUBMENU 4: AIRDROP & INCENTIVE ENGINEERING ── */}
+            <section id="airdrop-incentive" className="scroll-mt-28 bg-white rounded-3xl border border-slate-200/90 p-8 sm:p-10 shadow-xs">
+              <div className="max-w-3xl mb-8">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
+                  Submenu 04 · Incentive Design
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                  Airdrop & Incentive Engineering
+                </h2>
+                <p className="text-base text-slate-600 leading-relaxed font-normal">
+                  Design reward and whitelist mechanisms that attract authentic early adopters while actively preventing abuse, duplicate participation, and Sybil farming. We do not invent token allocations, rewards, eligibility guarantees, or legal assurances.
+                </p>
+              </div>
+
+              <div className="space-y-4 mb-8">
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-1">Campaign Purpose & Eligibility Criteria</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Define exact objective participant cohorts (e.g. active testnet developers, liquidity providers, governance participants).
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-1">Rules, Allocation Logic & Participation Steps</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Document transparent campaign rules, tiered allocation formulas, and straightforward claim steps.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-1">Sybil-Resistance & Anti-Abuse Measures</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Implement multi-layer screening to detect automated address clusters, disposable wallets, and mercenary farming networks.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-1">Communications & Post-Campaign Analysis</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Plan claim portal communications, security advisories, and analyze participant hold duration post-distribution.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-blue-50/70 border border-blue-200/90 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-blue-700 mb-1">
+                    Deliverables
+                  </div>
+                  <div className="text-base font-extrabold text-slate-900">
+                    Incentive Campaign Brief, Eligibility Framework, Rules Checklist & Measurement Plan
+                  </div>
+                </div>
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-800 bg-white px-4 py-2.5 rounded-xl border border-blue-200 shadow-xs shrink-0"
+                >
+                  <span>Structure Incentives</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </section>
+
+            {/* ── SUBMENU 5: OMNICHANNEL PERFORMANCE ENGINE ── */}
+            <section id="omnichannel-performance" className="scroll-mt-28 bg-white rounded-3xl border border-slate-200/90 p-8 sm:p-10 shadow-xs">
+              <div className="max-w-3xl mb-8">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
+                  Submenu 05 · Channel Coordination
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                  Omnichannel Performance Engine
+                </h2>
+                <p className="text-base text-slate-600 leading-relaxed font-normal">
+                  Coordinate campaign messaging, brand consistency, and content publishing schedules across X, YouTube, Telegram, Discord, and earned PR while measuring channel-level engagement and conversion events.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-2">Cross-Channel Consistency</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Ensure unified brand presentation, tone of voice, and disclaimer compliance across all social, video, and audio venues.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-2">Publishing Schedules</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Synchronize content drops and announcements with protocol development sprints and exchange launch milestones.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-2">Conversion Tracking</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Track channel-level traffic, whitelist signups, testnet faucet requests, and verified wallet activations.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-2">Attribution Rules</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Compare channel performance using clear, empirical attribution rules to dynamically shift focus to high-yield channels.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-blue-50/70 border border-blue-200/90 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-blue-700 mb-1">
+                    Deliverables
+                  </div>
+                  <div className="text-base font-extrabold text-slate-900">
+                    Omnichannel Campaign Calendar, Channel Matrix & Reporting Framework
+                  </div>
+                </div>
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-800 bg-white px-4 py-2.5 rounded-xl border border-blue-200 shadow-xs shrink-0"
+                >
+                  <span>Build Campaign Matrix</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </section>
+
+            {/* ── SUBMENU 6: REVENUE ACCELERATION ENGINE ── */}
+            <section id="revenue-acceleration" className="scroll-mt-28 bg-white rounded-3xl border border-slate-200/90 p-8 sm:p-10 shadow-xs">
+              <div className="max-w-3xl mb-8">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
+                  Submenu 06 · Commercial Monetization
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                  Revenue Acceleration Engine
+                </h2>
+                <p className="text-base text-slate-600 leading-relaxed font-normal">
+                  Identify relevant commercial opportunities, define qualification criteria, build partnership pipelines, and structure token transaction fee sharing. In compliance with strict policies, we do not promise revenue outcomes.
+                </p>
+              </div>
+
+              <div className="space-y-4 mb-8">
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-1">Business Opportunities & Target Accounts</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Identify dApps, enterprise integrators, and infrastructure providers capable of generating recurring on-chain volume.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-1">Commercial Objectives & Qualification</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Establish commercial qualification thresholds for integrations, grant distributions, and fee-sharing agreements.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-1">Outreach, Proposals & Pipeline Stages</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Coordinate structured BD outreach, technical evaluation meetings, proposal negotiations, and partner onboardings.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-1">Commercial Reporting</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Review pipeline progression, integration velocity, and protocol fee yield metrics without speculative projections.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-blue-50/70 border border-blue-200/90 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-blue-700 mb-1">
+                    Deliverables
+                  </div>
+                  <div className="text-base font-extrabold text-slate-900">
+                    Revenue Strategy, Account Prioritization Framework, Pipeline Stages & Commercial Reporting
+                  </div>
+                </div>
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-800 bg-white px-4 py-2.5 rounded-xl border border-blue-200 shadow-xs shrink-0"
+                >
+                  <span>Build Revenue Pipeline</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </section>
+
+            {/* ── SUBMENU 7: CUSTOMER JOURNEY INTELLIGENCE ── */}
+            <section id="customer-journey" className="scroll-mt-28 bg-white rounded-3xl border border-slate-200/90 p-8 sm:p-10 shadow-xs">
+              <div className="max-w-3xl mb-8">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
+                  Submenu 07 · Wallet Lifecycle
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                  Customer Journey Intelligence
+                </h2>
+                <p className="text-base text-slate-600 leading-relaxed font-normal">
+                  Map the complete journey from initial awareness to wallet connection, active participation, and recurring protocol engagement. Identify drop-off points and implement targeted onboarding improvements.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-2">Journey Mapping</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Map user flow from first touchpoint through RPC setup, token acquisition, testnet interactions, and daily usage.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-2">Friction & Drop-Off Points</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Detect UI confusion, gas fee shock, confusing signing requests, and drop-offs during onboarding.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-2">Conversion Milestones</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Define measurable conversion events (e.g. smart contract interaction, liquidity provision, governance vote).
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-2">Optimization Backlog</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Prioritize actionable UX and messaging improvements to systematically increase wallet retention.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-blue-50/70 border border-blue-200/90 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-blue-700 mb-1">
+                    Deliverables
+                  </div>
+                  <div className="text-base font-extrabold text-slate-900">
+                    Journey Map, Funnel Analysis Framework & Optimization Backlog
+                  </div>
+                </div>
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-800 bg-white px-4 py-2.5 rounded-xl border border-blue-200 shadow-xs shrink-0"
+                >
+                  <span>Analyze User Funnel</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </section>
+
+            {/* ── SUBMENU 8: INSTITUTIONAL & BD SALES ENGINE ── */}
+            <section id="institutional-bd" className="scroll-mt-28 bg-white rounded-3xl border border-slate-200/90 p-8 sm:p-10 shadow-xs">
+              <div className="max-w-3xl mb-8">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
+                  Submenu 08 · Ecosystem Partnerships
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                  Institutional & BD Sales Engine
+                </h2>
+                <p className="text-base text-slate-600 leading-relaxed font-normal">
+                  Identify and segment prospective institutional partners, ecosystem foundations, cross-chain bridges, and enterprise integrators. Note: We do not claim partnerships with specific institutions unless officially verified.
+                </p>
+              </div>
+
+              <div className="space-y-4 mb-8">
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-1">Prospect Identification & Segmentation</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Segment institutional funds, ecosystem grant foundations, liquidity providers, and L2 platforms by strategic fit.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-1">Tailored Collateral & Meeting Briefs</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Prepare institutional diligence packs, technical one-pagers, integration specs, and meeting briefing sheets.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-1">Opportunity Tracking</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Track introductions, exploratory calls, follow-ups, and formal partnership evaluation stages in a unified CRM.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-blue-50/70 border border-blue-200/90 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-blue-700 mb-1">
+                    Deliverables
+                  </div>
+                  <div className="text-base font-extrabold text-slate-900">
+                    Target-Account Framework, Outreach Templates, Meeting Briefs & Opportunity Tracker
+                  </div>
+                </div>
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-800 bg-white px-4 py-2.5 rounded-xl border border-blue-200 shadow-xs shrink-0"
+                >
+                  <span>Build BD Pipeline</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </section>
+
+            {/* ── SUBMENU 9: POST-TGE RETENTION MACHINE ── */}
+            <section id="post-tge-retention" className="scroll-mt-28 bg-white rounded-3xl border border-slate-200/90 p-8 sm:p-10 shadow-xs">
+              <div className="max-w-3xl mb-8">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
+                  Submenu 09 · Post-Launch Sustainability
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                  Post-TGE Retention Machine
+                </h2>
+                <p className="text-base text-slate-600 leading-relaxed font-normal">
+                  Plan post-launch communications, educational onboarding, recurring community engagement, and product update schedules. In accordance with policy, we do not promise token-price appreciation, trading performance, or guaranteed retention.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-2">Post-Launch Engagement Calendar</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    A structured 90-day calendar of technical progress updates, community AMAs, developer bounties, and feature releases.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-2">Educational Onboarding</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Develop interactive guides, video tutorials, and documentation walking new holders into staking and governance participation.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-2">User Question Management</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Identify recurring questions and address barriers to ongoing utility, protocol voting, and ecosystem usage.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+                  <h3 className="text-base font-extrabold text-slate-900 mb-2">Retention Telemetry</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Monitor available on-chain indicators, 30/60/90-day wallet retention cohorts, and active smart contract calls.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-blue-50/70 border border-blue-200/90 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-blue-700 mb-1">
+                    Deliverables
+                  </div>
+                  <div className="text-base font-extrabold text-slate-900">
+                    Post-TGE Engagement Calendar, Onboarding Communication Plan & Retention Reporting Framework
+                  </div>
+                </div>
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-800 bg-white px-4 py-2.5 rounded-xl border border-blue-200 shadow-xs shrink-0"
+                >
+                  <span>Build Retention Engine</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </section>
+
+            {/* ── SUBMENU 10: SEVEN-PHASE LAUNCH PLAYBOOK ── */}
+            <section id="seven-phase-playbook" className="scroll-mt-28 bg-white rounded-3xl border border-slate-200/90 p-8 sm:p-10 shadow-xs">
+              <div className="max-w-3xl mb-8">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
+                  Submenu 10 · Complete Operational Timeline
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                  Seven-Phase Launch Playbook
+                </h2>
+                <p className="text-base text-slate-600 leading-relaxed font-normal">
+                  A comprehensive, end-to-end operational sequence organizing every milestone from pre-launch positioning through TGE execution and post-launch scaling.
+                </p>
+              </div>
+
+              {/* Phase Selector Tabs */}
+              <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-3 mb-8 border-b border-slate-200">
+                {playbookPhases.map((phase, idx) => (
+                  <button
+                    key={phase.phaseNumber}
+                    onClick={() => setActivePhaseTab(idx)}
+                    className={`px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all flex items-center gap-2 ${
+                      activePhaseTab === idx
+                        ? 'bg-blue-600 text-white shadow-md'
+                        : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    }`}
+                  >
+                    <span className="font-mono text-[10px] opacity-80">{phase.phaseNumber}</span>
+                    <span>{phase.name.split('—')[1] || phase.name}</span>
+                  </button>
+                ))}
+              </div>
+
+              {/* Active Phase Card */}
+              {playbookPhases[activePhaseTab] && (
+                <div className="bg-slate-50 rounded-2xl border border-slate-200/80 p-8 space-y-6">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200/80">
+                    <div>
+                      <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+                        Phase {playbookPhases[activePhaseTab].phaseNumber}
+                      </span>
+                      <h3 className="text-2xl font-extrabold text-slate-900 tracking-tight mt-2">
+                        {playbookPhases[activePhaseTab].name}
+                      </h3>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs font-mono font-bold text-slate-600 bg-white px-3 py-1.5 rounded-lg border border-slate-200 shrink-0">
+                      <Clock className="w-4 h-4 text-slate-400" />
+                      <span>{playbookPhases[activePhaseTab].timeframe}</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Objective</div>
+                    <p className="text-sm text-slate-800 font-medium leading-relaxed">
+                      {playbookPhases[activePhaseTab].objective}
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-3">Key Actions & Milestones</div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {playbookPhases[activePhaseTab].actions.map((act, ai) => (
+                        <div key={ai} className="flex items-start gap-2.5 p-3 rounded-xl bg-white border border-slate-200/70 text-xs text-slate-700">
+                          <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                          <span className="leading-relaxed">{act}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t border-slate-200/80 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                    <div className="p-4 rounded-xl bg-white border border-slate-200/80">
+                      <div className="font-bold text-slate-900 mb-1">Dependencies:</div>
+                      <div className="text-slate-600 leading-relaxed">{playbookPhases[activePhaseTab].dependencies}</div>
+                    </div>
+                    <div className="p-4 rounded-xl bg-blue-50/60 border border-blue-200/80">
+                      <div className="font-bold text-blue-900 mb-1">Key Deliverables:</div>
+                      <div className="text-blue-800 leading-relaxed">{playbookPhases[activePhaseTab].deliverables}</div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </section>
+
+            {/* ── NEXT PAGE FORWARD CTA ── */}
+            <section className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-80 h-80 bg-radial from-blue-600/20 to-transparent pointer-events-none" />
+              
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-6 relative z-10">
+                <div className="max-w-2xl">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700 inline-block mb-3">
+                    Next Section Module
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-2">
+                    Solutions & Engagement Models
+                  </h3>
+                  <p className="text-slate-300 text-sm leading-relaxed">
+                    Explore tailored packages for L1/L2s, DeFi, Gaming, and CEXs across our six transparent commercial structures.
+                  </p>
+                </div>
+                <Link
+                  to="/ico-acceleration/solutions-engagement"
+                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-7 py-3.5 rounded-xl transition-all shadow-md text-sm border border-blue-400/40 group shrink-0"
+                >
+                  <span>Explore Solutions</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </section>
+
+      </main>
     </div>
   );
 }

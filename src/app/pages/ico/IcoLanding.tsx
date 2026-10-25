@@ -19,9 +19,11 @@ import {
   Sliders,
   DollarSign,
   Activity,
-  Cpu
+  Cpu,
+  Shield,
+  Clock,
+  Check
 } from 'lucide-react';
-import IcoSubNav from '../../components/IcoSubNav';
 
 export default function IcoLanding() {
   const location = useLocation();
@@ -236,53 +238,130 @@ export default function IcoLanding() {
     }
   ];
 
+  const heroTags = [
+    'L1/L2 Ecosystems',
+    'DeFi Protocols',
+    'Web3 Gaming',
+    'Tier-1 CEXs',
+    'TGE Operations'
+  ];
+
   return (
     <div className="min-h-screen bg-slate-50/50 text-slate-900 pt-16 lg:pt-[72px]">
-      {/* Unified Secondary Navigation */}
-      <IcoSubNav />
-
-      {/* ── SECTION 1: HERO (DARK BLOCKCHAIN-IMAGE BACKGROUND & CLEAN COMPOSITION) ── */}
-      <section className="relative bg-slate-950 text-white py-20 lg:py-28 overflow-hidden border-b border-slate-800">
+      {/* ── SECTION 1: HERO (DECISION-ORIENTED EXECUTIVE COMMAND - DARK INDUSTRY IMAGE) ── */}
+      <section className="relative bg-slate-950 text-white py-16 lg:py-24 overflow-hidden border-b border-slate-800">
+        {/* Background Image: Digital Architecture & Network Graph with Deep Gradient Overlay */}
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=2000&q=80"
             alt="ProfitMachines Crypto Protocol"
-            className="w-full h-full object-cover object-center opacity-40 mix-blend-luminosity"
+            className="w-full h-full object-cover object-center opacity-50 mix-blend-luminosity"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-slate-900/65" />
-          <div className="absolute inset-0 bg-radial-at-t from-blue-900/30 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/75 to-slate-900/60" />
+          <div className="absolute inset-0 bg-radial-at-t from-blue-950/40 via-transparent to-transparent pointer-events-none" />
         </div>
 
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/40 text-blue-300 text-xs font-semibold uppercase tracking-wider mb-6 shadow-sm">
-              <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-              <span>ProfitMachines Crypto Protocol</span>
-            </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08] mb-6 font-heading">
-              The AI-Native Revenue Protocol for <span className="text-blue-400">Crypto Ecosystems</span>
-            </h1>
+            {/* Left Content Column */}
+            <div className="lg:col-span-8">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/40 text-blue-300 text-xs font-semibold uppercase tracking-wider mb-6 font-mono shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+                <span>ProfitMachines Crypto Protocol</span>
+              </div>
+              
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08] mb-6">
+                The AI-Native Revenue Protocol for <span className="text-blue-400">Crypto Ecosystems</span>
+              </h1>
 
-            <p className="text-lg sm:text-xl text-slate-300 leading-relaxed font-normal mb-10 max-w-2xl">
-              Turn wallet-level demand intelligence, coordinated launch execution, and compliance-aware growth into measurable adoption and recurring revenue for L1/L2 ecosystems, DeFi, Gaming, and Centralized Exchanges.
-            </p>
+              <p className="text-lg sm:text-xl text-slate-300 leading-relaxed font-normal mb-8 max-w-3xl">
+                Turn wallet-level demand intelligence, coordinated launch execution, and compliance-aware growth into measurable adoption and recurring revenue for L1/L2 ecosystems, DeFi, Gaming, and Centralized Exchanges.
+              </p>
 
-            <div className="flex flex-wrap items-center gap-4">
-              <Link
-                to="/book-consultation"
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg border border-blue-400/40 text-base group"
-              >
-                <span>Discuss Your Launch</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                to="/ico-acceleration/solutions-engagement"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-4 rounded-xl transition-all text-base border border-white/30 backdrop-blur-sm shadow-md"
-              >
-                <span>Explore Our Solutions</span>
-              </Link>
+              {/* Supporting Categories */}
+              <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-300 mb-8 font-mono">
+                {heroTags.map((tag, idx) => (
+                  <span key={idx} className="bg-slate-900/80 text-slate-300 px-3 py-1 rounded-full border border-slate-700">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-4">
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg border border-blue-400/40 text-sm sm:text-base group"
+                >
+                  <span>Discuss Your Launch</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  to="/ico-acceleration/solutions-engagement"
+                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-4 rounded-xl transition-all text-sm sm:text-base border border-white/30 backdrop-blur-sm shadow-md"
+                >
+                  <span>Explore Our Solutions</span>
+                </Link>
+                <Link
+                  to="/ico-acceleration/launch-growth"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-400 hover:text-blue-300 px-2 py-3.5"
+                >
+                  <span>Explore 7-Phase Launch Playbook</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
             </div>
+
+            {/* Right Architecture Card Column (Matches Engagement Model & Offerings) */}
+            <div className="lg:col-span-4">
+              <div className="bg-slate-900/90 text-white rounded-3xl overflow-hidden shadow-2xl border border-slate-800 relative">
+                {/* Visual Header */}
+                <div className="h-44 w-full relative overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80"
+                    alt="Protocol Architecture"
+                    className="w-full h-full object-cover opacity-60"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
+                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-blue-400 font-bold bg-slate-900/80 px-2.5 py-1 rounded-md border border-slate-700">
+                      Protocol Architecture
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/60">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                      Active System
+                    </span>
+                  </div>
+                </div>
+
+                {/* Architectural Specifications Grid */}
+                <div className="p-6 space-y-4">
+                  <div className="text-xs text-slate-300 font-medium leading-relaxed">
+                    AI-native revenue engines calibrated for on-chain demand qualification, synchronized TGE velocity, and programmatic wallet retention.
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3 pt-2 border-t border-slate-800">
+                    <div className="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                      <div className="text-lg font-black text-white font-mono">8 Engines</div>
+                      <div className="text-[11px] text-slate-400">Continuous execution</div>
+                    </div>
+                    <div className="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+                      <div className="text-lg font-black text-white font-mono">5 Layers</div>
+                      <div className="text-[11px] text-slate-400">Commercial hierarchy</div>
+                    </div>
+                  </div>
+
+                  <div className="p-3 rounded-xl bg-blue-950/40 border border-blue-900/60 flex items-center gap-2.5">
+                    <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0" />
+                    <span className="text-xs text-cyan-200 font-medium">
+                      Compliance by Design Trust Layer integrated across all phases
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -290,34 +369,36 @@ export default function IcoLanding() {
       {/* ── SECTION 2: THE CHALLENGE ── */}
       <section className="py-20 lg:py-28 bg-white border-b border-slate-200/80">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-16">
-            <div className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-3">
+          <div className="max-w-3xl mb-14">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
               Market Reality & Structural Obstacles
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4 font-heading">
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
               From Speculative Activity to Sustainable Growth
             </h2>
-            <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
               Crypto markets have shifted from hype-driven cycles to institutional accountability. Token projects fail not from lack of engineering, but from fragmented commercial execution, unvalidated demand, and zero post-launch retention systems.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
             {challenges.map((c, i) => {
               const Icon = c.icon;
               return (
                 <div
                   key={i}
-                  className="bg-slate-50/70 rounded-2xl border border-slate-200/80 p-8 hover:shadow-md hover:border-blue-300 transition-all"
+                  className="bg-white rounded-3xl border border-slate-200/90 p-8 shadow-xs hover:shadow-xl hover:border-blue-400 transition-all duration-300 relative group flex flex-col justify-between"
                 >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700">
-                      <Icon className="w-5 h-5" />
+                  <div>
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all shrink-0">
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <h3 className="text-xl font-extrabold text-slate-900 tracking-tight">{c.title}</h3>
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 font-heading">{c.title}</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed mb-6 font-normal">{c.description}</p>
                   </div>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-6">{c.description}</p>
-                  <div className="pt-4 border-t border-slate-200/60 flex items-start gap-2.5">
+                  <div className="pt-4 border-t border-slate-100 flex items-start gap-2.5 bg-slate-50/70 -mx-8 -mb-8 p-6 rounded-b-3xl">
                     <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                     <span className="text-xs font-semibold text-slate-800 leading-normal">
                       <span className="text-blue-600 font-bold">ProfitMachines Solution:</span> {c.resolution}
@@ -328,26 +409,29 @@ export default function IcoLanding() {
             })}
           </div>
 
-          {/* Unified Continuum Statement */}
-          <div className="bg-slate-900 text-white rounded-2xl p-8 sm:p-10 border border-slate-800 shadow-md">
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-              <div className="max-w-2xl">
-                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-400 mb-2">
-                  <Cpu className="w-4 h-4" />
+          {/* Unified Continuum Statement (Styled like Offerings Anchor Bento Card) */}
+          <div className="rounded-3xl bg-slate-900 text-white p-8 sm:p-12 border border-slate-800 shadow-xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-80 h-80 bg-radial from-blue-600/20 to-transparent pointer-events-none" />
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 relative z-10">
+              <div className="max-w-3xl">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700 inline-flex items-center gap-2 mb-4">
+                  <Cpu className="w-3.5 h-3.5" />
                   <span>The Unified Revenue Continuum</span>
-                </div>
-                <h4 className="text-2xl font-bold font-heading mb-3">Connecting Intelligence, Execution, Measurement & Lifecycle</h4>
-                <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                </span>
+                <h4 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-4 leading-snug">
+                  Connecting Intelligence, Execution, Measurement & Lifecycle
+                </h4>
+                <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-normal">
                   ProfitMachines replaces fragmented agency vendors with a cohesive operating system. We bridge early on-chain intent discovery with synchronized launch command and algorithmic retention so token ecosystems capture lasting commercial value.
                 </p>
               </div>
               <div className="shrink-0">
                 <Link
                   to="/ico-acceleration/intelligence"
-                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-3.5 rounded-xl transition-all shadow-md text-sm"
+                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-7 py-4 rounded-xl transition-all shadow-lg text-sm border border-blue-400/40 group"
                 >
                   <span>Explore Intelligence Layer</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
             </div>
@@ -358,14 +442,14 @@ export default function IcoLanding() {
       {/* ── SECTION 3: THREE-STAGE LAUNCH JOURNEY ── */}
       <section className="py-20 lg:py-28 bg-slate-50 border-b border-slate-200/80">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-16">
-            <div className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-3">
+          <div className="max-w-3xl mb-14">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
               End-to-End Execution Sequence
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4 font-heading">
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
               Three-Stage Launch Journey
             </h2>
-            <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
               Every token ecosystem progresses through three interconnected operational gates. Success requires executing each stage with quantifiable exit criteria before advancing capital.
             </p>
           </div>
@@ -374,25 +458,30 @@ export default function IcoLanding() {
             {journeyStages.map((stage, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-2xl border border-slate-200/90 p-8 shadow-xs hover:shadow-xl hover:border-blue-300 transition-all flex flex-col justify-between"
+                className="bg-white rounded-3xl border border-slate-200/90 p-8 shadow-xs hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200/60">
                       {stage.phase}
                     </span>
-                    <span className="text-2xl font-black text-slate-300 font-mono">{stage.number}</span>
+                    <span className="text-3xl font-black text-slate-200 font-mono group-hover:text-blue-500/30 transition-colors">
+                      {stage.number}
+                    </span>
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-1 font-heading">{stage.title}</h3>
-                  <div className="text-xs font-semibold text-slate-500 mb-4">{stage.timeframe}</div>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-6">{stage.description}</p>
+                  <h3 className="text-2xl font-extrabold text-slate-900 mb-2 tracking-tight">{stage.title}</h3>
+                  <div className="text-xs font-mono font-semibold text-slate-500 mb-4 flex items-center gap-1.5">
+                    <Clock className="w-3.5 h-3.5 text-slate-400" />
+                    <span>{stage.timeframe}</span>
+                  </div>
+                  <p className="text-slate-600 text-sm leading-relaxed mb-6 font-normal">{stage.description}</p>
                   
                   <div className="space-y-2.5 mb-8">
-                    <div className="text-xs font-bold uppercase tracking-wider text-slate-900">Key Deliverables:</div>
+                    <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-900">Key Deliverables:</div>
                     {stage.deliverables.map((d, di) => (
-                      <div key={di} className="flex items-start gap-2 text-xs text-slate-700">
+                      <div key={di} className="flex items-start gap-2.5 text-xs text-slate-700">
                         <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />
-                        <span>{d}</span>
+                        <span className="leading-snug">{d}</span>
                       </div>
                     ))}
                   </div>
@@ -401,10 +490,10 @@ export default function IcoLanding() {
                 <div className="pt-6 border-t border-slate-100">
                   <Link
                     to={stage.link}
-                    className="inline-flex items-center justify-between w-full text-sm font-bold text-blue-600 hover:text-blue-700 group"
+                    className="inline-flex items-center justify-between w-full text-sm font-bold text-blue-600 hover:text-blue-700 group/link"
                   >
                     <span>{stage.cta}</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-4 h-4 group-link-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </div>
@@ -416,14 +505,14 @@ export default function IcoLanding() {
       {/* ── SECTION 4: FIVE COMMERCIAL LAYERS + TRUST LAYER ── */}
       <section className="py-20 lg:py-28 bg-white border-b border-slate-200/80">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-16">
-            <div className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-3">
+          <div className="max-w-3xl mb-14">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
               Architectural Hierarchy
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4 font-heading">
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
               Five Commercial Layers & The Trust Layer
             </h2>
-            <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
               Our commercial architecture organizes go-to-market operations into five modular tiers, safeguarded across every interaction by an integrated Compliance by Design Trust Layer.
             </p>
           </div>
@@ -432,13 +521,13 @@ export default function IcoLanding() {
             {commercialLayers.map((layer, idx) => (
               <div
                 key={idx}
-                className="bg-slate-50 rounded-xl border border-slate-200 p-6 sm:p-7 hover:border-blue-400 hover:bg-white hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-4"
+                className="bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-7 hover:border-blue-400 hover:shadow-lg transition-all duration-200 flex flex-col md:flex-row md:items-center justify-between gap-6 group"
               >
                 <div className="flex items-center gap-4 min-w-[240px]">
-                  <span className="w-20 px-2.5 py-1 text-center text-xs font-extrabold uppercase tracking-wider rounded-md bg-blue-600 text-white font-mono shrink-0">
+                  <span className="w-24 px-3 py-1.5 text-center text-xs font-mono font-bold uppercase tracking-wider rounded-lg bg-blue-50 text-blue-700 border border-blue-200 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all shrink-0">
                     {layer.layer}
                   </span>
-                  <h4 className="text-lg font-bold text-slate-900 font-heading">{layer.title}</h4>
+                  <h4 className="text-lg font-extrabold text-slate-900 tracking-tight">{layer.title}</h4>
                 </div>
                 <div className="text-sm font-semibold text-blue-700 md:max-w-xs">{layer.role}</div>
                 <p className="text-xs sm:text-sm text-slate-600 md:max-w-md font-normal leading-relaxed">
@@ -449,25 +538,28 @@ export default function IcoLanding() {
           </div>
 
           {/* Compliance by Design Trust Layer Banner */}
-          <div className="bg-gradient-to-r from-blue-900 to-slate-900 text-white rounded-2xl p-8 sm:p-10 border border-blue-800/60 shadow-lg relative overflow-hidden">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
-              <div className="max-w-2xl">
-                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-cyan-300 mb-2">
-                  <ShieldCheck className="w-4 h-4" />
+          <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-blue-950 text-white rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-80 h-80 bg-radial from-cyan-500/20 to-transparent pointer-events-none" />
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 relative z-10">
+              <div className="max-w-3xl">
+                <span className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-cyan-300 bg-cyan-950/80 px-3 py-1 rounded-full border border-cyan-800/80 mb-4">
+                  <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
                   <span>The Cross-Cutting Trust Layer</span>
-                </div>
-                <h3 className="text-2xl font-bold font-heading mb-3">Compliance by Design Across the Entire Journey</h3>
-                <p className="text-sm text-slate-200 leading-relaxed font-normal">
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-4 leading-snug">
+                  Compliance by Design Across the Entire Journey
+                </h3>
+                <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
                   Not a checkbox at launch, but an active operating framework that reviews claims, structures jurisdictional marketing guardrails (MiCA, VARA, ASCI), screens airdrop Sybils, and enforces transparent creator disclosures.
                 </p>
               </div>
               <div className="shrink-0">
                 <Link
                   to="/ico-acceleration/trust-performance"
-                  className="inline-flex items-center gap-2 bg-white text-slate-900 hover:bg-blue-50 font-bold px-6 py-3.5 rounded-xl transition-all shadow-md text-sm"
+                  className="inline-flex items-center gap-2 bg-white text-slate-900 hover:bg-slate-100 font-bold px-7 py-4 rounded-xl transition-all shadow-lg text-sm border border-slate-200 group"
                 >
                   <span>View Trust Framework</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
             </div>
@@ -478,14 +570,14 @@ export default function IcoLanding() {
       {/* ── SECTION 5: PREVIEW THE FIVE MENU PAGES ── */}
       <section className="py-20 lg:py-28 bg-slate-50 border-b border-slate-200/80">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-16">
-            <div className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-3">
+          <div className="max-w-3xl mb-14">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
               Deep-Dive Section Modules
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4 font-heading">
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
               Explore the Five Dedicated Operating Menus
             </h2>
-            <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
               Navigate into each specialized domain to review specific deliverables, operational SLAs, segment packages, and sales frameworks.
             </p>
           </div>
@@ -496,21 +588,21 @@ export default function IcoLanding() {
               return (
                 <div
                   key={idx}
-                  className="bg-white rounded-2xl border border-slate-200 p-8 shadow-xs hover:shadow-xl hover:border-blue-400 transition-all flex flex-col justify-between group"
+                  className="bg-white rounded-3xl border border-slate-200/90 p-8 shadow-xs hover:shadow-xl hover:border-blue-400 transition-all duration-300 flex flex-col justify-between group"
                 >
                   <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-11 h-11 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all">
                         <Icon className="w-5 h-5" />
                       </div>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md">
+                      <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200/60">
                         {m.badge}
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3 font-heading group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-xl font-extrabold text-slate-900 mb-3 tracking-tight group-hover:text-blue-600 transition-colors">
                       {m.title}
                     </h3>
-                    <p className="text-slate-600 text-sm leading-relaxed mb-6">{m.description}</p>
+                    <p className="text-slate-600 text-sm leading-relaxed mb-6 font-normal">{m.description}</p>
                   </div>
 
                   <div className="pt-4 border-t border-slate-100">
@@ -532,14 +624,14 @@ export default function IcoLanding() {
       {/* ── SECTION 6: ENGAGEMENT MODELS PREVIEW ── */}
       <section className="py-20 lg:py-28 bg-white border-b border-slate-200/80">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-16">
-            <div className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-3">
+          <div className="max-w-3xl mb-14">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-2">
               Commercial Structures
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4 font-heading">
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
               Six Flexible Engagement Models
             </h2>
-            <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
               From low-commitment 2-week validation sprints to joint token-aligned performance retainers and multi-year enterprise licenses.
             </p>
           </div>
@@ -548,26 +640,33 @@ export default function IcoLanding() {
             {engagementModels.map((em, idx) => (
               <div
                 key={idx}
-                className="bg-slate-50/70 rounded-xl border border-slate-200 p-6 hover:bg-white hover:border-blue-400 hover:shadow-md transition-all flex flex-col justify-between"
+                className="bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-7 hover:border-blue-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="text-xs font-extrabold text-blue-700 bg-blue-100/80 px-2.5 py-0.5 rounded">
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <span className="text-xs font-mono font-extrabold text-blue-700 bg-blue-50 border border-blue-200/60 px-2.5 py-1 rounded-md">
                       Model {idx + 1}
                     </span>
-                    <span className="text-xs font-semibold text-slate-500">{em.duration}</span>
+                    <span className="text-xs font-mono font-semibold text-slate-500 flex items-center gap-1">
+                      <Clock className="w-3 h-3 text-slate-400" />
+                      {em.duration}
+                    </span>
                   </div>
-                  <h4 className="text-lg font-bold text-slate-900 mb-1 font-heading">{em.name}</h4>
-                  <div className="text-xs font-bold text-slate-600 mb-3">{em.type}</div>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">{em.desc}</p>
+                  <h4 className="text-lg font-extrabold text-slate-900 mb-1 tracking-tight group-hover:text-blue-600 transition-colors">
+                    {em.name}
+                  </h4>
+                  <div className="text-xs font-bold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-md inline-block mb-3 border border-slate-200/60">
+                    {em.type}
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4 font-normal">{em.desc}</p>
                 </div>
-                <div className="pt-3 border-t border-slate-200/60">
+                <div className="pt-4 border-t border-slate-100">
                   <Link
                     to={`/ico-acceleration/solutions-engagement#model-${idx + 1}`}
-                    className="text-xs font-bold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 group"
+                    className="text-xs font-bold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1.5 group/link"
                   >
                     <span>View Specifications</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                    <ArrowRight className="w-3.5 h-3.5 group-link-hover:translate-x-0.5 transition-transform" />
                   </Link>
                 </div>
               </div>
@@ -577,25 +676,35 @@ export default function IcoLanding() {
           <div className="text-center">
             <Link
               to="/ico-acceleration/solutions-engagement#models"
-              className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold px-7 py-3.5 rounded-xl transition-all shadow-sm text-sm"
+              className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-md text-sm border border-slate-800 group"
             >
               <span>Compare All 6 Models & Pricing Terms</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── SECTION 7: FINAL CTA ── */}
-      <section className="py-20 lg:py-28 bg-slate-950 text-white relative overflow-hidden">
+      {/* ── SECTION 7: FINAL CTA (MATCHES OFFERINGS / ENGAGEMENT SYSTEM) ── */}
+      <section className="py-20 lg:py-28 bg-slate-950 text-white relative overflow-hidden border-t border-slate-800">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=2000&q=80"
+            alt="ICO Acceleration Execution"
+            className="w-full h-full object-cover object-center opacity-30 mix-blend-luminosity"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950" />
+          <div className="absolute inset-0 bg-radial-at-c from-blue-900/30 via-transparent to-transparent pointer-events-none" />
+        </div>
+
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <div className="max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/40 text-blue-300 text-xs font-semibold uppercase tracking-wider mb-6">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/40 text-blue-300 text-xs font-semibold uppercase tracking-wider mb-6 font-mono shadow-sm">
               <Rocket className="w-3.5 h-3.5 text-blue-400" />
               <span>Launch Readiness & Acceleration</span>
             </div>
             
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6 font-heading">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
               Build Your Launch Around Measurable Outcomes
             </h2>
             
@@ -612,10 +721,10 @@ export default function IcoLanding() {
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
-                to="/talk-to-expert"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-4 rounded-xl transition-all text-base border border-white/20 backdrop-blur-sm"
+                to="/ico-acceleration/solutions-engagement"
+                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-4 rounded-xl transition-all text-base border border-white/30 backdrop-blur-sm shadow-md"
               >
-                <span>Talk with a Launch Architect</span>
+                <span>Explore Engagement Models</span>
               </Link>
             </div>
           </div>

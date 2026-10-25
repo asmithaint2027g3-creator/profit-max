@@ -22,7 +22,7 @@ export default function StickyCtaBar() {
 
     return (
         <div
-            className={`fixed bottom-0 left-0 lg:left-72 xl:left-80 right-0 z-40 transition-all duration-500 ease-out transform
+            className={`fixed bottom-0 left-0 right-0 z-40 transition-all duration-500 ease-out transform
                 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}
             style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
         >

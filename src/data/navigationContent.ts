@@ -2284,78 +2284,7 @@ export const smNavItems = [
     },
     {
         "name": "ICO Acceleration",
-        "path": "/ico-acceleration",
-        "dropdown": {
-            "categories": [
-                {
-                    "id": "intelligence",
-                    "title": "Intelligence",
-                    "desc": "Market validation, demand discovery & narrative studio",
-                    "path": "/ico-acceleration/intelligence",
-                    "items": [
-                        { "name": "Market Validation Intelligence", "path": "/ico-acceleration/intelligence#market-validation", "icon": "Search" },
-                        { "name": "Tokenomics & Narrative Studio", "path": "/ico-acceleration/intelligence#narrative-studio", "icon": "Sparkles" },
-                        { "name": "Crypto Demand Discovery", "path": "/ico-acceleration/intelligence#demand-discovery", "icon": "Target" },
-                        { "name": "Community Signal Radar", "path": "/ico-acceleration/intelligence#community-signals", "icon": "Users" }
-                    ]
-                },
-                {
-                    "id": "launch-growth",
-                    "title": "Launch & Growth",
-                    "desc": "7-phase TGE launch playbook, creator sequencing & retention",
-                    "path": "/ico-acceleration/launch-growth",
-                    "items": [
-                        { "name": "7-Phase TGE Launch Playbook", "path": "/ico-acceleration/launch-growth#playbook", "icon": "Rocket" },
-                        { "name": "KOL & Creator Orchestration", "path": "/ico-acceleration/launch-growth#kol-orchestration", "icon": "Users" },
-                        { "name": "Exchange & Listing Operations", "path": "/ico-acceleration/launch-growth#exchange-operations", "icon": "Building2" },
-                        { "name": "Post-TGE Retention Machine", "path": "/ico-acceleration/launch-growth#retention-machine", "icon": "Activity" }
-                    ]
-                },
-                {
-                    "id": "solutions-engagement",
-                    "title": "Solutions & Engagement",
-                    "desc": "Segment solutions & six commercial engagement models",
-                    "path": "/ico-acceleration/solutions-engagement",
-                    "items": [
-                        { "name": "Solutions by Segment", "path": "/ico-acceleration/solutions-engagement#segments", "icon": "Layers" },
-                        { "name": "Six Engagement Models", "path": "/ico-acceleration/solutions-engagement#models", "icon": "Sliders" },
-                        { "name": "Launch Diagnostic Sprint", "path": "/ico-acceleration/solutions-engagement#model-1", "icon": "Compass" },
-                        { "name": "TGE Command & Retainer", "path": "/ico-acceleration/solutions-engagement#model-2", "icon": "ShieldCheck" }
-                    ]
-                },
-                {
-                    "id": "trust-performance",
-                    "title": "Trust & Performance",
-                    "desc": "Compliance by Design, regional guardrails & Token RQL",
-                    "path": "/ico-acceleration/trust-performance",
-                    "items": [
-                        { "name": "Compliance by Design Trust Layer", "path": "/ico-acceleration/trust-performance#compliance-design", "icon": "ShieldCheck" },
-                        { "name": "Jurisdictional Guardrails (MiCA/VARA)", "path": "/ico-acceleration/trust-performance#jurisdictional-guardrails", "icon": "Lock" },
-                        { "name": "KYC/AML-Ready Campaign Ops", "path": "/ico-acceleration/trust-performance#kyc-aml", "icon": "CheckCircle2" },
-                        { "name": "Performance Revenue Engine", "path": "/ico-acceleration/trust-performance#performance-engine", "icon": "BarChart3" }
-                    ]
-                },
-                {
-                    "id": "sales-enablement",
-                    "title": "Sales Enablement",
-                    "desc": "SPICED discovery framework, objection handling & battlecards",
-                    "path": "/ico-acceleration/sales-enablement",
-                    "items": [
-                        { "name": "SPICED Discovery Framework", "path": "/ico-acceleration/sales-enablement#spiced-framework", "icon": "Target" },
-                        { "name": "Segment-Specific Friction", "path": "/ico-acceleration/sales-enablement#segment-challenges", "icon": "AlertTriangle" },
-                        { "name": "Objection Handling Playbook", "path": "/ico-acceleration/sales-enablement#objections", "icon": "MessageSquare" },
-                        { "name": "45-Minute Discovery Deliverables", "path": "/ico-acceleration/sales-enablement#discovery-blueprint", "icon": "FileText" }
-                    ]
-                }
-            ],
-            "highlight": {
-                "title": "Crypto Growth Architecture",
-                "desc": "AI-native revenue protocol transforming users and liquidity into recurring protocol revenue.",
-                "image": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&q=80",
-                "linkText": "Protocol Landing Page",
-                "linkPath": "/ico-acceleration"
-            }
-        }
+        "path": "/ico-acceleration"
     },
     {
         "name": "SaaS Sales",

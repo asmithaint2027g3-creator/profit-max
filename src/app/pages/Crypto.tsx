@@ -47,11 +47,10 @@ export default function Crypto() {
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-blue-100 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse mix-blend-multiply opacity-60" />
 
                     <div className="text-center max-w-5xl mx-auto">
-                        <Link to="/ico-acceleration" className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-blue-200 shadow-[0_2px_10px_-4px_rgba(59,130,246,0.3)] mb-8 hover:border-blue-400 hover:shadow-md transition-all group">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-blue-100 shadow-[0_2px_10px_-4px_rgba(59,130,246,0.3)] mb-8 transition-colors cursor-default">
                             <Sparkles className="w-4 h-4 text-blue-600" />
-                            <span className="text-sm font-bold text-blue-700 tracking-wide">New: Complete ICO Acceleration Protocol Suite</span>
-                            <ArrowRight className="w-3.5 h-3.5 text-blue-600 group-hover:translate-x-0.5 transition-transform" />
-                        </Link>
+                            <span className="text-sm font-bold text-blue-700 tracking-wide">New: AI-Native Revenue Protocol</span>
+                        </div>
 
                         <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-slate-900 mb-8 tracking-tighter leading-[1.05] drop-shadow-sm">
                             AI-Driven Sales Acceleration <br />

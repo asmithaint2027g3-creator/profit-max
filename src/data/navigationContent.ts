@@ -2289,78 +2289,77 @@ export const smNavItems = [
             "categories": [
                 {
                     "id": "intelligence",
-                    "title": "Market & Demand Intelligence",
+                    "title": "Intelligence",
+                    "desc": "Market validation, demand discovery & narrative studio",
                     "path": "/ico-acceleration/intelligence",
-                    "desc": "TAM/SAM/SOM breakdown, ICP archetypes, and market demand validation.",
                     "items": [
-                        { "name": "TAM/SAM/SOM Breakdown", "path": "/ico-acceleration/intelligence#tam-breakdown", "icon": "BarChart" },
-                        { "name": "ICP & Archetype Matrices", "path": "/ico-acceleration/intelligence#icp-matrix", "icon": "Target" },
-                        { "name": "Competitive Whitespace Analysis", "path": "/ico-acceleration/intelligence#competitive-whitespace", "icon": "Search" },
-                        { "name": "Real-Time Demand Intelligence", "path": "/ico-acceleration/intelligence#demand-engine", "icon": "TrendingUp" }
+                        { "name": "Market Validation Intelligence", "path": "/ico-acceleration/intelligence#market-validation", "icon": "Search" },
+                        { "name": "Tokenomics & Narrative Studio", "path": "/ico-acceleration/intelligence#narrative-studio", "icon": "Sparkles" },
+                        { "name": "Crypto Demand Discovery", "path": "/ico-acceleration/intelligence#demand-discovery", "icon": "Target" },
+                        { "name": "Community Signal Radar", "path": "/ico-acceleration/intelligence#community-signals", "icon": "Users" }
                     ]
                 },
                 {
                     "id": "launch-growth",
-                    "title": "7-Phase Launch & Growth",
+                    "title": "Launch & Growth",
+                    "desc": "7-phase TGE launch playbook, creator sequencing & retention",
                     "path": "/ico-acceleration/launch-growth",
-                    "desc": "End-to-end token launch lifecycle roadmap, liquidity generation, and viral loops.",
                     "items": [
-                        { "name": "7-Phase Launch Lifecycle", "path": "/ico-acceleration/launch-growth#lifecycle-phases", "icon": "Rocket" },
-                        { "name": "Liquidity Generation Engine", "path": "/ico-acceleration/launch-growth#liquidity-engine", "icon": "Coins" },
-                        { "name": "Viral Community Loops", "path": "/ico-acceleration/launch-growth#viral-loops", "icon": "Users" },
-                        { "name": "Exchange Listing Frameworks", "path": "/ico-acceleration/launch-growth#exchange-frameworks", "icon": "Layers" }
+                        { "name": "7-Phase TGE Launch Playbook", "path": "/ico-acceleration/launch-growth#playbook", "icon": "Rocket" },
+                        { "name": "KOL & Creator Orchestration", "path": "/ico-acceleration/launch-growth#kol-orchestration", "icon": "Users" },
+                        { "name": "Exchange & Listing Operations", "path": "/ico-acceleration/launch-growth#exchange-operations", "icon": "Building2" },
+                        { "name": "Post-TGE Retention Machine", "path": "/ico-acceleration/launch-growth#retention-machine", "icon": "Activity" }
                     ]
                 },
                 {
                     "id": "solutions-engagement",
-                    "title": "Web3 Solutions & Models",
+                    "title": "Solutions & Engagement",
+                    "desc": "Segment solutions & six commercial engagement models",
                     "path": "/ico-acceleration/solutions-engagement",
-                    "desc": "Solutions for L1/L2s, DeFi, GameFi, DePIN, and 6 flexible engagement models.",
                     "items": [
-                        { "name": "Ecosystem Archetypes", "path": "/ico-acceleration/solutions-engagement#ecosystem-archetypes", "icon": "Layers" },
-                        { "name": "6 Commercial Engagement Models", "path": "/ico-acceleration/solutions-engagement#commercial-models", "icon": "DollarSign" },
-                        { "name": "Sprint & Retainer Structures", "path": "/ico-acceleration/solutions-engagement#sprint-structures", "icon": "Sliders" }
+                        { "name": "Solutions by Segment", "path": "/ico-acceleration/solutions-engagement#segments", "icon": "Layers" },
+                        { "name": "Six Engagement Models", "path": "/ico-acceleration/solutions-engagement#models", "icon": "Sliders" },
+                        { "name": "Launch Diagnostic Sprint", "path": "/ico-acceleration/solutions-engagement#model-1", "icon": "Compass" },
+                        { "name": "TGE Command & Retainer", "path": "/ico-acceleration/solutions-engagement#model-2", "icon": "ShieldCheck" }
                     ]
                 },
                 {
                     "id": "trust-performance",
-                    "title": "Trust, Security & Measurement",
+                    "title": "Trust & Performance",
+                    "desc": "Compliance by Design, regional guardrails & Token RQL",
                     "path": "/ico-acceleration/trust-performance",
-                    "desc": "MiCA/SEC regulatory matrix, audit workflows, and multi-touch ROI attribution.",
                     "items": [
-                        { "name": "Regulatory & Compliance Matrix", "path": "/ico-acceleration/trust-performance#compliance-matrix", "icon": "ShieldCheck" },
-                        { "name": "Smart Contract Audit Workflows", "path": "/ico-acceleration/trust-performance#audit-workflows", "icon": "Lock" },
-                        { "name": "Multi-Touch ROI Attribution", "path": "/ico-acceleration/trust-performance#roi-attribution", "icon": "BarChart" }
+                        { "name": "Compliance by Design Trust Layer", "path": "/ico-acceleration/trust-performance#compliance-design", "icon": "ShieldCheck" },
+                        { "name": "Jurisdictional Guardrails (MiCA/VARA)", "path": "/ico-acceleration/trust-performance#jurisdictional-guardrails", "icon": "Lock" },
+                        { "name": "KYC/AML-Ready Campaign Ops", "path": "/ico-acceleration/trust-performance#kyc-aml", "icon": "CheckCircle2" },
+                        { "name": "Performance Revenue Engine", "path": "/ico-acceleration/trust-performance#performance-engine", "icon": "BarChart3" }
                     ]
                 },
                 {
                     "id": "sales-enablement",
-                    "title": "Sales Enablement & Objections",
+                    "title": "Sales Enablement",
+                    "desc": "SPICED discovery framework, objection handling & battlecards",
                     "path": "/ico-acceleration/sales-enablement",
-                    "desc": "SPICED qualification framework, interactive objection handling, and battlecards.",
                     "items": [
-                        { "name": "SPICED Qualification Framework", "path": "/ico-acceleration/sales-enablement#spiced-framework", "icon": "BrainCircuit" },
-                        { "name": "Interactive Objection Handling", "path": "/ico-acceleration/sales-enablement#objection-handling", "icon": "MessageSquare" },
-                        { "name": "Sales Battlecards & Scripts", "path": "/ico-acceleration/sales-enablement#battlecards", "icon": "FileText" }
+                        { "name": "SPICED Discovery Framework", "path": "/ico-acceleration/sales-enablement#spiced-framework", "icon": "Target" },
+                        { "name": "Segment-Specific Friction", "path": "/ico-acceleration/sales-enablement#segment-challenges", "icon": "AlertTriangle" },
+                        { "name": "Objection Handling Playbook", "path": "/ico-acceleration/sales-enablement#objections", "icon": "MessageSquare" },
+                        { "name": "45-Minute Discovery Deliverables", "path": "/ico-acceleration/sales-enablement#discovery-blueprint", "icon": "FileText" }
                     ]
                 }
             ],
             "highlight": {
-                "title": "ICO & Token Launch Acceleration",
-                "desc": "Comprehensive Web3 protocol for guaranteed capital formation, liquidity velocity, and institutional governance.",
+                "title": "Crypto Growth Architecture",
+                "desc": "AI-native revenue protocol transforming users and liquidity into recurring protocol revenue.",
                 "image": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&q=80",
-                "linkText": "Explore ICO Acceleration Hub",
+                "linkText": "Protocol Landing Page",
                 "linkPath": "/ico-acceleration"
             }
         }
     },
     {
-        "name": "AI-Driven Sales Transformation",
-        "path": "/ai-driven-sales-transformation"
-    },
-    {
-        "name": "Growth & Acceleration Science",
-        "path": "/growth-acceleration-science"
+        "name": "SaaS Sales",
+        "path": "/saas-sales"
     },
     {
         "name": "Global Market Acceleration",
@@ -2369,5 +2368,40 @@ export const smNavItems = [
     {
         "name": "Use Cases",
         "path": "/use-cases"
+    },
+    {
+        "name": "About Us",
+        "path": "/about",
+        "dropdown": {
+            "highlight": {
+                "title": "ProfitMachines",
+                "desc": "Sales acceleration, consulting, and AI-driven growth services.",
+                "linkText": "Learn About Us",
+                "linkPath": "/about"
+            },
+            "categories": [
+                {
+                    "id": "about",
+                    "title": "About Us",
+                    "desc": "Who we are and what drives us",
+                    "path": "/about",
+                    "items": [
+                        { "name": "About Us", "path": "/about", "icon": "Info" },
+                        { "name": "Mission", "path": "/company#mission", "icon": "Target" },
+                        { "name": "Leadership & Culture", "path": "/company#leadership", "icon": "Users" },
+                        { "name": "Our Offices", "path": "/company#offices", "icon": "MapPin" }
+                    ]
+                },
+                {
+                    "id": "connect",
+                    "title": "Connect",
+                    "desc": "Careers, contact, and partnership",
+                    "items": [
+                        { "name": "Careers", "path": "/career", "icon": "Briefcase" },
+                        { "name": "Contact Us", "path": "/book-consultation", "icon": "Phone" }
+                    ]
+                }
+            ]
+        }
     }
 ];

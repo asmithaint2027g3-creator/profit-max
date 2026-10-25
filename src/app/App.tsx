@@ -123,14 +123,20 @@ export default function App() {
   return (
     <Router>
       <AnalyticsTracker />
-      <div className="min-h-screen bg-slate-50/50 lg:pl-72 xl:pl-80 flex flex-col transition-all duration-300 pb-20 lg:pb-0">
+      <div className="min-h-screen bg-white pb-20 lg:pb-0">
         <Navigation />
-        <main className="flex-1 min-w-0">
+        <main>
           <Suspense fallback={<PageLoader />}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/book-consultation" element={<BookConsultation />} />
-              <Route path="/crypto" element={<IcoLanding />} />
+              <Route path="/crypto" element={<Crypto />} />
+              <Route path="/ico-acceleration" element={<IcoLanding />} />
+              <Route path="/ico-acceleration/intelligence" element={<IcoIntelligence />} />
+              <Route path="/ico-acceleration/launch-growth" element={<IcoLaunchGrowth />} />
+              <Route path="/ico-acceleration/solutions-engagement" element={<IcoSolutionsEngagement />} />
+              <Route path="/ico-acceleration/trust-performance" element={<IcoTrustPerformance />} />
+              <Route path="/ico-acceleration/sales-enablement" element={<IcoSalesEnablement />} />
               <Route path="/outcomes" element={<Outcomes />} />
               <Route path="/solutions" element={<Solutions />} />
               <Route path="/solutions/:slug" element={<NavigateToSolutionsSection />} />
@@ -180,21 +186,11 @@ export default function App() {
               <Route path="/partners" element={<Partners />} />
               <Route path="/career" element={<Career />} />
               <Route path="/talk-to-expert" element={<TalkToExpert />} />
-              <Route path="/ico-acceleration" element={<IcoLanding />} />
-              <Route path="/ico-acceleration/intelligence" element={<IcoIntelligence />} />
-              <Route path="/ico-acceleration/launch-growth" element={<IcoLaunchGrowth />} />
-              <Route path="/ico-acceleration/solutions-engagement" element={<IcoSolutionsEngagement />} />
-              <Route path="/ico-acceleration/trust-performance" element={<IcoTrustPerformance />} />
-              <Route path="/ico-acceleration/sales-enablement" element={<IcoSalesEnablement />} />
-              <Route path="/ai-driven-sales-transformation" element={<AILeadSalesTransformation />} />
-              <Route path="/growth-acceleration-science" element={<AIRevenueAcceleration />} />
-              <Route path="/global-market-acceleration" element={<DemandPulse />} />
-              <Route path="/use-cases" element={<Navigate to="/#case-studies" replace />} />
               <Route path="/ai-demand-discovery" element={<Navigate to="/solutions#ai-demand-discovery" replace />} />
               <Route path="/ai-lead-generation" element={<Navigate to="/offerings/b2b#channel-discovery" replace />} />
               <Route path="/ai-lead-nurturing" element={<Navigate to="/offerings/b2b#demand-discovery" replace />} />
               <Route path="/ai-mvp-validation" element={<Navigate to="/offerings/b2b#product-market-fit-discovery" replace />} />
-              <Route path="/ai-lead-sales-transformation" element={<AILeadSalesTransformation />} />
+              <Route path="/ai-lead-sales-transformation" element={<Navigate to="/offerings/b2b#sales-acceleration" replace />} />
               <Route path="/ai-revenue-operations" element={<Navigate to="/solutions#ai-revenue-operations" replace />} />
               <Route path="/ai-revenue-acceleration" element={<Navigate to="/solutions#ai-revenue-acceleration" replace />} />
               <Route path="/behaviour-analytics" element={<BehaviourAnalytics />} />

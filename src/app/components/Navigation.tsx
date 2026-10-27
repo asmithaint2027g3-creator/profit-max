@@ -54,6 +54,7 @@ export default function Navigation() {
     const [activeCategoryId, setActiveCategoryId] = useState<string>('');
     const [mobileOpen, setMobileOpen] = useState(false);
     const [mobileExpandedMenu, setMobileExpandedMenu] = useState<string | null>(null);
+    const [mobileExpandedCategories, setMobileExpandedCategories] = useState<Record<string, boolean>>({});
     const [searchOpen, setSearchOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const navRef = useRef<HTMLDivElement>(null);
@@ -61,270 +62,483 @@ export default function Navigation() {
 
     // ── 7 MAIN MENUS DATA (EXACT SEVEN TOP-LEVEL MENU ITEMS AS SPECIFIED) ──
     const mainMenus: MainMenuItem[] = useMemo(() => [
-        // 1. REVENUE DISCOVERY (ORIGIN FRAMEWORK)
+        // 1. OFFERINGS
         {
             id: 'offerings',
             name: 'Offerings',
             shortName: 'Offerings',
-            path: '/offerings/discovery',
+            path: '/offerings',
             icon: Compass,
-            badge: 'ORIGIN Framework · 16 Nodes',
-            summary: 'Four Origins. Sixteen Nodes. One Rule: Realization, Not Documentation.',
+            badge: 'Revenue Architecture',
+            summary: 'Comprehensive revenue architecture, discovery engines, and execution playbooks.',
             categories: [
                 {
-                    id: 'framework-overview',
-                    title: 'Framework Overview',
-                    desc: 'The complete revenue discovery framework hub connecting all 16 nodes into one diagnostic system.',
-                    path: '/offerings/discovery',
-                    badge: 'Hub Page',
-                    icon: Compass,
+                    id: 'profit-pool-discovery',
+                    title: 'Profit Pool Discovery',
+                    desc: 'Four discovery pillars and sixteen capabilities to isolate profit pools, buyer intent, and defensible margin.',
+                    path: '/offerings/profit-pool-discovery',
+                    badge: 'Discovery Capabilities',
+                    icon: Target,
                     columns: [
                         {
-                            header: 'Framework Architecture',
-                            badge: 'Overview',
-                            icon: Compass,
-                            cards: [
-                                {
-                                    title: 'Framework Overview Hub',
-                                    description: 'The master diagnostic operating system uniting 4 origins and 16 discovery nodes.',
-                                    path: '/offerings/discovery',
-                                    badge: 'Hub',
-                                    icon: Compass,
-                                    tags: ['Operating System', '16 Nodes']
-                                },
-                                {
-                                    title: 'Interactive Node Map',
-                                    description: 'Visual map connecting all 16 nodes with telemetry, baselines, and locked targets.',
-                                    path: '/offerings/discovery#node-map',
-                                    badge: 'Map',
-                                    icon: Layers,
-                                    tags: ['Visual Telemetry', 'Full Matrix']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Engagement & Realization',
-                            badge: '90-Day Path',
-                            icon: Activity,
-                            cards: [
-                                {
-                                    title: 'The Realization Layer',
-                                    description: '6-step protocol converting discovery into compounding measured revenue.',
-                                    path: '/offerings/discovery#realization',
-                                    badge: '6 Steps',
-                                    icon: Activity,
-                                    tags: ['SOW Locked', 'Proof Cadence']
-                                },
-                                {
-                                    title: 'Book a Discovery Diagnostic',
-                                    description: 'Baseline all 16 nodes simultaneously with our Principal Systems Architects.',
-                                    path: '/offerings/discovery#intake',
-                                    badge: 'Diagnostic',
-                                    icon: Target,
-                                    tags: ['Mutual NDA', 'Baseline Audit']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'revenue-discovery',
-                    title: 'Core Discovery',
-                    desc: 'Where the money is, what buyers will pay, who is ready to buy, and who you are fighting for it.',
-                    path: '/offerings/discovery/micro-market',
-                    badge: '8 Nodes',
-                    icon: Search,
-                    columns: [
-                        {
-                            header: 'Market & Demand Diagnostics',
-                            badge: 'Nodes 1.1–1.4',
+                            header: 'Core Discovery',
+                            badge: 'Pillar 01',
                             icon: Target,
                             cards: [
                                 {
-                                    title: 'Micro-Market Discovery',
-                                    description: 'Which micro-segment carries the margin — and can we defend it?',
-                                    path: '/offerings/discovery/micro-market',
-                                    badge: 'Node 1.1',
-                                    icon: Target,
-                                    tags: ['Problem-Solution-Proof', 'Profit Pool']
+                                    title: 'Market & Whitespace',
+                                    description: 'Isolate which micro-segments carry contribution margin and model competitive defensibility.',
+                                    path: '/offerings/profit-pool-discovery#market-whitespace',
+                                    badge: '#market-whitespace',
+                                    icon: Globe,
+                                    tags: ['TAM Dissection', 'Margin Defense']
                                 },
                                 {
-                                    title: 'Demand Chain Discovery',
-                                    description: 'Where does the demand chain leak — and how do we fix it?',
-                                    path: '/offerings/discovery/demand-chain',
-                                    badge: 'Node 1.2',
-                                    icon: Activity,
-                                    tags: ['Diagnostic-Telemetry', 'Velocity']
+                                    title: 'Demand & Intent',
+                                    description: 'Audit the complete demand chain and deploy live dark-funnel buyer intent scoring.',
+                                    path: '/offerings/profit-pool-discovery#demand-intent',
+                                    badge: '#demand-intent',
+                                    icon: TrendingUp,
+                                    tags: ['Intent Scoring', 'Velocity Telemetry']
                                 },
                                 {
-                                    title: 'Channel Discovery',
-                                    description: 'How concentrated is our reach — and where is the second engine?',
-                                    path: '/offerings/discovery/channel',
-                                    badge: 'Node 1.3',
-                                    icon: Network,
-                                    tags: ['Risk-Concentration', 'Owned Pipeline']
-                                },
-                                {
-                                    title: 'Willingness-to-Pay Discovery',
-                                    description: 'What will buyers actually pay — and where are we underpriced?',
-                                    path: '/offerings/discovery/willingness-to-pay',
-                                    badge: 'Node 1.4',
+                                    title: 'Value & ROI',
+                                    description: 'Buyer-evidenced willingness-to-pay engines, discount guardrails, and cost-to-serve audits.',
+                                    path: '/offerings/profit-pool-discovery#value-roi',
+                                    badge: '#value-roi',
                                     icon: DollarSign,
-                                    tags: ['Evidence-Based Pricing', 'Price Floors']
+                                    tags: ['Willingness-to-Pay', 'Price Realization']
                                 }
                             ]
                         },
                         {
-                            header: 'Behavioral & Competitive Intel',
-                            badge: 'Nodes 1.5–1.8',
-                            icon: Cpu,
+                            header: 'Displacement & PMF',
+                            badge: 'Pillar 02',
+                            icon: Zap,
                             cards: [
                                 {
-                                    title: 'Customer Propensity Discovery',
-                                    description: 'Who is in-market right now — and are we calling them first?',
-                                    path: '/offerings/discovery/propensity',
-                                    badge: 'Node 1.5',
-                                    icon: Cpu,
-                                    tags: ['Intent-Routing', 'Nightly Deciles']
-                                },
-                                {
-                                    title: 'Usage-to-Revenue Discovery',
-                                    description: 'Which usage behaviors predict paid conversion — and are they wired to triggers?',
-                                    path: '/offerings/discovery/usage-to-revenue',
-                                    badge: 'Node 1.6',
-                                    icon: Sparkles,
-                                    tags: ['Behavioral-Trigger', 'Expansion']
-                                },
-                                {
-                                    title: 'Competitor Discovery',
-                                    description: 'What exactly are we losing to — deal by deal, feature by feature?',
-                                    path: '/offerings/discovery/competitor',
-                                    badge: 'Node 1.7',
+                                    title: 'Competitive Displacement',
+                                    description: 'Deal-by-deal rival dissection dossiers, ecosystem positioning, and live battlecards.',
+                                    path: '/offerings/profit-pool-discovery#competitive',
+                                    badge: '#competitive',
                                     icon: ShieldCheck,
-                                    tags: ['Counter-Intelligence', 'Battlecards']
+                                    tags: ['Win/Loss Interviews', 'Rival Dissection']
                                 },
                                 {
-                                    title: 'Competitive Ecosystem Discovery',
-                                    description: 'Who is building the field we compete on — inside or outside their structure?',
-                                    path: '/offerings/discovery/ecosystem',
-                                    badge: 'Node 1.8',
-                                    icon: Layers,
-                                    tags: ['Structural-Positioning', 'Gravity']
+                                    title: 'Product-Market Fit',
+                                    description: 'Identify product usage milestones that trigger monetization and validate pre-build concepts.',
+                                    path: '/offerings/profit-pool-discovery#pmf',
+                                    badge: '#pmf',
+                                    icon: Sparkles,
+                                    tags: ['Usage Triggers', 'Launch Telemetry']
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    id: 'supply-chain-discovery',
-                    title: 'Supply Chain Discovery',
-                    desc: 'What you sell, at what margin, and what it truly costs to serve.',
-                    path: '/offerings/discovery/offer-architecture',
-                    badge: '2 Nodes',
-                    icon: Box,
+                    id: 'demand-engineering',
+                    title: 'Demand Engineering',
+                    desc: 'Engineered pipeline systems from dark-funnel intent capture to high-velocity closed revenue.',
+                    path: '/offerings/demand-engineering',
+                    badge: 'Demand Engine',
+                    icon: Zap,
                     columns: [
                         {
-                            header: 'Offer & Monetization Architecture',
-                            badge: 'Nodes 2.1 & 2.2',
-                            icon: Box,
+                            header: 'Inbound & Orchestration',
+                            badge: 'Top-Funnel',
+                            icon: Layers,
                             cards: [
                                 {
-                                    title: 'Offer & Revenue Architecture',
-                                    description: 'Is what we sell engineered for willingness-to-pay — or for cost-plus habit?',
-                                    path: '/offerings/discovery/offer-architecture',
-                                    badge: 'Node 2.1',
-                                    icon: DollarSign,
-                                    tags: ['Margin-Recovery', 'Tier Ladder']
+                                    title: 'Demand Generation',
+                                    description: 'Multi-channel algorithmic demand capture generating 40-60% verified pipeline lift.',
+                                    path: '/offerings/demand-engineering#demand-generation',
+                                    badge: '#demand-generation',
+                                    icon: Zap,
+                                    tags: ['Pipeline Lift', 'CAC Reduction']
                                 },
                                 {
-                                    title: 'Cost-to-Serve & Capacity',
-                                    description: 'Which revenue do we scale — and which revenue destroys us quietly?',
-                                    path: '/offerings/discovery/cost-to-serve',
-                                    badge: 'Node 2.2',
-                                    icon: Scale,
-                                    tags: ['Audit-Risk-Capacity', 'Customer Margin']
+                                    title: 'Account-Based Marketing',
+                                    description: 'Precision tier-1 account orchestration with cross-channel bespoke ad and content meshes.',
+                                    path: '/offerings/demand-engineering#abm',
+                                    badge: '#abm',
+                                    icon: Target,
+                                    tags: ['Account Mesh', '200% Engagement']
+                                },
+                                {
+                                    title: 'Outbound Acceleration',
+                                    description: 'Signal-based autonomous outbound playbooks with 3.8x verified meeting velocity lift.',
+                                    path: '/offerings/demand-engineering#outbound',
+                                    badge: '#outbound',
+                                    icon: Rocket,
+                                    tags: ['Signal-Based', 'Autonomous Outbound']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Content & Signals',
+                            badge: 'Mid-Funnel',
+                            icon: Sparkles,
+                            cards: [
+                                {
+                                    title: 'Content-to-Pipeline',
+                                    description: 'High-intent editorial architectures engineered for search rank and direct executive pipeline.',
+                                    path: '/offerings/demand-engineering#content-pipeline',
+                                    badge: '#content-pipeline',
+                                    icon: FileText,
+                                    tags: ['Direct Pipeline', '95% Attribution']
+                                },
+                                {
+                                    title: 'Intent Data Platform',
+                                    description: 'Real-time signal fusion engine routing in-market surge buyers to reps in under one second.',
+                                    path: '/offerings/demand-engineering#intent-data',
+                                    badge: '#intent-data',
+                                    icon: Activity,
+                                    tags: ['Dark-Funnel Fusion', '<1s Routing']
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    id: 'business-ecosystem-discovery',
-                    title: 'Ecosystem Discovery',
-                    desc: 'Revenue you do not build alone: alliances, platforms, and adjacent ground.',
-                    path: '/offerings/discovery/alliance',
-                    badge: '2 Nodes',
+                    id: 'sales-acceleration',
+                    title: 'Sales Acceleration',
+                    desc: 'Predictive intelligence, autonomous workflows, and conversational agents compressing deal cycles.',
+                    path: '/offerings/sales-acceleration',
+                    badge: 'Deal Acceleration',
+                    icon: Rocket,
+                    columns: [
+                        {
+                            header: 'Deal Intelligence & Agents',
+                            badge: 'Velocity',
+                            icon: BrainCircuit,
+                            cards: [
+                                {
+                                    title: 'Predictive Deal Intelligence',
+                                    description: 'Neural deal health scoring and early stall warnings delivering 50% forecast accuracy gains.',
+                                    path: '/offerings/sales-acceleration#deal-intelligence',
+                                    badge: '#deal-intelligence',
+                                    icon: BrainCircuit,
+                                    tags: ['Stall Warnings', 'Neural Pacing']
+                                },
+                                {
+                                    title: 'Autonomous Workflows',
+                                    description: 'Self-driving CRM administration and follow-up engines reclaiming 60% of rep selling time.',
+                                    path: '/offerings/sales-acceleration#autonomous-workflows',
+                                    badge: '#autonomous-workflows',
+                                    icon: Bot,
+                                    tags: ['Auto CRM', 'Zero Manual Admin']
+                                },
+                                {
+                                    title: 'Conversational AI Agents',
+                                    description: 'Interactive demo copilots and automated discovery agents delivering 50% conversion lift.',
+                                    path: '/offerings/sales-acceleration#conversational-ai',
+                                    badge: '#conversational-ai',
+                                    icon: Sparkles,
+                                    tags: ['Real-Time Copilots', 'Qualification']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Execution & Expansion',
+                            badge: 'Expansion',
+                            icon: DollarSign,
+                            cards: [
+                                {
+                                    title: 'Quote-to-Cash',
+                                    description: 'Algorithmic CPQ, dynamic deal desks, and automated contract workflows cutting cycle times 50%.',
+                                    path: '/offerings/sales-acceleration#quote-to-cash',
+                                    badge: '#quote-to-cash',
+                                    icon: DollarSign,
+                                    tags: ['Automated CPQ', '50% Faster Cash']
+                                },
+                                {
+                                    title: 'Expansion Intelligence',
+                                    description: 'Telemetry detecting cross-sell triggers and organizational buying signals within enterprise logos.',
+                                    path: '/offerings/sales-acceleration#expansion',
+                                    badge: '#expansion',
+                                    icon: TrendingUp,
+                                    tags: ['Cross-Sell Radar', 'NRR Lift']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'revenue-operations',
+                    title: 'Revenue Operations',
+                    desc: 'Mathematical command center, 98% forecasting accuracy, and unified multi-touch attribution.',
+                    path: '/offerings/revenue-operations',
+                    badge: 'Command Center',
+                    icon: Sliders,
+                    columns: [
+                        {
+                            header: 'Telemetry & Forecast',
+                            badge: 'Control',
+                            icon: BarChart3,
+                            cards: [
+                                {
+                                    title: 'Command Center',
+                                    description: 'Unified commercial cockpit delivering real-time telemetry across marketing, sales, and CS.',
+                                    path: '/offerings/revenue-operations#command-center',
+                                    badge: '#command-center',
+                                    icon: Activity,
+                                    tags: ['Live Cockpit', 'Instant Alerts']
+                                },
+                                {
+                                    title: 'Forecasting',
+                                    description: 'Bayesian behavioral forecast models eliminating rep commit bias with 98% predictive certainty.',
+                                    path: '/offerings/revenue-operations#forecasting',
+                                    badge: '#forecasting',
+                                    icon: BarChart3,
+                                    tags: ['98% Accuracy', '<5% Variance']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Attribution & Territory',
+                            badge: 'Optimization',
+                            icon: Globe,
+                            cards: [
+                                {
+                                    title: 'Attribution',
+                                    description: 'First-party algorithmic attribution connecting every closed dollar to initial multi-channel touchpoints.',
+                                    path: '/offerings/revenue-operations#attribution',
+                                    badge: '#attribution',
+                                    icon: Target,
+                                    tags: ['Multi-Touch Attribution', '95% Match']
+                                },
+                                {
+                                    title: 'Territory',
+                                    description: 'Algorithmic quota balancing and account propensity distribution boosting revenue per rep 25%.',
+                                    path: '/offerings/revenue-operations#territory',
+                                    badge: '#territory',
+                                    icon: Globe,
+                                    tags: ['Dynamic Quota', 'Workload Balance']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'gtm-transformation',
+                    title: 'GTM Transformation',
+                    desc: 'End-to-end commercial transformation: multi-product motions, process re-engineering, and cultural adoption.',
+                    path: '/offerings/gtm-transformation',
+                    badge: 'System Roadmap',
                     icon: Network,
                     columns: [
                         {
-                            header: 'Alliances & Platform Adjacency',
-                            badge: 'Nodes 3.1 & 3.2',
-                            icon: Network,
+                            header: 'Strategy & Process',
+                            badge: 'Foundation',
+                            icon: Briefcase,
                             cards: [
                                 {
-                                    title: 'Alliance & Co-Sell',
-                                    description: 'Which partnerships produce revenue — and which produce golf outings?',
-                                    path: '/offerings/discovery/alliance',
-                                    badge: 'Node 3.1',
-                                    icon: Handshake,
-                                    tags: ['Attribution-ROI', 'Co-Sell Engine']
+                                    title: 'Strategy & Design',
+                                    description: 'Commercial operating system blueprint aligning marketing, sales, product, and leadership.',
+                                    path: '/offerings/gtm-transformation#gtm-strategy',
+                                    badge: '#gtm-strategy',
+                                    icon: Compass,
+                                    tags: ['GTM Alignment', 'Exec Blueprint']
                                 },
                                 {
-                                    title: 'Platform & Adjacency',
-                                    description: 'Are we building on someone else’s land — and where is our second vertical?',
-                                    path: '/offerings/discovery/platform-adjacency',
-                                    badge: 'Node 3.2',
+                                    title: 'Process',
+                                    description: 'Bottleneck elimination and end-to-end process redesign compressing sales cycles 40%.',
+                                    path: '/offerings/gtm-transformation#process',
+                                    badge: '#process',
+                                    icon: Sliders,
+                                    tags: ['Cycle Compression', 'Waste Removal']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Motions & Adoption',
+                            badge: 'Scale',
+                            icon: Users,
+                            cards: [
+                                {
+                                    title: 'Multi-Product',
+                                    description: 'Orchestrating simultaneous product motions, cross-sell playbooks, and unified packaging.',
+                                    path: '/offerings/gtm-transformation#multi-product',
+                                    badge: '#multi-product',
                                     icon: Layers,
-                                    tags: ['De-Risk-Adjacency', 'Second Vertical']
+                                    tags: ['Cross-Sell Playbooks', 'Deal Size +50%']
+                                },
+                                {
+                                    title: 'Adoption',
+                                    description: 'Rigorous change enablement, certification frameworks, and continuous telemetry monitoring.',
+                                    path: '/offerings/gtm-transformation#adoption',
+                                    badge: '#adoption',
+                                    icon: UserCheck,
+                                    tags: ['80% Sustained Adoption', 'ROI Validation']
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    id: 'expansion-discovery',
-                    title: 'Expansion Discovery',
-                    desc: 'New offerings, new markets, new channels, new launches — proven before you commit.',
-                    path: '/offerings/discovery/new-offering',
-                    badge: '4 Nodes',
-                    icon: TrendingUp,
+                    id: 'customer-success',
+                    title: 'Customer Success Engine',
+                    desc: 'Predictive churn mitigation, automated renewal defense, and systematic net revenue expansion.',
+                    path: '/offerings/customer-success',
+                    badge: 'Retention Engine',
+                    icon: Users,
                     columns: [
                         {
-                            header: 'Expansion Validation Nodes',
-                            badge: 'Nodes 4.1–4.4',
+                            header: 'Retention & Health',
+                            badge: 'Defense',
+                            icon: ShieldCheck,
+                            cards: [
+                                {
+                                    title: 'Retention',
+                                    description: 'Predictive churn mitigation models detecting accounts at risk 90 days before renewal date.',
+                                    path: '/offerings/customer-success#retention',
+                                    badge: '#retention',
+                                    icon: ShieldCheck,
+                                    tags: ['90-Day Early Warning', '20% Churn Reduction']
+                                },
+                                {
+                                    title: 'Health',
+                                    description: 'Multi-dimensional telemetry scoring feature depth, executive engagement, and support sentiment.',
+                                    path: '/offerings/customer-success#health',
+                                    badge: '#health',
+                                    icon: Activity,
+                                    tags: ['Multi-Signal Score', 'Proactive Playbooks']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Expansion & Renewal',
+                            badge: 'Growth',
                             icon: TrendingUp,
                             cards: [
                                 {
-                                    title: 'New Offering Discovery',
-                                    description: 'What should we sell next — proven against willingness-to-pay before we build it?',
-                                    path: '/offerings/discovery/new-offering',
-                                    badge: 'Node 4.1',
-                                    icon: Sparkles,
-                                    tags: ['Validation-Pre-Build', 'LOI Gates']
+                                    title: 'Expansion Engine',
+                                    description: 'Automated usage inflection triggers identifying accounts primed for tier upgrades and cross-sells.',
+                                    path: '/offerings/customer-success#expansion-engine',
+                                    badge: '#expansion-engine',
+                                    icon: TrendingUp,
+                                    tags: ['Inflection Triggers', '+15% NRR Lift']
                                 },
                                 {
-                                    title: 'New Market Discovery',
-                                    description: 'Which market ranks by profit pool — and what’s the entry playbook for the winner?',
-                                    path: '/offerings/discovery/new-market',
-                                    badge: 'Node 4.2',
+                                    title: 'Renewal',
+                                    description: 'Automated 120-day renewal playbooks, margin protection guardrails, and executive cadences.',
+                                    path: '/offerings/customer-success#renewal',
+                                    badge: '#renewal',
+                                    icon: DollarSign,
+                                    tags: ['120-Day Cadence', '95% On-Time Renewal']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'growth-intelligence',
+                    title: 'Growth Intelligence',
+                    desc: 'Continuous market research, live competitive intelligence, and buyer willingness-to-pay modeling.',
+                    path: '/offerings/growth-intelligence',
+                    badge: 'Decision Science',
+                    icon: Lightbulb,
+                    columns: [
+                        {
+                            header: 'Market & Competitive',
+                            badge: 'Intelligence',
+                            icon: Globe,
+                            cards: [
+                                {
+                                    title: 'Market Research',
+                                    description: 'Continuous buyer interviews, dark-funnel intent analytics, and category sentiment telemetry.',
+                                    path: '/offerings/growth-intelligence#market-research',
+                                    badge: '#market-research',
                                     icon: Globe,
-                                    tags: ['Profit-Pool-War-Room', '90-Day Telemetry']
+                                    tags: ['Empirical Telemetry', 'Risk Mitigation']
                                 },
                                 {
-                                    title: 'New Channel Discovery',
-                                    description: 'Which channel adds revenue without cannibalizing the core motion?',
-                                    path: '/offerings/discovery/new-channel',
-                                    badge: 'Node 4.3',
-                                    icon: Network,
-                                    tags: ['Model-Pilot-Attribution', 'Zero Conflict']
+                                    title: 'Competitive Intelligence',
+                                    description: 'Real-time rival product teardowns, pricing shift detection, and win/loss interview synthesis.',
+                                    path: '/offerings/growth-intelligence#competitive-intel',
+                                    badge: '#competitive-intel',
+                                    icon: ShieldCheck,
+                                    tags: ['<10 Day Shift Alert', '+15% Win Rate']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Pricing & Growth',
+                            badge: 'Economics',
+                            icon: DollarSign,
+                            cards: [
+                                {
+                                    title: 'Pricing Power',
+                                    description: 'Empirical willingness-to-pay modeling and tier optimization recovering 5-15% EBITDA margin.',
+                                    path: '/offerings/growth-intelligence#pricing',
+                                    badge: '#pricing',
+                                    icon: DollarSign,
+                                    tags: ['EBITDA Expansion', 'Discount Guardrails']
                                 },
                                 {
-                                    title: 'New Product Launch Discovery',
-                                    description: 'Is launch day a controlled operation — or a coin flip?',
-                                    path: '/offerings/discovery/new-launch',
-                                    badge: 'Node 4.4',
-                                    icon: Rocket,
-                                    tags: ['Command-Telemetry', 'Day-0 Live']
+                                    title: 'Product Growth',
+                                    description: 'Feature adoption telemetry identifying core value moments that drive long-term expansion.',
+                                    path: '/offerings/growth-intelligence#product-growth',
+                                    badge: '#product-growth',
+                                    icon: Sparkles,
+                                    tags: ['Core Value Moments', 'Growth Pacing']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'ai-trust-governance',
+                    title: 'AI Trust & Governance',
+                    desc: 'Explainable AI, bias mitigation algorithms, and full regulatory compliance assurance.',
+                    path: '/offerings/ai-trust-governance',
+                    badge: 'Enterprise Ready',
+                    icon: ShieldCheck,
+                    columns: [
+                        {
+                            header: 'Explainability & Compliance',
+                            badge: 'Security',
+                            icon: ShieldCheck,
+                            cards: [
+                                {
+                                    title: 'Explainable AI',
+                                    description: 'Transparent attribution rationale and decision telemetry behind every algorithmic action.',
+                                    path: '/offerings/ai-trust-governance#explainable',
+                                    badge: '#explainable',
+                                    icon: ShieldCheck,
+                                    tags: ['Auditable Rationale', 'Transparent Decisions']
+                                },
+                                {
+                                    title: 'Compliance',
+                                    description: 'SOC2 Type II, ISO 27001, and EU AI Act enterprise governance frameworks with zero incident record.',
+                                    path: '/offerings/ai-trust-governance#compliance',
+                                    badge: '#compliance',
+                                    icon: Lock,
+                                    tags: ['SOC2 & ISO Ready', 'Zero Breaches']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Fairness & Leadership',
+                            badge: 'Governance',
+                            icon: UserCheck,
+                            cards: [
+                                {
+                                    title: 'Bias',
+                                    description: 'Statistical algorithmic fairness testing preventing demographic or regional distortion in scoring.',
+                                    path: '/offerings/ai-trust-governance#bias',
+                                    badge: '#bias',
+                                    icon: Sliders,
+                                    tags: ['Fairness Auditing', 'Model Alignment']
+                                },
+                                {
+                                    title: 'Executive',
+                                    description: 'Boardroom-level AI risk frameworks, liability protections, and strategic revenue oversight.',
+                                    path: '/offerings/ai-trust-governance#executive',
+                                    badge: '#executive',
+                                    icon: UserCheck,
+                                    tags: ['Board Governance', 'Risk Controls']
                                 }
                             ]
                         }
@@ -342,360 +556,7 @@ export default function Navigation() {
             icon: Building2,
             badge: 'Vertical Engineering',
             summary: 'Vertical-specific revenue engineering: bespoke revenue operating systems tailored to your market nuances and compliance requirements.',
-            categories: [
-                {
-                    id: 'b2b-focus',
-                    title: 'B2B Focus',
-                    desc: 'The Tactical Playbook: ABM Autopilot, competitor displacement, autonomous SDRs, and RQL predictors',
-                    path: '/industries/b2b',
-                    badge: 'Tactical Playbook',
-                    icon: Target,
-                    columns: [
-                        {
-                            header: 'Targeting & Displacement',
-                            badge: 'Outbound & Intel',
-                            icon: Target,
-                            cards: [
-                                {
-                                    title: 'AI Account-Based Marketing (ABM) Autopilot',
-                                    description: 'Orchestrate end-to-end target account campaigns with real-time intent triggers.',
-                                    path: '/industries/b2b#abm',
-                                    badge: '3.8× Account Lift',
-                                    icon: Target,
-                                    tags: ['Intent Sync', 'Dynamic Personalization']
-                                },
-                                {
-                                    title: 'AI Competitor Displacement Engine',
-                                    description: 'Identify rival pain points to win back accounts at contract renewal windows.',
-                                    path: '/industries/b2b#displacement',
-                                    badge: '62% Win-Back',
-                                    icon: ShieldCheck,
-                                    tags: ['Dissatisfaction Scans', 'Renewal Radar']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Conversion & Expansion',
-                            badge: 'Velocity & NRR',
-                            icon: Cpu,
-                            cards: [
-                                {
-                                    title: 'AI SDR Co-Pilot / Autopilot',
-                                    description: 'Autonomous SDR qualifying leads, handling objections, and booking AE calendars.',
-                                    path: '/industries/b2b#sdr',
-                                    badge: '140+ Mtgs/Mo',
-                                    icon: Bot,
-                                    tags: ['24/7 Prospecting', 'Zero Lead Loss']
-                                },
-                                {
-                                    title: 'AI Revenue Qualified Lead (RQL) Predictor',
-                                    description: 'Predict close probability, deal size, and timelines with 94% mathematical precision.',
-                                    path: '/industries/b2b#rql',
-                                    badge: '94% Precision',
-                                    icon: BarChart3,
-                                    tags: ['Bayesian Forecast', 'Deal Health']
-                                },
-                                {
-                                    title: 'AI Contract & Expansion Opportunity Finder',
-                                    description: 'Uncover upsell and cross-sell opportunities from live software usage signals.',
-                                    path: '/industries/b2b#expansion',
-                                    badge: '138% NRR',
-                                    icon: TrendingUp,
-                                    tags: ['Proactive Upgrades', 'Churn Defense']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'b2c-focus',
-                    title: 'B2C Focus',
-                    desc: 'Omnichannel acquisition, 1:1 individualized dynamic pricing, and sub-5-minute cart recovery',
-                    path: '/industries#bento-grid',
-                    badge: 'High Velocity',
-                    icon: ShoppingBag,
-                    columns: [
-                        {
-                            header: 'Acquisition & Conversion',
-                            badge: 'Ad Ops & Margins',
-                            icon: ShoppingBag,
-                            cards: [
-                                {
-                                    title: 'AI Omnichannel Lead Generation',
-                                    description: 'Automate cross-platform ad budget distribution to capture lowest-cost conversions.',
-                                    path: '/industries#bento-grid',
-                                    badge: '−42% CPL',
-                                    icon: ShoppingBag,
-                                    tags: ['Predictive Bidding', 'ROAS Lift']
-                                },
-                                {
-                                    title: 'AI Personalized Offer Generation at Scale',
-                                    description: 'Deliver 1:1 dynamic pricing and promotions without sacrificing baseline margins.',
-                                    path: '/industries#bento-grid',
-                                    badge: '+34% CVR',
-                                    icon: Sparkles,
-                                    tags: ['Margin Defense', 'Cart Optimization']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Retention & Audiences',
-                            badge: 'Recovery Loops',
-                            icon: Zap,
-                            cards: [
-                                {
-                                    title: 'AI Behavioral Retargeting Autopilot',
-                                    description: 'Recover abandoned checkouts within minutes via hyper-personalized SMS and email.',
-                                    path: '/industries#bento-grid',
-                                    badge: '$280K Recovered',
-                                    icon: Zap,
-                                    tags: ['Sub-5-Min Retargeting', 'Multi-Channel']
-                                },
-                                {
-                                    title: 'AI Lookalike Audience Auto-Scaling',
-                                    description: 'Automatically feed ad networks daily with high-LTV buyer cohort seed lists.',
-                                    path: '/industries#bento-grid',
-                                    badge: '5× Scale',
-                                    icon: Users,
-                                    tags: ['Daily Seed Sync', 'Ad Fatigue Shield']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'enterprise-motion',
-                    title: 'Enterprise',
-                    desc: 'The Boardroom Briefing: Global account penetration, hyperscaler co-sell, and executive engagement',
-                    path: '/industries/enterprise',
-                    badge: 'Fortune 500 OS',
-                    icon: Building2,
-                    columns: [
-                        {
-                            header: 'Global Penetration & Alliances',
-                            badge: 'Corporate Hierarchy',
-                            icon: Globe,
-                            cards: [
-                                {
-                                    title: 'AI Global Account Penetration',
-                                    description: 'Expand enterprise accounts across multiple divisions, regions, and subsidiary trees.',
-                                    path: '/industries/enterprise',
-                                    badge: '12 Subsidiaries',
-                                    icon: Globe,
-                                    tags: ['Corporate Trees', 'Warm Division Paths']
-                                },
-                                {
-                                    title: 'AI Strategic Partnership Opportunity Finder',
-                                    description: 'Discover high-yield alliance opportunities and automate joint co-selling playbooks.',
-                                    path: '/industries/enterprise',
-                                    badge: '$12M Pipeline',
-                                    icon: Handshake,
-                                    tags: ['Audience Overlap', 'Co-Sell Governance']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Executive C-Suite Clearance',
-                            badge: 'Board Level',
-                            icon: Building2,
-                            cards: [
-                                {
-                                    title: 'AI Executive Engagement Automation',
-                                    description: 'Mine 10-K filings to generate CFO-ready executive business cases for C-level buyers.',
-                                    path: '/industries/enterprise',
-                                    badge: '82% Exec CVR',
-                                    icon: Building2,
-                                    tags: ['CFO Payback Models', '10-K Alignment']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'growth-startups-midmarket',
-                    title: 'Startups & Mid-Market',
-                    desc: 'The Velocity Engine: Zero-to-one lead gen, PMF signal detection, and niche market domination',
-                    path: '/industries/growth',
-                    badge: 'Velocity Engine',
-                    icon: Rocket,
-                    columns: [
-                        {
-                            header: 'Early-Stage Velocity',
-                            badge: 'Seed to Series A',
-                            icon: Rocket,
-                            cards: [
-                                {
-                                    title: 'AI Zero-to-One Lead Generation',
-                                    description: 'Scrape targeted lead lists and launch campaigns within 48 hours for early traction.',
-                                    path: '/industries/growth',
-                                    badge: '48-Hour Launch',
-                                    icon: Rocket,
-                                    tags: ['First 25 Customers', 'Capital-Efficient']
-                                },
-                                {
-                                    title: 'AI Product-Market Fit Signal Detection',
-                                    description: 'Measure user retention, feature adoption, and viral referral velocity scientifically.',
-                                    path: '/industries/growth',
-                                    badge: '62% Retention',
-                                    icon: Activity,
-                                    tags: ['PMF Scoring', 'Retention Loops']
-                                },
-                                {
-                                    title: 'AI Founder-Led Sales Automation',
-                                    description: 'Reclaim 20 hours/week of founder leadership time with automated qualification.',
-                                    path: '/industries/growth',
-                                    badge: '20 Hrs Saved',
-                                    icon: Clock,
-                                    tags: ['Calendar Guard', 'Lead Triage']
-                                },
-                                {
-                                    title: 'AI Burn-Rate Optimized Lead Capture',
-                                    description: 'Maximize lead volume while preserving precious cash runway by 9+ months.',
-                                    path: '/industries/growth',
-                                    badge: '+9 Mo Runway',
-                                    icon: Flame,
-                                    tags: ['Organic Capture', 'Low CAC']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Mid-Market Acceleration',
-                            badge: 'Scale & Domination',
-                            icon: Zap,
-                            cards: [
-                                {
-                                    title: 'AI Rapid Market Entry Engine',
-                                    description: 'Deploy pre-configured vertical outreach campaigns and content vectors in days.',
-                                    path: '/industries/growth',
-                                    badge: '30-Day Rollout',
-                                    icon: Zap,
-                                    tags: ['3 Verticals', '$2.4M Pipeline']
-                                },
-                                {
-                                    title: 'AI Niche Market Domination',
-                                    description: 'Map and engage 100% of target accounts within specialized concentrated verticals.',
-                                    path: '/industries/growth',
-                                    badge: '48% Share',
-                                    icon: Target,
-                                    tags: ['Niche Monopolization', 'Account Reach']
-                                },
-                                {
-                                    title: 'AI Lean Team Productivity Amplifier',
-                                    description: 'Multiply sales output 3× without adding headcount by automating CRM and enrichment.',
-                                    path: '/industries/growth',
-                                    badge: '3× Output',
-                                    icon: Users,
-                                    tags: ['Headcount Relief', '$450K Saved']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'specialized-sectors',
-                    title: 'Specialized Regulated Sectors',
-                    desc: 'The Compliance & Trust Vault: Pre-audited sandboxes for institutional, regulated, and high-liability industries',
-                    path: '/industries/specialized',
-                    badge: 'Trust Vault · 10 Sectors',
-                    icon: ShieldCheck,
-                    columns: [
-                        {
-                            header: 'Institutional & Regulated',
-                            badge: 'Audited Sandboxes',
-                            icon: ShieldCheck,
-                            cards: [
-                                {
-                                    title: 'FinTech & Lending',
-                                    description: 'Automated compliance reporting, API penetration testing, and investor trust.',
-                                    path: '/industries/specialized?sector=fintech',
-                                    badge: 'SEC / FINRA',
-                                    icon: Landmark,
-                                    tags: ['100% Audit Readiness', 'Zero Breaches']
-                                },
-                                {
-                                    title: 'Healthcare & Life Sciences',
-                                    description: 'HIPAA patient data protection, hospital CFO ROI cases, and EHR disaster resilience.',
-                                    path: '/industries/specialized?sector=healthcare',
-                                    badge: 'HIPAA BAA',
-                                    icon: HeartPulse,
-                                    tags: ['Clinical ROI', '99.999% Uptime']
-                                },
-                                {
-                                    title: 'Industrial & Manufacturing',
-                                    description: 'Operational risk scanning, CapEx payback modeling, and digital procurement.',
-                                    path: '/industries/specialized?sector=industrial',
-                                    badge: 'ISO 27001',
-                                    icon: Factory,
-                                    tags: ['Disaster Audits', 'Zero Downtime']
-                                },
-                                {
-                                    title: 'SaaS Products & Cloud Platforms',
-                                    description: 'Infosec clearance, penetration testing, and usage-to-revenue expansion telemetry.',
-                                    path: '/industries/specialized?sector=saas',
-                                    badge: 'SOC2 Type II',
-                                    icon: Cpu,
-                                    tags: ['Infosec Pass', '3.2× ARR Expansion']
-                                },
-                                {
-                                    title: 'Energy & Utilities',
-                                    description: 'SCADA and grid operational risk audits, compliance, and disaster resilience.',
-                                    path: '/industries/specialized?sector=energy',
-                                    badge: 'NERC CIP',
-                                    icon: Zap,
-                                    tags: ['Zero Outages', '100% ESG']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Commercial & Consumer',
-                            badge: 'High-Velocity Trust',
-                            icon: Building2,
-                            cards: [
-                                {
-                                    title: 'Service Industries',
-                                    description: 'Reputation acceleration and automated trust audits for professional firms.',
-                                    path: '/industries/specialized?sector=services',
-                                    badge: '+42% CVR',
-                                    icon: Briefcase,
-                                    tags: ['Trust Audits', 'Enterprise Inquiries']
-                                },
-                                {
-                                    title: 'D2C Companies',
-                                    description: 'Brand protection, dynamic cart incentives, and influencer attribution loops.',
-                                    path: '/industries/specialized?sector=d2c',
-                                    badge: '−38% CAC',
-                                    icon: ShoppingBag,
-                                    tags: ['Cart Recovery', 'Brand Shield']
-                                },
-                                {
-                                    title: 'Education & EdTech',
-                                    description: 'Student data privacy under COPPA/FERPA, cyber safety, and enrollment growth.',
-                                    path: '/industries/specialized?sector=education',
-                                    badge: '+65% Enroll',
-                                    icon: GraduationCap,
-                                    tags: ['COPPA / FERPA', 'Student Privacy']
-                                },
-                                {
-                                    title: 'Retail & FMCG',
-                                    description: 'POS terminal security audits, loyalty growth, and omnichannel consumer demand.',
-                                    path: '/industries/specialized?sector=retail',
-                                    badge: '1,200 POS Nodes',
-                                    icon: Store,
-                                    tags: ['PCI-DSS Level 1', 'POS Security']
-                                },
-                                {
-                                    title: 'Real Estate & Construction',
-                                    description: 'Structural and environmental risk audits pre-clearing permits and funding.',
-                                    path: '/industries/specialized?sector=real-estate',
-                                    badge: '4 Mo Faster',
-                                    icon: Building,
-                                    tags: ['Permit Clearance', 'REIT Underwriting']
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
+            categories: []
         },
 
         // 3. AI NATIVE SALES
@@ -1471,7 +1332,7 @@ export default function Navigation() {
 
     // Active category object within current menu
     const currentCategory = useMemo(() => {
-        if (!currentMenu) return null;
+        if (!currentMenu || currentMenu.categories.length === 0) return null;
         return currentMenu.categories.find(c => c.id === activeCategoryId) || currentMenu.categories[0];
     }, [currentMenu, activeCategoryId]);
 
@@ -1481,11 +1342,13 @@ export default function Navigation() {
             clearTimeout(closeTimeoutRef.current);
             closeTimeoutRef.current = null;
         }
-        setActiveMenuId(menuId);
         const menu = mainMenus.find(m => m.id === menuId);
-        if (menu && menu.categories.length > 0) {
-            setActiveCategoryId(menu.categories[0].id);
+        if (!menu || !menu.categories || menu.categories.length === 0) {
+            setActiveMenuId(null);
+            return;
         }
+        setActiveMenuId(menuId);
+        setActiveCategoryId(menu.categories[0].id);
     };
 
     // Handle mouse leave with small grace period to prevent accidental closing
@@ -1502,23 +1365,64 @@ export default function Navigation() {
         setSearchOpen(false);
     }, [location.pathname, location.hash]);
 
+    // Prevent background scrolling when mobile menu drawer is open
+    useEffect(() => {
+        if (mobileOpen) {
+            const originalOverflow = document.body.style.overflow;
+            document.body.style.overflow = 'hidden';
+            return () => {
+                document.body.style.overflow = originalOverflow;
+            };
+        }
+    }, [mobileOpen]);
+
+    // Keyboard handlers (Escape key closes drawer, mega-menu, search)
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
                 setActiveMenuId(null);
                 setSearchOpen(false);
+                setMobileOpen(false);
             }
         };
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, []);
 
+    // Toggle top-level menu in mobile accordion
+    const toggleMobileMenu = (menuId: string) => {
+        setMobileExpandedMenu(prev => {
+            const next = prev === menuId ? null : menuId;
+            if (next) {
+                const targetMenu = mainMenus.find(m => m.id === next);
+                if (targetMenu && targetMenu.categories.length > 0) {
+                    setMobileExpandedCategories(catPrev => ({
+                        ...catPrev,
+                        [targetMenu.categories[0].id]: true
+                    }));
+                }
+            }
+            return next;
+        });
+    };
+
+    // Toggle category inside menu in mobile accordion
+    const toggleMobileCategory = (catId: string, e?: React.MouseEvent) => {
+        if (e) {
+            e.stopPropagation();
+        }
+        setMobileExpandedCategories(prev => ({
+            ...prev,
+            [catId]: !prev[catId]
+        }));
+    };
+
     // Check if route matches main menu
     const isMenuActive = (menu: MainMenuItem) => {
         if (location.pathname === menu.path) return true;
-        if (menu.id === 'offerings' && (location.pathname.startsWith('/offerings') || location.pathname.startsWith('/engagement') || location.pathname.startsWith('/origin'))) return true;
+        if (menu.id === 'offerings' && location.pathname.startsWith('/offerings')) return true;
+        if (menu.id === 'industries' && location.pathname.startsWith('/industries')) return true;
         if (menu.path !== '/' && location.pathname.startsWith(menu.path)) return true;
-        if (menu.id === 'industries' && (location.pathname.startsWith('/industries') || location.pathname.startsWith('/ico-acceleration') || location.pathname === '/crypto')) return true;
         if (menu.id === 'ai-native-sales' && (location.pathname.startsWith('/ai-') || location.pathname.startsWith('/solutions'))) return true;
         if (menu.id === 'growth-acceleration-science' && (location.pathname.startsWith('/growth-') || location.pathname === '/revenue-acceleration')) return true;
         if (menu.id === 'global-business-accelerations' && (location.pathname === '/demand-pulse' || location.pathname.startsWith('/global-'))) return true;
@@ -1580,17 +1484,18 @@ export default function Navigation() {
                     </div>
                 </div>
 
-                {/* Center: 8 Main Menus Horizontally (>= lg) */}
-                <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 2xl:gap-1.5 h-full whitespace-nowrap shrink-0">
+                {/* Center: 7 Main Menus Horizontally (>= xl) */}
+                <nav className="hidden xl:flex items-center gap-0.5 xl:gap-1 2xl:gap-1.5 h-full whitespace-nowrap shrink-0">
                     {mainMenus.map((menu) => {
                         const isCurrentActive = isMenuActive(menu);
                         const isDropdownOpen = activeMenuId === menu.id;
+                        const hasSubNav = menu.categories && menu.categories.length > 0;
 
                         return (
                             <div
                                 key={menu.id}
                                 className="relative h-full flex items-center shrink-0"
-                                onMouseEnter={() => handleMenuMouseEnter(menu.id)}
+                                onMouseEnter={hasSubNav ? () => handleMenuMouseEnter(menu.id) : undefined}
                             >
                                 <div
                                     className={`flex items-center rounded-lg xl:rounded-xl text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold tracking-tight transition-all duration-150 whitespace-nowrap shrink-0 ${
@@ -1604,30 +1509,34 @@ export default function Navigation() {
                                     <Link
                                         to={menu.path}
                                         onClick={() => setActiveMenuId(null)}
-                                        className="px-1.5 xl:px-2 2xl:px-2.5 py-1.5 xl:py-2 flex items-center cursor-pointer transition-colors whitespace-nowrap shrink-0"
+                                        className={`px-2 xl:px-2.5 py-1.5 xl:py-2 flex items-center cursor-pointer transition-colors whitespace-nowrap shrink-0 ${
+                                            !hasSubNav ? 'px-3 xl:px-3.5' : ''
+                                        }`}
                                     >
                                         <span className="whitespace-nowrap shrink-0 select-none">{menu.name}</span>
                                     </Link>
-                                    <button
-                                        type="button"
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            e.stopPropagation();
-                                            if (activeMenuId === menu.id) {
-                                                setActiveMenuId(null);
-                                            } else {
-                                                handleMenuMouseEnter(menu.id);
-                                            }
-                                        }}
-                                        aria-label={`Toggle ${menu.name} dropdown`}
-                                        className="pr-1.5 xl:pr-2 py-1.5 xl:py-2 pl-0 text-slate-400 hover:text-blue-600 cursor-pointer transition-colors shrink-0"
-                                    >
-                                        <ChevronDown
-                                            className={`w-2.5 h-2.5 xl:w-3 xl:h-3 transition-transform duration-200 opacity-60 shrink-0 ${
-                                                isDropdownOpen ? 'rotate-180 text-blue-600 opacity-100' : ''
-                                            }`}
-                                        />
-                                    </button>
+                                    {hasSubNav && (
+                                        <button
+                                            type="button"
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                                if (activeMenuId === menu.id) {
+                                                    setActiveMenuId(null);
+                                                } else {
+                                                    handleMenuMouseEnter(menu.id);
+                                                }
+                                            }}
+                                            aria-label={`Toggle ${menu.name} dropdown`}
+                                            className="pr-1.5 xl:pr-2 py-1.5 xl:py-2 pl-0 text-slate-400 hover:text-blue-600 cursor-pointer transition-colors shrink-0"
+                                        >
+                                            <ChevronDown
+                                                className={`w-2.5 h-2.5 xl:w-3 xl:h-3 transition-transform duration-200 opacity-60 shrink-0 ${
+                                                    isDropdownOpen ? 'rotate-180 text-blue-600 opacity-100' : ''
+                                                }`}
+                                            />
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                         );
@@ -1640,38 +1549,40 @@ export default function Navigation() {
                     <button
                         type="button"
                         onClick={() => setSearchOpen(true)}
-                        className="p-1.5 xl:p-2 rounded-lg xl:rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100 border border-slate-200/60 hover:border-slate-300 transition-all flex items-center gap-1.5 text-xs whitespace-nowrap shrink-0"
+                        className="w-10 h-10 sm:w-auto sm:px-2.5 sm:py-2 rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100 border border-slate-200/80 hover:border-slate-300 transition-all flex items-center justify-center sm:justify-start gap-1.5 text-xs whitespace-nowrap shrink-0"
                         aria-label="Search directory"
                     >
-                        <Search className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-slate-500 shrink-0" />
+                        <Search className="w-4 h-4 text-slate-500 shrink-0" />
                         <span className="hidden min-[1650px]:inline font-medium text-slate-400 whitespace-nowrap">Search...</span>
                     </button>
 
-                    {/* Book Strategic Consultation Button - Guaranteed Visible on All Screen Sizes */}
+                    {/* Book Strategic Consultation Button - Visible on Tablet and Desktop (>= sm), inside drawer on mobile (< sm) */}
                     <Link
                         to="/book-consultation"
-                        className="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs xl:text-sm px-2.5 sm:px-3.5 xl:px-4 py-1.5 xl:py-2 rounded-lg xl:rounded-xl transition-all shadow-md shadow-blue-600/20 hover:shadow-blue-600/35 hover:-translate-y-px whitespace-nowrap shrink-0"
+                        className="hidden sm:inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs xl:text-sm px-3 sm:px-3.5 xl:px-4 py-2 rounded-xl transition-all shadow-md shadow-blue-600/20 hover:shadow-blue-600/35 hover:-translate-y-px whitespace-nowrap shrink-0 min-h-[40px]"
                     >
                         <span className="whitespace-nowrap">Book Consultation</span>
                         <ArrowUpRight className="w-3.5 h-3.5 xl:w-4 xl:h-4 shrink-0" />
                     </Link>
 
-                    {/* Mobile Hamburger Button */}
+                    {/* Mobile Hamburger Button (< xl) */}
                     <button
                         type="button"
                         onClick={() => setMobileOpen(!mobileOpen)}
-                        className="lg:hidden p-1.5 sm:p-2 rounded-lg sm:rounded-xl text-slate-700 hover:text-blue-600 hover:bg-slate-100 transition-colors ml-0.5 sm:ml-1 shrink-0"
-                        aria-label="Toggle navigation menu"
+                        className="xl:hidden w-11 h-11 flex items-center justify-center rounded-xl text-slate-700 hover:text-blue-600 hover:bg-slate-100 transition-colors ml-0.5 sm:ml-1 shrink-0"
+                        aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+                        aria-expanded={mobileOpen}
+                        aria-controls="mobile-navigation-drawer"
                     >
                         {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                     </button>
                 </div>
             </header>
 
-            {/* ── FLOATING MEGA-MENU DROPDOWN PANEL (>= lg) ── */}
-            {currentMenu && (
+            {/* ── FLOATING MEGA-MENU DROPDOWN PANEL (>= xl) ── */}
+            {currentMenu && currentMenu.categories && currentMenu.categories.length > 0 && currentCategory && (
                 <div
-                    className="hidden lg:block fixed left-0 right-0 top-16 lg:top-[72px] z-40 transition-all duration-200 animate-in fade-in slide-in-from-top-2"
+                    className="hidden xl:block fixed left-0 right-0 top-16 lg:top-[72px] z-40 transition-all duration-200 animate-in fade-in slide-in-from-top-2"
                     onMouseEnter={() => {
                         if (closeTimeoutRef.current) {
                             clearTimeout(closeTimeoutRef.current);
@@ -1948,19 +1859,28 @@ export default function Navigation() {
                 </div>
             )}
 
-            {/* ── MOBILE SLIDE-OVER DRAWER (< lg) ── */}
+            {/* ── MOBILE SLIDE-OVER DRAWER (< xl) ── */}
             {mobileOpen && (
-                <div className="lg:hidden fixed inset-0 z-50 flex">
+                <div
+                    id="mobile-navigation-drawer"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label="Site Navigation"
+                    className="xl:hidden fixed inset-0 z-50 flex justify-end"
+                >
+                    {/* Backdrop */}
                     <div
-                        className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity"
+                        className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity duration-300 animate-in fade-in"
                         onClick={() => setMobileOpen(false)}
+                        aria-hidden="true"
                     />
 
-                    <div className="relative w-80 max-w-[85vw] h-full bg-white shadow-2xl flex flex-col z-10 animate-in slide-in-from-left duration-200">
+                    {/* Drawer Panel */}
+                    <div className="relative w-full sm:max-w-md md:max-w-lg h-full bg-white shadow-2xl flex flex-col z-10 animate-in slide-in-from-right duration-300 overflow-hidden">
                         {/* Drawer Header */}
-                        <div className="h-16 px-5 border-b border-slate-200 flex items-center justify-between shrink-0 bg-white">
-                            <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-2">
-                                <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-sm">
+                        <div className="h-16 px-4 sm:px-5 border-b border-slate-200 flex items-center justify-between shrink-0 bg-white">
+                            <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 group" aria-label="ProfitMachines Home">
+                                <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-sm shadow-md shadow-blue-600/30 group-hover:scale-105 transition-transform">
                                     PM
                                 </div>
                                 <span className="font-extrabold text-lg text-slate-900 font-heading">
@@ -1968,80 +1888,336 @@ export default function Navigation() {
                                 </span>
                             </Link>
                             <button
+                                type="button"
                                 onClick={() => setMobileOpen(false)}
-                                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700"
+                                className="w-11 h-11 rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100 flex items-center justify-center transition-colors cursor-pointer"
+                                aria-label="Close navigation menu"
                             >
                                 <X className="w-5 h-5" />
                             </button>
                         </div>
 
+                        {/* Top Drawer Quick Action Bar */}
+                        <div className="p-3 sm:p-4 border-b border-slate-100 bg-slate-50/60 shrink-0 space-y-2">
+                            {/* Search Trigger */}
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setMobileOpen(false);
+                                    setSearchOpen(true);
+                                }}
+                                className="w-full min-h-[44px] flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-white hover:bg-slate-100/80 border border-slate-200/80 text-left text-xs text-slate-500 transition-colors shadow-2xs"
+                                aria-label="Search directory"
+                            >
+                                <Search className="w-4 h-4 text-slate-400 shrink-0" />
+                                <span className="truncate">Search capabilities, offerings, nodes...</span>
+                            </button>
+
+                            {/* Prominent CTA in Drawer */}
+                            <Link
+                                to="/book-consultation"
+                                onClick={() => setMobileOpen(false)}
+                                className="w-full min-h-[44px] flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs sm:text-sm py-2.5 px-4 rounded-xl shadow-sm transition-all"
+                            >
+                                <span>Book Strategic Consultation</span>
+                                <ArrowUpRight className="w-4 h-4 shrink-0" />
+                            </Link>
+                        </div>
+
                         {/* Drawer Accordion List */}
-                        <div className="flex-1 overflow-y-auto p-4 space-y-2">
+                        <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-2.5 overscroll-contain">
                             {mainMenus.map((menu) => {
+                                const hasSubNav = menu.categories && menu.categories.length > 0;
                                 const isExpanded = mobileExpandedMenu === menu.id;
                                 const MenuIcon = menu.icon || Layers;
+                                const isCurrentActive = isMenuActive(menu);
 
-                                return (
-                                    <div key={menu.id} className="border border-slate-200/80 rounded-xl overflow-hidden">
-                                        <div
-                                            className={`w-full p-3 flex items-center justify-between text-xs font-bold transition-colors ${
-                                                isExpanded ? 'bg-blue-50 text-blue-600' : 'bg-white text-slate-800'
+                                if (!hasSubNav) {
+                                    return (
+                                        <Link
+                                            key={menu.id}
+                                            to={menu.path}
+                                            onClick={() => setMobileOpen(false)}
+                                            className={`rounded-2xl border min-h-[48px] p-3 flex items-center justify-between gap-2.5 cursor-pointer select-none transition-all duration-200 ${
+                                                isCurrentActive
+                                                    ? 'border-blue-200 bg-blue-50/40 text-blue-600 font-bold'
+                                                    : 'border-slate-200/80 bg-white text-slate-800 hover:border-slate-300 hover:bg-slate-50'
                                             }`}
                                         >
-                                            <Link
-                                                to={menu.path}
-                                                onClick={() => setMobileOpen(false)}
-                                                className="flex items-center gap-2.5 truncate flex-1 hover:text-blue-600 cursor-pointer"
-                                            >
-                                                <MenuIcon className="w-4 h-4 text-blue-600 shrink-0" />
-                                                <span className="truncate">{menu.name}</span>
-                                            </Link>
-                                            <button
-                                                type="button"
-                                                onClick={() => setMobileExpandedMenu(isExpanded ? null : menu.id)}
-                                                className="p-1 -mr-1 text-slate-400 hover:text-blue-600 cursor-pointer"
-                                                aria-label={`Expand ${menu.name} submenu`}
-                                            >
-                                                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
-                                                    isExpanded ? 'rotate-180 text-blue-600' : 'text-slate-400'
-                                                }`} />
-                                            </button>
+                                            <div className="flex items-center gap-2.5 truncate flex-1 min-w-0">
+                                                <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+                                                    isCurrentActive
+                                                        ? 'bg-blue-600 text-white'
+                                                        : 'bg-blue-50 text-blue-600 border border-blue-100'
+                                                }`}>
+                                                    <MenuIcon className="w-4 h-4" />
+                                                </div>
+                                                <div className="truncate min-w-0">
+                                                    <span className="text-xs sm:text-sm font-bold truncate block font-heading">
+                                                        {menu.name}
+                                                    </span>
+                                                </div>
+                                                {menu.badge && (
+                                                    <span className="text-[10px] font-mono text-blue-600 bg-blue-50/80 px-2 py-0.5 rounded-full border border-blue-100 hidden sm:inline-block truncate shrink-0 max-w-[130px]">
+                                                        {menu.badge}
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <ArrowRight className="w-4 h-4 text-slate-400 shrink-0" />
+                                        </Link>
+                                    );
+                                }
+
+                                return (
+                                    <div
+                                        key={menu.id}
+                                        className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
+                                            isExpanded
+                                                ? 'border-blue-200 bg-blue-50/20 shadow-2xs'
+                                                : 'border-slate-200/80 bg-white hover:border-slate-300'
+                                        }`}
+                                    >
+                                        {/* Top-Level Menu Bar (Accordion Trigger) */}
+                                        <div
+                                            onClick={() => toggleMobileMenu(menu.id)}
+                                            className={`w-full min-h-[48px] p-3 flex items-center justify-between gap-2.5 cursor-pointer select-none transition-colors ${
+                                                isExpanded
+                                                    ? 'bg-blue-50/70 text-blue-700'
+                                                    : isCurrentActive
+                                                        ? 'bg-blue-50/30 text-blue-600 font-bold'
+                                                        : 'text-slate-800 hover:bg-slate-50'
+                                            }`}
+                                            role="button"
+                                            aria-expanded={isExpanded}
+                                            aria-controls={`mobile-submenu-${menu.id}`}
+                                            tabIndex={0}
+                                            onKeyDown={(e) => {
+                                                if (e.key === 'Enter' || e.key === ' ') {
+                                                    e.preventDefault();
+                                                    toggleMobileMenu(menu.id);
+                                                }
+                                            }}
+                                        >
+                                            <div className="flex items-center gap-2.5 truncate flex-1 min-w-0">
+                                                <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+                                                    isExpanded || isCurrentActive
+                                                        ? 'bg-blue-600 text-white'
+                                                        : 'bg-blue-50 text-blue-600 border border-blue-100'
+                                                }`}>
+                                                    <MenuIcon className="w-4 h-4" />
+                                                </div>
+                                                <div className="truncate min-w-0">
+                                                    <span className="text-xs sm:text-sm font-bold truncate block font-heading">
+                                                        {menu.name}
+                                                    </span>
+                                                </div>
+                                                {menu.badge && (
+                                                    <span className="text-[10px] font-mono text-blue-600 bg-blue-50/80 px-2 py-0.5 rounded-full border border-blue-100 hidden sm:inline-block truncate shrink-0 max-w-[130px]">
+                                                        {menu.badge}
+                                                    </span>
+                                                )}
+                                            </div>
+
+                                            <div className="flex items-center gap-1 shrink-0">
+                                                <ChevronDown
+                                                    className={`w-4 h-4 transition-transform duration-200 shrink-0 ${
+                                                        isExpanded ? 'rotate-180 text-blue-600' : 'text-slate-400'
+                                                    }`}
+                                                />
+                                            </div>
                                         </div>
 
+                                        {/* Submenu Accordion Panel */}
                                         {isExpanded && (
-                                            <div className="p-3 bg-slate-50/60 border-t border-slate-100 space-y-3">
-                                                <Link
-                                                    to={menu.path}
-                                                    onClick={() => setMobileOpen(false)}
-                                                    className="block text-xs font-bold text-blue-600 hover:underline"
-                                                >
-                                                    • Visit {menu.name} Overview →
-                                                </Link>
+                                            <div
+                                                id={`mobile-submenu-${menu.id}`}
+                                                className="p-3 bg-white/95 border-t border-blue-100/80 space-y-3"
+                                            >
+                                                {/* Menu Overview Link & Summary */}
+                                                <div className="pb-2 border-b border-slate-100">
+                                                    <p className="text-[11px] text-slate-500 leading-relaxed mb-2 font-medium">
+                                                        {menu.summary}
+                                                    </p>
+                                                    <Link
+                                                        to={menu.path}
+                                                        onClick={() => setMobileOpen(false)}
+                                                        className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                                                    >
+                                                        <span>Explore Full {menu.name} Overview</span>
+                                                        <ArrowRight className="w-3.5 h-3.5" />
+                                                    </Link>
+                                                </div>
 
-                                                {menu.categories.map((cat) => (
-                                                    <div key={cat.id} className="space-y-1.5 pl-2 border-l-2 border-blue-200">
-                                                        <Link
-                                                            to={cat.path}
-                                                            onClick={() => setMobileOpen(false)}
-                                                            className="block text-xs font-bold text-slate-800 hover:text-blue-600"
-                                                        >
-                                                            {cat.title}
-                                                        </Link>
+                                                {/* Categories Accordion */}
+                                                <div className="space-y-2">
+                                                    {menu.categories.map((cat) => {
+                                                        const isCatExpanded = !!mobileExpandedCategories[cat.id];
+                                                        const CatIcon = cat.icon || Layers;
 
-                                                        <div className="space-y-1">
-                                                            {cat.columns.flatMap(c => c.cards).map((card, idx) => (
-                                                                <Link
-                                                                    key={idx}
-                                                                    to={card.path}
-                                                                    onClick={() => setMobileOpen(false)}
-                                                                    className="block text-[11px] text-slate-600 hover:text-blue-600 truncate py-0.5"
+                                                        return (
+                                                            <div
+                                                                key={cat.id}
+                                                                className={`rounded-xl border transition-colors overflow-hidden ${
+                                                                    isCatExpanded
+                                                                        ? 'border-blue-200/90 bg-slate-50/40 shadow-2xs'
+                                                                        : 'border-slate-200/70 bg-white hover:border-slate-300'
+                                                                }`}
+                                                            >
+                                                                {/* Category Header Bar */}
+                                                                <div
+                                                                    onClick={(e) => toggleMobileCategory(cat.id, e)}
+                                                                    className={`w-full min-h-[44px] p-2.5 flex items-center justify-between gap-2 cursor-pointer select-none transition-colors ${
+                                                                        isCatExpanded
+                                                                            ? 'bg-blue-50/60 text-blue-700'
+                                                                            : 'text-slate-700 hover:bg-slate-50'
+                                                                    }`}
+                                                                    role="button"
+                                                                    aria-expanded={isCatExpanded}
+                                                                    aria-controls={`mobile-subcat-${cat.id}`}
+                                                                    tabIndex={0}
+                                                                    onKeyDown={(e) => {
+                                                                        if (e.key === 'Enter' || e.key === ' ') {
+                                                                            e.preventDefault();
+                                                                            toggleMobileCategory(cat.id);
+                                                                        }
+                                                                    }}
                                                                 >
-                                                                    {card.title}
-                                                                </Link>
-                                                            ))}
-                                                        </div>
-                                                    </div>
-                                                ))}
+                                                                    <div className="flex items-center gap-2 truncate flex-1 min-w-0">
+                                                                        <div className={`w-6 h-6 rounded-md flex items-center justify-center shrink-0 ${
+                                                                            isCatExpanded
+                                                                                ? 'bg-blue-600 text-white'
+                                                                                : 'bg-slate-100 text-slate-500'
+                                                                        }`}>
+                                                                            <CatIcon className="w-3.5 h-3.5" />
+                                                                        </div>
+                                                                        <span className="text-xs font-bold truncate leading-tight font-heading">
+                                                                            {cat.title}
+                                                                        </span>
+                                                                        {cat.badge && (
+                                                                            <span className="text-[9px] font-mono font-semibold px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200 shrink-0">
+                                                                                {cat.badge}
+                                                                            </span>
+                                                                        )}
+                                                                    </div>
+
+                                                                    <div className="flex items-center gap-1.5 shrink-0">
+                                                                        <Link
+                                                                            to={cat.path}
+                                                                            onClick={(e) => {
+                                                                                e.stopPropagation();
+                                                                                setMobileOpen(false);
+                                                                            }}
+                                                                            title={`Open ${cat.title}`}
+                                                                            className="w-7 h-7 rounded-md text-slate-400 hover:text-blue-600 hover:bg-white flex items-center justify-center transition-colors"
+                                                                            aria-label={`Open ${cat.title} page`}
+                                                                        >
+                                                                            <ArrowUpRight className="w-3.5 h-3.5" />
+                                                                        </Link>
+                                                                        <div className="w-7 h-7 rounded-md text-slate-400 hover:text-blue-600 flex items-center justify-center">
+                                                                            <ChevronDown
+                                                                                className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
+                                                                                    isCatExpanded ? 'rotate-180 text-blue-600' : 'text-slate-400'
+                                                                                }`}
+                                                                            />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                {/* Category Expanded Content (Columns & Cards) */}
+                                                                {isCatExpanded && (
+                                                                    <div
+                                                                        id={`mobile-subcat-${cat.id}`}
+                                                                        className="p-3 bg-white border-t border-slate-100 space-y-3"
+                                                                    >
+                                                                        {/* Category Description & Hub Link */}
+                                                                        <div className="p-2.5 rounded-xl bg-blue-50/50 border border-blue-100/80 space-y-1.5">
+                                                                            <p className="text-[11px] text-slate-600 leading-relaxed">
+                                                                                {cat.desc}
+                                                                            </p>
+                                                                            <Link
+                                                                                to={cat.path}
+                                                                                onClick={() => setMobileOpen(false)}
+                                                                                className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                                                                            >
+                                                                                <span>Explore {cat.title} Directory</span>
+                                                                                <ArrowRight className="w-3 h-3" />
+                                                                            </Link>
+                                                                        </div>
+
+                                                                        {/* Vertically Stacked Columns and Node Cards */}
+                                                                        <div className="space-y-4 pt-1">
+                                                                            {cat.columns.map((col, colIdx) => (
+                                                                                <div key={colIdx} className="space-y-2">
+                                                                                    {/* Group Header */}
+                                                                                    <div className="flex items-center justify-between pb-1.5 border-b border-slate-200/80 text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-slate-600">
+                                                                                        <div className="flex items-center gap-1.5 truncate">
+                                                                                            {col.icon && React.createElement(col.icon, { className: 'w-3.5 h-3.5 text-blue-600 shrink-0' })}
+                                                                                            <span className="truncate">{col.header}</span>
+                                                                                        </div>
+                                                                                        {col.badge && (
+                                                                                            <span className="text-[9px] font-mono font-semibold px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200 shrink-0 ml-2">
+                                                                                                {col.badge}
+                                                                                            </span>
+                                                                                        )}
+                                                                                    </div>
+
+                                                                                    {/* Single-Column Stack of Tactile Cards */}
+                                                                                    <div className="space-y-2">
+                                                                                        {col.cards.map((card, cIdx) => {
+                                                                                            const CardIcon = card.icon || Layers;
+                                                                                            return (
+                                                                                                <Link
+                                                                                                    key={cIdx}
+                                                                                                    to={card.path}
+                                                                                                    onClick={() => setMobileOpen(false)}
+                                                                                                    className="group block p-3 rounded-xl bg-slate-50/70 hover:bg-white active:bg-blue-50/50 border border-slate-200/70 hover:border-blue-300 transition-all duration-150 shadow-2xs"
+                                                                                                >
+                                                                                                    <div className="flex items-start gap-2.5 sm:gap-3">
+                                                                                                        <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors mt-0.5">
+                                                                                                            <CardIcon className="w-4 h-4" />
+                                                                                                        </div>
+                                                                                                        <div className="min-w-0 flex-1">
+                                                                                                            <div className="flex items-center justify-between gap-1.5 mb-0.5">
+                                                                                                                {card.badge && (
+                                                                                                                    <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-blue-600">
+                                                                                                                        {card.badge}
+                                                                                                                    </span>
+                                                                                                                )}
+                                                                                                                <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all shrink-0 ml-auto" />
+                                                                                                            </div>
+                                                                                                            <h5 className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug font-heading">
+                                                                                                                {card.title}
+                                                                                                            </h5>
+                                                                                                            <p className="text-[11px] sm:text-xs text-slate-500 leading-relaxed line-clamp-2 mt-1">
+                                                                                                                {card.description}
+                                                                                                            </p>
+                                                                                                            {card.tags && card.tags.length > 0 && (
+                                                                                                                <div className="flex flex-wrap gap-1 mt-1.5">
+                                                                                                                    {card.tags.map((tag, tIdx) => (
+                                                                                                                        <span
+                                                                                                                            key={tIdx}
+                                                                                                                            className="text-[9px] font-mono font-medium text-slate-500 bg-white border border-slate-200/60 px-1.5 py-0.5 rounded"
+                                                                                                                        >
+                                                                                                                            {tag}
+                                                                                                                        </span>
+                                                                                                                    ))}
+                                                                                                                </div>
+                                                                                                            )}
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </Link>
+                                                                                            );
+                                                                                        })}
+                                                                                    </div>
+                                                                                </div>
+                                                                            ))}
+                                                                        </div>
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                        );
+                                                    })}
+                                                </div>
                                             </div>
                                         )}
                                     </div>
@@ -2050,15 +2226,18 @@ export default function Navigation() {
                         </div>
 
                         {/* Drawer Bottom CTA */}
-                        <div className="p-4 border-t border-slate-200 bg-slate-50 shrink-0 space-y-2">
+                        <div className="p-3 sm:p-4 border-t border-slate-200 bg-slate-50/90 shrink-0 space-y-2">
                             <Link
                                 to="/book-consultation"
                                 onClick={() => setMobileOpen(false)}
-                                className="w-full inline-flex items-center justify-center gap-1.5 bg-blue-600 text-white font-bold py-2.5 px-4 rounded-xl text-xs shadow-sm"
+                                className="w-full min-h-[44px] flex items-center justify-center gap-1.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold py-2.5 px-4 rounded-xl text-xs sm:text-sm shadow-sm transition-colors"
                             >
                                 <span>Book Consultation</span>
                                 <ArrowUpRight className="w-4 h-4" />
                             </Link>
+                            <div className="text-center text-[10px] font-mono text-slate-400">
+                                ProfitMachines Enterprise Diagnostic OS
+                            </div>
                         </div>
                     </div>
                 </div>

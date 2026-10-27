@@ -19,10 +19,8 @@ import {
   ChevronRight,
   ChevronDown,
   ChevronUp,
-  ArrowUpRight,
-  BookOpen
+  BookOpen,
 } from 'lucide-react';
-import OfferingsSubNav from '../components/OfferingsSubNav';
 import { serviceFamilies, ServiceFamily, ServiceOffering } from '../../data/offeringsCleanContent';
 
 const iconsMap: Record<string, any> = {

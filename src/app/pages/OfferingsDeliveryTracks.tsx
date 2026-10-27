@@ -14,10 +14,7 @@ import {
   Zap,
   Briefcase,
   GitBranch,
-  Repeat,
-  ArrowDown
 } from 'lucide-react';
-import OfferingsSubNav from '../components/OfferingsSubNav';
 import { deliveryTracksData } from '../../data/offeringsCleanContent';
 
 export default function OfferingsDeliveryTracks() {

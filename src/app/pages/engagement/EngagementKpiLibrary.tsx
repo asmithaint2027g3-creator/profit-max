@@ -59,10 +59,10 @@ export default function EngagementKpiLibrary() {
         </div>
       </section>
 
-      {/* Layer Filter Bar */}
-      <section className="py-6 bg-white border-b border-slate-200 sticky top-28 z-30 shadow-2xs">
+      {/* Layer Filter Bar (Fixed in Page, No Sliding) */}
+      <section className="py-6 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
+          <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400 mr-2 shrink-0">Filter Layer:</span>
             {[
               { id: 'all', label: 'All 7 Layers' },

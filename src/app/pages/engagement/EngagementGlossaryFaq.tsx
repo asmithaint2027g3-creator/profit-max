@@ -66,8 +66,8 @@ export default function EngagementGlossaryFaq() {
         </div>
       </section>
 
-      {/* Navigation Switcher */}
-      <section className="py-6 bg-white border-b border-slate-200 sticky top-28 z-30 shadow-2xs">
+      {/* Navigation Switcher (Fixed in Page, No Sliding) */}
+      <section className="py-6 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <button

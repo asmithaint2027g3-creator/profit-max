@@ -6,7 +6,8 @@ import {
     ShieldCheck, Layers, Cpu, DollarSign, Target, Sparkles, UserCheck, Sliders,
     Briefcase, ShoppingBag, Bot, Users, Activity, FileText, Lock, Coins,
     Network, Clock, BookOpen, HelpCircle, Landmark, HeartPulse, GraduationCap,
-    Lightbulb, Shield, BarChart3, CheckCircle2, Phone
+    Lightbulb, Shield, BarChart3, CheckCircle2, Phone, Radio, Factory, Server, Box, Scale,
+    Flame, Store, Building
 } from 'lucide-react';
 
 // ── Types for Navigation & Mega-Menu ──
@@ -39,6 +40,7 @@ interface NavCategory {
 interface MainMenuItem {
     id: string;
     name: string;
+    shortName?: string;
     path: string;
     icon: any;
     summary: string;
@@ -57,369 +59,272 @@ export default function Navigation() {
     const navRef = useRef<HTMLDivElement>(null);
     const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-    // ── 8 MAIN MENUS DATA (STRICT ORDER & PRESERVED ARCHITECTURE) ──
+    // ── 7 MAIN MENUS DATA (EXACT SEVEN TOP-LEVEL MENU ITEMS AS SPECIFIED) ──
     const mainMenus: MainMenuItem[] = useMemo(() => [
-        // 1. OFFERINGS
+        // 1. REVENUE DISCOVERY (ORIGIN FRAMEWORK)
         {
             id: 'offerings',
-            name: 'Offerings',
-            path: '/offerings',
+            name: 'Revenue Discovery',
+            shortName: 'Discovery',
+            path: '/offerings/discovery',
             icon: Compass,
-            badge: 'Revenue Architecture',
-            summary: 'Comprehensive revenue architecture, 7 discovery layers, 34 capabilities, and tailored packages.',
+            badge: 'ORIGIN Framework · 16 Nodes',
+            summary: 'Four Origins. Sixteen Nodes. One Rule: Realization, Not Documentation.',
             categories: [
                 {
-                    id: 'discovery-stack',
-                    title: 'Revenue Discovery',
-                    desc: 'Seven strategic areas from Market Whitespace to PMF',
-                    path: '/offerings/discovery-stack',
-                    badge: 'Layer 01–07',
+                    id: 'framework-overview',
+                    title: 'Framework Overview',
+                    desc: 'The complete revenue discovery framework hub connecting all 16 nodes into one diagnostic system.',
+                    path: '/offerings/discovery',
+                    badge: 'Hub Page',
+                    icon: Compass,
+                    columns: [
+                        {
+                            header: 'Framework Architecture',
+                            badge: 'Overview',
+                            icon: Compass,
+                            cards: [
+                                {
+                                    title: 'Framework Overview Hub',
+                                    description: 'The master diagnostic operating system uniting 4 origins and 16 discovery nodes.',
+                                    path: '/offerings/discovery',
+                                    badge: 'Hub',
+                                    icon: Compass,
+                                    tags: ['Operating System', '16 Nodes']
+                                },
+                                {
+                                    title: 'Interactive Node Map',
+                                    description: 'Visual map connecting all 16 nodes with telemetry, baselines, and locked targets.',
+                                    path: '/offerings/discovery#node-map',
+                                    badge: 'Map',
+                                    icon: Layers,
+                                    tags: ['Visual Telemetry', 'Full Matrix']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Engagement & Realization',
+                            badge: '90-Day Path',
+                            icon: Activity,
+                            cards: [
+                                {
+                                    title: 'The Realization Layer',
+                                    description: '6-step protocol converting discovery into compounding measured revenue.',
+                                    path: '/offerings/discovery#realization',
+                                    badge: '6 Steps',
+                                    icon: Activity,
+                                    tags: ['SOW Locked', 'Proof Cadence']
+                                },
+                                {
+                                    title: 'Book a Discovery Diagnostic',
+                                    description: 'Baseline all 16 nodes simultaneously with our Principal Systems Architects.',
+                                    path: '/offerings/discovery#intake',
+                                    badge: 'Diagnostic',
+                                    icon: Target,
+                                    tags: ['Mutual NDA', 'Baseline Audit']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'revenue-discovery',
+                    title: 'Core Discovery',
+                    desc: 'Where the money is, what buyers will pay, who is ready to buy, and who you are fighting for it.',
+                    path: '/offerings/discovery/micro-market',
+                    badge: '8 Nodes',
                     icon: Search,
                     columns: [
                         {
-                            header: 'Market & Demand Discovery',
-                            badge: 'L1–L2',
-                            icon: Search,
+                            header: 'Market & Demand Diagnostics',
+                            badge: 'Nodes 1.1–1.4',
+                            icon: Target,
                             cards: [
                                 {
-                                    title: 'Market & Opportunity Discovery',
-                                    description: 'Identify unserved market profit pools and untapped segments.',
-                                    path: '/offerings/discovery-stack#market-opportunity',
-                                    badge: 'Layer 01',
-                                    icon: Search,
-                                    tags: ['Profit Pools', 'Whitespace']
-                                },
-                                {
-                                    title: 'Demand & Pipeline Development',
-                                    description: 'Transform buyer intent into predictable sales pipeline velocity.',
-                                    path: '/offerings/discovery-stack#demand-pipeline',
-                                    badge: 'Layer 02',
+                                    title: 'Micro-Market Discovery',
+                                    description: 'Which micro-segment carries the margin — and can we defend it?',
+                                    path: '/offerings/discovery/micro-market',
+                                    badge: 'Node 1.1',
                                     icon: Target,
-                                    tags: ['Pipeline', 'Lead Velocity']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Deal & Channel Strategy',
-                            badge: 'L3–L4',
-                            icon: DollarSign,
-                            cards: [
-                                {
-                                    title: 'Value & Deal Effectiveness',
-                                    description: 'Optimize deal packaging, pricing models, and gross margins.',
-                                    path: '/offerings/discovery-stack#value-deal',
-                                    badge: 'Layer 03',
-                                    icon: DollarSign,
-                                    tags: ['Pricing', 'Margin Expansion']
+                                    tags: ['Problem-Solution-Proof', 'Profit Pool']
                                 },
                                 {
-                                    title: 'Channel & Distribution Strategy',
-                                    description: 'Scale direct sales, partner channels, and alliance ecosystems.',
-                                    path: '/offerings/discovery-stack#channel-distribution',
-                                    badge: 'Layer 04',
+                                    title: 'Demand Chain Discovery',
+                                    description: 'Where does the demand chain leak — and how do we fix it?',
+                                    path: '/offerings/discovery/demand-chain',
+                                    badge: 'Node 1.2',
+                                    icon: Activity,
+                                    tags: ['Diagnostic-Telemetry', 'Velocity']
+                                },
+                                {
+                                    title: 'Channel Discovery',
+                                    description: 'How concentrated is our reach — and where is the second engine?',
+                                    path: '/offerings/discovery/channel',
+                                    badge: 'Node 1.3',
                                     icon: Network,
-                                    tags: ['Ecosystems', 'Alliances']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Positioning & PMF',
-                            badge: 'L5–L7',
-                            icon: ShieldCheck,
-                            cards: [
-                                {
-                                    title: 'Competitive Moats & Positioning',
-                                    description: 'Defend market share and displace legacy incumbents.',
-                                    path: '/offerings/discovery-stack#competitive-positioning',
-                                    badge: 'Layer 05',
-                                    icon: ShieldCheck,
-                                    tags: ['Moats', 'Displacement']
+                                    tags: ['Risk-Concentration', 'Owned Pipeline']
                                 },
                                 {
-                                    title: 'Customer & Buying Intent',
-                                    description: 'Continuous behavioral intent ingestion and propensity scoring.',
-                                    path: '/offerings/discovery-stack#customer-buying-intent',
-                                    badge: 'Layer 06',
-                                    icon: Users,
-                                    tags: ['Propensity', 'Intent']
-                                },
-                                {
-                                    title: 'Product-Market Fit & Revenue',
-                                    description: 'Calibrate core offers for repeatable enterprise sales velocity.',
-                                    path: '/offerings/discovery-stack#pmf-revenue-architecture',
-                                    badge: 'Layer 07',
-                                    icon: Sparkles,
-                                    tags: ['Repeatable PMF', 'LTV']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'offering-families',
-                    title: 'Our Services',
-                    desc: '34 capabilities across Consulting & AI Automation',
-                    path: '/offerings/families',
-                    badge: 'Master Catalog',
-                    icon: Layers,
-                    columns: [
-                        {
-                            header: 'Strategy Suite',
-                            badge: 'Consulting',
-                            icon: Briefcase,
-                            cards: [
-                                {
-                                    title: 'Market & Whitespace Discovery',
-                                    description: 'Strategic TAM/SAM analysis and margin pool mapping.',
-                                    path: '/offerings/families#market-whitespace',
-                                    badge: 'Strategy',
-                                    icon: Search,
-                                    tags: ['TAM Analysis', 'Whitespace']
-                                },
-                                {
-                                    title: 'Value & Deal Structuring',
-                                    description: 'Contract structuring, price elasticity, and margin protection.',
-                                    path: '/offerings/families#value-deal',
-                                    badge: 'Commercials',
+                                    title: 'Willingness-to-Pay Discovery',
+                                    description: 'What will buyers actually pay — and where are we underpriced?',
+                                    path: '/offerings/discovery/willingness-to-pay',
+                                    badge: 'Node 1.4',
                                     icon: DollarSign,
-                                    tags: ['Contract Terms', 'Margins']
+                                    tags: ['Evidence-Based Pricing', 'Price Floors']
                                 }
                             ]
                         },
                         {
-                            header: 'AI Automation Suite',
-                            badge: 'Execution',
-                            icon: Bot,
-                            cards: [
-                                {
-                                    title: 'Demand & Pipeline Discovery',
-                                    description: 'Multi-channel automated outbound and intent detection.',
-                                    path: '/offerings/families#demand-pipeline',
-                                    badge: 'Autopilot',
-                                    icon: Target,
-                                    tags: ['Automated Outbound', 'Intent']
-                                },
-                                {
-                                    title: 'Customer & Propensity Scoring',
-                                    description: 'Dynamic scoring of account engagement and buying triggers.',
-                                    path: '/offerings/families#customer-propensity',
-                                    badge: 'Telemetry',
-                                    icon: Users,
-                                    tags: ['Account Fit', 'Scoring']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Positioning & Expansion',
-                            badge: 'Scale',
-                            icon: Sparkles,
-                            cards: [
-                                {
-                                    title: 'Channel & Distribution Networks',
-                                    description: 'Ecosystem scaling and reseller partner enablement.',
-                                    path: '/offerings/families#channel-distribution',
-                                    badge: 'Distribution',
-                                    icon: Network,
-                                    tags: ['Partner Scaling', 'Resellers']
-                                },
-                                {
-                                    title: 'Product-Market Fit Architecture',
-                                    description: 'Repeatable offer packaging and customer LTV expansion.',
-                                    path: '/offerings/families#pmf-architecture',
-                                    badge: 'PMF Core',
-                                    icon: Sparkles,
-                                    tags: ['Offer Packaging', 'Retention']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'delivery-tracks',
-                    title: 'How We Deliver',
-                    desc: 'Strategy Consulting vs. Autonomous AI Automation',
-                    path: '/offerings/delivery-tracks',
-                    badge: 'Bifurcated Delivery',
-                    icon: Cpu,
-                    columns: [
-                        {
-                            header: 'Delivery Models',
-                            badge: 'Track A & B',
+                            header: 'Behavioral & Competitive Intel',
+                            badge: 'Nodes 1.5–1.8',
                             icon: Cpu,
                             cards: [
                                 {
-                                    title: 'Strategy & Consulting Track',
-                                    description: 'High-touch management consulting for complex revenue turnarounds.',
-                                    path: '/offerings/delivery-tracks',
-                                    badge: 'Track A',
-                                    icon: Briefcase,
-                                    tags: ['Advisory', 'High-Touch']
-                                },
-                                {
-                                    title: 'AI & Automation Track',
-                                    description: 'Autonomous AI agentic pipeline deployment and automated execution.',
-                                    path: '/offerings/delivery-tracks',
-                                    badge: 'Track B',
+                                    title: 'Customer Propensity Discovery',
+                                    description: 'Who is in-market right now — and are we calling them first?',
+                                    path: '/offerings/discovery/propensity',
+                                    badge: 'Node 1.5',
                                     icon: Cpu,
-                                    tags: ['AI Pipelines', 'Autopilot']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Governance & Selection',
-                            badge: 'Audit & SLA',
-                            icon: Sliders,
-                            cards: [
-                                {
-                                    title: 'Track Comparison Matrix',
-                                    description: 'Side-by-side evaluation of deliverables, timelines, and resourcing.',
-                                    path: '/offerings/delivery-tracks',
-                                    badge: 'Comparison',
-                                    icon: Sliders,
-                                    tags: ['Deliverables', 'Resourcing']
+                                    tags: ['Intent-Routing', 'Nightly Deciles']
                                 },
                                 {
-                                    title: 'Interactive Delivery Assessment',
-                                    description: 'Instant decision tool matching your team to the optimal track.',
-                                    path: '/offerings/delivery-tracks',
-                                    badge: 'Decision Tool',
-                                    icon: HelpCircle,
-                                    tags: ['Assessment', 'Instant Match']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'segment-matrix',
-                    title: 'By Business Type',
-                    desc: 'Services, Retail, Platform & Adjacent Business Segments',
-                    path: '/offerings/segments',
-                    badge: 'Sector Matrix',
-                    icon: Building2,
-                    columns: [
-                        {
-                            header: 'Primary Segments',
-                            badge: 'B2B / B2C',
-                            icon: Briefcase,
-                            cards: [
-                                {
-                                    title: 'Services Companies',
-                                    description: 'Agency margin expansion and high-ticket service pipeline velocity.',
-                                    path: '/offerings/segments',
-                                    badge: 'Services',
-                                    icon: Briefcase,
-                                    tags: ['Agency Margin', 'Billable Rate']
-                                },
-                                {
-                                    title: 'Retail & Commerce',
-                                    description: 'Omnichannel consumer demand capture and retention intelligence.',
-                                    path: '/offerings/segments',
-                                    badge: 'Commerce',
-                                    icon: ShoppingBag,
-                                    tags: ['Omnichannel', 'Basket Size']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Platforms & Adjacent',
-                            badge: 'Ecosystem',
-                            icon: Building2,
-                            cards: [
-                                {
-                                    title: 'Platform Companies',
-                                    description: 'Multi-sided network effects, developer ecosystems, and GMV acceleration.',
-                                    path: '/offerings/segments',
-                                    badge: 'Platforms',
-                                    icon: Building2,
-                                    tags: ['Network Effects', 'GMV Growth']
-                                },
-                                {
-                                    title: 'Adjacent Segments',
-                                    description: 'Unlocking cross-industry profit pools without fixed headcount overhead.',
-                                    path: '/offerings/segments',
-                                    badge: 'Adjacencies',
-                                    icon: Sliders,
-                                    tags: ['Whitespace', 'Low Overhead']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'micro-segment-kits',
-                    title: 'Focused Engagement Packages',
-                    desc: 'Eight fixed-scope turnkey fast-start kits',
-                    path: '/offerings/micro-segment-kits',
-                    badge: 'Turnkey Packages',
-                    icon: Sliders,
-                    columns: [
-                        {
-                            header: 'Margin & Growth Kits',
-                            badge: 'Fast-Start',
-                            icon: Briefcase,
-                            cards: [
-                                {
-                                    title: 'Agency Margin Kit',
-                                    description: 'Rapid client retention and billable rate optimization.',
-                                    path: '/offerings/micro-segment-kits#agency-margin-kit',
-                                    badge: 'Turnkey Kit',
-                                    icon: Briefcase,
-                                    tags: ['Margin Growth', 'Fast-Start']
-                                },
-                                {
-                                    title: 'DTC Margin Kit',
-                                    description: 'ROAS optimization and first-party customer lifetime value.',
-                                    path: '/offerings/micro-segment-kits#dtc-margin-kit',
-                                    badge: 'Turnkey Kit',
-                                    icon: ShoppingBag,
-                                    tags: ['ROAS', 'LTV Expansion']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'SaaS & Enterprise Kits',
-                            badge: 'Enterprise',
-                            icon: Building2,
-                            cards: [
-                                {
-                                    title: 'Vertical SaaS Whitespace Kit',
-                                    description: 'Targeted TAM penetration and competitive displacement.',
-                                    path: '/offerings/micro-segment-kits#vertical-saas-whitespace-kit',
-                                    badge: 'Turnkey Kit',
-                                    icon: Building2,
-                                    tags: ['Vertical SaaS', 'Displacement']
-                                },
-                                {
-                                    title: 'Enterprise Motion Kit',
-                                    description: 'Buying committee consensus and multi-stakeholder deal pacing.',
-                                    path: '/offerings/micro-segment-kits#enterprise-motion-kit',
-                                    badge: 'Turnkey Kit',
-                                    icon: Layers,
-                                    tags: ['Multi-Stakeholder', 'Consensus']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Commercial Kits',
-                            badge: 'Packaging',
-                            icon: DollarSign,
-                            cards: [
-                                {
-                                    title: 'PLG Conversion Kit',
-                                    description: 'Self-serve activation and automated product-qualified leads.',
-                                    path: '/offerings/micro-segment-kits#plg-conversion-kit',
-                                    badge: 'Turnkey Kit',
+                                    title: 'Usage-to-Revenue Discovery',
+                                    description: 'Which usage behaviors predict paid conversion — and are they wired to triggers?',
+                                    path: '/offerings/discovery/usage-to-revenue',
+                                    badge: 'Node 1.6',
                                     icon: Sparkles,
-                                    tags: ['PQL', 'Activation']
+                                    tags: ['Behavioral-Trigger', 'Expansion']
                                 },
                                 {
-                                    title: 'Pricing & Packaging Kit',
-                                    description: 'Pricing elasticity modeling and multi-tier packaging redesign.',
-                                    path: '/offerings/micro-segment-kits#pricing-packaging-kit',
-                                    badge: 'Turnkey Kit',
+                                    title: 'Competitor Discovery',
+                                    description: 'What exactly are we losing to — deal by deal, feature by feature?',
+                                    path: '/offerings/discovery/competitor',
+                                    badge: 'Node 1.7',
+                                    icon: ShieldCheck,
+                                    tags: ['Counter-Intelligence', 'Battlecards']
+                                },
+                                {
+                                    title: 'Competitive Ecosystem Discovery',
+                                    description: 'Who is building the field we compete on — inside or outside their structure?',
+                                    path: '/offerings/discovery/ecosystem',
+                                    badge: 'Node 1.8',
+                                    icon: Layers,
+                                    tags: ['Structural-Positioning', 'Gravity']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'supply-chain-discovery',
+                    title: 'Supply Chain Discovery',
+                    desc: 'What you sell, at what margin, and what it truly costs to serve.',
+                    path: '/offerings/discovery/offer-architecture',
+                    badge: '2 Nodes',
+                    icon: Box,
+                    columns: [
+                        {
+                            header: 'Offer & Monetization Architecture',
+                            badge: 'Nodes 2.1 & 2.2',
+                            icon: Box,
+                            cards: [
+                                {
+                                    title: 'Offer & Revenue Architecture',
+                                    description: 'Is what we sell engineered for willingness-to-pay — or for cost-plus habit?',
+                                    path: '/offerings/discovery/offer-architecture',
+                                    badge: 'Node 2.1',
                                     icon: DollarSign,
-                                    tags: ['Pricing Tiers', 'Elasticity']
+                                    tags: ['Margin-Recovery', 'Tier Ladder']
+                                },
+                                {
+                                    title: 'Cost-to-Serve & Capacity',
+                                    description: 'Which revenue do we scale — and which revenue destroys us quietly?',
+                                    path: '/offerings/discovery/cost-to-serve',
+                                    badge: 'Node 2.2',
+                                    icon: Scale,
+                                    tags: ['Audit-Risk-Capacity', 'Customer Margin']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'business-ecosystem-discovery',
+                    title: 'Ecosystem Discovery',
+                    desc: 'Revenue you do not build alone: alliances, platforms, and adjacent ground.',
+                    path: '/offerings/discovery/alliance',
+                    badge: '2 Nodes',
+                    icon: Network,
+                    columns: [
+                        {
+                            header: 'Alliances & Platform Adjacency',
+                            badge: 'Nodes 3.1 & 3.2',
+                            icon: Network,
+                            cards: [
+                                {
+                                    title: 'Alliance & Co-Sell',
+                                    description: 'Which partnerships produce revenue — and which produce golf outings?',
+                                    path: '/offerings/discovery/alliance',
+                                    badge: 'Node 3.1',
+                                    icon: Handshake,
+                                    tags: ['Attribution-ROI', 'Co-Sell Engine']
+                                },
+                                {
+                                    title: 'Platform & Adjacency',
+                                    description: 'Are we building on someone else’s land — and where is our second vertical?',
+                                    path: '/offerings/discovery/platform-adjacency',
+                                    badge: 'Node 3.2',
+                                    icon: Layers,
+                                    tags: ['De-Risk-Adjacency', 'Second Vertical']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'expansion-discovery',
+                    title: 'Expansion Discovery',
+                    desc: 'New offerings, new markets, new channels, new launches — proven before you commit.',
+                    path: '/offerings/discovery/new-offering',
+                    badge: '4 Nodes',
+                    icon: TrendingUp,
+                    columns: [
+                        {
+                            header: 'Expansion Validation Nodes',
+                            badge: 'Nodes 4.1–4.4',
+                            icon: TrendingUp,
+                            cards: [
+                                {
+                                    title: 'New Offering Discovery',
+                                    description: 'What should we sell next — proven against willingness-to-pay before we build it?',
+                                    path: '/offerings/discovery/new-offering',
+                                    badge: 'Node 4.1',
+                                    icon: Sparkles,
+                                    tags: ['Validation-Pre-Build', 'LOI Gates']
+                                },
+                                {
+                                    title: 'New Market Discovery',
+                                    description: 'Which market ranks by profit pool — and what’s the entry playbook for the winner?',
+                                    path: '/offerings/discovery/new-market',
+                                    badge: 'Node 4.2',
+                                    icon: Globe,
+                                    tags: ['Profit-Pool-War-Room', '90-Day Telemetry']
+                                },
+                                {
+                                    title: 'New Channel Discovery',
+                                    description: 'Which channel adds revenue without cannibalizing the core motion?',
+                                    path: '/offerings/discovery/new-channel',
+                                    badge: 'Node 4.3',
+                                    icon: Network,
+                                    tags: ['Model-Pilot-Attribution', 'Zero Conflict']
+                                },
+                                {
+                                    title: 'New Product Launch Discovery',
+                                    description: 'Is launch day a controlled operation — or a coin flip?',
+                                    path: '/offerings/discovery/new-launch',
+                                    badge: 'Node 4.4',
+                                    icon: Rocket,
+                                    tags: ['Command-Telemetry', 'Day-0 Live']
                                 }
                             ]
                         }
@@ -432,286 +337,255 @@ export default function Navigation() {
         {
             id: 'industries',
             name: 'Industries',
+            shortName: 'Industries',
             path: '/industries',
             icon: Building2,
-            badge: 'Vertical Markets',
-            summary: 'Sector-specific revenue acceleration tailored for B2B, B2C, Enterprise, Startups, and Regulated Verticals.',
+            badge: 'Vertical Engineering',
+            summary: 'Vertical-specific revenue engineering: bespoke revenue operating systems tailored to your market nuances and compliance requirements.',
             categories: [
                 {
-                    id: 'b2b',
+                    id: 'b2b-focus',
                     title: 'B2B Focus',
-                    desc: 'Targeted enterprise pipeline scaling and deal velocity',
+                    desc: 'The Tactical Playbook: ABM Autopilot, competitor displacement, autonomous SDRs, and RQL predictors',
                     path: '/industries/b2b',
-                    badge: 'B2B Pipeline',
-                    icon: Building2,
+                    badge: 'Tactical Playbook',
+                    icon: Target,
                     columns: [
                         {
-                            header: 'Outbound Autopilot',
-                            badge: 'Pipeline',
-                            icon: Building2,
+                            header: 'Targeting & Displacement',
+                            badge: 'Outbound & Intel',
+                            icon: Target,
                             cards: [
                                 {
-                                    title: 'AI Account-Based Marketing (ABM)',
-                                    description: 'Orchestrated target account campaigns across ads, web, and SDRs.',
-                                    path: '/industries/b2b#abm-autopilot',
-                                    badge: 'ABM Suite',
-                                    icon: Building2,
-                                    tags: ['Target Accounts', 'ABM']
+                                    title: 'AI Account-Based Marketing (ABM) Autopilot',
+                                    description: 'Orchestrate end-to-end target account campaigns with real-time intent triggers.',
+                                    path: '/industries/b2b#abm',
+                                    badge: '3.8× Account Lift',
+                                    icon: Target,
+                                    tags: ['Intent Sync', 'Dynamic Personalization']
                                 },
                                 {
                                     title: 'AI Competitor Displacement Engine',
-                                    description: 'Win back accounts searching for migration support or unhappy with rivals.',
-                                    path: '/industries/b2b#competitor-displacement',
-                                    badge: 'Displacement',
+                                    description: 'Identify rival pain points to win back accounts at contract renewal windows.',
+                                    path: '/industries/b2b#displacement',
+                                    badge: '62% Win-Back',
                                     icon: ShieldCheck,
-                                    tags: ['Win-Back', 'Incumbent Displace']
+                                    tags: ['Dissatisfaction Scans', 'Renewal Radar']
                                 }
                             ]
                         },
                         {
-                            header: 'Sales Acceleration',
-                            badge: 'Conversion',
-                            icon: Bot,
+                            header: 'Conversion & Expansion',
+                            badge: 'Velocity & NRR',
+                            icon: Cpu,
                             cards: [
                                 {
                                     title: 'AI SDR Co-Pilot / Autopilot',
-                                    description: 'Autonomous prospect discovery, personalized sequencing, and meeting booking.',
-                                    path: '/industries/b2b#ai-sdr-copilot',
-                                    badge: 'SDR Co-Pilot',
+                                    description: 'Autonomous SDR qualifying leads, handling objections, and booking AE calendars.',
+                                    path: '/industries/b2b#sdr',
+                                    badge: '140+ Mtgs/Mo',
                                     icon: Bot,
-                                    tags: ['Automated Outbound', 'SDR']
+                                    tags: ['24/7 Prospecting', 'Zero Lead Loss']
                                 },
                                 {
-                                    title: 'AI Revenue Qualified Lead (RQL)',
-                                    description: 'Predictive deal scoring mapping intent signals to pipeline revenue.',
-                                    path: '/industries/b2b#rql-predictor',
-                                    badge: 'RQL Scoring',
+                                    title: 'AI Revenue Qualified Lead (RQL) Predictor',
+                                    description: 'Predict close probability, deal size, and timelines with 94% mathematical precision.',
+                                    path: '/industries/b2b#rql',
+                                    badge: '94% Precision',
+                                    icon: BarChart3,
+                                    tags: ['Bayesian Forecast', 'Deal Health']
+                                },
+                                {
+                                    title: 'AI Contract & Expansion Opportunity Finder',
+                                    description: 'Uncover upsell and cross-sell opportunities from live software usage signals.',
+                                    path: '/industries/b2b#expansion',
+                                    badge: '138% NRR',
                                     icon: TrendingUp,
-                                    tags: ['RQL', 'Deal Scoring']
-                                },
-                                {
-                                    title: 'AI Contract Expansion Finder',
-                                    description: 'Detect upsell triggers and contract expansion cues within current accounts.',
-                                    path: '/industries/b2b#contract-expansion',
-                                    badge: 'Account Growth',
-                                    icon: Search,
-                                    tags: ['Expansion', 'Upsell']
+                                    tags: ['Proactive Upgrades', 'Churn Defense']
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    id: 'b2c',
+                    id: 'b2c-focus',
                     title: 'B2C Focus',
-                    desc: 'High-velocity consumer acquisition and retention scaling',
-                    path: '/industries/b2c',
-                    badge: 'Consumer Scale',
+                    desc: 'Omnichannel acquisition, 1:1 individualized dynamic pricing, and sub-5-minute cart recovery',
+                    path: '/industries#bento-grid',
+                    badge: 'High Velocity',
                     icon: ShoppingBag,
                     columns: [
                         {
-                            header: 'Demand Acquisition',
-                            badge: 'High Velocity',
-                            icon: Network,
+                            header: 'Acquisition & Conversion',
+                            badge: 'Ad Ops & Margins',
+                            icon: ShoppingBag,
                             cards: [
                                 {
                                     title: 'AI Omnichannel Lead Generation',
-                                    description: 'Continuous multi-channel buyer capture across social, search, and native.',
-                                    path: '/industries/b2c#omnichannel-lead-gen',
-                                    badge: 'Omnichannel',
-                                    icon: Network,
-                                    tags: ['Social', 'Search']
+                                    description: 'Automate cross-platform ad budget distribution to capture lowest-cost conversions.',
+                                    path: '/industries#bento-grid',
+                                    badge: '−42% CPL',
+                                    icon: ShoppingBag,
+                                    tags: ['Predictive Bidding', 'ROAS Lift']
                                 },
                                 {
-                                    title: 'AI Lookalike Audience Auto-Scaling',
-                                    description: 'Algorithmic expansion of highest-value customer cohorts in real-time.',
-                                    path: '/industries/b2c#lookalike-audience',
-                                    badge: 'Audience AI',
-                                    icon: Users,
-                                    tags: ['Cohort Scaling', 'Lookalike']
+                                    title: 'AI Personalized Offer Generation at Scale',
+                                    description: 'Deliver 1:1 dynamic pricing and promotions without sacrificing baseline margins.',
+                                    path: '/industries#bento-grid',
+                                    badge: '+34% CVR',
+                                    icon: Sparkles,
+                                    tags: ['Margin Defense', 'Cart Optimization']
                                 }
                             ]
                         },
                         {
-                            header: 'Conversion & Retention',
-                            badge: 'LTV Velocity',
-                            icon: Activity,
+                            header: 'Retention & Audiences',
+                            badge: 'Recovery Loops',
+                            icon: Zap,
                             cards: [
                                 {
-                                    title: 'AI Personalized Offer Generation',
-                                    description: 'Dynamic offer customization matching consumer basket propensity.',
-                                    path: '/industries/b2c#personalized-offers',
-                                    badge: 'Offer Engine',
-                                    icon: Coins,
-                                    tags: ['Basket Size', 'Dynamic Offers']
+                                    title: 'AI Behavioral Retargeting Autopilot',
+                                    description: 'Recover abandoned checkouts within minutes via hyper-personalized SMS and email.',
+                                    path: '/industries#bento-grid',
+                                    badge: '$280K Recovered',
+                                    icon: Zap,
+                                    tags: ['Sub-5-Min Retargeting', 'Multi-Channel']
                                 },
                                 {
-                                    title: 'AI Behavioral Retargeting Autopilot',
-                                    description: 'Adaptive re-engagement messaging triggered by behavioral abandonment.',
-                                    path: '/industries/b2c#behavioral-retargeting',
-                                    badge: 'Retargeting',
-                                    icon: Activity,
-                                    tags: ['Abandonment', 'Re-engagement']
+                                    title: 'AI Lookalike Audience Auto-Scaling',
+                                    description: 'Automatically feed ad networks daily with high-LTV buyer cohort seed lists.',
+                                    path: '/industries#bento-grid',
+                                    badge: '5× Scale',
+                                    icon: Users,
+                                    tags: ['Daily Seed Sync', 'Ad Fatigue Shield']
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    id: 'enterprise',
-                    title: 'Enterprise / Large Business',
-                    desc: 'Multi-stakeholder buying committees and global penetration',
+                    id: 'enterprise-motion',
+                    title: 'Enterprise',
+                    desc: 'The Boardroom Briefing: Global account penetration, hyperscaler co-sell, and executive engagement',
                     path: '/industries/enterprise',
-                    badge: 'Global Scale',
-                    icon: Globe,
+                    badge: 'Fortune 500 OS',
+                    icon: Building2,
                     columns: [
                         {
-                            header: 'Global Accounts',
-                            badge: 'Strategic BD',
+                            header: 'Global Penetration & Alliances',
+                            badge: 'Corporate Hierarchy',
                             icon: Globe,
                             cards: [
                                 {
                                     title: 'AI Global Account Penetration',
-                                    description: 'Cross-border enterprise sales strategies for multinational organizations.',
-                                    path: '/industries/enterprise#global-account-penetration',
-                                    badge: 'Global Accounts',
+                                    description: 'Expand enterprise accounts across multiple divisions, regions, and subsidiary trees.',
+                                    path: '/industries/enterprise',
+                                    badge: '12 Subsidiaries',
                                     icon: Globe,
-                                    tags: ['Cross-Border', 'Enterprise']
+                                    tags: ['Corporate Trees', 'Warm Division Paths']
                                 },
                                 {
-                                    title: 'Strategic Partnership Opportunity Finder',
-                                    description: 'Identify, evaluate, and activate high-leverage alliance networks.',
-                                    path: '/industries/enterprise#partnership-opportunity',
-                                    badge: 'Partnerships',
+                                    title: 'AI Strategic Partnership Opportunity Finder',
+                                    description: 'Discover high-yield alliance opportunities and automate joint co-selling playbooks.',
+                                    path: '/industries/enterprise',
+                                    badge: '$12M Pipeline',
                                     icon: Handshake,
-                                    tags: ['Alliances', 'Co-Selling']
+                                    tags: ['Audience Overlap', 'Co-Sell Governance']
                                 }
                             ]
                         },
                         {
-                            header: 'Executive Suite',
-                            badge: 'C-Suite Relations',
-                            icon: Briefcase,
+                            header: 'Executive C-Suite Clearance',
+                            badge: 'Board Level',
+                            icon: Building2,
                             cards: [
                                 {
-                                    title: 'Executive Engagement Automation',
-                                    description: 'Automate high-touch relationship nurturing with C-suite stakeholders.',
-                                    path: '/industries/enterprise#executive-engagement',
-                                    badge: 'Executive Suite',
-                                    icon: Briefcase,
-                                    tags: ['C-Suite', 'Nurturing']
-                                },
-                                {
-                                    title: 'Buying Committee Consensus Engine',
-                                    description: 'Align procurement, legal, technical, and finance decision-makers.',
+                                    title: 'AI Executive Engagement Automation',
+                                    description: 'Mine 10-K filings to generate CFO-ready executive business cases for C-level buyers.',
                                     path: '/industries/enterprise',
-                                    badge: 'Consensus AI',
-                                    icon: Users,
-                                    tags: ['Procurement', 'Stakeholders']
+                                    badge: '82% Exec CVR',
+                                    icon: Building2,
+                                    tags: ['CFO Payback Models', '10-K Alignment']
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    id: 'mid-market',
-                    title: 'Mid-Market',
-                    desc: 'Accelerated vertical market capture with lean teams',
-                    path: '/industries/mid-market',
-                    badge: 'Scale Velocity',
+                    id: 'growth-startups-midmarket',
+                    title: 'Startups & Mid-Market',
+                    desc: 'The Velocity Engine: Zero-to-one lead gen, PMF signal detection, and niche market domination',
+                    path: '/industries/growth',
+                    badge: 'Velocity Engine',
                     icon: Rocket,
                     columns: [
                         {
-                            header: 'Market Capture',
-                            badge: 'Scale Velocity',
+                            header: 'Early-Stage Velocity',
+                            badge: 'Seed to Series A',
                             icon: Rocket,
                             cards: [
                                 {
-                                    title: 'AI Rapid Market Entry Engine',
-                                    description: 'Fast-track pipeline validation in adjacent regional and vertical markets.',
-                                    path: '/industries/mid-market#rapid-market-entry',
-                                    badge: 'Market Entry',
+                                    title: 'AI Zero-to-One Lead Generation',
+                                    description: 'Scrape targeted lead lists and launch campaigns within 48 hours for early traction.',
+                                    path: '/industries/growth',
+                                    badge: '48-Hour Launch',
                                     icon: Rocket,
-                                    tags: ['Regional Entry', 'Expansion']
+                                    tags: ['First 25 Customers', 'Capital-Efficient']
+                                },
+                                {
+                                    title: 'AI Product-Market Fit Signal Detection',
+                                    description: 'Measure user retention, feature adoption, and viral referral velocity scientifically.',
+                                    path: '/industries/growth',
+                                    badge: '62% Retention',
+                                    icon: Activity,
+                                    tags: ['PMF Scoring', 'Retention Loops']
+                                },
+                                {
+                                    title: 'AI Founder-Led Sales Automation',
+                                    description: 'Reclaim 20 hours/week of founder leadership time with automated qualification.',
+                                    path: '/industries/growth',
+                                    badge: '20 Hrs Saved',
+                                    icon: Clock,
+                                    tags: ['Calendar Guard', 'Lead Triage']
+                                },
+                                {
+                                    title: 'AI Burn-Rate Optimized Lead Capture',
+                                    description: 'Maximize lead volume while preserving precious cash runway by 9+ months.',
+                                    path: '/industries/growth',
+                                    badge: '+9 Mo Runway',
+                                    icon: Flame,
+                                    tags: ['Organic Capture', 'Low CAC']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Mid-Market Acceleration',
+                            badge: 'Scale & Domination',
+                            icon: Zap,
+                            cards: [
+                                {
+                                    title: 'AI Rapid Market Entry Engine',
+                                    description: 'Deploy pre-configured vertical outreach campaigns and content vectors in days.',
+                                    path: '/industries/growth',
+                                    badge: '30-Day Rollout',
+                                    icon: Zap,
+                                    tags: ['3 Verticals', '$2.4M Pipeline']
                                 },
                                 {
                                     title: 'AI Niche Market Domination',
-                                    description: 'Defensible position building in concentrated vertical segments.',
-                                    path: '/industries/mid-market#niche-domination',
-                                    badge: 'Niche Moat',
+                                    description: 'Map and engage 100% of target accounts within specialized concentrated verticals.',
+                                    path: '/industries/growth',
+                                    badge: '48% Share',
                                     icon: Target,
-                                    tags: ['Niche Strategy', 'Defensible']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Team Amplifier',
-                            badge: 'Lean RevOps',
-                            icon: Users,
-                            cards: [
+                                    tags: ['Niche Monopolization', 'Account Reach']
+                                },
                                 {
                                     title: 'AI Lean Team Productivity Amplifier',
-                                    description: 'Empower small commercial teams to produce output equivalent to large enterprises.',
-                                    path: '/industries/mid-market#lean-team-productivity',
-                                    badge: 'Productivity',
+                                    description: 'Multiply sales output 3× without adding headcount by automating CRM and enrichment.',
+                                    path: '/industries/growth',
+                                    badge: '3× Output',
                                     icon: Users,
-                                    tags: ['Lean RevOps', 'Multiplier']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'startup',
-                    title: 'Startup',
-                    desc: 'Zero-to-one traction, PMF validation, and burn-optimized sales',
-                    path: '/industries/startup',
-                    badge: 'Early Stage',
-                    icon: Lightbulb,
-                    columns: [
-                        {
-                            header: 'Zero-to-One Traction',
-                            badge: 'Early Traction',
-                            icon: Lightbulb,
-                            cards: [
-                                {
-                                    title: 'AI Zero-to-One Lead Generation',
-                                    description: 'Kickstart initial pipeline generation without expensive ad spend.',
-                                    path: '/industries/startup#zero-to-one-lead-gen',
-                                    badge: 'Zero-to-One',
-                                    icon: Lightbulb,
-                                    tags: ['Seed Pipeline', 'Zero-to-One']
-                                },
-                                {
-                                    title: 'AI Product-Market Fit Signals',
-                                    description: 'Measure real-time buyer engagement and product retention feedback.',
-                                    path: '/industries/startup#pmf-signal-detection',
-                                    badge: 'PMF Signals',
-                                    icon: Sparkles,
-                                    tags: ['PMF Feedback', 'Retention']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Capital Efficiency',
-                            badge: 'Runway Extension',
-                            icon: DollarSign,
-                            cards: [
-                                {
-                                    title: 'AI Founder-Led Sales Automation',
-                                    description: 'Automate meeting booking and follow-ups so founders focus on product.',
-                                    path: '/industries/startup#founder-sales-automation',
-                                    badge: 'Founder Sales',
-                                    icon: Bot,
-                                    tags: ['Founder Sales', 'Automation']
-                                },
-                                {
-                                    title: 'AI Burn-Rate Optimized Capture',
-                                    description: 'High-efficiency customer acquisition designed for runway preservation.',
-                                    path: '/industries/startup#burn-rate-optimized-lead-capture',
-                                    badge: 'Capital Efficiency',
-                                    icon: DollarSign,
-                                    tags: ['Runway', 'Low CAC']
+                                    tags: ['Headcount Relief', '$450K Saved']
                                 }
                             ]
                         }
@@ -719,807 +593,103 @@ export default function Navigation() {
                 },
                 {
                     id: 'specialized-sectors',
-                    title: 'Specialized Sectors',
-                    desc: 'Tailored frameworks for regulated and specialized verticals',
-                    path: '/industries/specialized-sectors',
-                    badge: 'Regulated & Tech',
+                    title: 'Specialized Regulated Sectors',
+                    desc: 'The Compliance & Trust Vault: Pre-audited sandboxes for institutional, regulated, and high-liability industries',
+                    path: '/industries/specialized',
+                    badge: 'Trust Vault · 10 Sectors',
                     icon: ShieldCheck,
                     columns: [
                         {
-                            header: 'FinTech & Software',
-                            badge: 'Regulated',
-                            icon: Landmark,
-                            cards: [
-                                {
-                                    title: 'FinTech, Lending & SaaS Products',
-                                    description: 'Compliant acquisition, underwriting pipeline, and ARR expansion.',
-                                    path: '/industries/specialized-sectors#fintech-saas',
-                                    badge: 'FinTech',
-                                    icon: Landmark,
-                                    tags: ['ARR Acceleration', 'Lending']
-                                },
-                                {
-                                    title: 'Healthcare & Life Sciences',
-                                    description: 'HIPAA-aware provider outreach and MedTech institutional sales.',
-                                    path: '/industries/specialized-sectors#healthcare-life-sciences',
-                                    badge: 'Life Sciences',
-                                    icon: HeartPulse,
-                                    tags: ['Provider Outreach', 'HIPAA']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Commerce & Industry',
-                            badge: 'Industrial',
-                            icon: Briefcase,
-                            cards: [
-                                {
-                                    title: 'Service & Industrial Industries',
-                                    description: 'Heavy industrial sales cycles, CapEx justification, and supply chain ABM.',
-                                    path: '/industries/specialized-sectors#service-industrial',
-                                    badge: 'Industrial',
-                                    icon: Briefcase,
-                                    tags: ['CapEx Justification', 'B2B Supply']
-                                },
-                                {
-                                    title: 'D2C Companies & Retail FMCG',
-                                    description: 'Omnichannel consumer demand capture and basket size optimization.',
-                                    path: '/industries/specialized-sectors#d2c-retail',
-                                    badge: 'Retail & FMCG',
-                                    icon: ShoppingBag,
-                                    tags: ['Omnichannel', 'Basket Size']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Education & Energy',
-                            badge: 'Vertical Infra',
-                            icon: Zap,
-                            cards: [
-                                {
-                                    title: 'Education & EdTech',
-                                    description: 'Institutional enrollment pipelines and student lifecycle engagement.',
-                                    path: '/industries/specialized-sectors#education-edtech',
-                                    badge: 'EdTech',
-                                    icon: GraduationCap,
-                                    tags: ['Enrollment', 'EdTech']
-                                },
-                                {
-                                    title: 'Real Estate, Construction & Energy',
-                                    description: 'Commercial property leasing pipelines and renewable energy development.',
-                                    path: '/industries/specialized-sectors#real-estate-energy',
-                                    badge: 'Energy & Infra',
-                                    icon: Zap,
-                                    tags: ['Property Leasing', 'Renewables']
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-
-        // 3. ENGAGEMENT MODEL
-        {
-            id: 'engagement-model',
-            name: 'Engagement Model',
-            path: '/engagement-model',
-            icon: Layers,
-            badge: 'Commercial Continuum',
-            summary: 'One commercial continuum. Eight ways to buy certainty with defined pricing, deliverables, and SLAs.',
-            categories: [
-                {
-                    id: 'models',
-                    title: 'Architecture & Models',
-                    desc: 'Full spectrum of eight engagement models spanning advisory to shared risk',
-                    path: '/engagement-model/models',
-                    badge: 'Eight Models',
-                    icon: Target,
-                    columns: [
-                        {
-                            header: 'Models Continuum',
-                            badge: 'Eight Models',
-                            icon: Layers,
-                            cards: [
-                                {
-                                    title: 'Overview & Continuum',
-                                    description: 'Explore the full spectrum of eight engagement models and shared economics.',
-                                    path: '/engagement-model',
-                                    badge: 'Continuum',
-                                    icon: Layers,
-                                    tags: ['Eight Models', 'Shared Economics']
-                                },
-                                {
-                                    title: 'Eight Engagement Models',
-                                    description: 'Detailed breakdown of deliverables, sprint lengths, and commitment levels.',
-                                    path: '/engagement-model/models',
-                                    badge: 'Model Specs',
-                                    icon: Target,
-                                    tags: ['Sprint Lengths', 'Deliverables']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Stack & Tracks',
-                            badge: 'Delivery Stack',
-                            icon: Search,
-                            cards: [
-                                {
-                                    title: 'Discovery Stack (L1–L7)',
-                                    description: 'Seven-layer architecture for discovering profit pools and buyer intent.',
-                                    path: '/engagement-model/discovery-stack',
-                                    badge: 'Discovery L1-L7',
-                                    icon: Search,
-                                    tags: ['L1-L7', 'Profit Pools']
-                                },
-                                {
-                                    title: 'Delivery Tracks (A & B)',
-                                    description: 'Management consulting vs. automated autonomous AI execution.',
-                                    path: '/engagement-model/delivery-tracks',
-                                    badge: 'Tracks A & B',
-                                    icon: Cpu,
-                                    tags: ['Consulting', 'AI Execution']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'stages',
-                    title: 'Playbooks & Journeys',
-                    desc: 'Stage-matched operational roadmaps and situational sequences',
-                    path: '/engagement-model/stage-playbooks',
-                    badge: 'Sequences',
-                    icon: Sliders,
-                    columns: [
-                        {
-                            header: 'Lifecycle Playbooks',
-                            badge: 'Stages S1-S6',
-                            icon: Layers,
-                            cards: [
-                                {
-                                    title: 'Stage Playbooks (S1–S6)',
-                                    description: 'Operational playbooks tailored for Seed, Growth, Scale, and Enterprise maturity.',
-                                    path: '/engagement-model/stage-playbooks',
-                                    badge: 'Stages S1-S6',
-                                    icon: Layers,
-                                    tags: ['Seed to Enterprise', 'Playbooks']
-                                },
-                                {
-                                    title: 'Situation Playbooks (B1–B15)',
-                                    description: 'Playbooks for 15 specific enterprise situations: stagnant pipeline, churn crisis, expansion.',
-                                    path: '/engagement-model/business-situations',
-                                    badge: 'Situations B1-B15',
-                                    icon: Sliders,
-                                    tags: ['Crisis Resolution', 'Situations']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Multi-Quarter Tracks',
-                            badge: 'Journeys A-E',
-                            icon: TrendingUp,
-                            cards: [
-                                {
-                                    title: 'Engagement Journeys (A–E)',
-                                    description: 'Predictable multi-quarter transformation roadmaps with verifiable milestones.',
-                                    path: '/engagement-model/journeys',
-                                    badge: 'Journeys A-E',
-                                    icon: TrendingUp,
-                                    tags: ['Predictable Velocity', 'Milestones']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'commercials',
-                    title: 'Commercials & Measurement',
-                    desc: 'Pricing transparency, seven guardrails, and KPI governance',
-                    path: '/engagement-model/commercials',
-                    badge: 'Governance',
-                    icon: DollarSign,
-                    columns: [
-                        {
-                            header: 'Commercial Terms',
-                            badge: 'Table 8.0',
-                            icon: DollarSign,
-                            cards: [
-                                {
-                                    title: 'Commercial Terms (Table 8.0)',
-                                    description: 'Transparent pricing structures, retainer bands, fixed sprint fees, and success fees.',
-                                    path: '/engagement-model/commercials',
-                                    badge: 'Table 8.0 Pricing',
-                                    icon: DollarSign,
-                                    tags: ['Transparent Pricing', 'Zero Hidden Fees']
-                                },
-                                {
-                                    title: 'Seven Standard Guardrails',
-                                    description: 'Institutional protections ensuring alignment, data confidentiality, and IP retention.',
-                                    path: '/engagement-model/commercials',
-                                    badge: 'Guardrails',
-                                    icon: ShieldCheck,
-                                    tags: ['Data Confidentiality', 'IP Rights']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Decision & Attribution',
-                            badge: 'Interactive Engine',
-                            icon: Bot,
-                            cards: [
-                                {
-                                    title: 'Interactive Model Selector',
-                                    description: 'Dynamic diagnostic tool that recommends the exact model for your stage.',
-                                    path: '/engagement-model/model-selector',
-                                    badge: 'Decision Tool',
-                                    icon: Bot,
-                                    tags: ['Dynamic Match', 'Model Finder']
-                                },
-                                {
-                                    title: 'KPI Library & Baselines',
-                                    description: 'Repository of performance metrics, attribution standards, and SLA targets.',
-                                    path: '/engagement-model/kpi-library',
-                                    badge: 'KPI Library',
-                                    icon: Target,
-                                    tags: ['Attribution SLA', 'Metrics']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'onboarding',
-                    title: 'Mobilization & Reference',
-                    desc: 'Kickoff cadences, team alignment, glossary, and commercial FAQ',
-                    path: '/engagement-model/onboarding',
-                    badge: 'Mobilization',
-                    icon: Clock,
-                    columns: [
-                        {
-                            header: 'Mobilization Cadence',
-                            badge: 'Week 1 Kickoff',
-                            icon: Clock,
-                            cards: [
-                                {
-                                    title: 'How an Engagement Starts',
-                                    description: 'Detailed onboarding checklist, team alignment, and week-by-week sprint cadence.',
-                                    path: '/engagement-model/onboarding',
-                                    badge: 'Onboarding',
-                                    icon: Clock,
-                                    tags: ['Week 1 Kickoff', 'Sprint Cadence']
-                                },
-                                {
-                                    title: 'Request Strategic Proposal',
-                                    description: 'Schedule a confidential discovery session with our revenue architects.',
-                                    path: '/book-consultation',
-                                    badge: 'Advisory Session',
-                                    icon: ArrowRight,
-                                    tags: ['45-Min Discovery', 'Custom Plan']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Executive Reference',
-                            badge: 'Knowledge Base',
-                            icon: BookOpen,
-                            cards: [
-                                {
-                                    title: 'Glossary (14 Definitions)',
-                                    description: '14 authoritative definitions of modern revenue architecture terms.',
-                                    path: '/engagement-model/glossary-faq',
-                                    badge: 'Glossary',
-                                    icon: BookOpen,
-                                    tags: ['Revenue Terms', 'Definitions']
-                                },
-                                {
-                                    title: 'Frequently Asked Questions',
-                                    description: 'Comprehensive answers on pricing, guarantees, staffing, and deliverables.',
-                                    path: '/engagement-model/glossary-faq',
-                                    badge: 'FAQ',
-                                    icon: HelpCircle,
-                                    tags: ['Pricing FAQ', 'Guarantees']
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-
-        // 4. ICO ACCELERATION
-        {
-            id: 'ico-acceleration',
-            name: 'ICO Acceleration',
-            path: '/ico-acceleration',
-            icon: Rocket,
-            badge: 'Web3 & Token Suite',
-            summary: 'End-to-end tokenomics, liquidity generation, launch operations, and regulatory hygiene.',
-            categories: [
-                // 1. Intelligence
-                {
-                    id: 'intelligence',
-                    title: 'Intelligence',
-                    desc: 'Part A & B: Market validation, 8 revenue engines, tokenomics and demand discovery',
-                    path: '/ico-acceleration/intelligence',
-                    badge: 'Intelligence Suite',
-                    icon: BrainCircuit,
-                    columns: [
-                        {
-                            header: 'Market & Token Architecture',
-                            badge: 'Part A',
-                            icon: BrainCircuit,
-                            cards: [
-                                {
-                                    title: 'Market Validation & Benchmarks',
-                                    description: 'Empirical data: 84% failure avoidance, capital formation metrics, and token audits.',
-                                    path: '/ico-acceleration/intelligence#market-validation',
-                                    badge: 'Intelligence',
-                                    icon: Search,
-                                    tags: ['Failure Avoidance', 'Benchmarks']
-                                },
-                                {
-                                    title: 'Tokenomics & Narrative Architecture',
-                                    description: 'Mathematical token velocity, emission curves, sink mechanics, and utility flywheels.',
-                                    path: '/ico-acceleration/intelligence#tokenomics-narrative',
-                                    badge: 'Tokenomics',
-                                    icon: Sparkles,
-                                    tags: ['Velocity Sinks', 'Utility']
-                                },
-                                {
-                                    title: 'MVP Acceleration & Readiness',
-                                    description: 'Core product readiness audits, testnet traction metrics, and smart contract architecture.',
-                                    path: '/ico-acceleration/intelligence#mvp-acceleration',
-                                    badge: 'Protocol MVP',
-                                    icon: Rocket,
-                                    tags: ['Testnet Traction', 'Audits']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Demand & Signal Intelligence',
-                            badge: 'Part B',
-                            icon: Target,
-                            cards: [
-                                {
-                                    title: 'Demand Discovery & Sentiment',
-                                    description: 'Multi-channel sentiment analysis across crypto-native alpha groups, GitHub, and Telegram.',
-                                    path: '/ico-acceleration/intelligence#demand-discovery',
-                                    badge: 'Signals',
-                                    icon: Target,
-                                    tags: ['Alpha Ingestion', 'Sentiment']
-                                },
-                                {
-                                    title: 'Community & Social Signals',
-                                    description: 'Early-stage community signals, organic developer engagement, and contributor growth.',
-                                    path: '/ico-acceleration/intelligence#community-signals',
-                                    badge: 'Telemetry',
-                                    icon: Users,
-                                    tags: ['Developer Signals', 'Growth']
-                                },
-                                {
-                                    title: 'Competitive & Sector Radar',
-                                    description: 'Comparative radar mapping against tier-1 protocols in DeFi, DePIN, AI, and Gaming.',
-                                    path: '/ico-acceleration/intelligence#competitive-radar',
-                                    badge: 'Radar',
-                                    icon: ShieldCheck,
-                                    tags: ['Moats', 'Displacement']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                // 2. Launch & Growth
-                {
-                    id: 'launch-growth',
-                    title: 'Launch & Growth',
-                    desc: 'Part D: 180-day 7-phase launch playbook, liquidity engineering, and tier-1 listings',
-                    path: '/ico-acceleration/launch-growth',
-                    badge: '180-Day Playbook',
-                    icon: Rocket,
-                    columns: [
-                        {
-                            header: 'Execution Roadmap',
-                            badge: '7 Phases',
-                            icon: Clock,
-                            cards: [
-                                {
-                                    title: '7-Phase Launch Playbook',
-                                    description: 'The comprehensive 180-day operational execution roadmap from T-16w Foundation to T+180d.',
-                                    path: '/ico-acceleration/launch-growth#seven-phase-playbook',
-                                    badge: '180-Day Playbook',
-                                    icon: Clock,
-                                    tags: ['T-16w to T+180d', 'Execution']
-                                },
-                                {
-                                    title: 'Capital Formation & Syndicates',
-                                    description: 'Institutional private round syndication, tier-1 Web3 VC matching, and lead order-book building.',
-                                    path: '/ico-acceleration/launch-growth#growth-acceleration',
-                                    badge: 'Private Round',
-                                    icon: Landmark,
-                                    tags: ['Syndicates', 'Order Book']
-                                },
-                                {
-                                    title: 'KOL & Influencer Orchestration',
-                                    description: 'Vetted tier-1 crypto KOL campaigns, narrative alignment, and performance-based attribution.',
-                                    path: '/ico-acceleration/launch-growth#kol-orchestration',
-                                    badge: 'Viral Reach',
-                                    icon: Users,
-                                    tags: ['KOL Fleet', 'Attribution']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Liquidity & Listings',
-                            badge: 'CEX / DEX',
-                            icon: Coins,
-                            cards: [
-                                {
-                                    title: 'Exchange Operations & Listings',
-                                    description: 'Tier-1 and Tier-2 CEX listing coordination, liquidity SLAs, and market-maker integration.',
-                                    path: '/ico-acceleration/launch-growth#exchange-operations',
-                                    badge: 'CEX Listing',
-                                    icon: Coins,
-                                    tags: ['Tier-1 CEX', 'Market Makers']
-                                },
-                                {
-                                    title: 'Airdrop & Token Sale Ops',
-                                    description: 'Sybil-resistant airdrop architecture, whitelist mechanics, and public round sale operations.',
-                                    path: '/ico-acceleration/launch-growth#airdrop-incentive',
-                                    badge: 'Token Sale',
-                                    icon: Zap,
-                                    tags: ['Sybil Resistance', 'Whitelist']
-                                },
-                                {
-                                    title: 'Post-TGE Retention & Staking',
-                                    description: 'Post-listing secondary volume maintenance, staking lockup incentives, and anti-dump guardrails.',
-                                    path: '/ico-acceleration/launch-growth#post-tge-retention',
-                                    badge: 'Velocity',
-                                    icon: TrendingUp,
-                                    tags: ['Anti-Dump', 'Staking']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                // 3. Solutions & Engagement
-                {
-                    id: 'solutions-engagement',
-                    title: 'Solutions & Engagement',
-                    desc: 'Part C & E: 6 tailored engagement models, 4 commercial layers, and protocol archetypes',
-                    path: '/ico-acceleration/solutions-engagement',
-                    badge: '6 Engagement Models',
-                    icon: Handshake,
-                    columns: [
-                        {
-                            header: 'Sector Archetypes',
-                            badge: 'Protocols',
-                            icon: Cpu,
-                            cards: [
-                                {
-                                    title: 'Layer-1 & Layer-2 Protocols',
-                                    description: 'Infrastructure-grade capital formation, validator onboarding, and ecosystem grant programs.',
-                                    path: '/ico-acceleration/solutions-engagement#layer1-layer2',
-                                    badge: 'Infra',
-                                    icon: Layers,
-                                    tags: ['L1/L2', 'Validators']
-                                },
-                                {
-                                    title: 'DeFi & Yield Protocols',
-                                    description: 'TVL bootstrapping, automated liquidity mining programs, and yield sustainability frameworks.',
-                                    path: '/ico-acceleration/solutions-engagement#defi-projects',
-                                    badge: 'DeFi & RWA',
-                                    icon: DollarSign,
-                                    tags: ['TVL Engine', 'Liquidity Mining']
-                                },
-                                {
-                                    title: 'Web3 Gaming & Metaverse',
-                                    description: 'Player economy loops, NFT asset interoperability, and creator incentive compensation models.',
-                                    path: '/ico-acceleration/solutions-engagement#web3-gaming',
-                                    badge: 'Gaming',
-                                    icon: Sparkles,
-                                    tags: ['In-Game Economy', 'Player Retention']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Commercial Engagement',
-                            badge: '6 Models',
-                            icon: Handshake,
-                            cards: [
-                                {
-                                    title: 'Six Engagement Models',
-                                    description: 'Full-Lifecycle Launch, Growth Sprint, Advisory, Embedded Pods, and Performance-Based models.',
-                                    path: '/ico-acceleration/solutions-engagement#engagement-models',
-                                    badge: 'Commercial',
-                                    icon: Handshake,
-                                    tags: ['Full Lifecycle', 'Embedded Pod']
-                                },
-                                {
-                                    title: 'Commercial Principles & Risk-Sharing',
-                                    description: 'Aligned incentive structures, milestone-gated compensation, and token alignment models.',
-                                    path: '/ico-acceleration/solutions-engagement#commercial-principles',
-                                    badge: 'Aligned Risk',
-                                    icon: ShieldCheck,
-                                    tags: ['Milestone Gated', 'Aligned Terms']
-                                },
-                                {
-                                    title: 'Centralized Exchange Integration',
-                                    description: 'Direct advisory for Tier-1 CEX listing applications, compliance vetting, and liquidity pairs.',
-                                    path: '/ico-acceleration/solutions-engagement#centralized-exchanges',
-                                    badge: 'CEX Strategy',
-                                    icon: Landmark,
-                                    tags: ['Listing Ops', 'Market Depth']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                // 4. Trust & Performance
-                {
-                    id: 'trust-performance',
-                    title: 'Trust & Performance',
-                    desc: 'Part C & G: Compliance by design, global jurisdictional guardrails, and 6 KPI dimensions',
-                    path: '/ico-acceleration/trust-performance',
-                    badge: 'Compliance Layer',
-                    icon: ShieldCheck,
-                    columns: [
-                        {
-                            header: 'Compliance by Design',
-                            badge: 'Global Guardrails',
+                            header: 'Institutional & Regulated',
+                            badge: 'Audited Sandboxes',
                             icon: ShieldCheck,
                             cards: [
                                 {
-                                    title: 'Compliance by Design Trust Layer',
-                                    description: 'Proactive regulatory hygiene ensuring institutional suitability and zero enforcement risk.',
-                                    path: '/ico-acceleration/trust-performance#compliance-by-design',
-                                    badge: 'Trust Layer',
-                                    icon: ShieldCheck,
-                                    tags: ['Zero Enforcement', 'Institutional']
-                                },
-                                {
-                                    title: 'Jurisdictional Guardrails (MiCA / VARA / SEC)',
-                                    description: 'Multi-jurisdiction legal opinions, EU MiCA whitepapers, UAE VARA filings, and US SEC safe harbors.',
-                                    path: '/ico-acceleration/trust-performance#jurisdictional-guardrails',
-                                    badge: 'MiCA / VARA',
+                                    title: 'FinTech & Lending',
+                                    description: 'Automated compliance reporting, API penetration testing, and investor trust.',
+                                    path: '/industries/specialized?sector=fintech',
+                                    badge: 'SEC / FINRA',
                                     icon: Landmark,
-                                    tags: ['EU MiCA', 'UAE VARA']
+                                    tags: ['100% Audit Readiness', 'Zero Breaches']
                                 },
                                 {
-                                    title: 'KYC/AML & Accreditation Proofs',
-                                    description: 'Institutional-grade identity verification, sanctions screening, and investor accreditation.',
-                                    path: '/ico-acceleration/trust-performance#kyc-aml',
-                                    badge: 'Accreditation',
-                                    icon: Lock,
-                                    tags: ['Sanctions', 'Accredited']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'KPI & Attribution Framework',
-                            badge: '6 Categories',
-                            icon: BarChart3,
-                            cards: [
-                                {
-                                    title: '6-Category KPI Framework',
-                                    description: 'Telemetry tracking Capital Raised, Community Depth, Holder Velocity, Secondary Liquidity, and Trust.',
-                                    path: '/ico-acceleration/trust-performance#kpi-framework',
-                                    badge: 'KPI Library',
-                                    icon: BarChart3,
-                                    tags: ['Boardroom Telemetry', '6 Dimensions']
+                                    title: 'Healthcare & Life Sciences',
+                                    description: 'HIPAA patient data protection, hospital CFO ROI cases, and EHR disaster resilience.',
+                                    path: '/industries/specialized?sector=healthcare',
+                                    badge: 'HIPAA BAA',
+                                    icon: HeartPulse,
+                                    tags: ['Clinical ROI', '99.999% Uptime']
                                 },
                                 {
-                                    title: 'Qualified Investor Lead Framework',
-                                    description: 'Five-stage investor qualification rubric from Initial Signal to Verified Capital Commitment.',
-                                    path: '/ico-acceleration/trust-performance#qualified-lead-framework',
-                                    badge: 'Lead Scoring',
-                                    icon: Target,
-                                    tags: ['Qualification', 'Commitments']
+                                    title: 'Industrial & Manufacturing',
+                                    description: 'Operational risk scanning, CapEx payback modeling, and digital procurement.',
+                                    path: '/industries/specialized?sector=industrial',
+                                    badge: 'ISO 27001',
+                                    icon: Factory,
+                                    tags: ['Disaster Audits', 'Zero Downtime']
                                 },
                                 {
-                                    title: 'Forecasting & Attribution Models',
-                                    description: 'Multi-touch attribution measuring true ROI across KOLs, PR, PR syndicates, and community events.',
-                                    path: '/ico-acceleration/trust-performance#forecasting-attribution',
-                                    badge: 'Attribution',
-                                    icon: Activity,
-                                    tags: ['Multi-Touch ROI', 'Attribution']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                // 5. Sales Enablement
-                {
-                    id: 'sales-enablement',
-                    title: 'Sales Enablement',
-                    desc: 'Part F: Web3 SPICED framework, objection handling, pitch architecture, and CRM telemetry',
-                    path: '/ico-acceleration/sales-enablement',
-                    badge: 'SPICED Enablement',
-                    icon: Users,
-                    columns: [
-                        {
-                            header: 'Web3 SPICED Methodology',
-                            badge: 'Pitch Science',
-                            icon: Target,
-                            cards: [
-                                {
-                                    title: 'SPICED Framework for Web3',
-                                    description: 'Situation, Pain, Impact, Critical Event, and Decision criteria adapted for crypto founders.',
-                                    path: '/ico-acceleration/sales-enablement#spiced-framework',
-                                    badge: 'SPICED Method',
-                                    icon: Target,
-                                    tags: ['Web3 SPICED', 'Diagnostic']
+                                    title: 'SaaS Products & Cloud Platforms',
+                                    description: 'Infosec clearance, penetration testing, and usage-to-revenue expansion telemetry.',
+                                    path: '/industries/specialized?sector=saas',
+                                    badge: 'SOC2 Type II',
+                                    icon: Cpu,
+                                    tags: ['Infosec Pass', '3.2× ARR Expansion']
                                 },
                                 {
-                                    title: 'Segment-Specific Challenges',
-                                    description: 'Tailored talk-tracks and objection navigation for L1/L2s, DeFi protocols, Web3 gaming, and DAOs.',
-                                    path: '/ico-acceleration/sales-enablement#segment-challenges',
-                                    badge: 'Segment Pitch',
-                                    icon: Users,
-                                    tags: ['L1/L2 Pitch', 'DeFi Objections']
-                                },
-                                {
-                                    title: 'Interactive Objection Handling Matrix',
-                                    description: 'Battle-tested counter-arguments for token valuation, market-maker fees, regulatory FUD, and timing.',
-                                    path: '/ico-acceleration/sales-enablement#objection-handling',
-                                    badge: 'Objections',
-                                    icon: HelpCircle,
-                                    tags: ['FUD Defense', 'Counter-Moves']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Artifacts & Solution Delivery',
-                            badge: 'Deal Closing',
-                            icon: FileText,
-                            cards: [
-                                {
-                                    title: 'Solution & Deliverables Mapping',
-                                    description: 'Connecting diagnosed founder pain points directly to guaranteed commercial deliverables.',
-                                    path: '/ico-acceleration/sales-enablement#solution-mapping',
-                                    badge: 'Deliverables',
-                                    icon: FileText,
-                                    tags: ['SOW Generation', 'Deliverables']
-                                },
-                                {
-                                    title: 'Discovery Call Output & Playbooks',
-                                    description: 'Standardized 48-hour diagnostic memo, risk assessment score, and launch timeline proposal.',
-                                    path: '/ico-acceleration/sales-enablement#discovery-call-output',
-                                    badge: 'Call Outputs',
-                                    icon: CheckCircle2,
-                                    tags: ['48-hr Diagnostic', 'Risk Audit']
-                                },
-                                {
-                                    title: 'Institutional Pitch Deck Architecture',
-                                    description: 'Token narrative presentation frameworks designed for tier-1 Web3 venture committee approvals.',
-                                    path: '/ico-acceleration/sales-enablement#spiced-framework',
-                                    badge: 'Pitch Decks',
-                                    icon: Sparkles,
-                                    tags: ['VC Deck', 'Committee Approval']
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-
-        // 5. AI-DRIVEN SALES TRANSFORMATION
-        {
-            id: 'ai-driven-sales-transformation',
-            name: 'AI-Driven Sales Transformation',
-            path: '/ai-driven-sales-transformation',
-            icon: BrainCircuit,
-            badge: 'Autonomous Sales',
-            summary: 'Transform traditional B2B sales teams into autonomous, high-velocity revenue machines.',
-            categories: [
-                {
-                    id: 'autonomous-sales',
-                    title: 'Autonomous Sales Engines',
-                    desc: 'Autonomous pipeline acceleration, dynamic scoring, and deal velocity',
-                    path: '/solutions',
-                    badge: 'Sales Transformation',
-                    icon: BrainCircuit,
-                    columns: [
-                        {
-                            header: 'Autonomous SDR',
-                            badge: 'Pipeline Acceleration',
-                            icon: Bot,
-                            cards: [
-                                {
-                                    title: 'AI-Driven Sales Transformation',
-                                    description: 'End-to-end enterprise sales force transformation into autonomous pipeline engines.',
-                                    path: '/solutions',
-                                    badge: 'Core Engine',
-                                    icon: BrainCircuit,
-                                    tags: ['Sales Transformation', 'Autopilot']
-                                },
-                                {
-                                    title: 'AI SDR Co-Pilot / Autopilot',
-                                    description: 'Autonomous prospect discovery, dynamic objection handling, and meeting scheduling.',
-                                    path: '/industries/b2b#ai-sdr-copilot',
-                                    badge: 'SDR Co-Pilot',
-                                    icon: Bot,
-                                    tags: ['Meeting Booking', 'Objection AI']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Deal Intelligence',
-                            badge: 'Deal Pacing',
-                            icon: Zap,
-                            cards: [
-                                {
-                                    title: 'AI Pipeline Velocity & Next-Best-Action',
-                                    description: 'Predictive deal progression and blocker elimination across enterprise stages.',
-                                    path: '/solutions',
-                                    badge: 'Deal Velocity',
+                                    title: 'Energy & Utilities',
+                                    description: 'SCADA and grid operational risk audits, compliance, and disaster resilience.',
+                                    path: '/industries/specialized?sector=energy',
+                                    badge: 'NERC CIP',
                                     icon: Zap,
-                                    tags: ['Blocker Removal', 'Velocity']
-                                },
-                                {
-                                    title: 'Buying Committee Visibility',
-                                    description: 'Map and engage enterprise decision-makers across complex sales cycles.',
-                                    path: '/outcomes',
-                                    badge: 'Committee Mapping',
-                                    icon: Users,
-                                    tags: ['Decision Makers', 'Consensus']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'revenue-telemetry',
-                    title: 'Revenue & Deal Intelligence',
-                    desc: 'Predictive revenue operations and intent-driven prospecting',
-                    path: '/solutions',
-                    badge: 'RevOps Telemetry',
-                    icon: Target,
-                    columns: [
-                        {
-                            header: 'Intent Mining',
-                            badge: 'Demand Signals',
-                            icon: Target,
-                            cards: [
-                                {
-                                    title: 'AI Demand Discovery Engine',
-                                    description: 'Uncover latent enterprise buyer intent across digital channels in real time.',
-                                    path: '/solutions',
-                                    badge: 'Intent Mining',
-                                    icon: Target,
-                                    tags: ['Buyer Intent', 'Signals']
-                                },
-                                {
-                                    title: 'AI Lead Nurturing Autopilot',
-                                    description: 'Adaptive behavioral email and chat nurturing sequences with zero churn.',
-                                    path: '/solutions',
-                                    badge: 'Lifecycle Ops',
-                                    icon: Sparkles,
-                                    tags: ['Adaptive Nurture', 'Zero Churn']
+                                    tags: ['Zero Outages', '100% ESG']
                                 }
                             ]
                         },
                         {
-                            header: 'RevOps Telemetry',
-                            badge: 'CRM Enrichment',
-                            icon: Activity,
+                            header: 'Commercial & Consumer',
+                            badge: 'High-Velocity Trust',
+                            icon: Building2,
                             cards: [
                                 {
-                                    title: 'AI Revenue Operations Telemetry',
-                                    description: 'Unified pipeline health diagnostics, CRM data enrichment, and velocity forecasting.',
-                                    path: '/solutions',
-                                    badge: 'RevOps Telemetry',
-                                    icon: Activity,
-                                    tags: ['Pipeline Health', 'Forecasting']
+                                    title: 'Service Industries',
+                                    description: 'Reputation acceleration and automated trust audits for professional firms.',
+                                    path: '/industries/specialized?sector=services',
+                                    badge: '+42% CVR',
+                                    icon: Briefcase,
+                                    tags: ['Trust Audits', 'Enterprise Inquiries']
                                 },
                                 {
-                                    title: 'Deal Risk Prediction & Forecasting',
-                                    description: 'Algorithmic forecast accuracy and early detection of stalled deal risk.',
-                                    path: '/outcomes',
-                                    badge: 'Forecast AI',
-                                    icon: ShieldCheck,
-                                    tags: ['Forecast 90%+', 'Risk Detection']
+                                    title: 'D2C Companies',
+                                    description: 'Brand protection, dynamic cart incentives, and influencer attribution loops.',
+                                    path: '/industries/specialized?sector=d2c',
+                                    badge: '−38% CAC',
+                                    icon: ShoppingBag,
+                                    tags: ['Cart Recovery', 'Brand Shield']
+                                },
+                                {
+                                    title: 'Education & EdTech',
+                                    description: 'Student data privacy under COPPA/FERPA, cyber safety, and enrollment growth.',
+                                    path: '/industries/specialized?sector=education',
+                                    badge: '+65% Enroll',
+                                    icon: GraduationCap,
+                                    tags: ['COPPA / FERPA', 'Student Privacy']
+                                },
+                                {
+                                    title: 'Retail & FMCG',
+                                    description: 'POS terminal security audits, loyalty growth, and omnichannel consumer demand.',
+                                    path: '/industries/specialized?sector=retail',
+                                    badge: '1,200 POS Nodes',
+                                    icon: Store,
+                                    tags: ['PCI-DSS Level 1', 'POS Security']
+                                },
+                                {
+                                    title: 'Real Estate & Construction',
+                                    description: 'Structural and environmental risk audits pre-clearing permits and funding.',
+                                    path: '/industries/specialized?sector=real-estate',
+                                    badge: '4 Mo Faster',
+                                    icon: Building,
+                                    tags: ['Permit Clearance', 'REIT Underwriting']
                                 }
                             ]
                         }
@@ -1528,246 +698,231 @@ export default function Navigation() {
             ]
         },
 
-        // 6. GROWTH & ACCELERATION SCIENCE
+        // 3. AI NATIVE SALES
         {
-            id: 'growth-acceleration-science',
-            name: 'Growth & Acceleration Science',
-            path: '/growth-acceleration-science',
-            icon: TrendingUp,
-            badge: 'Revenue Science',
-            summary: 'Algorithmic growth engineering connecting data telemetry with executive revenue goals.',
+            id: 'ai-native-sales',
+            name: 'AI Native Sales',
+            shortName: 'AI Native Sales',
+            path: '/ai-native-sales',
+            icon: BrainCircuit,
+            badge: 'Autonomous Revenue OS',
+            summary: 'Autonomous sales operations — replacing fragmented GTM tool stacks with a unified, self-learning revenue intelligence layer.',
             categories: [
                 {
-                    id: 'growth-engineering',
-                    title: 'Algorithmic Growth Engineering',
-                    desc: 'Compounding growth engineering across acquisition, retention, and monetization',
-                    path: '/solutions',
-                    badge: 'Growth Engineering',
-                    icon: TrendingUp,
+                    id: 'agentic-sdr',
+                    title: 'Agentic SDR & Autopilots',
+                    desc: 'Autonomous multi-channel account research, bespoke messaging, objection handling, and meeting booking',
+                    path: '/ai-native-sales/agentic-sdr',
+                    badge: 'Autonomous Outbound',
+                    icon: Bot,
                     columns: [
                         {
-                            header: 'Experimentation Lab',
-                            badge: 'Scale Loops',
-                            icon: Target,
-                            cards: [
-                                {
-                                    title: 'AI Growth Acceleration Engine',
-                                    description: 'Automate experimentation and discover scalable compounding growth levers.',
-                                    path: '/solutions',
-                                    badge: 'Growth Engine',
-                                    icon: TrendingUp,
-                                    tags: ['Compounding Growth', 'Levers']
-                                },
-                                {
-                                    title: 'Growth Experimentation Lab',
-                                    description: 'High-velocity automated hypothesis testing across product, marketing, and sales funnels.',
-                                    path: '/solutions',
-                                    badge: 'Hypothesis Lab',
-                                    icon: Target,
-                                    tags: ['Hypothesis Testing', 'Velocity']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'PLG & Retention',
-                            badge: 'User Adoption',
+                            header: 'Architecture & Stack',
+                            badge: '#architecture',
                             icon: Layers,
                             cards: [
                                 {
-                                    title: 'Product-Led Growth (PLG) Optimization',
-                                    description: 'AI-guided user onboarding, activation rates, and product adoption acceleration.',
-                                    path: '/solutions',
-                                    badge: 'PLG Core',
+                                    title: 'Architecture & Stack',
+                                    description: 'Deep 5-layer technical breakdown: intelligence, personalization, multi-channel mesh, objection handling, and CRM sync.',
+                                    path: '/ai-native-sales/agentic-sdr#architecture',
+                                    badge: '5 Layers',
                                     icon: Layers,
-                                    tags: ['Onboarding', 'Activation']
-                                },
+                                    tags: ['Perception Agents', 'Reasoning LLMs']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Features & Capabilities',
+                            badge: '#features',
+                            icon: Zap,
+                            cards: [
                                 {
-                                    title: 'Retention Intelligence & Churn Defense',
-                                    description: 'Predictive churn modeling, early warning signals, and retention intervention.',
-                                    path: '/solutions',
-                                    badge: 'Churn Defense',
+                                    title: 'Key Features & Capabilities',
+                                    description: 'Hyper-personalized outreach, real-time intent triggering, SLA enforcement, and Manual vs. Agentic SDR comparison.',
+                                    path: '/ai-native-sales/agentic-sdr#features',
+                                    badge: '30x Scale',
+                                    icon: Zap,
+                                    tags: ['SLA Enforcement', 'Comparison Table']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Governance & Outcomes',
+                            badge: '#governance',
+                            icon: ShieldCheck,
+                            cards: [
+                                {
+                                    title: 'Governance & Outcomes',
+                                    description: 'Pre-approval rules, escalation triggers, audit trails, and 3.8x verified meeting velocity lift.',
+                                    path: '/ai-native-sales/agentic-sdr#governance',
+                                    badge: '3.8x Lift',
                                     icon: ShieldCheck,
-                                    tags: ['Churn -40%', 'Retention AI']
+                                    tags: ['Human-in-Loop', '65% CAC Reduction']
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    id: 'monetization-science',
-                    title: 'Monetization & Analytics',
-                    desc: 'Data-driven pricing, packaging, and compounding ARR expansion',
-                    path: '/solutions',
-                    badge: 'Monetization AI',
-                    icon: DollarSign,
+                    id: 'predictive-intelligence',
+                    title: 'Predictive Intelligence',
+                    desc: 'Neural ICP propensity scoring, real-time pipeline velocity telemetry, and mathematical forecast models',
+                    path: '/ai-native-sales/predictive-intelligence',
+                    badge: 'Neural Pacing',
+                    icon: BrainCircuit,
                     columns: [
                         {
-                            header: 'Pricing & Virality',
-                            badge: 'Expansion',
-                            icon: DollarSign,
+                            header: 'ICP Propensity',
+                            badge: '#propensity',
+                            icon: Target,
                             cards: [
                                 {
-                                    title: 'Monetization & Pricing Optimization',
-                                    description: 'Algorithmic pricing elasticity, packaging tiers, and expansion intelligence.',
-                                    path: '/solutions',
-                                    badge: 'Pricing Science',
-                                    icon: DollarSign,
-                                    tags: ['Price Elasticity', 'ARR Tiers']
-                                },
-                                {
-                                    title: 'Viral & Referral Loop Engineering',
-                                    description: 'Self-propagating referral loops and viral organic distribution mechanics.',
-                                    path: '/solutions',
-                                    badge: 'Viral Loops',
-                                    icon: Sparkles,
-                                    tags: ['Organic Scale', 'Virality 3X']
+                                    title: 'ICP Propensity Scoring',
+                                    description: 'Neural scoring combining firmographics, dark-funnel intent, and contextual signals with 98% target accuracy.',
+                                    path: '/ai-native-sales/predictive-intelligence#propensity',
+                                    badge: '98% Accuracy',
+                                    icon: Target,
+                                    tags: ['Signal Fusion', 'Dark-Funnel Intent']
                                 }
                             ]
                         },
                         {
-                            header: 'Attribution & Unit Economics',
-                            badge: 'P&L Attribution',
+                            header: 'Velocity Telemetry',
+                            badge: '#velocity',
+                            icon: TrendingUp,
+                            cards: [
+                                {
+                                    title: 'Pipeline Velocity & Pacing',
+                                    description: 'Real-time stage-slip detection, stagnation warnings, and automated intervention playbooks.',
+                                    path: '/ai-native-sales/predictive-intelligence#velocity',
+                                    badge: '40-60% Growth',
+                                    icon: TrendingUp,
+                                    tags: ['Stage-Slip Alert', 'Deal Health Score']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Forecast Models',
+                            badge: '#forecast',
                             icon: BarChart3,
                             cards: [
                                 {
-                                    title: 'Revenue Attribution & Analytics',
-                                    description: 'Multi-touch attribution models mapping marketing touchpoints to bottom-line revenue.',
-                                    path: '/analytics',
-                                    badge: 'Attribution AI',
+                                    title: 'Forecast Accuracy Models',
+                                    description: 'Unified Bayesian behavioral models replacing rep commit guesswork with mathematical certainty.',
+                                    path: '/ai-native-sales/predictive-intelligence#forecast',
+                                    badge: '+50% Lift',
                                     icon: BarChart3,
-                                    tags: ['Multi-Touch', 'P&L Credit']
-                                },
-                                {
-                                    title: 'LTV/CAC Expansion Telemetry',
-                                    description: 'Empirical telemetry tracking customer lifetime value expansion and CAC reduction.',
-                                    path: '/demand-pulse',
-                                    badge: 'Unit Economics',
-                                    icon: Activity,
-                                    tags: ['LTV/CAC 2.5X', 'Telemetry']
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-
-        // 7. GLOBAL MARKET ACCELERATION
-        {
-            id: 'global-market-acceleration',
-            name: 'Global Market Acceleration',
-            path: '/global-market-acceleration',
-            icon: Globe,
-            badge: 'Global Scale',
-            summary: 'Cross-border expansion, multinational account scaling, and global partner ecosystems.',
-            categories: [
-                {
-                    id: 'international-expansion',
-                    title: 'International Market Penetration',
-                    desc: 'Scale cross-border revenue, channel partnerships, and global accounts',
-                    path: '/industries/enterprise',
-                    badge: 'Global Expansion',
-                    icon: Globe,
-                    columns: [
-                        {
-                            header: 'Multinational GTM',
-                            badge: 'Global Scale',
-                            icon: Globe,
-                            cards: [
-                                {
-                                    title: 'AI Global Account Penetration',
-                                    description: 'Cross-border enterprise sales strategies and multinational account expansion.',
-                                    path: '/industries/enterprise#global-account-penetration',
-                                    badge: 'Global Accounts',
-                                    icon: Globe,
-                                    tags: ['Cross-Border GTM', 'Multinational']
-                                },
-                                {
-                                    title: 'Strategic Partnership Opportunity Finder',
-                                    description: 'Identify, evaluate, and activate high-leverage global alliance networks.',
-                                    path: '/industries/enterprise#partnership-opportunity',
-                                    badge: 'Alliances',
-                                    icon: Handshake,
-                                    tags: ['Global Alliances', 'Channel Scale']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Regional Velocity',
-                            badge: 'Localized GTM',
-                            icon: Rocket,
-                            cards: [
-                                {
-                                    title: 'Rapid Regional Market Entry',
-                                    description: 'Localized go-to-market playbooks for accelerated geographic expansion.',
-                                    path: '/industries/mid-market#rapid-market-entry',
-                                    badge: 'Market Entry',
-                                    icon: Rocket,
-                                    tags: ['Regional Playbooks', 'Speed']
-                                },
-                                {
-                                    title: 'Executive Engagement Automation',
-                                    description: 'Automate relationship nurturing with C-suite stakeholders globally.',
-                                    path: '/industries/enterprise#executive-engagement',
-                                    badge: 'C-Suite Global',
-                                    icon: Briefcase,
-                                    tags: ['Global C-Suite', 'Nurture']
+                                    tags: ['Bayesian Prediction', 'Variance Reduction']
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    id: 'distribution-networks',
-                    title: 'Channel & Distribution Networks',
-                    desc: 'Alliances, OEM distribution networks, and indirect sales motions',
-                    path: '/offerings/discovery-stack#channel-distribution',
-                    badge: 'Indirect Motion',
-                    icon: Network,
+                    id: 'deal-execution',
+                    title: 'Deal Execution & Enablement',
+                    desc: 'Multi-threaded buying committee mapping, objective rep telemetry, and dynamic battlecard autopilots',
+                    path: '/ai-native-sales/deal-execution',
+                    badge: 'Consensus & Win Rate',
+                    icon: Users,
                     columns: [
                         {
-                            header: 'Partner Alliances',
-                            badge: 'Indirect Sales',
-                            icon: Network,
+                            header: 'Committee Visibility',
+                            badge: '#committee',
+                            icon: Users,
                             cards: [
                                 {
-                                    title: 'Channel & Distribution Strategy',
-                                    description: 'Scale direct, indirect, and OEM distribution partner networks.',
-                                    path: '/offerings/discovery-stack#channel-distribution',
-                                    badge: 'Channel Strategy',
-                                    icon: Network,
-                                    tags: ['OEM Networks', 'Distribution']
-                                },
-                                {
-                                    title: 'Ecosystem Alliances & Co-Selling',
-                                    description: 'Structured co-selling frameworks and channel incentive models.',
-                                    path: '/partners',
-                                    badge: 'Co-Selling',
-                                    icon: Building2,
-                                    tags: ['Co-Selling', 'Incentives']
+                                    title: 'Buying Committee Visibility',
+                                    description: 'Multi-threaded mapping of 6-10 stakeholders with influence graphs, consensus scoring, and champion verification.',
+                                    path: '/ai-native-sales/deal-execution#committee',
+                                    badge: '+15 Pts Win Rate',
+                                    icon: Users,
+                                    tags: ['Influence Graph', 'Consensus Index']
                                 }
                             ]
                         },
                         {
-                            header: 'Adjacent Opportunity',
-                            badge: 'New Whitespace',
-                            icon: Sliders,
+                            header: 'Rep Telemetry',
+                            badge: '#telemetry',
+                            icon: Activity,
                             cards: [
                                 {
-                                    title: 'Adjacent Market Opportunity Capture',
-                                    description: 'Unlock new vertical adjacencies without expanding fixed headcount.',
-                                    path: '/offerings/segments',
-                                    badge: 'Adjacency Scale',
-                                    icon: Sliders,
-                                    tags: ['Adjacent Whitespace', 'Scale']
-                                },
+                                    title: 'Real-Time Rep Telemetry',
+                                    description: 'Objective measurement of rep activity, talk ratios, and automated coaching trigger identification.',
+                                    path: '/ai-native-sales/deal-execution#telemetry',
+                                    badge: '50% Faster Ramp',
+                                    icon: Activity,
+                                    tags: ['MEDDPICC Gates', 'Productivity Pacing']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Dynamic Battlecards',
+                            badge: '#battlecards',
+                            icon: ShieldCheck,
+                            cards: [
                                 {
-                                    title: 'Global Regulatory & Compliance Advisory',
-                                    description: 'Ensure smooth cross-border compliance across North America, EMEA, and APAC.',
-                                    path: '/security',
-                                    badge: 'Compliance',
+                                    title: 'Dynamic Battlecards',
+                                    description: 'Real-time competitive intelligence monitoring rival moves with live in-call battlecard HUD delivery.',
+                                    path: '/ai-native-sales/deal-execution#battlecards',
+                                    badge: '+10 Pts Rivals',
                                     icon: ShieldCheck,
-                                    tags: ['Cross-Border Legal', 'EMEA/APAC']
+                                    tags: ['Live HUD Delivery', 'Rival Displacement']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'integrations-security',
+                    title: 'Integrations & Security',
+                    desc: 'Zero rip-and-replace bidirectional APIs, 5-layer security architecture, and regulatory frameworks',
+                    path: '/ai-native-sales/integrations',
+                    badge: 'Zero-Trust Stack',
+                    icon: ShieldCheck,
+                    columns: [
+                        {
+                            header: 'Stack Integrations',
+                            badge: '#integrations',
+                            icon: Server,
+                            cards: [
+                                {
+                                    title: 'Tech Stack Integrations',
+                                    description: 'Zero rip-and-replace bidirectional sync across CRM, sales engagement, intent, comms, and data warehouses.',
+                                    path: '/ai-native-sales/integrations#integrations',
+                                    badge: 'Zero Rip-Replace',
+                                    icon: Server,
+                                    tags: ['Salesforce & HubSpot', 'Snowflake & BigQuery']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Security Architecture',
+                            badge: '#security',
+                            icon: Lock,
+                            cards: [
+                                {
+                                    title: 'Security Architecture',
+                                    description: '5-layer security breakdown: infrastructure, AES-256/TLS 1.3, zero-trust RBAC/SSO, OWASP testing, and 99.99% SLA.',
+                                    path: '/ai-native-sales/integrations#security',
+                                    badge: 'SOC 2 & ISO',
+                                    icon: Lock,
+                                    tags: ['CMEK Encryption', 'Zero Model Training']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Compliance Frameworks',
+                            badge: '#compliance',
+                            icon: Shield,
+                            cards: [
+                                {
+                                    title: 'Compliance Frameworks',
+                                    description: 'Industry matrices for SaaS, FinTech, Healthcare, and Crypto; 3 deployment models and downloadable audits.',
+                                    path: '/ai-native-sales/integrations#compliance',
+                                    badge: 'HIPAA & GDPR',
+                                    icon: Shield,
+                                    tags: ['BAA & DPA Ready', 'Private VPC Cloud']
                                 }
                             ]
                         }
@@ -1776,122 +931,530 @@ export default function Navigation() {
             ]
         },
 
-        // 8. USE CASES
+        // 4. GROWTH & ACCELERATION SCIENCE
         {
-            id: 'use-cases',
-            name: 'Use Cases',
-            path: '/use-cases',
+            id: 'growth-acceleration-science',
+            name: 'Growth & Acceleration Science',
+            shortName: 'Growth & Acceleration Science',
+            path: '/growth-acceleration-science',
+            icon: TrendingUp,
+            badge: 'Scientific Revenue OS',
+            summary: 'Proprietary 7-layer revenue discovery, statistical whitespace telemetry, conversion mathematics, and compounding ARR models.',
+            categories: [
+                {
+                    id: 'seven-layer-discovery',
+                    title: '7-Layer Revenue Discovery',
+                    desc: 'Comprehensive revenue architecture across Market, Demand, Value, Channel, Competitive, Customer & PMF',
+                    path: '/offerings/discovery-stack',
+                    badge: '7-Layer Stack',
+                    icon: Layers,
+                    columns: [
+                        {
+                            header: 'Strategic Discovery Layers',
+                            badge: 'Layers 1–3',
+                            icon: Compass,
+                            cards: [
+                                {
+                                    title: 'Market & Whitespace Discovery',
+                                    description: 'Empirical profit pool boundaries, regulatory tailwinds, and addressable TAM.',
+                                    path: '/offerings/discovery-stack#layer-1',
+                                    badge: 'Layer 1',
+                                    icon: Globe,
+                                    tags: ['TAM Modeling', 'Profit Pools']
+                                },
+                                {
+                                    title: 'Demand & Signal Intelligence',
+                                    description: 'Latent search volume, executive search signals, and buyer intent triggers.',
+                                    path: '/offerings/discovery-stack#layer-2',
+                                    badge: 'Layer 2',
+                                    icon: Activity,
+                                    tags: ['Intent Surges', 'First-Party Signal']
+                                },
+                                {
+                                    title: 'Value Proposition Quantification',
+                                    description: 'Economic impact modeling, payback metrics, and differentiation defensibility.',
+                                    path: '/offerings/discovery-stack#layer-3',
+                                    badge: 'Layer 3',
+                                    icon: DollarSign,
+                                    tags: ['ROI Proof', 'Quantified Value']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Execution Discovery Layers',
+                            badge: 'Layers 4–7',
+                            icon: Sliders,
+                            cards: [
+                                {
+                                    title: 'Channel & Routing Architecture',
+                                    description: 'Direct sales, partner ecosystems, and programmatic inbound routing.',
+                                    path: '/offerings/discovery-stack#layer-4',
+                                    badge: 'Layer 4',
+                                    icon: Network,
+                                    tags: ['Routing Math', 'Channel Mix']
+                                },
+                                {
+                                    title: 'Competitive Displacement Matrices',
+                                    description: 'Architectural vulnerability mapping of incumbents across accounts.',
+                                    path: '/offerings/discovery-stack#layer-5',
+                                    badge: 'Layer 5',
+                                    icon: ShieldCheck,
+                                    tags: ['Vulnerabilities', 'Displacement']
+                                },
+                                {
+                                    title: 'Customer Retention & PMF Depth',
+                                    description: 'Cohort analysis, net revenue retention (NRR), and expansion thresholds.',
+                                    path: '/offerings/discovery-stack#layer-6',
+                                    badge: 'Layers 6 & 7',
+                                    icon: Target,
+                                    tags: ['NRR Lift', 'PMF Scorecard']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'growth-engineering-telemetry',
+                    title: 'Algorithmic Growth Engineering',
+                    desc: 'Continuous conversion modeling, revenue velocity pacing, and margin optimization',
+                    path: '/growth-acceleration-science',
+                    badge: 'Growth Science',
+                    icon: BrainCircuit,
+                    columns: [
+                        {
+                            header: 'Conversion & Velocity',
+                            badge: 'Mathematical Pacing',
+                            icon: BarChart3,
+                            cards: [
+                                {
+                                    title: 'AI Growth Acceleration Engine',
+                                    description: 'Systematic conversion optimization and compounding pipeline flywheel.',
+                                    path: '/growth-acceleration-science',
+                                    badge: 'Core Science',
+                                    icon: TrendingUp,
+                                    tags: ['Flywheel', 'Compounding ARR']
+                                },
+                                {
+                                    title: 'Predictive Unit Economics & LTV:CAC',
+                                    description: 'Scientific payback modeling and customer acquisition cost reduction.',
+                                    path: '/growth-acceleration-science',
+                                    badge: 'Economics',
+                                    icon: DollarSign,
+                                    tags: ['CAC Payback', 'LTV Expansion']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Retention & Margin Studio',
+                            badge: 'Net Retention',
+                            icon: ShieldCheck,
+                            cards: [
+                                {
+                                    title: 'Retention Intelligence & Churn Defense',
+                                    description: 'Predictive account health scoring and proactive renewal intervention.',
+                                    path: '/growth-acceleration-science',
+                                    badge: 'Retention',
+                                    icon: ShieldCheck,
+                                    tags: ['Churn Defense', '118% NRR']
+                                },
+                                {
+                                    title: 'Pricing Power & Gross Margin Studio',
+                                    description: 'Algorithmic contract sizing, tiering models, and margin expansion.',
+                                    path: '/growth-acceleration-science',
+                                    badge: 'Margins',
+                                    icon: DollarSign,
+                                    tags: ['Gross Margin', 'Pricing Power']
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+
+        // 5. GLOBAL BUSINESS ACCELERATIONS
+        {
+            id: 'global-business-accelerations',
+            name: 'Global Business Accelerations',
+            shortName: 'Global Business Accelerations',
+            path: '/global-business-accelerations',
+            icon: Globe,
+            badge: 'Cross-Border Expansion',
+            summary: 'International market penetration, DemandPulse™ geographical intelligence, multi-currency revenue architecture, and jurisdictional GTM.',
+            categories: [
+                {
+                    id: 'cross-border-penetration',
+                    title: 'International Market Penetration',
+                    desc: 'Rapid geographic market entry and cross-border enterprise revenue execution',
+                    path: '/global-business-accelerations',
+                    badge: 'Global GTM',
+                    icon: Globe,
+                    columns: [
+                        {
+                            header: 'Regional Playbooks',
+                            badge: 'Major Markets',
+                            icon: Globe,
+                            cards: [
+                                {
+                                    title: 'North America Enterprise Scale',
+                                    description: 'Tier-1 enterprise outbound and Fortune 500 buying committee consensus.',
+                                    path: '/global-business-accelerations',
+                                    badge: 'North America',
+                                    icon: Building2,
+                                    tags: ['Fortune 500', 'Enterprise GTM']
+                                },
+                                {
+                                    title: 'EMEA & UK Regulatory Playbooks',
+                                    description: 'GDPR-compliant outreach, UK enterprise banking, and DACH region scaling.',
+                                    path: '/global-business-accelerations',
+                                    badge: 'EMEA & UK',
+                                    icon: Landmark,
+                                    tags: ['GDPR Compliant', 'Multi-Language']
+                                },
+                                {
+                                    title: 'APAC & Emerging Growth Hubs',
+                                    description: 'High-growth market expansion across Singapore, Tokyo, and Sydney.',
+                                    path: '/global-business-accelerations',
+                                    badge: 'APAC Scale',
+                                    icon: Rocket,
+                                    tags: ['APAC Expansion', 'Regional Hubs']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Enterprise Account Entry',
+                            badge: 'Account Penetration',
+                            icon: Briefcase,
+                            cards: [
+                                {
+                                    title: 'Global Account Penetration',
+                                    description: 'Multi-geography expansion inside existing multinational enterprise logos.',
+                                    path: '/global-business-accelerations',
+                                    badge: 'Global MNCs',
+                                    icon: Briefcase,
+                                    tags: ['Land & Expand', 'Global Logos']
+                                },
+                                {
+                                    title: 'Strategic Partnership Finder',
+                                    description: 'Automated discovery of regional distributors, resellers, and co-sell partners.',
+                                    path: '/global-business-accelerations',
+                                    badge: 'Alliances',
+                                    icon: Handshake,
+                                    tags: ['Reseller Network', 'Co-Sell']
+                                },
+                                {
+                                    title: 'Executive Engagement Automation',
+                                    description: 'C-suite relationship initiation across multinational headquarters.',
+                                    path: '/global-business-accelerations',
+                                    badge: 'Executive',
+                                    icon: Users,
+                                    tags: ['C-Suite Access', 'Executive GTM']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'demand-pulse-intelligence',
+                    title: 'DemandPulse™ Macro Intelligence',
+                    desc: 'Real-time regional buyer intent, regulatory compliance, and cross-border TAM mapping',
+                    path: '/global-business-accelerations',
+                    badge: 'Macro Intelligence',
+                    icon: Activity,
+                    columns: [
+                        {
+                            header: 'Territory Intent & Pricing',
+                            badge: 'Macro Signals',
+                            icon: Activity,
+                            cards: [
+                                {
+                                    title: 'Real-Time Territory Intent Monitoring',
+                                    description: 'Tracking surge demand across 40+ countries and regional industries.',
+                                    path: '/global-business-accelerations',
+                                    badge: 'Territory Intent',
+                                    icon: Activity,
+                                    tags: ['40+ Countries', 'Surge Signals']
+                                },
+                                {
+                                    title: 'Multi-Currency Pricing Alignment',
+                                    description: 'Localized purchasing power and currency-hedged enterprise contracts.',
+                                    path: '/global-business-accelerations',
+                                    badge: 'Pricing',
+                                    icon: DollarSign,
+                                    tags: ['Multi-Currency', 'Localization']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Compliance & Distributed SDRs',
+                            badge: 'Operational Scale',
+                            icon: ShieldCheck,
+                            cards: [
+                                {
+                                    title: 'Cross-Border Compliance Guardrails',
+                                    description: 'Local data sovereignty, privacy laws, and marketing guardrails.',
+                                    path: '/global-business-accelerations',
+                                    badge: 'Compliance',
+                                    icon: ShieldCheck,
+                                    tags: ['Data Sovereignty', 'Legal Guardrails']
+                                },
+                                {
+                                    title: 'Distributed Global SDR Fleets',
+                                    description: '24/7 localized outbound coverage across multiple time zones.',
+                                    path: '/global-business-accelerations',
+                                    badge: '24/7 Coverage',
+                                    icon: Bot,
+                                    tags: ['Follow-the-Sun', 'Local SDRs']
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+
+        // 6. CASE STUDIES
+        {
+            id: 'case-studies',
+            name: 'Case Studies',
+            shortName: 'Case Studies',
+            path: '/case-studies',
             icon: ShieldCheck,
             badge: 'Verified Outcomes',
-            summary: 'Proven boardroom-ready revenue impact, verified ROI metrics, and customer case studies.',
+            summary: 'Verified boardroom revenue metrics, empirical ROI case studies, and enterprise customer transformation outcomes.',
             categories: [
                 {
                     id: 'enterprise-outcomes',
-                    title: 'Enterprise Outcomes',
-                    desc: 'Proven boardroom-ready revenue impact across sectors',
-                    path: '/outcomes',
+                    title: 'Enterprise Outcomes & ROI',
+                    desc: 'Proven boardroom-ready revenue impact and verifiable metric lifts across enterprise clients',
+                    path: '/case-studies',
                     badge: 'Boardroom ROI',
                     icon: ShieldCheck,
                     columns: [
                         {
-                            header: 'Sales & Pipeline',
+                            header: 'Sales & Pipeline Outcomes',
                             badge: 'Proven Metrics',
                             icon: Briefcase,
                             cards: [
                                 {
                                     title: 'Enterprise Sales Acceleration',
-                                    description: '35–50% reduction in sales cycle time and 20–30% higher win rates.',
-                                    path: '/outcomes',
+                                    description: '35–50% reduction in sales cycle time and +28% higher enterprise win rates.',
+                                    path: '/case-studies',
                                     badge: 'Case Study',
                                     icon: Briefcase,
-                                    tags: ['-45% Cycle Time', '+25% Win Rate']
+                                    tags: ['-45% Cycle Time', '+28% Win Rate']
                                 },
                                 {
                                     title: 'High-Velocity Pipeline Generation',
-                                    description: 'Predictable inbound/outbound qualified lead generation at scale.',
-                                    path: '/outcomes',
+                                    description: 'Predictable inbound/outbound qualified lead generation at enterprise scale.',
+                                    path: '/case-studies',
                                     badge: 'Case Study',
                                     icon: Target,
-                                    tags: ['Predictable Pipeline', 'Scale']
+                                    tags: ['4.2x Pipeline Lift', 'Predictable ARR']
                                 }
                             ]
                         },
                         {
-                            header: 'Win-Back & Committee',
-                            badge: 'Account Scale',
+                            header: 'Displacement & Consensus',
+                            badge: 'Account Takeover',
                             icon: Users,
                             cards: [
                                 {
                                     title: 'Competitor Displacement Win-Back',
-                                    description: 'Systematic account takeover from legacy incumbents.',
-                                    path: '/outcomes',
+                                    description: 'Systematic account takeover from entrenched legacy incumbents.',
+                                    path: '/case-studies',
                                     badge: 'Case Study',
                                     icon: ShieldCheck,
-                                    tags: ['Competitor Win-Back', 'Share']
+                                    tags: ['$18.4M Displaced', 'Enterprise Win-Back']
                                 },
                                 {
                                     title: 'Buying Committee Consensus',
-                                    description: 'Accelerate approvals across multi-stakeholder enterprise buying committees.',
-                                    path: '/outcomes',
+                                    description: 'Accelerate approvals across 6–10 stakeholder enterprise buying committees.',
+                                    path: '/case-studies',
                                     badge: 'Case Study',
                                     icon: Users,
-                                    tags: ['Committee Alignment', 'Speed']
+                                    tags: ['3.1x Faster Signoff', 'Consensus AI']
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    id: 'growth-scenarios',
-                    title: 'Growth Scenarios & Results',
-                    desc: 'Verified metrics, customer case studies, and business impact',
-                    path: '/outcomes',
-                    badge: 'Customer Evidence',
+                    id: 'sector-case-studies',
+                    title: 'Sector-Specific Case Studies',
+                    desc: 'Traceable blueprints across FinTech, SaaS, Healthcare, Web3 & Platforms',
+                    path: '/case-studies',
+                    badge: 'Traceable Blueprints',
                     icon: TrendingUp,
                     columns: [
                         {
-                            header: 'Retention & Margins',
-                            badge: 'Bottom Line',
+                            header: 'SaaS & FinTech Proof',
+                            badge: 'Financial Services',
                             icon: DollarSign,
                             cards: [
                                 {
-                                    title: 'Churn Reduction & Account Expansion',
-                                    description: 'Predictive retention strategies driving 40–60% churn reduction.',
-                                    path: '/outcomes',
-                                    badge: 'Case Study',
-                                    icon: ShieldCheck,
-                                    tags: ['-50% Churn', 'Net Retention']
-                                },
-                                {
-                                    title: 'Pricing Power & Margin Expansion',
-                                    description: 'Optimized packaging and contract terms driving gross margin gains.',
-                                    path: '/outcomes',
+                                    title: 'Tier-1 FinTech Core Modernization',
+                                    description: '$4.8M net ARR expansion and 89% manual underwriting automated.',
+                                    path: '/industries/financial-services#case-study',
                                     badge: 'Case Study',
                                     icon: DollarSign,
-                                    tags: ['Gross Margin', 'Pricing Power']
+                                    tags: ['$4.8M Net ARR', 'SOC2 Compliant']
+                                },
+                                {
+                                    title: 'Enterprise Multi-Sided Platform Scale',
+                                    description: '3.8x GMV lift and 44-day CAC payback period achieved.',
+                                    path: '/industries/platforms#case-study',
+                                    badge: 'Case Study',
+                                    icon: Network,
+                                    tags: ['3.8x GMV', '44-day Payback']
                                 }
                             ]
                         },
                         {
-                            header: 'Venture Traction',
-                            badge: 'Zero-to-One',
+                            header: 'Healthcare & Web3 Proof',
+                            badge: 'Specialized Protocols',
+                            icon: ShieldCheck,
+                            cards: [
+                                {
+                                    title: 'Healthcare Zero-PHI Revenue Scale',
+                                    description: '$12.6M qualified health system pipeline with 100% HIPAA compliance.',
+                                    path: '/industries/healthcare#case-study',
+                                    badge: 'Case Study',
+                                    icon: ShieldCheck,
+                                    tags: ['Zero-PHI HIPAA', '$12.6M Pipeline']
+                                },
+                                {
+                                    title: 'Web3 Protocol 90-Day TGE Launch',
+                                    description: '$140M TVL mobilized across 18 tier-1 institutional node operators.',
+                                    path: '/industries/crypto#case-study',
+                                    badge: 'Case Study',
+                                    icon: Rocket,
+                                    tags: ['$140M TVL', '90-Day Arc']
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+
+        // 7. ABOUT US
+        {
+            id: 'about-us',
+            name: 'About Us',
+            shortName: 'About Us',
+            path: '/about-us',
+            icon: Users,
+            badge: 'The Firm',
+            summary: 'Executive leadership, operating philosophy, engineering research lab, global infrastructure, and partner alliances.',
+            categories: [
+                {
+                    id: 'firm-leadership',
+                    title: 'The Firm & Leadership',
+                    desc: 'Our strategic thesis, veteran leadership, and engineering operating philosophy',
+                    path: '/about-us',
+                    badge: 'Firm Overview',
+                    icon: Building2,
+                    columns: [
+                        {
+                            header: 'Leadership & Mission',
+                            badge: 'Executive Team',
+                            icon: Users,
+                            cards: [
+                                {
+                                    title: 'Executive Leadership & Advisors',
+                                    description: 'Veteran enterprise revenue architects, former CROs, and AI systems researchers.',
+                                    path: '/company',
+                                    badge: 'Leadership',
+                                    icon: Users,
+                                    tags: ['Executive Team', 'Advisors']
+                                },
+                                {
+                                    title: 'Our Mission & Philosophy',
+                                    description: 'Eliminating guesswork from enterprise revenue generation through engineering precision.',
+                                    path: '/company',
+                                    badge: 'Philosophy',
+                                    icon: Target,
+                                    tags: ['Engineering-First', 'Dual-Track']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Standards & Trust',
+                            badge: 'Enterprise Trust',
+                            icon: ShieldCheck,
+                            cards: [
+                                {
+                                    title: 'Security & SOC2 Type II Trust',
+                                    description: 'Zero-data-leakage architecture, HIPAA-ready, and end-to-end encrypted telemetry.',
+                                    path: '/security',
+                                    badge: 'Security',
+                                    icon: ShieldCheck,
+                                    tags: ['SOC2 Type II', 'Zero-PHI']
+                                },
+                                {
+                                    title: 'Global Hubs & Footprint',
+                                    description: 'Distributed operational hubs across North America, EMEA, and Asia-Pacific.',
+                                    path: '/company',
+                                    badge: 'Global Footprint',
+                                    icon: Globe,
+                                    tags: ['Global Reach', '24/7 Operations']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'alliances-careers',
+                    title: 'Ecosystem & Careers',
+                    desc: 'Join our team or integrate with the ProfitMachines autonomous revenue platform',
+                    path: '/about-us',
+                    badge: 'Ecosystem',
+                    icon: Sparkles,
+                    columns: [
+                        {
+                            header: 'Careers & Talent',
+                            badge: 'Talent',
                             icon: Rocket,
                             cards: [
                                 {
-                                    title: 'Zero-to-One Market Validation',
-                                    description: 'Rapid customer validation and product-market fit signal detection.',
-                                    path: '/outcomes',
-                                    badge: 'Case Study',
-                                    icon: Rocket,
-                                    tags: ['PMF Validation', '10X Speed']
+                                    title: 'Careers & Open Positions',
+                                    description: 'Join our cadre of Forward Deployed Engineers and Revenue Architects.',
+                                    path: '/career',
+                                    badge: 'Careers',
+                                    icon: Briefcase,
+                                    tags: ['Forward Deployed', 'Remote']
                                 },
                                 {
-                                    title: 'Compounding ARR Velocity',
-                                    description: 'Transforming unpredictable pipelines into compounding annual revenue.',
-                                    path: '/outcomes',
-                                    badge: 'Case Study',
-                                    icon: TrendingUp,
-                                    tags: ['ARR Compounding', 'Predictable']
+                                    title: 'Strategic Partner Program',
+                                    description: 'Co-sell and integrate with the ProfitMachines autonomous revenue platform.',
+                                    path: '/partners',
+                                    badge: 'Alliances',
+                                    icon: Handshake,
+                                    tags: ['Co-Sell', 'Ecosystem']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Advisory & Consultation',
+                            badge: 'Executive Scoping',
+                            icon: Phone,
+                            cards: [
+                                {
+                                    title: 'Schedule Scoping Consultation',
+                                    description: 'Direct engagement with our senior partners and revenue architects.',
+                                    path: '/book-consultation',
+                                    badge: 'Consultation',
+                                    icon: Phone,
+                                    tags: ['Executive Scoping', 'NDA']
+                                },
+                                {
+                                    title: 'Legal & Privacy Framework',
+                                    description: 'Enterprise data protection, transparent terms, and regulatory adherence.',
+                                    path: '/privacy',
+                                    badge: 'Governance',
+                                    icon: Lock,
+                                    tags: ['GDPR', 'Compliance']
                                 }
                             ]
                         }
@@ -1953,11 +1516,14 @@ export default function Navigation() {
     // Check if route matches main menu
     const isMenuActive = (menu: MainMenuItem) => {
         if (location.pathname === menu.path) return true;
+        if (menu.id === 'offerings' && (location.pathname.startsWith('/offerings') || location.pathname.startsWith('/engagement') || location.pathname.startsWith('/origin'))) return true;
         if (menu.path !== '/' && location.pathname.startsWith(menu.path)) return true;
-        if ((menu.id === 'engagement' || menu.id === 'engagement-model') && location.pathname.startsWith('/engagement')) return true;
-        if (menu.id === 'ico-acceleration' && (location.pathname.startsWith('/ico-acceleration') || location.pathname === '/crypto')) return true;
-        if (menu.id === 'global-market-acceleration' && (location.pathname === '/demand-pulse' || location.pathname.startsWith('/global-market-acceleration'))) return true;
-        if (menu.id === 'use-cases' && (location.pathname === '/outcomes' || location.pathname === '/use-cases')) return true;
+        if (menu.id === 'industries' && (location.pathname.startsWith('/industries') || location.pathname.startsWith('/ico-acceleration') || location.pathname === '/crypto')) return true;
+        if (menu.id === 'ai-native-sales' && (location.pathname.startsWith('/ai-') || location.pathname.startsWith('/solutions'))) return true;
+        if (menu.id === 'growth-acceleration-science' && (location.pathname.startsWith('/growth-') || location.pathname === '/revenue-acceleration')) return true;
+        if (menu.id === 'global-business-accelerations' && (location.pathname === '/demand-pulse' || location.pathname.startsWith('/global-'))) return true;
+        if (menu.id === 'case-studies' && (location.pathname === '/outcomes' || location.pathname === '/use-cases' || location.pathname === '/case-studies')) return true;
+        if (menu.id === 'about-us' && (location.pathname === '/company' || location.pathname === '/about' || location.pathname === '/about-us')) return true;
         return false;
     };
 
@@ -1996,26 +1562,26 @@ export default function Navigation() {
     return (
         <div ref={navRef} className="fixed top-0 left-0 right-0 z-50 select-none">
             {/* ── TOP HORIZONTAL HEADER BAR ── */}
-            <header className="h-16 lg:h-[72px] bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-2xs px-2 sm:px-3 lg:px-2 xl:px-3 2xl:px-6 flex items-center justify-between transition-all relative z-50">
+            <header className="h-16 lg:h-[72px] bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-2xs px-3 sm:px-4 lg:px-3 xl:px-4 2xl:px-6 flex items-center justify-between transition-all relative z-50 max-w-[1920px] mx-auto w-full">
                 {/* Left: Brand Logo */}
-                <div className="flex items-center gap-1.5 xl:gap-2.5 2xl:gap-4 shrink-0">
+                <div className="flex items-center gap-2 xl:gap-3 shrink-0">
                     <Link to="/" className="flex items-center gap-1.5 xl:gap-2 group shrink-0">
                         <div className="w-7 h-7 xl:w-8 xl:h-8 2xl:w-9 2xl:h-9 rounded-lg xl:rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-xs xl:text-sm shadow-md shadow-blue-600/30 group-hover:scale-105 transition-transform shrink-0">
                             PM
                         </div>
-                        <div className="text-base xl:text-lg 2xl:text-xl font-extrabold tracking-tight text-slate-900 font-heading whitespace-nowrap">
+                        <div className="text-sm sm:text-base xl:text-lg 2xl:text-xl font-extrabold tracking-tight text-slate-900 font-heading whitespace-nowrap">
                             <span>Profit</span><span className="text-blue-600">Machines</span>
                         </div>
                     </Link>
 
-                    <div className="hidden 2xl:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200/60 text-blue-700 font-mono text-[10px] font-bold shrink-0">
+                    <div className="hidden min-[1800px]:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200/60 text-blue-700 font-mono text-[10px] font-bold shrink-0">
                         <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
                         <span>Enterprise v2.4</span>
                     </div>
                 </div>
 
                 {/* Center: 8 Main Menus Horizontally (>= lg) */}
-                <nav className="hidden lg:flex items-center gap-0 xl:gap-0.5 2xl:gap-1.5 h-full whitespace-nowrap shrink-0 flex-nowrap">
+                <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 2xl:gap-1.5 h-full whitespace-nowrap shrink-0">
                     {mainMenus.map((menu) => {
                         const isCurrentActive = isMenuActive(menu);
                         const isDropdownOpen = activeMenuId === menu.id;
@@ -2023,11 +1589,11 @@ export default function Navigation() {
                         return (
                             <div
                                 key={menu.id}
-                                className="relative h-full flex items-center shrink-0 flex-nowrap"
+                                className="relative h-full flex items-center shrink-0"
                                 onMouseEnter={() => handleMenuMouseEnter(menu.id)}
                             >
                                 <div
-                                    className={`flex items-center rounded-lg 2xl:rounded-xl text-[10px] xl:text-[11px] 2xl:text-[12.5px] font-semibold tracking-tight transition-all duration-150 whitespace-nowrap shrink-0 flex-nowrap ${
+                                    className={`flex items-center rounded-lg xl:rounded-xl text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold tracking-tight transition-all duration-150 whitespace-nowrap shrink-0 ${
                                         isDropdownOpen
                                             ? 'bg-blue-50 text-blue-600 shadow-2xs font-bold'
                                             : isCurrentActive
@@ -2038,7 +1604,7 @@ export default function Navigation() {
                                     <Link
                                         to={menu.path}
                                         onClick={() => setActiveMenuId(null)}
-                                        className="px-1 xl:px-1.5 2xl:px-2 py-1.5 xl:py-2 flex items-center cursor-pointer transition-colors whitespace-nowrap shrink-0 flex-nowrap"
+                                        className="px-1.5 xl:px-2 2xl:px-2.5 py-1.5 xl:py-2 flex items-center cursor-pointer transition-colors whitespace-nowrap shrink-0"
                                     >
                                         <span className="whitespace-nowrap shrink-0 select-none">{menu.name}</span>
                                     </Link>
@@ -2054,7 +1620,7 @@ export default function Navigation() {
                                             }
                                         }}
                                         aria-label={`Toggle ${menu.name} dropdown`}
-                                        className="pr-1 2xl:pr-1.5 py-1.5 xl:py-2 pl-0 text-slate-400 hover:text-blue-600 cursor-pointer transition-colors shrink-0"
+                                        className="pr-1.5 xl:pr-2 py-1.5 xl:py-2 pl-0 text-slate-400 hover:text-blue-600 cursor-pointer transition-colors shrink-0"
                                     >
                                         <ChevronDown
                                             className={`w-2.5 h-2.5 xl:w-3 xl:h-3 transition-transform duration-200 opacity-60 shrink-0 ${
@@ -2069,22 +1635,22 @@ export default function Navigation() {
                 </nav>
 
                 {/* Right: Actions */}
-                <div className="flex items-center gap-1 xl:gap-2 2xl:gap-2.5 shrink-0">
+                <div className="flex items-center gap-1.5 sm:gap-2 xl:gap-2.5 shrink-0 ml-2">
                     {/* Search Trigger Button */}
                     <button
                         type="button"
                         onClick={() => setSearchOpen(true)}
-                        className="p-1.5 xl:p-2 rounded-lg xl:rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100 border border-transparent hover:border-slate-200 transition-all flex items-center gap-1 text-xs whitespace-nowrap shrink-0"
+                        className="p-1.5 xl:p-2 rounded-lg xl:rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100 border border-slate-200/60 hover:border-slate-300 transition-all flex items-center gap-1.5 text-xs whitespace-nowrap shrink-0"
                         aria-label="Search directory"
                     >
                         <Search className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-slate-500 shrink-0" />
-                        <span className="hidden 2xl:inline font-medium text-slate-400 whitespace-nowrap">Search...</span>
+                        <span className="hidden min-[1650px]:inline font-medium text-slate-400 whitespace-nowrap">Search...</span>
                     </button>
 
-                    {/* Book Strategic Consultation Button */}
+                    {/* Book Strategic Consultation Button - Guaranteed Visible on All Screen Sizes */}
                     <Link
                         to="/book-consultation"
-                        className="inline-flex items-center gap-1 xl:gap-1.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-[11px] xl:text-xs 2xl:text-sm px-2.5 xl:px-3 2xl:px-4 py-1.5 xl:py-2 rounded-lg xl:rounded-xl transition-all shadow-sm shadow-blue-600/25 hover:shadow-blue-600/35 hover:-translate-y-px whitespace-nowrap shrink-0"
+                        className="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs xl:text-sm px-2.5 sm:px-3.5 xl:px-4 py-1.5 xl:py-2 rounded-lg xl:rounded-xl transition-all shadow-md shadow-blue-600/20 hover:shadow-blue-600/35 hover:-translate-y-px whitespace-nowrap shrink-0"
                     >
                         <span className="whitespace-nowrap">Book Consultation</span>
                         <ArrowUpRight className="w-3.5 h-3.5 xl:w-4 xl:h-4 shrink-0" />
@@ -2094,7 +1660,7 @@ export default function Navigation() {
                     <button
                         type="button"
                         onClick={() => setMobileOpen(!mobileOpen)}
-                        className="lg:hidden p-2 rounded-xl text-slate-700 hover:text-blue-600 hover:bg-slate-100 transition-colors ml-1"
+                        className="lg:hidden p-1.5 sm:p-2 rounded-lg sm:rounded-xl text-slate-700 hover:text-blue-600 hover:bg-slate-100 transition-colors ml-0.5 sm:ml-1 shrink-0"
                         aria-label="Toggle navigation menu"
                     >
                         {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -2186,6 +1752,14 @@ export default function Navigation() {
                                         <p className="text-[10px] text-slate-500 leading-tight">
                                             Guaranteed enterprise SLAs and performance baselines.
                                         </p>
+                                        <Link
+                                            to={currentMenu.path}
+                                            onClick={() => setActiveMenuId(null)}
+                                            className="inline-flex items-center justify-between w-full pt-1.5 mt-1 border-t border-slate-100 text-[11px] font-bold text-blue-600 hover:text-blue-700 group"
+                                        >
+                                            <span>View {currentMenu.name} Overview</span>
+                                            <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                                        </Link>
                                     </div>
                                 </aside>
 

@@ -376,8 +376,8 @@ export default function Engagement() {
             </Link>
           </div>
 
-          {/* Model Switcher Tabs */}
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-4 mb-8">
+          {/* Model Switcher Tabs - Grid Layout, No Sliding */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 mb-8">
             {engagementModels.map((m, idx) => (
               <button
                 key={m.id}
@@ -602,8 +602,8 @@ export default function Engagement() {
             </Link>
           </div>
 
-          {/* Journey Tabs */}
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-3 mb-8">
+          {/* Journey Tabs - Flex Wrapping, No Sliding */}
+          <div className="flex flex-wrap items-center gap-2 mb-8">
             {engagementJourneys.map((j, idx) => (
               <button
                 key={idx}

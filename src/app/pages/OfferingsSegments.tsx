@@ -12,10 +12,7 @@ import {
   CheckCircle2,
   Filter,
   Sparkles,
-  ChevronRight,
-  Search
 } from 'lucide-react';
-import OfferingsSubNav from '../components/OfferingsSubNav';
 import { businessSegments, BusinessSegmentCategory, SubSegmentDetail } from '../../data/offeringsCleanContent';
 
 const sectorIcons: Record<string, any> = {

@@ -13,6 +13,14 @@ const Outcomes = lazy(() => import('./pages/Outcomes'));
 const Solutions = lazy(() => import('./pages/Solutions'));
 const Capabilities = lazy(() => import('./pages/Capabilities'));
 const Industries = lazy(() => import('./pages/Industries'));
+const ServicesIndustry = lazy(() => import('./pages/industries/ServicesIndustry'));
+const RetailIndustry = lazy(() => import('./pages/industries/RetailIndustry'));
+const PlatformIndustry = lazy(() => import('./pages/industries/PlatformIndustry'));
+const CryptoIndustry = lazy(() => import('./pages/industries/CryptoIndustry'));
+const FinancialServicesIndustry = lazy(() => import('./pages/industries/FinancialServicesIndustry'));
+const HealthcareIndustry = lazy(() => import('./pages/industries/HealthcareIndustry'));
+const IndustrialIndustry = lazy(() => import('./pages/industries/IndustrialIndustry'));
+const MediaIndustry = lazy(() => import('./pages/industries/MediaIndustry'));
 const Offerings = lazy(() => import('./pages/Offerings'));
 const OfferingsDiscoveryStack = lazy(() => import('./pages/OfferingsDiscoveryStack'));
 const OfferingsFamilies = lazy(() => import('./pages/OfferingsFamilies'));
@@ -65,6 +73,24 @@ const IcoLaunchGrowth = lazy(() => import('./pages/ico/IcoLaunchGrowth'));
 const IcoSolutionsEngagement = lazy(() => import('./pages/ico/IcoSolutionsEngagement'));
 const IcoTrustPerformance = lazy(() => import('./pages/ico/IcoTrustPerformance'));
 const IcoSalesEnablement = lazy(() => import('./pages/ico/IcoSalesEnablement'));
+const AiNativeSalesHub = lazy(() => import('./pages/ai-native-sales/AiNativeSalesHub'));
+const AgenticSdrPage = lazy(() => import('./pages/ai-native-sales/AgenticSdrPage'));
+const PredictiveIntelligencePage = lazy(() => import('./pages/ai-native-sales/PredictiveIntelligencePage'));
+const DealExecutionPage = lazy(() => import('./pages/ai-native-sales/DealExecutionPage'));
+const IntegrationsSecurityPage = lazy(() => import('./pages/ai-native-sales/IntegrationsSecurityPage'));
+const OriginHub = lazy(() => import('./pages/origin/OriginHub'));
+const OriginDiscoveryPage = lazy(() => import('./pages/origin/OriginDiscoveryPage'));
+const OriginSupplyChainPage = lazy(() => import('./pages/origin/OriginSupplyChainPage'));
+const OriginEcosystemPage = lazy(() => import('./pages/origin/OriginEcosystemPage'));
+const OriginExpansionPage = lazy(() => import('./pages/origin/OriginExpansionPage'));
+const OriginRealizationPage = lazy(() => import('./pages/origin/OriginRealizationPage'));
+const OriginNodeMapPage = lazy(() => import('./pages/origin/OriginNodeMapPage'));
+const B2BIndustryPage = lazy(() => import('./pages/industries/B2BIndustryPage'));
+const EnterpriseIndustryPage = lazy(() => import('./pages/industries/EnterpriseIndustryPage'));
+const GrowthIndustryPage = lazy(() => import('./pages/industries/GrowthIndustryPage'));
+const SpecializedSectorsPage = lazy(() => import('./pages/industries/SpecializedSectorsPage'));
+const DiscoveryHub = lazy(() => import('./pages/discovery/DiscoveryHub'));
+const DiscoveryNodePage = lazy(() => import('./pages/discovery/DiscoveryNodePage'));
 import TabExitPopup from './components/TabExitPopup';
 import StickyCtaBar from './components/StickyCtaBar';
 import WhatsAppWidget from './components/WhatsAppWidget';
@@ -139,26 +165,90 @@ export default function App() {
               <Route path="/ico-acceleration/solutions-engagement" element={<IcoSolutionsEngagement />} />
               <Route path="/ico-acceleration/trust-performance" element={<IcoTrustPerformance />} />
               <Route path="/ico-acceleration/sales-enablement" element={<IcoSalesEnablement />} />
-              <Route path="/ai-driven-sales-transformation" element={<AILeadSalesTransformation />} />
+              <Route path="/ai-driven-sales-transformation" element={<AiNativeSalesHub />} />
+              <Route path="/ai-native-sales" element={<AiNativeSalesHub />} />
+              <Route path="/ai-sales" element={<AiNativeSalesHub />} />
+              <Route path="/ai-native-sales/agentic-sdr" element={<AgenticSdrPage />} />
+              <Route path="/ai-native-sales/predictive-intelligence" element={<PredictiveIntelligencePage />} />
+              <Route path="/ai-native-sales/deal-execution" element={<DealExecutionPage />} />
+              <Route path="/ai-native-sales/integrations" element={<IntegrationsSecurityPage />} />
               <Route path="/growth-acceleration-science" element={<AIRevenueAcceleration />} />
+              <Route path="/growth-science" element={<AIRevenueAcceleration />} />
               <Route path="/global-market-acceleration" element={<DemandPulse />} />
+              <Route path="/global-business-accelerations" element={<DemandPulse />} />
+              <Route path="/demand-pulse" element={<DemandPulse />} />
               <Route path="/outcomes" element={<Outcomes />} />
+              <Route path="/case-studies" element={<Outcomes />} />
               <Route path="/use-cases" element={<Outcomes />} />
               <Route path="/solutions" element={<Solutions />} />
               <Route path="/solutions/:slug" element={<NavigateToSolutionsSection />} />
               <Route path="/capabilities" element={<Navigate to="/solutions" replace />} />
               <Route path="/industries" element={<Industries />} />
+              <Route path="/industries/b2b" element={<B2BIndustryPage />} />
+              <Route path="/industries/enterprise" element={<EnterpriseIndustryPage />} />
+              <Route path="/industries/growth" element={<GrowthIndustryPage />} />
+              <Route path="/industries/startups" element={<GrowthIndustryPage />} />
+              <Route path="/industries/mid-market" element={<GrowthIndustryPage />} />
+              <Route path="/industries/specialized" element={<SpecializedSectorsPage />} />
+              <Route path="/industries/services" element={<ServicesIndustry />} />
+              <Route path="/industries/retail" element={<RetailIndustry />} />
+              <Route path="/industries/platforms" element={<PlatformIndustry />} />
+              <Route path="/industries/crypto" element={<CryptoIndustry />} />
+              <Route path="/industries/financial-services" element={<FinancialServicesIndustry />} />
+              <Route path="/industries/healthcare" element={<HealthcareIndustry />} />
+              <Route path="/industries/industrial" element={<IndustrialIndustry />} />
+              <Route path="/industries/media" element={<MediaIndustry />} />
               <Route path="/offerings" element={<Offerings />} />
+              <Route path="/offerings/discovery" element={<DiscoveryHub />} />
+              <Route path="/offerings/discovery/micro-market" element={<DiscoveryNodePage nodeSlug="micro-market" />} />
+              <Route path="/offerings/discovery/demand-chain" element={<DiscoveryNodePage nodeSlug="demand-chain" />} />
+              <Route path="/offerings/discovery/channel" element={<DiscoveryNodePage nodeSlug="channel" />} />
+              <Route path="/offerings/discovery/willingness-to-pay" element={<DiscoveryNodePage nodeSlug="willingness-to-pay" />} />
+              <Route path="/offerings/discovery/propensity" element={<DiscoveryNodePage nodeSlug="propensity" />} />
+              <Route path="/offerings/discovery/usage-to-revenue" element={<DiscoveryNodePage nodeSlug="usage-to-revenue" />} />
+              <Route path="/offerings/discovery/competitor" element={<DiscoveryNodePage nodeSlug="competitor" />} />
+              <Route path="/offerings/discovery/ecosystem" element={<DiscoveryNodePage nodeSlug="ecosystem" />} />
+              <Route path="/offerings/discovery/offer-architecture" element={<DiscoveryNodePage nodeSlug="offer-architecture" />} />
+              <Route path="/offerings/discovery/cost-to-serve" element={<DiscoveryNodePage nodeSlug="cost-to-serve" />} />
+              <Route path="/offerings/discovery/alliance" element={<DiscoveryNodePage nodeSlug="alliance" />} />
+              <Route path="/offerings/discovery/platform-adjacency" element={<DiscoveryNodePage nodeSlug="platform-adjacency" />} />
+              <Route path="/offerings/discovery/new-offering" element={<DiscoveryNodePage nodeSlug="new-offering" />} />
+              <Route path="/offerings/discovery/new-market" element={<DiscoveryNodePage nodeSlug="new-market" />} />
+              <Route path="/offerings/discovery/new-channel" element={<DiscoveryNodePage nodeSlug="new-channel" />} />
+              <Route path="/offerings/discovery/new-launch" element={<DiscoveryNodePage nodeSlug="new-launch" />} />
+              <Route path="/offerings/discovery/:nodeSlug" element={<DiscoveryNodePage />} />
+              <Route path="/offerings/revenue-discovery" element={<OriginDiscoveryPage />} />
+              <Route path="/offerings/supply-chain-discovery" element={<OriginSupplyChainPage />} />
+              <Route path="/offerings/business-ecosystem-discovery" element={<OriginEcosystemPage />} />
+              <Route path="/offerings/expansion-discovery" element={<OriginExpansionPage />} />
+              <Route path="/offerings/origin" element={<OriginHub />} />
+              <Route path="/offerings/origin/discovery" element={<OriginDiscoveryPage />} />
+              <Route path="/offerings/origin/supply-chain" element={<OriginSupplyChainPage />} />
+              <Route path="/offerings/origin/ecosystem" element={<OriginEcosystemPage />} />
+              <Route path="/offerings/origin/expansion" element={<OriginExpansionPage />} />
+              <Route path="/offerings/origin/realization" element={<OriginRealizationPage />} />
+              <Route path="/offerings/origin/node-map" element={<OriginNodeMapPage />} />
+              <Route path="/origin" element={<OriginHub />} />
+              <Route path="/origin/discovery" element={<OriginDiscoveryPage />} />
+              <Route path="/origin/supply-chain" element={<OriginSupplyChainPage />} />
+              <Route path="/origin/ecosystem" element={<OriginEcosystemPage />} />
+              <Route path="/origin/expansion" element={<OriginExpansionPage />} />
+              <Route path="/origin/realization" element={<OriginRealizationPage />} />
+              <Route path="/origin/node-map" element={<OriginNodeMapPage />} />
+              <Route path="/offerings/engagement-models" element={<EngagementModels />} />
               <Route path="/offerings/discovery-stack" element={<OfferingsDiscoveryStack />} />
+              <Route path="/offerings/fast-start-kits" element={<OfferingsMicroSegmentKits />} />
+              <Route path="/offerings/engagement-journeys" element={<EngagementJourneys />} />
+              <Route path="/offerings/commercials" element={<EngagementCommercials />} />
               <Route path="/offerings/families" element={<OfferingsFamilies />} />
               <Route path="/offerings/delivery-tracks" element={<OfferingsDeliveryTracks />} />
               <Route path="/offerings/segments" element={<OfferingsSegments />} />
               <Route path="/offerings/micro-segment-kits" element={<OfferingsMicroSegmentKits />} />
               <Route path="/engagement" element={<Engagement />} />
               <Route path="/engagement-model" element={<Engagement />} />
-              <Route path="/engagement-models" element={<Navigate to="/engagement-model" replace />} />
+              <Route path="/engagement-models" element={<EngagementModels />} />
               <Route path="/engagement-model/models" element={<EngagementModels />} />
-              <Route path="/engagement-model/discovery-stack" element={<EngagementDiscoveryStack />} />
+              <Route path="/engagement-model/discovery-stack" element={<OfferingsDiscoveryStack />} />
               <Route path="/engagement-model/delivery-tracks" element={<EngagementDeliveryTracks />} />
               <Route path="/engagement-model/stage-playbooks" element={<EngagementStagePlaybooks />} />
               <Route path="/engagement-model/business-situations" element={<EngagementBusinessSituations />} />
@@ -179,9 +269,9 @@ export default function App() {
               <Route path="/services/competitive-discovery" element={<ServicePage />} />
               <Route path="/services/product-market-fit" element={<ServicePage />} />
               {/* ── New top-level routes ── */}
-              <Route path="/case-studies" element={<Navigate to="/#case-studies" replace />} />
-              <Route path="/blog" element={<Navigate to="/resources" replace />} />
               <Route path="/company" element={<Company />} />
+              <Route path="/about" element={<Company />} />
+              <Route path="/about-us" element={<Company />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/security" element={<Security />} />

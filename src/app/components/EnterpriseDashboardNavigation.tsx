@@ -5,7 +5,7 @@ import {
     ArrowRight, ArrowUpRight, Search, CheckCircle2, ShieldCheck, Users, 
     BarChart3, Activity, Coins, Rocket, Sliders, DollarSign, Bot, Globe,
     Briefcase, ShoppingBag, Landmark, HeartPulse, GraduationCap, Zap, Lock,
-    Clock, Compass, FileText, Check, HelpCircle, X, SlidersHorizontal
+    Clock, Compass, FileText, Check, HelpCircle, X, SlidersHorizontal, TrendingUp
 } from 'lucide-react';
 
 export interface EnterpriseDashboardNavigationProps {

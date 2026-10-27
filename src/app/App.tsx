@@ -13,6 +13,12 @@ const Outcomes = lazy(() => import('./pages/Outcomes'));
 const Solutions = lazy(() => import('./pages/Solutions'));
 const Capabilities = lazy(() => import('./pages/Capabilities'));
 const Industries = lazy(() => import('./pages/Industries'));
+const IndustriesB2B = lazy(() => import('./pages/industries/IndustriesB2B'));
+const IndustriesB2C = lazy(() => import('./pages/industries/IndustriesB2C'));
+const IndustriesEnterprise = lazy(() => import('./pages/industries/IndustriesEnterprise'));
+const IndustriesMidMarket = lazy(() => import('./pages/industries/IndustriesMidMarket'));
+const IndustriesStartups = lazy(() => import('./pages/industries/IndustriesStartups'));
+const IndustriesSpecialized = lazy(() => import('./pages/industries/IndustriesSpecialized'));
 const Offerings = lazy(() => import('./pages/Offerings'));
 const ProfitPoolDiscovery = lazy(() => import('./pages/offerings/ProfitPoolDiscovery'));
 const DemandEngineering = lazy(() => import('./pages/offerings/DemandEngineering'));
@@ -157,8 +163,16 @@ export default function App() {
               <Route path="/solutions" element={<Solutions />} />
               <Route path="/solutions/:slug" element={<NavigateToSolutionsSection />} />
               <Route path="/capabilities" element={<Navigate to="/solutions" replace />} />
-              <Route path="/industries" element={<Industries />} />
-              <Route path="/industries/*" element={<Navigate to="/industries" replace />} />
+              <Route path="/industries" element={<Navigate to="/industries/b2b" replace />} />
+              <Route path="/industries/b2b" element={<IndustriesB2B />} />
+              <Route path="/industries/b2c" element={<IndustriesB2C />} />
+              <Route path="/industries/enterprise" element={<IndustriesEnterprise />} />
+              <Route path="/industries/midmarket" element={<IndustriesMidMarket />} />
+              <Route path="/industries/mid-market" element={<Navigate to="/industries/midmarket" replace />} />
+              <Route path="/industries/startups" element={<IndustriesStartups />} />
+              <Route path="/industries/sectors" element={<IndustriesSpecialized />} />
+              <Route path="/industries/specialized" element={<Navigate to="/industries/sectors" replace />} />
+              <Route path="/industries/*" element={<Navigate to="/industries/b2b" replace />} />
               <Route path="/offerings" element={<Offerings />} />
               <Route path="/offerings/profit-pool-discovery" element={<ProfitPoolDiscovery />} />
               <Route path="/offerings/demand-engineering" element={<DemandEngineering />} />

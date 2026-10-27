@@ -64,8 +64,8 @@ export default function Navigation() {
         // 1. REVENUE DISCOVERY (ORIGIN FRAMEWORK)
         {
             id: 'offerings',
-            name: 'Revenue Discovery',
-            shortName: 'Discovery',
+            name: 'Offerings',
+            shortName: 'Offerings',
             path: '/offerings/discovery',
             icon: Compass,
             badge: 'ORIGIN Framework · 16 Nodes',

@@ -212,14 +212,6 @@ export default function ExecutiveExpansionOfficePage() {
                 </div>
               </div>
 
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-purple-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Is your organization actually ready to expand globally — or just eager to?
-                </p>
-              </div>
-
               {/* Narrative Breakdown */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600 mb-6">
                 <div className="space-y-3">
@@ -268,14 +260,6 @@ export default function ExecutiveExpansionOfficePage() {
                   <TrendingUp className="w-4 h-4 text-indigo-600" />
                   <span>50-70% Improvement in Expansion ROI</span>
                 </div>
-              </div>
-
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-indigo-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Do you have a sequenced roadmap for global expansion — or are you entering markets opportunistically?
-                </p>
               </div>
 
               {/* Narrative Breakdown */}
@@ -328,14 +312,6 @@ export default function ExecutiveExpansionOfficePage() {
                 </div>
               </div>
 
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-blue-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Do you have a strategy for each market — or just a global strategy applied everywhere?
-                </p>
-              </div>
-
               {/* Narrative Breakdown */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600 mb-6">
                 <div className="space-y-3">
@@ -384,14 +360,6 @@ export default function ExecutiveExpansionOfficePage() {
                   <BarChart3 className="w-4 h-4 text-emerald-600" />
                   <span>50-70% Faster C-Suite Decisions</span>
                 </div>
-              </div>
-
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-emerald-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Does your C-suite have real-time visibility into global expansion performance — or just quarterly reports?
-                </p>
               </div>
 
               {/* Narrative Breakdown */}

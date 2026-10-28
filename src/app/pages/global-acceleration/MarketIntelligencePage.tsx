@@ -252,14 +252,6 @@ export default function MarketIntelligencePage() {
                 </div>
               </div>
 
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-blue-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Do you know which international markets will deliver ROI — or are you chasing GDP headlines?
-                </p>
-              </div>
-
               {/* Narrative Breakdown */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600 mb-6">
                 <div className="space-y-3">
@@ -308,14 +300,6 @@ export default function MarketIntelligencePage() {
                   <CheckCircle2 className="w-4 h-4 text-indigo-600" />
                   <span>&lt;15% Variance to Actual Revenue</span>
                 </div>
-              </div>
-
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-indigo-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Do you know your real addressable market in each country — or just the global headline?
-                </p>
               </div>
 
               {/* Narrative Breakdown */}
@@ -368,14 +352,6 @@ export default function MarketIntelligencePage() {
                 </div>
               </div>
 
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-purple-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Do you know who you&apos;re really competing with in each market — or just the global players?
-                </p>
-              </div>
-
               {/* Narrative Breakdown */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600 mb-6">
                 <div className="space-y-3">
@@ -424,14 +400,6 @@ export default function MarketIntelligencePage() {
                   <ShieldCheck className="w-4 h-4 text-emerald-600" />
                   <span>100% Launch Compliance · 0 Fines</span>
                 </div>
-              </div>
-
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-emerald-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Do you know which regulations will strand your contracts — or are you discovering them after launch?
-                </p>
               </div>
 
               {/* Narrative Breakdown */}

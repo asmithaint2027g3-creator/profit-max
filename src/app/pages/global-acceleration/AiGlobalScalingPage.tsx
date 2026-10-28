@@ -197,14 +197,6 @@ export default function AiGlobalScalingPage() {
                 </div>
               </div>
 
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-violet-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Can you prospect in 15 languages across 20 timezones — or are you limited by human headcount?
-                </p>
-              </div>
-
               {/* Narrative Breakdown */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600 mb-6">
                 <div className="space-y-3">
@@ -253,14 +245,6 @@ export default function AiGlobalScalingPage() {
                   <Eye className="w-4 h-4 text-indigo-600" />
                   <span>&lt;7 Days Competitor Detection</span>
                 </div>
-              </div>
-
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-indigo-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Can you monitor market signals across 20 countries in real time — or are you relying on quarterly reports?
-                </p>
               </div>
 
               {/* Narrative Breakdown */}
@@ -313,14 +297,6 @@ export default function AiGlobalScalingPage() {
                 </div>
               </div>
 
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-emerald-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Can you track regulatory changes across 20 jurisdictions in real time — or are you discovering them reactively?
-                </p>
-              </div>
-
               {/* Narrative Breakdown */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600 mb-6">
                 <div className="space-y-3">
@@ -369,14 +345,6 @@ export default function AiGlobalScalingPage() {
                   <TrendingUp className="w-4 h-4 text-blue-600" />
                   <span>25-40% Expansion Revenue Lift</span>
                 </div>
-              </div>
-
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-blue-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Can you identify expansion opportunities across global accounts automatically — or are you relying on manual account reviews?
-                </p>
               </div>
 
               {/* Narrative Breakdown */}

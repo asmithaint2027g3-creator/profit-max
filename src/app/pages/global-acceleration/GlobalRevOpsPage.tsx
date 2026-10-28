@@ -202,14 +202,6 @@ export default function GlobalRevOpsPage() {
                 </div>
               </div>
 
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-sky-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Can you prove compliance across every market you operate in — or are you discovering gaps reactively?
-                </p>
-              </div>
-
               {/* Narrative Breakdown */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600 mb-6">
                 <div className="space-y-3">
@@ -258,14 +250,6 @@ export default function GlobalRevOpsPage() {
                   <Users className="w-4 h-4 text-blue-600" />
                   <span>30-50% Lift in Cross-Border Account Revenue</span>
                 </div>
-              </div>
-
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-blue-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Are your global sales teams aligned — or operating as independent fiefdoms?
-                </p>
               </div>
 
               {/* Narrative Breakdown */}
@@ -318,14 +302,6 @@ export default function GlobalRevOpsPage() {
                 </div>
               </div>
 
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-indigo-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Can you attribute revenue by region, partner, and motion — or just see global totals?
-                </p>
-              </div>
-
               {/* Narrative Breakdown */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600 mb-6">
                 <div className="space-y-3">
@@ -374,14 +350,6 @@ export default function GlobalRevOpsPage() {
                   <Layers className="w-4 h-4 text-purple-600" />
                   <span>40-60% Reduction in Operational Duplication</span>
                 </div>
-              </div>
-
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-purple-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Can you orchestrate operations across timezones, currencies, and cultures — or is every region a separate P&L?
-                </p>
               </div>
 
               {/* Narrative Breakdown */}

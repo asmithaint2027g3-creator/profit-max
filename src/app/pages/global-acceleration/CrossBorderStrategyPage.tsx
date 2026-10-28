@@ -221,14 +221,6 @@ export default function CrossBorderStrategyPage() {
                 </div>
               </div>
 
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-indigo-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Are you entering markets with the right model — or just replicating your domestic motion?
-                </p>
-              </div>
-
               {/* Narrative Breakdown */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600 mb-6">
                 <div className="space-y-3">
@@ -277,14 +269,6 @@ export default function CrossBorderStrategyPage() {
                   <Sparkles className="w-4 h-4 text-blue-600" />
                   <span>3-5X Improvement in Conversion Rates</span>
                 </div>
-              </div>
-
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-blue-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Is your offering truly localized — or just translated?
-                </p>
               </div>
 
               {/* Narrative Breakdown */}
@@ -337,14 +321,6 @@ export default function CrossBorderStrategyPage() {
                 </div>
               </div>
 
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-emerald-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Are you pricing for each market&apos;s purchasing power — or applying a universal price with currency conversion?
-                </p>
-              </div>
-
               {/* Narrative Breakdown */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600 mb-6">
                 <div className="space-y-3">
@@ -393,14 +369,6 @@ export default function CrossBorderStrategyPage() {
                   <BarChart3 className="w-4 h-4 text-purple-600" />
                   <span>20-30% Lift in International NRR</span>
                 </div>
-              </div>
-
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-purple-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Do you have a plan to expand revenue within each market — or just a plan to enter?
-                </p>
               </div>
 
               {/* Narrative Breakdown */}

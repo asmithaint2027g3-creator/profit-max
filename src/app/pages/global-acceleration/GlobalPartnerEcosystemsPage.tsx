@@ -219,14 +219,6 @@ export default function GlobalPartnerEcosystemsPage() {
                 </div>
               </div>
 
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-emerald-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Do you know which distributors will actually drive revenue — or are you signing everyone who applies?
-                </p>
-              </div>
-
               {/* Narrative Breakdown */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600 mb-6">
                 <div className="space-y-3">
@@ -275,14 +267,6 @@ export default function GlobalPartnerEcosystemsPage() {
                   <Target className="w-4 h-4 text-teal-600" />
                   <span>2-4 Priority Partners in 6 Months</span>
                 </div>
-              </div>
-
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-teal-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Are you recruiting partners strategically — or just responding to inbound interest?
-                </p>
               </div>
 
               {/* Narrative Breakdown */}
@@ -335,14 +319,6 @@ export default function GlobalPartnerEcosystemsPage() {
                 </div>
               </div>
 
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-blue-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Are your co-selling programs producing pipeline — or just consuming resources?
-                </p>
-              </div>
-
               {/* Narrative Breakdown */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600 mb-6">
                 <div className="space-y-3">
@@ -391,14 +367,6 @@ export default function GlobalPartnerEcosystemsPage() {
                   <Award className="w-4 h-4 text-purple-600" />
                   <span>2-4 Activated Hyperscaler Alliances</span>
                 </div>
-              </div>
-
-              {/* Provocative Question */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white mb-6 flex items-start gap-3">
-                <span className="text-purple-400 font-mono text-lg font-bold">Q:</span>
-                <p className="font-semibold text-base sm:text-lg text-slate-100">
-                  Are your strategic alliances producing revenue — or just consuming executive attention?
-                </p>
               </div>
 
               {/* Narrative Breakdown */}

@@ -22,8 +22,8 @@ import {
   Eye,
   FileText
 } from 'lucide-react';
-import AiSalesStickySubNav from '../../components/AiSalesStickySubNav';
-import AiSalesIntakeForm from '../../components/forms/AiSalesIntakeForm';
+
+import { AiSalesIntakeForm } from '../../components/forms/AiSalesIntakeForm';
 
 export default function DealExecutionPage() {
   useEffect(() => {
@@ -31,11 +31,7 @@ export default function DealExecutionPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  const subNavAnchors = [
-    { id: 'committee', label: 'Buying Committee Visibility' },
-    { id: 'telemetry', label: 'Real-Time Rep Telemetry' },
-    { id: 'battlecards', label: 'Dynamic Battlecards' }
-  ];
+
 
   const committeeArchitecture = [
     {
@@ -123,13 +119,6 @@ export default function DealExecutionPage() {
   return (
     <div className="min-h-screen bg-slate-50/50 text-slate-900 pt-16 lg:pt-[72px]">
       
-      {/* ── STICKY SUB-NAV ── */}
-      <AiSalesStickySubNav
-        currentPageTitle="Deal Execution & Enablement"
-        currentPath="/ai-native-sales/deal-execution"
-        anchors={subNavAnchors}
-      />
-
       {/* ── HERO BANNER ── */}
       <section className="relative bg-slate-950 text-white py-14 lg:py-20 overflow-hidden border-b border-slate-800">
         <div className="absolute inset-0 z-0">

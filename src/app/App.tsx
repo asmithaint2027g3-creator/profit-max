@@ -74,10 +74,22 @@ const IcoSolutionsEngagement = lazy(() => import('./pages/ico/IcoSolutionsEngage
 const IcoTrustPerformance = lazy(() => import('./pages/ico/IcoTrustPerformance'));
 const IcoSalesEnablement = lazy(() => import('./pages/ico/IcoSalesEnablement'));
 const AiNativeSalesHub = lazy(() => import('./pages/ai-native-sales/AiNativeSalesHub'));
+const RevenueIntelligencePage = lazy(() => import('./pages/ai-native-sales/RevenueIntelligencePage'));
+const ProspectingPipelinePage = lazy(() => import('./pages/ai-native-sales/ProspectingPipelinePage'));
+const SalesExecutionPage = lazy(() => import('./pages/ai-native-sales/SalesExecutionPage'));
+const RevenueOperationsPage = lazy(() => import('./pages/ai-native-sales/RevenueOperationsPage'));
+const SalesAgentsPage = lazy(() => import('./pages/ai-native-sales/SalesAgentsPage'));
+const CustomerGrowthPage = lazy(() => import('./pages/ai-native-sales/CustomerGrowthPage'));
 const AgenticSdrPage = lazy(() => import('./pages/ai-native-sales/AgenticSdrPage'));
 const PredictiveIntelligencePage = lazy(() => import('./pages/ai-native-sales/PredictiveIntelligencePage'));
 const DealExecutionPage = lazy(() => import('./pages/ai-native-sales/DealExecutionPage'));
 const IntegrationsSecurityPage = lazy(() => import('./pages/ai-native-sales/IntegrationsSecurityPage'));
+const GrowthScienceHub = lazy(() => import('./pages/growth-science/GrowthScienceHub'));
+const RevenuePhysicsPage = lazy(() => import('./pages/growth-science/RevenuePhysicsPage'));
+const FrictionDiagnosticsPage = lazy(() => import('./pages/growth-science/FrictionDiagnosticsPage'));
+const AiAccelerationEnginesPage = lazy(() => import('./pages/growth-science/AiAccelerationEnginesPage'));
+const ProprietaryGrowthModelsPage = lazy(() => import('./pages/growth-science/ProprietaryGrowthModelsPage'));
+const ExecutiveTelemetryPage = lazy(() => import('./pages/growth-science/ExecutiveTelemetryPage'));
 import TabExitPopup from './components/TabExitPopup';
 import StickyCtaBar from './components/StickyCtaBar';
 import WhatsAppWidget from './components/WhatsAppWidget';
@@ -148,12 +160,23 @@ export default function App() {
               <Route path="/ai-driven-sales-transformation" element={<AiNativeSalesHub />} />
               <Route path="/ai-native-sales" element={<AiNativeSalesHub />} />
               <Route path="/ai-sales" element={<AiNativeSalesHub />} />
+              <Route path="/ai-native-sales/revenue-intelligence" element={<RevenueIntelligencePage />} />
+              <Route path="/ai-native-sales/prospecting" element={<ProspectingPipelinePage />} />
+              <Route path="/ai-native-sales/sales-execution" element={<SalesExecutionPage />} />
+              <Route path="/ai-native-sales/revops" element={<RevenueOperationsPage />} />
+              <Route path="/ai-native-sales/agents" element={<SalesAgentsPage />} />
+              <Route path="/ai-native-sales/customer-growth" element={<CustomerGrowthPage />} />
               <Route path="/ai-native-sales/agentic-sdr" element={<AgenticSdrPage />} />
               <Route path="/ai-native-sales/predictive-intelligence" element={<PredictiveIntelligencePage />} />
               <Route path="/ai-native-sales/deal-execution" element={<DealExecutionPage />} />
               <Route path="/ai-native-sales/integrations" element={<IntegrationsSecurityPage />} />
-              <Route path="/growth-acceleration-science" element={<AIRevenueAcceleration />} />
-              <Route path="/growth-science" element={<AIRevenueAcceleration />} />
+              <Route path="/growth-acceleration-science" element={<GrowthScienceHub />} />
+              <Route path="/growth-science" element={<GrowthScienceHub />} />
+              <Route path="/growth-science/revenue-physics" element={<RevenuePhysicsPage />} />
+              <Route path="/growth-science/friction-diagnostics" element={<FrictionDiagnosticsPage />} />
+              <Route path="/growth-science/ai-engines" element={<AiAccelerationEnginesPage />} />
+              <Route path="/growth-science/growth-models" element={<ProprietaryGrowthModelsPage />} />
+              <Route path="/growth-science/executive-telemetry" element={<ExecutiveTelemetryPage />} />
               <Route path="/global-market-acceleration" element={<DemandPulse />} />
               <Route path="/global-business-accelerations" element={<DemandPulse />} />
               <Route path="/demand-pulse" element={<DemandPulse />} />

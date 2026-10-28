@@ -24,8 +24,8 @@ import {
   Landmark,
   Radio
 } from 'lucide-react';
-import AiSalesStickySubNav from '../../components/AiSalesStickySubNav';
-import AiSalesIntakeForm from '../../components/forms/AiSalesIntakeForm';
+
+import { AiSalesIntakeForm } from '../../components/forms/AiSalesIntakeForm';
 
 export default function IntegrationsSecurityPage() {
   useEffect(() => {
@@ -35,11 +35,7 @@ export default function IntegrationsSecurityPage() {
 
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
-  const subNavAnchors = [
-    { id: 'integrations', label: 'Tech Stack Integrations' },
-    { id: 'security', label: 'Security Architecture' },
-    { id: 'compliance', label: 'Compliance Frameworks' }
-  ];
+
 
   const integrationCategories = [
     {
@@ -234,13 +230,6 @@ export default function IntegrationsSecurityPage() {
   return (
     <div className="min-h-screen bg-slate-50/50 text-slate-900 pt-16 lg:pt-[72px]">
       
-      {/* ── STICKY SUB-NAV ── */}
-      <AiSalesStickySubNav
-        currentPageTitle="Integrations & Security"
-        currentPath="/ai-native-sales/integrations"
-        anchors={subNavAnchors}
-      />
-
       {/* ── HERO BANNER ── */}
       <section className="relative bg-slate-950 text-white py-14 lg:py-20 overflow-hidden border-b border-slate-800">
         <div className="absolute inset-0 z-0">

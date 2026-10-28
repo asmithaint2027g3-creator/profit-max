@@ -19,8 +19,8 @@ import {
   ShieldCheck,
   AlertCircle
 } from 'lucide-react';
-import AiSalesStickySubNav from '../../components/AiSalesStickySubNav';
-import AiSalesIntakeForm from '../../components/forms/AiSalesIntakeForm';
+
+import { AiSalesIntakeForm } from '../../components/forms/AiSalesIntakeForm';
 
 export default function PredictiveIntelligencePage() {
   useEffect(() => {
@@ -28,11 +28,7 @@ export default function PredictiveIntelligencePage() {
     window.scrollTo(0, 0);
   }, []);
 
-  const subNavAnchors = [
-    { id: 'propensity', label: 'ICP Propensity Scoring' },
-    { id: 'velocity', label: 'Pipeline Velocity & Pacing' },
-    { id: 'forecast', label: 'Forecast Accuracy Models' }
-  ];
+
 
   const propensityArchitecture = [
     {
@@ -126,13 +122,6 @@ export default function PredictiveIntelligencePage() {
   return (
     <div className="min-h-screen bg-slate-50/50 text-slate-900 pt-16 lg:pt-[72px]">
       
-      {/* ── STICKY SUB-NAV ── */}
-      <AiSalesStickySubNav
-        currentPageTitle="Predictive Intelligence"
-        currentPath="/ai-native-sales/predictive-intelligence"
-        anchors={subNavAnchors}
-      />
-
       {/* ── HERO BANNER ── */}
       <section className="relative bg-slate-950 text-white py-14 lg:py-20 overflow-hidden border-b border-slate-800">
         <div className="absolute inset-0 z-0">

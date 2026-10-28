@@ -23,8 +23,8 @@ import {
   GitBranch,
   XCircle
 } from 'lucide-react';
-import AiSalesStickySubNav from '../../components/AiSalesStickySubNav';
-import AiSalesIntakeForm from '../../components/forms/AiSalesIntakeForm';
+
+import { AiSalesIntakeForm } from '../../components/forms/AiSalesIntakeForm';
 
 export default function AgenticSdrPage() {
   useEffect(() => {
@@ -32,11 +32,7 @@ export default function AgenticSdrPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  const subNavAnchors = [
-    { id: 'architecture', label: 'Architecture & Stack' },
-    { id: 'features', label: 'Key Features & Capabilities' },
-    { id: 'governance', label: 'Governance & Outcomes' }
-  ];
+
 
   const architectureLayers = [
     {
@@ -219,13 +215,6 @@ export default function AgenticSdrPage() {
   return (
     <div className="min-h-screen bg-slate-50/50 text-slate-900 pt-16 lg:pt-[72px]">
       
-      {/* ── STICKY SUB-NAVIGATION ── */}
-      <AiSalesStickySubNav
-        currentPageTitle="Agentic SDR & Autopilots"
-        currentPath="/ai-native-sales/agentic-sdr"
-        anchors={subNavAnchors}
-      />
-
       {/* ── HERO BANNER ── */}
       <section className="relative bg-slate-950 text-white py-14 lg:py-20 overflow-hidden border-b border-slate-800">
         <div className="absolute inset-0 z-0">

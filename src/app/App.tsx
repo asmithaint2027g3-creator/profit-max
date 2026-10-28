@@ -90,6 +90,13 @@ const FrictionDiagnosticsPage = lazy(() => import('./pages/growth-science/Fricti
 const AiAccelerationEnginesPage = lazy(() => import('./pages/growth-science/AiAccelerationEnginesPage'));
 const ProprietaryGrowthModelsPage = lazy(() => import('./pages/growth-science/ProprietaryGrowthModelsPage'));
 const ExecutiveTelemetryPage = lazy(() => import('./pages/growth-science/ExecutiveTelemetryPage'));
+const GlobalAccelerationHub = lazy(() => import('./pages/global-acceleration/GlobalAccelerationHub'));
+const MarketIntelligencePage = lazy(() => import('./pages/global-acceleration/MarketIntelligencePage'));
+const CrossBorderStrategyPage = lazy(() => import('./pages/global-acceleration/CrossBorderStrategyPage'));
+const GlobalPartnerEcosystemsPage = lazy(() => import('./pages/global-acceleration/GlobalPartnerEcosystemsPage'));
+const GlobalRevOpsPage = lazy(() => import('./pages/global-acceleration/GlobalRevOpsPage'));
+const AiGlobalScalingPage = lazy(() => import('./pages/global-acceleration/AiGlobalScalingPage'));
+const ExecutiveExpansionOfficePage = lazy(() => import('./pages/global-acceleration/ExecutiveExpansionOfficePage'));
 import TabExitPopup from './components/TabExitPopup';
 import StickyCtaBar from './components/StickyCtaBar';
 import WhatsAppWidget from './components/WhatsAppWidget';
@@ -177,8 +184,15 @@ export default function App() {
               <Route path="/growth-science/ai-engines" element={<AiAccelerationEnginesPage />} />
               <Route path="/growth-science/growth-models" element={<ProprietaryGrowthModelsPage />} />
               <Route path="/growth-science/executive-telemetry" element={<ExecutiveTelemetryPage />} />
-              <Route path="/global-market-acceleration" element={<DemandPulse />} />
-              <Route path="/global-business-accelerations" element={<DemandPulse />} />
+              <Route path="/global-acceleration" element={<GlobalAccelerationHub />} />
+              <Route path="/global-business-accelerations" element={<GlobalAccelerationHub />} />
+              <Route path="/global-market-acceleration" element={<Navigate to="/global-acceleration" replace />} />
+              <Route path="/global-acceleration/market-intelligence" element={<MarketIntelligencePage />} />
+              <Route path="/global-acceleration/cross-border-strategy" element={<CrossBorderStrategyPage />} />
+              <Route path="/global-acceleration/partner-ecosystems" element={<GlobalPartnerEcosystemsPage />} />
+              <Route path="/global-acceleration/global-revops" element={<GlobalRevOpsPage />} />
+              <Route path="/global-acceleration/ai-global-scaling" element={<AiGlobalScalingPage />} />
+              <Route path="/global-acceleration/expansion-office" element={<ExecutiveExpansionOfficePage />} />
               <Route path="/demand-pulse" element={<DemandPulse />} />
               <Route path="/outcomes" element={<Outcomes />} />
               <Route path="/case-studies" element={<Outcomes />} />

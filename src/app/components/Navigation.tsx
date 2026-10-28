@@ -1587,139 +1587,347 @@ export default function Navigation() {
             ]
         },
 
-        // 5. GLOBAL BUSINESS ACCELERATIONS
+        // 5. GLOBAL BUSINESS ACCELERATION
         {
             id: 'global-business-accelerations',
-            name: 'Global Business Accelerations',
-            shortName: 'Global Business Accelerations',
-            path: '/global-business-accelerations',
+            name: 'Global Business Acceleration',
+            shortName: 'Global Business Acceleration',
+            path: '/global-acceleration',
             icon: Globe,
-            badge: 'Cross-Border Expansion',
-            summary: 'International market penetration, DemandPulse™ geographical intelligence, multi-currency revenue architecture, and jurisdictional GTM.',
+            badge: 'Cross-Border Scale',
+            summary: 'Deterministic international revenue engineering: autonomous market validation, multi-language AI SDR agents, and global RevOps.',
             categories: [
                 {
-                    id: 'cross-border-penetration',
-                    title: 'International Market Penetration',
-                    desc: 'Rapid geographic market entry and cross-border enterprise revenue execution',
-                    path: '/global-business-accelerations',
-                    badge: 'Global GTM',
+                    id: 'market-intelligence',
+                    title: 'Market Intelligence',
+                    desc: 'Validate country opportunity, TAM/SAM/SOM sizing, and regulatory burden before capital commitment',
+                    path: '/global-acceleration/market-intelligence',
+                    badge: 'Pillar 01',
                     icon: Globe,
                     columns: [
                         {
-                            header: 'Regional Playbooks',
-                            badge: 'Major Markets',
+                            header: 'Opportunity & Sizing',
+                            badge: 'Validation',
                             icon: Globe,
                             cards: [
                                 {
-                                    title: 'North America Enterprise Scale',
-                                    description: 'Tier-1 enterprise outbound and Fortune 500 buying committee consensus.',
-                                    path: '/global-business-accelerations',
-                                    badge: 'North America',
-                                    icon: Building2,
-                                    tags: ['Fortune 500', 'Enterprise GTM']
+                                    title: 'Country Opportunity Analysis',
+                                    description: 'Unit-economic validation ranking markets by contribution margin over GDP headlines.',
+                                    path: '/global-acceleration/market-intelligence',
+                                    badge: 'Unit Economics',
+                                    icon: Globe,
+                                    tags: ['ROI Ranking', 'Contribution Margin']
                                 },
                                 {
-                                    title: 'EMEA & UK Regulatory Playbooks',
-                                    description: 'GDPR-compliant outreach, UK enterprise banking, and DACH region scaling.',
-                                    path: '/global-business-accelerations',
-                                    badge: 'EMEA & UK',
-                                    icon: Landmark,
-                                    tags: ['GDPR Compliant', 'Multi-Language']
-                                },
-                                {
-                                    title: 'APAC & Emerging Growth Hubs',
-                                    description: 'High-growth market expansion across Singapore, Tokyo, and Sydney.',
-                                    path: '/global-business-accelerations',
-                                    badge: 'APAC Scale',
-                                    icon: Rocket,
-                                    tags: ['APAC Expansion', 'Regional Hubs']
+                                    title: 'TAM / SAM / SOM Assessment',
+                                    description: 'Country-specific addressable market modeling with realistic penetration rates.',
+                                    path: '/global-acceleration/market-intelligence',
+                                    badge: 'Territory Sizing',
+                                    icon: Target,
+                                    tags: ['Territory TAM', '<15% Variance']
                                 }
                             ]
                         },
                         {
-                            header: 'Enterprise Account Entry',
-                            badge: 'Account Penetration',
-                            icon: Briefcase,
+                            header: 'Incumbents & Compliance',
+                            badge: 'Dissection',
+                            icon: ShieldCheck,
                             cards: [
                                 {
-                                    title: 'Global Account Penetration',
-                                    description: 'Multi-geography expansion inside existing multinational enterprise logos.',
-                                    path: '/global-business-accelerations',
-                                    badge: 'Global MNCs',
-                                    icon: Briefcase,
-                                    tags: ['Land & Expand', 'Global Logos']
+                                    title: 'Competitive Mapping',
+                                    description: 'Map domestic regional rivals and deploy tailored counter-strategies.',
+                                    path: '/global-acceleration/market-intelligence',
+                                    badge: 'Incumbents',
+                                    icon: ShieldCheck,
+                                    tags: ['Rival Dissection', 'Win Rates']
                                 },
                                 {
-                                    title: 'Strategic Partnership Finder',
-                                    description: 'Automated discovery of regional distributors, resellers, and co-sell partners.',
-                                    path: '/global-business-accelerations',
-                                    badge: 'Alliances',
-                                    icon: Handshake,
-                                    tags: ['Reseller Network', 'Co-Sell']
-                                },
-                                {
-                                    title: 'Executive Engagement Automation',
-                                    description: 'C-suite relationship initiation across multinational headquarters.',
-                                    path: '/global-business-accelerations',
-                                    badge: 'Executive',
-                                    icon: Users,
-                                    tags: ['C-Suite Access', 'Executive GTM']
+                                    title: 'Regulatory Intelligence',
+                                    description: 'Pre-launch data residency and sovereign compliance mapping with real-time monitoring.',
+                                    path: '/global-acceleration/market-intelligence',
+                                    badge: 'Sovereignty',
+                                    icon: Landmark,
+                                    tags: ['GDPR / LGPD', 'Zero Fines']
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    id: 'demand-pulse-intelligence',
-                    title: 'DemandPulse™ Macro Intelligence',
-                    desc: 'Real-time regional buyer intent, regulatory compliance, and cross-border TAM mapping',
-                    path: '/global-business-accelerations',
-                    badge: 'Macro Intelligence',
-                    icon: Activity,
+                    id: 'cross-border-strategy',
+                    title: 'Cross-Border Revenue Strategy',
+                    desc: 'Engineer entry models, deep localization, dynamic pricing, and expansion planning',
+                    path: '/global-acceleration/cross-border-strategy',
+                    badge: 'Pillar 02',
+                    icon: Compass,
                     columns: [
                         {
-                            header: 'Territory Intent & Pricing',
-                            badge: 'Macro Signals',
-                            icon: Activity,
+                            header: 'Entry Architecture',
+                            badge: 'Motion Design',
+                            icon: Compass,
                             cards: [
                                 {
-                                    title: 'Real-Time Territory Intent Monitoring',
-                                    description: 'Tracking surge demand across 40+ countries and regional industries.',
-                                    path: '/global-business-accelerations',
-                                    badge: 'Territory Intent',
-                                    icon: Activity,
-                                    tags: ['40+ Countries', 'Surge Signals']
+                                    title: 'Market Entry Models',
+                                    description: 'Tailored direct, partner-led, hybrid, or digital-first go-to-market motions.',
+                                    path: '/global-acceleration/cross-border-strategy',
+                                    badge: 'Motion Architecture',
+                                    icon: Compass,
+                                    tags: ['Entry Models', 'Time-to-Revenue']
                                 },
                                 {
-                                    title: 'Multi-Currency Pricing Alignment',
-                                    description: 'Localized purchasing power and currency-hedged enterprise contracts.',
-                                    path: '/global-business-accelerations',
-                                    badge: 'Pricing',
-                                    icon: DollarSign,
-                                    tags: ['Multi-Currency', 'Localization']
+                                    title: 'Localization Strategy',
+                                    description: 'Deep cultural value alignment beyond surface-level language translation.',
+                                    path: '/global-acceleration/cross-border-strategy',
+                                    badge: 'Cultural Fit',
+                                    icon: Sparkles,
+                                    tags: ['3-5X CVR Lift', 'Buyer Alignment']
                                 }
                             ]
                         },
                         {
-                            header: 'Compliance & Distributed SDRs',
-                            badge: 'Operational Scale',
+                            header: 'Pricing & Expansion',
+                            badge: 'Revenue Scaling',
+                            icon: DollarSign,
+                            cards: [
+                                {
+                                    title: 'Global Pricing',
+                                    description: 'Purchasing-power adjusted pricing tiers and dynamic currency hedging.',
+                                    path: '/global-acceleration/cross-border-strategy',
+                                    badge: 'PPP & Hedging',
+                                    icon: DollarSign,
+                                    tags: ['Margin Defense', 'Currency Tiers']
+                                },
+                                {
+                                    title: 'Revenue Expansion Planning',
+                                    description: 'Market-specific upsell and cross-border account expansion motions.',
+                                    path: '/global-acceleration/cross-border-strategy',
+                                    badge: 'NRR Lift',
+                                    icon: TrendingUp,
+                                    tags: ['+20-30% NRR', 'Land & Expand']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'partner-ecosystems',
+                    title: 'Global Partner Ecosystems',
+                    desc: 'Build high-yield distributor networks, co-selling programs, and strategic alliances',
+                    path: '/global-acceleration/partner-ecosystems',
+                    badge: 'Pillar 03',
+                    icon: Network,
+                    columns: [
+                        {
+                            header: 'Distribution & Sourcing',
+                            badge: 'Channel Scale',
+                            icon: Network,
+                            cards: [
+                                {
+                                    title: 'Distributor Networks',
+                                    description: 'Score distributors by measured contribution and focus on high-yield partners.',
+                                    path: '/global-acceleration/partner-ecosystems',
+                                    badge: 'Scored Networks',
+                                    icon: Network,
+                                    tags: ['3-5X Partner Lift', 'Scorecards']
+                                },
+                                {
+                                    title: 'Partner Recruitment',
+                                    description: 'Strategic gap mapping and recruitment of top-tier regional distributors.',
+                                    path: '/global-acceleration/partner-ecosystems',
+                                    badge: 'Strategic Sourcing',
+                                    icon: Target,
+                                    tags: ['Regional Recruitment', 'Ecosystem Gaps']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Co-Sell & Alliances',
+                            badge: 'Alliances',
+                            icon: Handshake,
+                            cards: [
+                                {
+                                    title: 'Co-Selling Programs',
+                                    description: 'Structured co-selling with clear pipeline attribution and joint planning.',
+                                    path: '/global-acceleration/partner-ecosystems',
+                                    badge: 'Attribution',
+                                    icon: Handshake,
+                                    tags: ['4-6X Co-Sell ROI', 'Pipeline Attribution']
+                                },
+                                {
+                                    title: 'Alliance Management',
+                                    description: 'Score strategic hyperscaler alliances by verified closed revenue.',
+                                    path: '/global-acceleration/partner-ecosystems',
+                                    badge: 'Hyperscalers',
+                                    icon: Building2,
+                                    tags: ['AWS / Azure', 'Measured Contribution']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'global-revops',
+                    title: 'Global Revenue Operations',
+                    desc: 'Proactive compliance management, global sales alignment, and multi-region orchestration',
+                    path: '/global-acceleration/global-revops',
+                    badge: 'Pillar 04',
+                    icon: Layers,
+                    columns: [
+                        {
+                            header: 'Governance & Alignment',
+                            badge: 'Synchronization',
                             icon: ShieldCheck,
                             cards: [
                                 {
-                                    title: 'Cross-Border Compliance Guardrails',
-                                    description: 'Local data sovereignty, privacy laws, and marketing guardrails.',
-                                    path: '/global-business-accelerations',
-                                    badge: 'Compliance',
+                                    title: 'Compliance Management',
+                                    description: 'Proactive cross-border compliance frameworks ensuring zero post-launch fines.',
+                                    path: '/global-acceleration/global-revops',
+                                    badge: 'Zero Fines',
                                     icon: ShieldCheck,
-                                    tags: ['Data Sovereignty', 'Legal Guardrails']
+                                    tags: ['Proactive Compliance', 'Data Sovereignty']
                                 },
                                 {
-                                    title: 'Distributed Global SDR Fleets',
-                                    description: '24/7 localized outbound coverage across multiple time zones.',
-                                    path: '/global-business-accelerations',
-                                    badge: '24/7 Coverage',
+                                    title: 'Global Sales Alignment',
+                                    description: 'Unified sales processes and cross-border account collaboration.',
+                                    path: '/global-acceleration/global-revops',
+                                    badge: 'Account Sync',
+                                    icon: Users,
+                                    tags: ['Multinational Accounts', '+30-50% Revenue']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Attribution & Stack',
+                            badge: 'Operations',
+                            icon: Layers,
+                            cards: [
+                                {
+                                    title: 'Revenue Attribution',
+                                    description: 'Track revenue by region, partner, motion, and segment with 95%+ accuracy.',
+                                    path: '/global-acceleration/global-revops',
+                                    badge: '95%+ Accuracy',
+                                    icon: BarChart3,
+                                    tags: ['ROI Transparency', 'Attribution Matrix']
+                                },
+                                {
+                                    title: 'Multi-Region Operations',
+                                    description: 'Consolidate redundant tech stacks and unify regional operating processes.',
+                                    path: '/global-acceleration/global-revops',
+                                    badge: 'Consolidation',
+                                    icon: Layers,
+                                    tags: ['40-60% Cut', 'Stack Consolidation']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'ai-global-scaling',
+                    title: 'AI For Global Scaling',
+                    desc: 'Deploy multi-language SDR swarms, market monitoring agents, and autonomous expansion',
+                    path: '/global-acceleration/ai-global-scaling',
+                    badge: 'Pillar 05 · Key Differentiator',
+                    icon: Bot,
+                    columns: [
+                        {
+                            header: 'Autonomous Agents',
+                            badge: '24/7 Swarms',
+                            icon: Bot,
+                            cards: [
+                                {
+                                    title: 'Multi-Language AI SDRs',
+                                    description: 'Prospect in 15+ native languages across 20+ timezones 24/7 at 1/10th human cost.',
+                                    path: '/global-acceleration/ai-global-scaling',
+                                    badge: '15+ Languages',
                                     icon: Bot,
-                                    tags: ['Follow-the-Sun', 'Local SDRs']
+                                    tags: ['Follow-the-Sun', '1/10th Cost']
+                                },
+                                {
+                                    title: 'Market Intelligence Agents',
+                                    description: 'Real-time detection of competitor moves and demand surges in <7 days.',
+                                    path: '/global-acceleration/ai-global-scaling',
+                                    badge: 'Real-Time',
+                                    icon: Activity,
+                                    tags: ['<7 Days Detection', 'Demand Signals']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Compliance & Workflows',
+                            badge: 'Autonomous Scale',
+                            icon: Zap,
+                            cards: [
+                                {
+                                    title: 'Regulatory Intelligence Agents',
+                                    description: '90+ days advance warning of regulatory changes with automated impact assessments.',
+                                    path: '/global-acceleration/ai-global-scaling',
+                                    badge: '90-Day Early Warning',
+                                    icon: ShieldCheck,
+                                    tags: ['Statutory Monitoring', 'Advance Alerts']
+                                },
+                                {
+                                    title: 'Autonomous Expansion Workflows',
+                                    description: 'Automated opportunity identification across global enterprise account usage.',
+                                    path: '/global-acceleration/ai-global-scaling',
+                                    badge: 'NRR Automation',
+                                    icon: Zap,
+                                    tags: ['+25-40% Expansion', 'Telemetry Triggers']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'expansion-office',
+                    title: 'Executive Expansion Office',
+                    desc: 'Readiness audits, sequenced growth roadmaps, market strategies, and C-suite scorecards',
+                    path: '/global-acceleration/expansion-office',
+                    badge: 'Pillar 06',
+                    icon: Building2,
+                    columns: [
+                        {
+                            header: 'Readiness & Roadmaps',
+                            badge: 'Oversight',
+                            icon: Building2,
+                            cards: [
+                                {
+                                    title: 'Expansion Readiness Audit',
+                                    description: 'Audit capabilities, resources, and infrastructure before deploying capital.',
+                                    path: '/global-acceleration/expansion-office',
+                                    badge: 'Capability Audit',
+                                    icon: ShieldCheck,
+                                    tags: ['80-90% Risk Cut', 'Pre-Flight Audit']
+                                },
+                                {
+                                    title: 'International Growth Roadmap',
+                                    description: 'Sequenced territory entry roadmap prioritizing markets by ROI probability.',
+                                    path: '/global-acceleration/expansion-office',
+                                    badge: 'Sequencing',
+                                    icon: TrendingUp,
+                                    tags: ['Phased Roadmaps', 'Validation Gates']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Strategy & Scorecards',
+                            badge: 'Boardroom',
+                            icon: BarChart3,
+                            cards: [
+                                {
+                                    title: 'Market Expansion Strategy',
+                                    description: 'Bespoke market-specific strategies validated with local enterprise research.',
+                                    path: '/global-acceleration/expansion-office',
+                                    badge: 'Market-Specific',
+                                    icon: Compass,
+                                    tags: ['2-3X Performance', 'Tailored GTM']
+                                },
+                                {
+                                    title: 'Executive Scorecards',
+                                    description: 'Real-time visibility into market performance, partner contribution, and roadmap progress.',
+                                    path: '/global-acceleration/expansion-office',
+                                    badge: 'Real-Time C-Suite',
+                                    icon: BarChart3,
+                                    tags: ['50-70% Decision Speed', 'Board Telemetry']
                                 }
                             ]
                         }

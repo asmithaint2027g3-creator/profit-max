@@ -395,148 +395,159 @@ export default function Offerings() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen bg-white text-slate-900 font-sans pt-16 lg:pt-[72px] selection:bg-blue-600 selection:text-white">
       {/* ── SECTION 1: HERO SECTION (Command Center Platform Aesthetic) ── */}
-      <section className="relative pt-24 pb-20 sm:pt-32 sm:pb-32 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden border-b border-slate-800">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(37,99,235,0.28),rgba(0,0,0,0))] pointer-events-none" />
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px_32px] pointer-events-none" />
-        
-        {/* Glow ambient lines */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-3/4 h-96 bg-blue-600/10 blur-[140px] pointer-events-none rounded-full" />
+      <section className="relative pt-24 pb-20 sm:pt-32 sm:pb-28 bg-white text-slate-900 overflow-hidden border-b border-slate-200">
+        {/* Ambient Grid Background */}
+        <div 
+          className="absolute inset-0 pointer-events-none opacity-60"
+          style={{
+            backgroundImage: `linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)`,
+            backgroundSize: '40px 40px'
+          }}
+        />
+        {/* Ambient Blur Accents */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/3 left-1/3 w-[400px] h-[250px] bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-xs font-bold uppercase tracking-widest">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>ENTERPRISE REVENUE OPERATING SYSTEM · UNIFIED ARCHITECTURE</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold tracking-wide uppercase shadow-xs">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600" />
+              </span>
+              <span className="font-mono text-blue-600 font-extrabold">ENTERPRISE REVENUE OS</span>
+              <span className="text-slate-300 font-normal">//</span>
+              <span>UNIFIED ARCHITECTURE</span>
             </div>
-            <div className="hidden sm:flex items-center gap-4 text-xs font-mono text-slate-400">
-              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-blue-400" /> SOC2 Type II Certified</span>
-              <span className="text-slate-700">|</span>
-              <span className="flex items-center gap-1.5"><Lock className="w-3.5 h-3.5 text-emerald-400" /> EU AI Act / ISO 42001 Ready</span>
+            <div className="hidden sm:flex items-center gap-4 text-xs font-mono text-slate-500">
+              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-blue-600" /> SOC2 Type II Certified</span>
+              <span className="text-slate-300">|</span>
+              <span className="flex items-center gap-1.5"><Lock className="w-3.5 h-3.5 text-emerald-600" /> EU AI Act / ISO 42001 Ready</span>
             </div>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight font-heading mb-6 max-w-5xl leading-[1.12]">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight font-heading mb-6 max-w-5xl leading-[1.12]">
             Eight Autonomous Engines.{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-cyan-300">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
               One Governed Revenue Operating System.
             </span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mb-10 leading-relaxed font-normal">
+          <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mb-10 leading-relaxed font-normal">
             ProfitMachines replaces fragmented point tools with a unified, mathematical revenue architecture. Built for Enterprise CROs, CFOs, and Board Directors to systematically expand ACV, eliminate margin leakage, and compound Net Revenue Retention with mathematical certainty.
           </p>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-16">
             <a
               href="#situation-selector"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm tracking-wide shadow-lg shadow-blue-600/30 transition-all hover:-translate-y-0.5 font-mono"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-slate-900 hover:bg-blue-600 text-white font-bold text-sm tracking-wide shadow-lg shadow-slate-900/10 transition-all hover:-translate-y-0.5 font-mono uppercase"
             >
               <span>RUN ARCHITECTURAL DIAGNOSTIC</span>
               <ArrowRight className="w-4 h-4" />
             </a>
             <a
               href="#ai-native-layer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-sm tracking-wide transition-all hover:-translate-y-0.5 font-mono"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 font-bold text-sm tracking-wide shadow-xs transition-all hover:-translate-y-0.5 font-mono uppercase"
             >
               <span>INSPECT AI REVENUE AGENTS</span>
-              <Cpu className="w-4 h-4 text-cyan-400" />
+              <Cpu className="w-4 h-4 text-blue-600" />
             </a>
           </div>
 
           {/* ── Revenue Intelligence Command Center HUD Visual ── */}
-          <div className="rounded-3xl bg-slate-900/90 border border-slate-800 shadow-2xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-indigo-500" />
+          <div className="rounded-3xl bg-white border border-slate-200/90 shadow-2xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600" />
             
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-800">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-100">
               <div className="flex items-center gap-3">
-                <div className="w-3 h-3 rounded-full bg-emerald-400 animate-ping" />
+                <div className="w-3 h-3 rounded-full bg-emerald-500 animate-ping" />
                 <div>
-                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">Live Enterprise Telemetry Mesh</div>
-                  <div className="text-lg font-bold text-white font-mono flex items-center gap-2">
+                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">Live Enterprise Telemetry Mesh</div>
+                  <div className="text-lg font-bold text-slate-900 font-mono flex items-center gap-2">
                     <span>PROFITMACHINES // ENTERPRISE REVENUE HUD</span>
-                    <span className="text-xs px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800 font-mono">STABLE · 99.98% SLA</span>
+                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono font-bold">STABLE · 99.98% SLA</span>
                   </div>
                 </div>
               </div>
-              <div className="flex flex-wrap items-center gap-3 text-xs font-mono">
-                <span className="px-3 py-1 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">Active Swarms: <strong>14 Agents</strong></span>
-                <span className="px-3 py-1 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">Pipeline Governed: <strong>$2.48B ARR</strong></span>
-                <span className="px-3 py-1 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">Variance: <strong>±1.8%</strong></span>
+              <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono">
+                <span className="px-3 py-1 rounded-lg bg-slate-50 border border-slate-200 text-slate-700">Active Swarms: <strong className="text-slate-900">14 Agents</strong></span>
+                <span className="px-3 py-1 rounded-lg bg-slate-50 border border-slate-200 text-slate-700">Pipeline Governed: <strong className="text-slate-900">$2.48B ARR</strong></span>
+                <span className="px-3 py-1 rounded-lg bg-slate-50 border border-slate-200 text-slate-700">Variance: <strong className="text-slate-900">±1.8%</strong></span>
               </div>
             </div>
 
             {/* Live Telemetry KPI Cards */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-6">
-              <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800/80">
-                <div className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-1 flex items-center justify-between">
+              <div className="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80">
+                <div className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1 flex items-center justify-between">
                   <span>Dark Funnel Coverage</span>
-                  <Activity className="w-3.5 h-3.5 text-blue-400" />
+                  <Activity className="w-3.5 h-3.5 text-blue-600" />
                 </div>
-                <div className="text-2xl sm:text-3xl font-extrabold font-mono text-white">94.2%</div>
-                <div className="text-xs font-mono text-emerald-400 mt-1">↑ +38.4% vs legacy SEP</div>
+                <div className="text-2xl sm:text-3xl font-extrabold font-mono text-slate-900">94.2%</div>
+                <div className="text-xs font-mono text-emerald-600 font-bold mt-1">↑ +38.4% vs legacy SEP</div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800/80">
-                <div className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-1 flex items-center justify-between">
+              <div className="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80">
+                <div className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1 flex items-center justify-between">
                   <span>Sales Cycle Velocity</span>
-                  <TrendingUp className="w-3.5 h-3.5 text-cyan-400" />
+                  <TrendingUp className="w-3.5 h-3.5 text-indigo-600" />
                 </div>
-                <div className="text-2xl sm:text-3xl font-extrabold font-mono text-white">-48%</div>
-                <div className="text-xs font-mono text-cyan-400 mt-1">54 days avg enterprise close</div>
+                <div className="text-2xl sm:text-3xl font-extrabold font-mono text-slate-900">-48%</div>
+                <div className="text-xs font-mono text-indigo-600 font-bold mt-1">54 days avg enterprise close</div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800/80">
-                <div className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-1 flex items-center justify-between">
+              <div className="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80">
+                <div className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1 flex items-center justify-between">
                   <span>Gross Margin Realization</span>
-                  <DollarSign className="w-3.5 h-3.5 text-emerald-400" />
+                  <DollarSign className="w-3.5 h-3.5 text-emerald-600" />
                 </div>
-                <div className="text-2xl sm:text-3xl font-extrabold font-mono text-white">+8.4 pts</div>
-                <div className="text-xs font-mono text-emerald-400 mt-1">Eliminated discount creep</div>
+                <div className="text-2xl sm:text-3xl font-extrabold font-mono text-slate-900">+8.4 pts</div>
+                <div className="text-xs font-mono text-emerald-600 font-bold mt-1">Eliminated discount creep</div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800/80">
-                <div className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-1 flex items-center justify-between">
+              <div className="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80">
+                <div className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1 flex items-center justify-between">
                   <span>Net Revenue Retention</span>
-                  <ShieldCheck className="w-3.5 h-3.5 text-violet-400" />
+                  <ShieldCheck className="w-3.5 h-3.5 text-purple-600" />
                 </div>
-                <div className="text-2xl sm:text-3xl font-extrabold font-mono text-white">138%</div>
-                <div className="text-xs font-mono text-violet-400 mt-1">Automated expansion sentries</div>
+                <div className="text-2xl sm:text-3xl font-extrabold font-mono text-slate-900">138%</div>
+                <div className="text-xs font-mono text-purple-600 font-bold mt-1">Automated expansion sentries</div>
               </div>
             </div>
 
             {/* Architecture Node Data Flow Diagram */}
-            <div className="p-4 rounded-2xl bg-slate-950/90 border border-slate-800/80 text-xs font-mono">
-              <div className="text-slate-400 uppercase tracking-wider mb-3 flex items-center justify-between">
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 text-xs font-mono">
+              <div className="text-slate-500 uppercase tracking-wider mb-3 flex items-center justify-between font-bold">
                 <span>Autonomous Revenue Pipeline Topology</span>
-                <span className="text-cyan-400">Continuous Bi-Directional Synchronization</span>
+                <span className="text-blue-600 font-bold">Continuous Bi-Directional Synchronization</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-5 gap-2 text-center">
-                <div className="p-3 rounded-xl bg-slate-900 border border-blue-500/30 text-blue-300">
-                  <div className="text-[10px] text-slate-500 uppercase">Input Layer</div>
-                  <div className="font-bold text-sm mt-0.5">Dark Funnel Radar</div>
-                  <div className="text-[10px] text-slate-400 mt-1">Intent & Propensity</div>
+                <div className="p-3 rounded-xl bg-white border border-blue-200 text-blue-900 shadow-2xs">
+                  <div className="text-[10px] text-slate-500 uppercase font-mono">Input Layer</div>
+                  <div className="font-bold text-sm mt-0.5 text-slate-900">Dark Funnel Radar</div>
+                  <div className="text-[10px] text-blue-600 font-medium mt-1">Intent & Propensity</div>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-900 border border-indigo-500/30 text-indigo-300">
-                  <div className="text-[10px] text-slate-500 uppercase">Agent Mesh</div>
-                  <div className="font-bold text-sm mt-0.5">AI SDR Swarm</div>
-                  <div className="text-[10px] text-slate-400 mt-1">1:1 Account Synthesis</div>
+                <div className="p-3 rounded-xl bg-white border border-indigo-200 text-indigo-900 shadow-2xs">
+                  <div className="text-[10px] text-slate-500 uppercase font-mono">Agent Mesh</div>
+                  <div className="font-bold text-sm mt-0.5 text-slate-900">AI SDR Swarm</div>
+                  <div className="text-[10px] text-indigo-600 font-medium mt-1">1:1 Account Synthesis</div>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-900 border border-cyan-500/30 text-cyan-300">
-                  <div className="text-[10px] text-slate-500 uppercase">Deal Engine</div>
-                  <div className="font-bold text-sm mt-0.5">Bayesian Win Sentry</div>
-                  <div className="text-[10px] text-slate-400 mt-1">Cycle Compression</div>
+                <div className="p-3 rounded-xl bg-white border border-sky-200 text-sky-900 shadow-2xs">
+                  <div className="text-[10px] text-slate-500 uppercase font-mono">Deal Engine</div>
+                  <div className="font-bold text-sm mt-0.5 text-slate-900">Bayesian Win Sentry</div>
+                  <div className="text-[10px] text-sky-600 font-medium mt-1">Cycle Compression</div>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-900 border border-emerald-500/30 text-emerald-300">
-                  <div className="text-[10px] text-slate-500 uppercase">Governance</div>
-                  <div className="font-bold text-sm mt-0.5">Algorithmic CPQ</div>
-                  <div className="text-[10px] text-slate-400 mt-1">Margin Preservation</div>
+                <div className="p-3 rounded-xl bg-white border border-emerald-200 text-emerald-900 shadow-2xs">
+                  <div className="text-[10px] text-slate-500 uppercase font-mono">Governance</div>
+                  <div className="font-bold text-sm mt-0.5 text-slate-900">Algorithmic CPQ</div>
+                  <div className="text-[10px] text-emerald-600 font-medium mt-1">Margin Preservation</div>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-900 border border-violet-500/30 text-violet-300">
-                  <div className="text-[10px] text-slate-500 uppercase">Expansion</div>
-                  <div className="font-bold text-sm mt-0.5">NRR Compounding</div>
-                  <div className="text-[10px] text-slate-400 mt-1">Zero Silent Churn</div>
+                <div className="p-3 rounded-xl bg-white border border-purple-200 text-purple-900 shadow-2xs">
+                  <div className="text-[10px] text-slate-500 uppercase font-mono">Expansion</div>
+                  <div className="font-bold text-sm mt-0.5 text-slate-900">NRR Compounding</div>
+                  <div className="text-[10px] text-purple-600 font-medium mt-1">Zero Silent Churn</div>
                 </div>
               </div>
             </div>
@@ -545,17 +556,17 @@ export default function Offerings() {
       </section>
 
       {/* ── SECTION 2: WHY GTM FAILS (Fragmented vs Unified Systems Architecture) ── */}
-      <section className="py-20 sm:py-28 bg-slate-950 border-b border-slate-800">
+      <section className="py-20 sm:py-28 bg-slate-50/70 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-16">
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-red-400 uppercase tracking-widest mb-3">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-rose-600 uppercase tracking-widest mb-3">
               <AlertTriangle className="w-3.5 h-3.5" />
               <span>THE ARCHITECTURAL PROBLEM</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-heading mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
               Why Fragmented GTM Fails Enterprise Revenue
             </h2>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
               Enterprise revenue does not stall because sales reps lack effort. It stalls because GTM teams operate 25+ disconnected point tools that fragment buyer data, mask margin leakage, and generate subjective pipeline guesses instead of mathematically verifiable ARR velocity.
             </p>
           </div>
@@ -563,53 +574,53 @@ export default function Offerings() {
           {/* Interactive Architectural Comparison Matrix */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             {/* The Fragmented Legacy Stack */}
-            <div className="p-8 rounded-3xl bg-slate-900/60 border border-red-500/30 relative">
-              <div className="flex items-center justify-between pb-6 border-b border-slate-800 mb-6">
+            <div className="p-8 rounded-3xl bg-white border border-rose-200/90 shadow-sm relative">
+              <div className="flex items-center justify-between pb-6 border-b border-slate-100 mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 flex items-center justify-center font-mono font-bold text-sm">
+                  <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-200 text-rose-600 flex items-center justify-center font-mono font-bold text-sm">
                     01
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white font-heading">The Fragmented Legacy Approach</h3>
-                    <p className="text-xs font-mono text-red-400 uppercase tracking-wider">Uncoordinated Point Tool Sprawl</p>
+                    <h3 className="text-lg font-bold text-slate-900 font-heading">The Fragmented Legacy Approach</h3>
+                    <p className="text-xs font-mono text-rose-600 uppercase tracking-wider">Uncoordinated Point Tool Sprawl</p>
                   </div>
                 </div>
-                <span className="text-xs font-mono px-2.5 py-1 rounded bg-red-950 text-red-300 border border-red-800">High Risk · High Drag</span>
+                <span className="text-xs font-mono px-2.5 py-1 rounded bg-rose-50 text-rose-700 border border-rose-200 font-bold">High Risk · High Drag</span>
               </div>
 
               <div className="space-y-4">
-                <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800">
-                  <div className="text-sm font-bold text-slate-200 mb-1 flex items-center gap-2">
-                    <span className="text-red-400 font-mono">✕</span> Disconnected Tool Sprawl
+                <div className="p-4 rounded-xl bg-rose-50/40 border border-rose-100">
+                  <div className="text-sm font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span className="text-rose-600 font-mono font-bold">✕</span> Disconnected Tool Sprawl
                   </div>
-                  <p className="text-xs text-slate-400 leading-relaxed">
+                  <p className="text-xs text-slate-600 leading-relaxed">
                     25+ disparate SaaS subscriptions (CRM, SEP, ABM, BI, intent feeds) operating in silos, creating conflicting analytics and endless manual data transfer.
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800">
-                  <div className="text-sm font-bold text-slate-200 mb-1 flex items-center gap-2">
-                    <span className="text-red-400 font-mono">✕</span> Subjective Forecast Guesswork
+                <div className="p-4 rounded-xl bg-rose-50/40 border border-rose-100">
+                  <div className="text-sm font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span className="text-rose-600 font-mono font-bold">✕</span> Subjective Forecast Guesswork
                   </div>
-                  <p className="text-xs text-slate-400 leading-relaxed">
+                  <p className="text-xs text-slate-600 leading-relaxed">
                     Reps report deal health based on emotional optimism. Late-stage deals slip silently at quarter-end, causing 20–30% board forecast misses.
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800">
-                  <div className="text-sm font-bold text-slate-200 mb-1 flex items-center gap-2">
-                    <span className="text-red-400 font-mono">✕</span> Invisible Margin Leaks
+                <div className="p-4 rounded-xl bg-rose-50/40 border border-rose-100">
+                  <div className="text-sm font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span className="text-rose-600 font-mono font-bold">✕</span> Invisible Margin Leaks
                   </div>
-                  <p className="text-xs text-slate-400 leading-relaxed">
+                  <p className="text-xs text-slate-600 leading-relaxed">
                     Unchecked discounting, scope creep, and high cost-to-serve accounts erode gross margins by 5 to 15 points across closing transactions.
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800">
-                  <div className="text-sm font-bold text-slate-200 mb-1 flex items-center gap-2">
-                    <span className="text-red-400 font-mono">✕</span> Headcount-Dependent CAC Inflation
+                <div className="p-4 rounded-xl bg-rose-50/40 border border-rose-100">
+                  <div className="text-sm font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span className="text-rose-600 font-mono font-bold">✕</span> Headcount-Dependent CAC Inflation
                   </div>
-                  <p className="text-xs text-slate-400 leading-relaxed">
+                  <p className="text-xs text-slate-600 leading-relaxed">
                     Adding sales heads yields diminishing returns as admin overhead spikes, ramp times extend to 9 months, and rep burnout accelerates.
                   </p>
                 </div>
@@ -617,53 +628,53 @@ export default function Offerings() {
             </div>
 
             {/* The Unified ProfitMachines Architecture */}
-            <div className="p-8 rounded-3xl bg-slate-900/90 border border-emerald-500/40 relative shadow-2xl">
-              <div className="flex items-center justify-between pb-6 border-b border-slate-800 mb-6">
+            <div className="p-8 rounded-3xl bg-white border-2 border-blue-600/30 relative shadow-xl">
+              <div className="flex items-center justify-between pb-6 border-b border-slate-100 mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center font-mono font-bold text-sm">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center font-mono font-bold text-sm">
                     02
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white font-heading">The ProfitMachines Architecture</h3>
-                    <p className="text-xs font-mono text-emerald-400 uppercase tracking-wider">Governed Autonomous Revenue OS</p>
+                    <h3 className="text-lg font-bold text-slate-900 font-heading">The ProfitMachines Architecture</h3>
+                    <p className="text-xs font-mono text-emerald-600 uppercase tracking-wider font-bold">Governed Autonomous Revenue OS</p>
                   </div>
                 </div>
-                <span className="text-xs font-mono px-2.5 py-1 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">Governed · Scalable</span>
+                <span className="text-xs font-mono px-2.5 py-1 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold">Governed · Scalable</span>
               </div>
 
               <div className="space-y-4">
-                <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800">
-                  <div className="text-sm font-bold text-white mb-1 flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> Unified Mathematical Revenue Mesh
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <div className="text-sm font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" /> Unified Mathematical Revenue Mesh
                   </div>
-                  <p className="text-xs text-slate-300 leading-relaxed">
+                  <p className="text-xs text-slate-600 leading-relaxed">
                     One connected data and agent layer synchronizing top-of-funnel intent, deal acceleration, CPQ, and customer retention with zero manual overhead.
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800">
-                  <div className="text-sm font-bold text-white mb-1 flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> Bayesian Win Probability Telemetry
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <div className="text-sm font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" /> Bayesian Win Probability Telemetry
                   </div>
-                  <p className="text-xs text-slate-300 leading-relaxed">
+                  <p className="text-xs text-slate-600 leading-relaxed">
                     Empirical opportunity scoring models quantify true close probability, reducing quarterly forecast variance to under 2% with zero rep bias.
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800">
-                  <div className="text-sm font-bold text-white mb-1 flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> Algorithmic Margin Preservation
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <div className="text-sm font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" /> Algorithmic Margin Preservation
                   </div>
-                  <p className="text-xs text-slate-300 leading-relaxed">
+                  <p className="text-xs text-slate-600 leading-relaxed">
                     Automated willingness-to-pay engines and CPQ guardrails stop discount creep in its tracks, recovering 5–15 gross margin points immediately.
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800">
-                  <div className="text-sm font-bold text-white mb-1 flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> Autonomous Agent Fleets Scaling Pipeline
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <div className="text-sm font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" /> Autonomous Agent Fleets Scaling Pipeline
                   </div>
-                  <p className="text-xs text-slate-300 leading-relaxed">
+                  <p className="text-xs text-slate-600 leading-relaxed">
                     AI SDR and RevOps agents handle 80% of prospecting and administrative drag, freeing executive reps to focus 100% on high-value negotiation.
                   </p>
                 </div>
@@ -674,17 +685,17 @@ export default function Offerings() {
       </section>
 
       {/* ── SECTION 3: THE COMPLETE ARCHITECTURE STACK (8 Offerings) ── */}
-      <section id="architecture" className="py-20 sm:py-28 bg-slate-900 border-b border-slate-800 scroll-mt-28">
+      <section id="architecture" className="py-20 sm:py-28 bg-white border-b border-slate-200 scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-xs font-bold uppercase tracking-widest mb-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
               <Layers className="w-3.5 h-3.5" />
               <span>THE 8 CORE ACCELERATION ENGINES</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-heading mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
               The Complete Revenue Acceleration Stack
             </h2>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
               Each offering represents an exclusive, production-tested operational architecture engineered for measurable enterprise revenue outcomes.
             </p>
           </div>
@@ -696,25 +707,27 @@ export default function Offerings() {
                 <Link
                   key={cat.path}
                   to={cat.path}
-                  className="group p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-blue-500 hover:bg-slate-900/90 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-6 block shadow-sm hover:shadow-xl"
+                  className="group p-6 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 hover:shadow-xl hover:-translate-y-0.5 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-6 block shadow-sm relative overflow-hidden"
                 >
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+
                   <div className="flex items-start sm:items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-700 group-hover:bg-blue-600 group-hover:text-white group-hover:border-transparent text-blue-400 flex items-center justify-center shrink-0 transition-colors shadow-sm font-mono font-bold text-sm">
+                    <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-200 group-hover:bg-blue-600 group-hover:text-white group-hover:border-transparent text-blue-700 flex items-center justify-center shrink-0 transition-all shadow-2xs font-mono font-bold text-sm">
                       0{idx + 1}
                     </div>
                     <div>
                       <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                        <h3 className="text-lg sm:text-xl font-bold text-white font-heading group-hover:text-blue-400 transition-colors">
+                        <h3 className="text-lg sm:text-xl font-bold text-slate-900 font-heading group-hover:text-blue-600 transition-colors">
                           {cat.title}
                         </h3>
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200 font-medium">
                           {cat.badge}
                         </span>
                       </div>
-                      <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-3xl mb-3">{cat.desc}</p>
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-3xl mb-3">{cat.desc}</p>
                       <div className="flex flex-wrap gap-1.5">
                         {cat.tags.map(t => (
-                          <span key={t} className="text-[10px] font-mono font-medium px-2 py-0.5 rounded bg-slate-900 text-slate-400 border border-slate-800">
+                          <span key={t} className="text-[10px] font-mono font-medium px-2 py-0.5 rounded bg-slate-50 text-slate-600 border border-slate-200">
                             {t}
                           </span>
                         ))}
@@ -722,11 +735,11 @@ export default function Offerings() {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between lg:justify-end gap-6 shrink-0 pt-4 lg:pt-0 border-t lg:border-t-0 border-slate-800/80">
-                    <span className="text-xs font-mono font-bold text-emerald-400 bg-emerald-950/60 px-3 py-1.5 rounded-lg border border-emerald-800">
+                  <div className="flex items-center justify-between lg:justify-end gap-6 shrink-0 pt-4 lg:pt-0 border-t lg:border-t-0 border-slate-100">
+                    <span className="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-200">
                       {cat.metric}
                     </span>
-                    <span className="text-xs font-mono font-bold text-blue-400 group-hover:text-blue-300 group-hover:translate-x-1 transition-all inline-flex items-center gap-1">
+                    <span className="text-xs font-mono font-bold text-blue-600 group-hover:text-blue-700 group-hover:translate-x-1 transition-all inline-flex items-center gap-1">
                       <span>Explore Architecture</span>
                       <ArrowRight className="w-4 h-4" />
                     </span>
@@ -739,17 +752,17 @@ export default function Offerings() {
       </section>
 
       {/* ── SECTION 4: NEW AI-NATIVE REVENUE LAYER (Palantir Multi-Agent Fleet) ── */}
-      <section id="ai-native-layer" className="py-20 sm:py-28 bg-slate-950 border-b border-slate-800 scroll-mt-28">
+      <section id="ai-native-layer" className="py-20 sm:py-28 bg-slate-50/70 border-b border-slate-200 scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-xs font-bold uppercase tracking-widest mb-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
               <Cpu className="w-3.5 h-3.5" />
               <span>PERSISTENT AUTONOMOUS AGENT FLEETS</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-heading mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
               The AI-Native Revenue Intelligence Layer
             </h2>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
               Across all 8 offerings operates an interconnected mesh of specialized autonomous software agents. They work 24/7 inside your CRM, data lakes, and messaging channels to execute complex revenue workflows without human bottlenecking.
             </p>
           </div>
@@ -763,18 +776,22 @@ export default function Offerings() {
                   onClick={() => setActiveAgent(agent.id)}
                   className={`w-full text-left p-5 rounded-2xl border transition-all cursor-pointer ${
                     activeAgent === agent.id
-                      ? 'bg-slate-900 border-cyan-500/80 shadow-lg shadow-cyan-500/10'
-                      : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 text-slate-400'
+                      ? 'bg-slate-900 border-slate-900 text-white shadow-lg shadow-slate-900/10'
+                      : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 shadow-2xs'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-bold text-sm text-white font-heading">{agent.name}</span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-400 border border-cyan-800">
+                    <span className={`font-bold text-sm font-heading ${activeAgent === agent.id ? 'text-white' : 'text-slate-900'}`}>{agent.name}</span>
+                    <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${
+                      activeAgent === agent.id
+                        ? 'bg-slate-800 text-blue-300 border-slate-700'
+                        : 'bg-slate-100 text-slate-600 border-slate-200'
+                    }`}>
                       {agent.badge}
                     </span>
                   </div>
-                  <div className="text-xs text-slate-400 leading-relaxed mb-2">{agent.role}</div>
-                  <div className="text-xs font-mono font-bold text-emerald-400">{agent.impact}</div>
+                  <div className={`text-xs leading-relaxed mb-2 ${activeAgent === agent.id ? 'text-slate-300' : 'text-slate-600'}`}>{agent.role}</div>
+                  <div className={`text-xs font-mono font-bold ${activeAgent === agent.id ? 'text-emerald-400' : 'text-emerald-600'}`}>{agent.impact}</div>
                 </button>
               ))}
             </div>
@@ -782,7 +799,7 @@ export default function Offerings() {
             {/* Agent Live Telemetry & Model Inspect Card */}
             <div className="lg:col-span-7">
               {agentFleets.filter(a => a.id === activeAgent).map((agent) => (
-                <div key={agent.id} className="p-8 rounded-3xl bg-slate-900/90 border border-slate-800 shadow-2xl relative overflow-hidden">
+                <div key={agent.id} className="p-8 rounded-3xl bg-slate-900 text-white border border-slate-800 shadow-2xl relative overflow-hidden">
                   <div className="absolute top-0 right-0 px-4 py-2 bg-slate-800 rounded-bl-2xl font-mono text-[10px] text-cyan-400 border-l border-b border-slate-700">
                     FLEET ID: PM-AGENT-{agent.id.toUpperCase()}
                   </div>
@@ -835,14 +852,14 @@ export default function Offerings() {
                     </div>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-cyan-950/30 border border-cyan-800/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
-                      <div className="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">Quantified Impact</div>
+                      <div className="text-xs font-mono text-blue-400 font-bold uppercase tracking-wider">Quantified Impact</div>
                       <div className="text-sm font-bold text-white mt-0.5">{agent.impact}</div>
                     </div>
                     <a
                       href="#situation-selector"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs font-mono uppercase tracking-wider shrink-0 transition-all"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs font-mono uppercase tracking-wider shrink-0 transition-all shadow-md shadow-blue-600/20"
                     >
                       <span>Simulate Fleet ROI</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -856,17 +873,17 @@ export default function Offerings() {
       </section>
 
       {/* ── SECTION 5: REVENUE ARCHITECTURE FRAMEWORK (Discover → Design → Deploy → Measure → Optimise) ── */}
-      <section className="py-20 sm:py-28 bg-slate-900 border-b border-slate-800">
+      <section className="py-20 sm:py-28 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-xs font-bold uppercase tracking-widest mb-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
               <Workflow className="w-3.5 h-3.5" />
               <span>5-STAGE LIFECYCLE</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-heading mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
               The Revenue Architecture Framework
             </h2>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
               A disciplined, engineering-grade lifecycle that transitions your enterprise from initial profit pool isolation to continuous self-learning revenue expansion.
             </p>
           </div>
@@ -879,41 +896,41 @@ export default function Offerings() {
                 onClick={() => setActiveStep(idx)}
                 className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
                   activeStep === idx
-                    ? 'bg-blue-600 border-blue-400 text-white shadow-lg shadow-blue-600/30'
-                    : 'bg-slate-950 border-slate-800 hover:border-slate-700 text-slate-400'
+                    ? 'bg-slate-900 border-slate-900 text-white shadow-md shadow-slate-900/10'
+                    : 'bg-slate-50 border-slate-200 hover:bg-slate-100 text-slate-700'
                 }`}
               >
-                <div className="font-mono text-xs opacity-75 font-bold mb-1">STAGE {s.step}</div>
-                <div className="font-heading font-extrabold text-base tracking-wide text-white">{s.title}</div>
+                <div className={`font-mono text-xs font-bold mb-1 ${activeStep === idx ? 'text-blue-400' : 'text-slate-500'}`}>STAGE {s.step}</div>
+                <div className={`font-heading font-extrabold text-base tracking-wide ${activeStep === idx ? 'text-white' : 'text-slate-900'}`}>{s.title}</div>
               </button>
             ))}
           </div>
 
           {/* Active Step Deep-Dive Card */}
-          <div className="p-8 sm:p-10 rounded-3xl bg-slate-950 border border-slate-800 shadow-2xl">
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-800 mb-6">
+          <div className="p-8 sm:p-10 rounded-3xl bg-slate-50/70 border border-slate-200/90 shadow-lg">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200 mb-6">
               <div>
-                <span className="text-xs font-mono font-bold text-blue-400 uppercase tracking-widest block mb-1">
+                <span className="text-xs font-mono font-bold text-blue-700 uppercase tracking-widest block mb-1">
                   STAGE {frameworkSteps[activeStep].step} SPECIFICATIONS
                 </span>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-heading">
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading">
                   {frameworkSteps[activeStep].title}: {frameworkSteps[activeStep].subtitle}
                 </h3>
               </div>
-              <span className="text-xs font-mono font-bold px-3 py-1.5 rounded-lg bg-emerald-950 text-emerald-400 border border-emerald-800 shrink-0">
+              <span className="text-xs font-mono font-bold px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 shrink-0">
                 Target: {frameworkSteps[activeStep].metrics}
               </span>
             </div>
 
-            <p className="text-base text-slate-300 leading-relaxed mb-8 max-w-4xl">
+            <p className="text-base text-slate-600 leading-relaxed mb-8 max-w-4xl">
               {frameworkSteps[activeStep].desc}
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {frameworkSteps[activeStep].deliverables.map((deliv, i) => (
-                <div key={i} className="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-200 font-medium leading-relaxed">{deliv}</span>
+                <div key={i} className="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+                  <span className="text-sm text-slate-800 font-medium leading-relaxed">{deliv}</span>
                 </div>
               ))}
             </div>
@@ -922,31 +939,31 @@ export default function Offerings() {
       </section>
 
       {/* ── SECTION 6: INTERACTIVE RECOMMENDATION ENGINE ── */}
-      <section id="situation-selector" className="py-20 sm:py-28 bg-slate-950 text-white border-b border-slate-800 scroll-mt-28">
+      <section id="situation-selector" className="py-20 sm:py-28 bg-slate-50/70 text-slate-900 border-b border-slate-200 scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14 text-center mx-auto">
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-400 uppercase tracking-widest mb-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-3">
               <Sliders className="w-3.5 h-3.5" />
               <span>DYNAMIC RECOMMENDATION MATRIX</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-heading mb-4 text-white">
+            <h2 className="text-3xl sm:text-4xl font-extrabold font-heading mb-4 text-slate-900">
               Identify Your Revenue Friction Point
             </h2>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
               Select your active enterprise parameters to simulate the optimal architectural engine and autonomous agent deployment.
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto p-6 sm:p-10 rounded-3xl bg-slate-900/90 border border-slate-800 shadow-2xl backdrop-blur-xl">
+          <div className="max-w-4xl mx-auto p-6 sm:p-10 rounded-3xl bg-white border border-slate-200/90 shadow-xl">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
               <div>
-                <label className="block text-xs font-mono font-bold uppercase text-slate-400 mb-2">
+                <label className="block text-xs font-mono font-bold uppercase text-slate-700 mb-2">
                   Operating Friction
                 </label>
                 <select
                   value={situation}
                   onChange={(e) => setSituation(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-600 focus:bg-white font-mono transition-all"
                 >
                   <option value="stalled-pipeline">Stalled Top-of-Funnel Inbound</option>
                   <option value="margin-leakage">Margin Leaks & Discretionary Discounting</option>
@@ -958,13 +975,13 @@ export default function Offerings() {
               </div>
 
               <div>
-                <label className="block text-xs font-mono font-bold uppercase text-slate-400 mb-2">
+                <label className="block text-xs font-mono font-bold uppercase text-slate-700 mb-2">
                   Enterprise Scale
                 </label>
                 <select
                   value={stage}
                   onChange={(e) => setStage(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-600 focus:bg-white font-mono transition-all"
                 >
                   <option value="scale">Growth Stage ($10M - $50M ARR)</option>
                   <option value="mid-market">Mid-Market Scale ($50M - $150M ARR)</option>
@@ -973,13 +990,13 @@ export default function Offerings() {
               </div>
 
               <div>
-                <label className="block text-xs font-mono font-bold uppercase text-slate-400 mb-2">
+                <label className="block text-xs font-mono font-bold uppercase text-slate-700 mb-2">
                   GTM Motion
                 </label>
                 <select
                   value={segment}
                   onChange={(e) => setSegment(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-600 focus:bg-white font-mono transition-all"
                 >
                   <option value="enterprise-b2b">Complex Enterprise Direct B2B</option>
                   <option value="multi-product">Multi-Product SaaS / Cloud</option>
@@ -992,41 +1009,41 @@ export default function Offerings() {
               <button
                 type="button"
                 onClick={handleRecommendation}
-                className="px-8 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm tracking-wide shadow-lg shadow-blue-600/30 transition-all cursor-pointer font-mono uppercase"
+                className="px-8 py-3.5 rounded-xl bg-slate-900 hover:bg-blue-600 text-white font-bold text-sm tracking-wide shadow-lg shadow-slate-900/10 transition-all cursor-pointer font-mono uppercase"
               >
                 Synthesize Architectural Recommendation
               </button>
             </div>
 
             {/* Recommendation Result Card */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-slate-950 border border-blue-500/40 relative">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800 mb-4">
+            <div className="p-6 sm:p-8 rounded-2xl bg-slate-50 border border-blue-200 relative">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 mb-4">
                 <div>
-                  <span className="text-xs font-mono font-bold text-blue-400 uppercase tracking-wider block mb-1">
+                  <span className="text-xs font-mono font-bold text-blue-700 uppercase tracking-wider block mb-1">
                     Recommended Architecture Engine
                   </span>
-                  <h4 className="text-2xl font-bold font-heading text-white">{recommendation.title}</h4>
+                  <h4 className="text-2xl font-bold font-heading text-slate-900">{recommendation.title}</h4>
                 </div>
-                <div className="text-xs font-mono px-3 py-1.5 rounded-lg bg-emerald-950 text-emerald-300 font-bold border border-emerald-700">
+                <div className="text-xs font-mono px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 font-bold border border-emerald-200">
                   Target Outcome: {recommendation.metric}
                 </div>
               </div>
-              <p className="text-sm text-slate-300 leading-relaxed mb-6">{recommendation.reason}</p>
+              <p className="text-sm text-slate-600 leading-relaxed mb-6">{recommendation.reason}</p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-800/80 mb-6 font-mono text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-200 mb-6 font-mono text-xs">
                 <div>
                   <span className="text-slate-500 block">DEPLOYMENT TIMELINE:</span>
-                  <span className="text-white font-bold">{recommendation.timeline}</span>
+                  <span className="text-slate-900 font-bold">{recommendation.timeline}</span>
                 </div>
                 <div>
                   <span className="text-slate-500 block">RECOMMENDED AGENT SWARM:</span>
-                  <span className="text-cyan-400 font-bold">{recommendation.agentMesh}</span>
+                  <span className="text-blue-600 font-bold">{recommendation.agentMesh}</span>
                 </div>
               </div>
 
               <Link
                 to={recommendation.path}
-                className="inline-flex items-center gap-2 text-sm font-bold text-blue-400 hover:text-blue-300 font-mono uppercase tracking-wider"
+                className="inline-flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700 font-mono uppercase tracking-wider"
               >
                 <span>Inspect Full {recommendation.title} Architecture</span>
                 <ArrowRight className="w-4 h-4" />
@@ -1037,17 +1054,17 @@ export default function Offerings() {
       </section>
 
       {/* ── SECTION 7: PROVEN INDUSTRY OUTCOMES & CASE STUDIES ── */}
-      <section className="py-20 sm:py-28 bg-slate-900 border-b border-slate-800">
+      <section className="py-20 sm:py-28 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-bold uppercase tracking-widest mb-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>EMPIRICAL PROOF POINTS</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-heading mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
               Verifiable Revenue Outcomes Across Verticals
             </h2>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
               Traceable blueprints documenting revenue lifts, margin recovery, and sales cycle compression across industry leaders.
             </p>
           </div>
@@ -1060,8 +1077,8 @@ export default function Offerings() {
                 onClick={() => setActiveIndustry(ind.id)}
                 className={`px-5 py-2.5 rounded-xl font-mono text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
                   activeIndustry === ind.id
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30'
-                    : 'bg-slate-950 text-slate-400 border border-slate-800 hover:text-white'
+                    ? 'bg-slate-900 text-white shadow-md shadow-slate-900/10'
+                    : 'bg-slate-100 text-slate-600 border border-slate-200 hover:text-slate-900 hover:bg-slate-200'
                 }`}
               >
                 {ind.label}
@@ -1071,31 +1088,31 @@ export default function Offerings() {
 
           {/* Active Case Study Showcase Card */}
           {industryCaseStudies.filter(i => i.id === activeIndustry).map(study => (
-            <div key={study.id} className="p-8 sm:p-12 rounded-3xl bg-slate-950 border border-slate-800 shadow-2xl">
-              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-800 mb-8">
+            <div key={study.id} className="p-8 sm:p-12 rounded-3xl bg-slate-50/70 border border-slate-200/90 shadow-xl">
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200 mb-8">
                 <div>
-                  <div className="text-xs font-mono text-blue-400 uppercase tracking-widest mb-1">{study.label} TRANSFORMATION CASE STUDY</div>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white font-heading">{study.client}</h3>
-                  <div className="text-xs font-mono text-slate-400 mt-1">Architecture Deployed: <span className="text-slate-200">{study.architecture}</span></div>
+                  <div className="text-xs font-mono text-blue-700 font-bold uppercase tracking-widest mb-1">{study.label} TRANSFORMATION CASE STUDY</div>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 font-heading">{study.client}</h3>
+                  <div className="text-xs font-mono text-slate-500 mt-1">Architecture Deployed: <span className="text-slate-800 font-semibold">{study.architecture}</span></div>
                 </div>
-                <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 max-w-md">
-                  <div className="text-[10px] font-mono text-slate-500 uppercase">Core Friction Solved</div>
-                  <div className="text-xs text-slate-300 mt-1">{study.challenge}</div>
+                <div className="p-4 rounded-xl bg-white border border-slate-200 max-w-md shadow-2xs">
+                  <div className="text-[10px] font-mono text-slate-500 uppercase font-bold">Core Friction Solved</div>
+                  <div className="text-xs text-slate-700 mt-1">{study.challenge}</div>
                 </div>
               </div>
 
               {/* Metrics Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
                 {study.metrics.map(m => (
-                  <div key={m.label} className="p-5 rounded-2xl bg-slate-900 border border-slate-800">
-                    <div className="text-3xl sm:text-4xl font-extrabold font-mono text-white mb-1">{m.val}</div>
-                    <div className="text-xs font-mono text-slate-400 uppercase tracking-wider">{m.label}</div>
+                  <div key={m.label} className="p-5 rounded-2xl bg-white border border-slate-200 shadow-2xs">
+                    <div className="text-3xl sm:text-4xl font-extrabold font-mono text-slate-900 mb-1">{m.val}</div>
+                    <div className="text-xs font-mono text-slate-500 uppercase tracking-wider">{m.label}</div>
                   </div>
                 ))}
               </div>
 
               {/* Client Quote */}
-              <blockquote className="p-6 rounded-2xl bg-blue-950/20 border border-blue-900/40 text-slate-300 text-sm sm:text-base italic leading-relaxed">
+              <blockquote className="p-6 rounded-2xl bg-white border-l-4 border-blue-600 border border-slate-200 text-slate-800 text-sm sm:text-base italic leading-relaxed shadow-2xs">
                 "{study.quote}"
               </blockquote>
             </div>
@@ -1104,105 +1121,105 @@ export default function Offerings() {
       </section>
 
       {/* ── SECTION 8: WHY PROFITMACHINES (Strategic Authority Comparison) ── */}
-      <section className="py-20 sm:py-28 bg-slate-950 border-b border-slate-800">
+      <section className="py-20 sm:py-28 bg-slate-50/70 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-16 text-center mx-auto">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-xs font-bold uppercase tracking-widest mb-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
               <Compass className="w-3.5 h-3.5" />
               <span>MARKET POSITIONING</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-heading mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
               Why Enterprise Leaders Partner with ProfitMachines
             </h2>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
               Combining the strategic rigor of McKinsey and Bain, the technical execution of Palantir, and the platform velocity of modern AI.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
               <div className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider mb-2">Strategy Consultancies</div>
-              <h3 className="text-lg font-bold text-slate-300 font-heading mb-3">McKinsey / Bain</h3>
-              <p className="text-xs text-slate-400 leading-relaxed mb-4">
+              <h3 className="text-lg font-bold text-slate-900 font-heading mb-3">McKinsey / Bain</h3>
+              <p className="text-xs text-slate-600 leading-relaxed mb-4">
                 Deliver static 200-slide strategy decks at massive cost, but leave implementation to internal teams. Zero software or agents deployed.
               </p>
-              <div className="text-xs font-mono text-red-400">✕ No Code · No Agents</div>
+              <div className="text-xs font-mono text-rose-600 font-bold">✕ No Code · No Agents</div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
               <div className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider mb-2">Legacy Platforms</div>
-              <h3 className="text-lg font-bold text-slate-300 font-heading mb-3">Salesforce / HubSpot</h3>
-              <p className="text-xs text-slate-400 leading-relaxed mb-4">
+              <h3 className="text-lg font-bold text-slate-900 font-heading mb-3">Salesforce / HubSpot</h3>
+              <p className="text-xs text-slate-600 leading-relaxed mb-4">
                 Empty database containers requiring 12 months of expensive system integration. Provide no baked-in revenue strategy or domain models.
               </p>
-              <div className="text-xs font-mono text-amber-400">△ High Drag · Empty Shells</div>
+              <div className="text-xs font-mono text-amber-600 font-bold">△ High Drag · Empty Shells</div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
               <div className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider mb-2">Point AI Tools</div>
-              <h3 className="text-lg font-bold text-slate-300 font-heading mb-3">Apollo / Outreach / Gong</h3>
-              <p className="text-xs text-slate-400 leading-relaxed mb-4">
+              <h3 className="text-lg font-bold text-slate-900 font-heading mb-3">Apollo / Outreach / Gong</h3>
+              <p className="text-xs text-slate-600 leading-relaxed mb-4">
                 Fragmented point solutions that spam target inboxes and increase noise. Lack cross-functional revenue architecture and margin control.
               </p>
-              <div className="text-xs font-mono text-amber-400">△ Siloed Tools · Spam Fatigue</div>
+              <div className="text-xs font-mono text-amber-600 font-bold">△ Siloed Tools · Spam Fatigue</div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-slate-900 border border-blue-500/60 shadow-xl shadow-blue-500/10">
-              <div className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider mb-2">The Complete OS</div>
-              <h3 className="text-lg font-bold text-white font-heading mb-3">ProfitMachines</h3>
-              <p className="text-xs text-slate-300 leading-relaxed mb-4">
+            <div className="p-6 rounded-2xl bg-white border-2 border-blue-600 shadow-xl shadow-blue-600/10">
+              <div className="text-xs font-mono font-bold text-blue-700 uppercase tracking-wider mb-2">The Complete OS</div>
+              <h3 className="text-lg font-bold text-slate-900 font-heading mb-3">ProfitMachines</h3>
+              <p className="text-xs text-slate-700 leading-relaxed mb-4">
                 Full-stack revenue architecture: Principal Systems Architects plus persistent autonomous agent fleets deployed directly into your production stack.
               </p>
-              <div className="text-xs font-mono text-emerald-400 font-bold">✓ SOW-Locked · Turnkey Execution</div>
+              <div className="text-xs font-mono text-emerald-700 font-bold">✓ SOW-Locked · Turnkey Execution</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── SECTION 9: DUAL-TRACK PROMISE & EXECUTION GUARANTEE ── */}
-      <section className="py-20 sm:py-24 bg-slate-900 border-b border-slate-800">
+      <section className="py-20 sm:py-24 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12 text-center mx-auto">
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-400 uppercase tracking-widest mb-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-3">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>THE EXECUTION GUARANTEE</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-heading mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
               We Don't Just Advise. We Build the Machine.
             </h2>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
               Every enterprise engagement couples strategic systems architecture with autonomous software deployment.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="p-8 rounded-3xl bg-slate-950 border border-slate-800">
-              <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center justify-center mb-6">
+            <div className="p-8 rounded-3xl bg-slate-50/80 border border-slate-200 shadow-sm">
+              <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center mb-6">
                 <Compass className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-bold text-white font-heading mb-3">Strategic Advisory Track</h3>
-              <p className="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
+              <h3 className="text-2xl font-bold text-slate-900 font-heading mb-3">Strategic Advisory Track</h3>
+              <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
                 Senior Revenue Architects perform deep diagnostics, analyze customer profit pools, rewrite commercial pricing guardrails, and realign sales compensation models.
               </p>
-              <ul className="space-y-2 text-xs font-mono text-slate-300">
-                <li className="flex items-center gap-2">✓ Principal Systems Architect access</li>
-                <li className="flex items-center gap-2">✓ SOW-locked financial baseline agreements</li>
-                <li className="flex items-center gap-2">✓ 30-day proof cadences & realization reviews</li>
+              <ul className="space-y-2 text-xs font-mono text-slate-700">
+                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" /> Principal Systems Architect access</li>
+                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" /> SOW-locked financial baseline agreements</li>
+                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" /> 30-day proof cadences & realization reviews</li>
               </ul>
             </div>
 
-            <div className="p-8 rounded-3xl bg-slate-950 border border-cyan-500/30 shadow-xl">
-              <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center mb-6">
+            <div className="p-8 rounded-3xl bg-slate-50/80 border border-slate-200 shadow-sm">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-200 text-indigo-600 flex items-center justify-center mb-6">
                 <Cpu className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-bold text-white font-heading mb-3">Autonomous Systems Track</h3>
-              <p className="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
+              <h3 className="text-2xl font-bold text-slate-900 font-heading mb-3">Autonomous Systems Track</h3>
+              <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
                 We engineer and deploy autonomous SDR agents, CRM telemetry guardrails, Bayesian win-probability predictors, and real-time RevOps HUDs directly into your production stack.
               </p>
-              <ul className="space-y-2 text-xs font-mono text-slate-300">
-                <li className="flex items-center gap-2">✓ Custom autonomous software agent fleets</li>
-                <li className="flex items-center gap-2">✓ Zero code-lockin; you keep the models</li>
-                <li className="flex items-center gap-2">✓ Sub-second real-time webhook routing</li>
+              <ul className="space-y-2 text-xs font-mono text-slate-700">
+                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" /> Custom autonomous software agent fleets</li>
+                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" /> Zero code-lockin; you keep the models</li>
+                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" /> Sub-second real-time webhook routing</li>
               </ul>
             </div>
           </div>
@@ -1210,17 +1227,17 @@ export default function Offerings() {
       </section>
 
       {/* ── SECTION 10: EXECUTIVE FAQS ── */}
-      <section className="py-20 sm:py-28 bg-slate-950 border-b border-slate-800">
+      <section className="py-20 sm:py-28 bg-slate-50/70 border-b border-slate-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-xs font-bold uppercase tracking-widest mb-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
               <HelpCircle className="w-3.5 h-3.5" />
               <span>EXECUTIVE FAQS</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-heading mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
               Frequently Asked Architectural Questions
             </h2>
-            <p className="text-base text-slate-300 max-w-2xl mx-auto">
+            <p className="text-base text-slate-600 max-w-2xl mx-auto font-normal">
               Addressing the security, technical integration, and commercial concerns of enterprise CROs, CIOs, and CFOs.
             </p>
           </div>
@@ -1229,22 +1246,22 @@ export default function Offerings() {
             {executiveFaqs.map((faq, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden transition-all"
+                className="rounded-2xl bg-white border border-slate-200 shadow-2xs overflow-hidden transition-all"
               >
                 <button
                   type="button"
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full p-6 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-slate-800/50 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-slate-50 transition-colors"
                 >
-                  <span className="font-bold text-white text-base font-heading">{faq.q}</span>
+                  <span className="font-bold text-slate-900 text-base font-heading">{faq.q}</span>
                   <ChevronDown
                     className={`w-5 h-5 text-slate-400 transition-transform shrink-0 ${
-                      openFaq === idx ? 'rotate-180 text-blue-400' : ''
+                      openFaq === idx ? 'rotate-180 text-blue-600' : ''
                     }`}
                   />
                 </button>
                 {openFaq === idx && (
-                  <div className="px-6 pb-6 text-sm text-slate-300 leading-relaxed border-t border-slate-800/60 pt-4">
+                  <div className="px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
                     {faq.a}
                   </div>
                 )}
@@ -1255,16 +1272,16 @@ export default function Offerings() {
       </section>
 
       {/* ── SECTION 11: FINAL CTA & EXECUTIVE INTAKE ── */}
-      <section id="intake" className="py-20 sm:py-28 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
+      <section id="intake" className="py-20 sm:py-28 bg-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-xs font-bold uppercase tracking-widest mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
             <ShieldCheck className="w-3.5 h-3.5" />
             <span>CONFIDENTIAL ARCHITECTURAL INTAKE</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-heading mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
             Ready to Engineer Your Revenue Machine?
           </h2>
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-normal">
+          <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-normal">
             Schedule a confidential diagnostic session with our Principal Revenue Systems Architects to evaluate your active GTM architecture.
           </p>
         </div>
@@ -1277,11 +1294,11 @@ export default function Offerings() {
         </div>
 
         {/* Enterprise Trust Validation Footer */}
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-slate-800 flex flex-wrap justify-center gap-8 text-xs font-mono text-slate-400">
-          <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-emerald-400" /> 500+ Enterprise Deployments</span>
-          <span className="flex items-center gap-1.5"><TrendingUp className="w-4 h-4 text-blue-400" /> 5.2× Average Client ARR Lift</span>
-          <span className="flex items-center gap-1.5"><Lock className="w-4 h-4 text-cyan-400" /> Zero-Data Retention Architecture</span>
-          <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-violet-400" /> 24/7 Autonomous RevOps Telemetry</span>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-slate-200 flex flex-wrap justify-center gap-8 text-xs font-mono text-slate-500">
+          <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-emerald-600" /> 500+ Enterprise Deployments</span>
+          <span className="flex items-center gap-1.5"><TrendingUp className="w-4 h-4 text-blue-600" /> 5.2× Average Client ARR Lift</span>
+          <span className="flex items-center gap-1.5"><Lock className="w-4 h-4 text-purple-600" /> Zero-Data Retention Architecture</span>
+          <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-indigo-600" /> 24/7 Autonomous RevOps Telemetry</span>
         </div>
       </section>
     </div>

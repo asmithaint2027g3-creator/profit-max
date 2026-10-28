@@ -7,7 +7,8 @@ import {
     Briefcase, ShoppingBag, Bot, Users, Activity, FileText, Lock, Coins,
     Network, Clock, BookOpen, HelpCircle, Landmark, HeartPulse, GraduationCap,
     Lightbulb, Shield, BarChart3, CheckCircle2, Phone, Radio, Factory, Server, Box, Scale,
-    Flame, Store, Building, Cloud, HeartHandshake, Radar, LineChart, RefreshCw
+    Flame, Store, Building, Cloud, HeartHandshake, Radar, LineChart, RefreshCw,
+    Percent, GitMerge, Award
 } from 'lucide-react';
 
 // ── Types for Navigation & Mega-Menu ──
@@ -1299,14 +1300,14 @@ export default function Navigation() {
                 {
                     id: 'revenue-physics',
                     title: 'Revenue Physics',
-                    desc: 'The fundamental laws that govern revenue behavior — LTV mechanics, market dynamics, PLG triggers, and unit economics.',
+                    desc: 'Revenue mechanics, market dynamics, PLG triggers, and unit economics.',
                     path: '/growth-science/revenue-physics',
-                    badge: 'Pillar 01',
+                    badge: '',
                     icon: Activity,
                     columns: [
                         {
-                            header: 'Economic Laws',
-                            badge: 'Laws 1 & 2',
+                            header: 'Core Economics',
+                            badge: '',
                             icon: Activity,
                             cards: [
                                 {
@@ -1329,7 +1330,7 @@ export default function Navigation() {
                         },
                         {
                             header: 'Conversion & Economics',
-                            badge: 'Laws 3 & 4',
+                            badge: '',
                             icon: DollarSign,
                             cards: [
                                 {
@@ -1947,112 +1948,416 @@ export default function Navigation() {
             summary: 'Verified boardroom revenue metrics, empirical ROI case studies, and enterprise customer transformation outcomes.',
             categories: [
                 {
-                    id: 'enterprise-outcomes',
-                    title: 'Enterprise Outcomes & ROI',
-                    desc: 'Proven boardroom-ready revenue impact and verifiable metric lifts across enterprise clients',
-                    path: '/case-studies',
-                    badge: 'Boardroom ROI',
-                    icon: ShieldCheck,
+                    id: 'featured-transformations',
+                    title: 'Featured Transformations',
+                    desc: 'Curated flagship enterprise transformations showcasing multi-market expansion, autonomous pipeline growth, and forecast certainty.',
+                    path: '/case-studies/featured',
+                    badge: 'Flagship Outcomes',
+                    icon: Sparkles,
                     columns: [
                         {
-                            header: 'Sales & Pipeline Outcomes',
-                            badge: 'Proven Metrics',
-                            icon: Briefcase,
+                            header: 'Flagship Transformations',
+                            badge: 'Curated',
+                            icon: Sparkles,
                             cards: [
                                 {
-                                    title: 'Enterprise Sales Acceleration',
-                                    description: '35–50% reduction in sales cycle time and +28% higher enterprise win rates.',
-                                    path: '/case-studies',
-                                    badge: 'Case Study',
-                                    icon: Briefcase,
-                                    tags: ['-45% Cycle Time', '+28% Win Rate']
+                                    title: 'Enterprise SaaS Pipeline Growth',
+                                    description: 'From $180M to $420M enterprise pipeline with 14-day cycle compression.',
+                                    path: '/case-studies/enterprise-saas-pipeline-growth',
+                                    badge: 'Flagship Case Study',
+                                    icon: TrendingUp,
+                                    tags: ['+$240M Pipeline', '14-Day Compression']
                                 },
                                 {
-                                    title: 'High-Velocity Pipeline Generation',
-                                    description: 'Predictable inbound/outbound qualified lead generation at enterprise scale.',
-                                    path: '/case-studies',
-                                    badge: 'Case Study',
-                                    icon: Target,
-                                    tags: ['4.2x Pipeline Lift', 'Predictable ARR']
+                                    title: 'Global Manufacturing Expansion',
+                                    description: 'Scaling industrial distributor networks across 4 global operating hubs to $400M revenue.',
+                                    path: '/case-studies/global-manufacturing-expansion',
+                                    badge: 'Flagship Case Study',
+                                    icon: Factory,
+                                    tags: ['+$400M Scale', '-47% Cycle Time']
                                 }
                             ]
                         },
                         {
-                            header: 'Displacement & Consensus',
-                            badge: 'Account Takeover',
-                            icon: Users,
+                            header: 'Mission-Critical Deployments',
+                            badge: 'Boardroom Proof',
+                            icon: ShieldCheck,
                             cards: [
                                 {
-                                    title: 'Competitor Displacement Win-Back',
-                                    description: 'Systematic account takeover from entrenched legacy incumbents.',
-                                    path: '/case-studies',
-                                    badge: 'Case Study',
-                                    icon: ShieldCheck,
-                                    tags: ['$18.4M Displaced', 'Enterprise Win-Back']
+                                    title: 'Healthcare Forecast Accuracy',
+                                    description: 'Achieving 98% quarterly forecast precision across 320 hospital enterprise buying committees.',
+                                    path: '/case-studies/healthcare-forecast-accuracy',
+                                    badge: 'Flagship Case Study',
+                                    icon: HeartPulse,
+                                    tags: ['98% Precision', '<5% Variance']
                                 },
                                 {
-                                    title: 'Buying Committee Consensus',
-                                    description: 'Accelerate approvals across 6–10 stakeholder enterprise buying committees.',
-                                    path: '/case-studies',
-                                    badge: 'Case Study',
-                                    icon: Users,
-                                    tags: ['3.1x Faster Signoff', 'Consensus AI']
+                                    title: 'All Curated Transformations',
+                                    description: 'Editorial deep-dives into deployment timelines, client baseline telemetry, and executive outcomes.',
+                                    path: '/case-studies/featured',
+                                    badge: 'Curated Showcase',
+                                    icon: Award,
+                                    tags: ['3 Showcases', 'Telemetry Dossiers']
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    id: 'sector-case-studies',
-                    title: 'Sector-Specific Case Studies',
-                    desc: 'Traceable blueprints across FinTech, SaaS, Healthcare, Web3 & Platforms',
-                    path: '/case-studies',
-                    badge: 'Traceable Blueprints',
-                    icon: TrendingUp,
+                    id: 'by-business-challenge',
+                    title: 'By Business Challenge',
+                    desc: 'Filter verified enterprise case studies by specific strategic friction points and commercial challenges.',
+                    path: '/case-studies#challenge',
+                    badge: 'Strategic Challenges',
+                    icon: Target,
                     columns: [
                         {
-                            header: 'SaaS & FinTech Proof',
-                            badge: 'Financial Services',
-                            icon: DollarSign,
+                            header: 'Pipeline & Growth Scale',
+                            badge: 'Top-Line',
+                            icon: TrendingUp,
                             cards: [
                                 {
-                                    title: 'Tier-1 FinTech Core Modernization',
-                                    description: '$4.8M net ARR expansion and 89% manual underwriting automated.',
-                                    path: '/industries/financial-services#case-study',
-                                    badge: 'Case Study',
-                                    icon: DollarSign,
-                                    tags: ['$4.8M Net ARR', 'SOC2 Compliant']
+                                    title: 'Pipeline Acceleration: SaaS',
+                                    description: 'Systematic enterprise pipeline expansion through autonomous multi-threading.',
+                                    path: '/case-studies/enterprise-saas-pipeline-growth',
+                                    badge: 'Pipeline Growth',
+                                    icon: Target,
+                                    tags: ['Demand Gen', 'TAM Penetration']
                                 },
                                 {
-                                    title: 'Enterprise Multi-Sided Platform Scale',
-                                    description: '3.8x GMV lift and 44-day CAC payback period achieved.',
-                                    path: '/industries/platforms#case-study',
-                                    badge: 'Case Study',
-                                    icon: Network,
-                                    tags: ['3.8x GMV', '44-day Payback']
+                                    title: 'Global Expansion: Manufacturing',
+                                    description: 'Rapid international market entry and distributor network orchestration.',
+                                    path: '/case-studies/global-manufacturing-expansion',
+                                    badge: 'Market Expansion',
+                                    icon: Globe,
+                                    tags: ['Cross-Border', 'Distributor Mesh']
+                                },
+                                {
+                                    title: 'Customer Expansion: Enterprise Tech',
+                                    description: 'Transforming account retention into a 140% Net Retention Rate engine.',
+                                    path: '/case-studies/technology-customer-expansion',
+                                    badge: 'Customer Retention',
+                                    icon: Users,
+                                    tags: ['140% NRR', '+25% Expansion ARR']
                                 }
                             ]
                         },
                         {
-                            header: 'Healthcare & Web3 Proof',
-                            badge: 'Specialized Protocols',
-                            icon: ShieldCheck,
+                            header: 'Margin & Operations Control',
+                            badge: 'EBITDA & Certainty',
+                            icon: DollarSign,
                             cards: [
                                 {
-                                    title: 'Healthcare Zero-PHI Revenue Scale',
-                                    description: '$12.6M qualified health system pipeline with 100% HIPAA compliance.',
-                                    path: '/industries/healthcare#case-study',
-                                    badge: 'Case Study',
-                                    icon: ShieldCheck,
-                                    tags: ['Zero-PHI HIPAA', '$12.6M Pipeline']
+                                    title: 'Margin Recovery: Manufacturing',
+                                    description: '15 points gross margin recovery via CPQ floors and inflation indexing.',
+                                    path: '/case-studies/manufacturing-margin-improvement',
+                                    badge: 'Margin Improvement',
+                                    icon: Percent,
+                                    tags: ['+15 Pts Margin', '$54.6M Profit']
                                 },
                                 {
-                                    title: 'Web3 Protocol 90-Day TGE Launch',
-                                    description: '$140M TVL mobilized across 18 tier-1 institutional node operators.',
-                                    path: '/industries/crypto#case-study',
-                                    badge: 'Case Study',
-                                    icon: Rocket,
-                                    tags: ['$140M TVL', '90-Day Arc']
+                                    title: 'Forecast Accuracy: Healthcare',
+                                    description: 'Eliminating revenue volatility in high-compliance hospital sales.',
+                                    path: '/case-studies/healthcare-forecast-accuracy',
+                                    badge: 'Forecast Accuracy',
+                                    icon: LineChart,
+                                    tags: ['98% Precision', 'Board Certainty']
+                                },
+                                {
+                                    title: 'RevOps Overhaul: SaaS Scaleup',
+                                    description: 'Reclaiming 40+ hours per rep monthly and doubling quota velocity.',
+                                    path: '/case-studies/saas-revenue-operations',
+                                    badge: 'Revenue Operations',
+                                    icon: Sliders,
+                                    tags: ['80% Selling Time', 'Instant Comp']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'by-offering',
+                    title: 'By Offering',
+                    desc: 'Explore proven client outcomes mapped to ProfitMachines core architectural offerings.',
+                    path: '/case-studies#offering',
+                    badge: 'Offering Blueprints',
+                    icon: Compass,
+                    columns: [
+                        {
+                            header: 'Discovery & Demand Engines',
+                            badge: 'Front-End',
+                            icon: Compass,
+                            cards: [
+                                {
+                                    title: 'Profit Pool Discovery',
+                                    description: 'Uncovering uncaptured pricing elasticity and SKU profit pools.',
+                                    path: '/case-studies/manufacturing-margin-improvement',
+                                    badge: 'Discovery Offering',
+                                    icon: Target,
+                                    tags: ['Profit Pools', 'BOM Indexing']
+                                },
+                                {
+                                    title: 'Demand Engineering',
+                                    description: 'Autonomous multi-threaded pipeline generation for enterprise sales.',
+                                    path: '/case-studies/enterprise-saas-pipeline-growth',
+                                    badge: 'Demand Offering',
+                                    icon: Zap,
+                                    tags: ['Autonomous Outbound', 'Intent Mesh']
+                                },
+                                {
+                                    title: 'Growth Intelligence',
+                                    description: 'Deep market diagnostics and territory prioritization telemetry.',
+                                    path: '/case-studies/global-manufacturing-expansion',
+                                    badge: 'Intelligence Offering',
+                                    icon: BrainCircuit,
+                                    tags: ['Market Intel', 'Tier-1 Partners']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Execution & Governance Engines',
+                            badge: 'Operational',
+                            icon: Sliders,
+                            cards: [
+                                {
+                                    title: 'Revenue Operations',
+                                    description: 'Autonomous CRM data hygiene and real-time compensation engines.',
+                                    path: '/case-studies/saas-revenue-operations',
+                                    badge: 'RevOps Offering',
+                                    icon: Sliders,
+                                    tags: ['Autonomous CRM', 'Instant Comp']
+                                },
+                                {
+                                    title: 'GTM Transformation',
+                                    description: 'Consolidating acquired business units under a unified commercial mesh.',
+                                    path: '/case-studies/healthcare-gtm-transformation',
+                                    badge: 'GTM Offering',
+                                    icon: GitMerge,
+                                    tags: ['Account Unification', 'Umbrella MSAs']
+                                },
+                                {
+                                    title: 'AI Trust & Governance',
+                                    description: 'Institutional-grade security and governance for PE portfolio scale.',
+                                    path: '/case-studies/financial-services-ai-transformation',
+                                    badge: 'Trust & Governance',
+                                    icon: ShieldCheck,
+                                    tags: ['Algorithmic Compliance', '5X Deployment']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'by-industry',
+                    title: 'By Industry',
+                    desc: 'Deep sector blueprints addressing industry-specific regulatory constraints, sales cycles, and buyer committees.',
+                    path: '/case-studies#industry',
+                    badge: 'Sector Specialization',
+                    icon: Building2,
+                    columns: [
+                        {
+                            header: 'Software, Tech & Capital',
+                            badge: 'Digital & Financial',
+                            icon: Cpu,
+                            cards: [
+                                {
+                                    title: 'Enterprise SaaS & Cloud',
+                                    description: 'Pipeline acceleration and RevOps automation for B2B cloud platforms.',
+                                    path: '/case-studies/enterprise-saas-pipeline-growth',
+                                    badge: 'SaaS Sector',
+                                    icon: Cpu,
+                                    tags: ['Enterprise ARR', 'Multi-Threading']
+                                },
+                                {
+                                    title: 'Enterprise Technology & Platforms',
+                                    description: 'Engineering net revenue retention and expansion ARR across key accounts.',
+                                    path: '/case-studies/technology-customer-expansion',
+                                    badge: 'Tech Sector',
+                                    icon: Server,
+                                    tags: ['140% NRR', 'CS Telemetry']
+                                },
+                                {
+                                    title: 'Financial Services & Private Equity',
+                                    description: 'AI value creation and multi-entity EBITDA acceleration across portfolio assets.',
+                                    path: '/case-studies/financial-services-ai-transformation',
+                                    badge: 'FinServ & PE',
+                                    icon: Landmark,
+                                    tags: ['Portfolio Scale', '2.3X Valuation']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Industrial & Healthcare',
+                            badge: 'Regulated & Physical',
+                            icon: Factory,
+                            cards: [
+                                {
+                                    title: 'Specialized Manufacturing',
+                                    description: 'Global expansion and distributor network scale across 4 operating hubs.',
+                                    path: '/case-studies/global-manufacturing-expansion',
+                                    badge: 'Manufacturing',
+                                    icon: Factory,
+                                    tags: ['4 Global Hubs', '$400M Scale']
+                                },
+                                {
+                                    title: 'Industrial Margin Optimization',
+                                    description: 'Eliminating sales discount leakage and recovering 15 points gross margin.',
+                                    path: '/case-studies/manufacturing-margin-improvement',
+                                    badge: 'Pricing & Margin',
+                                    icon: Percent,
+                                    tags: ['+15 Pts Recovery', 'Hard CPQ Floors']
+                                },
+                                {
+                                    title: 'Healthcare Systems & MedTech',
+                                    description: 'Navigating hospital buying committees with 98% forecast precision.',
+                                    path: '/case-studies/healthcare-forecast-accuracy',
+                                    badge: 'Healthcare Sector',
+                                    icon: HeartPulse,
+                                    tags: ['Zero-PHI HIPAA', 'Hospital Networks']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'by-company-stage',
+                    title: 'By Company Stage',
+                    desc: 'Transformations tailored to capitalization profile, maturity scale, and governance expectations.',
+                    path: '/case-studies#stage',
+                    badge: 'Stage Adaptation',
+                    icon: Layers,
+                    columns: [
+                        {
+                            header: 'Venture & Growth Scale',
+                            badge: 'Venture-Backed',
+                            icon: Rocket,
+                            cards: [
+                                {
+                                    title: 'Series B SaaS Startups ($15M ARR)',
+                                    description: 'Autonomous RevOps control plane doubling rep selling capacity.',
+                                    path: '/case-studies/saas-revenue-operations',
+                                    badge: 'Startup Scale',
+                                    icon: Sliders,
+                                    tags: ['Admin Relief', 'Forecast Engine']
+                                },
+                                {
+                                    title: 'Growth-Stage Scaleups ($50M+ ARR)',
+                                    description: 'Engineering predictable enterprise pipeline and multi-channel scale.',
+                                    path: '/case-studies/enterprise-saas-pipeline-growth',
+                                    badge: 'Growth Stage',
+                                    icon: TrendingUp,
+                                    tags: ['Enterprise Playbook', 'Market Leadership']
+                                },
+                                {
+                                    title: 'Mid-Market Champions ($350M Rev)',
+                                    description: 'Dynamic pricing power and margin recovery across complex portfolios.',
+                                    path: '/case-studies/manufacturing-margin-improvement',
+                                    badge: 'Mid-Market',
+                                    icon: Factory,
+                                    tags: ['Margin Protection', 'EBITDA Lift']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Enterprise & Sponsor-Backed',
+                            badge: 'Institutional',
+                            icon: Landmark,
+                            cards: [
+                                {
+                                    title: 'Large Global Enterprises ($900M Rev)',
+                                    description: 'Unifying acquired divisions under a synchronized commercial architecture.',
+                                    path: '/case-studies/healthcare-gtm-transformation',
+                                    badge: 'Enterprise Conglomerate',
+                                    icon: Building2,
+                                    tags: ['M&A Unification', 'Multi-BU Scale']
+                                },
+                                {
+                                    title: 'PE Sponsor Portfolio Companies',
+                                    description: 'Rapid commercial modernization and enterprise valuation expansion.',
+                                    path: '/case-studies/financial-services-ai-transformation',
+                                    badge: 'Private Equity',
+                                    icon: Award,
+                                    tags: ['100-Day Acceleration', 'Exit Multiple']
+                                },
+                                {
+                                    title: 'Explore All Stages & Metrics',
+                                    description: 'Access the complete transformation matrix across all company tiers.',
+                                    path: '/case-studies',
+                                    badge: 'Transformation Wall',
+                                    icon: ShieldCheck,
+                                    tags: ['Interactive Matrix', '8 Case Studies']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'ai-native-transformations',
+                    title: 'AI-Native Transformations',
+                    desc: 'Autonomous agent mesh deployments delivering human-in-the-loop sales execution, deal intelligence, and real-time ROI.',
+                    path: '/case-studies/ai-native',
+                    badge: 'Next-Gen Mesh',
+                    icon: BrainCircuit,
+                    columns: [
+                        {
+                            header: 'Autonomous Agent Fleet',
+                            badge: 'Agent Swarms',
+                            icon: Bot,
+                            cards: [
+                                {
+                                    title: 'Autonomous Inbound & Outbound SDR',
+                                    description: '24/7 hyper-personalized multi-threaded enterprise prospecting.',
+                                    path: '/case-studies/ai-native#sdr-fleet',
+                                    badge: 'SDR Agent',
+                                    icon: Bot,
+                                    tags: ['24/7 Outbound', 'Zero Hallucination']
+                                },
+                                {
+                                    title: 'Live Revenue Intelligence Mesh',
+                                    description: 'Continuous buyer engagement telemetry and deal ghosting detection.',
+                                    path: '/case-studies/ai-native#revenue-mesh',
+                                    badge: 'Deal Intelligence',
+                                    icon: Activity,
+                                    tags: ['Buyer Sentiment', 'Ghosting Alarms']
+                                },
+                                {
+                                    title: 'Autonomous RevOps Control Plane',
+                                    description: 'Self-healing CRM records and algorithmic forecast precision.',
+                                    path: '/case-studies/ai-native#revops-control',
+                                    badge: 'RevOps Control',
+                                    icon: Sliders,
+                                    tags: ['Self-Healing Data', 'Predictive Quota']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Telemetry & ROI Modeling',
+                            badge: 'Interactive',
+                            icon: LineChart,
+                            cards: [
+                                {
+                                    title: 'Interactive AI Agent ROI Calculator',
+                                    description: 'Simulate rep hours reclaimed, pipeline lift, and cost savings in real time.',
+                                    path: '/case-studies/ai-native#calculator',
+                                    badge: 'Live Simulator',
+                                    icon: DollarSign,
+                                    tags: ['SDR Sizing', 'Hours Reclaimed']
+                                },
+                                {
+                                    title: '4-Agent Ecosystem Architecture',
+                                    description: 'Inter-agent communication protocol with human-in-the-loop validation gates.',
+                                    path: '/case-studies/ai-native',
+                                    badge: 'Mesh Blueprint',
+                                    icon: BrainCircuit,
+                                    tags: ['Autonomous Routing', 'SOC2 Compliant']
+                                },
+                                {
+                                    title: 'All AI-Native Transformations',
+                                    description: 'Full gallery of autonomous agent workflows and live technical telemetry.',
+                                    path: '/case-studies/ai-native',
+                                    badge: 'Agent Gallery',
+                                    icon: Sparkles,
+                                    tags: ['Live Blueprints', 'Technical Demos']
                                 }
                             ]
                         }
@@ -2460,53 +2765,45 @@ export default function Navigation() {
                     />
 
                     {/* Floating Panel Container */}
-                    <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-2">
-                        <div className="bg-white rounded-2xl shadow-2xl border border-slate-200/90 overflow-hidden flex flex-col">
+                    <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-2">
+                        <div className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden flex flex-col">
                             {/* Inner Layout: Left Category Sidebar + Right Content Area */}
-                            <div className="flex min-h-[460px] max-h-[580px]">
+                            <div className="flex min-h-[360px] max-h-[520px]">
                                 {/* ── A. LEFT CATEGORY SIDEBAR ── */}
-                                <aside className="w-64 xl:w-72 border-r border-slate-100 bg-slate-50/50 p-3 shrink-0 flex flex-col justify-between overflow-y-auto">
+                                <aside className="w-64 border-r border-slate-100 bg-slate-50/50 p-3 shrink-0 flex flex-col justify-between overflow-y-auto">
                                     <div className="space-y-1">
                                         <div className="px-3 py-1.5 text-[10px] font-mono uppercase font-bold tracking-wider text-slate-400">
-                                            {currentMenu.name} Architecture
+                                            Categories
                                         </div>
 
                                         {currentMenu.categories.map((cat) => {
                                             const isCatActive = currentCategory?.id === cat.id;
-                                            const CatIcon = cat.icon || Layers;
 
                                             return (
                                                 <div
                                                     key={cat.id}
                                                     onMouseEnter={() => setActiveCategoryId(cat.id)}
-                                                    className={`w-full group px-2.5 py-2 rounded-xl text-xs font-bold transition-all duration-150 flex items-center justify-between cursor-pointer ${
+                                                    onClick={() => setActiveCategoryId(cat.id)}
+                                                    className={`w-full group px-3 py-2 rounded-lg text-xs font-semibold transition-all duration-150 flex items-center justify-between cursor-pointer ${
                                                         isCatActive
-                                                            ? 'bg-blue-50/90 text-blue-600 border border-blue-200/70 shadow-2xs'
-                                                            : 'text-slate-700 hover:text-blue-600 hover:bg-slate-100/70 border border-transparent'
+                                                            ? 'bg-blue-50 text-blue-600 font-bold'
+                                                            : 'text-slate-700 hover:text-blue-600 hover:bg-slate-100/60'
                                                     }`}
                                                 >
                                                     <button
                                                         type="button"
-                                                        onClick={() => setActiveCategoryId(cat.id)}
-                                                        className="flex items-center gap-2.5 truncate flex-1 text-left cursor-pointer"
+                                                        className="truncate flex-1 text-left cursor-pointer select-none"
                                                     >
-                                                        <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
-                                                            isCatActive
-                                                                ? 'bg-blue-600 text-white'
-                                                                : 'bg-white border border-slate-200 text-slate-500 group-hover:text-blue-600'
-                                                        }`}>
-                                                            <CatIcon className="w-3.5 h-3.5" />
-                                                        </div>
-                                                        <span className="truncate">{cat.title}</span>
+                                                        <span className="truncate block">{cat.title}</span>
                                                     </button>
                                                     <Link
                                                         to={cat.path}
                                                         onClick={() => setActiveMenuId(null)}
                                                         title={`Open ${cat.title} page`}
-                                                        className={`p-1 rounded-md transition-colors ${
+                                                        className={`p-1 rounded transition-colors ${
                                                             isCatActive
                                                                 ? 'text-blue-600 hover:bg-blue-100'
-                                                                : 'text-slate-400 group-hover:text-blue-600 hover:bg-white'
+                                                                : 'text-slate-300 group-hover:text-blue-600 hover:bg-white'
                                                         }`}
                                                     >
                                                         <ArrowUpRight className="w-3.5 h-3.5" />
@@ -2516,139 +2813,80 @@ export default function Navigation() {
                                         })}
                                     </div>
 
-                                    {/* Sidebar Bottom Note */}
-                                    <div className="p-3 mt-3 rounded-xl bg-white border border-slate-200/80 shadow-2xs space-y-1">
-                                        <div className="flex items-center gap-1.5 text-[11px] font-bold text-slate-800">
-                                            <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                                            <span>{currentMenu.badge}</span>
-                                        </div>
-                                        <p className="text-[10px] text-slate-500 leading-tight">
-                                            Guaranteed enterprise SLAs and performance baselines.
-                                        </p>
+                                    {/* Sidebar Bottom Link */}
+                                    <div className="pt-2.5 mt-2 border-t border-slate-200/60">
                                         <Link
                                             to={currentMenu.path}
                                             onClick={() => setActiveMenuId(null)}
-                                            className="inline-flex items-center justify-between w-full pt-1.5 mt-1 border-t border-slate-100 text-[11px] font-bold text-blue-600 hover:text-blue-700 group"
+                                            className="inline-flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-blue-600 hover:text-blue-700 hover:bg-blue-50/50 transition-colors w-full group"
                                         >
-                                            <span>View {currentMenu.name} Overview</span>
-                                            <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                                            <span>All {currentMenu.name}</span>
+                                            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                                         </Link>
                                     </div>
                                 </aside>
 
                                 {/* ── B. RIGHT CONTENT AREA ── */}
-                                <main className="flex-1 p-5 xl:p-6 flex flex-col justify-between overflow-y-auto bg-white">
-                                    {currentCategory && (
-                                        <div className="space-y-4">
-                                            {/* Top Banner Header */}
-                                            <div className="flex items-start justify-between pb-3.5 border-b border-slate-100">
-                                                <div className="flex items-start gap-3">
-                                                    <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
-                                                        {React.createElement(currentCategory.icon || Layers, { className: 'w-4 h-4' })}
-                                                    </div>
-                                                    <div>
-                                                        <div className="flex items-center gap-2">
-                                                            <h3 className="text-base font-bold text-slate-900 font-heading">
-                                                                {currentCategory.title}
-                                                            </h3>
-                                                            {currentCategory.badge && (
-                                                                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200/60">
-                                                                    {currentCategory.badge}
-                                                                </span>
-                                                            )}
-                                                        </div>
-                                                        <p className="text-xs text-slate-500 mt-0.5">
-                                                            {currentCategory.desc}
-                                                        </p>
-                                                    </div>
+                                <main className="flex-1 p-6 xl:p-7 flex flex-col justify-between overflow-y-auto bg-white">
+                                    {currentCategory && (() => {
+                                        const allLinks = currentCategory.columns.flatMap(col => col.cards);
+                                        const numCols = allLinks.length > 6 ? 3 : 2;
+
+                                        return (
+                                            <div className="space-y-4">
+                                                {/* Category Header */}
+                                                <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+                                                    <h3 className="text-base sm:text-lg font-extrabold text-slate-900 font-heading tracking-tight">
+                                                        {currentCategory.title}
+                                                    </h3>
+
+                                                    <Link
+                                                        to={currentCategory.path}
+                                                        onClick={() => setActiveMenuId(null)}
+                                                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-bold font-mono uppercase tracking-wider transition-colors group"
+                                                    >
+                                                        <span>View Overview</span>
+                                                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                                                    </Link>
                                                 </div>
 
-                                                <Link
-                                                    to={currentCategory.path}
-                                                    onClick={() => setActiveMenuId(null)}
-                                                    className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors shrink-0 group"
-                                                >
-                                                    <span>Explore {currentCategory.title} Directory</span>
-                                                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                                                </Link>
-                                            </div>
-
-                                            {/* Columns Grid of Grouped Cards (Matching Reference Screenshot) */}
-                                            <div className={`grid gap-4 ${
-                                                currentCategory.columns.length === 3 
-                                                    ? 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3' 
-                                                    : currentCategory.columns.length === 2 
-                                                        ? 'grid-cols-1 md:grid-cols-2' 
-                                                        : 'grid-cols-1'
-                                            }`}>
-                                                {currentCategory.columns.map((col, colIdx) => (
-                                                    <div key={colIdx} className="space-y-2.5">
-                                                        {/* Column Header */}
-                                                        <div className="flex items-center justify-between pb-2 border-b border-slate-100 text-[11px] font-mono font-bold uppercase tracking-wider text-slate-600">
-                                                            <div className="flex items-center gap-1.5">
-                                                                {col.icon && React.createElement(col.icon, { className: 'w-3.5 h-3.5 text-blue-600' })}
-                                                                <span>{col.header}</span>
+                                                {/* Clean Balanced Grid of Links in Boxes with Larger Typography */}
+                                                <div className={`grid gap-3 pt-1 ${
+                                                    numCols === 3
+                                                        ? 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3'
+                                                        : 'grid-cols-1 md:grid-cols-2'
+                                                }`}>
+                                                    {allLinks.map((card, idx) => (
+                                                        <Link
+                                                            key={idx}
+                                                            to={card.path}
+                                                            onClick={() => setActiveMenuId(null)}
+                                                            className="group p-3.5 sm:p-4 rounded-xl bg-slate-50/60 hover:bg-white border border-slate-200/80 hover:border-blue-400 hover:shadow-md hover:-translate-y-0.5 transition-all duration-150 flex items-center justify-between cursor-pointer"
+                                                        >
+                                                            <span className="text-sm sm:text-[15px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+                                                                {card.title}
+                                                            </span>
+                                                            <div className="w-7 h-7 rounded-lg bg-white border border-slate-200/60 group-hover:bg-blue-600 group-hover:border-blue-600 text-slate-400 group-hover:text-white flex items-center justify-center shrink-0 ml-3 transition-all duration-150 shadow-2xs">
+                                                                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                                                             </div>
-                                                            {col.badge && (
-                                                                <span className="text-[9px] font-mono font-semibold px-1.5 py-0.2 rounded bg-slate-100 text-slate-500 border border-slate-200/60">
-                                                                    {col.badge}
-                                                                </span>
-                                                            )}
-                                                        </div>
-
-                                                        {/* Stacked Cards within this Column */}
-                                                        <div className="space-y-2">
-                                                            {col.cards.map((card, cIdx) => {
-                                                                const CardIcon = card.icon || Layers;
-                                                                return (
-                                                                    <Link
-                                                                        key={cIdx}
-                                                                        to={card.path}
-                                                                        onClick={() => setActiveMenuId(null)}
-                                                                        className="group p-3 rounded-xl bg-slate-50/50 hover:bg-white border border-slate-100 hover:border-blue-200 hover:shadow-md transition-all duration-150 flex items-start gap-2.5 cursor-pointer shadow-2xs"
-                                                                    >
-                                                                        <div className="w-7 h-7 rounded-lg bg-blue-50 border border-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors mt-0.5">
-                                                                            <CardIcon className="w-3.5 h-3.5" />
-                                                                        </div>
-
-                                                                        <div className="min-w-0 flex-1">
-                                                                            {card.badge && (
-                                                                                <div className="text-[9px] font-mono font-bold uppercase tracking-wider text-blue-600 mb-0.5">
-                                                                                    {card.badge}
-                                                                                </div>
-                                                                            )}
-                                                                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug truncate font-heading">
-                                                                                {card.title}
-                                                                            </h4>
-                                                                            <p className="text-[11px] text-slate-500 leading-snug line-clamp-2 mt-0.5">
-                                                                                {card.description}
-                                                                            </p>
-                                                                        </div>
-                                                                    </Link>
-                                                                );
-                                                            })}
-                                                        </div>
-                                                    </div>
-                                                ))}
+                                                        </Link>
+                                                    ))}
+                                                </div>
                                             </div>
-                                        </div>
-                                    )}
+                                        );
+                                    })()}
                                 </main>
                             </div>
 
-                            {/* ── C. BOTTOM INFORMATION ROW (MATCHING REFERENCE IMAGE) ── */}
-                            <footer className="px-6 py-2.5 bg-slate-50/80 border-t border-slate-100 rounded-b-2xl flex items-center justify-between text-xs text-slate-500 shrink-0">
-                                <div className="flex items-center gap-2">
-                                    <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                                    <span className="font-medium text-slate-600">
-                                        ProfitMachines Enterprise: {currentMenu.summary}
-                                    </span>
-                                </div>
-
+                            {/* ── C. CLEAN MINIMAL FOOTER ROW (NO PROMOTIONAL / DESCRIPTIVE TEXT) ── */}
+                            <footer className="px-6 py-2.5 bg-slate-50/70 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 shrink-0">
+                                <span className="text-[11px] font-mono text-slate-400">
+                                    Enterprise Revenue Architecture
+                                </span>
                                 <Link
                                     to={currentMenu.path}
                                     onClick={() => setActiveMenuId(null)}
-                                    className="font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1 transition-colors"
+                                    className="font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1 transition-colors text-xs"
                                 >
                                     <span>Explore All {currentMenu.name}</span>
                                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -2791,7 +3029,6 @@ export default function Navigation() {
                             {mainMenus.map((menu) => {
                                 const hasSubNav = menu.categories && menu.categories.length > 0;
                                 const isExpanded = mobileExpandedMenu === menu.id;
-                                const MenuIcon = menu.icon || Layers;
                                 const isCurrentActive = isMenuActive(menu);
 
                                 if (!hasSubNav) {
@@ -2800,31 +3037,15 @@ export default function Navigation() {
                                             key={menu.id}
                                             to={menu.path}
                                             onClick={() => setMobileOpen(false)}
-                                            className={`rounded-2xl border min-h-[48px] p-3 flex items-center justify-between gap-2.5 cursor-pointer select-none transition-all duration-200 ${
+                                            className={`rounded-xl border min-h-[44px] px-3.5 py-2.5 flex items-center justify-between gap-2.5 cursor-pointer select-none transition-all duration-150 ${
                                                 isCurrentActive
                                                     ? 'border-blue-200 bg-blue-50/40 text-blue-600 font-bold'
                                                     : 'border-slate-200/80 bg-white text-slate-800 hover:border-slate-300 hover:bg-slate-50'
                                             }`}
                                         >
-                                            <div className="flex items-center gap-2.5 truncate flex-1 min-w-0">
-                                                <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
-                                                    isCurrentActive
-                                                        ? 'bg-blue-600 text-white'
-                                                        : 'bg-blue-50 text-blue-600 border border-blue-100'
-                                                }`}>
-                                                    <MenuIcon className="w-4 h-4" />
-                                                </div>
-                                                <div className="truncate min-w-0">
-                                                    <span className="text-xs sm:text-sm font-bold truncate block font-heading">
-                                                        {menu.name}
-                                                    </span>
-                                                </div>
-                                                {menu.badge && (
-                                                    <span className="text-[10px] font-mono text-blue-600 bg-blue-50/80 px-2 py-0.5 rounded-full border border-blue-100 hidden sm:inline-block truncate shrink-0 max-w-[130px]">
-                                                        {menu.badge}
-                                                    </span>
-                                                )}
-                                            </div>
+                                            <span className="text-xs sm:text-sm font-bold truncate block font-heading">
+                                                {menu.name}
+                                            </span>
                                             <ArrowRight className="w-4 h-4 text-slate-400 shrink-0" />
                                         </Link>
                                     );
@@ -2833,18 +3054,18 @@ export default function Navigation() {
                                 return (
                                     <div
                                         key={menu.id}
-                                        className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
+                                        className={`rounded-xl border transition-all duration-150 overflow-hidden ${
                                             isExpanded
-                                                ? 'border-blue-200 bg-blue-50/20 shadow-2xs'
+                                                ? 'border-blue-200 bg-blue-50/10 shadow-2xs'
                                                 : 'border-slate-200/80 bg-white hover:border-slate-300'
                                         }`}
                                     >
                                         {/* Top-Level Menu Bar (Accordion Trigger) */}
                                         <div
                                             onClick={() => toggleMobileMenu(menu.id)}
-                                            className={`w-full min-h-[48px] p-3 flex items-center justify-between gap-2.5 cursor-pointer select-none transition-colors ${
+                                            className={`w-full min-h-[44px] px-3.5 py-2.5 flex items-center justify-between gap-2.5 cursor-pointer select-none transition-colors ${
                                                 isExpanded
-                                                    ? 'bg-blue-50/70 text-blue-700'
+                                                    ? 'bg-blue-50/60 text-blue-700'
                                                     : isCurrentActive
                                                         ? 'bg-blue-50/30 text-blue-600 font-bold'
                                                         : 'text-slate-800 hover:bg-slate-50'
@@ -2860,77 +3081,56 @@ export default function Navigation() {
                                                 }
                                             }}
                                         >
-                                            <div className="flex items-center gap-2.5 truncate flex-1 min-w-0">
-                                                <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
-                                                    isExpanded || isCurrentActive
-                                                        ? 'bg-blue-600 text-white'
-                                                        : 'bg-blue-50 text-blue-600 border border-blue-100'
-                                                }`}>
-                                                    <MenuIcon className="w-4 h-4" />
-                                                </div>
-                                                <div className="truncate min-w-0">
-                                                    <span className="text-xs sm:text-sm font-bold truncate block font-heading">
-                                                        {menu.name}
-                                                    </span>
-                                                </div>
-                                                {menu.badge && (
-                                                    <span className="text-[10px] font-mono text-blue-600 bg-blue-50/80 px-2 py-0.5 rounded-full border border-blue-100 hidden sm:inline-block truncate shrink-0 max-w-[130px]">
-                                                        {menu.badge}
-                                                    </span>
-                                                )}
-                                            </div>
+                                            <span className="text-xs sm:text-sm font-bold truncate block font-heading">
+                                                {menu.name}
+                                            </span>
 
-                                            <div className="flex items-center gap-1 shrink-0">
-                                                <ChevronDown
-                                                    className={`w-4 h-4 transition-transform duration-200 shrink-0 ${
-                                                        isExpanded ? 'rotate-180 text-blue-600' : 'text-slate-400'
-                                                    }`}
-                                                />
-                                            </div>
+                                            <ChevronDown
+                                                className={`w-4 h-4 transition-transform duration-200 shrink-0 ${
+                                                    isExpanded ? 'rotate-180 text-blue-600' : 'text-slate-400'
+                                                }`}
+                                            />
                                         </div>
 
                                         {/* Submenu Accordion Panel */}
                                         {isExpanded && (
                                             <div
                                                 id={`mobile-submenu-${menu.id}`}
-                                                className="p-3 bg-white/95 border-t border-blue-100/80 space-y-3"
+                                                className="p-2.5 bg-white border-t border-blue-100/70 space-y-2"
                                             >
-                                                {/* Menu Overview Link & Summary */}
-                                                <div className="pb-2 border-b border-slate-100">
-                                                    <p className="text-[11px] text-slate-500 leading-relaxed mb-2 font-medium">
-                                                        {menu.summary}
-                                                    </p>
+                                                {/* Menu Overview Link */}
+                                                <div className="pb-2 border-b border-slate-100 px-1">
                                                     <Link
                                                         to={menu.path}
                                                         onClick={() => setMobileOpen(false)}
-                                                        className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                                                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors"
                                                     >
-                                                        <span>Explore Full {menu.name} Overview</span>
+                                                        <span>All {menu.name} Overview</span>
                                                         <ArrowRight className="w-3.5 h-3.5" />
                                                     </Link>
                                                 </div>
 
-                                                {/* Categories Accordion */}
-                                                <div className="space-y-2">
+                                                {/* Categories List */}
+                                                <div className="space-y-1.5">
                                                     {menu.categories.map((cat) => {
                                                         const isCatExpanded = !!mobileExpandedCategories[cat.id];
-                                                        const CatIcon = cat.icon || Layers;
+                                                        const allCatLinks = cat.columns.flatMap(col => col.cards);
 
                                                         return (
                                                             <div
                                                                 key={cat.id}
-                                                                className={`rounded-xl border transition-colors overflow-hidden ${
+                                                                className={`rounded-lg border transition-colors overflow-hidden ${
                                                                     isCatExpanded
-                                                                        ? 'border-blue-200/90 bg-slate-50/40 shadow-2xs'
-                                                                        : 'border-slate-200/70 bg-white hover:border-slate-300'
+                                                                        ? 'border-blue-200/80 bg-slate-50/30'
+                                                                        : 'border-slate-100 bg-white hover:border-slate-200'
                                                                 }`}
                                                             >
                                                                 {/* Category Header Bar */}
                                                                 <div
                                                                     onClick={(e) => toggleMobileCategory(cat.id, e)}
-                                                                    className={`w-full min-h-[44px] p-2.5 flex items-center justify-between gap-2 cursor-pointer select-none transition-colors ${
+                                                                    className={`w-full min-h-[40px] px-3 py-2 flex items-center justify-between gap-2 cursor-pointer select-none transition-colors ${
                                                                         isCatExpanded
-                                                                            ? 'bg-blue-50/60 text-blue-700'
+                                                                            ? 'bg-blue-50/50 text-blue-700 font-semibold'
                                                                             : 'text-slate-700 hover:bg-slate-50'
                                                                     }`}
                                                                     role="button"
@@ -2944,25 +3144,11 @@ export default function Navigation() {
                                                                         }
                                                                     }}
                                                                 >
-                                                                    <div className="flex items-center gap-2 truncate flex-1 min-w-0">
-                                                                        <div className={`w-6 h-6 rounded-md flex items-center justify-center shrink-0 ${
-                                                                            isCatExpanded
-                                                                                ? 'bg-blue-600 text-white'
-                                                                                : 'bg-slate-100 text-slate-500'
-                                                                        }`}>
-                                                                            <CatIcon className="w-3.5 h-3.5" />
-                                                                        </div>
-                                                                        <span className="text-xs font-bold truncate leading-tight font-heading">
-                                                                            {cat.title}
-                                                                        </span>
-                                                                        {cat.badge && (
-                                                                            <span className="text-[9px] font-mono font-semibold px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200 shrink-0">
-                                                                                {cat.badge}
-                                                                            </span>
-                                                                        )}
-                                                                    </div>
+                                                                    <span className="text-xs font-semibold truncate leading-tight font-heading">
+                                                                        {cat.title}
+                                                                    </span>
 
-                                                                    <div className="flex items-center gap-1.5 shrink-0">
+                                                                    <div className="flex items-center gap-1 shrink-0">
                                                                         <Link
                                                                             to={cat.path}
                                                                             onClick={(e) => {
@@ -2970,108 +3156,44 @@ export default function Navigation() {
                                                                                 setMobileOpen(false);
                                                                             }}
                                                                             title={`Open ${cat.title}`}
-                                                                            className="w-7 h-7 rounded-md text-slate-400 hover:text-blue-600 hover:bg-white flex items-center justify-center transition-colors"
+                                                                            className="w-6 h-6 rounded text-slate-400 hover:text-blue-600 flex items-center justify-center transition-colors"
                                                                             aria-label={`Open ${cat.title} page`}
                                                                         >
                                                                             <ArrowUpRight className="w-3.5 h-3.5" />
                                                                         </Link>
-                                                                        <div className="w-7 h-7 rounded-md text-slate-400 hover:text-blue-600 flex items-center justify-center">
-                                                                            <ChevronDown
-                                                                                className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
-                                                                                    isCatExpanded ? 'rotate-180 text-blue-600' : 'text-slate-400'
-                                                                                }`}
-                                                                            />
-                                                                        </div>
+                                                                        <ChevronDown
+                                                                            className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
+                                                                                isCatExpanded ? 'rotate-180 text-blue-600' : 'text-slate-400'
+                                                                            }`}
+                                                                        />
                                                                     </div>
                                                                 </div>
 
-                                                                {/* Category Expanded Content (Columns & Cards) */}
+                                                                {/* Category Expanded Links */}
                                                                 {isCatExpanded && (
                                                                     <div
                                                                         id={`mobile-subcat-${cat.id}`}
-                                                                        className="p-3 bg-white border-t border-slate-100 space-y-3"
+                                                                        className="p-2 bg-white border-t border-slate-100 space-y-1"
                                                                     >
-                                                                        {/* Category Description & Hub Link */}
-                                                                        <div className="p-2.5 rounded-xl bg-blue-50/50 border border-blue-100/80 space-y-1.5">
-                                                                            <p className="text-[11px] text-slate-600 leading-relaxed">
-                                                                                {cat.desc}
-                                                                            </p>
-                                                                            <Link
-                                                                                to={cat.path}
-                                                                                onClick={() => setMobileOpen(false)}
-                                                                                className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 hover:text-blue-700 transition-colors"
-                                                                            >
-                                                                                <span>Explore {cat.title} Directory</span>
-                                                                                <ArrowRight className="w-3 h-3" />
-                                                                            </Link>
-                                                                        </div>
+                                                                        <Link
+                                                                            to={cat.path}
+                                                                            onClick={() => setMobileOpen(false)}
+                                                                            className="block px-2.5 py-1 text-[11px] font-semibold text-blue-600 hover:text-blue-700"
+                                                                        >
+                                                                            View {cat.title} Overview →
+                                                                        </Link>
 
-                                                                        {/* Vertically Stacked Columns and Node Cards */}
-                                                                        <div className="space-y-4 pt-1">
-                                                                            {cat.columns.map((col, colIdx) => (
-                                                                                <div key={colIdx} className="space-y-2">
-                                                                                    {/* Group Header */}
-                                                                                    <div className="flex items-center justify-between pb-1.5 border-b border-slate-200/80 text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-slate-600">
-                                                                                        <div className="flex items-center gap-1.5 truncate">
-                                                                                            {col.icon && React.createElement(col.icon, { className: 'w-3.5 h-3.5 text-blue-600 shrink-0' })}
-                                                                                            <span className="truncate">{col.header}</span>
-                                                                                        </div>
-                                                                                        {col.badge && (
-                                                                                            <span className="text-[9px] font-mono font-semibold px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200 shrink-0 ml-2">
-                                                                                                {col.badge}
-                                                                                            </span>
-                                                                                        )}
-                                                                                    </div>
-
-                                                                                    {/* Single-Column Stack of Tactile Cards */}
-                                                                                    <div className="space-y-2">
-                                                                                        {col.cards.map((card, cIdx) => {
-                                                                                            const CardIcon = card.icon || Layers;
-                                                                                            return (
-                                                                                                <Link
-                                                                                                    key={cIdx}
-                                                                                                    to={card.path}
-                                                                                                    onClick={() => setMobileOpen(false)}
-                                                                                                    className="group block p-3 rounded-xl bg-slate-50/70 hover:bg-white active:bg-blue-50/50 border border-slate-200/70 hover:border-blue-300 transition-all duration-150 shadow-2xs"
-                                                                                                >
-                                                                                                    <div className="flex items-start gap-2.5 sm:gap-3">
-                                                                                                        <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors mt-0.5">
-                                                                                                            <CardIcon className="w-4 h-4" />
-                                                                                                        </div>
-                                                                                                        <div className="min-w-0 flex-1">
-                                                                                                            <div className="flex items-center justify-between gap-1.5 mb-0.5">
-                                                                                                                {card.badge && (
-                                                                                                                    <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-blue-600">
-                                                                                                                        {card.badge}
-                                                                                                                    </span>
-                                                                                                                )}
-                                                                                                                <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all shrink-0 ml-auto" />
-                                                                                                            </div>
-                                                                                                            <h5 className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug font-heading">
-                                                                                                                {card.title}
-                                                                                                            </h5>
-                                                                                                            <p className="text-[11px] sm:text-xs text-slate-500 leading-relaxed line-clamp-2 mt-1">
-                                                                                                                {card.description}
-                                                                                                            </p>
-                                                                                                            {card.tags && card.tags.length > 0 && (
-                                                                                                                <div className="flex flex-wrap gap-1 mt-1.5">
-                                                                                                                    {card.tags.map((tag, tIdx) => (
-                                                                                                                        <span
-                                                                                                                            key={tIdx}
-                                                                                                                            className="text-[9px] font-mono font-medium text-slate-500 bg-white border border-slate-200/60 px-1.5 py-0.5 rounded"
-                                                                                                                        >
-                                                                                                                            {tag}
-                                                                                                                        </span>
-                                                                                                                    ))}
-                                                                                                                </div>
-                                                                                                            )}
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </Link>
-                                                                                            );
-                                                                                        })}
-                                                                                    </div>
-                                                                                </div>
+                                                                        <div className="space-y-1.5 pt-1">
+                                                                            {allCatLinks.map((card, cIdx) => (
+                                                                                <Link
+                                                                                    key={cIdx}
+                                                                                    to={card.path}
+                                                                                    onClick={() => setMobileOpen(false)}
+                                                                                    className="group flex items-center justify-between p-2.5 rounded-lg bg-slate-50/80 hover:bg-white border border-slate-200/70 hover:border-blue-300 text-xs font-bold text-slate-800 hover:text-blue-600 transition-all shadow-2xs"
+                                                                                >
+                                                                                    <span className="truncate">{card.title}</span>
+                                                                                    <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-0.5 shrink-0 ml-2 transition-transform" />
+                                                                                </Link>
                                                                             ))}
                                                                         </div>
                                                                     </div>

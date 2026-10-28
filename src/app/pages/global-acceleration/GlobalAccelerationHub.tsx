@@ -4,7 +4,7 @@ import {
   Globe, ArrowRight, ChevronRight, Activity, ShieldCheck,
   TrendingUp, BarChart3, Layers, Cpu, Compass, CheckCircle2,
   AlertCircle, Users, Bot, Sparkles, Building2, HelpCircle,
-  ChevronDown, MapPin, Zap, ArrowUpRight, DollarSign, Network
+  MapPin, Zap, ArrowUpRight, DollarSign, Network
 } from 'lucide-react';
 import { AiSalesIntakeForm } from '../../components/forms/AiSalesIntakeForm';
 
@@ -81,35 +81,7 @@ const regions = [
   { name: 'Latin America', status: 'Micro-Segment Margin', coverage: 'Local Currency Hedged', lat: '65%', lon: '33%', active: true },
 ];
 
-const faqs = [
-  {
-    q: 'How do you validate international market opportunities before we commit capital?',
-    a: 'We conduct first-principles unit economic evaluations by territory — analyzing country contribution margin, micro-segment TAM/SAM/SOM, distribution efficiency, competitive incumbent density, and willingness-to-pay. No capital is deployed on macro assumptions or generic GDP numbers.'
-  },
-  {
-    q: 'Can your AI agents operate in multiple languages and timezones?',
-    a: 'Yes. Our autonomous agent swarms prospect, qualify, follow up, and handle objections across 15+ native languages. They execute 24/7 with localized cultural tone, ensuring uninterrupted pipeline velocity while your domestic teams sleep.'
-  },
-  {
-    q: 'How do you handle regulatory compliance across different jurisdictions?',
-    a: 'Before market launch, our regulatory intelligence framework maps local data residency (GDPR, LGPD, PDPA, HIPAA equivalents), tax protocols, and contractual liability. We deploy continuous regulatory monitoring agents that track legal changes in real time to prevent contract stranding.'
-  },
-  {
-    q: 'What\'s the typical timeline from diagnostic to first international revenue?',
-    a: 'Our structured execution methodology is engineered for 90 days: Days 1-14 focus on the Global Expansion Diagnostic & Market Validation; Days 15-45 activate Market Entry Strategy & Partner Networks; Days 46-90 deploy autonomous AI agent swarms and realize first contracted revenue.'
-  },
-  {
-    q: 'How do you measure partner contribution and ROI?',
-    a: 'We eliminate vanity logo walls by implementing multi-touch co-sell pipeline attribution. Every distributor, VAR, and global alliance is scored on measured revenue contribution, conversion speed, and active joint accounts.'
-  },
-  {
-    q: 'Can we start with one market and expand to others?',
-    a: 'Absolutely. Over 65% of our enterprise clients start with a single prioritized beachhead territory. Once unit economics, messaging, and partner flywheels compound, we clone and calibrate the autonomous motion into adjacent global regions.'
-  }
-];
-
 export default function GlobalAccelerationHub() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeRegion, setActiveRegion] = useState(0);
 
   useEffect(() => {
@@ -205,20 +177,43 @@ export default function GlobalAccelerationHub() {
         </div>
       </section>
 
-      {/* ── THE GLOBAL CHALLENGE (SPLIT COMPARISON) ── */}
+      {/* ── THE GLOBAL CHALLENGE (SPLIT COMPARISON & BENCHMARKS) ── */}
       <section className="py-20 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
+          <div className="max-w-3xl mb-10">
             <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">The Strategic Defect</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 font-heading">
               Why Most Global Expansion Initiatives Fail
             </h2>
           </div>
 
-          <div className="p-8 sm:p-12 rounded-3xl bg-white border border-slate-200 shadow-sm relative mb-12">
-            <p className="text-lg sm:text-xl text-slate-700 leading-relaxed font-normal">
-              Enterprises spend $15M+ and 18-24 months entering a single international market — yet 70% of global expansion initiatives fail to meet revenue targets within 3 years. The problem isn't ambition. It's execution. Companies enter markets without validated demand signals. They launch with English-only messaging in non-English markets. They ignore regulatory complexity until it strands signed contracts. They build partner networks without attribution or co-sell orchestration. Our approach is different. We treat global expansion as a deterministic system — where every market entry is validated by AI-powered intelligence before a dollar is spent, every localization is tested against willingness-to-pay data, every regulatory requirement is mapped before launch, and every partner is scored by measured contribution.
+          {/* Executive Summary Card */}
+          <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm relative mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-mono font-bold uppercase mb-4">
+              Executive Briefing
+            </div>
+            <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-normal">
+              Most enterprise cross-border expansions stall due to unvalidated demand signals, non-localized buyer journeys, and fragmented partner channels. ProfitMachines treats global acceleration as an engineered, deterministic system — validating unit-economic feasibility before capital commitment, automating native localization, and deploying autonomous AI sales agents across 40+ countries.
             </p>
+          </div>
+
+          {/* Executive Benchmark Highlights */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+              <div className="text-2xl font-black font-mono text-blue-600 mb-1">60-75%</div>
+              <div className="text-xs font-mono font-bold text-slate-900 uppercase tracking-wide mb-1">Market ROI Lift</div>
+              <p className="text-xs text-slate-600">Unit-economic TAM/SAM/SOM validation prior to territory deployment.</p>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+              <div className="text-2xl font-black font-mono text-indigo-600 mb-1">50-70%</div>
+              <div className="text-xs font-mono font-bold text-slate-900 uppercase tracking-wide mb-1">Faster Time-to-Revenue</div>
+              <p className="text-xs text-slate-600">Autonomous multi-language SDRs and pre-established distributor ecosystems.</p>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+              <div className="text-2xl font-black font-mono text-emerald-600 mb-1">80-90%</div>
+              <div className="text-xs font-mono font-bold text-slate-900 uppercase tracking-wide mb-1">Failure Risk Reduction</div>
+              <p className="text-xs text-slate-600">Pre-flight capability audits gating expansion decisions behind verified readiness.</p>
+            </div>
           </div>
 
           {/* Split Comparison Cards */}
@@ -231,11 +226,11 @@ export default function GlobalAccelerationHub() {
               <ul className="space-y-3.5 text-sm text-slate-700">
                 <li className="flex items-start gap-2">
                   <span className="text-rose-500 font-bold shrink-0">✕</span>
-                  <span>Selecting markets based on generic GDP headlines rather than true unit-economic margin</span>
+                  <span>Selecting markets based on generic macro signals rather than true territory contribution margin</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-rose-500 font-bold shrink-0">✕</span>
-                  <span>Directly translating English collateral, missing local buyer nuances and willingness-to-pay</span>
+                  <span>Directly translating domestic collateral, missing local buyer nuances and willingness-to-pay</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-rose-500 font-bold shrink-0">✕</span>
@@ -243,7 +238,7 @@ export default function GlobalAccelerationHub() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-rose-500 font-bold shrink-0">✕</span>
-                  <span>Discovering data residency and compliance laws 6 months after contracts are executed</span>
+                  <span>Discovering data residency and compliance laws months after contracts are executed</span>
                 </li>
               </ul>
             </div>
@@ -437,37 +432,6 @@ export default function GlobalAccelerationHub() {
                 Multi-language AI SDR swarm activation, 24/7 timezone coverage, real-time telemetry dashboard handover, and contracted deal close.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── EXECUTIVE FAQ ── */}
-      <section className="py-24 bg-white border-b border-slate-200">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">Executive Clarifications</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 font-heading">
-              Frequently Asked Questions
-            </h2>
-          </div>
-
-          <div className="space-y-4">
-            {faqs.map((faq, idx) => (
-              <div key={idx} className="border border-slate-200 rounded-2xl overflow-hidden">
-                <button
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full p-6 text-left font-bold text-slate-900 flex items-center justify-between hover:bg-slate-50 transition-colors"
-                >
-                  <span className="text-base sm:text-lg">{faq.q}</span>
-                  <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform ${openFaq === idx ? 'rotate-180 text-blue-600' : ''}`} />
-                </button>
-                {openFaq === idx && (
-                  <div className="p-6 pt-0 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100 bg-slate-50/50">
-                    {faq.a}
-                  </div>
-                )}
-              </div>
-            ))}
           </div>
         </div>
       </section>

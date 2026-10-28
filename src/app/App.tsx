@@ -97,6 +97,17 @@ const GlobalPartnerEcosystemsPage = lazy(() => import('./pages/global-accelerati
 const GlobalRevOpsPage = lazy(() => import('./pages/global-acceleration/GlobalRevOpsPage'));
 const AiGlobalScalingPage = lazy(() => import('./pages/global-acceleration/AiGlobalScalingPage'));
 const ExecutiveExpansionOfficePage = lazy(() => import('./pages/global-acceleration/ExecutiveExpansionOfficePage'));
+const CaseStudiesHub = lazy(() => import('./pages/case-studies/CaseStudiesHub'));
+const FeaturedTransformationsPage = lazy(() => import('./pages/case-studies/FeaturedTransformationsPage'));
+const AiNativeTransformationsPage = lazy(() => import('./pages/case-studies/AiNativeTransformationsPage'));
+const EnterpriseSaasPipelineGrowthPage = lazy(() => import('./pages/case-studies/EnterpriseSaasPipelineGrowthPage'));
+const GlobalManufacturingExpansionPage = lazy(() => import('./pages/case-studies/GlobalManufacturingExpansionPage'));
+const HealthcareForecastAccuracyPage = lazy(() => import('./pages/case-studies/HealthcareForecastAccuracyPage'));
+const FinancialServicesAiTransformationPage = lazy(() => import('./pages/case-studies/FinancialServicesAiTransformationPage'));
+const TechnologyCustomerExpansionPage = lazy(() => import('./pages/case-studies/TechnologyCustomerExpansionPage'));
+const SaasRevenueOperationsPage = lazy(() => import('./pages/case-studies/SaasRevenueOperationsPage'));
+const ManufacturingMarginImprovementPage = lazy(() => import('./pages/case-studies/ManufacturingMarginImprovementPage'));
+const HealthcareGtmTransformationPage = lazy(() => import('./pages/case-studies/HealthcareGtmTransformationPage'));
 import TabExitPopup from './components/TabExitPopup';
 import StickyCtaBar from './components/StickyCtaBar';
 import WhatsAppWidget from './components/WhatsAppWidget';
@@ -195,8 +206,18 @@ export default function App() {
               <Route path="/global-acceleration/expansion-office" element={<ExecutiveExpansionOfficePage />} />
               <Route path="/demand-pulse" element={<DemandPulse />} />
               <Route path="/outcomes" element={<Outcomes />} />
-              <Route path="/case-studies" element={<Outcomes />} />
-              <Route path="/use-cases" element={<Outcomes />} />
+              <Route path="/case-studies" element={<CaseStudiesHub />} />
+              <Route path="/case-studies/featured" element={<FeaturedTransformationsPage />} />
+              <Route path="/case-studies/ai-native" element={<AiNativeTransformationsPage />} />
+              <Route path="/case-studies/enterprise-saas-pipeline-growth" element={<EnterpriseSaasPipelineGrowthPage />} />
+              <Route path="/case-studies/global-manufacturing-expansion" element={<GlobalManufacturingExpansionPage />} />
+              <Route path="/case-studies/healthcare-forecast-accuracy" element={<HealthcareForecastAccuracyPage />} />
+              <Route path="/case-studies/financial-services-ai-transformation" element={<FinancialServicesAiTransformationPage />} />
+              <Route path="/case-studies/technology-customer-expansion" element={<TechnologyCustomerExpansionPage />} />
+              <Route path="/case-studies/saas-revenue-operations" element={<SaasRevenueOperationsPage />} />
+              <Route path="/case-studies/manufacturing-margin-improvement" element={<ManufacturingMarginImprovementPage />} />
+              <Route path="/case-studies/healthcare-gtm-transformation" element={<HealthcareGtmTransformationPage />} />
+              <Route path="/use-cases" element={<Navigate to="/case-studies" replace />} />
               <Route path="/solutions" element={<Solutions />} />
               <Route path="/solutions/:slug" element={<NavigateToSolutionsSection />} />
               <Route path="/capabilities" element={<Navigate to="/solutions" replace />} />

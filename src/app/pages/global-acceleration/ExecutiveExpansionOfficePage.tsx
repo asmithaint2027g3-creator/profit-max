@@ -162,27 +162,42 @@ export default function ExecutiveExpansionOfficePage() {
         </div>
       </section>
 
-      {/* ── SECTION 2: THE PRINCIPLE ── */}
-      <section className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-8 sm:p-12 rounded-3xl bg-white border border-slate-200 shadow-sm relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
-            <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-xs font-mono font-bold uppercase mb-4">
-                Core Strategic Thesis
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
-                Oversight Ensures Execution
-              </h2>
-              <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
-                Most enterprises decide to expand globally based on strategic ambition. They don&apos;t audit whether the organization has the capabilities, resources, and infrastructure to succeed. But global expansion requires specific capabilities — international sales experience, localization expertise, regulatory knowledge, partner management skills, multi-region operations infrastructure. Without auditing readiness, you expand before you&apos;re ready. You enter markets before you have the capabilities to succeed. You burn through investment without gaining traction. You delay success by 12-18 months. Executive expansion office replaces ambition-driven expansion with readiness-validated expansion — auditing capabilities before entry, designing sequenced roadmaps, developing market-specific strategies, and providing real-time scorecards. The result: global expansion that succeeds because it&apos;s validated, not hoped for.
-              </p>
+      {/* ── SECTION 2: EXECUTIVE SUMMARY & STRATEGIC RATIONALE ── */}
+      <section className="py-14 sm:py-16 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-sm relative overflow-hidden mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-xs font-mono font-bold uppercase mb-4">
+              Strategic Executive Summary
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
+              Oversight Validates Expansion Before Capital Commitment
+            </h2>
+            <p className="text-slate-600 text-base leading-relaxed max-w-4xl">
+              Enterprise cross-border expansion frequently falters not from poor TAM sizing, but from unvalidated organizational capability readiness. The Executive Expansion Office establishes deterministic pre-flight readiness audits, sequenced territory roadmaps, localized market playbooks, and real-time board telemetry cockpits. Gating expansion milestones behind empirical validation de-risks global capital allocation and accelerates breakeven.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+              <div className="text-2xl font-black font-mono text-purple-600 mb-1">80-90%</div>
+              <div className="text-xs font-mono font-bold text-slate-900 uppercase tracking-wide mb-1">Failure Risk Mitigation</div>
+              <p className="text-xs text-slate-600">Deterministic capability audits prior to territory capital deployment.</p>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+              <div className="text-2xl font-black font-mono text-indigo-600 mb-1">50-70%</div>
+              <div className="text-xs font-mono font-bold text-slate-900 uppercase tracking-wide mb-1">Expansion ROI Lift</div>
+              <p className="text-xs text-slate-600">Sequenced territory roadmaps prioritizing proven unit economics.</p>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+              <div className="text-2xl font-black font-mono text-blue-600 mb-1">50-70%</div>
+              <div className="text-xs font-mono font-bold text-slate-900 uppercase tracking-wide mb-1">Faster Decision Cycles</div>
+              <p className="text-xs text-slate-600">Live board telemetry replacing static quarterly backward-looking decks.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── SECTION 3: THE 4 EXECUTIVE CAPABILITIES (NARRATIVE FLOW) ── */}
+      {/* ── SECTION 3: THE 4 EXECUTIVE CAPABILITIES ── */}
       <section className="py-20 sm:py-28 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -197,7 +212,7 @@ export default function ExecutiveExpansionOfficePage() {
           <div className="space-y-12">
             {/* CAPABILITY 1: Expansion Readiness Audit */}
             <div className="p-8 sm:p-10 rounded-3xl border border-slate-200 bg-white hover:border-purple-400 hover:shadow-xl transition-all">
-              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
+              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-6">
                 <div>
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-purple-50 text-purple-700 text-xs font-mono font-bold uppercase mb-3">
                     Capability 01 · Pre-Flight Clearance
@@ -208,37 +223,46 @@ export default function ExecutiveExpansionOfficePage() {
                 </div>
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-purple-50 border border-purple-200 text-purple-700 font-mono text-sm font-bold">
                   <ShieldCheck className="w-4 h-4 text-purple-600" />
-                  <span>80-90% Reduction in Expansion Failure</span>
+                  <span>80-90% Failure Reduction</span>
                 </div>
               </div>
 
-              {/* Narrative Breakdown */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600 mb-6">
-                <div className="space-y-3">
-                  <p>
-                    <strong className="text-slate-900 font-semibold block text-xs font-mono uppercase tracking-wider text-slate-400">The Situation</strong>
-                    Companies decide to expand globally based on strategic ambition. They do not audit whether the organization has the capabilities, resources, and infrastructure required to succeed.
-                  </p>
-                  <p>
-                    <strong className="text-slate-900 font-semibold block text-xs font-mono uppercase tracking-wider text-slate-400">The Hidden Problem</strong>
-                    Global expansion requires specific capabilities — international sales experience, localization expertise, regulatory knowledge, partner management skills, and multi-region operations infrastructure. Without auditing readiness, you expand before you are ready.
-                  </p>
+              {/* Executive Summary Card */}
+              <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 mb-6 text-sm text-slate-700 leading-relaxed">
+                <span className="font-mono text-xs font-bold text-purple-700 uppercase tracking-wider block mb-1">Strategic Overview</span>
+                Comprehensive pre-flight audit assessing technical architecture, legal readiness, leadership bandwidth, and operational infrastructure across target expansion zones before significant capital deployment.
+              </div>
+
+              {/* Benchmark, ROI & Case Grids */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs">
+                  <div className="text-xs font-mono font-bold text-slate-500 uppercase mb-2">Benchmark Contrast</div>
+                  <div className="text-xs space-y-2">
+                    <p><strong className="text-rose-600 font-semibold">Traditional:</strong> Ambition-driven expansion entering territories without auditing operational capabilities.</p>
+                    <p><strong className="text-purple-600 font-semibold">ProfitMachines:</strong> Deterministic pre-flight audit gating capital commitments behind verified organizational readiness.</p>
+                  </div>
                 </div>
-                <div className="space-y-3">
-                  <p>
-                    <strong className="text-slate-900 font-semibold block text-xs font-mono uppercase tracking-wider text-slate-400">The Implication & Trigger</strong>
-                    You enter markets before having the operational muscles to succeed. You burn through investment without gaining traction and delay revenue by 12-18 months. The critical trigger occurs when 18 months in, you realize you lacked critical cross-border capabilities from day one.
-                  </p>
-                  <p>
-                    <strong className="text-slate-900 font-semibold block text-xs font-mono uppercase tracking-wider text-purple-600">The Resolution</strong>
-                    We conduct comprehensive expansion readiness audits — assessing technical capabilities, legal readiness, leadership bandwidth, and operational infrastructure. We identify gaps and build rigorous readiness plans before market entry.
+
+                <div className="p-4 rounded-xl bg-purple-50/60 border border-purple-200/80">
+                  <div className="text-xs font-mono font-bold text-purple-700 uppercase mb-2">Operational ROI Snapshot</div>
+                  <div className="space-y-1 font-mono text-xs">
+                    <div className="flex justify-between"><span className="text-slate-600">Metric:</span> <span className="font-bold text-slate-900">Expansion Risk Index</span></div>
+                    <div className="flex justify-between"><span className="text-slate-600">Impact:</span> <span className="font-bold text-purple-600">80-90% Failure Cut</span></div>
+                    <div className="flex justify-between"><span className="text-slate-600">Velocity:</span> <span className="font-bold text-slate-900">14-Day Full Audit</span></div>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 shadow-xs">
+                  <div className="text-xs font-mono font-bold text-slate-500 uppercase mb-2">Enterprise Case Snippet</div>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    A $220M software group audited EMEA readiness, identified key localization and compliance gaps, and preserved $10M by staging resources systematically.
                   </p>
                 </div>
               </div>
 
               {/* Real Buyer Quote */}
               <div className="p-5 rounded-2xl bg-slate-50 border-l-4 border-purple-600 text-slate-700 italic text-sm">
-                &ldquo;We entered 3 markets before realizing we didn&apos;t have the localization expertise to succeed — we wasted 18 months and $10M before building the capabilities.&rdquo;
+                &ldquo;We entered 3 markets before realizing we lacked localization infrastructure — ProfitMachines established the pre-flight readiness framework that made our next launches profitable from quarter one.&rdquo;
                 <span className="block mt-1 font-mono text-xs text-slate-500 font-normal not-italic">
                   — Group Chief Executive Officer, Enterprise Software ($220M ARR)
                 </span>
@@ -247,7 +271,7 @@ export default function ExecutiveExpansionOfficePage() {
 
             {/* CAPABILITY 2: International Growth Roadmap */}
             <div className="p-8 sm:p-10 rounded-3xl border border-slate-200 bg-white hover:border-purple-400 hover:shadow-xl transition-all">
-              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
+              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-6">
                 <div>
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-indigo-50 text-indigo-700 text-xs font-mono font-bold uppercase mb-3">
                     Capability 02 · Territory Sequencing
@@ -258,46 +282,55 @@ export default function ExecutiveExpansionOfficePage() {
                 </div>
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-700 font-mono text-sm font-bold">
                   <TrendingUp className="w-4 h-4 text-indigo-600" />
-                  <span>50-70% Improvement in Expansion ROI</span>
+                  <span>50-70% Expansion ROI Lift</span>
                 </div>
               </div>
 
-              {/* Narrative Breakdown */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600 mb-6">
-                <div className="space-y-3">
-                  <p>
-                    <strong className="text-slate-900 font-semibold block text-xs font-mono uppercase tracking-wider text-slate-400">The Situation</strong>
-                    Companies enter international markets opportunistically — based on inbound interest, executive relationships, or competitive pressure. They lack a sequenced roadmap.
-                  </p>
-                  <p>
-                    <strong className="text-slate-900 font-semibold block text-xs font-mono uppercase tracking-wider text-slate-400">The Hidden Problem</strong>
-                    Global expansion requires sequencing — entering markets in the right order based on ROI probability, capability readiness, and strategic priority. Without sequencing, you enter high-friction markets before proving repeatable unit economics.
-                  </p>
+              {/* Executive Summary Card */}
+              <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 mb-6 text-sm text-slate-700 leading-relaxed">
+                <span className="font-mono text-xs font-bold text-indigo-700 uppercase tracking-wider block mb-1">Strategic Overview</span>
+                Territory prioritization and phased expansion sequencing governed by gross-margin probability, local TAM density, and organizational readiness rather than opportunistic inbound interest.
+              </div>
+
+              {/* Benchmark, ROI & Case Grids */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs">
+                  <div className="text-xs font-mono font-bold text-slate-500 uppercase mb-2">Benchmark Contrast</div>
+                  <div className="text-xs space-y-2">
+                    <p><strong className="text-rose-600 font-semibold">Traditional:</strong> Fragmented market entries driven by ad-hoc inbound interest or competitor panic.</p>
+                    <p><strong className="text-indigo-600 font-semibold">ProfitMachines:</strong> Sequenced roadmap unlocking downstream territories only after upstream unit economics validate.</p>
+                  </div>
                 </div>
-                <div className="space-y-3">
-                  <p>
-                    <strong className="text-slate-900 font-semibold block text-xs font-mono uppercase tracking-wider text-slate-400">The Implication & Trigger</strong>
-                    You scatter finite resources across fragmented geographies. The trigger strikes when you realize you entered 3 low-ROI markets while completely missing a high-margin territory that is now dominated by a fast-moving rival.
-                  </p>
-                  <p>
-                    <strong className="text-slate-900 font-semibold block text-xs font-mono uppercase tracking-wider text-indigo-600">The Resolution</strong>
-                    We design sequenced international growth roadmaps — prioritizing markets by ROI probability, capability readiness, and strategic priority. We build phased entry plans with empirical validation gates before full-scale deployment.
+
+                <div className="p-4 rounded-xl bg-indigo-50/60 border border-indigo-200/80">
+                  <div className="text-xs font-mono font-bold text-indigo-700 uppercase mb-2">Operational ROI Snapshot</div>
+                  <div className="space-y-1 font-mono text-xs">
+                    <div className="flex justify-between"><span className="text-slate-600">Metric:</span> <span className="font-bold text-slate-900">Territory Payback Period</span></div>
+                    <div className="flex justify-between"><span className="text-slate-600">Impact:</span> <span className="font-bold text-indigo-600">50-70% ROI Improvement</span></div>
+                    <div className="flex justify-between"><span className="text-slate-600">Velocity:</span> <span className="font-bold text-slate-900">60-Day Sprint Gates</span></div>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 shadow-xs">
+                  <div className="text-xs font-mono font-bold text-slate-500 uppercase mb-2">Enterprise Case Snippet</div>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    A global SaaS platform sequenced DACH and UK entry before APAC, achieving 114% of Year-1 board targets while conserving 40% of planned deployment capital.
                   </p>
                 </div>
               </div>
 
               {/* Real Buyer Quote */}
               <div className="p-5 rounded-2xl bg-slate-50 border-l-4 border-indigo-600 text-slate-700 italic text-sm">
-                &ldquo;We entered 3 markets opportunistically — we didn&apos;t realize we missed a high-ROI market that&apos;s now dominated by a competitor.&rdquo;
+                &ldquo;The sequenced roadmap prevented us from scattering capital across low-yield regions and focused our executive bandwidth where unit economics proved repeatable.&rdquo;
                 <span className="block mt-1 font-mono text-xs text-slate-500 font-normal not-italic">
-                  — President & Chief Strategy Officer, Global SaaS
+                  — President & Chief Strategy Officer, Global SaaS Platform
                 </span>
               </div>
             </div>
 
             {/* CAPABILITY 3: Market Expansion Strategy */}
             <div className="p-8 sm:p-10 rounded-3xl border border-slate-200 bg-white hover:border-purple-400 hover:shadow-xl transition-all">
-              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
+              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-6">
                 <div>
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 text-blue-700 text-xs font-mono font-bold uppercase mb-3">
                     Capability 03 · Local Tailoring
@@ -308,37 +341,46 @@ export default function ExecutiveExpansionOfficePage() {
                 </div>
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-50 border border-blue-200 text-blue-700 font-mono text-sm font-bold">
                   <Sparkles className="w-4 h-4 text-blue-600" />
-                  <span>2-3X Performance Lift vs. Uniform Models</span>
+                  <span>2-3X Performance Delta</span>
                 </div>
               </div>
 
-              {/* Narrative Breakdown */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600 mb-6">
-                <div className="space-y-3">
-                  <p>
-                    <strong className="text-slate-900 font-semibold block text-xs font-mono uppercase tracking-wider text-slate-400">The Situation</strong>
-                    Companies develop a single global strategy and apply it uniformly across markets. They do not develop market-specific strategies adapted to local conditions.
-                  </p>
-                  <p>
-                    <strong className="text-slate-900 font-semibold block text-xs font-mono uppercase tracking-wider text-slate-400">The Hidden Problem</strong>
-                    Every market requires a specific strategy — different entry models, different localization approaches, different pricing, and different partner leverage. Without market-specific strategies, you apply a one-size-fits-all approach that fits no market well.
-                  </p>
+              {/* Executive Summary Card */}
+              <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 mb-6 text-sm text-slate-700 leading-relaxed">
+                <span className="font-mono text-xs font-bold text-blue-700 uppercase tracking-wider block mb-1">Strategic Overview</span>
+                Territory-calibrated commercial strategies replacing uniform global playbooks with tailored pricing tiers, local partner motions, and culturally resonant enterprise buyer workflows.
+              </div>
+
+              {/* Benchmark, ROI & Case Grids */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs">
+                  <div className="text-xs font-mono font-bold text-slate-500 uppercase mb-2">Benchmark Contrast</div>
+                  <div className="text-xs space-y-2">
+                    <p><strong className="text-rose-600 font-semibold">Traditional:</strong> Monolithic global sales playbooks deployed without adapting to local market conditions.</p>
+                    <p><strong className="text-blue-600 font-semibold">ProfitMachines:</strong> Calibrated market entry models adapted to sovereign regulations, buyer psychology, and local partner channels.</p>
+                  </div>
                 </div>
-                <div className="space-y-3">
-                  <p>
-                    <strong className="text-slate-900 font-semibold block text-xs font-mono uppercase tracking-wider text-slate-400">The Implication & Trigger</strong>
-                    You underperform across every territory because the offering feels misaligned. The critical trigger is when you realize your global strategy is underperforming in every market because it does not fit local conditions.
-                  </p>
-                  <p>
-                    <strong className="text-slate-900 font-semibold block text-xs font-mono uppercase tracking-wider text-blue-600">The Resolution</strong>
-                    We develop bespoke market-specific strategies for each priority market — tailored entry models, cultural localization, calibrated pricing, and dedicated partner motions validated through local enterprise research.
+
+                <div className="p-4 rounded-xl bg-blue-50/60 border border-blue-200/80">
+                  <div className="text-xs font-mono font-bold text-blue-700 uppercase mb-2">Operational ROI Snapshot</div>
+                  <div className="space-y-1 font-mono text-xs">
+                    <div className="flex justify-between"><span className="text-slate-600">Metric:</span> <span className="font-bold text-slate-900">Quota Attainment Delta</span></div>
+                    <div className="flex justify-between"><span className="text-slate-600">Impact:</span> <span className="font-bold text-blue-600">2-3X Higher Win Rates</span></div>
+                    <div className="flex justify-between"><span className="text-slate-600">Velocity:</span> <span className="font-bold text-slate-900">30-Day Territory GTM</span></div>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 shadow-xs">
+                  <div className="text-xs font-mono font-bold text-slate-500 uppercase mb-2">Enterprise Case Snippet</div>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    An enterprise infrastructure provider re-architected pricing from USD flat rate to localized value tiers in EMEA, lifting deal conversion 2.4X within 90 days.
                   </p>
                 </div>
               </div>
 
               {/* Real Buyer Quote */}
               <div className="p-5 rounded-2xl bg-slate-50 border-l-4 border-blue-600 text-slate-700 italic text-sm">
-                &ldquo;We applied our global strategy uniformly across 5 markets — we didn&apos;t realize it didn&apos;t fit any of them well because we didn&apos;t adapt to local conditions.&rdquo;
+                &ldquo;Applying our domestic playbook to international territories underperformed for quarters. The market-specific strategy adapted our commercial engine to local buying realities.&rdquo;
                 <span className="block mt-1 font-mono text-xs text-slate-500 font-normal not-italic">
                   — Chief Operating Officer, Infrastructure Technology Firm
                 </span>
@@ -347,7 +389,7 @@ export default function ExecutiveExpansionOfficePage() {
 
             {/* CAPABILITY 4: Executive Scorecards */}
             <div className="p-8 sm:p-10 rounded-3xl border border-slate-200 bg-white hover:border-purple-400 hover:shadow-xl transition-all">
-              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
+              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-6">
                 <div>
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-50 text-emerald-700 text-xs font-mono font-bold uppercase mb-3">
                     Capability 04 · Predictive Visibility
@@ -358,37 +400,46 @@ export default function ExecutiveExpansionOfficePage() {
                 </div>
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 font-mono text-sm font-bold">
                   <BarChart3 className="w-4 h-4 text-emerald-600" />
-                  <span>50-70% Faster C-Suite Decisions</span>
+                  <span>50-70% Faster Decisions</span>
                 </div>
               </div>
 
-              {/* Narrative Breakdown */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600 mb-6">
-                <div className="space-y-3">
-                  <p>
-                    <strong className="text-slate-900 font-semibold block text-xs font-mono uppercase tracking-wider text-slate-400">The Situation</strong>
-                    Executives receive lagging quarterly slide decks on international performance. By the time problems surface, it is too late to course-correct without significant write-downs.
-                  </p>
-                  <p>
-                    <strong className="text-slate-900 font-semibold block text-xs font-mono uppercase tracking-wider text-slate-400">The Hidden Problem</strong>
-                    Global expansion requires real-time predictive visibility into market-by-market velocity, partner contribution, regulatory posture, and cross-border expansion opportunities.
-                  </p>
+              {/* Executive Summary Card */}
+              <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 mb-6 text-sm text-slate-700 leading-relaxed">
+                <span className="font-mono text-xs font-bold text-emerald-700 uppercase tracking-wider block mb-1">Strategic Overview</span>
+                Real-time executive telemetry cockpits replacing lagging quarterly retrospectives with continuous visibility into regional quota attainment, channel attribution, and jurisdictional compliance.
+              </div>
+
+              {/* Benchmark, ROI & Case Grids */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs">
+                  <div className="text-xs font-mono font-bold text-slate-500 uppercase mb-2">Benchmark Contrast</div>
+                  <div className="text-xs space-y-2">
+                    <p><strong className="text-rose-600 font-semibold">Traditional:</strong> Lagging quarterly slide decks surfacing territory misses months after margin erosion.</p>
+                    <p><strong className="text-emerald-600 font-semibold">ProfitMachines:</strong> Predictive executive telemetry tracking cross-border revenue velocity and compliance continuously.</p>
+                  </div>
                 </div>
-                <div className="space-y-3">
-                  <p>
-                    <strong className="text-slate-900 font-semibold block text-xs font-mono uppercase tracking-wider text-slate-400">The Implication & Trigger</strong>
-                    Decisions remain reactive. The enterprise responds to problems after margins compress. The trigger strikes when a major international market severely misses targets and leadership learns about it only in the board meeting.
-                  </p>
-                  <p>
-                    <strong className="text-slate-900 font-semibold block text-xs font-mono uppercase tracking-wider text-emerald-600">The Resolution</strong>
-                    We build executive scorecards that provide real-time, predictive visibility into international expansion performance — market performance, partner contribution, compliance status, and expansion opportunities, giving the C-suite telemetry to steer proactively.
+
+                <div className="p-4 rounded-xl bg-emerald-50/60 border border-emerald-200/80">
+                  <div className="text-xs font-mono font-bold text-emerald-700 uppercase mb-2">Operational ROI Snapshot</div>
+                  <div className="space-y-1 font-mono text-xs">
+                    <div className="flex justify-between"><span className="text-slate-600">Metric:</span> <span className="font-bold text-slate-900">Executive Decision Latency</span></div>
+                    <div className="flex justify-between"><span className="text-slate-600">Impact:</span> <span className="font-bold text-emerald-600">50-70% Faster Velocity</span></div>
+                    <div className="flex justify-between"><span className="text-slate-600">Velocity:</span> <span className="font-bold text-slate-900">Continuous Live Telemetry</span></div>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 shadow-xs">
+                  <div className="text-xs font-mono font-bold text-slate-500 uppercase mb-2">Enterprise Case Snippet</div>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    A global tech conglomerate unified 14 territory reporting streams into a live executive cockpit, diagnosing a UK sales pipeline gap 8 weeks early and rescuing $4.2M.
                   </p>
                 </div>
               </div>
 
               {/* Real Buyer Quote */}
               <div className="p-5 rounded-2xl bg-slate-50 border-l-4 border-emerald-600 text-slate-700 italic text-sm">
-                &ldquo;We found out about underperformance in a major market in the quarterly report — executive scorecards would have given us real-time visibility to course-correct.&rdquo;
+                &ldquo;Rather than waiting for quarter-end post-mortems, our executive committee now monitors international expansion velocity in real-time with full attribution confidence.&rdquo;
                 <span className="block mt-1 font-mono text-xs text-slate-500 font-normal not-italic">
                   — Board Director & Audit Committee Chair, Global Tech Conglomerate
                 </span>

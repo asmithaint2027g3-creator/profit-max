@@ -577,7 +577,7 @@ export default function EnterpriseDashboardNavigation({
                         <SlidersHorizontal className="w-4 h-4" />
                     </button>
                     <div className="flex items-center gap-2">
-                        <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100">
+                        <span className="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100">
                             Enterprise Directory
                         </span>
                         <h2 className="text-sm font-bold text-slate-800 hidden sm:block">
@@ -623,7 +623,7 @@ export default function EnterpriseDashboardNavigation({
                 {/* ── LEFT VERTICAL SIDEBAR (DESKTOP) ── */}
                 <aside className="w-72 border-r border-slate-200 bg-slate-50/60 p-4 shrink-0 overflow-y-auto hidden lg:flex flex-col justify-between">
                     <div className="space-y-1.5">
-                        <div className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-bold px-3 mb-2">
+                        <div className="text-[11px] uppercase tracking-wider text-slate-400 font-bold px-3 mb-2">
                             Practices & Architecture
                         </div>
 
@@ -679,7 +679,7 @@ export default function EnterpriseDashboardNavigation({
                                                     }`}
                                                 >
                                                     <span className="truncate">{sub.label}</span>
-                                                    <span className="text-[10px] opacity-70 font-mono ml-1">{sub.cards.length}</span>
+                                                    <span className="text-[10px] opacity-70 ml-1">{sub.cards.length}</span>
                                                 </button>
                                             ))}
                                         </div>
@@ -715,7 +715,7 @@ export default function EnterpriseDashboardNavigation({
                     <div className="lg:hidden absolute inset-0 z-30 bg-slate-900/40 backdrop-blur-xs flex">
                         <div className="w-64 bg-white h-full border-r border-slate-200 p-4 overflow-y-auto space-y-2 animate-in slide-in-from-left duration-200">
                             <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
-                                <span className="text-xs font-mono font-bold text-slate-500 uppercase">Select Practice</span>
+                                <span className="text-xs font-bold text-slate-500 uppercase">Select Practice</span>
                                 <button onClick={() => setMobileDrawerOpen(false)} className="text-slate-400">
                                     <X className="w-4 h-4" />
                                 </button>
@@ -749,10 +749,10 @@ export default function EnterpriseDashboardNavigation({
                         {/* Category Heading & Subtitle */}
                         <div className="mb-6 pb-6 border-b border-slate-100">
                             <div className="flex flex-wrap items-center gap-2 mb-2">
-                                <span className="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-600 font-mono text-[11px] font-bold border border-blue-100">
+                                <span className="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-600 text-[11px] font-bold border border-blue-100">
                                     {currentPractice.badge}
                                 </span>
-                                <span className="text-xs text-slate-400 font-mono">
+                                <span className="text-xs text-slate-400 ">
                                     {displayCards.length} Solutions Available
                                 </span>
                             </div>
@@ -809,7 +809,7 @@ export default function EnterpriseDashboardNavigation({
                                                     <CardIcon className="w-5 h-5" />
                                                 </div>
                                                 {card.badge && (
-                                                    <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 bg-slate-50 px-2 py-0.5 rounded border border-slate-200/60 font-semibold">
+                                                    <span className="text-[10px] uppercase tracking-wider text-slate-500 bg-slate-50 px-2 py-0.5 rounded border border-slate-200/60 font-semibold">
                                                         {card.badge}
                                                     </span>
                                                 )}
@@ -828,7 +828,7 @@ export default function EnterpriseDashboardNavigation({
                                             {card.tags && card.tags.length > 0 ? (
                                                 <div className="flex items-center gap-1.5 flex-wrap">
                                                     {card.tags.slice(0, 2).map((t, tIdx) => (
-                                                        <span key={tIdx} className="text-[10px] text-slate-400 font-mono">
+                                                        <span key={tIdx} className="text-[10px] text-slate-400 ">
                                                             #{t}
                                                         </span>
                                                     ))}

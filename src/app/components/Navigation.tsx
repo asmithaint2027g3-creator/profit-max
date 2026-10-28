@@ -2645,7 +2645,7 @@ export default function Navigation() {
                         </div>
                     </Link>
 
-                    <div className="hidden min-[1800px]:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200/60 text-blue-700 font-mono text-[10px] font-bold shrink-0">
+                    <div className="hidden min-[1800px]:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200/60 text-blue-700 text-[10px] font-bold shrink-0">
                         <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
                         <span>Enterprise v2.4</span>
                     </div>
@@ -2772,7 +2772,7 @@ export default function Navigation() {
                                 {/* ── A. LEFT CATEGORY SIDEBAR ── */}
                                 <aside className="w-64 border-r border-slate-100 bg-slate-50/50 p-3 shrink-0 flex flex-col justify-between overflow-y-auto">
                                     <div className="space-y-1">
-                                        <div className="px-3 py-1.5 text-[10px] font-mono uppercase font-bold tracking-wider text-slate-400">
+                                        <div className="px-3 py-1.5 text-[11px] uppercase font-bold tracking-wider text-slate-400">
                                             Categories
                                         </div>
 
@@ -2843,7 +2843,7 @@ export default function Navigation() {
                                                     <Link
                                                         to={currentCategory.path}
                                                         onClick={() => setActiveMenuId(null)}
-                                                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-bold font-mono uppercase tracking-wider transition-colors group"
+                                                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-bold uppercase tracking-wider transition-colors group"
                                                     >
                                                         <span>View Overview</span>
                                                         <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -2880,7 +2880,7 @@ export default function Navigation() {
 
                             {/* ── C. CLEAN MINIMAL FOOTER ROW (NO PROMOTIONAL / DESCRIPTIVE TEXT) ── */}
                             <footer className="px-6 py-2.5 bg-slate-50/70 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 shrink-0">
-                                <span className="text-[11px] font-mono text-slate-400">
+                                <span className="text-xs font-medium text-slate-500">
                                     Enterprise Revenue Architecture
                                 </span>
                                 <Link
@@ -2947,7 +2947,7 @@ export default function Navigation() {
                                                 {res.title}
                                             </div>
                                             <div className="text-[11px] text-slate-500 line-clamp-1">{res.desc}</div>
-                                            <div className="text-[10px] text-slate-400 font-mono mt-0.5">
+                                            <div className="text-[11px] text-slate-400 mt-0.5">
                                                 {res.menu} › {res.category}
                                             </div>
                                         </div>
@@ -3219,7 +3219,7 @@ export default function Navigation() {
                                 <span>Book Consultation</span>
                                 <ArrowUpRight className="w-4 h-4" />
                             </Link>
-                            <div className="text-center text-[10px] font-mono text-slate-400">
+                            <div className="text-center text-[11px] text-slate-400">
                                 ProfitMachines Enterprise Diagnostic OS
                             </div>
                         </div>

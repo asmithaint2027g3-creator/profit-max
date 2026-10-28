@@ -1,62 +1,48 @@
-
-import { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Bot, User, Sparkles, Paperclip, ChevronRight } from 'lucide-react';
+import { useState, useRef, useEffect, useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
+import {
+    MessageSquare, X, Send, Bot, User, Sparkles,
+    RotateCcw, ChevronRight, Compass, ArrowUpRight
+} from 'lucide-react';
 import { Button } from './ui/button';
 import { motion, AnimatePresence, useDragControls } from 'motion/react';
 import logo from '../../assets/Trustgrid-logo.png';
-
-
-
-type Message = {
-    id: string;
-    role: 'user' | 'assistant';
-    content: string;
-    timestamp: Date;
-};
-
-const QUICK_ACTIONS = [
-    { label: "Speak to our Experts", text: "I'd like to speak to your experts." },
-    { label: "Our Offerings", text: "Can you tell me about your offerings?" },
-    { label: "Thought Leadership", text: "I'd like to explore your thought leadership content." },
-    { label: "Partner with us", text: "I'm interested in partnering with ProfitMachines." },
-    { label: "Job Openings", text: "Do you have any job openings?" },
-    { label: "Just Browsing", text: "I'm just browsing, thanks!" }
-];
+import { resolvePageContext, PageChatContext } from '../data/chatbotKnowledgeBank';
+import { chatbotEngine, ChatMessage } from '../services/chatbotEngine';
+import { ChatMarkdown } from './ChatMarkdown';
 
 export default function ChatBot() {
+    const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
-    const [messages, setMessages] = useState<Message[]>([]);
+    const [messages, setMessages] = useState<ChatMessage[]>([]);
     const [inputValue, setInputValue] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [agentName, setAgentName] = useState('Pooja');
-    const [agentRole] = useState('Digital Success Manager');
+    const [agentRole] = useState('Senior Revenue Architect');
+    const [activeContext, setActiveContext] = useState<PageChatContext>(() => resolvePageContext(location.pathname));
+    const [activeFollowUps, setActiveFollowUps] = useState<string[]>([]);
+    const previousPathRef = useRef<string>(location.pathname);
+
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const dragControls = useDragControls();
 
-    // Fetch IP to determine Agent Name
+    // ── 1. Geolocation-aware Agent Personalization ─────────────────────────
     useEffect(() => {
         const fetchLocation = async () => {
             try {
-                // Fetch country from a free IP API (client-side)
                 const response = await fetch('https://ipapi.co/json/');
                 const data = await response.json();
-                const country = data.country_code; // AE, GB, IN, etc.
-                const region = data.region_code;
-                console.log('User region:', region);
+                const country = data.country_code;
 
-                // Logic for naming based on Region/Country
                 const arabCountries = ['AE', 'SA', 'QA', 'KW', 'OM', 'BH', 'EG', 'IQ', 'JO', 'LB'];
-
                 if (arabCountries.includes(country)) {
                     setAgentName('Mustafa');
                 } else if (country === 'GB') {
                     setAgentName('Charles');
                 } else {
-                    // Default to Pooja or Reshmi (Asia/India/Global)
                     setAgentName('Pooja');
                 }
             } catch (error) {
-                // Fallback using Timezone if API fails/blocks
                 const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
                 if (timezone.includes('Dubai') || timezone.includes('Riyadh') || timezone.includes('Qatar')) {
                     setAgentName('Mustafa');
@@ -71,32 +57,92 @@ export default function ChatBot() {
         fetchLocation();
     }, []);
 
-    const scrollToBottom = () => {
+    const scrollToBottom = useCallback(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    };
+    }, []);
 
     useEffect(() => {
         scrollToBottom();
-    }, [messages, isOpen, isLoading]);
+    }, [messages, isOpen, isLoading, activeFollowUps, scrollToBottom]);
 
-    // Initial Greeting
+    // ── 2. Route Awareness & Dynamic Context Resolver ──────────────────────
     useEffect(() => {
-        if (messages.length === 0) {
+        const newContext = resolvePageContext(location.pathname);
+        setActiveContext(newContext);
+
+        // If route actually changed and conversation exists
+        if (previousPathRef.current !== location.pathname) {
+            previousPathRef.current = location.pathname;
+
+            setMessages(prev => {
+                // If chat is empty, initialize with new page greeting
+                if (prev.length === 0) {
+                    return [
+                        {
+                            id: Date.now().toString(),
+                            role: 'assistant',
+                            content: `Hello! 👋 I'm ${agentName} (${agentRole}).\n\n${newContext.welcomeMessage}`,
+                            timestamp: new Date(),
+                            pageContextName: newContext.title,
+                            suggestedFollowUps: newContext.suggestedQuestions.slice(0, 3)
+                        }
+                    ];
+                }
+
+                // If user only has the initial greeting and hasn't chatted yet, replace it with new page's greeting
+                if (prev.length === 1 && prev[0].role === 'assistant') {
+                    return [
+                        {
+                            id: Date.now().toString(),
+                            role: 'assistant',
+                            content: `Hello! 👋 I'm ${agentName} (${agentRole}).\n\n${newContext.welcomeMessage}`,
+                            timestamp: new Date(),
+                            pageContextName: newContext.title,
+                            suggestedFollowUps: newContext.suggestedQuestions.slice(0, 3)
+                        }
+                    ];
+                }
+
+                // If active multi-turn conversation exists, add an elegant non-disruptive context change divider
+                const lastMsg = prev[prev.length - 1];
+                if (lastMsg.pageContextName === newContext.title) {
+                    return prev;
+                }
+
+                return [
+                    ...prev,
+                    {
+                        id: `ctx-${Date.now()}`,
+                        role: 'system',
+                        content: `Now viewing: **${newContext.title}** (${newContext.category})`,
+                        timestamp: new Date(),
+                        isContextChangeMarker: true,
+                        pageContextName: newContext.title
+                    }
+                ];
+            });
+
+            // Update active suggestion chips to match the new page
+            setActiveFollowUps(newContext.suggestedQuestions.slice(0, 4));
+        } else if (messages.length === 0) {
+            // Initial mount on current route
             setMessages([
                 {
                     id: '1',
                     role: 'assistant',
-                    content: `Hello! 👋 I'm ${agentName} (${agentRole}).\nWe understand that you are interested in AI Sales Acceleration.\nHow can we help you?`,
-                    timestamp: new Date()
+                    content: `Hello! 👋 I'm ${agentName} (${agentRole}).\n\n${newContext.welcomeMessage}`,
+                    timestamp: new Date(),
+                    pageContextName: newContext.title,
+                    suggestedFollowUps: newContext.suggestedQuestions.slice(0, 3)
                 }
             ]);
+            setActiveFollowUps(newContext.suggestedQuestions.slice(0, 4));
         }
-    }, [messages.length, agentName, agentRole]);
+    }, [location.pathname, agentName, agentRole, messages.length]);
 
-    // Listen for Context-Aware Triggers
+    // ── 3. Listen for Context-Aware Triggers from Page Components ─────────
     useEffect(() => {
-        const handleContextTrigger = (e: CustomEvent<{ message: string, contextName?: string }>) => {
-            // Check if user is actively filling a form to prevent disturbance
+        const handleContextTrigger = (e: CustomEvent<{ message?: string; contextName?: string }>) => {
             const activeEl = document.activeElement;
             if (activeEl && (
                 ['INPUT', 'TEXTAREA', 'SELECT', 'OPTION'].includes(activeEl.tagName?.toUpperCase()) ||
@@ -105,67 +151,55 @@ export default function ChatBot() {
                 return;
             }
 
-            const { contextName } = e.detail;
-
-            // Format: Hello! 👋 I'm the [Name] ( [Role] ) .. We understand that you are interested in < Context > . How can we help you? . Shall we call you or set up a call to share more details on the topic ?
-            const context = contextName || "AI Solutions";
-            const formattedMessage = `Hello! 👋 I'm ${agentName} (${agentRole}).\nWe understand that you are interested in ${context}.\nHow can we help you? Shall we set up a quick call to share more details on the topic?`;
+            const { contextName, message } = e.detail || {};
+            const contextLabel = contextName || activeContext.title;
+            const formattedMessage = message || `Hello! 👋 I'm ${agentName} (${agentRole}).\n\nWe noticed you are exploring **${contextLabel}**.\n\nWould you like a brief overview, a tailored case study, or shall we set up an executive strategy consultation?`;
 
             setIsOpen(true);
 
-            // Avoid duplicate messages if the last one is identical
             setMessages(prev => {
                 const lastMsg = prev[prev.length - 1];
                 if (lastMsg?.content === formattedMessage) return prev;
 
-                return [...prev, {
-                    id: Date.now().toString(),
-                    role: 'assistant',
-                    content: formattedMessage,
-                    timestamp: new Date()
-                }];
+                return [
+                    ...prev,
+                    {
+                        id: Date.now().toString(),
+                        role: 'assistant',
+                        content: formattedMessage,
+                        timestamp: new Date(),
+                        pageContextName: contextLabel,
+                        suggestedFollowUps: activeContext.suggestedQuestions.slice(0, 3)
+                    }
+                ];
             });
         };
 
         window.addEventListener('open_chat_with_context' as any, handleContextTrigger);
         return () => window.removeEventListener('open_chat_with_context' as any, handleContextTrigger);
-    }, [agentName, agentRole]);
+    }, [agentName, agentRole, activeContext]);
 
-    const generateResponse = (text: string) => {
-        const lowerText = text.toLowerCase();
-
-        if (lowerText.includes('demo') || lowerText.includes('book')) {
-            return "That's great! 🚀 To get started with booking a consultation, could you please share your name, company, and your preferred email address?";
-        }
-
-        if (lowerText.includes('feature') || lowerText.includes('what does') || lowerText.includes('how does')) {
-            return "ProfitMachines specializes in AI-driven sales acceleration. Our key features include:\n✨ Automated Lead Generation\n✨ Predictive Revenue Insights\n✨ Real-time Objection Handling\nWhich of these would you like to explore further?";
-        }
-        if (lowerText.includes('support') || lowerText.includes('help')) {
-            return "For support inquiries, you can reach our team directly at support@profitmachines.com 📧, or I can have someone contact you. Would you like me to arrange a callback?";
-        }
-
-        return "I understand. ProfitMachines helps B2B teams accelerate conversions and optimize processes. 💡\nWould you like to see a specific use case or schedule a consultation to see it in action?";
-    };
-
-    // ── Chatbot Lead Tracking ─────────────────────────────────────────
-    const trackChatbotLead = (messageText: string, quickAction?: string) => {
+    // ── 4. Chatbot Lead Telemetry Tracking ─────────────────────────────────
+    const trackChatbotLead = (messageText: string, isChipClick = false) => {
         const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
         if (!GOOGLE_SCRIPT_URL) return;
 
-        // Determine intent from message
         const lowerText = messageText.toLowerCase();
         let chatIntent = 'General Inquiry';
-        if (lowerText.includes('demo') || lowerText.includes('book')) chatIntent = 'Consultation Request';
-        else if (lowerText.includes('expert') || lowerText.includes('consult') || lowerText.includes('speak')) chatIntent = 'Expert Consultation';
-        else if (lowerText.includes('partner')) chatIntent = 'Partnership Interest';
-        else if (lowerText.includes('offering') || lowerText.includes('product') || lowerText.includes('feature')) chatIntent = 'Product Exploration';
-        else if (lowerText.includes('job') || lowerText.includes('career') || lowerText.includes('opening')) chatIntent = 'Career Inquiry';
-        else if (lowerText.includes('browsing') || lowerText.includes('just')) chatIntent = 'Browsing';
-        else if (lowerText.includes('support') || lowerText.includes('help')) chatIntent = 'Support Request';
-        else if (lowerText.includes('pricing') || lowerText.includes('cost')) chatIntent = 'Pricing Inquiry';
+        if (lowerText.includes('demo') || lowerText.includes('book') || lowerText.includes('consult')) {
+            chatIntent = 'Consultation Request';
+        } else if (lowerText.includes('expert') || lowerText.includes('speak')) {
+            chatIntent = 'Expert Consultation';
+        } else if (lowerText.includes('partner')) {
+            chatIntent = 'Partnership Interest';
+        } else if (lowerText.includes('offering') || lowerText.includes('feature') || lowerText.includes('product')) {
+            chatIntent = 'Product Exploration';
+        } else if (lowerText.includes('pricing') || lowerText.includes('cost')) {
+            chatIntent = 'Pricing Inquiry';
+        } else if (lowerText.includes('saas') || lowerText.includes('pipeline') || lowerText.includes('prospecting')) {
+            chatIntent = 'AI Sales Solution Inquiry';
+        }
 
-        // Build conversation summary
         const conversationSummary = messages
             .slice(-6)
             .map(m => `[${m.role}]: ${m.content.slice(0, 100)}`)
@@ -186,11 +220,11 @@ export default function ChatBot() {
                 'User Email': localStorage.getItem('user_email') || '',
                 'User Phone': '',
                 'Chat Intent': chatIntent,
-                'Quick Action Used': quickAction || '',
+                'Quick Action Used': isChipClick ? messageText : '',
                 'Messages Count': messages.length + 1,
                 'Chat Duration (s)': chatDuration,
                 'Conversation Summary': conversationSummary,
-                'Page Where Chat Started': window.location.pathname,
+                'Page Where Chat Started': location.pathname,
                 'Referrer URL': document.referrer,
                 'Device Type': /Mobi|Android/i.test(navigator.userAgent) ? 'mobile' : 'desktop',
                 'Agent Name': agentName
@@ -204,52 +238,121 @@ export default function ChatBot() {
                 headers: { 'Content-Type': 'text/plain' },
                 body: JSON.stringify(leadData)
             });
-            console.log('Chatbot lead tracked:', chatIntent);
         } catch (e) {
-            console.warn('Chatbot lead tracking failed:', e);
+            console.warn('Chatbot lead tracking skipped:', e);
         }
     };
 
-    const handleSend = async (text?: string) => {
-        const messageText = text || inputValue;
-        if (!messageText.trim()) return;
+    // ── 5. Message Dispatch & Knowledge Engine Invocation ──────────────────
+    const handleSend = async (textToSend?: string) => {
+        const queryText = (textToSend || inputValue).trim();
+        if (!queryText || isLoading) return;
 
-        const userMsg: Message = {
+        const userMsg: ChatMessage = {
             id: Date.now().toString(),
             role: 'user',
-            content: messageText,
-            timestamp: new Date()
+            content: queryText,
+            timestamp: new Date(),
+            pageContextName: activeContext.title
         };
 
         setMessages(prev => [...prev, userMsg]);
         setInputValue('');
         setIsLoading(true);
 
-        // Track as chatbot lead
-        const isQuickAction = QUICK_ACTIONS.some(a => a.text === messageText);
-        trackChatbotLead(messageText, isQuickAction ? messageText : undefined);
+        const isSuggestedQuestion = activeContext.suggestedQuestions.includes(queryText) ||
+            activeFollowUps.includes(queryText);
+        trackChatbotLead(queryText, isSuggestedQuestion);
 
-        // Simulate AI delay with variable timing
-        const delay = Math.random() * 800 + 1000; // 1000-1800ms
-        setTimeout(() => {
-            const responseText = generateResponse(messageText);
-            const aiMsg: Message = {
-                id: (Date.now() + 1).toString(),
-                role: 'assistant',
-                content: responseText,
-                timestamp: new Date()
-            };
-            setMessages(prev => [...prev, aiMsg]);
-            setIsLoading(false);
-        }, delay);
+        // Variable realistic thinking latency
+        const delay = Math.random() * 500 + 700;
+
+        try {
+            // Optional server API call if available
+            let serverResponseText: string | null = null;
+            try {
+                const apiRes = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: queryText,
+                        currentRoute: location.pathname,
+                        pageTitle: activeContext.title,
+                        history: messages.slice(-5)
+                    })
+                });
+                if (apiRes.ok) {
+                    const data = await apiRes.json();
+                    if (data.source === 'gemini-secure-api' && data.text) {
+                        serverResponseText = data.text;
+                    }
+                }
+            } catch {
+                // Server API optional; fallback seamlessly to grounded local engine
+            }
+
+            setTimeout(() => {
+                let responseText = serverResponseText;
+                let followUps: string[] = [];
+
+                if (!responseText) {
+                    const engineRes = chatbotEngine.generateResponse(queryText, messages, location.pathname);
+                    responseText = engineRes.text;
+                    followUps = engineRes.suggestedFollowUps || [];
+                }
+
+                const assistantMsg: ChatMessage = {
+                    id: (Date.now() + 1).toString(),
+                    role: 'assistant',
+                    content: responseText,
+                    timestamp: new Date(),
+                    pageContextName: activeContext.title,
+                    suggestedFollowUps: followUps
+                };
+
+                setMessages(prev => [...prev, assistantMsg]);
+                setActiveFollowUps(followUps.length > 0 ? followUps : activeContext.suggestedQuestions.slice(0, 3));
+                setIsLoading(false);
+            }, delay);
+
+        } catch (error) {
+            console.error('Chat error:', error);
+            setTimeout(() => {
+                const errorMsg: ChatMessage = {
+                    id: (Date.now() + 1).toString(),
+                    role: 'assistant',
+                    content: "I apologize, but I encountered a momentary connection glitch. Please feel free to ask again, or **[Schedule an Executive Consultation](/book-consultation)** to connect directly with our Revenue Architecture practice.",
+                    timestamp: new Date(),
+                    pageContextName: activeContext.title
+                };
+                setMessages(prev => [...prev, errorMsg]);
+                setIsLoading(false);
+            }, delay);
+        }
     };
 
-
-    const handleKeyDown = (e: React.KeyboardEvent) => {
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             handleSend();
         }
+    };
+
+    // Reset / Clear Conversation
+    const handleClearChat = () => {
+        chatbotEngine.reset();
+        const currentCtx = resolvePageContext(location.pathname);
+        setMessages([
+            {
+                id: Date.now().toString(),
+                role: 'assistant',
+                content: `Conversation refreshed! 👋 I'm ${agentName} (${agentRole}).\n\n${currentCtx.welcomeMessage}`,
+                timestamp: new Date(),
+                pageContextName: currentCtx.title,
+                suggestedFollowUps: currentCtx.suggestedQuestions.slice(0, 3)
+            }
+        ]);
+        setActiveFollowUps(currentCtx.suggestedQuestions.slice(0, 4));
     };
 
     return (
@@ -266,170 +369,253 @@ export default function ChatBot() {
                         dragListener={false}
                         dragControls={dragControls}
                         dragMomentum={false}
-                        className="fixed bottom-36 right-6 w-[380px] max-w-[calc(100vw-3rem)] h-[600px] max-h-[calc(100vh-12rem)] bg-white rounded-2xl shadow-2xl border border-slate-100/50 z-[999] flex flex-col overflow-hidden font-sans ring-1 ring-slate-900/5"
+                        className="fixed bottom-24 right-4 sm:right-6 w-[420px] max-w-[calc(100vw-2rem)] h-[640px] max-h-[calc(100vh-7rem)] bg-white rounded-2xl shadow-2xl border border-slate-200 z-[999] flex flex-col overflow-hidden ring-1 ring-slate-900/10"
                     >
-                        {/* Premium Header */}
+                        {/* ── A. PREMIUM CONTEXT-AWARE HEADER ── */}
                         <div
                             onPointerDown={(e) => dragControls.start(e)}
-                            className="bg-white px-5 py-4 flex items-center justify-between border-b border-slate-100/60 shrink-0 relative cursor-move touch-none"
+                            className="bg-white px-4 py-3.5 flex items-center justify-between border-b border-slate-100 shrink-0 cursor-move touch-none select-none"
                         >
-                            <div className="flex items-center gap-3.5">
+                            <div className="flex items-center gap-3">
                                 <div className="relative">
-                                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-[0_2px_10px_rgba(0,0,0,0.06)] overflow-hidden border border-slate-100 p-1">
-                                        <img loading="lazy" decoding="async" width="800" height="600" src={logo} alt="ProfitMachines" className="w-full h-full object-contain pointer-events-none" />
+                                    <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center shadow-sm shadow-blue-500/20 overflow-hidden p-1.5">
+                                        <img
+                                            loading="lazy"
+                                            decoding="async"
+                                            width="40"
+                                            height="40"
+                                            src={logo}
+                                            alt="ProfitMachines"
+                                            className="w-full h-full object-contain pointer-events-none brightness-0 invert"
+                                        />
                                     </div>
-                                    <span className="absolute bottom-0 right-0.5 w-3.5 h-3.5 bg-[#22c55e] border-2 border-white rounded-full"></span>
+                                    <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 border-2 border-white rounded-full"></span>
                                 </div>
                                 <div className="flex flex-col">
-                                    <h3 className="font-bold text-[#0f172a] text-[15px] leading-none pointer-events-none" style={{ letterSpacing: '0.12em' }}>PROFITMACHINES</h3>
-                                    <p className="text-[#64748b] text-[11px] -mt-0.5 pointer-events-none font-medium leading-none">{agentName} • {agentRole}</p>
+                                    <div className="flex items-center gap-1.5">
+                                        <h3 className="font-extrabold text-slate-900 text-sm tracking-tight font-heading leading-tight">
+                                            PROFITMACHINES
+                                        </h3>
+                                        <span className="text-[10px] bg-blue-50 text-blue-700 px-1.5 py-0.2 rounded font-semibold border border-blue-100">
+                                            AI
+                                        </span>
+                                    </div>
+                                    <div className="flex items-center gap-1 text-[11px] text-slate-500 font-medium">
+                                        <span>{agentName}</span>
+                                        <span>•</span>
+                                        <span className="truncate max-w-[170px]" title={activeContext.title}>
+                                            {activeContext.title}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-                            <button
-                                aria-label="Close"
-                                title="Close"
-                                onClick={() => setIsOpen(false)}
-                                className="p-1.5 hover:bg-slate-50 rounded-full transition-colors text-slate-400 hover:text-slate-600"
-                            >
-                                <X className="w-6 h-6" strokeWidth={1.5} />
-                                <span className="sr-only">Close</span>
-                            </button>
+
+                            {/* Header Actions */}
+                            <div className="flex items-center gap-1">
+                                <button
+                                    type="button"
+                                    aria-label="Clear chat and start fresh"
+                                    title="Start new conversation"
+                                    onClick={handleClearChat}
+                                    className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+                                >
+                                    <RotateCcw className="w-4 h-4" />
+                                </button>
+                                <button
+                                    type="button"
+                                    aria-label="Close Chat"
+                                    title="Close"
+                                    onClick={() => setIsOpen(false)}
+                                    className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+                                >
+                                    <X className="w-5 h-5" strokeWidth={1.8} />
+                                </button>
+                            </div>
                         </div>
 
-                        {/* Messages Area */}
-                        <div className="flex-1 overflow-y-auto p-4 space-y-6 bg-slate-50/50 scroll-smooth">
-                            <div className="flex flex-col gap-6">
-                                {/* Time Divider */}
-                                <div className="text-center">
-                                    <span className="text-[9px] uppercase tracking-wider text-slate-400 font-semibold">Today</span>
-                                </div>
+                        {/* ── B. CURRENT PAGE CONTEXT PILL (DYNAMIC) ── */}
+                        <div className="bg-slate-50/90 px-4 py-1.5 border-b border-slate-100 flex items-center justify-between text-[11px] text-slate-500 shrink-0">
+                            <div className="flex items-center gap-1.5 truncate">
+                                <Compass className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                                <span className="text-slate-400">Context:</span>
+                                <span className="font-bold text-slate-700 truncate">{activeContext.category}</span>
+                                <span className="text-slate-300">›</span>
+                                <span className="text-blue-700 font-semibold truncate">{activeContext.title}</span>
+                            </div>
+                            <span className="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-100 shrink-0 ml-2">
+                                Active
+                            </span>
+                        </div>
 
-                                {messages.map((msg) => (
+                        {/* ── C. MESSAGES STREAM ── */}
+                        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50/40 scroll-smooth">
+                            {messages.map((msg) => {
+                                if (msg.isContextChangeMarker) {
+                                    return (
+                                        <div key={msg.id} className="flex items-center justify-center my-3">
+                                            <div className="bg-white border border-blue-200/80 shadow-2xs px-3 py-1 rounded-full text-[10px] text-blue-700 font-semibold flex items-center gap-1.5">
+                                                <Compass className="w-3 h-3 text-blue-600" />
+                                                <span>{msg.content.replace(/\*\*/g, '')}</span>
+                                            </div>
+                                        </div>
+                                    );
+                                }
+
+                                const isAssistant = msg.role === 'assistant';
+
+                                return (
                                     <motion.div
-                                        initial={{ opacity: 0, y: 10 }}
+                                        initial={{ opacity: 0, y: 8 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         key={msg.id}
-                                        className={`flex items-end gap-2.5 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}
+                                        className={`flex items-start gap-2.5 ${isAssistant ? '' : 'flex-row-reverse'}`}
                                     >
-                                        <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 shadow-sm border
-                                            ${msg.role === 'assistant'
-                                                ? 'bg-gradient-to-br from-blue-600 to-indigo-600 text-white border-transparent'
-                                                : 'bg-white text-slate-600 border-slate-200'
+                                        <div
+                                            className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 shadow-2xs mt-0.5 ${
+                                                isAssistant
+                                                    ? 'bg-blue-600 text-white'
+                                                    : 'bg-slate-800 text-white'
                                             }`}
                                         >
-                                            {msg.role === 'assistant' ? <Bot size={14} /> : <User size={14} />}
+                                            {isAssistant ? <Bot size={14} /> : <User size={14} />}
                                         </div>
-                                        <div className="flex flex-col gap-1 max-w-[80%]">
+
+                                        <div className={`flex flex-col gap-1 max-w-[85%] ${isAssistant ? '' : 'items-end'}`}>
                                             <div
-                                                className={`p-3 text-[12px] leading-relaxed shadow-sm
-                                                    ${msg.role === 'assistant'
-                                                        ? 'bg-white text-slate-700 rounded-2xl rounded-bl-none border border-slate-200/60'
-                                                        : 'bg-white text-slate-700 rounded-2xl rounded-br-none border border-slate-200/60 shadow-slate-200/50'
-                                                    }`}
+                                                className={`p-3 text-[12px] leading-relaxed shadow-sm ${
+                                                    isAssistant
+                                                        ? 'bg-white text-slate-800 rounded-2xl rounded-tl-xs border border-slate-200/80'
+                                                        : 'bg-blue-600 text-white rounded-2xl rounded-tr-xs shadow-blue-600/20'
+                                                }`}
                                             >
-                                                <p className="whitespace-pre-wrap font-bold !text-[12px]">{msg.content}</p>
+                                                {isAssistant ? (
+                                                    <ChatMarkdown
+                                                        content={msg.content}
+                                                        onLinkClick={() => {
+                                                            // Keep chat open while internal navigation happens
+                                                        }}
+                                                    />
+                                                ) : (
+                                                    <p className="whitespace-pre-wrap font-medium">{msg.content}</p>
+                                                )}
                                             </div>
-                                            <span className={`text-[9px] px-1 opacity-50 ${msg.role === 'user' ? 'text-right' : ''}`}>
+
+                                            <span className="text-[9px] text-slate-400 px-1">
                                                 {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                             </span>
                                         </div>
                                     </motion.div>
-                                ))}
+                                );
+                            })}
 
-                                {/* Quick Actions (Only show if last message was from assistant and not loading) */}
-                                {!isLoading && messages[messages.length - 1]?.role === 'assistant' && (
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 5 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        className="pl-11 flex flex-wrap gap-2"
-                                    >
-                                        {QUICK_ACTIONS.map((action, i) => (
+                            {/* Typing Indicator */}
+                            {isLoading && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 8 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="flex items-start gap-2.5"
+                                >
+                                    <div className="w-7 h-7 rounded-lg bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-2xs mt-0.5">
+                                        <Bot size={14} />
+                                    </div>
+                                    <div className="bg-white p-3 rounded-2xl rounded-tl-xs border border-slate-200/80 shadow-2xs flex gap-1.5 items-center">
+                                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full animate-bounce [animation-delay:-0.3s]" />
+                                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full animate-bounce [animation-delay:-0.15s]" />
+                                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full animate-bounce" />
+                                    </div>
+                                </motion.div>
+                            )}
+
+                            {/* Dynamic Suggested Question Chips */}
+                            {!isLoading && activeFollowUps.length > 0 && (
+                                <div className="pt-2 pl-9 space-y-1.5">
+                                    <div className="flex items-center gap-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                                        <Sparkles className="w-3 h-3 text-blue-500" />
+                                        <span>Suggested for {activeContext.title}:</span>
+                                    </div>
+                                    <div className="flex flex-col gap-1.5">
+                                        {activeFollowUps.map((q, idx) => (
                                             <button
-                                                key={i}
-                                                onClick={() => handleSend(action.text)}
-                                                className="text-[11px] bg-white text-blue-600 border border-blue-100 px-3 py-1.5 rounded-full hover:bg-blue-50 hover:border-blue-200 transition-all shadow-sm font-medium flex items-center gap-1 group"
+                                                key={idx}
+                                                type="button"
+                                                onClick={() => handleSend(q)}
+                                                className="text-left text-[11px] bg-white hover:bg-blue-50 text-slate-700 hover:text-blue-700 border border-slate-200/80 hover:border-blue-300 px-3 py-2 rounded-xl transition-all shadow-2xs font-medium flex items-center justify-between group cursor-pointer"
                                             >
-                                                {action.label}
-                                                <ChevronRight className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" />
+                                                <span className="line-clamp-1 flex-1 pr-1">{q}</span>
+                                                <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-600 shrink-0 group-hover:translate-x-0.5 transition-transform" />
                                             </button>
                                         ))}
-                                    </motion.div>
-                                )}
+                                    </div>
+                                </div>
+                            )}
 
-                                {/* Typing Indicator */}
-                                {isLoading && (
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        className="flex items-end gap-2.5"
-                                    >
-                                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-indigo-600 text-white flex items-center justify-center shrink-0 shadow-sm">
-                                            <Bot size={14} />
-                                        </div>
-                                        <div className="bg-white p-4 rounded-2xl rounded-bl-none border border-slate-200/60 shadow-sm flex gap-1.5 items-center h-11">
-                                            <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
-                                            <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce [animation-delay:-0.15s]" />
-                                            <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" />
-                                        </div>
-                                    </motion.div>
-                                )}
-                            </div>
                             <div ref={messagesEndRef} />
                         </div>
 
-                        {/* Input Area */}
-                        <div className="p-4 bg-white border-t border-slate-100 shrink-0">
-                            <div className="flex items-end gap-2 bg-slate-50 border border-slate-200 rounded-2xl p-2 focus-within:ring-2 focus-within:ring-blue-500/10 focus-within:border-blue-500 transition-all">
-                                <button aria-label="Attach file" title="Attach file" className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-200/50 rounded-xl transition-colors">
-                                    <Paperclip className="w-5 h-5" />
-                                    <span className="sr-only">Attach file</span>
-                                </button>
+                        {/* ── D. QUICK ACTION CONSULTATION BANNER (NON-INTRUSIVE) ── */}
+                        <div className="bg-slate-100/70 border-t border-slate-200/70 px-4 py-2 flex items-center justify-between text-[11px] shrink-0">
+                            <span className="text-slate-600 truncate font-medium">Ready to discuss your pipeline?</span>
+                            <a
+                                href="/book-consultation"
+                                className="font-bold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 shrink-0"
+                            >
+                                <span>Book Consultation</span>
+                                <ArrowUpRight className="w-3 h-3" />
+                            </a>
+                        </div>
+
+                        {/* ── E. INPUT AREA ── */}
+                        <div className="p-3 bg-white border-t border-slate-200/80 shrink-0">
+                            <div className="flex items-end gap-2 bg-slate-50 border border-slate-200/90 rounded-xl p-1.5 focus-within:ring-2 focus-within:ring-blue-600/20 focus-within:border-blue-600 transition-all">
                                 <textarea
                                     value={inputValue}
                                     onChange={(e) => setInputValue(e.target.value)}
                                     onKeyDown={handleKeyDown}
-                                    placeholder="Write a message..."
+                                    placeholder={`Ask about ${activeContext.title}...`}
                                     rows={1}
-                                    className="flex-1 bg-transparent border-none p-2 max-h-32 text-[12px] focus:ring-0 resize-none placeholder:text-slate-400 text-slate-700 min-h-[44px] py-3"
+                                    className="flex-1 bg-transparent border-none p-1.5 max-h-24 text-[12px] focus:outline-none focus:ring-0 resize-none placeholder:text-slate-400 text-slate-800 min-h-[38px] leading-relaxed"
                                     style={{ scrollbarWidth: 'none' }}
                                 />
                                 <Button
+                                    type="button"
                                     aria-label="Send message"
                                     title="Send message"
                                     onClick={() => handleSend()}
                                     disabled={!inputValue.trim() || isLoading}
-                                    className="h-[40px] w-[40px] rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-500/20 p-0 flex items-center justify-center shrink-0 transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed mb-0.5"
+                                    className="h-[36px] w-[36px] rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white shadow-sm p-0 flex items-center justify-center shrink-0 transition-all disabled:opacity-40 disabled:cursor-not-allowed mb-0.5 cursor-pointer"
                                 >
                                     <Send className="w-4 h-4 ml-0.5" />
                                     <span className="sr-only">Send message</span>
                                 </Button>
                             </div>
-                            <div className="flex justify-center mt-3">
-                                <span className="text-[10px] text-slate-400 flex items-center gap-1.5">
-                                    <Sparkles className="w-3 h-3 text-slate-300" />
-                                    Powered by PROFITMACHINES
+                            <div className="flex items-center justify-between mt-2 px-1 text-[10px] text-slate-400 font-medium">
+                                <span className="flex items-center gap-1">
+                                    <Sparkles className="w-3 h-3 text-blue-500" />
+                                    <span>Context-Aware Revenue Intelligence</span>
                                 </span>
+                                <span>Press Enter ↵ to send</span>
                             </div>
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
 
-            {/* Toggle Button */}
+            {/* ── F. FLOATING LAUNCHER BUTTON ── */}
             {!isOpen && (
                 <motion.button
                     id="chatbot-toggle"
-                    aria-label="Open Chat"
-                    title="Open Chat"
-                    initial={{ scale: 0, rotate: 180 }}
+                    type="button"
+                    aria-label="Open AI Assistant"
+                    title="Open ProfitMachines AI Assistant"
+                    initial={{ scale: 0, rotate: 90 }}
                     animate={{ scale: 1, rotate: 0 }}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.08 }}
+                    whileTap={{ scale: 0.94 }}
                     onClick={() => setIsOpen(true)}
-                    className="fixed bottom-8 right-6 z-[999] w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-full shadow-2xl shadow-blue-600/30 flex items-center justify-center text-white cursor-pointer hover:shadow-blue-600/50 transition-all ring-2 ring-white/20"
+                    className="fixed bottom-8 right-6 z-[999] w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-full shadow-xl shadow-blue-600/30 flex items-center justify-center text-white cursor-pointer hover:shadow-2xl hover:shadow-blue-600/50 transition-all ring-2 ring-white/30"
                 >
-                    <MessageSquare className="w-7 h-7" strokeWidth={2.5} />
-                    <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-green-500 border-[2.5px] border-white rounded-full"></span>
+                    <MessageSquare className="w-7 h-7" strokeWidth={2.4} />
+                    <span className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full"></span>
                     <span className="sr-only">Open Chat</span>
                 </motion.button>
             )}

@@ -983,6 +983,136 @@ export const SalesAgentsPage: React.FC = () => {
       </section>
 
       {/* Final CTA & Intake Form */}
+      
+      {/* ── KPI METRICS & MEASUREMENT SPECIFICATION ── */}
+      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-3">
+              <BarChart3 className="w-3.5 h-3.5" />
+              <span>CORE PERFORMANCE METRICS</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+              Metrics That Matter: Measurable KPI Architecture
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Every AI Sales Agents capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs, formulas, and operational rationales that determine success.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Scale Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">Thousands Tasks / Day</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Autonomous Tasks Executed</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Total Commercial Operations Completed by Autonomous Agents Without Human Manual Action
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Aggregate volume of prospect research dossiers, email drafts, CRM updates, and meeting invites processed.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Allows a lean commercial team to maintain the market presence and responsiveness of a 50-person department.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Reliability Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;98.4% Execution Quality</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Autonomous Workflow Success Rate</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Agent Tasks Meeting Quality Benchmarks / Total Agent Tasks Completed) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Proportion of autonomous operations executed flawlessly in compliance with enterprise brand guidelines.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Builds enterprise trust in agentic execution, ensuring brand voice and regulatory safety are preserved.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Governance Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">Calibrated Risk Gating</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Human Escalation Gating Frequency</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Workflows Routed to Human Supervisors / Total Initiated Agent Operations) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Percentage of complex inquiries, high-value deals, or edge cases routed to human account executives.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Enforces human judgment at critical decision moments while allowing routine tasks to run autonomously.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Speed Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&lt;60 Seconds Response</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Inbound & Signal Response Latency</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Average Seconds from Buyer Signal Ingestion to Contextual Personalized Action
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Speed with which autonomous agents engage prospective buyers when active intent signals spike.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Captures peak buyer attention during active research windows, multiplying conversion rates.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Unit Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">-90% vs Manual Cost</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Cost per Completed Commercial Action</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Total Cloud Compute and Model API Expenditure / Total Commercial Tasks Finished
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Unit economic cost of executing research dossiers, meeting bookings, and contract follow-ups.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Decouples commercial output from linear headcount costs, driving massive operating profit expansion.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Impact Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;80% Deals Co-Piloted</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Opportunities Assisted Through Close</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Closed Deals Utilizing Agent Research, Proposals, or Follow-up / Total Deals) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Proportion of active revenue pipeline co-piloted by autonomous agents across the sales cycle.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Directly validates that autonomous agents accelerate closed-won revenue rather than producing vanity activity.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="intake-form" className="py-24 relative bg-slate-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">

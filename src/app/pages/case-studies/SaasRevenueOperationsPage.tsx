@@ -113,7 +113,7 @@ export default function SaasRevenueOperationsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-100 text-violet-700 text-xs font-mono font-bold uppercase mb-4">
-                Executive Profile
+                PHASE 1 // EXECUTIVE SNAPSHOT &amp; BASELINE CONTEXT
               </div>
               <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-4 font-heading">
                 Rapid ARR Scaling Strained by Operational Debt
@@ -329,7 +329,7 @@ export default function SaasRevenueOperationsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-xs font-mono font-bold uppercase mb-4">
-              Architecture Blueprint
+              PHASE 2 // TRANSFORMATION DESIGN &amp; REVOPS STACK
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
               The Autonomous Revenue Operations Stack
@@ -407,44 +407,40 @@ export default function SaasRevenueOperationsPage() {
           <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
             <button
               onClick={() => setActiveQuadrant('pipeline')}
-              className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-                activeQuadrant === 'pipeline'
-                  ? 'bg-violet-600 text-white shadow-md shadow-violet-600/20'
-                  : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100'
-              }`}
+              className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${activeQuadrant === 'pipeline'
+                ? 'bg-violet-600 text-white shadow-md shadow-violet-600/20'
+                : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100'
+                }`}
             >
               <Target className="w-4 h-4" />
               <span>Quadrant 1: Pipeline Velocity</span>
             </button>
             <button
               onClick={() => setActiveQuadrant('hygiene')}
-              className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-                activeQuadrant === 'hygiene'
-                  ? 'bg-violet-600 text-white shadow-md shadow-violet-600/20'
-                  : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100'
-              }`}
+              className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${activeQuadrant === 'hygiene'
+                ? 'bg-violet-600 text-white shadow-md shadow-violet-600/20'
+                : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100'
+                }`}
             >
               <Database className="w-4 h-4" />
               <span>Quadrant 2: Autonomous Hygiene</span>
             </button>
             <button
               onClick={() => setActiveQuadrant('capacity')}
-              className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-                activeQuadrant === 'capacity'
-                  ? 'bg-violet-600 text-white shadow-md shadow-violet-600/20'
-                  : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100'
-              }`}
+              className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${activeQuadrant === 'capacity'
+                ? 'bg-violet-600 text-white shadow-md shadow-violet-600/20'
+                : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100'
+                }`}
             >
               <Users className="w-4 h-4" />
               <span>Quadrant 3: Capacity & Quota</span>
             </button>
             <button
               onClick={() => setActiveQuadrant('incentive')}
-              className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-                activeQuadrant === 'incentive'
-                  ? 'bg-violet-600 text-white shadow-md shadow-violet-600/20'
-                  : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100'
-              }`}
+              className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${activeQuadrant === 'incentive'
+                ? 'bg-violet-600 text-white shadow-md shadow-violet-600/20'
+                : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100'
+                }`}
             >
               <DollarSign className="w-4 h-4" />
               <span>Quadrant 4: Instant Incentive Comp</span>
@@ -662,6 +658,25 @@ export default function SaasRevenueOperationsPage() {
               </div>
             )}
           </div>
+
+          {/* Visual Architecture Preview */}
+          <div className="mt-10 rounded-3xl overflow-hidden border border-slate-200 shadow-md relative group">
+            <img
+              src="/images/revenue-acceleration-engine.png"
+              alt="Autonomous Revenue Acceleration Engine"
+              className="w-full h-64 sm:h-80 object-cover group-hover:scale-102 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
+              <div>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-white bg-violet-600/90 px-3 py-1 rounded-md backdrop-blur-xs">
+                  Production RevOps Architecture
+                </span>
+                <p className="text-slate-200 text-xs sm:text-sm mt-2">
+                  Zero-touch CRM data federation, autonomous commission reconciliation, and real-time executive telemetry.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -721,7 +736,7 @@ export default function SaasRevenueOperationsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-mono font-bold uppercase mb-4">
-              Verified ROI
+              PHASE 3 // EVIDENCE &amp; QUANTIFIED ROI
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
               Quantifiable Impact on Revenue Mechanics
@@ -857,7 +872,7 @@ export default function SaasRevenueOperationsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div>
-              <div className="text-xs font-mono font-bold text-violet-600 uppercase mb-2">Connected Architecture</div>
+              <div className="text-xs font-mono font-bold text-violet-600 uppercase mb-2">PHASE 4 // REPLICATION PLAYBOOK &amp; CONNECTED ARCHITECTURE</div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-heading">
                 Related Transformations
               </h2>

@@ -413,6 +413,216 @@ export default function SalesAcceleration() {
       </section>
 
       {/* ── SECTION 11: FINAL CTA & INTAKE ── */}
+      
+      {/* ── KPI METRICS & MEASUREMENT SPECIFICATION ── */}
+      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-3">
+              <BarChart3 className="w-3.5 h-3.5" />
+              <span>CORE PERFORMANCE METRICS</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+              Metrics That Matter: Measurable KPI Architecture
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Every Sales Acceleration capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs, formulas, and operational rationales that determine success.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Conversion Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;32% Enterprise Rate</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Opportunity Win Rate</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">34%–42% Enterprise / 48% Focus Tiers</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Quarterly | Closed-Won vs Total Closed</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                      Verified Actual
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Conversion efficiency of enterprise opportunities reaching proposal or commercial evaluation stages.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Direct multiplier on every demand generation dollar; slight win rate gains dramatically expand ARR.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Velocity Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">25-40% Cycle Compression</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Sales Cycle Length</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">45–62 Days (Compressed from 94d)</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Per Closed Opportunity | Qualified to Won</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                      Verified Actual
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Average time required to guide an enterprise prospect from initial discovery through procurement.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Compressed cycles accelerate cash flow velocity and decrease exposure to stakeholder turnover.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Compound Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">2.5x - 3.5x Velocity Lift</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Sales Velocity Index</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">3.2x–4.1x Revenue Throughput Lift</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Monthly Rolling | Throughput Index</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">
+                      Sourced Benchmark
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Expected dollar volume of new recurring revenue generated by the sales organization per calendar day.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> The definitive composite mathematical benchmark for commercial go-to-market execution health.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Volume Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">Multi-Tier Expansion</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Average Deal Size (ACV)</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">$78,000–<h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Average Deal Size (ACV)</h3>
+                85,000 ARR Tier-1 ACV</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Annual Contract Value | Master Agreement</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                      Verified Actual
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Average annualized contract value secured across won enterprise customer relationships.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Higher ACVs improve gross margins, decrease rep overhead ratios, and accelerate company ARR scale.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Precision Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&lt;5% Quarter Variance</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Commit Forecast Accuracy</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">94%–98% Precision to Actuals</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Quarterly Review | &lt;5% Variance</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                      Verified Actual
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Algorithmic precision of sales revenue projections delivered to executive leadership and the board.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Restores board credibility, stabilizes operational capital allocation, and prevents surprise revenue misses.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Productivity Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt; $1.8M ARR per Rep</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Revenue per Sales Representative</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900"><h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Revenue per Sales Representative</h3>
+                .4M–$2.2M Net-New ARR / FTE</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Annual Performance | Active Selling Reps</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">
+                      Enterprise Standard
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Average annualized sales productivity achieved across the front-line commercial sales bench.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Determines the profitability of sales headcount expansion and the scalability of the sales model.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="intake" className="py-20 sm:py-28 bg-slate-50 relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">

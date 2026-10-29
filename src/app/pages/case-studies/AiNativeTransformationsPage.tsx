@@ -122,6 +122,7 @@ export default function AiNativeTransformationsPage() {
                 </span>
                 <span className="text-xs font-mono text-slate-500">Autonomous SDR Swarm</span>
               </div>
+              <img src="/images/industry-saas.png" alt="Mid-Market SaaS SDR Swarm" className="w-full h-44 object-cover rounded-2xl mb-4 border border-slate-200" />
               <h3 className="text-2xl font-bold text-slate-900 mb-2">
                 Mid-Market SaaS: 3.8X Meeting Velocity with AI SDR Agents
               </h3>

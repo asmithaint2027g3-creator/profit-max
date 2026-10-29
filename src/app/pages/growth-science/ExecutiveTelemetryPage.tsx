@@ -453,6 +453,136 @@ export default function ExecutiveTelemetryPage() {
       </section>
 
       {/* ── FINAL CTA & INTAKE FORM ── */}
+      
+      {/* ── KPI METRICS & MEASUREMENT SPECIFICATION ── */}
+      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-3">
+              <BarChart3 className="w-3.5 h-3.5" />
+              <span>CORE PERFORMANCE METRICS</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+              Metrics That Matter: Measurable KPI Architecture
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Every Executive Telemetry capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs, formulas, and operational rationales that determine success.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Executive Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">Live Telemetry Stream</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Real-Time Revenue Velocity HUD</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Continuous Daily Pipeline Conversion Progression Extrapolated to Annualized ARR Run-Rate
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Real-time executive cockpit displaying pipeline flow velocity, deal stagnation alerts, and revenue pacing.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Eliminates reliance on outdated quarterly reports, giving C-suite leadership immediate diagnostic visibility.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Predictive Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;80% Decision Authority</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Pipeline Health & Authority Index</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Active Pipeline Validated with Verified C-Suite Economic Buyers / Total Pipeline) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Proportion of forward pipeline verified through multi-threaded executive engagement and documented ROI.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Distinguishes genuine enterprise pipeline from speculative deals that will push or stall indefinitely.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Precision Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&lt;5% Quarterly Variance</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Commit Forecast Precision Variance</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (|Actual Closed Revenue Book - Stochastic Pipeline Commit| / Forecast Commit) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Mathematical discrepancy between machine-learned closing forecasts and actual audited quarterly results.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Restores executive credibility with the board of directors and provides certainty for strategic planning.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Profitability Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">Margin Protection</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Corporate Contribution Margin Index</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Enterprise Revenue Retained After Variable Cloud Hosting, Support Load, and Partner Revenue Share
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">True corporate gross contribution margin produced across all active software and solution tiers.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Ensures revenue scaling expands net corporate earnings rather than quietly diluting enterprise margins.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Efficiency Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&lt;12 Month CAC Payback</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Fully Loaded Customer Acquisition Cost</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> All Commercial Headcount, Ad Spend, Tooling, and Leadership Overhead / Sourced Net-New ARR
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Comprehensive capital required to add each dollar of annual recurring revenue across the organization.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> The ultimate financial efficiency metric determining enterprise valuation multiples and capital runway.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Trajectory Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">120% - 135% Compounding</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Cohort Net Revenue Retention (NRR)</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> [(Installed Base ARR + Account Expansion - Account Churn) / Starting Base ARR] × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Longitudinal expansion rate produced by existing client cohorts without factoring new customer acquisition.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Validates that the enterprise operating system delivers compounding value to customers over multi-year periods.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="intake" className="py-24 bg-slate-950 text-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

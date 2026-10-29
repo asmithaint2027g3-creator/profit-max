@@ -388,6 +388,215 @@ export default function CustomerSuccess() {
       </section>
 
       {/* ── SECTION 10: FINAL CTA & INTAKE ── */}
+      
+      {/* ── KPI METRICS & MEASUREMENT SPECIFICATION ── */}
+      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-3">
+              <BarChart3 className="w-3.5 h-3.5" />
+              <span>CORE PERFORMANCE METRICS</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+              Metrics That Matter: Measurable KPI Architecture
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Every Customer Success capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs, formulas, and operational rationales that determine success.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Stability Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;92% Enterprise Cohort</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Customer Retention Rate (CRR)</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">94%–97% Annual Logo Retention</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Annual Cohort | Paid Enterprise Accounts</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                      Verified Actual
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Percentage of customer relationships maintained over an annualized operational timeframe.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Retaining the base customer footprint protects accumulated recurring revenue and prevents dilution.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Risk Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&lt;5% Annualized Churn</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Gross Revenue Churn Rate</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">&lt;3.5% Annual Churn ARR</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Trailing 12 Months | Non-Expansion Base</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                      Verified Actual
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">The rate at which existing contracted revenue is eroded through cancellation or seat reductions.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Uncontrolled churn creates a compounding drag that forces marketing to replace lost dollars before growing.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Compounding Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">120% - 135% Target</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Net Revenue Retention (NRR)</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">118%–132% Enterprise NRR</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Annual Cohort | Expansion + Contraction</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                      Verified Actual
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Percentage of recurring revenue retained from existing customers including expansion compounding.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> The primary valuation multiple driver for enterprise SaaS; proves product value compounds naturally.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Core Health Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;90% - 95% Rate</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Gross Revenue Retention (GRR)</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">92%–96% Enterprise GRR</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Annual Cohort | Excludes Price Escalations</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">
+                      Sourced Benchmark
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Percentage of recurring revenue retained from existing customers excluding all expansion upsell.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Exposes true product stickiness and customer utility independent of aggressive new expansion sales.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Enterprise Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">LTV Expansion Curve</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Customer Lifetime Value (LTV)</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">$420,000–<h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Customer Lifetime Value (LTV)</h3>
+                .25M Enterprise Lifetime Value</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">3–5 Year Horizon | Net Margin Contribution</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                      Verified Actual
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Cumulative net contribution profit produced over the entire account partnership lifecycle.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Demonstrates the compounding economic dividend of investments in proactive customer health.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Growth Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;20% of Net-New ARR</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Expansion Revenue Share</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">35%–48% of Net-New ARR from Base</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Annual ARR Compounding | Expansion Pods</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">
+                      Strategic Target
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Proportion of total growth generated through cross-sell, seat saturation, and tier progression.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Provides low-CAC revenue acceleration that dramatically expands operating margins.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="intake" className="py-20 sm:py-28 bg-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">

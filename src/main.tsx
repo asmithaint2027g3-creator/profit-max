@@ -39,8 +39,8 @@ class RootErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState
             <h2 style={{ fontSize: "20px", fontWeight: "bold", color: "#ffffff", marginBottom: "8px" }}>
               Render Exception Encountered
             </h2>
-            <p style={{ fontSize: "14px", color: "#cbd5e1", backgroundColor: "#020617", padding: "16px", borderRadius: "12px", border: "1px solid #1e293b", marginBottom: "24px", overflow: "auto", whiteSpace: "pre-wrap" }}>
-              {this.state.error?.message || String(this.state.error)}
+            <p style={{ fontSize: "13px", color: "#cbd5e1", backgroundColor: "#020617", padding: "16px", borderRadius: "12px", border: "1px solid #1e293b", marginBottom: "24px", overflow: "auto", whiteSpace: "pre-wrap" }}>
+              {this.state.error?.stack || this.state.error?.message || String(this.state.error)}
             </p>
             <button
               onClick={() => window.location.reload()}

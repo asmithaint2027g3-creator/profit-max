@@ -714,6 +714,215 @@ export default function DemandEngineering() {
       </section>
 
       {/* ── SECTION 11: FINAL CTA & INTAKE ── */}
+      
+      {/* ── KPI METRICS & MEASUREMENT SPECIFICATION ── */}
+      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-3">
+              <BarChart3 className="w-3.5 h-3.5" />
+              <span>CORE PERFORMANCE METRICS</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+              Metrics That Matter: Measurable KPI Architecture
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Every Demand Engineering capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs, formulas, and operational rationales that determine success.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Leading Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">100% ICP Verified</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Marketing Qualified Leads (MQLs)</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">240–380 Target Accounts / Mo</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Monthly | Pre-Qualified Inbound & Intent</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                      Verified Actual
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Account contacts demonstrating verified buying authority and real-time project interest signals.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Guarantees sales rep time is invested exclusively into accounts with verified project budgets and authority.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Velocity Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;60% MQL-to-SQL Lift</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Sales Qualified Leads (SQLs)</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">68%–74% MQL-to-SQL Acceptance</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Bi-Weekly | AE Verified Discovery</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                      Verified Actual
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">High-propensity opportunities advancing directly into structured mutual evaluation processes.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> The core leading indicator dictating sales rep capacity utilization and quarterly quota feasibility.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Efficiency Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">Sub-Channel Payback</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Cost per Lead (CPL)</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">&lt;$240 Mid-Market / &lt;$680 Enterprise</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Monthly Rolling | Programmatic Blended</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">
+                      Sourced Benchmark
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Blended direct acquisition cost incurred to generate a single verified, compliant prospect.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Protects marketing budget sustainability and establishes the unit economic baseline for acquisition scale.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Conversion Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;25% Intent Conversion</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Lead-to-Opportunity Conversion Rate</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">32%–44% Stage-1 Progression</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Quarterly Cohort | Pipeline Velocity</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                      Verified Actual
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">The efficiency with which initial intent data signals convert into active deal pipeline stages.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Exposes routing bottlenecks, messaging misalignment, and qualification leakage across the early funnel.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Volume Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;4x Quota Coverage</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Pipeline Generated</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">3.8x–4.5x Forward Quota Coverage</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Per Quarter | Weighted Qualified ACV</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                      Verified Actual
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Aggregate dollar value of verified sales pipeline entering active evaluation within a measured timeframe.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Primary forward-looking indicator for enterprise revenue trajectory two to four quarters in advance.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Unit Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&lt;15% Target ACV</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Cost per Qualified Opportunity (CPQO)</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">&lt;<h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Cost per Qualified Opportunity (CPQO)</h3>
+                ,850 Mid-Market / &lt;$4,200 Enterprise</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Monthly Rolling | Fully Loaded S&M Spend</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">
+                      Configurable Target
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Fully loaded demand cost required to create an active, progressing enterprise sales opportunity.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Evaluates the capital efficiency of the demand architecture before sales execution variables intervene.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="intake" className="py-20 sm:py-28 bg-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">

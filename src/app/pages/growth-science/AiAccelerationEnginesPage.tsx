@@ -468,6 +468,136 @@ export default function AiAccelerationEnginesPage() {
       </section>
 
       {/* ── FINAL CTA & INTAKE FORM ── */}
+      
+      {/* ── KPI METRICS & MEASUREMENT SPECIFICATION ── */}
+      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-3">
+              <BarChart3 className="w-3.5 h-3.5" />
+              <span>CORE PERFORMANCE METRICS</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+              Metrics That Matter: Measurable KPI Architecture
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Every AI Acceleration Engines capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs, formulas, and operational rationales that determine success.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Speed Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">Sub-Minute Execution</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Commercial Workflow Cycle Time</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Total Elapsed Milliseconds from Ingestion of Buyer Signal to Completed Action Protocol
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Speed with which autonomous systems synthesize context, draft communications, and trigger system updates.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Compresses operational latency, engaging prospective enterprise buyers while commercial intent is peak.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Leverage Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;75% Autonomous Workflows</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">GTM Operational Automation Rate</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Repetitive Commercial Workflows Automated / Total Operational Workflows) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Proportion of routine commercial tasks performed by autonomous systems without manual human effort.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Reclaims dozens of productive selling hours weekly, liberating human professionals to focus on relationships.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Unit Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">-90% Task Cost Reduction</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Cost per Commercial Task Execution</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Total Compute, Token, and System Infrastructure Expense / Total Executed Workflows
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Fully loaded compute expense incurred to conduct an in-depth account research dossier or meeting booking.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Enables massive scaling of high-touch outreach and intelligence synthesis without linear headcount growth.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Reliability Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&lt;1.5% Exception Frequency</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Algorithmic Workflow Exception Rate</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Workflows Encountering Error or Requiring Fallback / Total Initiated Actions) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Proportion of agentic workflows triggering defensive fallbacks due to ambiguous data or policy boundaries.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Maintains system reliability and informs continuous improvement of agent prompts and validation logic.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Throughput Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">Thousands Operations/Hr</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Simultaneous Processing Throughput</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Concurrent Volume of Account Signals, Deal Dossiers, and Outbound Engagements Processed
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Capacity of the distributed agent infrastructure to maintain continuous operations during surge periods.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Guarantees that sudden spikes in market demand or inbound inquiries are handled instantly without backlogs.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Governance Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">Risk-Calibrated Gating</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Human Supervisory Oversight Touch</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Workflows Requiring Explicit Human Operator Sign-Off / Total Commercial Actions) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Percentage of high-stakes commercial commitments requiring explicit review by an executive supervisor.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Guarantees human oversight remains in control of pricing, contractual terms, and high-value relationships.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="intake" className="py-24 bg-slate-950 text-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

@@ -109,6 +109,7 @@ export default function FeaturedTransformationsPage() {
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                 <div className="lg:col-span-7 space-y-6">
+                  <img src="/images/industry-saas.png" alt="SaaS Revenue Transformation" className="w-full h-48 sm:h-56 object-cover rounded-2xl mb-4 border border-slate-200" />
                   <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
                     The $2.3B SaaS Transformation
                   </h2>
@@ -211,6 +212,7 @@ export default function FeaturedTransformationsPage() {
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                 <div className="lg:col-span-7 space-y-6">
+                  <img src="/images/industry-manufacturing.png" alt="Manufacturing Global Expansion" className="w-full h-48 sm:h-56 object-cover rounded-2xl mb-4 border border-slate-200" />
                   <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
                     Global Manufacturing Expansion
                   </h2>
@@ -324,6 +326,7 @@ export default function FeaturedTransformationsPage() {
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                 <div className="lg:col-span-7 space-y-6">
+                  <img src="/images/industry-healthcare.png" alt="Healthcare AI Transformation" className="w-full h-48 sm:h-56 object-cover rounded-2xl mb-4 border border-slate-200" />
                   <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
                     Financial Services &amp; Healthcare AI Transformation
                   </h2>

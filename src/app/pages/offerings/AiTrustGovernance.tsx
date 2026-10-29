@@ -338,6 +338,214 @@ export default function AiTrustGovernance() {
       </section>
 
       {/* ── SECTION 10: FINAL CTA & INTAKE ── */}
+      
+      {/* ── KPI METRICS & MEASUREMENT SPECIFICATION ── */}
+      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-3">
+              <BarChart3 className="w-3.5 h-3.5" />
+              <span>CORE PERFORMANCE METRICS</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+              Metrics That Matter: Measurable KPI Architecture
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Every Ai Trust Governance capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs, formulas, and operational rationales that determine success.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Reliability Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;99.2% Deterministic</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Workflow Success Rate</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">99.4% Autonomous Task Completion</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">24/7 Live Telemetry | Production Agent Fleets</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                      Verified Actual
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Percentage of AI agent tasks completed successfully according to policy without system failure.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Provides certainty that autonomous commercial operations run reliably at scale without human babysitting.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Accuracy Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;98% Audited Precision</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">AI Output Quality & Precision</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">99.8% Factual & Policy Compliance</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Continuous Inspection | Deterministic Guardrails</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                      Verified Actual
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Adherence of model-generated messages, proposals, and summaries to verified enterprise facts.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Protects enterprise brand reputation, eliminates hallucinations, and ensures contractual accuracy.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Boundary Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&lt;1.5% Exception Frequency</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Exception Handling Rate</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">&lt;0.8% Unhandled Workflow Exceptions</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Weekly Audit | Automated Fallbacks</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                      Verified Actual
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Frequency with which autonomous agents encounter out-of-distribution inputs requiring fallback.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Identifies edge cases and informs continuous refinement of permission boundaries and agent logic.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Governance Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">Calibrated Risk Gating</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Human Intervention Rate</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">&lt;3.5% Workflows Escalated for Sign-Off</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">High-Risk Transaction Gates | Human-in-the-Loop</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">
+                      Operational Standard
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Percentage of commercial transactions requiring explicit human approval before execution.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Enforces human-in-the-loop control on high-stakes pricing concessions or legal commitments.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Speed Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">Sub-Second Routing</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Decision Processing Latency</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">&lt;85ms Policy Enforcement Latency</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Sub-Second SLA | Real-Time Signal Routing</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">
+                      Technical Benchmark
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Operational latency required to evaluate intent signals and deploy automated workflows.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Enables real-time engagement while prospect attention and buying committee interest are active.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Regulatory Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">100% Certified Standard</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Governance & Compliance Score</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">100% Adherence (SOC2, EU AI Act, ISO 42001)</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Annual Third-Party Audit | Automated Logs</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                      Verified Actual
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Independent verification of data sovereignty, algorithmic fairness, and security safeguards.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Ensures zero regulatory penalties and eliminates compliance friction during enterprise procurement.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="intake" className="py-20 sm:py-28 bg-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">

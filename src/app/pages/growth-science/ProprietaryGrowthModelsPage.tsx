@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import {
   ArrowRight, ChevronRight, Layers, Box, Cpu, Activity,
   CheckCircle2, AlertTriangle, Radar, LineChart, Quote,
-  Zap, ArrowUpRight, Compass, Shield, Sparkles, TrendingUp
+  Zap, ArrowUpRight, Compass, Shield, Sparkles, TrendingUp,
+  BarChart3
 } from 'lucide-react';
 import { AiSalesIntakeForm } from '../../components/forms/AiSalesIntakeForm';
 
@@ -459,6 +460,136 @@ export default function ProprietaryGrowthModelsPage() {
       </section>
 
       {/* ── FINAL CTA & INTAKE FORM ── */}
+      
+      {/* ── KPI METRICS & MEASUREMENT SPECIFICATION ── */}
+      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-3">
+              <BarChart3 className="w-3.5 h-3.5" />
+              <span>CORE PERFORMANCE METRICS</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+              Metrics That Matter: Measurable KPI Architecture
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Every Proprietary Growth Models capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs, formulas, and operational rationales that determine success.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Profitability Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">70% - 85% Target Margin</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Gross Contribution Margin</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> [(Total Revenue - Cost of Goods Sold) / Total Revenue] × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Proportion of contract revenue retained after satisfying all direct infrastructure and delivery expenses.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> The foundation of enterprise valuation; protected by rigorous profit pool optimization and discount floors.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Concentration Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">High-Yield Segment Focus</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Unit Profitability per Micro-Segment</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Segment Revenue - Segment Acquisition Cost - Servicing and Direct Support Overhead
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">True net contribution margin delivered across specific industry and customer tier cohorts.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Reveals where profit concentrates, allowing leadership to reallocate capital away from value-dilutive segments.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Unit Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">Positive Unit Economics</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Customer Account Unit Economics</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Annual Contract Value - Allocated CAC Amortization - Direct Annual Servicing Load
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Individual account-level profitability measuring true economic contribution to the enterprise balance sheet.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Eliminates hidden servicing drains where large legacy accounts consume more support cost than they generate.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Capital Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&lt;12 Month Capital Payback</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">CAC Payback Velocity in Months</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Customer Acquisition Cost / (Monthly Recurring Revenue × Gross Contribution Margin %)
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Months of customer cash flow required to fully recover the sales and marketing capital invested to acquire them.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> The primary metric dictating company cash burn, capital efficiency, and self-funding expansion capacity.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Compounding Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">LTV:CAC Ratio &gt; 3.5x</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Customer Lifetime Economic Value (LTV)</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Average Annual Contract ACV × Gross Margin %) / Annualized Customer Churn Rate
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Aggregate net contribution produced over the entire expected duration of an enterprise customer relationship.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Establishes the sustainable upper boundary for acquisition spend while assuring long-term corporate profitability.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Return Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;40% Cash-on-Cash ROGI</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Return on Growth Investment (ROGI)</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Net Incremental Gross Margin Added / Total Transformed Growth Capital Invested) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Economic return realized on capital invested in transforming commercial systems, models, and workflows.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Directly validates the board-level return on deploying AI-native revenue operating models.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="intake" className="py-24 bg-slate-950 text-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

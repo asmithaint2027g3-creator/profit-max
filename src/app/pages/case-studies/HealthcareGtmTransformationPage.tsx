@@ -164,7 +164,7 @@ export default function HealthcareGtmTransformationPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-mono font-bold uppercase mb-4">
-                Enterprise Profile
+                PHASE 1 // EXECUTIVE SNAPSHOT &amp; BASELINE CONTEXT
               </div>
               <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-4 font-heading">
                 M&A Integration Creating Commercial Gridlock
@@ -372,7 +372,7 @@ export default function HealthcareGtmTransformationPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-mono font-bold uppercase mb-4">
-              Architecture Blueprint
+              PHASE 2 // TRANSFORMATION DESIGN &amp; GTM ARCHITECTURE
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
               The Enterprise Commercial Mesh
@@ -535,6 +535,24 @@ export default function HealthcareGtmTransformationPage() {
               </div>
             </div>
           </div>
+          {/* Visual Architecture Preview */}
+          <div className="mt-10 rounded-3xl overflow-hidden border border-slate-200 shadow-md relative group">
+            <img
+              src="/images/hero-end-to-end-transformation.png"
+              alt="Healthcare GTM Transformation Architecture"
+              className="w-full h-64 sm:h-80 object-cover group-hover:scale-102 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
+              <div>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-white bg-teal-600/90 px-3 py-1 rounded-md backdrop-blur-xs">
+                  Enterprise GTM Architecture
+                </span>
+                <p className="text-slate-200 text-xs sm:text-sm mt-2">
+                  Harmonized commercial motions across 5 operating divisions with HIPAA-compliant AI workflows.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -594,7 +612,7 @@ export default function HealthcareGtmTransformationPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-mono font-bold uppercase mb-4">
-              Verified ROI
+              PHASE 3 // EVIDENCE &amp; QUANTIFIED ROI
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
               Quantifiable Impact on $900M Healthcare Revenue
@@ -730,7 +748,7 @@ export default function HealthcareGtmTransformationPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div>
-              <div className="text-xs font-mono font-bold text-teal-600 uppercase mb-2">Connected Architecture</div>
+              <div className="text-xs font-mono font-bold text-teal-600 uppercase mb-2">PHASE 4 // REPLICATION PLAYBOOK &amp; CONNECTED ARCHITECTURE</div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-heading">
                 Related Healthcare & Enterprise Studies
               </h2>

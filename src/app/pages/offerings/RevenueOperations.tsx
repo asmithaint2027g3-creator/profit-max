@@ -445,6 +445,215 @@ export default function RevenueOperations() {
       </section>
 
       {/* ── SECTION 10: FINAL CTA & INTAKE ── */}
+      
+      {/* ── KPI METRICS & MEASUREMENT SPECIFICATION ── */}
+      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-3">
+              <BarChart3 className="w-3.5 h-3.5" />
+              <span>CORE PERFORMANCE METRICS</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+              Metrics That Matter: Measurable KPI Architecture
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Every Revenue Operations capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs, formulas, and operational rationales that determine success.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Hygiene Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;98% Autonomous Fill</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">CRM Data Completeness</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">96.5% Core Field Population</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Continuous Telemetry | Zero Manual Lag</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                      Verified Actual
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Proportion of CRM pipeline, activity, and stakeholder fields maintained with validated data.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Clean telemetry eliminates blind spots in forecasting, attribution models, and territory rebalancing.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Latency Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">Sub-Hour SLA Execution</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Process Cycle Time</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">&lt;4.5 Hours Quote-to-Contract SLA</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Per Transaction | Trigger to Execution</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                      Verified Actual
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Time required for commercial approvals, contract generation, discount routing, and provisioning.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Removes operational drag that frustrates prospective buyers and delays contract finalization.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Forecasting Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&lt;3% Variance to Actuals</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Forecast Precision Index</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">±4.2% Variance at Day 45 of Quarter</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Weekly Snapshot | AI Weighting Model</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                      Verified Actual
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Mathematical certainty of pipeline close projections based on Bayesian behavioral telemetry.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Stabilizes corporate budgeting, strategic resource hiring, and investor guidance commitments.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Efficiency Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">Continuous Compression</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Cost per Revenue Operation</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">&lt;<h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Cost per Revenue Operation</h3>
+                20 per Deal Milestone Event</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Per Opportunity Lifecycle | Tooling + Ops</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">
+                      Sourced Benchmark
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Operational expense incurred to govern, route, report, and maintain each dollar of pipeline.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Identifies software bloat and redundant tooling across marketing, sales, and CS applications.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Leverage Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt; $400k / Headcount</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Revenue per Employee</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">$380,000–$540,000 Annual Revenue / FTE</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Annual Fiscal Period | Total Headcount</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">
+                      Enterprise Benchmark
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Organization-wide commercial efficiency metric measuring operational automation depth.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> The preeminent financial multiple driver demonstrating non-linear scaling capacity.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Productivity Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;75% Zero-Touch Workflows</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Workflow Automation Rate</h3>
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
+                    <span className="font-mono font-bold text-slate-900">82%–91% Operational Tasks Automated</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
+                    <span className="font-mono text-slate-700">Continuous Telemetry | Autonomous Systems</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                    <span className="text-slate-500 font-medium">Confidence Status:</span>
+                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                      Verified Actual
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Percentage of administrative routing, data entry, and alert workflows executed without manual human labor.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Reclaims rep capacity, returning 10-15 hours per week per professional to direct customer interaction.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="intake" className="py-20 sm:py-28 bg-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">

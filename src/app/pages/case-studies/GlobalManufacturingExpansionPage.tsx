@@ -99,7 +99,7 @@ export default function GlobalManufacturingExpansionPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-sm">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-mono font-bold uppercase mb-4">
-              Executive Briefing Card
+              PHASE 1 // EXECUTIVE SNAPSHOT &amp; BASELINE CONTEXT
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-sm">
               <div>
@@ -215,7 +215,7 @@ export default function GlobalManufacturingExpansionPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-mono text-indigo-600 font-bold uppercase tracking-wider block mb-2">
-              Systemic Intervention
+              PHASE 2 // TRANSFORMATION DESIGN &amp; MULTI-REGION ARCHITECTURE
             </span>
             <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight font-heading">
               What We Deployed
@@ -322,6 +322,25 @@ export default function GlobalManufacturingExpansionPage() {
               </ul>
             </div>
           </div>
+
+          {/* Visual Architecture Preview */}
+          <div className="mt-8 rounded-3xl overflow-hidden border border-slate-200 shadow-md relative group">
+            <img
+              src="/images/industry-manufacturing.png"
+              alt="Global Manufacturing Transformation Architecture"
+              className="w-full h-64 sm:h-80 object-cover group-hover:scale-102 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
+              <div>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-white bg-indigo-600/90 px-3 py-1 rounded-md backdrop-blur-xs">
+                  Production Telemetry Architecture
+                </span>
+                <p className="text-slate-200 text-xs sm:text-sm mt-2">
+                  Multi-Region RevOps &amp; Autonomous Telemetry Infrastructure deployed across international operating divisions.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -330,7 +349,7 @@ export default function GlobalManufacturingExpansionPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs font-mono text-indigo-600 font-bold uppercase tracking-wider block mb-2">
-              Empirical Performance Verification
+              PHASE 3 // EVIDENCE &amp; QUANTIFIED RESULTS
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
               Verified Outcomes
@@ -508,7 +527,7 @@ export default function GlobalManufacturingExpansionPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="text-xs font-mono text-indigo-600 font-bold uppercase tracking-wider block mb-2">
-              Cross-Platform Synergy
+              PHASE 4 // REPLICATION PLAYBOOK &amp; RELATED OFFERINGS
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-heading">
               Explore Related Methodologies

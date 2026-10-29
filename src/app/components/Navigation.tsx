@@ -115,7 +115,7 @@ export const offeringsArchitecture: OfferingCategoryDetail[] = [
             {
                 title: 'Customer & Ideal Customer Profile Discovery',
                 outcome: 'Segment high-contribution customer cohorts and identify target account propensity.',
-                path: '/offerings/profit-pool-discovery',
+                path: '/offerings/profit-pool-discovery#customer-icp',
                 icon: Users,
                 tag: 'ICP DISCOVERY'
             },
@@ -431,7 +431,7 @@ const spotlightConfigs: Record<string, SpotlightConfig> = {
         kpi: '+28.4%',
         kpiLabel: 'Contribution Margin',
         path: '/offerings/profit-pool-discovery',
-        ctaText: 'Explore Discovery Pillars',
+        ctaText: 'Explore Discovery Capabilities',
         icon: Target,
         accentGlow: 'from-blue-600/30 to-indigo-600/30'
     },
@@ -1706,15 +1706,15 @@ export default function Navigation() {
             summary: 'Deterministic international revenue engineering: autonomous market validation, multi-language AI SDR agents, and global RevOps.',
             categories: [
                 {
-                    id: 'market-intelligence',
-                    title: 'Market Intelligence',
+                    id: 'global-market-access',
+                    title: 'Global Market Access',
                     desc: 'Validate country opportunity, TAM/SAM/SOM sizing, and regulatory burden before capital commitment',
                     path: '/global-acceleration/market-intelligence',
-                    badge: 'Pillar 01',
+                    badge: 'Area 01',
                     icon: Globe,
                     columns: [
                         {
-                            header: 'Opportunity & Sizing',
+                            header: 'Opportunity & Risk Intelligence',
                             badge: 'Validation',
                             icon: Globe,
                             cards: [
@@ -1727,27 +1727,27 @@ export default function Navigation() {
                                     tags: ['ROI Ranking', 'Contribution Margin']
                                 },
                                 {
+                                    title: 'Market Opportunity Mapping',
+                                    description: 'Systematic heat-mapping of market density, sector growth rates, and structural headroom.',
+                                    path: '/global-acceleration/market-intelligence',
+                                    badge: 'Market Density',
+                                    icon: Target,
+                                    tags: ['Territory Headroom', 'Density Score']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Sizing & Compliance',
+                            badge: 'Governance',
+                            icon: ShieldCheck,
+                            cards: [
+                                {
                                     title: 'TAM / SAM / SOM Assessment',
                                     description: 'Country-specific addressable market modeling with realistic penetration rates.',
                                     path: '/global-acceleration/market-intelligence',
                                     badge: 'Territory Sizing',
                                     icon: Target,
                                     tags: ['Territory TAM', '<15% Variance']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Incumbents & Compliance',
-                            badge: 'Dissection',
-                            icon: ShieldCheck,
-                            cards: [
-                                {
-                                    title: 'Competitive Mapping',
-                                    description: 'Map domestic regional rivals and deploy tailored counter-strategies.',
-                                    path: '/global-acceleration/market-intelligence',
-                                    badge: 'Incumbents',
-                                    icon: ShieldCheck,
-                                    tags: ['Rival Dissection', 'Win Rates']
                                 },
                                 {
                                     title: 'Regulatory Intelligence',
@@ -1762,280 +1762,392 @@ export default function Navigation() {
                     ]
                 },
                 {
-                    id: 'cross-border-strategy',
-                    title: 'Cross-Border Revenue Strategy',
-                    desc: 'Engineer entry models, deep localization, dynamic pricing, and expansion planning',
+                    id: 'global-demand-networks',
+                    title: 'Global Demand Networks',
+                    desc: 'Algorithmic discovery of regional demand ecosystems, commercial corridors, and institutional buyers',
                     path: '/global-acceleration/cross-border-strategy',
-                    badge: 'Pillar 02',
-                    icon: Compass,
-                    columns: [
-                        {
-                            header: 'Entry Architecture',
-                            badge: 'Motion Design',
-                            icon: Compass,
-                            cards: [
-                                {
-                                    title: 'Market Entry Models',
-                                    description: 'Tailored direct, partner-led, hybrid, or digital-first go-to-market motions.',
-                                    path: '/global-acceleration/cross-border-strategy',
-                                    badge: 'Motion Architecture',
-                                    icon: Compass,
-                                    tags: ['Entry Models', 'Time-to-Revenue']
-                                },
-                                {
-                                    title: 'Localization Strategy',
-                                    description: 'Deep cultural value alignment beyond surface-level language translation.',
-                                    path: '/global-acceleration/cross-border-strategy',
-                                    badge: 'Cultural Fit',
-                                    icon: Sparkles,
-                                    tags: ['3-5X CVR Lift', 'Buyer Alignment']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Pricing & Expansion',
-                            badge: 'Revenue Scaling',
-                            icon: DollarSign,
-                            cards: [
-                                {
-                                    title: 'Global Pricing',
-                                    description: 'Purchasing-power adjusted pricing tiers and dynamic currency hedging.',
-                                    path: '/global-acceleration/cross-border-strategy',
-                                    badge: 'PPP & Hedging',
-                                    icon: DollarSign,
-                                    tags: ['Margin Defense', 'Currency Tiers']
-                                },
-                                {
-                                    title: 'Revenue Expansion Planning',
-                                    description: 'Market-specific upsell and cross-border account expansion motions.',
-                                    path: '/global-acceleration/cross-border-strategy',
-                                    badge: 'NRR Lift',
-                                    icon: TrendingUp,
-                                    tags: ['+20-30% NRR', 'Land & Expand']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'partner-ecosystems',
-                    title: 'Global Partner Ecosystems',
-                    desc: 'Build high-yield distributor networks, co-selling programs, and strategic alliances',
-                    path: '/global-acceleration/partner-ecosystems',
-                    badge: 'Pillar 03',
+                    badge: 'Area 02',
                     icon: Network,
                     columns: [
                         {
-                            header: 'Distribution & Sourcing',
-                            badge: 'Channel Scale',
+                            header: 'Buyer & Importer Discovery',
+                            badge: 'Direct Demand',
                             icon: Network,
                             cards: [
                                 {
-                                    title: 'Distributor Networks',
-                                    description: 'Score distributors by measured contribution and focus on high-yield partners.',
-                                    path: '/global-acceleration/partner-ecosystems',
-                                    badge: 'Scored Networks',
+                                    title: 'Importer & Buyer Discovery',
+                                    description: 'Direct access to credentialed cross-border importers and corporate procurement buyers.',
+                                    path: '/global-acceleration/cross-border-strategy',
+                                    badge: 'Vetted Importers',
                                     icon: Network,
-                                    tags: ['3-5X Partner Lift', 'Scorecards']
+                                    tags: ['Direct Procurement', 'Customs Cleared']
                                 },
                                 {
-                                    title: 'Partner Recruitment',
-                                    description: 'Strategic gap mapping and recruitment of top-tier regional distributors.',
-                                    path: '/global-acceleration/partner-ecosystems',
-                                    badge: 'Strategic Sourcing',
+                                    title: 'Strategic Account Discovery',
+                                    description: 'Target identification of multinational enterprise accounts with verified buying intent.',
+                                    path: '/global-acceleration/cross-border-strategy',
+                                    badge: 'Intent Corridors',
                                     icon: Target,
-                                    tags: ['Regional Recruitment', 'Ecosystem Gaps']
+                                    tags: ['Enterprise Accounts', 'Active Surge']
                                 }
                             ]
                         },
                         {
-                            header: 'Co-Sell & Alliances',
-                            badge: 'Alliances',
-                            icon: Handshake,
+                            header: 'Channel & Ecosystem Mapping',
+                            badge: 'Distribution',
+                            icon: Store,
                             cards: [
                                 {
-                                    title: 'Co-Selling Programs',
-                                    description: 'Structured co-selling with clear pipeline attribution and joint planning.',
-                                    path: '/global-acceleration/partner-ecosystems',
-                                    badge: 'Attribution',
-                                    icon: Handshake,
-                                    tags: ['4-6X Co-Sell ROI', 'Pipeline Attribution']
+                                    title: 'Distributor Discovery',
+                                    description: 'Algorithmic sourcing of top-quartile distributor organizations with verified reach.',
+                                    path: '/global-acceleration/cross-border-strategy',
+                                    badge: 'Channel Fabric',
+                                    icon: Building2,
+                                    tags: ['Distributor Sourcing', 'Territory Reach']
                                 },
                                 {
-                                    title: 'Alliance Management',
-                                    description: 'Score strategic hyperscaler alliances by verified closed revenue.',
-                                    path: '/global-acceleration/partner-ecosystems',
-                                    badge: 'Hyperscalers',
-                                    icon: Building2,
-                                    tags: ['AWS / Azure', 'Measured Contribution']
+                                    title: 'Revenue Corridor Discovery',
+                                    description: 'Longitudinal modeling of active commercial corridors with accelerating import velocity.',
+                                    path: '/global-acceleration/cross-border-strategy',
+                                    badge: 'Corridor Velocity',
+                                    icon: TrendingUp,
+                                    tags: ['Trade Flows', 'Unmet Demand']
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    id: 'global-revops',
-                    title: 'Global Revenue Operations',
-                    desc: 'Proactive compliance management, global sales alignment, and multi-region orchestration',
-                    path: '/global-acceleration/global-revops',
-                    badge: 'Pillar 04',
+                    id: 'export-growth-engine',
+                    title: 'Export Growth Engine',
+                    desc: 'Institutional export acceleration architecture engineered to acquire foreign buyers and scale velocity',
+                    path: '/global-acceleration/cross-border-strategy',
+                    badge: 'Area 03',
+                    icon: TrendingUp,
+                    columns: [
+                        {
+                            header: 'Readiness & Strategy',
+                            badge: 'Foundation',
+                            icon: Compass,
+                            cards: [
+                                {
+                                    title: 'Export Readiness Assessment',
+                                    description: 'Operational, compliance, and product diagnostic scoring enterprise export viability.',
+                                    path: '/global-acceleration/cross-border-strategy',
+                                    badge: 'Readiness Score',
+                                    icon: Compass,
+                                    tags: ['Export Diagnostic', 'Readiness Score']
+                                },
+                                {
+                                    title: 'Export GTM Strategy',
+                                    description: 'End-to-end go-to-market architecture tailored to customs regimes and regional habits.',
+                                    path: '/global-acceleration/cross-border-strategy',
+                                    badge: 'GTM Architecture',
+                                    icon: Rocket,
+                                    tags: ['Corridor Blueprint', 'Customs Regimes']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Acquisition & Promotion',
+                            badge: 'Execution',
+                            icon: Briefcase,
+                            cards: [
+                                {
+                                    title: 'International Buyer Acquisition',
+                                    description: 'Multi-channel engagement securing direct commercial meetings with verified buyers.',
+                                    path: '/global-acceleration/cross-border-strategy',
+                                    badge: 'Buyer Conversion',
+                                    icon: UserCheck,
+                                    tags: ['Cross-Border Meetings', 'Decision Makers']
+                                },
+                                {
+                                    title: 'Trade Promotion Programs',
+                                    description: 'Strategic execution of bilateral trade missions, subsidies, and export incentives.',
+                                    path: '/global-acceleration/cross-border-strategy',
+                                    badge: 'Trade Programs',
+                                    icon: Award,
+                                    tags: ['Export Incentives', 'Bilateral Missions']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'strategic-partner-ecosystems',
+                    title: 'Strategic Partner Ecosystems',
+                    desc: 'Enterprise ecosystem architecture establishing co-sell alliances and master distribution networks',
+                    path: '/global-acceleration/partner-ecosystems',
+                    badge: 'Area 04',
+                    icon: Users,
+                    columns: [
+                        {
+                            header: 'Distribution & Alliances',
+                            badge: 'Indirect GTM',
+                            icon: Users,
+                            cards: [
+                                {
+                                    title: 'Channel Partner Networks',
+                                    description: 'Systematic tiering and governance of multi-tier certified solution providers.',
+                                    path: '/global-acceleration/partner-ecosystems',
+                                    badge: 'Network Tiering',
+                                    icon: Users,
+                                    tags: ['Partner Governance', 'Quota Structuring']
+                                },
+                                {
+                                    title: 'Distributor Partnerships',
+                                    description: 'Master commercial structuring aligning quotas, territory exclusivity, and margins.',
+                                    path: '/global-acceleration/partner-ecosystems',
+                                    badge: 'Commercial Align',
+                                    icon: Handshake,
+                                    tags: ['Margin Schedules', 'Exclusivity Terms']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Joint Ventures & Integrations',
+                            badge: 'Co-Sell',
+                            icon: GitMerge,
+                            cards: [
+                                {
+                                    title: 'Strategic Alliances',
+                                    description: 'High-impact co-innovation and co-marketing partnerships with complementary leaders.',
+                                    path: '/global-acceleration/partner-ecosystems',
+                                    badge: 'Alliances',
+                                    icon: Shield,
+                                    tags: ['Co-Selling Fabric', 'Joint Headroom']
+                                },
+                                {
+                                    title: 'Joint Venture Opportunities',
+                                    description: 'Structured identification and commercial modeling for regional equity partnerships.',
+                                    path: '/global-acceleration/partner-ecosystems',
+                                    badge: 'JV Structuring',
+                                    icon: Scale,
+                                    tags: ['Local Equity', 'Shared Governance']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'global-supply-networks',
+                    title: 'Global Supply Networks',
+                    desc: 'Intelligence and mapping frameworks to optimize cross-border supply chains, manufacturing, and fulfillment',
+                    path: '/global-acceleration/market-intelligence',
+                    badge: 'Area 05',
                     icon: Layers,
                     columns: [
                         {
-                            header: 'Governance & Alignment',
-                            badge: 'Synchronization',
-                            icon: ShieldCheck,
+                            header: 'Sourcing & Manufacturing',
+                            badge: 'Procurement',
+                            icon: Factory,
                             cards: [
                                 {
-                                    title: 'Compliance Management',
-                                    description: 'Proactive cross-border compliance frameworks ensuring zero post-launch fines.',
-                                    path: '/global-acceleration/global-revops',
-                                    badge: 'Zero Fines',
-                                    icon: ShieldCheck,
-                                    tags: ['Proactive Compliance', 'Data Sovereignty']
+                                    title: 'Supplier Discovery',
+                                    description: 'Algorithmic sourcing and qualification of regional component manufacturers and OEMs.',
+                                    path: '/global-acceleration/market-intelligence',
+                                    badge: 'Supplier Sourcing',
+                                    icon: Factory,
+                                    tags: ['OEM Qualification', 'Component Sourcing']
                                 },
                                 {
-                                    title: 'Global Sales Alignment',
-                                    description: 'Unified sales processes and cross-border account collaboration.',
-                                    path: '/global-acceleration/global-revops',
-                                    badge: 'Account Sync',
-                                    icon: Users,
-                                    tags: ['Multinational Accounts', '+30-50% Revenue']
+                                    title: 'Manufacturing Partner Discovery',
+                                    description: 'Identifying ISO-certified contract manufacturers with audited capacity and quality.',
+                                    path: '/global-acceleration/market-intelligence',
+                                    badge: 'ISO Standards',
+                                    icon: Building,
+                                    tags: ['Contract Mfg', 'Audited Capacity']
                                 }
                             ]
                         },
                         {
-                            header: 'Attribution & Stack',
-                            badge: 'Operations',
-                            icon: Layers,
+                            header: 'Logistics & Resilience',
+                            badge: 'Continuity',
+                            icon: Box,
                             cards: [
                                 {
-                                    title: 'Revenue Attribution',
-                                    description: 'Track revenue by region, partner, motion, and segment with 95%+ accuracy.',
-                                    path: '/global-acceleration/global-revops',
-                                    badge: '95%+ Accuracy',
-                                    icon: BarChart3,
-                                    tags: ['ROI Transparency', 'Attribution Matrix']
+                                    title: 'Logistics Network Design',
+                                    description: 'Multi-modal freight optimization balancing maritime, air, and overland corridors.',
+                                    path: '/global-acceleration/market-intelligence',
+                                    badge: 'Multi-Modal',
+                                    icon: Box,
+                                    tags: ['Transit Time', 'Freight Margin']
                                 },
                                 {
-                                    title: 'Multi-Region Operations',
-                                    description: 'Consolidate redundant tech stacks and unify regional operating processes.',
-                                    path: '/global-acceleration/global-revops',
-                                    badge: 'Consolidation',
-                                    icon: Layers,
-                                    tags: ['40-60% Cut', 'Stack Consolidation']
+                                    title: 'Supply Chain Risk Assessment',
+                                    description: 'Vulnerability indexing for single-source dependencies and geopolitical disruption.',
+                                    path: '/global-acceleration/market-intelligence',
+                                    badge: 'Resilience Audit',
+                                    icon: ShieldCheck,
+                                    tags: ['Disruption Hedging', 'Single-Source Risk']
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    id: 'ai-global-scaling',
-                    title: 'AI For Global Scaling',
-                    desc: 'Deploy multi-language SDR swarms, market monitoring agents, and autonomous expansion',
-                    path: '/global-acceleration/ai-global-scaling',
-                    badge: 'Pillar 05 · Key Differentiator',
-                    icon: Bot,
+                    id: 'global-revenue-engines',
+                    title: 'Global Revenue Engines',
+                    desc: 'Institutional revenue infrastructure orchestrating multi-region pipeline velocity and execution',
+                    path: '/global-acceleration/global-revops',
+                    badge: 'Area 06',
+                    icon: BarChart3,
                     columns: [
                         {
-                            header: 'Autonomous Agents',
-                            badge: '24/7 Swarms',
-                            icon: Bot,
+                            header: 'GTM Design & Territories',
+                            badge: 'Infrastructure',
+                            icon: Workflow,
                             cards: [
                                 {
-                                    title: 'Multi-Language AI SDRs',
-                                    description: 'Prospect in 15+ native languages across 20+ timezones 24/7 at 1/10th human cost.',
-                                    path: '/global-acceleration/ai-global-scaling',
-                                    badge: '15+ Languages',
-                                    icon: Bot,
-                                    tags: ['Follow-the-Sun', '1/10th Cost']
+                                    title: 'Multi-Country GTM Design',
+                                    description: 'Unified operating models defining regional quota ratios and compensation grids.',
+                                    path: '/global-acceleration/global-revops',
+                                    badge: 'Operating Model',
+                                    icon: Workflow,
+                                    tags: ['Regional Quotas', 'Operating Model']
                                 },
                                 {
-                                    title: 'Market Intelligence Agents',
-                                    description: 'Real-time detection of competitor moves and demand surges in <7 days.',
-                                    path: '/global-acceleration/ai-global-scaling',
-                                    badge: 'Real-Time',
-                                    icon: Activity,
-                                    tags: ['<7 Days Detection', 'Demand Signals']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Compliance & Workflows',
-                            badge: 'Autonomous Scale',
-                            icon: Zap,
-                            cards: [
-                                {
-                                    title: 'Regulatory Intelligence Agents',
-                                    description: '90+ days advance warning of regulatory changes with automated impact assessments.',
-                                    path: '/global-acceleration/ai-global-scaling',
-                                    badge: '90-Day Early Warning',
-                                    icon: ShieldCheck,
-                                    tags: ['Statutory Monitoring', 'Advance Alerts']
-                                },
-                                {
-                                    title: 'Autonomous Expansion Workflows',
-                                    description: 'Automated opportunity identification across global enterprise account usage.',
-                                    path: '/global-acceleration/ai-global-scaling',
-                                    badge: 'NRR Automation',
-                                    icon: Zap,
-                                    tags: ['+25-40% Expansion', 'Telemetry Triggers']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'expansion-office',
-                    title: 'Executive Expansion Office',
-                    desc: 'Readiness audits, sequenced growth roadmaps, market strategies, and C-suite scorecards',
-                    path: '/global-acceleration/expansion-office',
-                    badge: 'Pillar 06',
-                    icon: Building2,
-                    columns: [
-                        {
-                            header: 'Readiness & Roadmaps',
-                            badge: 'Oversight',
-                            icon: Building2,
-                            cards: [
-                                {
-                                    title: 'Expansion Readiness Audit',
-                                    description: 'Audit capabilities, resources, and infrastructure before deploying capital.',
-                                    path: '/global-acceleration/expansion-office',
-                                    badge: 'Capability Audit',
-                                    icon: ShieldCheck,
-                                    tags: ['80-90% Risk Cut', 'Pre-Flight Audit']
-                                },
-                                {
-                                    title: 'International Growth Roadmap',
-                                    description: 'Sequenced territory entry roadmap prioritizing markets by ROI probability.',
-                                    path: '/global-acceleration/expansion-office',
-                                    badge: 'Sequencing',
-                                    icon: TrendingUp,
-                                    tags: ['Phased Roadmaps', 'Validation Gates']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Strategy & Scorecards',
-                            badge: 'Boardroom',
-                            icon: BarChart3,
-                            cards: [
-                                {
-                                    title: 'Market Expansion Strategy',
-                                    description: 'Bespoke market-specific strategies validated with local enterprise research.',
-                                    path: '/global-acceleration/expansion-office',
-                                    badge: 'Market-Specific',
+                                    title: 'Territory Planning',
+                                    description: 'Dynamic account routing based on market capacity and localized language coverage.',
+                                    path: '/global-acceleration/global-revops',
+                                    badge: 'Dynamic Routing',
                                     icon: Compass,
-                                    tags: ['2-3X Performance', 'Tailored GTM']
+                                    tags: ['Account Routing', 'Capacity Planning']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Operations & Intelligence',
+                            badge: 'Velocity',
+                            icon: Gauge,
+                            cards: [
+                                {
+                                    title: 'Multi-Language SDR Operations',
+                                    description: 'Native-fluency outbound prospecting frameworks operating across 12+ timezones.',
+                                    path: '/global-acceleration/global-revops',
+                                    badge: '24/7 Prospecting',
+                                    icon: Bot,
+                                    tags: ['15+ Dialects', 'Zero Response Lag']
                                 },
                                 {
-                                    title: 'Executive Scorecards',
-                                    description: 'Real-time visibility into market performance, partner contribution, and roadmap progress.',
+                                    title: 'Revenue Intelligence',
+                                    description: 'Algorithmic signal detection monitoring win/loss drivers and regional sales velocity.',
+                                    path: '/global-acceleration/global-revops',
+                                    badge: 'Signal Detection',
+                                    icon: Activity,
+                                    tags: ['Win/Loss Drivers', 'Pipeline Velocity']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'global-capital-finance',
+                    title: 'Global Capital & Finance',
+                    desc: 'Financial ecosystem discovery, trade finance facilitation, and treasury advisory for expansion',
+                    path: '/global-acceleration/expansion-office',
+                    badge: 'Area 07',
+                    icon: DollarSign,
+                    columns: [
+                        {
+                            header: 'Trade & Export Finance',
+                            badge: 'Working Capital',
+                            icon: DollarSign,
+                            cards: [
+                                {
+                                    title: 'Trade Finance Solutions',
+                                    description: 'Connecting letters of credit, invoice factoring, and export receivables facilities.',
                                     path: '/global-acceleration/expansion-office',
-                                    badge: 'Real-Time C-Suite',
-                                    icon: BarChart3,
-                                    tags: ['50-70% Decision Speed', 'Board Telemetry']
+                                    badge: 'Credit Lines',
+                                    icon: DollarSign,
+                                    tags: ['LC Facility', 'Receivables Factoring']
+                                },
+                                {
+                                    title: 'Export Financing',
+                                    description: 'Navigating state export credit lines, buyer guarantees, and pre-shipment facilities.',
+                                    path: '/global-acceleration/expansion-office',
+                                    badge: 'Credit Guarantees',
+                                    icon: Coins,
+                                    tags: ['ECA Backed', 'Pre-Shipment Lines']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Treasury & Institutions',
+                            badge: 'Connectivity',
+                            icon: Landmark,
+                            cards: [
+                                {
+                                    title: 'International Banking Networks',
+                                    description: 'Mapping correspondent banking relationships for treasury and FX settlements.',
+                                    path: '/global-acceleration/expansion-office',
+                                    badge: 'Correspondent FX',
+                                    icon: Landmark,
+                                    tags: ['FX Settlement', 'Multi-Currency']
+                                },
+                                {
+                                    title: 'Export Credit Agencies',
+                                    description: 'Engaging institutional ECAs (EXIM, Euler Hermes) to mitigate buyer default risks.',
+                                    path: '/global-acceleration/expansion-office',
+                                    badge: 'Default Risk',
+                                    icon: ShieldCheck,
+                                    tags: ['ECA Engagement', 'Sovereign Coverage']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'ai-powered-expansion',
+                    title: 'AI-Powered Expansion',
+                    desc: 'Autonomous AI agent architecture delivering 24/7 market telemetry, buyer prospecting, and command',
+                    path: '/global-acceleration/ai-global-scaling',
+                    badge: 'Area 08',
+                    icon: Cpu,
+                    columns: [
+                        {
+                            header: 'Autonomous Discovery',
+                            badge: 'Swarms',
+                            icon: BrainCircuit,
+                            cards: [
+                                {
+                                    title: 'AI Market Intelligence',
+                                    description: 'Continuous agentic scanning of foreign registry filings and trade journals.',
+                                    path: '/global-acceleration/ai-global-scaling',
+                                    badge: '24/7 Radar',
+                                    icon: Radar,
+                                    tags: ['Registry Scans', 'Tender Monitoring']
+                                },
+                                {
+                                    title: 'AI Buyer Discovery',
+                                    description: 'Autonomous identification and enrichment of cross-border executive decision-makers.',
+                                    path: '/global-acceleration/ai-global-scaling',
+                                    badge: 'Autonomous Enrichment',
+                                    icon: Target,
+                                    tags: ['Intent Discovery', 'C-Suite Leads']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Agentic Operations',
+                            badge: 'Autonomous Exec',
+                            icon: Cpu,
+                            cards: [
+                                {
+                                    title: 'AI Revenue Agents',
+                                    description: '24/7 autonomous SDR and lead qualification agents conducting outbound correspondence.',
+                                    path: '/global-acceleration/ai-global-scaling',
+                                    badge: 'Autonomous SDR',
+                                    icon: Bot,
+                                    tags: ['15+ Languages', 'Autonomous Pitch']
+                                },
+                                {
+                                    title: 'Global Intelligence Command Center',
+                                    description: 'Unified executive telemetry dashboard aggregating pipeline and risk metrics.',
+                                    path: '/global-acceleration/ai-global-scaling',
+                                    badge: 'Cockpit View',
+                                    icon: Gauge,
+                                    tags: ['Cross-Border Telemetry', 'Risk Alerts']
                                 }
                             ]
                         }
@@ -2054,62 +2166,7 @@ export default function Navigation() {
             badge: 'Verified Outcomes',
             summary: 'Verified boardroom revenue metrics, empirical ROI case studies, and enterprise customer transformation outcomes.',
             categories: [
-                {
-                    id: 'featured-transformations',
-                    title: 'Featured Transformations',
-                    desc: 'Curated flagship enterprise transformations showcasing multi-market expansion, autonomous pipeline growth, and forecast certainty.',
-                    path: '/case-studies/featured',
-                    badge: 'Flagship Outcomes',
-                    icon: Sparkles,
-                    columns: [
-                        {
-                            header: 'Flagship Transformations',
-                            badge: 'Curated',
-                            icon: Sparkles,
-                            cards: [
-                                {
-                                    title: 'Enterprise SaaS Pipeline Growth',
-                                    description: 'From $180M to $420M enterprise pipeline with 14-day cycle compression.',
-                                    path: '/case-studies/enterprise-saas-pipeline-growth',
-                                    badge: 'Flagship Case Study',
-                                    icon: TrendingUp,
-                                    tags: ['+$240M Pipeline', '14-Day Compression']
-                                },
-                                {
-                                    title: 'Global Manufacturing Expansion',
-                                    description: 'Scaling industrial distributor networks across 4 global operating hubs to $400M revenue.',
-                                    path: '/case-studies/global-manufacturing-expansion',
-                                    badge: 'Flagship Case Study',
-                                    icon: Factory,
-                                    tags: ['+$400M Scale', '-47% Cycle Time']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Mission-Critical Deployments',
-                            badge: 'Boardroom Proof',
-                            icon: ShieldCheck,
-                            cards: [
-                                {
-                                    title: 'Healthcare Forecast Accuracy',
-                                    description: 'Achieving 98% quarterly forecast precision across 320 hospital enterprise buying committees.',
-                                    path: '/case-studies/healthcare-forecast-accuracy',
-                                    badge: 'Flagship Case Study',
-                                    icon: HeartPulse,
-                                    tags: ['98% Precision', '<5% Variance']
-                                },
-                                {
-                                    title: 'All Curated Transformations',
-                                    description: 'Editorial deep-dives into deployment timelines, client baseline telemetry, and executive outcomes.',
-                                    path: '/case-studies/featured',
-                                    badge: 'Curated Showcase',
-                                    icon: Award,
-                                    tags: ['3 Showcases', 'Telemetry Dossiers']
-                                }
-                            ]
-                        }
-                    ]
-                },
+
                 {
                     id: 'by-business-challenge',
                     title: 'By Business Challenge',
@@ -2622,7 +2679,7 @@ export default function Navigation() {
             return;
         }
         setActiveMenuId(menuId);
-        setActiveCategoryId(menu.categories[0].id);
+        if (menu.categories[0]) setActiveCategoryId(menu.categories[0].id);
     };
 
     // Handle mouse leave with small grace period to prevent accidental closing
@@ -2669,7 +2726,7 @@ export default function Navigation() {
             const next = prev === menuId ? null : menuId;
             if (next) {
                 const targetMenu = mainMenus.find(m => m.id === next);
-                if (targetMenu && targetMenu.categories.length > 0) {
+                if (targetMenu && targetMenu.categories && targetMenu.categories.length > 0 && targetMenu.categories[0]) {
                     setMobileExpandedCategories(catPrev => ({
                         ...catPrev,
                         [targetMenu.categories[0].id]: true
@@ -2909,7 +2966,7 @@ export default function Navigation() {
                                             {/* Category List (Tight Vertical Rhythm) */}
                                             <nav className="space-y-1 pt-0.5">
                                                 {currentMenu.categories.map((cat) => {
-                                                    const isCatActive = currentCategory.id === cat.id;
+                                                    const isCatActive = currentCategory?.id === cat.id;
 
                                                     return (
                                                         <div

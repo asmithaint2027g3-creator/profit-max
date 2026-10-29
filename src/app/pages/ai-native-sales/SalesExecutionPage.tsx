@@ -24,7 +24,8 @@ import {
   Compass,
   AlertCircle,
   Activity,
-  Cpu
+  Cpu,
+  BarChart3
 } from 'lucide-react';
 import { AiSalesIntakeForm } from '../../components/forms/AiSalesIntakeForm';
 
@@ -628,6 +629,136 @@ export const SalesExecutionPage: React.FC = () => {
       </section>
 
       {/* Final CTA & Confidential Intake Form */}
+      
+      {/* ── KPI METRICS & MEASUREMENT SPECIFICATION ── */}
+      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-3">
+              <BarChart3 className="w-3.5 h-3.5" />
+              <span>CORE PERFORMANCE METRICS</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+              Metrics That Matter: Measurable KPI Architecture
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Every AI Sales Execution capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs, formulas, and operational rationales that determine success.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Velocity Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">50% Shorter Cycles</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Sales Cycle Compression</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> [(Historic Average Cycle Days - AI-Assisted Cycle Days) / Historic Days] × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Percentage reduction in calendar days required to progress opportunities from discovery to contract close.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Accelerates capital collection, increases annual quota capacity, and minimizes executive champion churn risk.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Conversion Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">+10-15% Win Rate Gain</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Opportunity Win Rate Lift</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Won Opportunities Assisted by Deal Co-Pilots / Total Closed Proposals) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Close rate achieved on competitive proposals leveraging automated battlecards and deal intelligence.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Directly converts pipeline volume into recognized revenue, improving ROI on all demand generation.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Progression Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;70% Conversion Gate</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Meeting-to-Proposal Conversion</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Discovery Meetings Advancing to Formal Commercial Proposal / Total Held) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Efficiency of diagnosing customer requirements and delivering tailored commercial proposals rapidly.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Eliminates mid-funnel stalls where prospects lose momentum due to delayed proposal turnaround.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Expansion Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">Value-Based Pricing Lift</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Average Contract Value (ACV)</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Total Closed ARR / Total Number of Executed Enterprise Agreements
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Average annual recurring revenue secured across enterprise customer contracts.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Maximizes customer willingness-to-pay through dynamic pricing guardrails and multi-tier solution packaging.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Productivity Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;80% Customer Facing Time</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Active Selling Time Ratio</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Hours Spent in Direct Customer Dialogue & Strategy / Total Working Hours) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Proportion of an Account Executive’s weekly schedule freed from manual administrative CRM chores.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Transforms sales rep economics; doubling customer-facing hours directly drives higher quota attainment.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Certainty Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&lt;5% Forecast Variance</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Stochastic Forecast Precision</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> 1 - (|Machine-Predicted Pipeline Commit - Actual Closed Book| / Predicted Commit)
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Algorithmic accuracy of quarterly closing revenue projections based on multi-factor deal signals.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Replaces subjective rep optimism with mathematical rigor, giving the board true forecast certainty.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="intake-form" className="py-24 relative bg-slate-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">

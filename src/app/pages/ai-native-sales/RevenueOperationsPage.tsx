@@ -709,6 +709,136 @@ export const RevenueOperationsPage: React.FC = () => {
       </section>
 
       {/* Final CTA & Intake Form */}
+      
+      {/* ── KPI METRICS & MEASUREMENT SPECIFICATION ── */}
+      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-3">
+              <BarChart3 className="w-3.5 h-3.5" />
+              <span>CORE PERFORMANCE METRICS</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+              Metrics That Matter: Measurable KPI Architecture
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Every AI Revenue Operations capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs, formulas, and operational rationales that determine success.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Compliance Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;95% Rep Compliance</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">CRM User Protocol Adoption</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Active Reps Adhering to CRM Data Protocols / Total Licensed Sales Users) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Percentage of the commercial bench actively operating through automated system workflows.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Ensures the entire revenue engine operates with standardized stage exit criteria and consistent execution.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Hygiene Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;98% Complete Records</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Telemetry Hygiene & Completeness</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Pipeline Opportunities with 100% Required Data Fields Populated / Total Deals) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Proportion of deal records enriched with stakeholder mapping, call notes, and activity logs autonomously.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Eliminates data blindness, enabling accurate attribution modeling and reliable pipeline health scoring.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Operational Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">Sub-Minute Approvals</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Workflow SLA Completion Rate</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Operational Requests Processed Within Target SLA Window / Total Requests) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Speed and consistency of automated lead routing, discount approvals, and contract provisioning.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Removes cross-departmental handoff friction that delays deal closure and frustrates prospective buyers.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Forecasting Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&lt;2% Quarterly Variance</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Pipeline Forecast Variance</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (|Actual Closed Revenue - Algorithmic Projected Revenue| / Projected Revenue) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Mathematical discrepancy between machine-learned quarterly commitments and actual booked revenue.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Provides C-suite and board leadership with dependable revenue visibility for capital allocation.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Efficiency Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">-60% Admin Reduction</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Weekly Admin Overhead Drain</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Average Hours per Representative Absorbed by Manual Data Entry and Report Compiling
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Time lost across the commercial organization to repetitive administrative tasks rather than revenue generation.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Directly recovers thousands of productive selling hours across the commercial organization annually.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Productivity Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt; $1.8M ARR per FTE</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Revenue per Sales Representative</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Total Closed Net-New ARR / Total Number of Full-Time Equivalent Quota Reps
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Annualized revenue productivity achieved per commercial sales representative across the organization.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> The benchmark metric governing the economic profitability of scaling commercial sales headcount.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="intake-form" className="py-24 relative bg-slate-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">

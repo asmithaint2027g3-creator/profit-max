@@ -599,6 +599,136 @@ export default function ProspectingPipelinePage() {
       </section>
 
       {/* ── SECTION 6: RELATED CAPABILITIES (3 CROSS-LINKS) ── */}
+      
+      {/* ── KPI METRICS & MEASUREMENT SPECIFICATION ── */}
+      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-3">
+              <BarChart3 className="w-3.5 h-3.5" />
+              <span>CORE PERFORMANCE METRICS</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+              Metrics That Matter: Measurable KPI Architecture
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Every AI Prospecting & Pipeline capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs, formulas, and operational rationales that determine success.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Volume Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">Continuous 24/7 Flow</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Autonomous Verified Leads Generated</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Total Enterprise Prospects Researched, Enriched, and Verified per Cycle
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Number of decision-makers matching precise buying committee criteria ingested into active outbound.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Guarantees the sales pipeline never starves for verified, high-authority prospective executive contacts.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Quality Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">12-18% Response Rate</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Positive Executive Response Rate</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Prospects Replying with In-Market Interest / Total Outbound Engaged) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Proportion of personalized outbound touches that produce positive commercial dialogue with buyers.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Reflects messaging relevance, timing precision, and deep account personalization quality.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Velocity Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">3-5x Meeting Lift</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Discovery Meeting Booking Rate</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Confirmed Qualified Meetings Scheduled / Total Positive Responses) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Efficiency of autonomous agents in navigating calendar coordination and securing executive attendance.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Fills Account Executive calendars with qualified buyers without human SDR administrative friction.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Conversion Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;60% Held-to-Opp Rate</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Lead-to-Opportunity Progression</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Meetings Resulting in Active Mutual Evaluation / Total Discovery Meetings Held) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Percentage of booked meetings that pass formal qualification criteria and advance to active pipeline.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Protects account executives from low-quality meetings, ensuring time is spent on legitimate pipeline.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Unit Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">-65% Cost Reduction</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Cost per Qualified Lead (CPQL)</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Total Outbound Infrastructure & AI Compute Expense / Total SQLs Produced
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Fully loaded commercial expenditure required to deliver an enterprise sales-qualified meeting.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Dramatically improves GTM unit economics compared to maintaining large manual SDR teams with high turnover.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Compounding Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;70% Sourced by Agents</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Autonomous Sourced Pipeline Volume</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> ∑ (AI-Sourced Opportunities Advanced to Stage 2+ × Average Contract ACV)
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Total dollar volume of qualified enterprise sales pipeline initiated entirely by autonomous agent swarms.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Establishes a predictable, machine-scaled pipeline generation engine that compounds quarter over quarter.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="related" className="py-20 sm:py-24 border-b border-slate-200 bg-slate-50/60 scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">

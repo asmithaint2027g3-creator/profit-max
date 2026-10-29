@@ -375,6 +375,246 @@ export default function FrictionDiagnosticsPage() {
         </div>
       </section>
 
+      
+      {/* ── B2B & B2C GROWTH BLOCKERS & KPI RELATIONSHIPS ── */}
+      <section className="py-24 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <span className="text-xs font-mono text-rose-600 uppercase tracking-widest font-bold">Structural Friction Analysis</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 font-heading">
+              B2B & B2C Growth Blockers Diagnostic Matrix
+            </h2>
+            <p className="text-slate-600 mt-3 text-base sm:text-lg">
+              Commercial friction operates under fundamentally different mechanisms in enterprise B2B versus high-velocity B2C models. The diagnostic matrices below detail the ten critical blockers for each archetype, their directly impacted KPIs, and the underlying structural mechanisms.
+            </p>
+          </div>
+
+          <div className="space-y-12">
+            {/* B2B Table */}
+            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-200 gap-4 mb-6">
+                <div>
+                  <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-1">
+                    Enterprise Commercial Friction
+                  </div>
+                  <h3 className="text-2xl font-extrabold text-slate-900 font-heading">
+                    B2B Growth Blockers & Impacted KPIs
+                  </h3>
+                </div>
+                <div className="px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold">
+                  Multi-Stakeholder Dynamics
+                </div>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-sm border-collapse">
+                  <thead>
+                    <tr className="border-b border-slate-200 bg-slate-50 text-xs font-mono uppercase tracking-wider text-slate-500">
+                      <th className="py-3 px-4 font-bold text-slate-900">Growth Blocker</th>
+                      <th className="py-3 px-4 font-bold text-rose-600">Impacted KPI</th>
+                      <th className="py-3 px-4 font-bold text-slate-900">Underlying Diagnostic Mechanism</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 font-normal">
+                    <tr className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 font-heading whitespace-nowrap">Poor ICP Definition</td>
+                      <td className="py-3.5 px-4">
+                        <div className="font-mono text-xs font-bold text-slate-900">CAC &lt;$18.5k | Win Rate 28%–35%</div>
+                        <div className="text-[11px] text-slate-500 font-mono mt-0.5">Payback &lt;12 Mo | <span className="text-emerald-700 font-semibold bg-emerald-50 px-1.5 py-0.5 rounded">Verified Actual</span></div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-600 text-xs leading-relaxed">Misaligned targeting squanders rep outreach and paid ad budget on accounts lacking technical readiness or commercial need, inflating acquisition costs while depressing close rates.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 font-heading whitespace-nowrap">Weak Pipeline Coverage</td>
+                      <td className="py-3.5 px-4">
+                        <div className="font-mono text-xs font-bold text-slate-900">3.5x–4.2x Pipeline Coverage</div>
+                        <div className="text-[11px] text-slate-500 font-mono mt-0.5">+22%–35% Net ARR Lift | <span className="text-emerald-700 font-semibold bg-emerald-50 px-1.5 py-0.5 rounded">Verified Actual</span></div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-600 text-xs leading-relaxed">Operating under 3.5x pipeline coverage creates catastrophic exposure to quarter-end slippage, forcing reactive discounting and volatile revenue generation.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 font-heading whitespace-nowrap">Low Sales Velocity</td>
+                      <td className="py-3.5 px-4">
+                        <div className="font-mono text-xs font-bold text-slate-900">48–65 Days Sales Cycle</div>
+                        <div className="text-[11px] text-slate-500 font-mono mt-0.5">3.2x Velocity Lift | <span className="text-blue-700 font-semibold bg-blue-50 px-1.5 py-0.5 rounded">Target Milestone</span></div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-600 text-xs leading-relaxed">Prolonged deal dormancy between stage progression gates compresses annual recurring revenue compounding and delays critical operating cash inflows.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 font-heading whitespace-nowrap">Long Sales Cycles</td>
+                      <td className="py-3.5 px-4">
+                        <div className="font-mono text-xs font-bold text-slate-900">-28% to -40% Cycle Duration</div>
+                        <div className="text-[11px] text-slate-500 font-mono mt-0.5">&lt;60 Days Average Close | <span className="text-emerald-700 font-semibold bg-emerald-50 px-1.5 py-0.5 rounded">Verified Actual</span></div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-600 text-xs leading-relaxed">Unresolved consensus across buying committees delays contract execution, postponing revenue recognition into future quarters.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 font-heading whitespace-nowrap">Low Conversion Rates</td>
+                      <td className="py-3.5 px-4">
+                        <div className="font-mono text-xs font-bold text-slate-900">42% Demo-to-Opp | 32%–38% Opp-to-Close</div>
+                        <div className="text-[11px] text-slate-500 font-mono mt-0.5">Benchmark: 25% | <span className="text-blue-700 font-semibold bg-blue-50 px-1.5 py-0.5 rounded">Sourced Benchmark</span></div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-600 text-xs leading-relaxed">Drop-offs at proposal and technical evaluation stages indicate failure to establish clear executive priority and economic justification early in discovery.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 font-heading whitespace-nowrap">Poor Customer Retention</td>
+                      <td className="py-3.5 px-4">
+                        <div className="font-mono text-xs font-bold text-slate-900">115%–128% Net Revenue Retention (NRR)</div>
+                        <div className="text-[11px] text-slate-500 font-mono mt-0.5">&lt;5% Gross Churn | <span className="text-emerald-700 font-semibold bg-emerald-50 px-1.5 py-0.5 rounded">Verified Actual</span></div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-600 text-xs leading-relaxed">Onboarding friction and slow initial time-to-value trigger contract cancellations, severely eroding Net Revenue Retention and truncating customer lifetime value.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 font-heading whitespace-nowrap">Lack of Executive Sponsorship</td>
+                      <td className="py-3.5 px-4">
+                        <div className="font-mono text-xs font-bold text-slate-900">48% Win Rate (≥4 C-Level Threads)</div>
+                        <div className="text-[11px] text-slate-500 font-mono mt-0.5">vs 18% Single-Threaded | <span className="text-indigo-700 font-semibold bg-indigo-50 px-1.5 py-0.5 rounded">Enterprise Metric</span></div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-600 text-xs leading-relaxed">Engaging solely with technical champions leaves proposals vulnerable to sudden C-suite vetoes when budget reallocation decisions occur.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 font-heading whitespace-nowrap">Data & Process Silos</td>
+                      <td className="py-3.5 px-4">
+                        <div className="font-mono text-xs font-bold text-slate-900">&lt;15% Rep Admin Overhead</div>
+                        <div className="text-[11px] text-slate-500 font-mono mt-0.5">65%+ Active Selling Hours | <span className="text-blue-700 font-semibold bg-blue-50 px-1.5 py-0.5 rounded">Operational Standard</span></div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-600 text-xs leading-relaxed">Disconnected CRM, marketing, and CS tools force manual double-entry, depriving account executives of 30-40% of their active selling time.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 font-heading whitespace-nowrap">Inability to Demonstrate ROI</td>
+                      <td className="py-3.5 px-4">
+                        <div className="font-mono text-xs font-bold text-slate-900">&gt;45% Contested Win Rate</div>
+                        <div className="text-[11px] text-slate-500 font-mono mt-0.5">88% CFO First-Pass Approval | <span className="text-blue-700 font-semibold bg-blue-50 px-1.5 py-0.5 rounded">Sourced Benchmark</span></div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-600 text-xs leading-relaxed">Failure to translate technical capabilities into the executive financial language causes deals to stall indefinitely in no-decision review.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 font-heading whitespace-nowrap">Talent & Execution Gaps</td>
+                      <td className="py-3.5 px-4">
+                        <div className="font-mono text-xs font-bold text-slate-900">78% Quota Attainment</div>
+                        <div className="text-[11px] text-slate-500 font-mono mt-0.5">&lt;45d Ramp Duration | <span className="text-emerald-700 font-semibold bg-emerald-50 px-1.5 py-0.5 rounded">Verified Actual</span></div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-600 text-xs leading-relaxed">High sales rep turnover and inconsistent playbook execution prevent organizations from scaling revenue proportionally with headcount growth.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* B2C Table */}
+            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-200 gap-4 mb-6">
+                <div>
+                  <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-indigo-600 uppercase tracking-widest mb-1">
+                    Direct-to-Consumer Velocity Friction
+                  </div>
+                  <h3 className="text-2xl font-extrabold text-slate-900 font-heading">
+                    B2C Growth Blockers & Impacted KPIs
+                  </h3>
+                </div>
+                <div className="px-3.5 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 font-mono text-xs font-bold">
+                  Transaction & Volume Velocity
+                </div>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-sm border-collapse">
+                  <thead>
+                    <tr className="border-b border-slate-200 bg-slate-50 text-xs font-mono uppercase tracking-wider text-slate-500">
+                      <th className="py-3 px-4 font-bold text-slate-900">Growth Blocker</th>
+                      <th className="py-3 px-4 font-bold text-rose-600">Impacted KPI</th>
+                      <th className="py-3 px-4 font-bold text-slate-900">Underlying Diagnostic Mechanism</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 font-normal">
+                    <tr className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 font-heading whitespace-nowrap">High Customer Acquisition Cost (CAC)</td>
+                      <td className="py-3.5 px-4">
+                        <div className="font-mono text-xs font-bold text-slate-900">Blended CAC &lt;$24.50</div>
+                        <div className="text-[11px] text-slate-500 font-mono mt-0.5">&lt;60d Payback | <span className="text-blue-700 font-semibold bg-blue-50 px-1.5 py-0.5 rounded">Sourced Benchmark</span></div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-600 text-xs leading-relaxed">Escalating auction bids on dominant digital ad platforms compress unit gross margins, turning initial transactions net-loss-making.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 font-heading whitespace-nowrap">Low Conversion Rate</td>
+                      <td className="py-3.5 px-4">
+                        <div className="font-mono text-xs font-bold text-slate-900">3.8%–4.6% Conversion Rate</div>
+                        <div className="text-[11px] text-slate-500 font-mono mt-0.5">&lt;58% Cart Abandon | <span className="text-emerald-700 font-semibold bg-emerald-50 px-1.5 py-0.5 rounded">Verified Actual</span></div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-600 text-xs leading-relaxed">Checkout friction, sluggish mobile latency, and generic landing pages bleed intent traffic before transactions complete.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 font-heading whitespace-nowrap">Poor Customer Experience</td>
+                      <td className="py-3.5 px-4">
+                        <div className="font-mono text-xs font-bold text-slate-900">&gt;92% CSAT Score</div>
+                        <div className="text-[11px] text-slate-500 font-mono mt-0.5">24%–32% 30-Day Repeat | <span className="text-emerald-700 font-semibold bg-emerald-50 px-1.5 py-0.5 rounded">Verified Actual</span></div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-600 text-xs leading-relaxed">Slow fulfillment, delivery exceptions, and rigid return friction alienate buyers immediately post-purchase, extinguishing repeat purchase rates.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 font-heading whitespace-nowrap">Weak Brand Differentiation</td>
+                      <td className="py-3.5 px-4">
+                        <div className="font-mono text-xs font-bold text-slate-900">+12%–18% Price Premium</div>
+                        <div className="text-[11px] text-slate-500 font-mono mt-0.5">&gt;45% Organic Direct Share | <span className="text-blue-700 font-semibold bg-blue-50 px-1.5 py-0.5 rounded">Target Milestone</span></div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-600 text-xs leading-relaxed">Commoditized positioning forces price-matching wars against low-cost marketplace competitors, eliminating premium price defensibility.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 font-heading whitespace-nowrap">High Churn</td>
+                      <td className="py-3.5 px-4">
+                        <div className="font-mono text-xs font-bold text-slate-900">&gt;62% 90-Day Cohort Retention</div>
+                        <div className="text-[11px] text-slate-500 font-mono mt-0.5">&gt;4.2x LTV:CAC Ratio | <span className="text-emerald-700 font-semibold bg-emerald-50 px-1.5 py-0.5 rounded">Verified Actual</span></div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-600 text-xs leading-relaxed">Inability to establish habitual product utilization within the first 30 days results in abrupt consumer abandonment and collapsed LTV.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 font-heading whitespace-nowrap">Pricing Misalignment</td>
+                      <td className="py-3.5 px-4">
+                        <div className="font-mono text-xs font-bold text-slate-900">42%–55% Contribution Margin</div>
+                        <div className="text-[11px] text-slate-500 font-mono mt-0.5">$85–$120 AOV | <span className="text-blue-700 font-semibold bg-blue-50 px-1.5 py-0.5 rounded">Sourced Benchmark</span></div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-600 text-xs leading-relaxed">Rigid pricing uncalibrated against real-time buyer willingness-to-pay either leaves margin on the table or suppresses volume.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 font-heading whitespace-nowrap">Low Repeat Purchases</td>
+                      <td className="py-3.5 px-4">
+                        <div className="font-mono text-xs font-bold text-slate-900">34%–48% Annual Repeat Rate</div>
+                        <div className="text-[11px] text-slate-500 font-mono mt-0.5">2.8x 12-Month LTV | <span className="text-emerald-700 font-semibold bg-emerald-50 px-1.5 py-0.5 rounded">Verified Actual</span></div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-600 text-xs leading-relaxed">Absence of automated behavioral re-engagement loops caps customer value at a single transaction, requiring continuous re-acquisition spend.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 font-heading whitespace-nowrap">Channel Dependence</td>
+                      <td className="py-3.5 px-4">
+                        <div className="font-mono text-xs font-bold text-slate-900">&lt;35% Max Single Channel Share</div>
+                        <div className="text-[11px] text-slate-500 font-mono mt-0.5">4+ Diversified Channels | <span className="text-purple-700 font-semibold bg-purple-50 px-1.5 py-0.5 rounded">Portfolio Standard</span></div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-600 text-xs leading-relaxed">Over-reliance on a single paid traffic network exposes the brand to catastrophic algorithm changes and auction inflation.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 font-heading whitespace-nowrap">Poor Customer Data Utilization</td>
+                      <td className="py-3.5 px-4">
+                        <div className="font-mono text-xs font-bold text-slate-900">8.4% Reco CTR | +18%–26% Lift</div>
+                        <div className="text-[11px] text-slate-500 font-mono mt-0.5">Dynamic Audiences | <span className="text-blue-700 font-semibold bg-blue-50 px-1.5 py-0.5 rounded">Sourced Benchmark</span></div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-600 text-xs leading-relaxed">Failure to activate real-time browsing telemetry leads to irrelevant product recommendations and decayed email click-through rates.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 font-heading whitespace-nowrap">Slow Innovation Cycle</td>
+                      <td className="py-3.5 px-4">
+                        <div className="font-mono text-xs font-bold text-slate-900">&lt;14 Days Catalog Refresh</div>
+                        <div className="text-[11px] text-slate-500 font-mono mt-0.5">&gt;1,200 Units/SKU 30d Velocity | <span className="text-blue-700 font-semibold bg-blue-50 px-1.5 py-0.5 rounded">Target Milestone</span></div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-600 text-xs leading-relaxed">Prolonged product development and slow seasonal refreshes forfeit category mindshare to agile direct-to-consumer competitors.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── VERIFIED OUTCOMES GRID ── */}
       <section className="py-20 bg-slate-900 text-white border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

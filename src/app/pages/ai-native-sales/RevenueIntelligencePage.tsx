@@ -656,6 +656,136 @@ export default function RevenueIntelligencePage() {
       </section>
 
       {/* ── SECTION 6: RELATED CAPABILITIES (3 CROSS-LINKS) ── */}
+      
+      {/* ── KPI METRICS & MEASUREMENT SPECIFICATION ── */}
+      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-3">
+              <BarChart3 className="w-3.5 h-3.5" />
+              <span>CORE PERFORMANCE METRICS</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+              Metrics That Matter: Measurable KPI Architecture
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Every Revenue Intelligence capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs, formulas, and operational rationales that determine success.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Leading Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;65% Account Engagement</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Target Account Engagement Rate</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Active Engaged Accounts / Total Monitored Target Accounts) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Percentage of strategic named enterprise accounts demonstrating active digital interaction with firm materials.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Validates that marketing and sales messaging penetrates priority enterprise buying committees effectively.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Precision Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">Top Decile Intent Focus</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Propensity Qualified Account Rate</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Accounts Surpassing Intent Threshold / Total Ingested Accounts) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Proportion of market accounts exhibiting verified dark-funnel surge behaviors and active technology evaluation.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Prevents commercial teams from wasting expensive outreach capacity on cold accounts not currently in-market.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Conversion Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;30% Conversion Lift</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Opportunity Creation Rate</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (High-Propensity Accounts Advanced to Pipeline / Engaged Accounts) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Efficiency with which intelligence signals convert into formal sales opportunities within 60 days.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Direct multiplier on outbound ROI; verifies that intelligence feeds translate into revenue opportunities.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Velocity Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;40% Against Named Rivals</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Competitive Displacement Win Rate</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Opportunities Won Where Competitor Displaced / Total Contested Deals) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Win rate achieved in accounts actively evaluating or replacing legacy competitor technology.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Proves the defensibility of the product narrative when head-to-head objection handling is required.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Productivity Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&lt;5 Minutes per Dossier</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Account Research Velocity</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Average Clock Time Required to Synthesize 360-Degree Account Buying Dossier
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Speed of extracting executive priorities, technology footprints, and hiring signals for target accounts.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Saves 5-8 hours per week per rep, allowing account executives to focus on active commercial conversations.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Accuracy Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;85% Validated Signals</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Intent Signal Predictive Precision</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Surge Signals Verified by Active Commercial RFP or Project / Total Signals) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Statistical correlation between automated intent surge detection and active enterprise procurement.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Ensures sales teams trust the intelligence radar and act with conviction on emerging demand signals.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="related" className="py-20 sm:py-24 border-b border-slate-200 bg-slate-50/60 scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">

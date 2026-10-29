@@ -623,6 +623,136 @@ export const CustomerGrowthPage: React.FC = () => {
       </section>
 
       {/* Final CTA & Intake Form */}
+      
+      {/* ── KPI METRICS & MEASUREMENT SPECIFICATION ── */}
+      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-3">
+              <BarChart3 className="w-3.5 h-3.5" />
+              <span>CORE PERFORMANCE METRICS</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+              Metrics That Matter: Measurable KPI Architecture
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Every Customer Growth capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs, formulas, and operational rationales that determine success.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Stability Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;94% Enterprise Rate</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Annual Contract Renewal Rate</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Contract Value Renewed on Schedule / Total Eligible Contract Value Expiring) × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Percentage of enterprise subscription commitments successfully renewed at contract conclusion.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Protects the core recurring revenue foundation, ensuring predictable baseline cash flows.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Leading Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">60-90 Days Advance Warning</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Early Churn Detection Horizon</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Average Calendar Days of Advance Predictive Notice Provided Before Account Churn Risk Inflects
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Time window provided by behavioral telemetry to execute proactive account remediation workflows.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Allows customer success teams to resolve adoption friction before cancellation decisions crystallize.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Compounding Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">120% - 134% Compounding</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Net Revenue Retention (NRR)</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> [(Base ARR + Account Expansion - Account Contraction - Churned ARR) / Base ARR] × 100
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Compounded revenue expansion produced by existing customer cohorts over a 12-month period.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> The ultimate enterprise valuation multiplier; proves customer value grows continuously post-sale.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Expansion Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">+25% Expansion Lift</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Usage-Driven Expansion Pipeline</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> ∑ (Accounts Approaching License Saturation × Target Cross-Sell Tier Value)
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Qualified expansion pipeline triggered automatically by behavioral usage and seat saturation thresholds.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Produces highly profitable, low-CAC expansion revenue without requiring cold sales prospecting.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Valuation Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">Maximizing Account LTV</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Account Lifetime Economic Value</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Average Annual Contract Spend × Average Customer Retention Duration in Years × Margin %
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Cumulative gross contribution margin produced over the entire multi-year customer lifecycle.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Validates that customer retention programs compound gross profit and maximize corporate enterprise value.
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
+                    Velocity Metric
+                  </span>
+                  <span className="text-xs font-mono text-slate-500 font-bold">&lt;14 Days to First Milestone</span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Initial Time to Value (TTV)</h3>
+                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
+                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Elapsed Calendar Days from Contract Execution to First Verified Value Milestone Achieved
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">Speed with which new customer accounts achieve measurable business impact during onboarding.</p>
+              </div>
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-bold text-slate-800">Why it matters:</span> Fast value realization permanently inoculates new customer cohorts against early buyer remorse and churn.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="intake-form" className="py-24 relative bg-slate-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">

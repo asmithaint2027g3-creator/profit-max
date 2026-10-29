@@ -8,7 +8,7 @@ import {
     Network, Clock, BookOpen, HelpCircle, Landmark, HeartPulse, GraduationCap,
     Lightbulb, Shield, BarChart3, CheckCircle2, Phone, Radio, Factory, Server, Box, Scale,
     Flame, Store, Building, Cloud, HeartHandshake, Radar, LineChart, RefreshCw,
-    Percent, GitMerge, Award
+    Percent, GitMerge, Award, Workflow, Gauge
 } from 'lucide-react';
 
 // ── Types for Navigation & Mega-Menu ──
@@ -85,9 +85,10 @@ export interface OfferingCategoryDetail {
 }
 
 export const offeringsArchitecture: OfferingCategoryDetail[] = [
+    // 01. Profit Pool Discovery
     {
-        id: 'revenue-discovery',
-        title: 'Revenue Discovery',
+        id: 'profit-pool-discovery',
+        title: 'Profit Pool Discovery',
         path: '/offerings/profit-pool-discovery',
         recommendedIndustries: ['Enterprise SaaS', 'BFSI', 'Healthcare'],
         keyRevenueOutcome: '+18% - 32% Margin Expansion',
@@ -98,35 +99,51 @@ export const offeringsArchitecture: OfferingCategoryDetail[] = [
         ],
         capabilities: [
             {
-                title: 'Profit Pool Discovery',
-                outcome: 'Identify hidden margin expansion opportunities and isolate high-contribution pockets.',
-                path: '/offerings/profit-pool-discovery',
-                icon: Target,
-                tag: 'DISCOVERY'
-            },
-            {
-                title: 'Market Intelligence',
+                title: 'Market Discovery',
                 outcome: 'Reveal emerging buyer demand and dark-funnel surge signals across whitespace TAM.',
                 path: '/offerings/profit-pool-discovery#market-whitespace',
                 icon: Globe,
-                tag: 'INTELLIGENCE'
+                tag: 'WHITESPACE'
             },
             {
-                title: 'Competitive Analysis',
-                outcome: 'Uncover displacement opportunities with deal-by-deal rival dissection dossiers.',
+                title: 'Demand Discovery',
+                outcome: 'Isolate dark-funnel intent surges and diagnose funnel velocity bottlenecks.',
+                path: '/offerings/profit-pool-discovery#demand-intent',
+                icon: Radar,
+                tag: 'INTENT SIGNALS'
+            },
+            {
+                title: 'Customer & Ideal Customer Profile Discovery',
+                outcome: 'Segment high-contribution customer cohorts and identify target account propensity.',
+                path: '/offerings/profit-pool-discovery',
+                icon: Users,
+                tag: 'ICP DISCOVERY'
+            },
+            {
+                title: 'Competitive Intelligence',
+                outcome: 'Uncover displacement opportunities with deal-by-deal rival win/loss forensics.',
                 path: '/offerings/profit-pool-discovery#competitive',
                 icon: ShieldCheck,
                 tag: 'COMPETITIVE'
             },
             {
                 title: 'Pricing & Value Discovery',
-                outcome: 'Improve willingness-to-pay realization and eliminate unearned discounting.',
+                outcome: 'Improve willingness-to-pay realization, pricing ladders, and eliminate unearned discounting.',
                 path: '/offerings/profit-pool-discovery#value-roi',
                 icon: DollarSign,
                 tag: 'MONETIZATION'
+            },
+            {
+                title: 'Product-Market Fit Discovery',
+                outcome: 'Validate feature-adoption ROI, commercial resonance, and customer value realization.',
+                path: '/offerings/profit-pool-discovery#pmf',
+                icon: Target,
+                tag: 'PMF ENGINE'
             }
         ]
     },
+
+    // 02. Demand Engineering
     {
         id: 'demand-engineering',
         title: 'Demand Engineering',
@@ -140,77 +157,146 @@ export const offeringsArchitecture: OfferingCategoryDetail[] = [
         ],
         capabilities: [
             {
-                title: 'Demand Generation',
-                outcome: 'Capture in-market buyer intent systematically through engineered inbound architectures.',
-                path: '/offerings/demand-engineering',
-                icon: Zap,
-                tag: 'DEMAND'
-            },
-            {
-                title: 'Account-Based Marketing',
-                outcome: 'Target high-yield strategic enterprise accounts with hyper-personalized executive narratives.',
+                title: 'Ideal Customer Identification',
+                outcome: 'Identify high-yield strategic enterprise accounts with automated firmographic scoring.',
                 path: '/offerings/demand-engineering#abm',
                 icon: Building2,
-                tag: 'ABM SUITE'
+                tag: 'ICP TARGETING'
             },
             {
-                title: 'Intent Intelligence',
-                outcome: 'Decode dark-funnel buying signals and account intent surges before competitors.',
-                path: '/ai-demand-discovery',
-                icon: Radar,
-                tag: 'TELEMETRY'
+                title: 'Demand Generation',
+                outcome: 'Capture in-market buyer intent systematically through engineered inbound architectures.',
+                path: '/offerings/demand-engineering#demand-generation',
+                icon: Zap,
+                tag: 'DEMAND ENGINE'
             },
             {
-                title: 'AI SDR Systems',
+                title: 'AI Prospecting & Outreach',
                 outcome: 'Autonomous 24/7 multi-channel outbound qualification and calendar booking agents.',
-                path: '/ai-native-sales/agentic-sdr',
+                path: '/offerings/demand-engineering#outbound',
                 icon: Bot,
-                tag: 'AUTONOMOUS'
+                tag: 'AUTONOMOUS SDR'
+            },
+            {
+                title: 'Lead Qualification',
+                outcome: 'Real-time intent-data enrichment and continuous lead qualification filtering.',
+                path: '/offerings/demand-engineering#intent-data',
+                icon: UserCheck,
+                tag: 'QUALIFICATION'
+            },
+            {
+                title: 'Pipeline Generation',
+                outcome: 'Engineered pipeline architectures that eliminate drop-off and ensure reliable pipeline volume.',
+                path: '/offerings/demand-engineering#content-pipeline',
+                icon: TrendingUp,
+                tag: 'PIPELINE'
             }
         ]
     },
+
+    // 03. Sales Acceleration
     {
-        id: 'revenue-acceleration',
-        title: 'Revenue Acceleration',
+        id: 'sales-acceleration',
+        title: 'Sales Acceleration',
         path: '/offerings/sales-acceleration',
         recommendedIndustries: ['Mid-Market', 'Enterprise Software', 'Financial Services'],
         keyRevenueOutcome: '28% Shorter Deal Cycles',
         businessImpacts: [
             'Reduced Deal Slippage',
-            'Optimized Rep Quota Attainment',
+            'Higher Quota Attainment',
             'Contract Margin Protection'
         ],
         capabilities: [
             {
-                title: 'Sales Acceleration',
-                outcome: 'Compress deal cycles and eliminate execution friction with deal velocity playbooks.',
-                path: '/offerings/sales-acceleration',
-                icon: TrendingUp,
+                title: 'Revenue Intelligence',
+                outcome: 'Real-time conversation signals, account health alerts, and dark-funnel buying cues.',
+                path: '/ai-native-sales/revenue-intelligence',
+                icon: Activity,
+                tag: 'INTELLIGENCE'
+            },
+            {
+                title: 'AI-Assisted Sales Execution',
+                outcome: 'Automated call dossiers, dynamic objection clearing, and administrative relief for reps.',
+                path: '/offerings/sales-acceleration#autonomous-workflows',
+                icon: Sparkles,
                 tag: 'EXECUTION'
             },
             {
-                title: 'Revenue Operations',
-                outcome: 'Unified telemetry and CRM hygiene across the entire end-to-end revenue engine.',
-                path: '/offerings/revenue-operations',
-                icon: Activity,
-                tag: 'REVOPS'
+                title: 'Opportunity & Deal Intelligence',
+                outcome: 'Bayesian win-probability scoring, buying committee consensus mapping, and deal slippage warnings.',
+                path: '/offerings/sales-acceleration#deal-intelligence',
+                icon: Scale,
+                tag: 'DEAL HEALTH'
             },
             {
-                title: 'Forecasting',
+                title: 'Sales Process Optimization',
+                outcome: 'Eliminate stage bottlenecks, shorten review loops, and compress enterprise sales cycle time.',
+                path: '/offerings/sales-acceleration#quote-to-cash',
+                icon: Sliders,
+                tag: 'VELOCITY'
+            },
+            {
+                title: 'Revenue Forecasting',
                 outcome: 'Deterministic econometric pipeline models forecasting revenue with 99.4% precision.',
                 path: '/growth-science/revenue-physics',
                 icon: LineChart,
-                tag: 'ECONOMETRICS'
-            },
-            {
-                title: 'CPQ & Deal Intelligence',
-                outcome: 'Protect contract margins, guide discount thresholds, and optimize pricing governance.',
-                path: '/ai-native-sales/deal-execution',
-                icon: Scale,
-                tag: 'GOVERNANCE'
+                tag: 'FORECASTING'
             }
         ]
     },
+
+    // 04. Revenue Operations
+    {
+        id: 'revenue-operations',
+        title: 'Revenue Operations',
+        path: '/offerings/revenue-operations',
+        recommendedIndustries: ['Enterprise SaaS', 'High-Growth Tech', 'Multi-Division Enterprise'],
+        keyRevenueOutcome: '98% Forecast Precision · <2% Variance',
+        businessImpacts: [
+            'Unified Data Hygiene',
+            'Zero Handoff Drag',
+            'Automated SLA Enforcement'
+        ],
+        capabilities: [
+            {
+                title: 'Revenue Process Automation',
+                outcome: 'Frictionless automated handoffs between marketing, sales, finance, and customer success.',
+                path: '/offerings/revenue-operations#command-center',
+                icon: Workflow,
+                tag: 'AUTOMATION'
+            },
+            {
+                title: 'CRM & Data Orchestration',
+                outcome: 'Unified cross-system customer identity resolution, bidirectional sync, and clean data hygiene.',
+                path: '/offerings/revenue-operations#command-center',
+                icon: Server,
+                tag: 'DATA HYGIENE'
+            },
+            {
+                title: 'AI Revenue Workflows',
+                outcome: 'Autonomous lead routing, dynamic territory rebalancing, and real-time SLA breach alerting.',
+                path: '/ai-native-sales/revops',
+                icon: Cpu,
+                tag: 'SMART ROUTING'
+            },
+            {
+                title: 'Executive Telemetry',
+                outcome: 'Consolidated real-time board-level revenue command center HUD and full-funnel attribution.',
+                path: '/growth-science/executive-telemetry',
+                icon: Gauge,
+                tag: 'EXECUTIVE HUD'
+            },
+            {
+                title: 'Performance & Forecast Visibility',
+                outcome: 'Continuous rep performance telemetry, cohort close-rate tracking, and conversion health visibility.',
+                path: '/offerings/revenue-operations#forecasting',
+                icon: BarChart3,
+                tag: 'VISIBILITY'
+            }
+        ]
+    },
+
+    // 05. Customer Growth
     {
         id: 'customer-growth',
         title: 'Customer Growth',
@@ -224,38 +310,84 @@ export const offeringsArchitecture: OfferingCategoryDetail[] = [
         ],
         capabilities: [
             {
-                title: 'Retention Systems',
-                outcome: 'Algorithmic churn prevention and real-time product usage health telemetry.',
-                path: '/ai-native-sales/customer-growth',
+                title: 'Customer Success Intelligence',
+                outcome: 'Value realization workflows and outcome tracking aligned directly to customer business goals.',
+                path: '/offerings/customer-success#health',
+                icon: UserCheck,
+                tag: 'CS LIFECYCLE'
+            },
+            {
+                title: 'Retention & Churn Prevention',
+                outcome: 'Algorithmic churn prevention, pre-churn behavioral detection, and health sentinels.',
+                path: '/offerings/customer-success#retention',
                 icon: HeartHandshake,
                 tag: 'RETENTION'
             },
             {
-                title: 'Expansion Intelligence',
-                outcome: 'Isolate cross-sell and up-sell opportunity matrices across account divisions.',
-                path: '/ai-native-sales/customer-growth#expansion',
+                title: 'Expansion Revenue',
+                outcome: 'Systematic identification of account expansion readiness, seat saturation, and division adoption.',
+                path: '/offerings/customer-success#expansion-engine',
                 icon: Rocket,
                 tag: 'EXPANSION'
             },
             {
-                title: 'Renewal Automation',
-                outcome: 'Autonomous contract renewal cadence with automated price uplift triggers.',
-                path: '/ai-native-sales/customer-growth#renewals',
+                title: 'Cross-Sell & Upsell Opportunities',
+                outcome: 'Automated propensity triggers that surface cross-product recommendations to account teams.',
+                path: '/offerings/customer-success#renewal',
                 icon: RefreshCw,
-                tag: 'CADENCE'
-            },
-            {
-                title: 'Customer Success',
-                outcome: 'Value realization workflows aligned directly to customer business outcomes.',
-                path: '/offerings/customer-success',
-                icon: UserCheck,
-                tag: 'CS LIFECYCLE'
+                tag: 'UPSELL'
             }
         ]
     },
+
+    // 06. GTM Transformation
+    {
+        id: 'gtm-transformation',
+        title: 'GTM Transformation',
+        path: '/offerings/gtm-transformation',
+        recommendedIndustries: ['PE-Backed Scaleups', 'Global 2000', 'Modernizing Enterprise'],
+        keyRevenueOutcome: '-40% Sales Cycle Duration',
+        businessImpacts: [
+            'Unified GTM Blueprint',
+            'Removed Cross-Functional Drag',
+            'Accelerated Field Adoption'
+        ],
+        capabilities: [
+            {
+                title: 'GTM Strategy & Design',
+                outcome: 'Architect unified go-to-market motions engineered for sustainable competitive advantage.',
+                path: '/offerings/gtm-transformation#gtm-strategy',
+                icon: Compass,
+                tag: 'STRATEGY'
+            },
+            {
+                title: 'Revenue Velocity Optimization',
+                outcome: 'Remove structural latency across discovery, legal redlining, security review, and deal closing.',
+                path: '/offerings/gtm-transformation#process',
+                icon: TrendingUp,
+                tag: 'VELOCITY'
+            },
+            {
+                title: 'AI-Native Operating Models',
+                outcome: 'Transition legacy revenue silos into unified, autonomous AI-orchestrated motions.',
+                path: '/offerings/gtm-transformation#multi-product',
+                icon: Layers,
+                tag: 'AI OPERATING MODEL'
+            },
+            {
+                title: 'Cross-Functional Revenue Alignment',
+                outcome: 'Synchronize marketing, product, sales, and CS under shared executive revenue mandates.',
+                path: '/offerings/gtm-transformation#adoption',
+                icon: GitMerge,
+                tag: 'ALIGNMENT'
+            }
+        ]
+    },
+
+    // 07. AI Governance & Performance
     {
         id: 'ai-governance',
-        title: 'AI Governance',
+        title: 'AI Governance & Performance',
         path: '/offerings/ai-trust-governance',
         recommendedIndustries: ['BFSI', 'Healthcare & Life Sciences', 'Regulated Enterprise'],
         keyRevenueOutcome: '100% Sovereign Data Compliance',
@@ -266,32 +398,25 @@ export const offeringsArchitecture: OfferingCategoryDetail[] = [
         ],
         capabilities: [
             {
-                title: 'Explainable AI',
-                outcome: 'Immutable audit trails, mathematical verifiability, and algorithmic decision telemetry.',
-                path: '/offerings/ai-trust-governance#explainable-ai',
-                icon: BrainCircuit,
-                tag: 'AUDITABLE'
+                title: 'AI Workflow Governance',
+                outcome: 'Enterprise policy frameworks, permission boundaries, and audit controls for autonomous agents.',
+                path: '/offerings/ai-trust-governance#executive',
+                icon: ShieldCheck,
+                tag: 'POLICY & CONTROLS'
             },
             {
-                title: 'Security & Compliance',
-                outcome: 'Enterprise data sovereignty, SOC2 Type II, HIPAA, and GDPR boundary guardrails.',
-                path: '/offerings/ai-trust-governance#security',
+                title: 'AI Performance Monitoring',
+                outcome: 'Real-time algorithmic drift detection, accuracy telemetry, and decision latency audits.',
+                path: '/offerings/ai-trust-governance#bias',
+                icon: Activity,
+                tag: 'MONITORING'
+            },
+            {
+                title: 'Revenue Intelligence Controls',
+                outcome: 'Enterprise data sovereignty, SOC2 Type II, HIPAA, and GDPR guardrails across sales intelligence feeds.',
+                path: '/offerings/ai-trust-governance#compliance',
                 icon: Lock,
                 tag: 'SECURITY'
-            },
-            {
-                title: 'Risk Management',
-                outcome: 'Continuous hallucination control, brand reputation safeguards, and decision safety barriers.',
-                path: '/offerings/ai-trust-governance#risk',
-                icon: Shield,
-                tag: 'GUARDRAILS'
-            },
-            {
-                title: 'Governance Frameworks',
-                outcome: 'Institutional policies and executive compliance oversight for autonomous enterprise AI operations.',
-                path: '/offerings/ai-trust-governance',
-                icon: Layers,
-                tag: 'POLICY'
             }
         ]
     }
@@ -2737,6 +2862,10 @@ export default function Navigation() {
             {/* ── FLOATING MEGA-MENU DROPDOWN PANEL (UNIFIED COMPACT PROFITMACHINES DESIGN FOR ALL MENUS) ── */}
             {currentMenu && currentMenu.categories && currentMenu.categories.length > 0 && currentCategory && (() => {
                 const activeConfig = menuPresentationConfigs[currentMenu.id] || menuPresentationConfigs['offerings'];
+                const categoryConfig = offeringsArchitecture.find(c => c.id === currentCategory.id);
+                const displayOutcomeBadge = categoryConfig?.keyRevenueOutcome || activeConfig.outcomeBadge;
+                const displayRecommendedFor = categoryConfig?.recommendedIndustries || activeConfig.recommendedFor;
+                const displayBusinessImpacts = categoryConfig?.businessImpacts || activeConfig.businessImpacts;
                 const allLinks = currentCategory.columns ? currentCategory.columns.flatMap(col => col.cards) : [];
 
                 return (
@@ -2841,7 +2970,7 @@ export default function Navigation() {
                                                         {allLinks.length} Items
                                                     </span>
                                                     <span className="px-2 py-0.5 rounded bg-blue-50 text-blue-700 text-[10px] font-bold border border-blue-200/60">
-                                                        {activeConfig.outcomeBadge}
+                                                        {displayOutcomeBadge}
                                                     </span>
                                                 </div>
                                             </div>
@@ -2889,21 +3018,21 @@ export default function Navigation() {
                                             <div className="space-y-0.5 text-[11px] text-slate-600">
                                                 <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
                                                     <span className="font-bold text-slate-800">Recommended For:</span>
-                                                    {activeConfig.recommendedFor.map((item, iIdx) => (
+                                                    {displayRecommendedFor.map((item, iIdx) => (
                                                         <span key={iIdx} className="inline-flex items-center gap-1 font-medium text-slate-700">
                                                             <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                                                             <span>{item}</span>
-                                                            {iIdx < activeConfig.recommendedFor.length - 1 && <span className="text-slate-300">•</span>}
+                                                            {iIdx < displayRecommendedFor.length - 1 && <span className="text-slate-300">•</span>}
                                                         </span>
                                                     ))}
                                                 </div>
                                                 <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
                                                     <span className="font-bold text-slate-800">Business Impact:</span>
-                                                    {activeConfig.businessImpacts.map((imp, mIdx) => (
+                                                    {displayBusinessImpacts.map((imp, mIdx) => (
                                                         <span key={mIdx} className="inline-flex items-center gap-1 font-medium text-slate-700">
                                                             <CheckCircle2 className="w-3 h-3 text-blue-600" />
                                                             <span>{imp}</span>
-                                                            {mIdx < activeConfig.businessImpacts.length - 1 && <span className="text-slate-300">•</span>}
+                                                            {mIdx < displayBusinessImpacts.length - 1 && <span className="text-slate-300">•</span>}
                                                         </span>
                                                     ))}
                                                 </div>

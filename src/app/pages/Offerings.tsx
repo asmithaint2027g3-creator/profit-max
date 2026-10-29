@@ -398,14 +398,22 @@ export default function Offerings() {
     <div className="min-h-screen bg-white text-slate-900 font-sans pt-16 lg:pt-[72px] selection:bg-blue-600 selection:text-white">
       {/* ── SECTION 1: HERO SECTION (Command Center Platform Aesthetic) ── */}
       <section className="relative pt-24 pb-20 sm:pt-32 sm:pb-28 bg-white text-slate-900 overflow-hidden border-b border-slate-200">
-        {/* Ambient Grid Background */}
-        <div 
-          className="absolute inset-0 pointer-events-none opacity-60"
-          style={{
-            backgroundImage: `linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)`,
-            backgroundSize: '40px 40px'
-          }}
-        />
+        {/* Background Image with High-Contrast Light Protective Overlays to guarantee 100% text readability */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <img
+            src="/images/hero-end-to-end-transformation.png"
+            alt="Offerings Architecture Background"
+            className="w-full h-full object-cover object-center opacity-15 mix-blend-multiply scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 to-white/95" />
+          <div 
+            className="absolute inset-0 opacity-60"
+            style={{
+              backgroundImage: `linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)`,
+              backgroundSize: '40px 40px'
+            }}
+          />
+        </div>
         {/* Ambient Blur Accents */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
         <div className="absolute top-1/3 left-1/3 w-[400px] h-[250px] bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none" />

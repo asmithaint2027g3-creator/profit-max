@@ -238,6 +238,8 @@ export default function App() {
               <Route path="/offerings/revenue-operations" element={<RevenueOperations />} />
               <Route path="/offerings/gtm-transformation" element={<GtmTransformation />} />
               <Route path="/offerings/customer-success" element={<CustomerSuccess />} />
+              <Route path="/offerings/customer-growth" element={<CustomerSuccess />} />
+              <Route path="/offerings/ai-governance" element={<AiTrustGovernance />} />
               <Route path="/offerings/growth-intelligence" element={<GrowthIntelligence />} />
               <Route path="/offerings/ai-trust-governance" element={<AiTrustGovernance />} />
               <Route path="/offerings/*" element={<Navigate to="/offerings" replace />} />

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
-    Menu, X, ChevronRight, ChevronDown, Search, ArrowRight, ArrowUpRight,
+    Menu, X, ChevronRight, ChevronDown, Search, ArrowRight, ArrowUpRight, AlertCircle,
     Compass, Building2, Zap, Handshake, Rocket, BrainCircuit, TrendingUp, Globe,
     ShieldCheck, Layers, Cpu, DollarSign, Target, Sparkles, UserCheck, Sliders,
     Briefcase, ShoppingBag, Bot, Users, Activity, FileText, Lock, Coins,
@@ -1714,13 +1714,13 @@ export default function Navigation() {
                     icon: Globe,
                     columns: [
                         {
-                            header: 'Opportunity & Risk Intelligence',
+                            header: 'Market Discovery & Analysis',
                             badge: 'Validation',
                             icon: Globe,
                             cards: [
                                 {
                                     title: 'Country Opportunity Analysis',
-                                    description: 'Unit-economic validation ranking markets by contribution margin over GDP headlines.',
+                                    description: 'Unit-economic validation ranking foreign markets by contribution margin over GDP headlines.',
                                     path: '/global-acceleration/market-intelligence',
                                     badge: 'Unit Economics',
                                     icon: Globe,
@@ -1733,14 +1733,7 @@ export default function Navigation() {
                                     badge: 'Market Density',
                                     icon: Target,
                                     tags: ['Territory Headroom', 'Density Score']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Sizing & Compliance',
-                            badge: 'Governance',
-                            icon: ShieldCheck,
-                            cards: [
+                                },
                                 {
                                     title: 'TAM / SAM / SOM Assessment',
                                     description: 'Country-specific addressable market modeling with realistic penetration rates.',
@@ -1750,12 +1743,51 @@ export default function Navigation() {
                                     tags: ['Territory TAM', '<15% Variance']
                                 },
                                 {
+                                    title: 'Competitive Intelligence',
+                                    description: 'Reverse-engineering regional competitors, pricing power, distribution lock-ins, and counter-positioning.',
+                                    path: '/global-acceleration/market-intelligence',
+                                    badge: 'Incumbents',
+                                    icon: ShieldCheck,
+                                    tags: ['Rival Dissection', 'Win Rates']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Trade & Governance',
+                            badge: 'Governance',
+                            icon: ShieldCheck,
+                            cards: [
+                                {
+                                    title: 'Trade Corridor Intelligence',
+                                    description: 'Analysis of bilateral trade agreements, tariffs, customs clearance dynamics, and cross-border commercial flows.',
+                                    path: '/global-acceleration/market-intelligence',
+                                    badge: 'Corridors',
+                                    icon: TrendingUp,
+                                    tags: ['Tariff Modeling', 'Trade Flows']
+                                },
+                                {
                                     title: 'Regulatory Intelligence',
                                     description: 'Pre-launch data residency and sovereign compliance mapping with real-time monitoring.',
                                     path: '/global-acceleration/market-intelligence',
                                     badge: 'Sovereignty',
                                     icon: Landmark,
                                     tags: ['GDPR / LGPD', 'Zero Fines']
+                                },
+                                {
+                                    title: 'Market Entry Feasibility',
+                                    description: 'Quantitative feasibility indexing assessing capital requirements, payback horizons, and local talent.',
+                                    path: '/global-acceleration/market-intelligence',
+                                    badge: 'Feasibility',
+                                    icon: Activity,
+                                    tags: ['Capital Hurdle', 'Payback Horizon']
+                                },
+                                {
+                                    title: 'Geo-Economic Risk Analysis',
+                                    description: 'Scenario stress-testing against currency volatility, geopolitical exposure, and supply shocks.',
+                                    path: '/global-acceleration/market-intelligence',
+                                    badge: 'Risk Hedging',
+                                    icon: Shield,
+                                    tags: ['Currency Risk', 'Capital Control']
                                 }
                             ]
                         }
@@ -1770,10 +1802,26 @@ export default function Navigation() {
                     icon: Network,
                     columns: [
                         {
-                            header: 'Buyer & Importer Discovery',
+                            header: 'Demand & Buyer Sourcing',
                             badge: 'Direct Demand',
                             icon: Network,
                             cards: [
+                                {
+                                    title: 'Distributor Discovery',
+                                    description: 'Algorithmic sourcing of top-quartile distributor organizations with verified regional sales reach.',
+                                    path: '/global-acceleration/cross-border-strategy',
+                                    badge: 'Channel Fabric',
+                                    icon: Building2,
+                                    tags: ['Distributor Sourcing', 'Territory Reach']
+                                },
+                                {
+                                    title: 'Retail Network Discovery',
+                                    description: 'Precision identification of retail chains, boutique outlets, and department stores primed for placement.',
+                                    path: '/global-acceleration/cross-border-strategy',
+                                    badge: 'Retail Networks',
+                                    icon: Store,
+                                    tags: ['Retail Distribution', 'Shelf Placement']
+                                },
                                 {
                                     title: 'Importer & Buyer Discovery',
                                     description: 'Direct access to credentialed cross-border importers and corporate procurement buyers.',
@@ -1783,27 +1831,43 @@ export default function Navigation() {
                                     tags: ['Direct Procurement', 'Customs Cleared']
                                 },
                                 {
-                                    title: 'Strategic Account Discovery',
-                                    description: 'Target identification of multinational enterprise accounts with verified buying intent.',
+                                    title: 'Dealer & Reseller Mapping',
+                                    description: 'Exhaustive territory mapping of certified value-added resellers (VARs) and localized dealer networks.',
                                     path: '/global-acceleration/cross-border-strategy',
-                                    badge: 'Intent Corridors',
-                                    icon: Target,
-                                    tags: ['Enterprise Accounts', 'Active Surge']
+                                    badge: 'Dealer Networks',
+                                    icon: Users,
+                                    tags: ['Certified VARs', 'Dealer Mesh']
                                 }
                             ]
                         },
                         {
-                            header: 'Channel & Ecosystem Mapping',
-                            badge: 'Distribution',
-                            icon: Store,
+                            header: 'Accounts & Corridors',
+                            badge: 'Ecosystems',
+                            icon: Target,
                             cards: [
                                 {
-                                    title: 'Distributor Discovery',
-                                    description: 'Algorithmic sourcing of top-quartile distributor organizations with verified reach.',
+                                    title: 'Strategic Account Discovery',
+                                    description: 'Target identification of multinational enterprise accounts with verified cross-border buying intent.',
                                     path: '/global-acceleration/cross-border-strategy',
-                                    badge: 'Channel Fabric',
-                                    icon: Building2,
-                                    tags: ['Distributor Sourcing', 'Territory Reach']
+                                    badge: 'Intent Corridors',
+                                    icon: Target,
+                                    tags: ['Enterprise Accounts', 'Active Surge']
+                                },
+                                {
+                                    title: 'Procurement Network Intelligence',
+                                    description: 'Reverse-engineering RFP schedules, procurement cycles, and approved vendor requirements.',
+                                    path: '/global-acceleration/cross-border-strategy',
+                                    badge: 'Procurement Cycles',
+                                    icon: Briefcase,
+                                    tags: ['RFP Calendars', 'Approved Vendors']
+                                },
+                                {
+                                    title: 'Industry Demand Ecosystem Mapping',
+                                    description: 'Cross-industry relationship mapping identifying ecosystem clusters, tier-1 suppliers, and secondary buyers.',
+                                    path: '/global-acceleration/cross-border-strategy',
+                                    badge: 'Ecosystem Clusters',
+                                    icon: GitMerge,
+                                    tags: ['Cluster Mapping', 'Tier-1 Buyers']
                                 },
                                 {
                                     title: 'Revenue Corridor Discovery',
@@ -1826,7 +1890,7 @@ export default function Navigation() {
                     icon: TrendingUp,
                     columns: [
                         {
-                            header: 'Readiness & Strategy',
+                            header: 'Readiness & GTM Strategy',
                             badge: 'Foundation',
                             icon: Compass,
                             cards: [
@@ -1845,21 +1909,37 @@ export default function Navigation() {
                                     badge: 'GTM Architecture',
                                     icon: Rocket,
                                     tags: ['Corridor Blueprint', 'Customs Regimes']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Acquisition & Promotion',
-                            badge: 'Execution',
-                            icon: Briefcase,
-                            cards: [
+                                },
                                 {
                                     title: 'International Buyer Acquisition',
-                                    description: 'Multi-channel engagement securing direct commercial meetings with verified buyers.',
+                                    description: 'Multi-channel engagement securing direct commercial meetings with verified cross-border buyers.',
                                     path: '/global-acceleration/cross-border-strategy',
                                     badge: 'Buyer Conversion',
                                     icon: UserCheck,
                                     tags: ['Cross-Border Meetings', 'Decision Makers']
+                                },
+                                {
+                                    title: 'Export Lead Generation',
+                                    description: 'Continuous pipeline generation feeding commercial reps with pre-qualified international purchasing inquiries.',
+                                    path: '/global-acceleration/cross-border-strategy',
+                                    badge: 'Lead Gen',
+                                    icon: Zap,
+                                    tags: ['Inbound Corridors', 'Pre-Qualified']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Channels & Trade Programs',
+                            badge: 'Execution',
+                            icon: Briefcase,
+                            cards: [
+                                {
+                                    title: 'International Channel Development',
+                                    description: 'Structuring, contracting, and incentivizing foreign distribution channels for sustainable throughput.',
+                                    path: '/global-acceleration/cross-border-strategy',
+                                    badge: 'Channel Contracts',
+                                    icon: Handshake,
+                                    tags: ['Volume Quotas', 'Channel Incentive']
                                 },
                                 {
                                     title: 'Trade Promotion Programs',
@@ -1868,6 +1948,22 @@ export default function Navigation() {
                                     badge: 'Trade Programs',
                                     icon: Award,
                                     tags: ['Export Incentives', 'Bilateral Missions']
+                                },
+                                {
+                                    title: 'Trade Event Intelligence',
+                                    description: 'Event intelligence mapping international congresses, reverse expos, and buyer delegations.',
+                                    path: '/global-acceleration/cross-border-strategy',
+                                    badge: 'Event Telemetry',
+                                    icon: Radar,
+                                    tags: ['Congress Mapping', 'Executive Meetings']
+                                },
+                                {
+                                    title: 'Export Revenue Programs',
+                                    description: 'Structured commercial campaigns orchestrating pipeline conversion across cross-border accounts.',
+                                    path: '/global-acceleration/cross-border-strategy',
+                                    badge: 'Revenue Programs',
+                                    icon: BarChart3,
+                                    tags: ['Campaign Ops', 'Contract Execution']
                                 }
                             ]
                         }
@@ -1901,14 +1997,7 @@ export default function Navigation() {
                                     badge: 'Commercial Align',
                                     icon: Handshake,
                                     tags: ['Margin Schedules', 'Exclusivity Terms']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Joint Ventures & Integrations',
-                            badge: 'Co-Sell',
-                            icon: GitMerge,
-                            cards: [
+                                },
                                 {
                                     title: 'Strategic Alliances',
                                     description: 'High-impact co-innovation and co-marketing partnerships with complementary leaders.',
@@ -1924,6 +2013,45 @@ export default function Navigation() {
                                     badge: 'JV Structuring',
                                     icon: Scale,
                                     tags: ['Local Equity', 'Shared Governance']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Integrations & Programs',
+                            badge: 'Ecosystem',
+                            icon: GitMerge,
+                            cards: [
+                                {
+                                    title: 'Technology Partnerships',
+                                    description: 'API and product integrations embedding your solution into dominant regional tech stacks.',
+                                    path: '/global-acceleration/partner-ecosystems',
+                                    badge: 'Tech Integrations',
+                                    icon: Cpu,
+                                    tags: ['API Ecosystem', 'Stack Embed']
+                                },
+                                {
+                                    title: 'Industry Associations',
+                                    description: 'Executive engagement and institutional sponsorship across high-influence regional industry bodies.',
+                                    path: '/global-acceleration/partner-ecosystems',
+                                    badge: 'Associations',
+                                    icon: Landmark,
+                                    tags: ['Industry Leadership', 'Policy Alignment']
+                                },
+                                {
+                                    title: 'Government Trade Programs',
+                                    description: 'Leveraging bilateral commerce ministries, export promotion councils, and state development grants.',
+                                    path: '/global-acceleration/partner-ecosystems',
+                                    badge: 'Government Grants',
+                                    icon: Award,
+                                    tags: ['Ministry Programs', 'Export Subsidies']
+                                },
+                                {
+                                    title: 'Ecosystem Development',
+                                    description: 'Fostering community, developer, and reseller networks that generate compounding inbound referral volume.',
+                                    path: '/global-acceleration/partner-ecosystems',
+                                    badge: 'Compounding Scale',
+                                    icon: Network,
+                                    tags: ['Inbound Referrals', 'Developer Mesh']
                                 }
                             ]
                         }
@@ -1951,12 +2079,28 @@ export default function Navigation() {
                                     tags: ['OEM Qualification', 'Component Sourcing']
                                 },
                                 {
+                                    title: 'Procurement Ecosystem Mapping',
+                                    description: 'Complete visibility into secondary and tertiary sub-tier supplier dependencies and capacity limits.',
+                                    path: '/global-acceleration/market-intelligence',
+                                    badge: 'Tier-2 Mapping',
+                                    icon: Network,
+                                    tags: ['Sub-Tier Visibility', 'Capacity Limits']
+                                },
+                                {
                                     title: 'Manufacturing Partner Discovery',
                                     description: 'Identifying ISO-certified contract manufacturers with audited capacity and quality.',
                                     path: '/global-acceleration/market-intelligence',
                                     badge: 'ISO Standards',
                                     icon: Building,
                                     tags: ['Contract Mfg', 'Audited Capacity']
+                                },
+                                {
+                                    title: 'Logistics Network Design',
+                                    description: 'Multi-modal freight optimization balancing maritime, air, and overland corridors.',
+                                    path: '/global-acceleration/market-intelligence',
+                                    badge: 'Multi-Modal',
+                                    icon: Box,
+                                    tags: ['Transit Time', 'Freight Margin']
                                 }
                             ]
                         },
@@ -1966,20 +2110,36 @@ export default function Navigation() {
                             icon: Box,
                             cards: [
                                 {
-                                    title: 'Logistics Network Design',
-                                    description: 'Multi-modal freight optimization balancing maritime, air, and overland corridors.',
+                                    title: 'Vendor Intelligence',
+                                    description: 'Financial health checks, ESG compliance audits, and commercial reliability scoring across suppliers.',
                                     path: '/global-acceleration/market-intelligence',
-                                    badge: 'Multi-Modal',
-                                    icon: Box,
-                                    tags: ['Transit Time', 'Freight Margin']
+                                    badge: 'Vendor Health',
+                                    icon: ShieldCheck,
+                                    tags: ['Financial Audit', 'Reliability Index']
+                                },
+                                {
+                                    title: 'Trade Route Optimization',
+                                    description: 'Real-time tracking and routing around customs bottlenecks, maritime chokepoints, and tariff zones.',
+                                    path: '/global-acceleration/market-intelligence',
+                                    badge: 'Route Velocity',
+                                    icon: Compass,
+                                    tags: ['Chokepoint Bypass', 'Customs Transit']
                                 },
                                 {
                                     title: 'Supply Chain Risk Assessment',
                                     description: 'Vulnerability indexing for single-source dependencies and geopolitical disruption.',
                                     path: '/global-acceleration/market-intelligence',
                                     badge: 'Resilience Audit',
-                                    icon: ShieldCheck,
+                                    icon: AlertCircle,
                                     tags: ['Disruption Hedging', 'Single-Source Risk']
+                                },
+                                {
+                                    title: 'Cross-Border Operations',
+                                    description: 'Streamlining customs declarations, bonded warehousing, and localized inventory fulfillment staging.',
+                                    path: '/global-acceleration/market-intelligence',
+                                    badge: 'Bonded Warehousing',
+                                    icon: Layers,
+                                    tags: ['Customs Declarations', 'Local Staging']
                                 }
                             ]
                         }
@@ -2013,6 +2173,22 @@ export default function Navigation() {
                                     badge: 'Dynamic Routing',
                                     icon: Compass,
                                     tags: ['Account Routing', 'Capacity Planning']
+                                },
+                                {
+                                    title: 'Regional Revenue Hubs',
+                                    description: 'Shared services blueprint for localized customer onboarding, technical pre-sales, and tier-1 support.',
+                                    path: '/global-acceleration/global-revops',
+                                    badge: 'Shared Services',
+                                    icon: Building2,
+                                    tags: ['Regional Hubs', 'Pre-Sales Pods']
+                                },
+                                {
+                                    title: 'Multi-Language SDR Operations',
+                                    description: 'Native-fluency outbound prospecting frameworks operating across 12+ timezones.',
+                                    path: '/global-acceleration/global-revops',
+                                    badge: '24/7 Prospecting',
+                                    icon: Bot,
+                                    tags: ['15+ Dialects', 'Zero Response Lag']
                                 }
                             ]
                         },
@@ -2022,12 +2198,12 @@ export default function Navigation() {
                             icon: Gauge,
                             cards: [
                                 {
-                                    title: 'Multi-Language SDR Operations',
-                                    description: 'Native-fluency outbound prospecting frameworks operating across 12+ timezones.',
+                                    title: 'International Pipeline Management',
+                                    description: 'Unified deal inspection frameworks eliminating cross-border reporting latency and currency distortions.',
                                     path: '/global-acceleration/global-revops',
-                                    badge: '24/7 Prospecting',
-                                    icon: Bot,
-                                    tags: ['15+ Dialects', 'Zero Response Lag']
+                                    badge: 'Deal Inspection',
+                                    icon: LineChart,
+                                    tags: ['Multi-Currency CRM', 'Zero Latency']
                                 },
                                 {
                                     title: 'Revenue Intelligence',
@@ -2036,6 +2212,22 @@ export default function Navigation() {
                                     badge: 'Signal Detection',
                                     icon: Activity,
                                     tags: ['Win/Loss Drivers', 'Pipeline Velocity']
+                                },
+                                {
+                                    title: 'Customer Success Operations',
+                                    description: 'Proactive health monitoring and localized renewal playbooks preserving multi-currency Net Revenue Retention.',
+                                    path: '/global-acceleration/global-revops',
+                                    badge: 'Retention Engine',
+                                    icon: UserCheck,
+                                    tags: ['NRR Preservation', 'Localized Renewals']
+                                },
+                                {
+                                    title: 'Revenue Performance Optimization',
+                                    description: 'Continuous testing of messaging, pricing concessions, and contracting cycles across regional buyer cohorts.',
+                                    path: '/global-acceleration/global-revops',
+                                    badge: 'Continuous Testing',
+                                    icon: RefreshCw,
+                                    tags: ['Discount Control', 'Contract Velocity']
                                 }
                             ]
                         }
@@ -2069,14 +2261,7 @@ export default function Navigation() {
                                     badge: 'Credit Guarantees',
                                     icon: Coins,
                                     tags: ['ECA Backed', 'Pre-Shipment Lines']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Treasury & Institutions',
-                            badge: 'Connectivity',
-                            icon: Landmark,
-                            cards: [
+                                },
                                 {
                                     title: 'International Banking Networks',
                                     description: 'Mapping correspondent banking relationships for treasury and FX settlements.',
@@ -2086,12 +2271,51 @@ export default function Navigation() {
                                     tags: ['FX Settlement', 'Multi-Currency']
                                 },
                                 {
+                                    title: 'Cross-Border Payments',
+                                    description: 'Architecture for multi-currency merchant processing, localized payment gateways, and hedging transaction fees.',
+                                    path: '/global-acceleration/expansion-office',
+                                    badge: 'Multi-Currency Gateway',
+                                    icon: DollarSign,
+                                    tags: ['Payment Gateways', 'FX Hedging']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Treasury & Institutions',
+                            badge: 'Connectivity',
+                            icon: Landmark,
+                            cards: [
+                                {
                                     title: 'Export Credit Agencies',
                                     description: 'Engaging institutional ECAs (EXIM, Euler Hermes) to mitigate buyer default risks.',
                                     path: '/global-acceleration/expansion-office',
                                     badge: 'Default Risk',
                                     icon: ShieldCheck,
                                     tags: ['ECA Engagement', 'Sovereign Coverage']
+                                },
+                                {
+                                    title: 'Development Finance Institutions',
+                                    description: 'Exploring multilateral development finance (IFC, EBRD, ADB) for emerging market infrastructure and scale.',
+                                    path: '/global-acceleration/expansion-office',
+                                    badge: 'DFI Facilities',
+                                    icon: Building,
+                                    tags: ['Multilateral Capital', 'Scale Facilities']
+                                },
+                                {
+                                    title: 'Investor & Capital Access',
+                                    description: 'Readiness advisory connecting cross-border ventures with international growth equity and debt syndicates.',
+                                    path: '/global-acceleration/expansion-office',
+                                    badge: 'Growth Syndicates',
+                                    icon: TrendingUp,
+                                    tags: ['Growth Equity', 'Debt Syndication']
+                                },
+                                {
+                                    title: 'Global Treasury Advisory',
+                                    description: 'Optimizing transfer pricing compliance, multi-jurisdiction tax efficiency, and dividend repatriation paths.',
+                                    path: '/global-acceleration/expansion-office',
+                                    badge: 'Treasury Advisory',
+                                    icon: Scale,
+                                    tags: ['Transfer Pricing', 'Repatriation Paths']
                                 }
                             ]
                         }
@@ -2125,6 +2349,22 @@ export default function Navigation() {
                                     badge: 'Autonomous Enrichment',
                                     icon: Target,
                                     tags: ['Intent Discovery', 'C-Suite Leads']
+                                },
+                                {
+                                    title: 'AI Distributor Discovery',
+                                    description: 'Automated profiling and scoring of regional distributor capacity, brand portfolios, and operational readiness.',
+                                    path: '/global-acceleration/ai-global-scaling',
+                                    badge: 'Distributor AI',
+                                    icon: Building2,
+                                    tags: ['Distributor Scoring', 'Capacity Profiling']
+                                },
+                                {
+                                    title: 'AI Partner Matching',
+                                    description: 'Algorithmic compatibility scoring matching enterprise products with regional VAR and integrator portfolios.',
+                                    path: '/global-acceleration/ai-global-scaling',
+                                    badge: 'Partner Match',
+                                    icon: GitMerge,
+                                    tags: ['VAR Matching', 'Compatibility Score']
                                 }
                             ]
                         },
@@ -2134,12 +2374,28 @@ export default function Navigation() {
                             icon: Cpu,
                             cards: [
                                 {
+                                    title: 'AI Localization Engines',
+                                    description: 'Context-aware adaptation of sales collateral, contracts, and filings into 15+ native business dialects.',
+                                    path: '/global-acceleration/ai-global-scaling',
+                                    badge: 'Localization Swarms',
+                                    icon: Globe,
+                                    tags: ['15+ Dialects', 'Legal Adaptation']
+                                },
+                                {
                                     title: 'AI Revenue Agents',
                                     description: '24/7 autonomous SDR and lead qualification agents conducting outbound correspondence.',
                                     path: '/global-acceleration/ai-global-scaling',
                                     badge: 'Autonomous SDR',
                                     icon: Bot,
                                     tags: ['15+ Languages', 'Autonomous Pitch']
+                                },
+                                {
+                                    title: 'Autonomous Expansion Workflows',
+                                    description: 'Self-orchestrating task workflows connecting research, CRM enrichment, compliance checks, and outreach.',
+                                    path: '/global-acceleration/ai-global-scaling',
+                                    badge: 'Agent Workflows',
+                                    icon: Workflow,
+                                    tags: ['Orchestrated Tasks', 'CRM Integration']
                                 },
                                 {
                                     title: 'Global Intelligence Command Center',
@@ -3007,7 +3263,7 @@ export default function Navigation() {
                                     </aside>
 
                                     {/* ── RIGHT CONTENT PANEL (FLEX-1 AUTO-FILL, ZERO BOTTOM GAP) ── */}
-                                    <main className="flex-1 bg-white p-3.5 sm:p-4 flex flex-col justify-between">
+                                    <main className="flex-1 bg-white p-3 sm:p-4 flex flex-col">
                                         {/* Top Section: Header + Cards Grid */}
                                         <div className="space-y-2.5 flex-1 flex flex-col">
                                             {/* Top Header Area */}

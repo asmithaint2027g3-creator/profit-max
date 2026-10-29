@@ -128,7 +128,7 @@ export default function AiGlobalScalingPage() {
                 to="/global-acceleration"
                 className="inline-flex items-center justify-center border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 font-bold px-6 py-4 rounded-xl text-sm shadow-xs transition-all font-mono uppercase tracking-wider gap-2"
               >
-                <span>Explore Other Pillars</span>
+                <span>Explore Other Acceleration Areas</span>
                 <ChevronRight className="w-4 h-4 text-violet-600" />
               </Link>
             </div>
@@ -585,7 +585,7 @@ export default function AiGlobalScalingPage() {
               AI Agents Execute Globally
             </h2>
             <p className="text-slate-600 text-sm sm:text-base">
-              Explore how autonomous agent swarms feed data to executive offices and operationalize other pillars.
+              Explore how autonomous agent swarms feed data to executive offices and operationalize other acceleration areas.
             </p>
           </div>
 

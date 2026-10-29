@@ -184,7 +184,7 @@ export default function MarketIntelligencePage() {
                 to="/global-acceleration"
                 className="inline-flex items-center justify-center border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 font-bold px-6 py-4 rounded-xl text-sm shadow-xs transition-all font-mono uppercase tracking-wider gap-2"
               >
-                <span>Explore Other Pillars</span>
+                <span>Explore Other Acceleration Areas</span>
                 <ChevronRight className="w-4 h-4 text-blue-600" />
               </Link>
             </div>
@@ -698,7 +698,7 @@ export default function MarketIntelligencePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-3">
-              Market Intelligence Informs Every Other Pillar
+              Market Intelligence Informs Every Other Acceleration Area
             </h2>
             <p className="text-slate-600 text-sm sm:text-base">
               Intelligence outputs feed directly into downstream market entry, partner ecosystems, and regulatory RevOps.

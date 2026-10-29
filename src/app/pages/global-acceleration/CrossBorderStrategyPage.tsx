@@ -152,7 +152,7 @@ export default function CrossBorderStrategyPage() {
                 to="/global-acceleration"
                 className="inline-flex items-center justify-center border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 font-bold px-6 py-4 rounded-xl text-sm shadow-xs transition-all font-mono uppercase tracking-wider gap-2"
               >
-                <span>Explore Other Pillars</span>
+                <span>Explore Other Acceleration Areas</span>
                 <ChevronRight className="w-4 h-4 text-indigo-600" />
               </Link>
             </div>

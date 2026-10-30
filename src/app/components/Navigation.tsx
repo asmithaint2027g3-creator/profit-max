@@ -268,7 +268,7 @@ export const offeringsArchitecture: OfferingCategoryDetail[] = [
             {
                 title: 'CRM & Data Orchestration',
                 outcome: 'Unified cross-system customer identity resolution, bidirectional sync, and clean data hygiene.',
-                path: '/offerings/revenue-operations#command-center',
+                path: '/offerings/revenue-operations#crm-orchestration',
                 icon: Server,
                 tag: 'DATA HYGIENE'
             },
@@ -3449,7 +3449,20 @@ export default function Navigation() {
                                 >
                                     <Link
                                         to={menu.path}
-                                        onClick={() => setActiveMenuId(null)}
+                                        onClick={() => {
+    setActiveMenuId(null);
+    if (card.path.includes('#')) {
+        const [targetPath, hash] = card.path.split('#');
+        if (location.pathname === targetPath) {
+            const el = document.getElementById(hash);
+            if (el) {
+                setTimeout(() => {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 50);
+            }
+        }
+    }
+}}
                                         className={`px-2.5 xl:px-3 py-1.5 xl:py-2 flex items-center cursor-pointer transition-colors whitespace-nowrap shrink-0 ${
                                             !hasSubNav ? 'px-3.5 xl:px-4' : ''
                                         }`}
@@ -3808,7 +3821,20 @@ export default function Navigation() {
                     {/* Backdrop */}
                     <div
                         className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity duration-300 animate-in fade-in"
-                        onClick={() => setMobileOpen(false)}
+                        onClick={() => {
+    setMobileOpen(false);
+    if (card.path.includes('#')) {
+        const [targetPath, hash] = card.path.split('#');
+        if (location.pathname === targetPath) {
+            const el = document.getElementById(hash);
+            if (el) {
+                setTimeout(() => {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 50);
+            }
+        }
+    }
+}}
                         aria-hidden="true"
                     />
 

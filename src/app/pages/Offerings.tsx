@@ -395,72 +395,90 @@ export default function Offerings() {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans pt-16 lg:pt-[72px] selection:bg-blue-600 selection:text-white">
-      {/* ── SECTION 1: HERO SECTION (Command Center Platform Aesthetic) ── */}
-      <section className="relative pt-24 pb-20 sm:pt-32 sm:pb-28 bg-white text-slate-900 overflow-hidden border-b border-slate-200">
-        {/* Background Image with High-Contrast Light Protective Overlays to guarantee 100% text readability */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <img
-            src="/images/hero-end-to-end-transformation.png"
-            alt="Offerings Architecture Background"
-            className="w-full h-full object-cover object-center opacity-15 mix-blend-multiply scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 to-white/95" />
-          <div 
-            className="absolute inset-0 opacity-60"
-            style={{
-              backgroundImage: `linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)`,
-              backgroundSize: '40px 40px'
-            }}
-          />
+    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-600 selection:text-white">
+      {/* ── STICKY PAGE SUB-NAV BAR (GLOBAL ACCELERATION PALETTE) ── */}
+      <nav aria-label="Page Sub Navigation" className="sticky top-16 z-30 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white text-xs">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-11 flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
+          <div className="flex items-center gap-2.5 shrink-0">
+            <span className="font-mono text-blue-400 font-bold">OFFERINGS</span>
+            <span className="font-bold text-slate-200">Revenue Operating System</span>
+            <span className="hidden sm:inline text-slate-500">|</span>
+            <span className="hidden sm:inline text-slate-400 font-medium">Enterprise Architecture</span>
+          </div>
+
+          <div className="flex items-center gap-3 shrink-0 text-slate-300 font-medium text-[11px] sm:text-xs">
+            <a href="#architecture" className="hover:text-blue-400 transition-colors">7 Offerings</a>
+            <a href="#ai-native-layer" className="hover:text-blue-400 transition-colors">AI Agents</a>
+            <a href="#situation-selector" className="hover:text-blue-400 transition-colors">Recommender</a>
+            <a href="#intake" className="px-2.5 py-1 rounded bg-blue-600 hover:bg-blue-500 text-white font-bold transition-colors">Diagnostic</a>
+          </div>
         </div>
-        {/* Ambient Blur Accents */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute top-1/3 left-1/3 w-[400px] h-[250px] bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none" />
+      </nav>
+
+      {/* ── SECTION 1: HERO SECTION (GLOBAL ACCELERATION PALETTE) ── */}
+      <section className="relative pt-12 pb-16 sm:pt-20 sm:pb-24 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden border-b border-slate-800">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.20]" style={{ backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.07) 1px, transparent 1px)', backgroundSize: '4rem 4rem' }} />
+          <div className="absolute -top-40 right-1/4 w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[140px]" />
+          <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-indigo-600/12 rounded-full blur-[130px]" />
+        </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold tracking-wide uppercase shadow-xs">
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-bold tracking-wide uppercase font-mono">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-400" />
               </span>
-              <span className="font-mono text-blue-600 font-extrabold">ENTERPRISE REVENUE OS</span>
-              <span className="text-slate-300 font-normal">//</span>
+              <span className="font-mono text-blue-300 font-extrabold">ENTERPRISE REVENUE OS</span>
+              <span className="text-slate-500 font-normal">//</span>
               <span>UNIFIED ARCHITECTURE</span>
             </div>
-            <div className="hidden sm:flex items-center gap-4 text-xs font-mono text-slate-500">
-              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-blue-600" /> SOC2 Type II Certified</span>
-              <span className="text-slate-300">|</span>
-              <span className="flex items-center gap-1.5"><Lock className="w-3.5 h-3.5 text-emerald-600" /> EU AI Act / ISO 42001 Ready</span>
+            <div className="hidden sm:flex items-center gap-4 text-xs font-mono text-slate-400">
+              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-blue-400" /> SOC2 Type II Certified</span>
+              <span className="text-slate-600">|</span>
+              <span className="flex items-center gap-1.5"><Lock className="w-3.5 h-3.5 text-emerald-400" /> EU AI Act / ISO 42001 Ready</span>
             </div>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight font-heading mb-6 max-w-5xl leading-[1.12]">
-            Eight Autonomous Engines.{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight font-heading mb-6 max-w-5xl leading-[1.12]">
+            Seven Autonomous Offerings.{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-300">
               One Governed Revenue Operating System.
             </span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mb-10 leading-relaxed font-normal">
+          <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mb-8 leading-relaxed font-normal">
             ProfitMachines replaces fragmented point tools with a unified, mathematical revenue architecture. Built for Enterprise CROs, CFOs, and Board Directors to systematically expand ACV, eliminate margin leakage, and compound Net Revenue Retention with mathematical certainty.
           </p>
+
+          {/* Target Decision-Makers Box */}
+          <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 mb-8 space-y-1 max-w-2xl">
+            <div className="text-[11px] font-mono font-bold text-blue-400 uppercase tracking-wider">
+              Target Decision-Makers:
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 text-slate-300">
+              <div className="flex items-center gap-1.5"><span className="text-blue-400">•</span> Chief Executive Officers (CEOs) & Enterprise Boards</div>
+              <div className="flex items-center gap-1.5"><span className="text-blue-400">•</span> Chief Revenue Officers (CROs) & Commercial VPs</div>
+              <div className="flex items-center gap-1.5"><span className="text-blue-400">•</span> Chief Financial Officers (CFOs) & FP&A Leaders</div>
+              <div className="flex items-center gap-1.5"><span className="text-blue-400">•</span> RevOps, Sales Engineering & Customer Success Heads</div>
+            </div>
+          </div>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-16">
             <a
               href="#situation-selector"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-slate-900 hover:bg-blue-600 text-white font-bold text-sm tracking-wide shadow-lg shadow-slate-900/10 transition-all hover:-translate-y-0.5 font-mono uppercase"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm tracking-wide shadow-lg shadow-blue-600/30 transition-all hover:-translate-y-0.5 font-mono uppercase"
             >
               <span>RUN ARCHITECTURAL DIAGNOSTIC</span>
               <ArrowRight className="w-4 h-4" />
             </a>
             <a
               href="#ai-native-layer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 font-bold text-sm tracking-wide shadow-xs transition-all hover:-translate-y-0.5 font-mono uppercase"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-sm tracking-wide shadow-xs transition-all hover:-translate-y-0.5 font-mono uppercase"
             >
               <span>INSPECT AI REVENUE AGENTS</span>
-              <Cpu className="w-4 h-4 text-blue-600" />
+              <Cpu className="w-4 h-4 text-blue-400" />
             </a>
           </div>
 
@@ -1280,17 +1298,17 @@ export default function Offerings() {
       </section>
 
       {/* ── SECTION 11: FINAL CTA & EXECUTIVE INTAKE ── */}
-      <section id="intake" className="py-20 sm:py-28 bg-white relative overflow-hidden">
+      <section id="intake" className="py-20 sm:py-28 bg-slate-950 text-white relative overflow-hidden border-t border-slate-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
-            <ShieldCheck className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-xs font-bold uppercase tracking-widest mb-4">
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
             <span>CONFIDENTIAL ARCHITECTURAL INTAKE</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-heading mb-4">
             Ready to Engineer Your Revenue Machine?
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-normal">
-            Schedule a confidential diagnostic session with our Principal Revenue Systems Architects to evaluate your active GTM architecture.
+          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-normal">
+            Schedule a confidential diagnostic session with our Principal Revenue Systems Architects to evaluate your active GTM architecture under mutual NDA.
           </p>
         </div>
 

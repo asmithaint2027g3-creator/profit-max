@@ -1,30 +1,12 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
-  Compass,
-  ArrowRight,
-  ShieldCheck,
-  CheckCircle2,
-  TrendingUp,
-  Target,
-  DollarSign,
-  Activity,
-  Layers,
-  Search,
-  Sparkles,
-  Lock,
-  ChevronRight,
-  Zap,
-  BarChart3,
-  Sliders,
-  Cpu,
-  Shield,
-  ArrowUpRight,
-  GitMerge,
-  Workflow,
-  Calendar,
-  Rocket,
-  Users
+  Compass, ArrowRight, ShieldCheck, CheckCircle2, TrendingUp, Target,
+  DollarSign, Activity, Layers, Search, Sparkles, Lock, ChevronRight,
+  Zap, BarChart3, Sliders, Cpu, Shield, ArrowUpRight, Clock,
+  Check, Bot, FileText, CreditCard, Briefcase, AlertTriangle,
+  Scale, Users, LineChart, CheckCircle, RefreshCw, Eye, GitMerge,
+  GitBranch, Workflow
 } from 'lucide-react';
 import OfferingsIntakeForm from '../../components/forms/OfferingsIntakeForm';
 
@@ -32,241 +14,215 @@ export default function GtmTransformation() {
   const location = useLocation();
 
   useEffect(() => {
-    document.title = 'GTM Transformation | From Fragmented to Autonomous Revenue Architecture | ProfitMachines';
+    document.title = 'GTM Transformation | Operating Model & Revenue Modernization | ProfitMachines';
     if (location.hash) {
       const id = location.hash.replace('#', '');
-      const el = document.getElementById(id);
-      if (el) {
-        setTimeout(() => {
+      const scrollToElement = () => {
+        const el = document.getElementById(id);
+        if (el) {
           el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 150);
-      }
+        }
+      };
+      scrollToElement();
+      const t1 = setTimeout(scrollToElement, 100);
+      const t2 = setTimeout(scrollToElement, 300);
+      return () => {
+        clearTimeout(t1);
+        clearTimeout(t2);
+      };
     } else {
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [location.hash, location.pathname]);
 
-  const transformationPillars = [
+  const scrollToAnchor = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.history.pushState(null, '', '#' + id);
+    }
+  };
+
+  const structuralFrictionPoints = [
     {
-      id: 'gtm-strategy',
-      title: 'GTM Strategy & Architecture Design',
-      phase: 'Phase 01 · Strategic Alignment',
-      headline: 'Unified GTM Blueprint & ICP Architecture',
-      metric: '100% Strategic Clarity · +80% Leadership Alignment',
-      description: 'Rebuilds GTM motions from the customer backward. We define target micro-segments, design multi-tiered pricing, and eliminate conflicting executive priorities.',
-      deliverables: ['Enterprise GTM Operating Blueprint', 'Role-Based ICP Definitions', 'Executive Alignment Mandate']
+      title: 'Conflicting Go-to-Market Priorities',
+      problem: 'Marketing optimizes for raw lead volume, sales seeks hyper-targeted enterprise accounts, and product prioritizes self-serve feature adoption without mutual alignment.',
+      consequence: 'Wasted acquisition budgets, poor sales acceptance of marketing leads, and disjointed buyer experiences.',
+      impact: 'Up to 45% Pipeline Drop-off Between MQL and SQL'
     },
     {
-      id: 'process',
-      title: 'Process Re-Engineering',
-      phase: 'Phase 02 · Operational Modernization',
-      headline: 'End-to-End Friction Removal & Route Optimization',
-      metric: '+60% Process Efficiency · -40% Sales Cycle Duration',
-      description: 'Removes handoff drag between marketing, BDRs, AEs, and customer success. Streamlines stage exit criteria, approval bottlenecks, and quoting loops.',
-      deliverables: ['Stage-by-Stage SLA Contracts', 'Automated Lead Routing Architecture', 'Friction-Free Handover Protocols']
+      title: 'Proliferation of Fragmented Revenue Silos',
+      problem: 'Pre-sales, enterprise AE pods, customer success, and partner channels operate separate disconnected playbooks and incentive structures.',
+      consequence: 'Account handoff drag, multi-threaded confusion for buyers, and delayed onboarding time-to-value.',
+      impact: '28-40% Sales Cycle Duration Inflation'
     },
     {
-      id: 'multi-product',
-      title: 'Multi-Product Motion Orchestration',
-      phase: 'Phase 03 · Portfolio Compounding',
-      headline: 'Unified Cross-Sell & Platform Expansion Models',
-      metric: '+50% Average Contract Value · +40% Cross-Sell Velocity',
-      description: 'Aligns multi-product portfolios so reps do not confuse buyers with multiple competing account teams. Creates packaged platform solutions that expand naturally.',
-      deliverables: ['Platform Solution Packaging', 'Cross-Sell Trigger Playbooks', 'Unified Customer Account Matrix']
+      title: 'Uncoordinated Technology Stack Sprawl',
+      problem: 'Teams deploy point AI and automation tools independently, resulting in unintegrated data silos, overlapping costs, and rep confusion.',
+      consequence: 'Low tool adoption, manual spreadsheet workarounds, and lack of enterprise-wide executive telemetry.',
+      impact: '&lt;50% Rep Utilization of Licensed RevTech'
     },
     {
-      id: 'adoption',
-      title: 'Sustained Adoption & Behavioral Change',
-      phase: 'Phase 04 · Organizational Embedding',
-      headline: 'Competency Scoring, Telemetry & Cultural Retention',
-      metric: '+80% Field Adoption Rate · +60% Technology ROI',
-      description: 'Ensures tools and playbooks are actively utilized. Combines in-app telemetry tracking, field coaching certifications, and compensation alignment.',
-      deliverables: ['Rep Competency Certification Framework', 'Real-Time Tool Usage Telemetry', 'Incentive Alignment Playbook']
+      title: 'Inflexible Territory & Quota Architecture',
+      problem: 'Legacy geographic quotas fail to reflect market micro-segment propensity or actual account buyer intent surges.',
+      consequence: 'Star reps are starved of whitespace opportunities while underperforming territories receive unattainable targets.',
+      impact: '±30% Quota Attainment Disparity Across Pods'
     }
   ];
 
   return (
     <div className="min-h-screen bg-white">
+      {/* ── STICKY PAGE SUB-NAV BAR (GLOBAL ACCELERATION PALETTE) ── */}
+      <nav aria-label="Page Sub Navigation" className="sticky top-16 z-30 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white text-xs">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-11 flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
+          <div className="flex items-center gap-2.5 shrink-0">
+            <span className="font-mono text-blue-400 font-bold">OFFERING 06</span>
+            <span className="font-bold text-slate-200">GTM Transformation</span>
+            <span className="hidden sm:inline text-slate-500">|</span>
+            <span className="hidden sm:inline text-slate-400 font-medium">Operating Model</span>
+          </div>
+
+          <div className="flex items-center gap-3 shrink-0 text-slate-300 font-medium text-[11px] sm:text-xs">
+            <a href="#friction" onClick={(e) => scrollToAnchor(e, 'friction')} className="hover:text-blue-400 transition-colors">Structural Friction</a>
+            <a href="#gtm-strategy" onClick={(e) => scrollToAnchor(e, 'gtm-strategy')} className="hover:text-blue-400 transition-colors">GTM Strategy</a>
+            <a href="#process" onClick={(e) => scrollToAnchor(e, 'process')} className="hover:text-blue-400 transition-colors">Revenue Velocity</a>
+            <a href="#multi-product" onClick={(e) => scrollToAnchor(e, 'multi-product')} className="hover:text-blue-400 transition-colors">AI Operating Models</a>
+            <a href="#adoption" onClick={(e) => scrollToAnchor(e, 'adoption')} className="hover:text-blue-400 transition-colors">Cross-Functional Alignment</a>
+            <a href="#roadmap" onClick={(e) => scrollToAnchor(e, 'roadmap')} className="hover:text-blue-400 transition-colors">4-Stage Roadmap</a>
+            <a href="#kpis" onClick={(e) => scrollToAnchor(e, 'kpis')} className="hover:text-blue-400 transition-colors">KPI Framework</a>
+            <a href="#intake" onClick={(e) => scrollToAnchor(e, 'intake')} className="px-2.5 py-1 rounded bg-blue-600 hover:bg-blue-500 text-white font-bold transition-colors">Diagnostic</a>
+          </div>
+        </div>
+      </nav>
+
       {/* ── SECTION 1: HERO ── */}
-      <section className="relative pt-24 pb-20 sm:pt-32 sm:pb-28 bg-slate-950 text-white overflow-hidden">
-        {/* Background Image with High-Contrast Dark Protective Overlays to guarantee 100% text readability */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <img
-            src="/images/hero-ai-transformation.png"
-            alt="Hero Background"
-            className="w-full h-full object-cover object-center opacity-30 mix-blend-luminosity scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-slate-950" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/85" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(37,99,235,0.25),rgba(15,23,42,0.6))]" />
-          <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:32px_32px]" />
+      <section className="relative pt-12 pb-16 sm:pt-20 sm:pb-24 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden border-b border-slate-800">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.20]" style={{ backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.07) 1px, transparent 1px)', backgroundSize: '4rem 4rem' }} />
+          <div className="absolute -top-40 right-1/4 w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[140px]" />
+          <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-indigo-600/12 rounded-full blur-[130px]" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-xs font-bold uppercase tracking-widest mb-6">
-            <Workflow className="w-3.5 h-3.5 text-blue-400" />
-            <span>ENTERPRISE GTM TRANSFORMATION</span>
+          {/* Breadcrumb */}
+          <div className="flex items-center gap-2 text-xs font-mono text-slate-400 mb-4">
+            <Link to="/offerings" className="hover:text-blue-400 transition-colors">Offerings</Link>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
+            <span className="text-blue-400 font-bold">GTM Transformation</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight font-heading mb-6 max-w-5xl leading-[1.12]">
-            Transform Your GTM.{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-300">
-              From Fragmented to Unified. From Manual to Autonomous.
-            </span>
-          </h1>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-8">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-bold tracking-widest uppercase font-mono mb-4">
+                <Compass className="w-3.5 h-3.5 text-blue-400" />
+                <span>OPERATING MODEL & GTM ARCHITECTURE</span>
+              </div>
 
-          <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mb-10 leading-relaxed font-normal">
-            End-to-end Go-to-Market transformation for scaling enterprises. From board-level strategy design through process re-engineering to sustained field adoption, we replace operational friction with compounding revenue velocity.
-          </p>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.15] mb-5 font-heading">
+                Redesign Your Go-to-Market Model For{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-300">
+                  Sustainable Growth
+                </span>
+              </h1>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-            <a
-              href="#intake"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm tracking-wide shadow-lg shadow-blue-600/30 transition-all hover:-translate-y-0.5"
-            >
-              <span>Plan Your Transformation</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
-            <Link
-              to="/book-consultation"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-sm tracking-wide transition-all hover:-translate-y-0.5"
-            >
-              <span>Talk to a Principal Architect</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
-          </div>
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed mb-6 max-w-3xl">
+                Align market strategy, revenue processes, AI-enabled workflows, and cross-functional accountability. GTM Transformation helps organizations identify structural friction and redesign how commercial teams operate together to reach buyers and compound enterprise ARR.
+              </p>
 
-          {/* Quick Metrics */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16 pt-8 border-t border-slate-800/80">
-            <div>
-              <div className="text-2xl sm:text-3xl font-extrabold font-mono text-white">+60%</div>
-              <div className="text-xs font-mono text-slate-400 uppercase tracking-wider mt-1">Operational Process Efficiency</div>
+              {/* Target Decision-Makers */}
+              <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 mb-8 space-y-1 max-w-2xl">
+                <div className="text-[11px] font-mono font-bold text-blue-400 uppercase tracking-wider">
+                  Target Decision-Makers:
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 text-slate-300">
+                  <div className="flex items-center gap-1.5"><span className="text-blue-400">•</span> Chief Executive Officers (CEOs) & Enterprise Boards</div>
+                  <div className="flex items-center gap-1.5"><span className="text-blue-400">•</span> Chief Revenue Officers (CROs) & COOs</div>
+                  <div className="flex items-center gap-1.5"><span className="text-blue-400">•</span> PE Operating Partners & Portfolio Growth Leads</div>
+                  <div className="flex items-center gap-1.5"><span className="text-blue-400">•</span> Enterprise Transformation & Strategy Executives</div>
+                </div>
+              </div>
+
+              {/* Hero CTAs */}
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="#intake"
+                  onClick={(e) => scrollToAnchor(e, 'intake')}
+                  className="px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30 inline-flex items-center gap-2 group cursor-pointer"
+                >
+                  <span>Plan Your GTM Transformation</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+
+                <Link
+                  to="/book-consultation"
+                  className="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold text-sm transition-all inline-flex items-center gap-2 cursor-pointer"
+                >
+                  <span>Book a Consultation</span>
+                  <ArrowUpRight className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
-            <div>
-              <div className="text-2xl sm:text-3xl font-extrabold font-mono text-blue-400">-40%</div>
-              <div className="text-xs font-mono text-slate-400 uppercase tracking-wider mt-1">Sales Cycle Duration</div>
-            </div>
-            <div>
-              <div className="text-2xl sm:text-3xl font-extrabold font-mono text-emerald-400">+50%</div>
-              <div className="text-xs font-mono text-slate-400 uppercase tracking-wider mt-1">Average Contract Value</div>
-            </div>
-            <div>
-              <div className="text-2xl sm:text-3xl font-extrabold font-mono text-indigo-400">+80%</div>
-              <div className="text-xs font-mono text-slate-400 uppercase tracking-wider mt-1">Sustained Field Adoption</div>
+
+            <div className="lg:col-span-4">
+              <div className="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl space-y-4">
+                <div className="text-xs font-mono font-bold uppercase text-blue-400 tracking-wider">
+                  Transformation Benchmark Matrix
+                </div>
+                <div className="space-y-3">
+                  <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700/80">
+                    <div className="text-[11px] text-slate-400 uppercase font-mono">Sales Cycle Compression</div>
+                    <div className="text-xl font-bold font-mono text-emerald-400 mt-0.5">-40% Sales Cycle Duration</div>
+                    <p className="text-[11px] text-slate-400 mt-1">Achieved through removed approval loops and unified discovery.</p>
+                  </div>
+                  <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700/80">
+                    <div className="text-[11px] text-slate-400 uppercase font-mono">Field Adoption Index</div>
+                    <div className="text-xl font-bold font-mono text-blue-400 mt-0.5">≥85% Sustained Adoption</div>
+                    <p className="text-[11px] text-slate-400 mt-1">Verified tool & process utilization across commercial pods.</p>
+                  </div>
+                  <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700/80">
+                    <div className="text-[11px] text-slate-400 uppercase font-mono">Cross-Functional Drag</div>
+                    <div className="text-xl font-bold font-mono text-white mt-0.5">Zero Friction Handoffs</div>
+                    <p className="text-[11px] text-slate-400 mt-1">Strict SLA contracts connecting marketing, sales & customer success.</p>
+                  </div>
+                </div>
+                <div className="text-[10px] font-mono text-slate-500 pt-2 border-t border-slate-800 text-center">
+                  *Illustrative operating scenario metrics based on modeled client baselines.
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── SECTION 2: THE PROBLEM ── */}
-      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
+      {/* ── SECTION 2: THE STRUCTURAL FRICTION DIAGNOSTIC ── */}
+      <section id="friction" className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200 scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-red-600 uppercase tracking-widest mb-3">
-              <Activity className="w-3.5 h-3.5" />
-              <span>THE TRANSFORMATION FAILURE TRAP</span>
-            </div>
+          <div className="max-w-3xl mb-10">
+            <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold block mb-2">
+              OPERATING MODEL DIAGNOSTICS
+            </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
-              Why 70% of GTM Transformations Stall
+              Why Traditional Go-to-Market Models Fragment
             </h2>
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-              Most enterprise transformations fail because they treat GTM redesign as a software tool installation or a high-level slide deck rather than an operational behavioral system.
+              As companies scale beyond $25M ARR, revenue silos naturally calcify. Departmental sub-optimization replaces shared commercial accountability, stretching sales cycles and burning marketing capital.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
-              <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center font-bold text-base mb-4 font-mono">
-                01
-              </div>
-              <h3 className="text-base font-bold text-slate-900 mb-2">Departmental Silos</h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Marketing, sales, customer success, and product maintain separate metrics, competing software platforms, and contradictory customer definitions.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
-              <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center font-bold text-base mb-4 font-mono">
-                02
-              </div>
-              <h3 className="text-base font-bold text-slate-900 mb-2">Execution Inefficiency</h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Handoffs between SDRs and AEs leak 35% of qualified leads due to vague qualification criteria and manual spreadsheet updates.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
-              <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center font-bold text-base mb-4 font-mono">
-                03
-              </div>
-              <h3 className="text-base font-bold text-slate-900 mb-2">Severe Adoption Drop-off</h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Six months after deploying expensive sales intelligence tools, less than 25% of reps actively log in, abandoning the investment.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
-              <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center font-bold text-base mb-4 font-mono">
-                04
-              </div>
-              <h3 className="text-base font-bold text-slate-900 mb-2">Change Fatigue</h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Teams suffer through constant restructuring and new playbooks without executive enforcement, resulting in quiet non-compliance.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION 3: THE 4 TRANSFORMATION PILLARS ── */}
-      <section className="py-20 sm:py-28 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
-              <GitMerge className="w-3.5 h-3.5" />
-              <span>TRANSFORMATION PHASES</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
-              The 4 Pillars of GTM Transformation
-            </h2>
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-              A phased architecture moving your revenue engine from fragmented point tools to an integrated, highly accountable machine.
-            </p>
-          </div>
-
-          <div className="space-y-6">
-            {transformationPillars.map((pillar) => (
-              <div
-                key={pillar.id}
-                id={pillar.id}
-                className="p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:border-blue-400 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-8 scroll-mt-28"
-              >
-                <div className="max-w-3xl">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-xs font-mono font-bold text-blue-600 uppercase tracking-wider">
-                      {pillar.phase}
-                    </span>
-                    <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold">
-                      {pillar.metric.split('·')[0]}
-                    </span>
+            {structuralFrictionPoints.map((item, idx) => (
+              <div key={idx} className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs hover:border-blue-400 transition-all flex flex-col justify-between">
+                <div>
+                  <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-xs font-mono mb-3">
+                    0{idx + 1}
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 font-heading mb-2">{pillar.title}: {pillar.headline}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed mb-4">{pillar.description}</p>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {pillar.deliverables.map((del, dIdx) => (
-                      <span key={dIdx} className="text-xs font-mono px-3 py-1 rounded-md bg-white border border-slate-200 text-slate-700 font-medium">
-                        ✓ {del}
-                      </span>
-                    ))}
-                  </div>
+                  <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">{item.title}</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed mb-4">{item.problem}</p>
+                  <p className="text-xs text-slate-500 italic border-l-2 border-slate-200 pl-2.5 mb-4">{item.consequence}</p>
                 </div>
-
-                <div className="shrink-0 text-left lg:text-right pt-4 lg:pt-0 border-t lg:border-t-0 border-slate-200">
-                  <div className="text-xs font-mono text-slate-400 uppercase tracking-wider">Contracted Target</div>
-                  <div className="text-base font-extrabold text-slate-900 font-mono mt-1 text-blue-600">
-                    {pillar.metric.split('·')[1] || pillar.metric}
-                  </div>
+                <div className="pt-3 border-t border-slate-100 text-xs font-mono text-emerald-600 font-bold">
+                  {item.impact}
                 </div>
               </div>
             ))}
@@ -274,331 +230,354 @@ export default function GtmTransformation() {
         </div>
       </section>
 
-      {/* ── SECTION 8: TRANSFORMATION TIMELINE & ROADMAP ── */}
-      <section className="py-20 sm:py-28 bg-slate-900 text-white border-b border-slate-800">
+      {/* ── SECTION 3: CAPABILITY A - GTM STRATEGY & DESIGN (#gtm-strategy) ── */}
+      <section id="gtm-strategy" className="py-14 sm:py-20 bg-white border-b border-slate-200 scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14 text-center mx-auto">
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-400 uppercase tracking-widest mb-3">
-              <Calendar className="w-3.5 h-3.5" />
-              <span>90-DAY TRANSFORMATION ROADMAP</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-heading mb-4 text-white">
-              The 90-Day Architecture Flight Plan
+          <div className="max-w-3xl mb-10">
+            <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold block mb-2">
+              CAPABILITY A · STRATEGIC BLUEPRINT
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+              GTM Strategy & Architecture Design
             </h2>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
-              Structured rollout with explicit proof gates and contractual checkpoints.
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Architect unified go-to-market motions engineered for sustainable competitive advantage. We align micro-segment targeting, pricing structures, customer journey mapping, and executive resource allocation.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+              <span className="text-xs font-mono font-bold text-blue-600 block mb-1">Architecture 01</span>
+              <h4 className="text-base font-bold text-slate-900 mb-2 font-heading">Micro-Segment Prioritization</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Dissects TAM into defensible, unit-economic micro-segments where willingness-to-pay and win probability are highest, eliminating wasted generic marketing expenditure.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+              <span className="text-xs font-mono font-bold text-blue-600 block mb-1">Architecture 02</span>
+              <h4 className="text-base font-bold text-slate-900 mb-2 font-heading">Route-to-Market Engineering</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Matches buyer tiers to appropriate commercial channels: product-led self-serve for mid-market cohorts, and high-velocity AE pods supported by autonomous copilots for strategic enterprise accounts.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+              <span className="text-xs font-mono font-bold text-blue-600 block mb-1">Architecture 03</span>
+              <h4 className="text-base font-bold text-slate-900 mb-2 font-heading">Executive Accountability Mandate</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Establishes shared revenue targets and SLA commitments across CMO, CRO, CCO, and Product leaders, replacing isolated vanity metrics with compounding ARR accountability.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 4: CAPABILITY B - REVENUE VELOCITY OPTIMIZATION (#process) ── */}
+      <section id="process" className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200 scroll-mt-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-10">
+            <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold block mb-2">
+              CAPABILITY B · PROCESS RE-ENGINEERING
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+              Revenue Velocity Optimization
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Remove structural latency across discovery, proposal formulation, legal redlining, security questionnaires, and deal closing. Transform sluggish enterprise funnels into streamlined commercial engines.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-10">
+            <div className="space-y-4">
+              <div className="p-5 rounded-2xl bg-white border border-slate-200">
+                <h4 className="text-sm font-bold text-slate-900 font-heading mb-1 flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-blue-600" />
+                  Stage Exit Criteria Enforcement
+                </h4>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Defines unambiguous mathematical exit criteria for each deal stage. Prevents pipeline bloat where unqualified deals sit in commit stages without verified economic buyer buy-in.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-white border border-slate-200">
+                <h4 className="text-sm font-bold text-slate-900 font-heading mb-1 flex items-center gap-2">
+                  <Workflow className="w-4 h-4 text-blue-600" />
+                  Approval Loop Compression
+                </h4>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Replaces serialized multi-day executive sign-offs with parallel, rule-governed mobile approval triggers, reducing proposal and quote turnaround from days to hours.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-white border border-slate-200">
+                <h4 className="text-sm font-bold text-slate-900 font-heading mb-1 flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-blue-600" />
+                  Handoff Friction Elimination
+                </h4>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Standardizes data payloads transferring between BDRs, AEs, and Customer Success to eliminate redundant customer discovery questions and shorten onboarding time-to-value.
+                </p>
+              </div>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+              <h4 className="text-xs font-mono font-bold uppercase text-slate-400 tracking-wider mb-4">
+                Cycle Compression Across Enterprise Stages
+              </h4>
+              <div className="space-y-3 text-xs font-mono">
+                <div className="flex justify-between items-center p-2.5 rounded-lg bg-slate-50 border border-slate-200/80">
+                  <span className="text-slate-700">Discovery-to-Proposal Duration</span>
+                  <span className="text-slate-900 font-bold">18 Days → 6 Days</span>
+                </div>
+                <div className="flex justify-between items-center p-2.5 rounded-lg bg-blue-50/50 border border-blue-200">
+                  <span className="text-blue-900 font-semibold">Security & Compliance Review</span>
+                  <span className="text-blue-800 font-bold">24 Days → 9 Days</span>
+                </div>
+                <div className="flex justify-between items-center p-2.5 rounded-lg bg-emerald-50/50 border border-emerald-200">
+                  <span className="text-emerald-900 font-semibold">Overall Enterprise Sales Cycle</span>
+                  <span className="text-emerald-800 font-bold">-40% Cycle Duration</span>
+                </div>
+              </div>
+              <p className="text-[11px] text-slate-500 mt-4 leading-relaxed italic">
+                *Illustrative operational benchmark based on re-engineered enterprise CPQ and discovery workflows.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 5: CAPABILITY C - AI-NATIVE OPERATING MODELS (#multi-product) ── */}
+      <section id="multi-product" className="py-14 sm:py-20 bg-white border-b border-slate-200 scroll-mt-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-10">
+            <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold block mb-2">
+              CAPABILITY C · AI REVENUE ORCHESTRATION
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+              AI-Native Operating Models & Multi-Product Orchestration
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Transition legacy revenue silos into unified, autonomous AI-orchestrated motions. Combine autonomous research agents, predictive routing, and human oversight into a compounding revenue engine.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+              <span className="text-xs font-mono font-bold text-blue-600 block mb-1">Pillar 01</span>
+              <h4 className="text-base font-bold text-slate-900 mb-2 font-heading">Repetitive Work Elimination</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Replaces manual lead enrichment, call note formatting, meeting prep dossiers, and calendar scheduling with autonomous software agents operating 24/7.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+              <span className="text-xs font-mono font-bold text-blue-600 block mb-1">Pillar 02</span>
+              <h4 className="text-base font-bold text-slate-900 mb-2 font-heading">Multi-Product Solution Packaging</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Aligns multi-product portfolios so buyers interact with a unified commercial team rather than competing divisional reps, increasing average contract value.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+              <span className="text-xs font-mono font-bold text-blue-600 block mb-1">Pillar 03</span>
+              <h4 className="text-base font-bold text-slate-900 mb-2 font-heading">Governed Agent Permissions</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Strict boundary controls ensure autonomous agents propose actions, but external communications, pricing floors, and contractual approvals require human verification.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 6: CAPABILITY D - CROSS-FUNCTIONAL REVENUE ALIGNMENT (#adoption) ── */}
+      <section id="adoption" className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200 scroll-mt-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-10">
+            <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold block mb-2">
+              CAPABILITY D · ORGANIZATIONAL ADOPTION
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+              Cross-Functional Revenue Alignment & Sustained Adoption
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Synchronize marketing, product, sales, and customer success under shared executive revenue mandates. Transform behavioral change from top-down mandates into ingrained daily operating habits.
+            </p>
+          </div>
+
+          <div className="p-6 sm:p-8 rounded-2xl bg-slate-900 text-white border border-slate-800 shadow-xl mb-10">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 gap-2 mb-6">
+              <div>
+                <span className="text-[10px] font-mono text-blue-400 uppercase font-bold tracking-wider">Organizational Alignment Matrix</span>
+                <h4 className="text-lg font-bold font-heading">Shared Inter-Departmental Revenue Contracts</h4>
+              </div>
+              <span className="px-2.5 py-1 rounded bg-blue-500/20 text-blue-300 font-mono text-xs font-bold border border-blue-500/30">
+                100% Cross-Functional Buy-In
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs font-mono">
+              <div className="p-4 rounded-xl bg-slate-800/80 border border-slate-700">
+                <span className="text-slate-400 text-[11px] block">Marketing Mandate</span>
+                <span className="text-white block mt-0.5 font-bold">Qualified Pipeline Target</span>
+                <span className="text-blue-400 text-[11px] mt-1 block">Tied directly to closed ARR</span>
+              </div>
+              <div className="p-4 rounded-xl bg-slate-800/80 border border-slate-700">
+                <span className="text-slate-400 text-[11px] block">Sales Pod Mandate</span>
+                <span className="text-white block mt-0.5 font-bold">Stage Velocity & Hygiene</span>
+                <span className="text-emerald-400 text-[11px] mt-1 block">&lt;15 min lead SLA adherence</span>
+              </div>
+              <div className="p-4 rounded-xl bg-slate-800/80 border border-slate-700">
+                <span className="text-slate-400 text-[11px] block">Product Mandate</span>
+                <span className="text-white block mt-0.5 font-bold">Time-to-Value Telemetry</span>
+                <span className="text-blue-400 text-[11px] mt-1 block">&lt;30 day first value realization</span>
+              </div>
+              <div className="p-4 rounded-xl bg-slate-800/80 border border-slate-700">
+                <span className="text-slate-400 text-[11px] block">Customer Success Mandate</span>
+                <span className="text-emerald-400 block mt-0.5 font-bold">Net Retention Compounding</span>
+                <span className="text-slate-400 text-[11px] mt-1 block">≥120% NRR cohort benchmark</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 7: 4-STAGE TRANSFORMATION ROADMAP (#roadmap) ── */}
+      <section id="roadmap" className="py-14 sm:py-20 bg-white border-b border-slate-200 scroll-mt-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold block mb-2">
+              DISCIPLINED EXECUTION SPRINT
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+              The 4-Stage GTM Transformation Roadmap
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              A structured, risk-mitigated progression from empirical diagnostic assessment through full operational embedding.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <div className="w-8 h-8 rounded-lg bg-blue-600 text-white font-mono font-bold flex items-center justify-center text-xs mb-3 shadow-sm">
+                  01
+                </div>
+                <h4 className="text-base font-bold text-slate-900 mb-2 font-heading">Stage 1: Assess</h4>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                  Comprehensive audit of current funnel velocity, handoff friction, discounting patterns, and tech stack utilization.
+                </p>
+                <div className="text-[11px] font-mono text-slate-500">Deliverable: Empirical GTM Diagnostic Dossier</div>
+              </div>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <div className="w-8 h-8 rounded-lg bg-blue-600 text-white font-mono font-bold flex items-center justify-center text-xs mb-3 shadow-sm">
+                  02
+                </div>
+                <h4 className="text-base font-bold text-slate-900 mb-2 font-heading">Stage 2: Design</h4>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                  Architect the future-state operating blueprint, ICP definitions, stage exit criteria, CPQ guardrails, and role mandates.
+                </p>
+                <div className="text-[11px] font-mono text-slate-500">Deliverable: Future-State Operating Blueprint</div>
+              </div>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <div className="w-8 h-8 rounded-lg bg-blue-600 text-white font-mono font-bold flex items-center justify-center text-xs mb-3 shadow-sm">
+                  03
+                </div>
+                <h4 className="text-base font-bold text-slate-900 mb-2 font-heading">Stage 3: Implement</h4>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                  Deploy autonomous workflow copilots, reconfigure CRM routing rules, and align incentive compensation structures.
+                </p>
+                <div className="text-[11px] font-mono text-slate-500">Deliverable: Live AI-Native RevOps Pipeline</div>
+              </div>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <div className="w-8 h-8 rounded-lg bg-blue-600 text-white font-mono font-bold flex items-center justify-center text-xs mb-3 shadow-sm">
+                  04
+                </div>
+                <h4 className="text-base font-bold text-slate-900 mb-2 font-heading">Stage 4: Optimize</h4>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                  Continuous telemetry monitoring, cohort close-rate analysis, and periodic model recalibration against actual performance.
+                </p>
+                <div className="text-[11px] font-mono text-slate-500">Deliverable: Compounding ARR Operating Rhythm</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 8: KPI MEASUREMENT FRAMEWORK ── */}
+      <section id="kpis" className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200 scroll-mt-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold block mb-2">
+              MEASUREMENT ARCHITECTURE
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
+              GTM Transformation KPI Framework
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Empirically measured outcomes tracking operating model velocity, process quality, and team productivity.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-8 rounded-3xl bg-slate-800/80 border border-slate-700">
-              <div className="text-xs font-mono text-blue-400 uppercase font-bold mb-2">Days 01 – 30</div>
-              <h3 className="text-xl font-bold font-heading text-white mb-3">Baseline Audit & Blueprint</h3>
-              <p className="text-sm text-slate-300 leading-relaxed mb-6">
-                Audit every customer journey touchpoint, pipeline handoff, and pricing schedule. Lock baseline metrics and produce the Enterprise GTM Blueprint.
-              </p>
-              <div className="pt-4 border-t border-slate-700/60 text-xs font-mono text-emerald-400">
-                Gate 1: Executive Blueprint Approval
+            <div className="p-6 rounded-2xl bg-white border border-slate-200">
+              <div className="text-xs font-mono text-blue-600 uppercase font-bold mb-1">Sales Cycle Duration</div>
+              <h4 className="text-base font-bold text-slate-900 mb-2">Velocity Modernization</h4>
+              <p className="text-xs text-slate-600 mb-3"><strong>Formula:</strong> Average elapsed days from initial qualified opportunity creation to contract signature.</p>
+              <div className="text-[11px] font-mono text-slate-500 pt-3 border-t border-slate-100">
+                Target: -40% Duration · Source: CRM Opportunity Timestamp Log
               </div>
             </div>
 
-            <div className="p-8 rounded-3xl bg-slate-800/80 border border-slate-700">
-              <div className="text-xs font-mono text-blue-400 uppercase font-bold mb-2">Days 31 – 60</div>
-              <h3 className="text-xl font-bold font-heading text-white mb-3">Re-Engineering & Pilot Pod</h3>
-              <p className="text-sm text-slate-300 leading-relaxed mb-6">
-                Deploy automated routing, configure CPQ discount floors, and pilot the re-engineered sales motion across a controlled 5-rep pod.
-              </p>
-              <div className="pt-4 border-t border-slate-700/60 text-xs font-mono text-emerald-400">
-                Gate 2: Pilot Velocity & Margin Verification
+            <div className="p-6 rounded-2xl bg-white border border-slate-200">
+              <div className="text-xs font-mono text-blue-600 uppercase font-bold mb-1">Field Adoption Rate</div>
+              <h4 className="text-base font-bold text-slate-900 mb-2">Process Compliance</h4>
+              <p className="text-xs text-slate-600 mb-3"><strong>Formula:</strong> (Active sales reps meeting weekly workflow and telemetry criteria) ÷ (Total commercial reps).</p>
+              <div className="text-[11px] font-mono text-slate-500 pt-3 border-t border-slate-100">
+                Target: ≥85% · Source: System Telemetry Logins & Updates
               </div>
             </div>
 
-            <div className="p-8 rounded-3xl bg-slate-800/80 border border-slate-700">
-              <div className="text-xs font-mono text-blue-400 uppercase font-bold mb-2">Days 61 – 90</div>
-              <h3 className="text-xl font-bold font-heading text-white mb-3">Full Fleet Scaled Adoption</h3>
-              <p className="text-sm text-slate-300 leading-relaxed mb-6">
-                Roll out across the entire global organization. Certify reps, activate autonomous agent fleets, and lock continuous telemetry reporting.
-              </p>
-              <div className="pt-4 border-t border-slate-700/60 text-xs font-mono text-emerald-400">
-                Gate 3: Full SOW Realization Review
+            <div className="p-6 rounded-2xl bg-white border border-slate-200">
+              <div className="text-xs font-mono text-blue-600 uppercase font-bold mb-1">Cross-Functional SLA Rate</div>
+              <h4 className="text-base font-bold text-slate-900 mb-2">Handoff Discipline</h4>
+              <p className="text-xs text-slate-600 mb-3"><strong>Formula:</strong> (Departmental transitions completed within contractual SLA limit) ÷ (Total transitions).</p>
+              <div className="text-[11px] font-mono text-slate-500 pt-3 border-t border-slate-100">
+                Target: ≥98% · Source: Automated Event Routing Logs
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── SECTION 9: TRANSFORMATION METRICS BEFORE/AFTER ── */}
-      <section className="py-20 sm:py-24 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-3">
-              <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>MEASURED RESULTS</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
-              Transformation Dimensions
-            </h2>
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-              Measured before and after across global B2B enterprise transformation engagements.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-xs">
-              <div className="text-3xl font-extrabold text-blue-600 font-mono mb-2">+60%</div>
-              <h4 className="text-base font-bold text-slate-900 mb-1">Process Velocity</h4>
-              <p className="text-xs text-slate-500 leading-relaxed">Elimination of redundant approval layers and manual routing bottlenecks.</p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-xs">
-              <div className="text-3xl font-extrabold text-emerald-600 font-mono">-40%</div>
-              <h4 className="text-base font-bold text-slate-900 mb-1">Sales Cycle Time</h4>
-              <p className="text-xs text-slate-500 leading-relaxed">Compressed from initial qualification call to commercial sign-off.</p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-xs">
-              <div className="text-3xl font-extrabold text-purple-600 font-mono">+50%</div>
-              <h4 className="text-base font-bold text-slate-900 mb-1">Contract Size (ACV)</h4>
-              <p className="text-xs text-slate-500 leading-relaxed">Driven by multi-product solution packaging rather than single-point sales.</p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-xs">
-              <div className="text-3xl font-extrabold text-indigo-600 font-mono">+80%</div>
-              <h4 className="text-base font-bold text-slate-900 mb-1">System Adoption</h4>
-              <p className="text-xs text-slate-500 leading-relaxed">Verified weekly active utilization of GTM architecture and playbooks.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION 10: FINAL CTA & INTAKE ── */}
-      
-      {/* ── KPI METRICS & MEASUREMENT SPECIFICATION ── */}
-      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-3">
-              <BarChart3 className="w-3.5 h-3.5" />
-              <span>CORE PERFORMANCE METRICS</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
-              Metrics That Matter: Measurable KPI Architecture
-            </h2>
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-              Every Gtm Transformation capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs, formulas, and operational rationales that determine success.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
-                    Leading Metric
-                  </span>
-                  <span className="text-xs font-mono text-slate-500 font-bold">3.5x - 4.5x Forward Cover</span>
-                </div>
-                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Pipeline Coverage Ratio</h3>
-                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
-                    <span className="font-mono font-bold text-slate-900">3.5x–4.2x Forward Quota Coverage</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
-                    <span className="font-mono text-slate-700">Quarterly Commit | Weighted Probability</span>
-                  </div>
-                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
-                    <span className="text-slate-500 font-medium">Confidence Status:</span>
-                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
-                      Verified Actual
-                    </span>
-                  </div>
-                </div>
-                <p className="text-xs text-slate-600 leading-relaxed mb-3">Multiple of sales pipeline required to reliably achieve quarterly ARR targets under varying win rates.</p>
-              </div>
-              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
-                <span className="font-bold text-slate-800">Why it matters:</span> Protects the enterprise against unexpected deal push, macroeconomic delays, and competitive rival actions.
-              </div>
-            </div>
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
-                    Execution Metric
-                  </span>
-                  <span className="text-xs font-mono text-slate-500 font-bold">&gt;35% Strategic Win Rate</span>
-                </div>
-                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Enterprise Win Rate</h3>
-                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
-                    <span className="font-mono font-bold text-slate-900">38%–46% Enterprise Tier-1 Wins</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
-                    <span className="font-mono text-slate-700">Per Quarter | <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Enterprise Win Rate</h3>
-                00k+ ARR Threshold</span>
-                  </div>
-                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
-                    <span className="text-slate-500 font-medium">Confidence Status:</span>
-                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
-                      Verified Actual
-                    </span>
-                  </div>
-                </div>
-                <p className="text-xs text-slate-600 leading-relaxed mb-3">Conversion rate of qualified enterprise deals navigating proposal, security, and procurement review.</p>
-              </div>
-              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
-                <span className="font-bold text-slate-800">Why it matters:</span> Confirms that transformed sales motions and messaging frameworks resonate with executive committees.
-              </div>
-            </div>
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
-                    Velocity Metric
-                  </span>
-                  <span className="text-xs font-mono text-slate-500 font-bold">&lt;90 Days New Motion TTR</span>
-                </div>
-                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Time to Revenue (TTR)</h3>
-                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
-                    <span className="font-mono font-bold text-slate-900">&lt;68 Days from Motion Launch to Contract</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
-                    <span className="font-mono text-slate-700">New Segment Launch | First 10 Deals</span>
-                  </div>
-                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
-                    <span className="text-slate-500 font-medium">Confidence Status:</span>
-                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">
-                      Target Milestone
-                    </span>
-                  </div>
-                </div>
-                <p className="text-xs text-slate-600 leading-relaxed mb-3">Duration required to translate a revised go-to-market strategy into collected revenue contracts.</p>
-              </div>
-              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
-                <span className="font-bold text-slate-800">Why it matters:</span> Validates commercial strategy quickly while preserving working capital and organizational focus.
-              </div>
-            </div>
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
-                    Velocity Metric
-                  </span>
-                  <span className="text-xs font-mono text-slate-500 font-bold">35-50% Cycle Compression</span>
-                </div>
-                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Sales Cycle Duration</h3>
-                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
-                    <span className="font-mono font-bold text-slate-900">42–58 Days Average Cycle</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
-                    <span className="font-mono text-slate-700">Trailing 90 Days | Discovery to Execution</span>
-                  </div>
-                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
-                    <span className="text-slate-500 font-medium">Confidence Status:</span>
-                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
-                      Verified Actual
-                    </span>
-                  </div>
-                </div>
-                <p className="text-xs text-slate-600 leading-relaxed mb-3">End-to-end duration of the customer acquisition process across all functional departments.</p>
-              </div>
-              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
-                <span className="font-bold text-slate-800">Why it matters:</span> Shorter cycle times reduce sales cost-to-serve and protect deals from internal client reorganization risk.
-              </div>
-            </div>
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
-                    Efficiency Metric
-                  </span>
-                  <span className="text-xs font-mono text-slate-500 font-bold">8-14 Month Payback</span>
-                </div>
-                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Customer Acquisition Cost (CAC)</h3>
-                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
-                    <span className="font-mono font-bold text-slate-900">&lt;10.5 Months Gross Margin Payback</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
-                    <span className="font-mono text-slate-700">Trailing 12 Months | Fully Loaded GTM</span>
-                  </div>
-                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
-                    <span className="text-slate-500 font-medium">Confidence Status:</span>
-                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
-                      Verified Actual
-                    </span>
-                  </div>
-                </div>
-                <p className="text-xs text-slate-600 leading-relaxed mb-3">Fully loaded commercial capital required to generate each incremental dollar of ARR.</p>
-              </div>
-              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
-                <span className="font-bold text-slate-800">Why it matters:</span> Determines the sustainability of growth and validates that customer acquisition yields positive ROI.
-              </div>
-            </div>
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold uppercase tracking-wider">
-                    Compounding Metric
-                  </span>
-                  <span className="text-xs font-mono text-slate-500 font-bold">Top-Decile Benchmark</span>
-                </div>
-                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Compound Revenue Growth (CAGR)</h3>
-                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5 mb-3 text-xs">
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-500 font-medium">Enterprise Benchmark:</span>
-                    <span className="font-mono font-bold text-slate-900">32%–48% Annualized Enterprise Growth</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-500 font-medium">Measurement Cadence:</span>
-                    <span className="font-mono text-slate-700">Multi-Year Compounding | Net-New ARR Base</span>
-                  </div>
-                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
-                    <span className="text-slate-500 font-medium">Confidence Status:</span>
-                    <span className="inline-flex items-center font-mono text-[10px] font-semibold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">
-                      Executive Milestone
-                    </span>
-                  </div>
-                </div>
-                <p className="text-xs text-slate-600 leading-relaxed mb-3">Multi-year rate of top-line revenue expansion achieved through transformed operational systems.</p>
-              </div>
-              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
-                <span className="font-bold text-slate-800">Why it matters:</span> Proves the commercial operating system produces durable, compounding growth rather than temporary spikes.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="intake" className="py-20 sm:py-28 bg-slate-50 relative overflow-hidden">
+      {/* ── SECTION 9: EXECUTIVE BRIEFING INTAKE ── */}
+      <section id="intake" className="py-16 sm:py-24 bg-slate-950 text-white relative overflow-hidden border-t border-slate-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
-            <ShieldCheck className="w-3.5 h-3.5" />
-            <span>TRANSFORMATION ARCHITECTURE INTAKE</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-xs font-bold uppercase tracking-widest mb-4">
+            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+            <span>CONFIDENTIAL TRANSFORMATION BRIEFING</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">
-            Ready to Unify and Scale Your Go-to-Market Engine?
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-heading mb-4">
+            Design Your Next-Stage Revenue Operating Model
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-normal">
-            Schedule a confidential GTM transformation diagnostic with our Senior Revenue Architects to model velocity lift and efficiency gains.
+          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            Schedule an architectural session with a Principal Transformation Architect. We evaluate your revenue operating model, sales cycle friction, and cross-functional alignment under mutual NDA.
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <OfferingsIntakeForm
-            pageContext="GTM Transformation Architecture Session"
-            defaultObjective="GTM Transformation"
+            pageContext="GTM Operating Model Transformation"
+            defaultObjective="GTM Strategy & Operating Model Redesign"
           />
         </div>
       </section>

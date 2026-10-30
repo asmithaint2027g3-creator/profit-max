@@ -317,3 +317,4 @@ export const page05RevenueAcceleration: AiSalesCapabilityPageData = {
   closingCtaHeadline: 'Eliminate Deal Slippage and Secure Predictable Revenue Velocity',
   closingCtaDescription: 'Stop letting complex enterprise deals stall in late-stage limbo. Schedule an executive consultation to accelerate your revenue execution.'
 };
+

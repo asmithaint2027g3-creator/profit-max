@@ -340,3 +340,4 @@ export const page03AutonomousSalesEngagement: AiSalesCapabilityPageData = {
   closingCtaHeadline: 'Equip Your Buyers to Sell for You Internally',
   closingCtaDescription: 'Turn slow, fragmented sales conversations into high-velocity consensus. Schedule a briefing to explore Autonomous Sales Engagement.'
 };
+

@@ -5,3 +5,4 @@ import { page08CustomerGrowthIntelligence } from './data/page08CustomerGrowthInt
 export default function CustomerGrowthIntelligencePage() {
   return <AiSalesPageTemplate data={page08CustomerGrowthIntelligence} />;
 }
+

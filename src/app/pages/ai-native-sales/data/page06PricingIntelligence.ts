@@ -317,3 +317,4 @@ export const page06PricingIntelligence: AiSalesCapabilityPageData = {
   closingCtaHeadline: 'Protect Gross Margin Without Sacrificing Sales Velocity',
   closingCtaDescription: 'Replace arbitrary end-of-quarter discounting with dynamic pricing intelligence and rigorous commercial optimization. Schedule an executive briefing.'
 };
+

@@ -409,3 +409,4 @@ export const page04IntelligentSalesAgents: AiSalesCapabilityPageData = {
   closingCtaHeadline: 'Double Your Sales Team’s Active Selling Capacity',
   closingCtaDescription: 'Eliminate repetitive administrative drag with specialized AI agents that research, summarize, coordinate, and coach. Schedule an architectural briefing today.'
 };
+

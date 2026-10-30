@@ -36,16 +36,32 @@ export default function DemandEngineering() {
     document.title = 'Demand Engineering | Predictable Multi-Channel Revenue Systems | ProfitMachines';
     if (location.hash) {
       const id = location.hash.replace('#', '');
-      const el = document.getElementById(id);
-      if (el) {
-        setTimeout(() => {
+      const scrollToElement = () => {
+        const el = document.getElementById(id);
+        if (el) {
           el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 150);
-      }
+        }
+      };
+      scrollToElement();
+      const t1 = setTimeout(scrollToElement, 100);
+      const t2 = setTimeout(scrollToElement, 300);
+      return () => {
+        clearTimeout(t1);
+        clearTimeout(t2);
+      };
     } else {
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [location.hash, location.pathname]);
+
+  const scrollToAnchor = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.history.pushState(null, '', '#' + id);
+    }
+  };
 
   const funnelStages = [
     {
@@ -96,7 +112,27 @@ export default function DemandEngineering() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-white">
+      {/* ── STICKY PAGE SUB-NAV BAR (FOR FAST AUDIT JUMPING) ── */}
+      <nav aria-label="Page Sub Navigation" className="sticky top-16 z-30 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white text-xs">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-11 flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
+          <div className="flex items-center gap-2.5 shrink-0">
+            <span className="font-mono text-blue-400 font-bold">OFFERING 02</span>
+            <span className="font-bold text-slate-200">Demand Engineering</span>
+            <span className="hidden sm:inline text-slate-500">|</span>
+            <span className="hidden sm:inline text-slate-400 font-medium">Pipeline Architecture</span>
+          </div>
+
+          <div className="flex items-center gap-3 shrink-0 text-slate-300 font-medium text-[11px] sm:text-xs">
+            <a href="#abm" onClick={(e) => scrollToAnchor(e, 'abm')} className="hover:text-blue-400 transition-colors">ICP & ABM</a>
+            <a href="#demand-generation" onClick={(e) => scrollToAnchor(e, 'demand-generation')} className="hover:text-blue-400 transition-colors">Demand Engine</a>
+            <a href="#outbound" onClick={(e) => scrollToAnchor(e, 'outbound')} className="hover:text-blue-400 transition-colors">AI Prospecting</a>
+            <a href="#intent-data" onClick={(e) => scrollToAnchor(e, 'intent-data')} className="hover:text-blue-400 transition-colors">Lead Qualification</a>
+            <a href="#content-pipeline" onClick={(e) => scrollToAnchor(e, 'content-pipeline')} className="hover:text-blue-400 transition-colors">Pipeline Generation</a>
+            <a href="#intake" onClick={(e) => scrollToAnchor(e, 'intake')} className="px-2.5 py-1 rounded bg-blue-600 hover:bg-blue-500 text-white font-bold transition-colors">Diagnostic</a>
+          </div>
+        </div>
+      </nav>
       {/* ── SECTION 1: HERO ── */}
       <section className="relative pt-24 pb-20 sm:pt-32 sm:pb-28 bg-slate-950 text-white overflow-hidden">
         {/* Background Image with High-Contrast Dark Protective Overlays to guarantee 100% text readability */}

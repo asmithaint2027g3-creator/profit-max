@@ -317,3 +317,4 @@ export const page01RevenueIntelligence: AiSalesCapabilityPageData = {
   closingCtaHeadline: 'Transform Dark-Funnel Signals into Predictable Revenue Pipeline',
   closingCtaDescription: 'Stop guessing which accounts are in-market. Schedule an executive diagnostic session to evaluate your current revenue intelligence maturity.'
 };
+

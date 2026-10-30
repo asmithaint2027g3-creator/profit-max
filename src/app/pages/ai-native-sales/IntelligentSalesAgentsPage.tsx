@@ -5,3 +5,4 @@ import { page04IntelligentSalesAgents } from './data/page04IntelligentSalesAgent
 export default function IntelligentSalesAgentsPage() {
   return <AiSalesPageTemplate data={page04IntelligentSalesAgents} />;
 }
+

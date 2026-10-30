@@ -5,3 +5,4 @@ import { page07EcosystemRevenueGrowth } from './data/page07EcosystemRevenueGrowt
 export default function EcosystemRevenueGrowthPage() {
   return <AiSalesPageTemplate data={page07EcosystemRevenueGrowth} />;
 }
+

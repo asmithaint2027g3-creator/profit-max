@@ -317,3 +317,4 @@ export const page09AutonomousGtmCommandCenter: AiSalesCapabilityPageData = {
   closingCtaHeadline: 'Take Command of Your Complete Revenue Operating Model',
   closingCtaDescription: 'Unify intelligence, execution, pricing, and forecasting in one predictive executive view. Schedule an executive command briefing today.'
 };
+

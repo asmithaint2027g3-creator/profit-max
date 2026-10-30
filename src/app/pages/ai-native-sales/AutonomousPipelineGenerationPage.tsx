@@ -5,3 +5,4 @@ import { page02AutonomousPipelineGeneration } from './data/page02AutonomousPipel
 export default function AutonomousPipelineGenerationPage() {
   return <AiSalesPageTemplate data={page02AutonomousPipelineGeneration} />;
 }
+

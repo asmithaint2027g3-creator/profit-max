@@ -121,3 +121,4 @@ export interface AiSalesCapabilityPageData {
   closingCtaHeadline: string;
   closingCtaDescription: string;
 }
+

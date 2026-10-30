@@ -31,3 +31,4 @@ export const allAiSalesCapabilityPages = [
   page08CustomerGrowthIntelligence,
   page09AutonomousGtmCommandCenter
 ];
+

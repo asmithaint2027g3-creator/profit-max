@@ -340,3 +340,4 @@ export const page08CustomerGrowthIntelligence: AiSalesCapabilityPageData = {
   closingCtaHeadline: 'Turn Your Existing Customer Base Into Your Primary Growth Engine',
   closingCtaDescription: 'Stop letting churn erode your hard-won revenue. Schedule an executive consultation to evaluate Customer Growth Intelligence.'
 };
+

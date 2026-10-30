@@ -5,3 +5,4 @@ import { page09AutonomousGtmCommandCenter } from './data/page09AutonomousGtmComm
 export default function AutonomousGtmCommandCenterPage() {
   return <AiSalesPageTemplate data={page09AutonomousGtmCommandCenter} />;
 }
+

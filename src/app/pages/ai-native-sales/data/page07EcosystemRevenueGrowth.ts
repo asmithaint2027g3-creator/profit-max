@@ -317,3 +317,4 @@ export const page07EcosystemRevenueGrowth: AiSalesCapabilityPageData = {
   closingCtaHeadline: 'Turn Your Partner Network Into a Scalable Revenue Engine',
   closingCtaDescription: 'Eliminate channel conflict and unlock warm enterprise account overlaps with Ecosystem Revenue Growth. Schedule an alliances briefing today.'
 };
+

@@ -317,3 +317,4 @@ export const page02AutonomousPipelineGeneration: AiSalesCapabilityPageData = {
   closingCtaHeadline: 'Scale Your Qualified Pipeline Without Adding Expensive Headcount',
   closingCtaDescription: 'Replace spray-and-pray outbound cadences with an autonomous, high-conviction pipeline generation engine tailored to your ICP.'
 };
+

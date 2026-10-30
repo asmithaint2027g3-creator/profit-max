@@ -1057,334 +1057,502 @@ export default function Navigation() {
                 {
                     id: 'revenue-intelligence',
                     title: 'Revenue Intelligence',
-                    desc: 'Intent telemetry, real-time customer 360, competitive displacement signals, and multi-cloud data sync',
+                    desc: 'Buyer intent, account context, stakeholder mapping, and real-time market signals.',
                     path: '/ai-native-sales/revenue-intelligence',
-                    badge: 'Pillar 01',
-                    icon: Activity,
+                    badge: '',
+                    icon: Radar,
                     columns: [
                         {
-                            header: 'Intent & Scoring',
-                            badge: 'Real-Time',
-                            icon: Activity,
+                            header: 'Intent & Account Context',
+                            badge: 'Telemetry',
+                            icon: Radar,
                             cards: [
                                 {
-                                    title: 'Buyer Intent Detection',
+                                    title: 'Buyer Intelligence',
                                     description: 'Surfaces dark-funnel buying surges and vendor research 60-90 days before competitors.',
-                                    path: '/ai-native-sales/revenue-intelligence',
-                                    badge: '40+ Feeds',
+                                    path: '/ai-native-sales/revenue-intelligence#buyer-intelligence',
+                                    badge: 'Intent Velocity',
                                     icon: Activity,
                                     tags: ['Dark Funnel', 'Intent Surges']
                                 },
                                 {
-                                    title: 'Predictive Lead Scoring',
-                                    description: 'Ranks accounts by mathematical close probability rather than subjective criteria.',
-                                    path: '/ai-native-sales/revenue-intelligence',
-                                    badge: '98% Precision',
-                                    icon: BarChart3,
-                                    tags: ['Neural ICP', 'Close Propensity']
+                                    title: 'Account Intelligence',
+                                    description: 'Synthesizes enterprise 10-Ks, technographic stacks, and strategic initiatives.',
+                                    path: '/ai-native-sales/revenue-intelligence#account-intelligence',
+                                    badge: 'Account 360',
+                                    icon: Layers,
+                                    tags: ['SEC Filings', 'Tech Stack']
                                 }
                             ]
                         },
                         {
-                            header: 'Customer 360 & Signals',
-                            badge: 'Telemetry',
-                            icon: BrainCircuit,
+                            header: 'Committees & Signals',
+                            badge: 'Multi-Thread',
+                            icon: Users,
                             cards: [
                                 {
-                                    title: 'Customer Intelligence Graph',
-                                    description: 'Unified cross-system knowledge graph linking product usage, support tickets, and CRM records.',
-                                    path: '/ai-native-sales/revenue-intelligence',
-                                    badge: 'Unified 360',
-                                    icon: Layers,
-                                    tags: ['Knowledge Graph', 'Real-Time Sync']
+                                    title: 'Buying Committee Intelligence',
+                                    description: 'Maps economic buyers, technical evaluators, champions, and missing committee personas.',
+                                    path: '/ai-native-sales/revenue-intelligence#buying-committee-intelligence',
+                                    badge: 'Stakeholder Graph',
+                                    icon: Users,
+                                    tags: ['Consensus', 'Influence Map']
                                 },
                                 {
-                                    title: 'Market & Competitive Signals',
-                                    description: 'Algorithmic monitoring of rival pricing shifts, executive hiring, and regulatory triggers.',
-                                    path: '/ai-native-sales/revenue-intelligence',
-                                    badge: 'Displacement',
+                                    title: 'Market Signals',
+                                    description: 'Continuous monitoring of rival pricing shifts, executive hiring, and regulatory triggers.',
+                                    path: '/ai-native-sales/revenue-intelligence#market-signals',
+                                    badge: 'Macro Telemetry',
                                     icon: ShieldCheck,
-                                    tags: ['Rival Teardowns', 'Hiring Spikes']
+                                    tags: ['Triggers', 'Displacement']
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    id: 'prospecting-pipeline',
-                    title: 'AI Prospecting & Pipeline',
-                    desc: 'Autonomous lead discovery, verified committee enrichment, hyper-personalized outreach, and meeting booking',
-                    path: '/ai-native-sales/prospecting',
-                    badge: 'Pillar 02',
+                    id: 'autonomous-pipeline-generation',
+                    title: 'Autonomous Pipeline Generation',
+                    desc: 'ICP discovery, autonomous prospecting swarms, and pipeline acceleration.',
+                    path: '/ai-native-sales/autonomous-pipeline-generation',
+                    badge: '',
                     icon: Target,
                     columns: [
                         {
-                            header: 'Discovery & Enrichment',
-                            badge: 'Deep Search',
+                            header: 'Discovery & Swarms',
+                            badge: 'Autonomous',
                             icon: Target,
                             cards: [
                                 {
-                                    title: 'Autonomous Lead Discovery',
-                                    description: 'Identifies in-market accounts and decision-maker committees across 50+ real-time feeds.',
-                                    path: '/ai-native-sales/prospecting',
-                                    badge: '3-5X Velocity',
+                                    title: 'Pipeline Generation AI',
+                                    description: 'Autonomous account matching, lead enrichment, and neural qualification scoring.',
+                                    path: '/ai-native-sales/autonomous-pipeline-generation#pipeline-generation-ai',
+                                    badge: 'Account Discovery',
                                     icon: Target,
-                                    tags: ['Contact Verification', 'Dark Funnel']
+                                    tags: ['Neural ICP', 'Close Propensity']
                                 },
                                 {
-                                    title: 'Account Data Enrichment',
-                                    description: 'Synthesizes 10-Ks, technographic stacks, and funding disclosures without human scraping.',
-                                    path: '/ai-native-sales/prospecting',
-                                    badge: '50+ Sources',
-                                    icon: Layers,
-                                    tags: ['Technographics', 'Committee Mapping']
+                                    title: 'AI Prospecting Swarm',
+                                    description: 'Multi-agent swarms researching prospects and drafting hyper-personalized outreach.',
+                                    path: '/ai-native-sales/autonomous-pipeline-generation#ai-prospecting-swarm',
+                                    badge: 'Multi-Agent',
+                                    icon: Bot,
+                                    tags: ['Agent Fleet', 'Personalized Outbound']
                                 }
                             ]
                         },
                         {
-                            header: 'Outreach & Qualification',
-                            badge: 'Always-On',
-                            icon: Zap,
-                            cards: [
-                                {
-                                    title: 'Hyper-Personalized Outreach',
-                                    description: 'Context-driven email, LinkedIn, and conversational voice that lifts positive replies +150%.',
-                                    path: '/ai-native-sales/prospecting',
-                                    badge: '+150% Replies',
-                                    icon: Zap,
-                                    tags: ['Context Synthesis', 'Voice & Email']
-                                },
-                                {
-                                    title: 'Autonomous Meeting Booking',
-                                    description: 'Converses with prospects, overcomes objections, and books SQLs directly onto AE calendars.',
-                                    path: '/ai-native-sales/prospecting',
-                                    badge: '75-80% Auto',
-                                    icon: CheckCircle2,
-                                    tags: ['BANT / MEDDPICC', 'Calendar Sync']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'sales-execution',
-                    title: 'AI Sales Execution',
-                    desc: 'MEDDPICC opportunity scoring, instant proposal generation, discount governance, and live call battlecards',
-                    path: '/ai-native-sales/sales-execution',
-                    badge: 'Pillar 03',
-                    icon: Zap,
-                    columns: [
-                        {
-                            header: 'Opportunity & Proposals',
+                            header: 'ICP & Acceleration',
                             badge: 'Velocity',
                             icon: Zap,
                             cards: [
                                 {
-                                    title: 'MEDDPICC Deal Scoring',
-                                    description: 'Dynamic win probability and risk prediction flagging stalled deals weeks before quarter end.',
-                                    path: '/ai-native-sales/sales-execution',
-                                    badge: '90%+ Forecast',
-                                    icon: ShieldCheck,
-                                    tags: ['Risk Prediction', 'Stage Gates']
+                                    title: 'ICP Discovery',
+                                    description: 'Empirical analysis of closed-won cohorts and customer LTV to refine target ICP.',
+                                    path: '/ai-native-sales/autonomous-pipeline-generation#icp-discovery',
+                                    badge: 'Mathematical ICP',
+                                    icon: BarChart3,
+                                    tags: ['LTV:CAC', 'Margin Fit']
                                 },
                                 {
-                                    title: 'AI Proposal & RFP Automation',
-                                    description: 'Generates bespoke 40-page enterprise proposals and responds to complex security RFPs in minutes.',
-                                    path: '/ai-native-sales/sales-execution',
-                                    badge: '80% Faster',
-                                    icon: FileText,
-                                    tags: ['Instant CPQ', 'DocuSign Ready']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Pricing & Enablement',
-                            badge: 'Margin Yield',
-                            icon: DollarSign,
-                            cards: [
-                                {
-                                    title: 'Pricing & Discount Governance',
-                                    description: 'Preserves 5-10 points of gross margin via algorithmic concession trading and discount rules.',
-                                    path: '/ai-native-sales/sales-execution',
-                                    badge: '5-10 Pts Yield',
-                                    icon: DollarSign,
-                                    tags: ['Margin Defense', 'Concessions']
-                                },
-                                {
-                                    title: 'In-Call Conversation Copilot',
-                                    description: 'Pushes live battlecards and technical counter-arguments during active discovery sessions.',
-                                    path: '/ai-native-sales/sales-execution',
-                                    badge: '+10-15% Wins',
-                                    icon: Sparkles,
-                                    tags: ['Real-Time HUD', 'Competitive Rebuttal']
+                                    title: 'Pipeline Acceleration',
+                                    description: 'Identifies friction bottlenecks and coordinates instant meeting scheduling.',
+                                    path: '/ai-native-sales/autonomous-pipeline-generation#pipeline-acceleration',
+                                    badge: 'Stage Velocity',
+                                    icon: Zap,
+                                    tags: ['Show Rates', 'Instant Booking']
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    id: 'revenue-operations',
-                    title: 'AI Revenue Operations',
-                    desc: 'Zero-touch CRM data hygiene, board-grade revenue forecasting (<5% variance), and workflow automation',
-                    path: '/ai-native-sales/revops',
-                    badge: 'Pillar 04',
-                    icon: Cpu,
+                    id: 'autonomous-sales-engagement',
+                    title: 'Autonomous Sales Engagement',
+                    desc: 'Hyper-personalization, conversation insights, buyer enablement, and consensus acceleration.',
+                    path: '/ai-native-sales/autonomous-sales-engagement',
+                    badge: '',
+                    icon: Zap,
                     columns: [
                         {
-                            header: 'CRM & Forecasting',
-                            badge: 'Zero Friction',
-                            icon: Cpu,
+                            header: 'Personalization & Speech',
+                            badge: 'Contextual',
+                            icon: Zap,
                             cards: [
                                 {
-                                    title: 'CRM Data Governance',
-                                    description: 'Zero-touch activity capture achieving 95%+ CRM accuracy without manual sales rep data entry.',
-                                    path: '/ai-native-sales/revops',
-                                    badge: '95%+ Clean',
-                                    icon: Layers,
-                                    tags: ['Zero-Touch Logging', 'Deduplication']
+                                    title: 'Hyper-Personalization Engine',
+                                    description: 'Role-specific commercial messaging grounded in corporate filings and strategic goals.',
+                                    path: '/ai-native-sales/autonomous-sales-engagement#hyper-personalization-engine',
+                                    badge: 'Contextual',
+                                    icon: Sparkles,
+                                    tags: ['Role-Tailored', '1-on-1 Pitch']
                                 },
                                 {
-                                    title: 'Predictive Board Forecasting',
-                                    description: 'Deterministic Bayesian forecasting reducing quarterly variance below 5% for executive teams.',
-                                    path: '/ai-native-sales/revops',
-                                    badge: '<5% Variance',
-                                    icon: BarChart3,
-                                    tags: ['Board Decks', 'Capacity Models']
+                                    title: 'Conversation Intelligence',
+                                    description: 'Extracts action items, budget signals, and sentiment shifts from virtual meetings.',
+                                    path: '/ai-native-sales/autonomous-sales-engagement#conversation-intelligence',
+                                    badge: 'Speech Analytics',
+                                    icon: Activity,
+                                    tags: ['Action Items', 'Sentiment']
                                 }
                             ]
                         },
                         {
-                            header: 'Analytics & Automation',
-                            badge: 'Efficiency',
-                            icon: Sliders,
+                            header: 'Enablement & Consensus',
+                            badge: 'Consensus',
+                            icon: CheckCircle2,
                             cards: [
                                 {
-                                    title: 'Funnel Conversion Topology',
-                                    description: 'Identifies stage bottlenecks and leaky conversions, improving pipeline progression by 25-30%.',
-                                    path: '/ai-native-sales/revops',
-                                    badge: '+25-30% Conv',
-                                    icon: TrendingUp,
-                                    tags: ['Funnel Leakage', 'Stage Velocity']
+                                    title: 'Buyer Enablement',
+                                    description: 'Collaborative digital sales rooms equipping champions with custom business cases.',
+                                    path: '/ai-native-sales/autonomous-sales-engagement#buyer-enablement',
+                                    badge: 'Digital Rooms',
+                                    icon: Layers,
+                                    tags: ['ROI Models', 'Security Dossier']
                                 },
                                 {
-                                    title: 'Commission & Workflow Engine',
-                                    description: 'Automates comp calculations, territory rebalancing, and operational SLAs in sub-seconds.',
-                                    path: '/ai-native-sales/revops',
-                                    badge: '60% Admin Cut',
-                                    icon: Clock,
-                                    tags: ['Comp Automation', 'Territory Routing']
+                                    title: 'Consensus Acceleration',
+                                    description: 'Resolves conflicting stakeholder objections and drives unanimous agreement.',
+                                    path: '/ai-native-sales/autonomous-sales-engagement#consensus-acceleration',
+                                    badge: 'Committee Alignment',
+                                    icon: CheckCircle2,
+                                    tags: ['Unanimity', 'Objection Resolution']
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    id: 'sales-agents',
-                    title: 'AI Sales Agents',
-                    desc: 'Autonomous 24/7 digital workforce: AI SDR, Sales Copilot, RevOps Agent, and Customer Success Agent',
-                    path: '/ai-native-sales/agents',
-                    badge: 'Pillar 05',
+                    id: 'intelligent-sales-agents',
+                    title: 'Intelligent Sales Agents',
+                    desc: 'Specialized SDR, BDR, AE, and RevOps agents for continuous workflow execution.',
+                    path: '/ai-native-sales/intelligent-sales-agents',
+                    badge: '',
                     icon: Bot,
                     columns: [
                         {
-                            header: 'Outbound & Deal Copilots',
-                            badge: 'Front-Line',
+                            header: 'Specialized Agent Fleet',
+                            badge: 'Autonomous',
                             icon: Bot,
                             cards: [
                                 {
-                                    title: 'Autonomous AI SDR Agent',
-                                    description: 'Always-on agent discovering accounts, drafting tailored outreach, and booking qualified discovery sessions.',
-                                    path: '/ai-native-sales/agents',
-                                    badge: '75-80% SQLs',
+                                    title: 'SDR & BDR Agents',
+                                    description: 'Handles early-stage research, inbound qualification, and outbound campaigns.',
+                                    path: '/ai-native-sales/intelligent-sales-agents#sdr-agents',
+                                    badge: 'Prospecting Swarm',
                                     icon: Bot,
-                                    tags: ['Hunter-09', '24/7 Pipeline']
+                                    tags: ['Inbound/Outbound', 'Territory BDR']
                                 },
                                 {
-                                    title: 'AI Sales Copilot / Assistant',
-                                    description: 'In-call battlecard delivery, instant proposal generation, and zero-touch CRM milestone sync.',
-                                    path: '/ai-native-sales/agents',
-                                    badge: '15+ hrs Saved',
+                                    title: 'Account Executive Agent',
+                                    description: 'Pre-call briefs, meeting summaries, mutual action plans, and negotiation co-pilot.',
+                                    path: '/ai-native-sales/intelligent-sales-agents#account-executive-agent',
+                                    badge: 'Deal Co-Pilot',
                                     icon: Sparkles,
-                                    tags: ['Tactical-04', 'Meeting Copilot']
+                                    tags: ['Pre-Call Briefs', 'Mutual Plans']
                                 }
                             ]
                         },
                         {
-                            header: 'Ops & Retention Agents',
-                            badge: 'Back-Office',
-                            icon: ShieldCheck,
+                            header: 'Operations & Optimization',
+                            badge: 'Self-Learning',
+                            icon: Cpu,
                             cards: [
                                 {
-                                    title: 'AI RevOps Guardian',
-                                    description: 'Continuous data hygiene, automated forecast recalibration, and pipeline anomaly detection.',
-                                    path: '/ai-native-sales/agents',
-                                    badge: '99.9% Sync',
+                                    title: 'RevOps & Revenue Strategist',
+                                    description: 'Maintains zero-admin CRM hygiene and simulates quarterly revenue capacity.',
+                                    path: '/ai-native-sales/intelligent-sales-agents#revops-agent',
+                                    badge: 'Zero Admin',
                                     icon: Cpu,
-                                    tags: ['Orchestrate-02', 'Audit Guardrails']
+                                    tags: ['CRM Hygiene', 'Capacity Simulation']
                                 },
                                 {
-                                    title: 'AI Customer Success Agent',
-                                    description: 'Monitors product consumption telemetry, alerts on churn risks, and triggers upsell sequences.',
-                                    path: '/ai-native-sales/agents',
-                                    badge: '+20-30% NRR',
-                                    icon: HeartHandshake,
-                                    tags: ['Retention-07', 'Expansion Signals']
+                                    title: 'Sales Optimization & Next Best Action',
+                                    description: 'Daily prioritized action lists and continuous empirical sales coaching.',
+                                    path: '/ai-native-sales/intelligent-sales-agents#next-best-action',
+                                    badge: 'Next Best Action',
+                                    icon: TrendingUp,
+                                    tags: ['Ramp Compression', 'Daily Cockpit']
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    id: 'customer-growth',
-                    title: 'Customer Growth',
-                    desc: 'Predictive churn prevention, white-space account expansion, automated renewals, and 120%+ NRR pacing',
-                    path: '/ai-native-sales/customer-growth',
-                    badge: 'Pillar 06',
-                    icon: HeartHandshake,
+                    id: 'revenue-acceleration',
+                    title: 'Revenue Acceleration',
+                    desc: 'Deal intelligence, deal war rooms, risk detection, and sales cycle optimization.',
+                    path: '/ai-native-sales/revenue-acceleration',
+                    badge: '',
+                    icon: TrendingUp,
                     columns: [
                         {
-                            header: 'Health & Churn Prevention',
-                            badge: 'Retention',
-                            icon: HeartHandshake,
+                            header: 'Deal Health & War Rooms',
+                            badge: 'Telemetry',
+                            icon: TrendingUp,
                             cards: [
                                 {
-                                    title: 'Customer Health Surveillance',
-                                    description: 'Continuous multi-factor telemetry detecting silent customer disengagement 90 days ahead.',
-                                    path: '/ai-native-sales/customer-growth',
-                                    badge: '15-20% Cut',
+                                    title: 'Deal Intelligence',
+                                    description: 'Multivariate scoring across committee coverage, response latency, and health.',
+                                    path: '/ai-native-sales/revenue-acceleration#deal-intelligence',
+                                    badge: 'Multivariate Health',
                                     icon: Activity,
-                                    tags: ['Telemetry 360', 'Sponsor Alerts']
+                                    tags: ['Scorecards', 'Early Warning']
                                 },
                                 {
-                                    title: 'Churn Prediction & Mitigation',
-                                    description: 'Prescriptive early warning playbooks preventing gross revenue and logo churn.',
-                                    path: '/ai-native-sales/customer-growth',
-                                    badge: '90-Day Warning',
-                                    icon: ShieldCheck,
-                                    tags: ['Prescriptive Action', 'Zero Blindspots']
+                                    title: 'Deal War Room',
+                                    description: 'Collaborative command center uniting exec sponsors, legal, and sales engineering.',
+                                    path: '/ai-native-sales/revenue-acceleration#deal-war-room',
+                                    badge: 'Strategic Close',
+                                    icon: Users,
+                                    tags: ['Cross-Functional', 'Task Sync']
                                 }
                             ]
                         },
                         {
-                            header: 'Expansion & Renewals',
-                            badge: '120%+ NRR',
-                            icon: TrendingUp,
+                            header: 'Risk & Cycle Optimization',
+                            badge: 'Velocity',
+                            icon: ShieldCheck,
                             cards: [
                                 {
-                                    title: 'White-Space Account Expansion',
-                                    description: 'Maps unpenetrated business units and seat thresholds to drive 20-30% expansion revenue.',
-                                    path: '/ai-native-sales/customer-growth',
-                                    badge: '+20-30% NRR',
-                                    icon: TrendingUp,
-                                    tags: ['Land & Expand', 'License Pacing']
+                                    title: 'Deal Risk Analysis',
+                                    description: 'Detects single-threading, champion turnover, and competitor stealth pilots.',
+                                    path: '/ai-native-sales/revenue-acceleration#deal-risk-analysis',
+                                    badge: 'Predictive Radar',
+                                    icon: AlertCircle,
+                                    tags: ['Stagnation', 'Blocker Detection']
                                 },
                                 {
-                                    title: 'Automated Renewal Execution',
-                                    description: 'Commercial term optimization converting annual contracts into 2- and 3-year recurring commitments.',
-                                    path: '/ai-native-sales/customer-growth',
-                                    badge: '95%+ Renewals',
-                                    icon: CheckCircle2,
-                                    tags: ['Multi-Year Terms', 'Escalators']
+                                    title: 'Sales Cycle Optimization',
+                                    description: 'Identifies avoidable bottlenecks in legal, security, and proposal reviews.',
+                                    path: '/ai-native-sales/revenue-acceleration#sales-cycle-optimization',
+                                    badge: 'Cycle Compression',
+                                    icon: Clock,
+                                    tags: ['Stage Duration', 'Bottlenecks']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'pricing-intelligence',
+                    title: 'Pricing Intelligence',
+                    desc: 'Dynamic pricing, margin waterfalls, modular offer packaging, and deal desk governance.',
+                    path: '/ai-native-sales/pricing-intelligence',
+                    badge: '',
+                    icon: DollarSign,
+                    columns: [
+                        {
+                            header: 'Dynamic Pricing & Margin',
+                            badge: 'Economics',
+                            icon: DollarSign,
+                            cards: [
+                                {
+                                    title: 'Dynamic Pricing',
+                                    description: 'Calculates optimal price guidance corridors based on willingness to pay.',
+                                    path: '/ai-native-sales/pricing-intelligence#dynamic-pricing',
+                                    badge: 'WTP Corridor',
+                                    icon: DollarSign,
+                                    tags: ['Willingness to Pay', 'Discount Bounds']
+                                },
+                                {
+                                    title: 'Margin Intelligence',
+                                    description: 'Comprehensive deal profitability models including cloud hosting and support costs.',
+                                    path: '/ai-native-sales/pricing-intelligence#margin-intelligence',
+                                    badge: 'Contribution Margin',
+                                    icon: BarChart3,
+                                    tags: ['Cost to Serve', 'Hosting Economics']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Packaging & Deal Desk',
+                            badge: 'Governance',
+                            icon: ShieldCheck,
+                            cards: [
+                                {
+                                    title: 'Offer Optimization',
+                                    description: 'Three-tier proposal packaging (Good/Better/Best) matched to customer maturity.',
+                                    path: '/ai-native-sales/pricing-intelligence#offer-optimization',
+                                    badge: 'Modular Bundles',
+                                    icon: Layers,
+                                    tags: ['Good/Better/Best', 'Choice Arch']
+                                },
+                                {
+                                    title: 'Commercial Optimization',
+                                    description: 'Automated deal desk approval engine evaluating balanced concession trade-offs.',
+                                    path: '/ai-native-sales/pricing-intelligence#commercial-optimization',
+                                    badge: 'Fast Approvals',
+                                    icon: ShieldCheck,
+                                    tags: ['Concession Trades', 'Deal Desk']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'ecosystem-revenue-growth',
+                    title: 'Ecosystem Revenue Growth',
+                    desc: 'Partner intelligence, partner revenue OS, relationship graphs, and co-selling.',
+                    path: '/ai-native-sales/ecosystem-revenue-growth',
+                    badge: '',
+                    icon: Network,
+                    columns: [
+                        {
+                            header: 'Partner Intelligence & Co-Sell',
+                            badge: 'Alliances',
+                            icon: Network,
+                            cards: [
+                                {
+                                    title: 'Partner Intelligence',
+                                    description: 'Scores ecosystem partners across market alignment, overlap, and certification.',
+                                    path: '/ai-native-sales/ecosystem-revenue-growth#partner-intelligence',
+                                    badge: 'Scoring Matrix',
+                                    icon: Network,
+                                    tags: ['Tiering Matrix', 'Competency']
+                                },
+                                {
+                                    title: 'Partner Revenue OS',
+                                    description: 'Shared co-selling environment for joint planning, deal registration, and SLAs.',
+                                    path: '/ai-native-sales/ecosystem-revenue-growth#partner-revenue-os',
+                                    badge: 'Co-Sell Execution',
+                                    icon: Handshake,
+                                    tags: ['Deal Reg', 'Conflict-Free']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Ecosystem Graphs & Impact',
+                            badge: 'Attribution',
+                            icon: Globe,
+                            cards: [
+                                {
+                                    title: 'Ecosystem Intelligence Graph',
+                                    description: 'Privacy-safe relationship mapping linking target accounts to partner relationships.',
+                                    path: '/ai-native-sales/ecosystem-revenue-growth#ecosystem-intelligence-graph',
+                                    badge: 'Account Overlaps',
+                                    icon: Globe,
+                                    tags: ['Warm Intros', 'Data Escrow']
+                                },
+                                {
+                                    title: 'Ecosystem Growth Engine',
+                                    description: 'Multi-touch attribution models quantifying partner-sourced and influenced ARR.',
+                                    path: '/ai-native-sales/ecosystem-revenue-growth#ecosystem-growth-engine',
+                                    badge: 'Multi-Touch ROI',
+                                    icon: TrendingUp,
+                                    tags: ['Influence Share', 'Attribution']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'customer-growth-intelligence',
+                    title: 'Customer Growth Intelligence',
+                    desc: 'Expansion whitespace, cross-sell, proactive upsell, and 180-day renewal intelligence.',
+                    path: '/ai-native-sales/customer-growth-intelligence',
+                    badge: '',
+                    icon: Users,
+                    columns: [
+                        {
+                            header: 'Expansion & Whitespace',
+                            badge: 'Land & Expand',
+                            icon: Users,
+                            cards: [
+                                {
+                                    title: 'Expansion Intelligence',
+                                    description: 'Maps organizational hierarchy and whitespace across enterprise divisions.',
+                                    path: '/ai-native-sales/customer-growth-intelligence#expansion-intelligence',
+                                    badge: 'Whitespace Map',
+                                    icon: Users,
+                                    tags: ['Subsidiary Trees', 'Multi-Division']
+                                },
+                                {
+                                    title: 'Cross-Sell & Upsell',
+                                    description: 'Recommends complementary platform modules and manages proactive tier progression.',
+                                    path: '/ai-native-sales/customer-growth-intelligence#cross-sell',
+                                    badge: 'Tier Progression',
+                                    icon: TrendingUp,
+                                    tags: ['Product Affinity', 'Usage Limits']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Retention & Renewals',
+                            badge: '180-Day Radar',
+                            icon: ShieldCheck,
+                            cards: [
+                                {
+                                    title: 'Renewal Intelligence',
+                                    description: 'Predicts renewal outcomes 180 days in advance via adoption and health telemetry.',
+                                    path: '/ai-native-sales/customer-growth-intelligence#renewal-intelligence',
+                                    badge: 'Early Warning',
+                                    icon: Clock,
+                                    tags: ['Predictable Renewals', 'GRR Focus']
+                                },
+                                {
+                                    title: 'Customer Retention',
+                                    description: 'Automated intervention workflows that mobilize CSMs when relationship health dips.',
+                                    path: '/ai-native-sales/customer-growth-intelligence#customer-retention',
+                                    badge: 'Churn Mitigation',
+                                    icon: HeartHandshake,
+                                    tags: ['Health Scores', 'Rescue Plays']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'autonomous-gtm-command-center',
+                    title: 'Autonomous GTM Command Center',
+                    desc: 'Revenue command center, self-optimizing GTM AI, executive copilot, and forecast intelligence.',
+                    path: '/ai-native-sales/autonomous-gtm-command-center',
+                    badge: '',
+                    icon: Cpu,
+                    columns: [
+                        {
+                            header: 'Command Cockpit & AI',
+                            badge: 'Executive',
+                            icon: Cpu,
+                            cards: [
+                                {
+                                    title: 'Revenue Command Center',
+                                    description: 'Consolidates pipeline, deal health, margin, and retention into a single cockpit.',
+                                    path: '/ai-native-sales/autonomous-gtm-command-center#revenue-command-center',
+                                    badge: 'Unified Truth',
+                                    icon: Cpu,
+                                    tags: ['Consolidated View', 'Data Graph']
+                                },
+                                {
+                                    title: 'Self-Optimizing GTM AI',
+                                    description: 'Closed-loop learning analyzing win/loss patterns to recommend process tuning.',
+                                    path: '/ai-native-sales/autonomous-gtm-command-center#self-optimizing-gtm-ai',
+                                    badge: 'Closed Loop',
+                                    icon: RefreshCw,
+                                    tags: ['Playbook Tuning', 'Territory Equity']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Copilot & Forecasting',
+                            badge: 'Predictive',
+                            icon: BarChart3,
+                            cards: [
+                                {
+                                    title: 'Executive Revenue Copilot',
+                                    description: 'Queries verified enterprise data models in plain English with instant SQL citations.',
+                                    path: '/ai-native-sales/autonomous-gtm-command-center#executive-revenue-copilot',
+                                    badge: 'Query Telemetry',
+                                    icon: Sparkles,
+                                    tags: ['Natural Language', 'Instant SQL']
+                                },
+                                {
+                                    title: 'Forecast Intelligence',
+                                    description: 'Deterministic machine learning forecasting reducing quarterly variance to <3.5%.',
+                                    path: '/ai-native-sales/autonomous-gtm-command-center#forecast-intelligence',
+                                    badge: '<3.5% Variance',
+                                    icon: BarChart3,
+                                    tags: ['Neural Commit', 'Slippage Radar']
                                 }
                             ]
                         }

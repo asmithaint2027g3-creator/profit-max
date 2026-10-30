@@ -75,6 +75,14 @@ const IcoTrustPerformance = lazy(() => import('./pages/ico/IcoTrustPerformance')
 const IcoSalesEnablement = lazy(() => import('./pages/ico/IcoSalesEnablement'));
 const AiNativeSalesHub = lazy(() => import('./pages/ai-native-sales/AiNativeSalesHub'));
 const RevenueIntelligencePage = lazy(() => import('./pages/ai-native-sales/RevenueIntelligencePage'));
+const AutonomousPipelineGenerationPage = lazy(() => import('./pages/ai-native-sales/AutonomousPipelineGenerationPage'));
+const AutonomousSalesEngagementPage = lazy(() => import('./pages/ai-native-sales/AutonomousSalesEngagementPage'));
+const IntelligentSalesAgentsPage = lazy(() => import('./pages/ai-native-sales/IntelligentSalesAgentsPage'));
+const AiRevenueAccelerationPage = lazy(() => import('./pages/ai-native-sales/RevenueAccelerationPage'));
+const PricingIntelligencePage = lazy(() => import('./pages/ai-native-sales/PricingIntelligencePage'));
+const EcosystemRevenueGrowthPage = lazy(() => import('./pages/ai-native-sales/EcosystemRevenueGrowthPage'));
+const CustomerGrowthIntelligencePage = lazy(() => import('./pages/ai-native-sales/CustomerGrowthIntelligencePage'));
+const AutonomousGtmCommandCenterPage = lazy(() => import('./pages/ai-native-sales/AutonomousGtmCommandCenterPage'));
 const ProspectingPipelinePage = lazy(() => import('./pages/ai-native-sales/ProspectingPipelinePage'));
 const SalesExecutionPage = lazy(() => import('./pages/ai-native-sales/SalesExecutionPage'));
 const RevenueOperationsPage = lazy(() => import('./pages/ai-native-sales/RevenueOperationsPage'));
@@ -195,6 +203,14 @@ export default function App() {
               <Route path="/ai-native-sales" element={<AiNativeSalesHub />} />
               <Route path="/ai-sales" element={<AiNativeSalesHub />} />
               <Route path="/ai-native-sales/revenue-intelligence" element={<RevenueIntelligencePage />} />
+              <Route path="/ai-native-sales/autonomous-pipeline-generation" element={<AutonomousPipelineGenerationPage />} />
+              <Route path="/ai-native-sales/autonomous-sales-engagement" element={<AutonomousSalesEngagementPage />} />
+              <Route path="/ai-native-sales/intelligent-sales-agents" element={<IntelligentSalesAgentsPage />} />
+              <Route path="/ai-native-sales/revenue-acceleration" element={<AiRevenueAccelerationPage />} />
+              <Route path="/ai-native-sales/pricing-intelligence" element={<PricingIntelligencePage />} />
+              <Route path="/ai-native-sales/ecosystem-revenue-growth" element={<EcosystemRevenueGrowthPage />} />
+              <Route path="/ai-native-sales/customer-growth-intelligence" element={<CustomerGrowthIntelligencePage />} />
+              <Route path="/ai-native-sales/autonomous-gtm-command-center" element={<AutonomousGtmCommandCenterPage />} />
               <Route path="/ai-native-sales/prospecting" element={<ProspectingPipelinePage />} />
               <Route path="/ai-native-sales/sales-execution" element={<SalesExecutionPage />} />
               <Route path="/ai-native-sales/revops" element={<RevenueOperationsPage />} />

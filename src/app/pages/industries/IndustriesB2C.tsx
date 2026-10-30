@@ -2,178 +2,628 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   ShoppingBag, ArrowRight, ArrowUpRight, TrendingUp, ShieldCheck,
-  BarChart3, ChevronRight, Sparkles, AlertCircle, CheckCircle2, Users
+  BarChart3, ChevronRight, Sparkles, AlertCircle, CheckCircle2, Users,
+  Activity, Search, DollarSign, Layers, RefreshCw, HelpCircle,
+  Zap, Eye, Settings, Network, Compass, ShoppingCart, Percent, HeartHandshake
 } from 'lucide-react';
 
-const TAB_IDS = ['challenges', 'solution', 'impact'];
+const sectionNav = [
+  { id: 'challenges', label: 'Consumer Challenges' },
+  { id: 'journey', label: 'Journey Map' },
+  { id: 'omnichannel', label: 'Omnichannel Lead Gen' },
+  { id: 'lookalike', label: 'Lookalike Auto-Scaling' },
+  { id: 'offers', label: 'Personalized Offers' },
+  { id: 'retargeting', label: 'Behavioral Retargeting' },
+  { id: 'dashboard', label: 'Growth Dashboard' },
+  { id: 'experiments', label: 'Experimentation' },
+  { id: 'faq', label: 'FAQ' },
+];
 
-const sections = [
+const challenges = [
   {
-    id: 'omnichannel',
-    eyebrow: 'AI OMNICHANNEL LEAD GENERATION',
-    title: 'Omnichannel Lead Generation',
-    subtitle: 'Automate campaign execution across social, search, and email — optimizing budget and maximizing ROAS in real time.',
-    icon: BarChart3,
-    color: 'blue',
-    features: ['Multi-Channel Ad Sync', 'Real-Time CPL Optimization', 'Programmatic Budget Allocation', 'Social Lead Capture'],
-    tabs: {
-      challenges: { heading: 'Consumer Acquisition Challenges', items: ['Capturing high-intent consumer leads across fragmented channels', 'Minimizing ad spend waste from low-converting placements', 'Dynamic creative optimization without manual intervention'] },
-      solution: { heading: 'Autonomous Channel Execution', items: ['Automate campaign execution across social, search, and email, optimizing budget in real-time', 'AI dynamically shifts spend toward highest-converting placements as data arrives', 'Creative rotation and audience refresh runs continuously without human oversight'] },
-      impact: { heading: 'ROAS Outcomes', items: ['Lowest-cost conversions with maximized return on ad spend (ROAS)', 'Unified attribution across all channels for true cost-per-acquisition visibility', 'Significant reduction in manual campaign management overhead'] }
-    },
-    situations: ['High customer acquisition costs across ad networks', 'Siloed social and search channels producing inconsistent results']
+    title: 'Surging Customer Acquisition Costs',
+    cause: 'Rising ad network CPMs, platform privacy changes, and auction saturation dilute paid media efficiency across primary consumer channels.',
+    consequence: 'Gross margins erode and customer lifetime value cannot comfortably offset initial acquisition spend.',
+    icon: DollarSign,
   },
   {
-    id: 'offers',
-    eyebrow: 'AI PERSONALIZED OFFER GENERATION',
-    title: 'Personalized Offer Generation at Scale',
-    subtitle: 'Trigger dynamic 1:1 offers based on user behavior, location, and cart value — without eroding profit margins.',
-    icon: TrendingUp,
-    color: 'emerald',
-    features: ['Dynamic Coupon Triggering', 'Cart Bounce Recovery', 'Margin Preservation Rules', 'Behavioral Discounting'],
-    tabs: {
-      challenges: { heading: 'Offer Personalization Barriers', items: ['Personalizing offers in real-time for millions of sessions simultaneously', 'Protecting profit margin baseline while driving purchase urgency', 'Creating immediate conversion triggers without blanket discounting'] },
-      solution: { heading: 'Behavioral Offer Engine', items: ['Analyze user location, browsing history, and cart value to trigger 1:1 dynamic pricing', 'Margin preservation guardrails ensure offers never cross pre-defined profitability thresholds', 'Session-level personalization generates unique offer combinations for each user'] },
-      impact: { heading: 'Conversion Lift', items: ['Higher conversion rates without eroding profit margins across the product catalog', 'Reduced cart abandonment through perfectly timed, personalized incentives', 'Measurable lift in average order value through intelligent bundling'] }
-    },
-    situations: ['Generic discounts eroding profit margins across all customer segments', 'High cart bounce rates despite competitive pricing']
+    title: 'Fragmented Consumer Touchpoints',
+    cause: 'Social discovery, paid search, email, and mobile storefronts operate in silos without centralized event streaming or unified visitor state.',
+    consequence: 'Shoppers receive discordant promotions and messaging that degrades brand trust and lowers purchase intent.',
+    icon: Network,
   },
   {
-    id: 'retargeting',
-    eyebrow: 'AI BEHAVIORAL RETARGETING',
-    title: 'Behavioral Retargeting Autopilot',
-    subtitle: 'Re-engage bounced shoppers within minutes using context-aware emails and SMS that recover lost checkouts.',
-    icon: Users,
-    color: 'violet',
-    features: ['Session Logging', 'Contextual SMS/Email', 'Cart Recovery Loops', 'Mobile Conversion Lift'],
-    tabs: {
-      challenges: { heading: 'Cart Recovery Failures', items: ['Re-engaging bounced shoppers instantly before intent fades', 'Personalizing recovery copy to match what each user was viewing', 'Orchestrating omnichannel cadence timing across email and SMS'] },
-      solution: { heading: 'Instant Recovery Automation', items: ['Trigger context-aware emails and SMS messages within minutes of a cart bounce', 'Recovery messages reference exact products viewed, price points, and browsing context', 'Multi-touch cadences automatically escalate urgency across 24–72 hours'] },
-      impact: { heading: 'Checkout Recovery', items: ['Significant recovery of abandoned checkouts across desktop and mobile', 'Mobile conversion lift from timely, personalized SMS re-engagement', 'Higher customer lifetime value from recaptured first-purchase moments'] }
-    },
-    situations: ['70%+ cart bounce rates with no automated recovery in place', 'Slow retargeting email cadence failing to recapture high-intent shoppers']
+    title: 'Checkout & Cart Abandonment',
+    cause: 'High friction at consideration, unexpected shipping costs, or lack of tailored urgency cues cause shoppers to drop off at the final step.',
+    consequence: 'Up to 70% of engaged cart intent is abandoned, turning expensive acquisition traffic into wasted pipeline.',
+    icon: ShoppingCart,
   },
   {
-    id: 'lookalike',
-    eyebrow: 'AI LOOKALIKE AUDIENCE SCALING',
-    title: 'Lookalike Audience Auto-Scaling',
-    subtitle: 'Automatically replicate your highest-converting buyer cohorts across ad networks at scale while maintaining buyer intent quality.',
-    icon: ShoppingBag,
-    color: 'sky',
-    features: ['Seed List Automation', 'Privacy Compliance Hashing', 'Ad Network Auto-Feeding', 'Cohort Replication'],
-    tabs: {
-      challenges: { heading: 'Audience Scaling Barriers', items: ['Scaling target audience pool without diluting buyer intent signals', 'Maintaining high intent quality as audiences expand beyond core segments', 'Automating seed list updates as buyer behavior shifts quarterly'] },
-      solution: { heading: 'Automated Cohort Replication', items: ['Automatically feed ad networks with custom seed lists to replicate highest-converting buyer cohorts', 'Privacy-compliant hashing ensures customer data never leaves your environment', 'Dynamic cohort updates refresh seed lists weekly as conversion patterns evolve'] },
-      impact: { heading: 'Scaled Reach', items: ['Scaled audience reach with maintained high buyer intent signals across networks', 'Reduced cost-per-acquisition from more relevant audience targeting', 'Compounding performance improvement as the AI learns which cohorts convert best'] }
-    },
-    situations: ['Ad targeting fatigue causing declining click-through rates', 'Rising ad network bidding competition eroding margins on core audiences']
+    title: 'Weak Repeat Purchasing & LTV Decay',
+    cause: 'First-time buyers are treated with static, mass-broadcast newsletters rather than cohort-specific re-order triggers and contextual incentives.',
+    consequence: 'Customer churn accelerates post-first order, forcing continuous reliance on expensive net-new acquisition.',
+    icon: RefreshCw,
+  },
+  {
+    title: 'Blanket Discounting Margin Loss',
+    cause: 'Promotions are broadcast sitewide to all visitors rather than reserved exclusively for price-sensitive or high-bounce risk cohorts.',
+    consequence: 'Margin is forfeited on buyers who were already prepared to purchase at full MSRP.',
+    icon: Percent,
+  },
+  {
+    title: 'Attribution Invisibility',
+    cause: 'Cross-device journeys and multi-touch interactions are flattened into basic last-click attribution models.',
+    consequence: 'High-performing upper-funnel discovery channels are mistakenly defunded while bottom-funnel captures receive disproportionate credit.',
+    icon: Eye,
+  },
+];
+
+const journeyStages = [
+  { stage: 'Discover', need: 'Contextual brand discovery & category interest', signals: 'Search queries, social intent, lookalike click-through', action: 'Omnichannel dynamic placement allocation', kpi: 'Cost Per Discovery' },
+  { stage: 'Engage', need: 'Relevant landing experience & product education', signals: 'Scroll depth, PDP browse patterns, category dwell time', action: 'Adaptive collection curation & social proof display', kpi: 'Engaged Session Rate' },
+  { stage: 'Consider', need: 'Value confirmation & competitive comparison', signals: 'Size selection, reviews inspected, price checks', action: 'Contextual FAQs & dynamic bundle recommendations', kpi: 'Add-to-Cart %' },
+  { stage: 'Purchase', need: 'Frictionless checkout & payment flexibility', signals: 'Cart value, shipping tier selection, checkout step progression', action: 'Targeted payment flexibility & threshold incentives', kpi: 'Checkout Completion' },
+  { stage: 'Recover', need: 'Re-engagement following unexpected session exit', signals: 'Cart abandonment, checkout exit, inactive session trigger', action: 'Multi-touch contextual email & SMS recovery sequence', kpi: 'Cart Recovery Rate' },
+  { stage: 'Retain', need: 'Replenishment, cross-category discovery & loyalty', signals: 'Consumable usage interval, tenure milestones, product feedback', action: 'Predictive replenishment triggers & loyalty incentives', kpi: 'Repeat Order Rate (90d)' },
+];
+
+const kpiData = [
+  { label: 'Blended CAC', value: '$34.20', note: 'Total spend ÷ Validated conversions' },
+  { label: 'Visitor-to-Order CVR', value: '3.85%', note: 'Completed purchases ÷ Unique visits' },
+  { label: 'Cart Abandonment Rate', value: '58.4%', note: 'Down from 71.2% baseline' },
+  { label: 'Average Order Value (AOV)', value: '$112.50', note: 'Cross-sell dynamic lift' },
+  { label: 'Repeat Purchase Rate (90d)', value: '32.6%', note: 'Second order within 90 days' },
+  { label: 'Gross Margin After Promo', value: '62.4%', note: 'Protected via margin guardrails' },
+  { label: 'Blended ROAS', value: '4.15x', note: 'Attributed revenue ÷ Media spend' },
+  { label: 'Recovered Checkout ARR', value: '$480K', note: 'Automated SMS/Email loops' },
+];
+
+const experiments = [
+  {
+    title: 'Hypothesis A: Dynamic Cart Thresholds',
+    segment: 'First-time visitors with cart value between $75-$99',
+    intervention: 'Display dynamic free expedited shipping progress meter + $15 category complement tier',
+    measurement: 'Evaluate AOV lift and checkout completion against control group (flat $10 shipping)',
+    outcome: '+18.4% AOV lift with neutral margin impact; expanded into production',
+    status: 'Scaled',
+    color: 'emerald'
+  },
+  {
+    title: 'Hypothesis B: Behavioral Cart Recovery Cadence',
+    segment: 'High-intent abandoned checkouts with verified SMS opt-in',
+    intervention: 'Send 12-minute contextual SMS with product image + 24-hour reserve link vs standard 4-hour email',
+    measurement: 'Track recovered checkout conversion and unsubscribe rate across 14-day cohort',
+    outcome: '+28% recovery lift within first 2 hours; zero increase in opt-outs',
+    status: 'Scaled',
+    color: 'blue'
+  },
+  {
+    title: 'Hypothesis C: Lookalike Seed Cleansing',
+    segment: 'Top 10% LTV multi-order customers vs broad recent-purchaser list',
+    intervention: 'Train ad network audience expansion solely on 3+ order customer cohorts',
+    measurement: 'Compare 30-day conversion rate and repurchase velocity against standard 1% pixel lookalikes',
+    outcome: '−24% initial CAC reduction with 2.1x higher 60-day repurchase rate',
+    status: 'Validated',
+    color: 'indigo'
   }
 ];
 
-const colorMap = {
-  blue:    { bg: 'bg-blue-50',    text: 'text-blue-700',    border: 'border-blue-200',    badge: 'bg-blue-100 text-blue-700',    tab: 'bg-blue-600 text-white' },
-  emerald: { bg: 'bg-emerald-50', text: 'text-emerald-700', border: 'border-emerald-200', badge: 'bg-emerald-100 text-emerald-700', tab: 'bg-emerald-600 text-white' },
-  violet:  { bg: 'bg-violet-50',  text: 'text-violet-700',  border: 'border-violet-200',  badge: 'bg-violet-100 text-violet-700',  tab: 'bg-violet-600 text-white' },
-  sky:     { bg: 'bg-sky-50',     text: 'text-sky-700',     border: 'border-sky-200',     badge: 'bg-sky-100 text-sky-700',     tab: 'bg-sky-600 text-white' },
-};
-
-function SectionBlock({ section }) {
-  const [activeTab, setActiveTab] = useState('challenges');
-  const c = colorMap[section.color];
-  const Icon = section.icon;
-  return (
-    <section id={section.id} className="py-20 sm:py-24 border-b border-slate-100 scroll-mt-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          <div>
-            <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full ${c.badge} font-mono text-xs font-bold uppercase tracking-widest mb-5`}><Icon className="w-3.5 h-3.5" /><span>{section.eyebrow}</span></div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mb-4">{section.title}</h2>
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-8">{section.subtitle}</p>
-            <div className="flex flex-wrap gap-2 mb-8">{section.features.map(f=><span key={f} className={`px-3 py-1 rounded-lg text-xs font-mono font-semibold ${c.bg} ${c.text} border ${c.border}`}>{f}</span>)}</div>
-            <div className="rounded-2xl bg-slate-50 border border-slate-200 p-5">
-              <div className="text-xs font-mono font-bold text-slate-500 uppercase tracking-widest mb-3 flex items-center gap-1.5"><AlertCircle className="w-3.5 h-3.5" /> Common Situations</div>
-              <ul className="space-y-2">{section.situations.map(s=><li key={s} className="flex items-start gap-2 text-sm text-slate-700"><ChevronRight className="w-4 h-4 text-slate-400 mt-0.5 shrink-0" /><span>"{s}"</span></li>)}</ul>
-            </div>
-          </div>
-          <div>
-            <div className="flex gap-1 p-1 rounded-xl bg-slate-100 mb-6">
-              {TAB_IDS.map(t=><button key={t} onClick={()=>setActiveTab(t)} className={`flex-1 py-2 px-3 rounded-lg text-xs font-bold font-mono uppercase tracking-wide transition-all ${activeTab===t?c.tab:'text-slate-500 hover:text-slate-700'}`}>{t}</button>)}
-            </div>
-            <div className="rounded-2xl bg-white border border-slate-200 p-6 sm:p-8 shadow-sm min-h-[220px]">
-              <div className="text-sm font-bold text-slate-900 mb-4">{section.tabs[activeTab].heading}</div>
-              <ul className="space-y-3">{section.tabs[activeTab].items.map((item,i)=><li key={i} className="flex items-start gap-3"><div className={`w-5 h-5 rounded-full ${c.bg} border ${c.border} flex items-center justify-center shrink-0 mt-0.5`}><CheckCircle2 className={`w-3 h-3 ${c.text}`} /></div><span className="text-sm text-slate-700 leading-relaxed">{item}</span></li>)}</ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function IndustriesIntakeForm({ vertical }) {
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: '', email: '', phone: '', honeypot: '' });
-  const handleSubmit = (e) => { e.preventDefault(); if (form.honeypot) return; if (!form.name || !form.email || !form.phone) return; setSubmitted(true); };
-  if (submitted) return (<div className="rounded-3xl bg-slate-800 border border-slate-700 p-10 text-center"><CheckCircle2 className="w-12 h-12 text-emerald-400 mx-auto mb-4" /><h3 className="text-2xl font-extrabold text-white font-heading mb-2">Consultation Requested</h3><p className="text-slate-300 text-sm">Thank you, <strong>{form.name}</strong>. A specialist in <span className="text-blue-400">{vertical}</span> will contact you within 24 business hours.</p></div>);
-  return (
-    <form onSubmit={handleSubmit} className="rounded-3xl bg-slate-800 border border-slate-700 p-8 space-y-5">
-      <input type="text" name="website" value={form.honeypot} onChange={e=>setForm({...form,honeypot:e.target.value})} className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div><label className="block text-xs font-mono font-bold text-slate-300 uppercase tracking-wider mb-2">Name *</label><input required type="text" placeholder="Your full name" value={form.name} onChange={e=>setForm({...form,name:e.target.value})} className="w-full px-4 py-3 rounded-xl bg-slate-700/80 border border-slate-600 text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" /></div>
-        <div><label className="block text-xs font-mono font-bold text-slate-300 uppercase tracking-wider mb-2">Email *</label><input required type="email" placeholder="you@company.com" value={form.email} onChange={e=>setForm({...form,email:e.target.value})} className="w-full px-4 py-3 rounded-xl bg-slate-700/80 border border-slate-600 text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" /></div>
-        <div><label className="block text-xs font-mono font-bold text-slate-300 uppercase tracking-wider mb-2">Phone Number *</label><input required type="tel" placeholder="+1 555 000 0000" value={form.phone} onChange={e=>setForm({...form,phone:e.target.value})} className="w-full px-4 py-3 rounded-xl bg-slate-700/80 border border-slate-600 text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" /></div>
-      </div>
-      <button type="submit" className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm tracking-wide shadow-lg shadow-blue-600/30 transition-all hover:-translate-y-0.5">Request AI Consultation <ArrowRight className="w-4 h-4" /></button>
-    </form>
-  );
-}
+const faqs = [
+  { q: 'How does dynamic offer personalization protect brand profit margins?', a: 'Guardrails are hardcoded into the rules engine: promotions are bounded by maximum discount percentages, minimum cart totals, and SKU-level contribution margin floors. The platform only issues tailored incentives to sessions exhibiting hesitation or price-sensitivity signals, ensuring full-price buyers complete checkout unassisted.' },
+  { q: 'What data infrastructure is required for omnichannel lead capture?', a: 'Standard eCommerce platforms (Shopify Plus, BigCommerce, custom headless APIs) integrated with event streaming (Klaviyo, Segment, or webhook endpoints) provide sufficient baseline telemetry. First-party session cookies and consented identifiers are prioritized in compliance with modern privacy standards.' },
+  { q: 'Can lookalike audience expansion function with privacy restrictions?', a: 'Yes. Audience expansion uses privacy-preserving hashed customer cohort identifiers uploaded directly into platform APIs (Meta Conversions API, Google Enhanced Conversions) adhering to GDPR, CCPA, and ATT protocols. Customer PII never leaves your governed environment in unhashed form.' },
+  { q: 'How quickly does behavioral cart recovery initiate?', a: 'Workflows typically trigger within 10 to 15 minutes of session abandonment across authorized SMS or email channels. Staggered sequences follow at 24 and 48 hours with escalation rules that halt immediately once a purchase is logged.' },
+  { q: 'Does this replace our marketing and creative agency?', a: 'No. The system acts as the operational and analytical execution engine that tests audiences, personalizes offers, and optimizes budget allocations. Creative strategy, brand storytelling, and campaign assets continue to be guided by your creative leaders.' },
+  { q: 'How do you prevent coupon leakages and promotional scraping?', a: 'The engine generates unique, single-use dynamic checkout vouchers tied to specific session IDs or authenticated user tokens. Broad generic codes susceptible to browser extension scrapers are eliminated.' },
+];
 
 export default function IndustriesB2C() {
   const location = useLocation();
+  const [activeFaq, setActiveFaq] = useState<number | null>(null);
+
   useEffect(() => {
-    document.title = 'B2C Focus | AI Consumer Acquisition & Conversion Engine | ProfitMachines';
-    if (location.hash) { const id = location.hash.replace('#',''); const el = document.getElementById(id); if (el) setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),150); } else { window.scrollTo(0,0); }
+    document.title = 'B2C Consumer Growth Engineering | Omnichannel & Conversion | ProfitMachines';
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
+    } else {
+      window.scrollTo(0, 0);
+    }
   }, [location.hash, location.pathname]);
+
   return (
     <div className="min-h-screen bg-white">
-      <section className="relative pt-24 pb-20 sm:pt-32 sm:pb-28 bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(16,185,129,0.2),rgba(255,255,255,0))] pointer-events-none" />
-        <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:32px_32px] pointer-events-none" />
+
+      {/* ── HERO ── */}
+      <section className="relative pt-24 pb-20 sm:pt-32 sm:pb-28 bg-slate-950 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(16,185,129,0.18),transparent)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(148,163,184,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.03)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-bold uppercase tracking-widest mb-6"><ShoppingBag className="w-3.5 h-3.5" /><span>B2C GROWTH ENGINES</span></div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight font-heading mb-6 max-w-5xl leading-[1.12]">
-            B2C Growth Engines:{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-sky-300">Turn Attention into Demand, Demand into Revenue</span>
-          </h1>
-          <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mb-10 leading-relaxed">Separate browsing behavior from buying intent, automate personalized retargeting, and optimize the conversion funnel for maximum growth.</p>
-          <div className="flex flex-col sm:flex-row gap-4 mb-16">
-            <a href="#intake" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm tracking-wide shadow-lg shadow-emerald-600/30 transition-all hover:-translate-y-0.5">Get Free B2C Diagnostic <ArrowRight className="w-4 h-4" /></a>
-            <Link to="/book-consultation" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-sm tracking-wide transition-all hover:-translate-y-0.5">Talk to a Principal Architect <ArrowUpRight className="w-4 h-4" /></Link>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-bold uppercase tracking-widest mb-6">
+                <ShoppingBag className="w-3.5 h-3.5" /><span>Consumer Growth Engineering</span>
+              </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight font-heading mb-6 leading-[1.1]">
+                Turn Consumer Intent Into{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
+                  Profitable Customer Growth.
+                </span>
+              </h1>
+              <p className="text-lg sm:text-xl text-slate-300 max-w-xl mb-8 leading-relaxed">
+                Consumer growth requires coordinated acquisition, relevant experiences, timely responses, and retention strategies. ProfitMachines helps organizations evaluate the customer journey and design more connected workflows around intent, conversion friction, and repeat purchasing.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 mb-12">
+                <a href="#omnichannel" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm tracking-wide shadow-lg shadow-emerald-600/30 transition-all hover:-translate-y-0.5">
+                  Explore B2C Capabilities <ArrowRight className="w-4 h-4" />
+                </a>
+                <Link to="/book-consultation" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-sm tracking-wide transition-all hover:-translate-y-0.5">
+                  Book a Growth Audit <ArrowUpRight className="w-4 h-4" />
+                </Link>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-slate-800">
+                {[
+                  { val: '4 Engines', label: 'Acquisition & Retention' },
+                  { val: 'Omnichannel', label: 'Search, Social & SMS' },
+                  { val: 'Margin-Locked', label: 'Safe Dynamic Promos' },
+                  { val: 'Continuous', label: 'Closed-Loop Tests' },
+                ].map(m => (
+                  <div key={m.label}>
+                    <div className="text-xl sm:text-2xl font-extrabold font-mono text-white">{m.val}</div>
+                    <div className="text-xs font-mono text-slate-400 uppercase tracking-wider mt-1">{m.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Consumer Lifecycle Visual */}
+            <div className="hidden lg:block">
+              <div className="bg-slate-900 rounded-3xl border border-slate-800 p-6 shadow-2xl">
+                <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
+                  <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">Consumer Funnel Velocity Telemetry</span>
+                  <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">Active Lifecycle</span>
+                </div>
+                <div className="space-y-3">
+                  {journeyStages.map((st, i) => (
+                    <div key={st.stage} className="flex items-center gap-3">
+                      <div className="w-7 h-7 rounded-lg bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold flex items-center justify-center shrink-0">{i + 1}</div>
+                      <div className="flex-1 bg-slate-800/80 rounded-lg px-4 py-2 border border-slate-700/80">
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-bold text-white">{st.stage}</span>
+                          <span className="text-[10px] font-mono text-emerald-400">{st.kpi}</span>
+                        </div>
+                        <div className="text-[10px] text-slate-400 mt-0.5 truncate">{st.signals}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-slate-800/80">
-            {[{val:'20-35%',label:'Conversion Rate Uplift'},{val:'-25%',label:'Paid Media Dependency'},{val:'+30%',label:'Repeat Purchase Rate'},{val:'2.5x',label:'Sales Pipeline Velocity'}].map(m=>(
-              <div key={m.label}><div className="text-2xl sm:text-3xl font-extrabold font-mono text-white">{m.val}</div><div className="text-xs font-mono text-slate-400 uppercase tracking-wider mt-1">{m.label}</div></div>
+        </div>
+      </section>
+
+      {/* ── STICKY SUBNAV ── */}
+      <nav className="sticky top-16 z-30 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex gap-1 overflow-x-auto py-2.5">
+            {sectionNav.map(item => (
+              <a key={item.id} href={`#${item.id}`} className="flex-shrink-0 px-4 py-1.5 rounded-lg text-xs font-mono font-semibold text-slate-600 hover:text-emerald-700 hover:bg-emerald-50 transition-all whitespace-nowrap">
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </nav>
+
+      {/* ── SECTION 1: CONSUMER CHALLENGES ── */}
+      <section id="challenges" className="py-20 sm:py-24 bg-white scroll-mt-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
+              <AlertCircle className="w-3.5 h-3.5" /> Friction Diagnostics
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading tracking-tight mb-4">
+              Consumer Growth Bottlenecks Erode Lifetime Unit Economics.
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 max-w-3xl mx-auto">
+              Acquiring consumer revenue has shifted from broad advertising arbitrage to precision unit economics. When channels, discounts, and checkout recovery operate independently, acquisition costs surge while customer retention drops.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {challenges.map(ch => {
+              const Icon = ch.icon;
+              return (
+                <div key={ch.title} className="bg-slate-50 rounded-2xl border border-slate-200 p-6 flex flex-col justify-between">
+                  <div>
+                    <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-4">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-sm font-extrabold text-slate-900 mb-2">{ch.title}</h3>
+                    <div className="mb-2">
+                      <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">Operational Cause: </span>
+                      <span className="text-xs text-slate-600">{ch.cause}</span>
+                    </div>
+                  </div>
+                  <div className="pt-3 border-t border-slate-200/60 mt-3">
+                    <span className="text-[10px] font-mono font-bold text-red-500 uppercase tracking-wider">Commercial Impact: </span>
+                    <span className="text-xs text-slate-600">{ch.consequence}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 2: JOURNEY MAP ── */}
+      <section id="journey" className="py-20 sm:py-24 bg-slate-50 scroll-mt-24 border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-200/60 text-slate-700 font-mono text-xs font-bold uppercase tracking-widest mb-3">
+              <Compass className="w-3.5 h-3.5" /> Lifecycle Architecture
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading mb-3">The Coordinated Consumer Growth Engine</h2>
+            <p className="text-sm text-slate-600 max-w-2xl mx-auto">Each touchpoint captures behavioral intent signals, triggering contextual interventions that balance conversion velocity with strict gross margin discipline.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
+            {journeyStages.map((st, i) => (
+              <div key={st.stage} className="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs flex flex-col justify-between">
+                <div>
+                  <div className="w-8 h-8 rounded-lg bg-emerald-600 text-white font-mono font-bold text-xs flex items-center justify-center mb-3">0{i + 1}</div>
+                  <h3 className="text-sm font-extrabold text-slate-900 mb-1">{st.stage}</h3>
+                  <p className="text-[11px] text-slate-500 mb-3 leading-snug">{st.need}</p>
+                  <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100 text-[10px] text-slate-600 mb-3 space-y-1">
+                    <div className="font-bold text-slate-800">Signals:</div>
+                    <div className="leading-tight">{st.signals}</div>
+                  </div>
+                  <div className="text-[10px] text-slate-700 font-medium leading-snug mb-2">
+                    <span className="font-bold text-emerald-700">Action: </span>{st.action}
+                  </div>
+                </div>
+                <div className="pt-2 border-t border-slate-100 text-[10px] font-mono font-bold text-emerald-600">
+                  {st.kpi}
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
-      <nav className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+
+      {/* ── SECTION 3.1: OMNICHANNEL ── */}
+      <section id="omnichannel" className="py-20 sm:py-24 bg-white scroll-mt-24 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex gap-1 overflow-x-auto py-3">{sections.map(s=><a key={s.id} href={`#${s.id}`} className="flex-shrink-0 px-4 py-2 rounded-lg text-xs font-mono font-semibold text-slate-600 hover:text-emerald-700 hover:bg-emerald-50 transition-all whitespace-nowrap">{s.title}</a>)}</div>
-        </div>
-      </nav>
-      {sections.map(s=><SectionBlock key={s.id} section={s} />)}
-      <section id="intake" className="py-20 sm:py-28 bg-slate-900 scroll-mt-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-bold uppercase tracking-widest mb-5"><Sparkles className="w-3.5 h-3.5" /> B2C AI Engine</div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-heading mb-4">Architect Your B2C Growth Engine</h2>
-            <p className="text-lg text-slate-300 max-w-2xl mx-auto">Stop relying on generic tools. Deploy a revenue engine engineered specifically for consumer intent capture, cart recovery, and scalable acquisition.</p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-700 font-mono text-xs font-bold uppercase tracking-widest mb-5">
+                <BarChart3 className="w-3.5 h-3.5" /> Capability 01
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading tracking-tight mb-4">
+                AI Omnichannel Lead Generation
+              </h2>
+              <p className="text-base text-slate-600 leading-relaxed mb-6">
+                Consumer brands suffer when paid search, social platforms, and retail media networks operate in functional silos with competing attribution models. This capability synchronizes budget pacing and creative rotation across authorized networks based on verified return on ad spend and incremental lift.
+              </p>
+              <div className="space-y-3 mb-6">
+                {[
+                  { title: 'Programmatic Budget Shifting', desc: 'Algorithms continuously rebalance spend towards top-converting channel variants as auction density fluctuates throughout the day.' },
+                  { title: 'Multi-Channel Audience Synchronization', desc: 'Audiences that interact on social discovery feeds receive coordinated educational content on search and email rather than repetitive top-of-funnel ads.' },
+                  { title: 'Incrementality & Attribution Auditing', desc: 'Media mix models assess true incremental conversion lift, penalizing channels that simply cannibalize branded organic demand.' },
+                ].map(item => (
+                  <div key={item.title} className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                    <div className="text-xs font-bold text-slate-900 mb-1">{item.title}</div>
+                    <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider mb-2">Data & Platform Connectors</div>
+              <div className="flex flex-wrap gap-2">
+                {['Meta Conversions API', 'Google Enhanced Conversions', 'TikTok Events API', 'Shopify Analytics', 'Customer Data Platforms'].map(d => (
+                  <span key={d} className="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-mono font-semibold">{d}</span>
+                ))}
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div className="bg-slate-50 rounded-2xl border border-slate-200 p-6">
+                <div className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider mb-4">Operational KPI Scorecard</div>
+                <div className="space-y-3">
+                  {[
+                    { kpi: 'Blended Cost Per Acquisition', def: 'Total Media Spend ÷ Verified Net-New Customers' },
+                    { kpi: 'First-Touch Incrementality Index', def: 'Attributed Revenue from Unbranded Search & Social' },
+                    { kpi: 'Cross-Network Return on Ad Spend', def: 'Gross Revenue ÷ Programmatic Ad Outlay' },
+                    { kpi: 'Channel Saturation Coefficient', def: 'Marginal CAC threshold indicating diminishing audience returns' },
+                  ].map(item => (
+                    <div key={item.kpi} className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                      <div>
+                        <span className="text-xs font-bold text-slate-800">{item.kpi}</span>
+                        <span className="text-xs text-slate-500"> — {item.def}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-emerald-50 rounded-2xl border border-emerald-200 p-5">
+                <div className="text-xs font-mono font-bold text-emerald-800 uppercase tracking-wider mb-2">Human Review Guardrails</div>
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  Campaign creative concepts, brand positioning guidelines, and maximum budget pacing caps require executive marketing sign-off. The algorithmic engine optimizes execution within explicitly approved parameters.
+                </p>
+              </div>
+            </div>
           </div>
-          <IndustriesIntakeForm vertical="B2C Revenue Acceleration" />
-          <div className="flex flex-wrap justify-center gap-8 mt-10">{['500+ B2B Companies','5X Avg Revenue Growth','24/7 AI Support'].map(b=><div key={b} className="flex items-center gap-2 text-sm text-slate-400 font-mono"><ShieldCheck className="w-4 h-4 text-emerald-400" />{b}</div>)}</div>
         </div>
       </section>
+
+      {/* ── SECTION 3.2: LOOKALIKE ── */}
+      <section id="lookalike" className="py-20 sm:py-24 bg-slate-50 scroll-mt-24 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-100 text-teal-700 font-mono text-xs font-bold uppercase tracking-widest mb-5">
+                <Users className="w-3.5 h-3.5" /> Capability 02
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading tracking-tight mb-4">
+                AI Lookalike Audience Auto-Scaling
+              </h2>
+              <p className="text-base text-slate-600 leading-relaxed mb-6">
+                Most audience expansion efforts fail because seed lists aggregate all historical purchasers indiscriminately — including discount-seekers and single-item returners. This engine segments your top decile lifetime value cohorts to generate high-propensity expansion seeds.
+              </p>
+              <div className="space-y-3 mb-6">
+                {[
+                  { title: 'High-LTV Seed Cohort Isolation', desc: 'Isolates buyers with multi-order tenure, low return rates, and high contribution margins to prevent training algorithms on low-quality traffic.' },
+                  { title: 'SHA-256 Privacy-Compliant Hashing', desc: 'Client records are hashed securely client-side in full compliance with GDPR and CCPA before feed ingestion.' },
+                  { title: 'Audience Fatigue & Saturation Radar', desc: 'Detects frequency saturation and declining CTR early, automatically refreshing seed cohorts every 14 days.' },
+                ].map(item => (
+                  <div key={item.title} className="p-3.5 rounded-xl bg-white border border-slate-200">
+                    <div className="text-xs font-bold text-slate-900 mb-1">{item.title}</div>
+                    <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                <div className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider mb-4">Expansion KPIs</div>
+                <div className="space-y-3">
+                  {[
+                    { kpi: 'Seed Quality Retention Index', def: 'Match rate and intent score of expanded platform lookalikes' },
+                    { kpi: 'Cost Per Qualified Add-to-Cart', def: 'Mid-funnel acquisition cost from lookalike cohorts' },
+                    { kpi: '90-Day Repurchase Velocity', def: 'Rate at which new lookalike acquisitions convert to repeat buyers' },
+                    { kpi: 'First-Order Contribution Margin', def: 'Net margin after fully loaded acquisition media costs' },
+                  ].map(item => (
+                    <div key={item.kpi} className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
+                      <div>
+                        <span className="text-xs font-bold text-slate-800">{item.kpi}</span>
+                        <span className="text-xs text-slate-500"> — {item.def}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-slate-100 rounded-2xl border border-slate-200 p-5">
+                <div className="text-xs font-mono font-bold text-slate-600 uppercase tracking-wider mb-2">Privacy & Consent Compliance</div>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Only customers who have explicitly provided marketing consent via verified opt-in protocols are eligible for seed inclusion. Opt-outs and erasure requests are propagated across connected network APIs automatically.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 3.3: OFFERS ── */}
+      <section id="offers" className="py-20 sm:py-24 bg-white scroll-mt-24 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-100 text-cyan-700 font-mono text-xs font-bold uppercase tracking-widest mb-5">
+                <Percent className="w-3.5 h-3.5" /> Capability 03
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading tracking-tight mb-4">
+                AI Personalized Offer Generation at Scale
+              </h2>
+              <p className="text-base text-slate-600 leading-relaxed mb-6">
+                Blanket discounting devalues brand equity and forfeits gross margin on buyers who would purchase at full price. This engine evaluates real-time browsing dwell, cart composition, and inventory depth to calculate individual promotions bounded by strict profitability guardrails.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                {[
+                  { title: 'Inventory-Aware Curation', desc: 'Promotions prioritize overstocked or slow-moving SKUs while protecting fast-moving high-margin catalog lines.' },
+                  { title: 'Single-Use Session Vouchers', desc: 'Dynamic single-use codes tied to authenticated tokens prevent browser extension coupon leakage.' },
+                  { title: 'Margin Floor Protection', desc: 'Hardcoded algorithmic rules terminate discount eligibility if gross margin drops below target thresholds.' },
+                  { title: 'Intelligent Tiered Bundling', desc: 'Recommends complementary accessories calculated to elevate average cart value past shipping qualification tiers.' },
+                ].map(item => (
+                  <div key={item.title} className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                    <div className="text-xs font-bold text-slate-900 mb-1">{item.title}</div>
+                    <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div className="bg-slate-50 rounded-2xl border border-slate-200 p-6">
+                <div className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider mb-4">Commercial Outcome KPIs</div>
+                <div className="space-y-3">
+                  {[
+                    { kpi: 'Net Margin Per Order', def: 'Revenue minus COGS and specific coupon discount values' },
+                    { kpi: 'Average Order Value Lift', def: 'Cart total increase driven by automated bundling triggers' },
+                    { kpi: 'Promotional Redemption Rate', def: 'Unique dynamic codes generated vs completed checkouts' },
+                    { kpi: 'Full-Price Purchase Preservation', def: 'Proportion of transactions completed without discount intervention' },
+                  ].map(item => (
+                    <div key={item.kpi} className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-cyan-600 shrink-0 mt-0.5" />
+                      <div>
+                        <span className="text-xs font-bold text-slate-800">{item.kpi}</span>
+                        <span className="text-xs text-slate-500"> — {item.def}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-cyan-50 rounded-2xl border border-cyan-200 p-5">
+                <div className="text-xs font-mono font-bold text-cyan-800 uppercase tracking-wider mb-2">Ethical Pricing & Transparency</div>
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  ProfitMachines strictly avoids discriminatory dynamic base pricing. All users view identical public catalog MSRPs; personalization applies solely to promotional packaging, threshold bonuses, and loyalty tier incentives.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 3.4: RETARGETING ── */}
+      <section id="retargeting" className="py-20 sm:py-24 bg-slate-50 scroll-mt-24 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-700 font-mono text-xs font-bold uppercase tracking-widest mb-5">
+                <ShoppingCart className="w-3.5 h-3.5" /> Capability 04
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading tracking-tight mb-4">
+                AI Behavioral Retargeting Autopilot
+              </h2>
+              <p className="text-base text-slate-600 leading-relaxed mb-6">
+                When shoppers abandon high-intent carts, generic batch emails sent 12 hours later convert poorly. This autopilot deploys contextual omnichannel sequences across verified SMS and email within minutes, personalized with exact SKU context and inventory availability.
+              </p>
+              <div className="space-y-3 mb-6">
+                {[
+                  { title: 'Sub-15-Minute Recovery Initiation', desc: 'Trigger sequences engage shoppers while high intent is still fresh, dramatically boosting recovery probabilities.' },
+                  { title: 'Dynamic Contextual Re-Engagement', desc: 'Communications dynamically render exact items left in cart alongside customer reviews and specific sizing guidance.' },
+                  { title: 'Frequency Caps & Suppression Safeguards', desc: 'Automated suppression halts all retargeting sequences instantly once checkout completion is detected across any device.' },
+                ].map(item => (
+                  <div key={item.title} className="p-3.5 rounded-xl bg-white border border-slate-200">
+                    <div className="text-xs font-bold text-slate-900 mb-1">{item.title}</div>
+                    <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                <div className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider mb-4">Recovery Metrics</div>
+                <div className="space-y-3">
+                  {[
+                    { kpi: 'Abandoned Cart Recovery Rate', def: 'Recovered orders ÷ Total detected abandoned checkouts' },
+                    { kpi: 'Time to Re-Engagement', def: 'Average minutes elapsed from abandonment to initial link open' },
+                    { kpi: 'Incremental Recovery ARR', def: 'Net revenue attributed to automated recovery touchpoints' },
+                    { kpi: 'Unsubscribe / Opt-Out Rate', def: 'Monitored under 0.2% ceiling to preserve channel reputation' },
+                  ].map(item => (
+                    <div key={item.kpi} className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                      <div>
+                        <span className="text-xs font-bold text-slate-800">{item.kpi}</span>
+                        <span className="text-xs text-slate-500"> — {item.def}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-slate-100 rounded-2xl border border-slate-200 p-5">
+                <div className="text-xs font-mono font-bold text-slate-600 uppercase tracking-wider mb-2">TCPA & Carrier Compliance</div>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  All automated SMS messages include frictionless one-click opt-out mechanisms and honor strict regional quiet-hours protocols based on recipient time zones.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 4: KPI DASHBOARD ── */}
+      <section id="dashboard" className="py-20 sm:py-24 bg-slate-950 scroll-mt-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-bold uppercase tracking-widest mb-4">
+              <BarChart3 className="w-3.5 h-3.5" /> Consumer Telemetry Cockpit
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-heading mb-2">Illustrative B2C Performance Model</h2>
+            <p className="text-sm text-slate-400 max-w-2xl mx-auto">Sample metrics reflecting an enterprise consumer retail implementation. All metrics are illustrative scenarios — not actual verified customer results.</p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+            {kpiData.map(kpi => (
+              <div key={kpi.label} className="bg-slate-900 rounded-xl border border-slate-800 p-4">
+                <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-1">{kpi.label}</div>
+                <div className="text-xl font-extrabold font-mono text-white mb-0.5">{kpi.value}</div>
+                <div className="text-[10px] text-slate-500">{kpi.note}</div>
+              </div>
+            ))}
+          </div>
+          <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 text-center">
+            <span className="text-xs text-slate-400 italic">Illustrative Data — Not Actual Results. Commercial outcomes vary by category seasonality, baseline conversion, product margin profiles, and media investment scales.</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 5: EXPERIMENTATION ── */}
+      <section id="experiments" className="py-20 sm:py-24 bg-white scroll-mt-24 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 font-mono text-xs font-bold uppercase tracking-widest mb-3">
+              <Sparkles className="w-3.5 h-3.5" /> Growth Discipline
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading mb-3">Hypothesis-Driven Growth Experimentation</h2>
+            <p className="text-sm text-slate-600 max-w-2xl mx-auto">Systematic revenue scaling requires disciplined testing. Workflows are introduced as isolated experiments, evaluated against holdout groups, and scaled only when unit economics prove accretive.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {experiments.map(exp => (
+              <div key={exp.title} className="bg-slate-50 rounded-2xl border border-slate-200 p-6 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-wider">Test Card</span>
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-100 text-emerald-800">{exp.status}</span>
+                  </div>
+                  <h3 className="text-sm font-bold text-slate-900 mb-2">{exp.title}</h3>
+                  <div className="text-xs text-slate-600 mb-3 space-y-1">
+                    <div><strong className="text-slate-800">Target Segment: </strong>{exp.segment}</div>
+                    <div><strong className="text-slate-800">Intervention: </strong>{exp.intervention}</div>
+                  </div>
+                </div>
+                <div className="pt-3 border-t border-slate-200 text-xs text-emerald-800 bg-emerald-50/60 p-2.5 rounded-lg border border-emerald-100">
+                  <strong>Outcome: </strong>{exp.outcome}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 6: FAQ ── */}
+      <section id="faq" className="py-20 sm:py-24 bg-slate-50 scroll-mt-24">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading mb-2">Consumer Growth Engineering — FAQ</h2>
+          </div>
+          <div className="space-y-3 mb-12">
+            {faqs.map((faq, i) => (
+              <div key={i} className="rounded-2xl border border-slate-200 overflow-hidden">
+                <button onClick={() => setActiveFaq(activeFaq === i ? null : i)} className="w-full flex items-center justify-between px-6 py-4 text-left bg-white hover:bg-slate-50 transition-colors">
+                  <span className="text-sm font-bold text-slate-900 pr-4">{faq.q}</span>
+                  <ChevronRight className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200 ${activeFaq === i ? 'rotate-90' : ''}`} />
+                </button>
+                {activeFaq === i && <div className="px-6 pb-5 bg-white"><p className="text-sm text-slate-600 leading-relaxed">{faq.a}</p></div>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FINAL CTA ── */}
+      <section className="py-20 sm:py-24 bg-slate-950">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-heading mb-4">Build a More Connected Consumer Growth System.</h2>
+          <p className="text-base text-slate-300 max-w-xl mx-auto mb-8">Diagnose cart leakage, media misallocations, and margin erosion across your consumer journey with a dedicated growth engineering assessment.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/book-consultation" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm tracking-wide shadow-lg shadow-emerald-600/30 transition-all hover:-translate-y-0.5">
+              Book a Growth Audit <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link to="/offerings/demand-engineering" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-sm tracking-wide transition-all hover:-translate-y-0.5">
+              Explore Demand Engineering <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }

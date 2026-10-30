@@ -274,7 +274,7 @@ export default function App() {
               <Route path="/solutions" element={<Solutions />} />
               <Route path="/solutions/:slug" element={<NavigateToSolutionsSection />} />
               <Route path="/capabilities" element={<Navigate to="/solutions" replace />} />
-              <Route path="/industries" element={<Navigate to="/industries/b2b" replace />} />
+              <Route path="/industries" element={<Industries />} />
               <Route path="/industries/b2b" element={<IndustriesB2B />} />
               <Route path="/industries/b2c" element={<IndustriesB2C />} />
               <Route path="/industries/enterprise" element={<IndustriesEnterprise />} />

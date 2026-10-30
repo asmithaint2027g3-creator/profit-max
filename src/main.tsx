@@ -5,6 +5,18 @@ import App from "./app/App.tsx";
 import "./styles/index.css";
 import "./lib/analytics"; // Initialize analytics auto-tracking
 
+// Global auto-recovery for Vite dynamic module chunk version mismatches across deployments
+window.addEventListener("vite:preloadError", (event) => {
+  event.preventDefault();
+  const reloadKey = "pm_chunk_reload";
+  const lastReload = sessionStorage.getItem(reloadKey);
+  const now = Date.now();
+  if (!lastReload || now - parseInt(lastReload, 10) > 10000) {
+    sessionStorage.setItem(reloadKey, now.toString());
+    window.location.reload();
+  }
+});
+
 interface ErrorBoundaryProps {
   children: ReactNode;
 }
@@ -26,27 +38,52 @@ class RootErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error("Root Error Boundary caught an error:", error, errorInfo);
+    
+    // Auto-reload on dynamic import failure caused by new deployments
+    const msg = error?.message || "";
+    if (
+      msg.includes("dynamically imported module") ||
+      msg.includes("Loading chunk") ||
+      msg.includes("Importing a module script failed")
+    ) {
+      const reloadKey = "pm_chunk_reload";
+      const lastReload = sessionStorage.getItem(reloadKey);
+      const now = Date.now();
+      if (!lastReload || now - parseInt(lastReload, 10) > 10000) {
+        sessionStorage.setItem(reloadKey, now.toString());
+        window.location.reload();
+      }
+    }
   }
 
   render() {
     if (this.state.hasError) {
+      const isChunkError = 
+        this.state.error?.message?.includes("dynamically imported module") ||
+        this.state.error?.message?.includes("Loading chunk");
+
       return (
-        <div style={{ minHeight: "100vh", backgroundColor: "#020617", color: "#f8fafc", padding: "32px", fontFamily: "monospace", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-          <div style={{ maxWidth: "600px", width: "100%", backgroundColor: "#0f172a", border: "1px solid rgba(239, 68, 68, 0.4)", borderRadius: "16px", padding: "24px", boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)" }}>
-            <div style={{ display: "inline-flex", padding: "4px 12px", borderRadius: "9999px", backgroundColor: "rgba(239, 68, 68, 0.2)", color: "#f87171", fontSize: "12px", fontWeight: "bold", textTransform: "uppercase", marginBottom: "16px" }}>
-              Application Render Diagnostic
+        <div style={{ minHeight: "100vh", backgroundColor: "#020617", color: "#f8fafc", padding: "32px", fontFamily: "system-ui, -apple-system, sans-serif", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ maxWidth: "540px", width: "100%", backgroundColor: "#0f172a", border: "1px solid rgba(59, 130, 246, 0.3)", borderRadius: "16px", padding: "32px", boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)", textAlign: "center" }}>
+            <div style={{ display: "inline-flex", padding: "6px 14px", borderRadius: "9999px", backgroundColor: "rgba(59, 130, 246, 0.15)", color: "#60a5fa", fontSize: "12px", fontWeight: "600", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "16px" }}>
+              {isChunkError ? "Application Update Detected" : "Application Notice"}
             </div>
-            <h2 style={{ fontSize: "20px", fontWeight: "bold", color: "#ffffff", marginBottom: "8px" }}>
-              Render Exception Encountered
+            <h2 style={{ fontSize: "22px", fontWeight: "700", color: "#ffffff", marginBottom: "12px" }}>
+              {isChunkError ? "A newer version of ProfitMachines is available" : "Something went wrong"}
             </h2>
-            <p style={{ fontSize: "13px", color: "#cbd5e1", backgroundColor: "#020617", padding: "16px", borderRadius: "12px", border: "1px solid #1e293b", marginBottom: "24px", overflow: "auto", whiteSpace: "pre-wrap" }}>
-              {this.state.error?.stack || this.state.error?.message || String(this.state.error)}
+            <p style={{ fontSize: "14px", color: "#94a3b8", lineHeight: "1.6", marginBottom: "24px" }}>
+              {isChunkError
+                ? "The application was updated in the background. Please click below to refresh and load the latest release."
+                : "An unexpected error occurred while rendering this page."}
             </p>
             <button
-              onClick={() => window.location.reload()}
-              style={{ padding: "10px 20px", backgroundColor: "#2563eb", color: "#ffffff", border: "none", borderRadius: "10px", fontWeight: "bold", cursor: "pointer", fontSize: "14px" }}
+              onClick={() => {
+                sessionStorage.removeItem("pm_chunk_reload");
+                window.location.reload();
+              }}
+              style={{ padding: "12px 28px", backgroundColor: "#2563eb", color: "#ffffff", border: "none", borderRadius: "10px", fontWeight: "600", cursor: "pointer", fontSize: "15px", transition: "all 0.2s" }}
             >
-              Reload Application
+              Refresh Application
             </button>
           </div>
         </div>

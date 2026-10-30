@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { 
-    ChevronLeft, ChevronRight, Pause, Play, ArrowRight, 
+    ArrowRight, 
     Radar, Target, Bot, LineChart, Database, Cpu, 
     ShieldCheck, Globe, CheckCircle2, TrendingUp, Layers,
     Activity, Sparkles, Workflow, ArrowUpRight
@@ -569,11 +569,11 @@ export default function HomeFeatureSlider() {
                         </div>
                     </div>
 
-                    {/* Right: Slide Controls, Dots, and Autoplay Toggle (No 05 / 06 Counter) */}
-                    <div className="flex items-center gap-3">
+                    {/* Right: Slide Pagination Dots */}
+                    <div className="flex items-center">
                         
                         {/* 8 Dot Indicators with Active Progress Fill */}
-                        <div className="flex items-center gap-1.5 mr-2">
+                        <div className="flex items-center gap-1.5">
                             {homeSliders.map((s, dotIdx) => (
                                 <button
                                     key={s.id}
@@ -594,38 +594,6 @@ export default function HomeFeatureSlider() {
                                     )}
                                 </button>
                             ))}
-                        </div>
-
-                        {/* Navigation Control Box: Play/Pause, Prev, Next (NO numerical counter) */}
-                        <div className="flex items-center bg-white border border-slate-200 rounded-xl p-1 shadow-sm">
-                            <button
-                                onClick={() => setIsPlaying(!isPlaying)}
-                                className="p-2 text-slate-500 hover:text-slate-900 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
-                                title={isPlaying ? "Pause autoplay" : "Start autoplay"}
-                                aria-label={isPlaying ? "Pause autoplay" : "Start autoplay"}
-                            >
-                                {isPlaying ? <Pause className="w-4 h-4 text-blue-600" /> : <Play className="w-4 h-4 text-emerald-600" />}
-                            </button>
-                            
-                            <div className="h-4 w-px bg-slate-200 mx-1" />
-
-                            <button
-                                onClick={prevSlide}
-                                className="p-2 text-slate-700 hover:text-blue-600 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
-                                aria-label="Previous slide"
-                                title="Previous slide"
-                            >
-                                <ChevronLeft className="w-5 h-5" />
-                            </button>
-
-                            <button
-                                onClick={nextSlide}
-                                className="p-2 text-slate-700 hover:text-blue-600 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
-                                aria-label="Next slide"
-                                title="Next slide"
-                            >
-                                <ChevronRight className="w-5 h-5" />
-                            </button>
                         </div>
 
                     </div>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { 
     ChevronLeft, ChevronRight, Pause, Play, ArrowRight, 
-    TrendingUp, Cpu, Radar, Bot, Sparkles, ShieldCheck, 
-    Layers, Activity, CheckCircle2, Zap, BarChart3, Database,
-    Globe, Network, LineChart, Compass
+    Radar, Target, Bot, LineChart, Database, Cpu, 
+    ShieldCheck, Globe, CheckCircle2, TrendingUp, Layers,
+    Activity, Sparkles, Workflow, ArrowUpRight
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -12,19 +12,17 @@ import { trackEvent } from '../../../lib/analytics';
 
 export interface SliderItem {
     id: string;
-    stepNumber: string;
     tag: string;
     pillTitle: string;
     icon: React.ElementType;
     title: string;
     highlightTitle: string;
     description: string;
-    stats: {
-        value: string;
-        label: string;
-        sublabel?: string;
-    }[];
     highlights: string[];
+    capabilities: {
+        label: string;
+        sublabel: string;
+    }[];
     image: string;
     fallbackGradient: string;
     badgeText: string;
@@ -39,190 +37,252 @@ export interface SliderItem {
 }
 
 export const homeSliders: SliderItem[] = [
-    {
-        id: 'ai-transformation',
-        stepNumber: '01',
-        tag: 'AI + Business Transformation',
-        pillTitle: 'AI + Business Transformation',
-        icon: Cpu,
-        title: 'Unified AI Strategy &',
-        highlightTitle: 'AI + Business Transformation',
-        description: 'Architecting cognitive enterprise operations, predictive strategy modeling, and intelligent decision systems that systematically accelerate enterprise ARR velocity.',
-        stats: [
-            { value: '5.4×', label: 'ARR Velocity', sublabel: 'Continuous Acceleration' },
-            { value: '98.4%', label: 'ICP Accuracy', sublabel: 'Predictive Propensity' },
-            { value: '99.98%', label: 'SLA Reliability', sublabel: 'Enterprise Uptime' }
-        ],
-        highlights: [
-            'Real-time autonomous decision engine with continuous telemetry',
-            'Strategic alignment between boardroom goals and autonomous AI workflows',
-            'Algorithmic revenue forecasting with verifiable precision'
-        ],
-        image: '/images/hero-ai-transformation.png',
-        fallbackGradient: 'from-blue-600/20 via-indigo-600/15 to-purple-600/20',
-        badgeText: 'AI + Business Transformation Active',
-        primaryCta: {
-            text: 'Explore Transformation Engine',
-            link: '/offerings'
-        },
-        secondaryCta: {
-            text: 'Book Architecture Call',
-            link: '/book-consultation'
-        }
-    },
+    // Slide 1 — Profit Pool Discovery
     {
         id: 'profit-pool-discovery',
-        stepNumber: '02',
         tag: 'Profit Pool Discovery',
         pillTitle: 'Profit Pool Discovery',
         icon: Radar,
-        title: 'Deep Market Radar &',
-        highlightTitle: 'Profit Pool Discovery',
-        description: 'Reveal hidden margin pools, untracked TAM, and dark-funnel buying intent weeks before competitors with real-time algorithmic telemetry and opportunity topology.',
-        stats: [
-            { value: '1,000×', label: 'Market Scanning', sublabel: 'High-Velocity Discovery' },
-            { value: '12,480+', label: 'Intent Signals / Hr', sublabel: 'Real-Time Telemetry' },
-            { value: '100%', label: 'Dark Funnel', sublabel: 'Comprehensive Visibility' }
-        ],
+        title: 'Discover Hidden Profit Pools',
+        highlightTitle: 'Before Your Competitors.',
+        description: 'Reveal underserved markets, emerging buyer demand, pricing opportunities, and untapped revenue potential through intelligent market discovery.',
         highlights: [
-            'AI-driven buyer propensity and account opportunity mapping',
-            'Competitor displacement signals and micro-segment revenue discovery',
-            'Automated profit-pool scoring across global vertical markets'
+            'Identify market whitespace and high-potential customer segments.',
+            'Discover buying signals and competitive opportunities.',
+            'Prioritize revenue opportunities using business value and market evidence.'
+        ],
+        capabilities: [
+            { label: 'Market Whitespace', sublabel: 'High-Potential Segments' },
+            { label: 'Signal Telemetry', sublabel: 'Active Buying Indicators' },
+            { label: 'Value Prioritization', sublabel: 'Data-Backed Roadmap' }
         ],
         image: '/images/hero-profit-pool.png',
         fallbackGradient: 'from-cyan-600/20 via-blue-600/15 to-indigo-600/20',
         badgeText: 'Profit Pool Discovery Telemetry: Active',
         primaryCta: {
-            text: 'Launch Demand Radar',
-            link: '/demand-pulse'
+            text: 'Explore Profit Pools',
+            link: '/offerings/profit-pool-discovery'
         },
         secondaryCta: {
-            text: 'Discover Hidden TAM',
-            link: '/solutions'
+            text: 'Discover Market Opportunities',
+            link: '/offerings/profit-pool-discovery#market-whitespace'
         }
     },
+    // Slide 2 — Demand Engineering
     {
-        id: 'agentic-automation',
-        stepNumber: '03',
-        tag: 'Agentic AI & Automation',
-        pillTitle: 'Agentic AI & Automation',
-        icon: Bot,
-        title: 'Intelligent Multi-Agent Mesh &',
-        highlightTitle: 'Agentic AI & Automation',
-        description: 'Deploy persistent multi-agent swarms that autonomously orchestrate enterprise workflows, qualify high-value pipeline, resolve operational friction, and execute complex business processes 24/7.',
-        stats: [
-            { value: '3.8×', label: 'Meeting Velocity', sublabel: 'Auto-Booked Pipeline' },
-            { value: '80%', label: 'Auto-SQL Sourced', sublabel: 'Zero Manual SDR Drag' },
-            { value: '-65%', label: 'Customer CAC', sublabel: 'Radical Efficiency' }
-        ],
+        id: 'demand-engineering',
+        tag: 'Demand Engineering',
+        pillTitle: 'Demand Engineering',
+        icon: Target,
+        title: 'Turn Market Demand Into',
+        highlightTitle: 'Qualified Pipeline.',
+        description: 'Connect ideal customer identification, buying-intent signals, AI-assisted prospecting, and lead qualification to build a more coordinated pipeline generation system.',
         highlights: [
-            'Hyper-personalized multi-channel email, LinkedIn & voice outreach',
-            'Autonomous objection resolution backed by unified knowledge graphs',
-            'Instant two-way CRM synchronization & automated calendar routing'
+            'Identify high-fit target accounts.',
+            'Prioritize relevant demand and buying signals.',
+            'Coordinate prospecting, qualification, and pipeline development.'
+        ],
+        capabilities: [
+            { label: 'ICP Account Radar', sublabel: 'Target Fit Scoring' },
+            { label: 'Multi-Channel Intent', sublabel: 'Surge Signal Capture' },
+            { label: 'Pipeline Generation', sublabel: 'Orchestrated Outbound' }
+        ],
+        image: '/images/demand-pulse-dashboard.png',
+        fallbackGradient: 'from-blue-600/20 via-indigo-600/15 to-purple-600/20',
+        badgeText: 'Demand Engineering Engine: Active',
+        primaryCta: {
+            text: 'Explore Demand Engineering',
+            link: '/offerings/demand-engineering'
+        },
+        secondaryCta: {
+            text: 'Discover Pipeline Generation',
+            link: '/ai-native-sales/autonomous-pipeline-generation'
+        }
+    },
+    // Slide 3 — AI-Native Sales
+    {
+        id: 'ai-native-sales',
+        tag: 'AI-Native Sales',
+        pillTitle: 'AI-Native Sales',
+        icon: Bot,
+        title: 'Make Every Sales Interaction',
+        highlightTitle: 'More Intelligent.',
+        description: 'Bring account intelligence, AI-assisted sales engagement, prospecting, deal execution, and revenue workflows together in a connected sales operating model.',
+        highlights: [
+            'Prepare sales teams with relevant account intelligence.',
+            'Streamline repetitive sales activities and follow-ups.',
+            'Improve visibility into opportunities and buying signals.'
+        ],
+        capabilities: [
+            { label: 'Account 360 Context', sublabel: 'Committee Intelligence' },
+            { label: 'AI Engagement Mesh', sublabel: 'Contextual Follow-Ups' },
+            { label: 'Deal Velocity', sublabel: 'Real-Time Insights' }
         ],
         image: '/images/hero-agentic-ai.png',
         fallbackGradient: 'from-indigo-600/20 via-purple-600/15 to-pink-600/20',
-        badgeText: 'Agentic AI & Automation Mesh: 4,812 Active Swarms',
+        badgeText: 'AI-Native Sales Operating System: Online',
         primaryCta: {
-            text: 'Deploy AI Agent Mesh',
-            link: '/solutions'
+            text: 'Explore AI-Native Sales',
+            link: '/ai-native-sales'
         },
         secondaryCta: {
-            text: 'Schedule Agent Demo',
-            link: '/book-consultation'
+            text: 'Discover Intelligent Sales Workflows',
+            link: '/ai-native-sales/autonomous-sales-engagement'
         }
     },
+    // Slide 4 — Sales Acceleration
     {
-        id: 'revenue-acceleration',
-        stepNumber: '04',
-        tag: 'Sales & Revenue Acceleration',
-        pillTitle: 'Sales & Revenue Acceleration',
+        id: 'sales-acceleration',
+        tag: 'Sales Acceleration',
+        pillTitle: 'Sales Acceleration',
         icon: LineChart,
-        title: 'Real-Time Telemetry &',
-        highlightTitle: 'Sales & Revenue Acceleration',
-        description: 'Eliminate pipeline friction with intelligent funnel diagnostics, predictive deal scoring, dynamic objection handling, and automated revenue velocity triggers.',
-        stats: [
-            { value: '+185%', label: 'Pipeline Yield', sublabel: 'Full-Funnel Conversion' },
-            { value: '$1.4M+', label: 'Recovered ARR', sublabel: 'Leakage Prevention' },
-            { value: '45ms', label: 'Decision Latency', sublabel: 'Real-Time Scoring' }
-        ],
+        title: 'Move High-Value Deals Forward',
+        highlightTitle: 'With Intelligence.',
+        description: 'Identify opportunity risks, understand buying signals, support sales conversations, and help revenue teams focus on the deals that matter most.',
         highlights: [
-            'Algorithmic deal slippage detection and instant recovery interventions',
-            'Full-funnel multi-touch revenue attribution and conversion radar',
-            'Self-healing CRM data fabric with automated contact enrichment'
+            'Surface deal progression signals and potential bottlenecks.',
+            'Support buying committee and opportunity intelligence.',
+            'Improve visibility into sales-cycle performance.'
+        ],
+        capabilities: [
+            { label: 'Deal Progression Radar', sublabel: 'Slippage Detection' },
+            { label: 'Stakeholder Mapping', sublabel: 'Committee Coverage' },
+            { label: 'Cycle Optimization', sublabel: 'Bottleneck Removal' }
         ],
         image: '/images/hero-revenue-acceleration.png',
         fallbackGradient: 'from-emerald-600/20 via-teal-600/15 to-blue-600/20',
-        badgeText: 'Sales & Revenue Acceleration Engine: Active',
+        badgeText: 'Sales Acceleration & Deal Radar: Active',
         primaryCta: {
-            text: 'Accelerate Revenue',
-            link: '/offerings'
+            text: 'Explore Sales Acceleration',
+            link: '/offerings/sales-acceleration'
         },
         secondaryCta: {
-            text: 'Run Revenue Leak Audit',
-            link: '/hidden-revenue-capture'
+            text: 'Discover Revenue Intelligence',
+            link: '/ai-native-sales/revenue-intelligence'
         }
     },
+    // Slide 5 — Digital & Data Intelligence
     {
         id: 'data-intelligence',
-        stepNumber: '05',
         tag: 'Digital & Data Intelligence',
         pillTitle: 'Digital & Data Intelligence',
         icon: Database,
-        title: 'Enterprise Data Fabric &',
-        highlightTitle: 'Digital & Data Intelligence',
-        description: 'Unify disparate cloud databases, CRM streams, and operational systems into a real-time predictive intelligence engine powered by connected neural knowledge graphs.',
-        stats: [
-            { value: '4,500+', label: 'Active Pipelines', sublabel: 'Connected Systems' },
-            { value: '98%', label: 'Forecast Accuracy', sublabel: 'Neural Prediction' },
-            { value: '<12ms', label: 'Telemetry Latency', sublabel: 'Sub-Second Response' }
-        ],
+        title: 'Connect Your Data.',
+        highlightTitle: 'Unlock Revenue Intelligence.',
+        description: 'Bring relevant CRM, customer, marketing, and operational data into a more connected decision-making environment, subject to available integrations and data permissions.',
         highlights: [
-            'Bidirectional connectors for Salesforce, HubSpot, Snowflake & ERPs',
-            'Real-time anomaly detection and predictive customer churn signals',
-            'Unified data lakehouse with zero-trust sandboxing and role access'
+            'Improve visibility across fragmented business information.',
+            'Identify useful patterns in customer and revenue data.',
+            'Support better-informed operational and commercial decisions.'
+        ],
+        capabilities: [
+            { label: 'Unified Data Streams', sublabel: 'CRM & ERP Connectors' },
+            { label: 'Pattern Detection', sublabel: 'Predictive Signals' },
+            { label: 'Decision Telemetry', sublabel: 'Executive Cockpit' }
         ],
         image: '/images/hero-data-intelligence.png',
         fallbackGradient: 'from-blue-600/20 via-cyan-600/15 to-indigo-600/20',
-        badgeText: 'Digital & Data Intelligence Mesh: 4,500+ Streams',
+        badgeText: 'Revenue Data Intelligence Fabric: Connected',
         primaryCta: {
             text: 'Explore Data Intelligence',
             link: '/solutions'
         },
         secondaryCta: {
-            text: 'View Architecture Matrix',
-            link: '/offerings'
+            text: 'Discover Data Architecture',
+            link: '/growth-science/revenue-physics'
         }
     },
+    // Slide 6 — Revenue Operations
     {
-        id: 'end-to-end-transformation',
-        stepNumber: '06',
-        tag: 'End-to-End Transformation',
-        pillTitle: 'End-to-End Transformation',
-        icon: ShieldCheck,
-        title: 'Strategy, Tech & Operations //',
-        highlightTitle: 'End-to-End Transformation',
-        description: 'Seamlessly integrating strategic business consulting, enterprise AI architecture, autonomous operations, and verified financial outcomes into a unified transformation ecosystem.',
-        stats: [
-            { value: '300%', label: 'Avg Pipeline Lift', sublabel: 'Verified Outcome' },
-            { value: 'SOC 2', label: 'Type II Certified', sublabel: 'Bank-Grade Security' },
-            { value: '500+', label: 'Global Clients', sublabel: 'Enterprises & Scale-Ups' }
-        ],
+        id: 'revenue-operations',
+        tag: 'Revenue Operations',
+        pillTitle: 'Revenue Operations',
+        icon: Cpu,
+        title: 'Connect Every Revenue Team to',
+        highlightTitle: 'One Operating System.',
+        description: 'Coordinate sales, marketing, finance, and customer success through connected workflows, better data visibility, and more consistent revenue execution.',
         highlights: [
-            'End-to-end enterprise delivery model tailored to complex workflows',
-            'Full governance compliance with SOC2 Type II, ISO27001 and GDPR',
-            'Continuous learning models that compound operational advantages over time'
+            'Streamline cross-functional revenue handoffs.',
+            'Improve CRM data quality and workflow visibility.',
+            'Connect performance reporting with business decisions.'
         ],
-        image: '/images/hero-end-to-end-transformation.png',
+        capabilities: [
+            { label: 'Cross-Team Alignment', sublabel: 'Unified Revenue Motion' },
+            { label: 'CRM Orchestration', sublabel: 'Automated Data Hygiene' },
+            { label: 'Executive Cockpit', sublabel: 'Real-Time Visibility' }
+        ],
+        image: '/images/revenue-acceleration-engine.png',
         fallbackGradient: 'from-slate-700/20 via-blue-800/15 to-indigo-900/20',
-        badgeText: 'End-to-End Transformation Ecosystem: Verified',
+        badgeText: 'RevOps Command Center: Orchestrated',
         primaryCta: {
-            text: 'Start Enterprise Transformation',
-            link: '/book-consultation'
+            text: 'Explore Revenue Operations',
+            link: '/offerings/revenue-operations'
         },
         secondaryCta: {
-            text: 'Review Proven Outcomes',
-            link: '/outcomes'
+            text: 'Discover Revenue Workflows',
+            link: '/offerings/revenue-operations#command-center'
+        }
+    },
+    // Slide 7 — Customer Growth
+    {
+        id: 'customer-growth',
+        tag: 'Customer Growth',
+        pillTitle: 'Customer Growth',
+        icon: TrendingUp,
+        title: 'Turn Customer Value Into',
+        highlightTitle: 'Sustainable Revenue Growth.',
+        description: 'Identify customer needs, monitor adoption signals, surface retention risks, and discover expansion opportunities across the customer lifecycle.',
+        highlights: [
+            'Improve visibility into customer health and adoption.',
+            'Identify renewal and retention opportunities.',
+            'Support cross-sell, upsell, and account expansion.'
+        ],
+        capabilities: [
+            { label: 'Health Telemetry', sublabel: 'Early Risk Warning' },
+            { label: 'Renewal Predictor', sublabel: 'Proactive Retention' },
+            { label: 'Expansion Engine', sublabel: 'Account Whitespace' }
+        ],
+        image: '/images/industry-saas.png',
+        fallbackGradient: 'from-teal-600/20 via-emerald-600/15 to-blue-600/20',
+        badgeText: 'Customer Growth & Retention Radar: Active',
+        primaryCta: {
+            text: 'Explore Customer Growth',
+            link: '/offerings/customer-success'
+        },
+        secondaryCta: {
+            text: 'Discover Expansion Opportunities',
+            link: '/ai-native-sales/customer-growth-intelligence'
+        }
+    },
+    // Slide 8 — GTM Transformation
+    {
+        id: 'gtm-transformation',
+        tag: 'GTM Transformation',
+        pillTitle: 'GTM Transformation',
+        icon: Workflow,
+        title: 'Build a Go-to-Market Engine That',
+        highlightTitle: 'Works as One.',
+        description: 'Align market strategy, demand generation, sales execution, and customer growth around connected workflows and measurable commercial priorities.',
+        highlights: [
+            'Align teams around shared revenue objectives.',
+            'Reduce friction across go-to-market workflows.',
+            'Coordinate intelligence and automation across the revenue lifecycle.'
+        ],
+        capabilities: [
+            { label: 'Unified GTM Motion', sublabel: 'Shared Objectives' },
+            { label: 'Friction Removal', sublabel: 'Streamlined Handoffs' },
+            { label: 'End-to-End Scale', sublabel: 'Continuous Growth' }
+        ],
+        image: '/images/hero-end-to-end-transformation.png',
+        fallbackGradient: 'from-blue-700/20 via-indigo-700/15 to-purple-800/20',
+        badgeText: 'GTM Operating Model: Synchronized',
+        primaryCta: {
+            text: 'Explore GTM Transformation',
+            link: '/offerings/gtm-transformation'
+        },
+        secondaryCta: {
+            text: 'Discover Growth Strategy',
+            link: '/growth-science'
         }
     }
 ];
@@ -232,7 +292,7 @@ export default function HomeFeatureSlider() {
     const [isPlaying, setIsPlaying] = useState<boolean>(true);
     const [touchStartX, setTouchStartX] = useState<number | null>(null);
     const [progress, setProgress] = useState<number>(0);
-    const SLIDE_DURATION = 6500; // 6.5 seconds per slide
+    const SLIDE_DURATION = 5500; // 5.5 seconds per slide (meets 5-6s requirement)
     const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
     const activeSlide = homeSliders[currentIndex];
@@ -336,7 +396,7 @@ export default function HomeFeatureSlider() {
 
             <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 
-                {/* Main 6-Slide Card Container */}
+                {/* Main 8-Slide Card Container */}
                 <div className="relative rounded-3xl bg-white border border-slate-200/90 shadow-2xl shadow-slate-200/70 overflow-hidden p-6 sm:p-8 lg:p-12">
                     
                     <AnimatePresence mode="wait">
@@ -357,13 +417,12 @@ export default function HomeFeatureSlider() {
                                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                                             <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
                                         </span>
-                                        <span className="font-mono text-blue-600 font-extrabold">{activeSlide.stepNumber}</span>
-                                        <span className="text-slate-300 font-normal">//</span>
+                                        <activeSlide.icon className="w-3.5 h-3.5 text-blue-600" />
                                         <span>{activeSlide.tag}</span>
                                     </span>
                                 </div>
 
-                                <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-slate-900 leading-[1.14] tracking-tight mb-4 font-heading">
+                                <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-extrabold text-slate-900 leading-[1.16] tracking-tight mb-4 font-heading">
                                     {activeSlide.title}{' '}
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
                                         {activeSlide.highlightTitle}
@@ -374,7 +433,7 @@ export default function HomeFeatureSlider() {
                                     {activeSlide.description}
                                 </p>
 
-                                {/* Key Highlight Bullet Points */}
+                                {/* Key Supporting Bullet Points */}
                                 <div className="space-y-2.5 mb-8">
                                     {activeSlide.highlights.map((highlight, hIdx) => (
                                         <div key={hIdx} className="flex items-start gap-3">
@@ -388,21 +447,16 @@ export default function HomeFeatureSlider() {
                                     ))}
                                 </div>
 
-                                {/* Key Metrics Strip */}
+                                {/* Key Capabilities Strip */}
                                 <div className="grid grid-cols-3 gap-2 sm:gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 mb-8 shadow-xs">
-                                    {activeSlide.stats.map((stat, sIdx) => (
-                                        <div key={sIdx} className="text-left">
-                                            <div className="text-lg sm:text-2xl font-extrabold text-blue-600 font-mono">
-                                                {stat.value}
+                                    {activeSlide.capabilities.map((cap, cIdx) => (
+                                        <div key={cIdx} className="text-left">
+                                            <div className="text-xs sm:text-sm font-extrabold text-slate-900 font-heading">
+                                                {cap.label}
                                             </div>
-                                            <div className="text-xs font-bold text-slate-800 leading-tight mt-0.5">
-                                                {stat.label}
+                                            <div className="text-[11px] text-slate-500 font-normal leading-tight mt-0.5">
+                                                {cap.sublabel}
                                             </div>
-                                            {stat.sublabel && (
-                                                <div className="text-[11px] text-slate-500 font-normal hidden sm:block">
-                                                    {stat.sublabel}
-                                                </div>
-                                            )}
                                         </div>
                                     ))}
                                 </div>
@@ -413,7 +467,7 @@ export default function HomeFeatureSlider() {
                                         to={activeSlide.primaryCta.link}
                                         onClick={() => trackEvent({ eventName: 'SLIDER_PRIMARY_CTA_CLICK', label: activeSlide.primaryCta.text })}
                                     >
-                                        <Button className="w-full sm:w-auto bg-slate-900 hover:bg-blue-600 text-white font-bold px-7 py-6 rounded-xl shadow-lg shadow-slate-900/10 text-sm transition-all hover:-translate-y-0.5 group">
+                                        <Button className="w-full sm:w-auto bg-slate-900 hover:bg-blue-600 text-white font-bold px-7 py-6 rounded-xl shadow-lg shadow-slate-900/10 text-sm transition-all hover:-translate-y-0.5 group cursor-pointer">
                                             <span className="flex items-center justify-center">
                                                 {activeSlide.primaryCta.text}
                                                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -425,9 +479,10 @@ export default function HomeFeatureSlider() {
                                         to={activeSlide.secondaryCta.link}
                                         onClick={() => trackEvent({ eventName: 'SLIDER_SECONDARY_CTA_CLICK', label: activeSlide.secondaryCta.text })}
                                     >
-                                        <Button variant="outline" className="w-full sm:w-auto border-slate-200 bg-white hover:bg-slate-50 text-slate-800 font-bold px-6 py-6 rounded-xl text-sm shadow-xs transition-all">
+                                        <Button variant="outline" className="w-full sm:w-auto border-slate-200 bg-white hover:bg-slate-50 text-slate-800 font-bold px-6 py-6 rounded-xl text-sm shadow-xs transition-all cursor-pointer">
                                             <span className="flex items-center justify-center">
                                                 {activeSlide.secondaryCta.text}
+                                                <ArrowUpRight className="ml-1.5 w-3.5 h-3.5 text-slate-500" />
                                             </span>
                                         </Button>
                                     </Link>
@@ -435,7 +490,7 @@ export default function HomeFeatureSlider() {
 
                             </div>
 
-                            {/* Right Visual Column with Cohesive 3D Enterprise Imagery */}
+                            {/* Right Visual Column with Enterprise Product Interface */}
                             <div className="lg:col-span-6 relative">
                                 <div className="relative rounded-2xl overflow-hidden border border-slate-300/90 shadow-2xl bg-slate-950 group">
                                     
@@ -451,7 +506,7 @@ export default function HomeFeatureSlider() {
                                             <span>profitmachines.ai/{activeSlide.id}</span>
                                         </div>
                                         <div className="text-[10px] font-mono text-blue-400 font-bold uppercase">
-                                            Architecture {activeSlide.stepNumber}
+                                            Telemetry
                                         </div>
                                     </div>
 
@@ -461,7 +516,7 @@ export default function HomeFeatureSlider() {
                                         {/* Fallback ambient glow */}
                                         <div className={`absolute inset-0 bg-gradient-to-br ${activeSlide.fallbackGradient} opacity-50`} />
 
-                                        {/* 3D Visual */}
+                                        {/* Visual Graphic */}
                                         <img 
                                             src={activeSlide.image} 
                                             alt={`${activeSlide.title} ${activeSlide.highlightTitle}`}
@@ -477,14 +532,14 @@ export default function HomeFeatureSlider() {
 
                                         {/* Floating Live Telemetry Badge on Image */}
                                         <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-2 p-3 rounded-xl bg-slate-900/95 border border-slate-700/80 backdrop-blur-md shadow-lg">
-                                            <div className="flex items-center gap-2">
+                                            <div className="flex items-center gap-2 min-w-0">
                                                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
                                                 <span className="text-xs font-mono font-semibold text-slate-200 truncate">
                                                     {activeSlide.badgeText}
                                                 </span>
                                             </div>
                                             <div className="hidden sm:flex items-center gap-1 text-[11px] font-mono text-blue-400 font-bold flex-shrink-0">
-                                                <span>Live Telemetry</span>
+                                                <span>Live Stream</span>
                                             </div>
                                         </div>
                                     </div>
@@ -495,40 +550,41 @@ export default function HomeFeatureSlider() {
                     </AnimatePresence>
                 </div>
 
-                {/* Bottom Controls Strip: Prev/Next, Slider Progress, and Trust Pills */}
+                {/* Bottom Controls Strip: Trust Indicators, Pagination Dots & Arrow Controls (No Numerical Counter) */}
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-8 px-2">
                     
-                    {/* Left: Enterprise Trust Pills */}
+                    {/* Left: Enterprise Architecture Badges */}
                     <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-semibold text-slate-600">
                         <div className="flex items-center gap-1.5">
                             <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                            <span>SOC2 Type II</span>
+                            <span>Enterprise Governance</span>
                         </div>
                         <div className="flex items-center gap-1.5">
                             <Globe className="w-4 h-4 text-blue-600" />
-                            <span>Global Multi-Region</span>
+                            <span>Multi-Cloud Architecture</span>
                         </div>
                         <div className="flex items-center gap-1.5">
-                            <CheckCircle2 className="w-4 h-4 text-indigo-600" />
-                            <span>Fortune 500 Scale</span>
+                            <Activity className="w-4 h-4 text-indigo-600" />
+                            <span>Continuous Telemetry</span>
                         </div>
                     </div>
 
-                    {/* Right: Slide Controls, Dots, and Progress Bar */}
+                    {/* Right: Slide Controls, Dots, and Autoplay Toggle (No 05 / 06 Counter) */}
                     <div className="flex items-center gap-3">
                         
-                        {/* Dot Indicators with Active Progress Fill */}
+                        {/* 8 Dot Indicators with Active Progress Fill */}
                         <div className="flex items-center gap-1.5 mr-2">
-                            {homeSliders.map((_, dotIdx) => (
+                            {homeSliders.map((s, dotIdx) => (
                                 <button
-                                    key={dotIdx}
+                                    key={s.id}
                                     onClick={() => goToSlide(dotIdx)}
-                                    className={`relative h-2.5 rounded-full overflow-hidden transition-all duration-300 ${
+                                    className={`relative h-2.5 rounded-full overflow-hidden transition-all duration-300 cursor-pointer ${
                                         dotIdx === currentIndex 
                                             ? 'w-8 bg-blue-100' 
                                             : 'w-2.5 bg-slate-300 hover:bg-slate-400'
                                     }`}
-                                    aria-label={`Go to slide ${dotIdx + 1}`}
+                                    aria-label={`Go to slide ${dotIdx + 1}: ${s.tag}`}
+                                    title={s.tag}
                                 >
                                     {dotIdx === currentIndex && (
                                         <div 
@@ -540,11 +596,11 @@ export default function HomeFeatureSlider() {
                             ))}
                         </div>
 
-                        {/* Navigation Control Box */}
+                        {/* Navigation Control Box: Play/Pause, Prev, Next (NO numerical counter) */}
                         <div className="flex items-center bg-white border border-slate-200 rounded-xl p-1 shadow-sm">
                             <button
                                 onClick={() => setIsPlaying(!isPlaying)}
-                                className="p-2 text-slate-500 hover:text-slate-900 rounded-lg hover:bg-slate-100 transition-colors"
+                                className="p-2 text-slate-500 hover:text-slate-900 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
                                 title={isPlaying ? "Pause autoplay" : "Start autoplay"}
                                 aria-label={isPlaying ? "Pause autoplay" : "Start autoplay"}
                             >
@@ -555,22 +611,18 @@ export default function HomeFeatureSlider() {
 
                             <button
                                 onClick={prevSlide}
-                                className="p-2 text-slate-700 hover:text-blue-600 rounded-lg hover:bg-slate-100 transition-colors"
+                                className="p-2 text-slate-700 hover:text-blue-600 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
                                 aria-label="Previous slide"
+                                title="Previous slide"
                             >
                                 <ChevronLeft className="w-5 h-5" />
                             </button>
 
-                            <div className="px-2.5 text-xs font-mono font-bold text-slate-700">
-                                <span className="text-blue-600">{activeSlide.stepNumber}</span>
-                                <span className="text-slate-400"> / </span>
-                                <span>0{homeSliders.length}</span>
-                            </div>
-
                             <button
                                 onClick={nextSlide}
-                                className="p-2 text-slate-700 hover:text-blue-600 rounded-lg hover:bg-slate-100 transition-colors"
+                                className="p-2 text-slate-700 hover:text-blue-600 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
                                 aria-label="Next slide"
+                                title="Next slide"
                             >
                                 <ChevronRight className="w-5 h-5" />
                             </button>
@@ -583,4 +635,3 @@ export default function HomeFeatureSlider() {
         </section>
     );
 }
-

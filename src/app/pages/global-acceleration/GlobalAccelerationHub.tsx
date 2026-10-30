@@ -4,280 +4,116 @@ import {
   Globe, ArrowRight, ChevronRight, Activity, ShieldCheck,
   TrendingUp, BarChart3, Layers, Cpu, Compass, CheckCircle2,
   AlertCircle, Users, Bot, Sparkles, Building2, HelpCircle,
-  MapPin, Zap, ArrowUpRight, DollarSign, Network, Target, Briefcase
+  MapPin, Zap, ArrowUpRight, DollarSign, Network, Target, Briefcase,
+  Scale, FileText, Check, ShieldAlert, Sliders, ExternalLink,
+  ChevronDown, Search, Filter
 } from 'lucide-react';
-import { AiSalesIntakeForm } from '../../components/forms/AiSalesIntakeForm';
-
-interface AreaCapability {
-  title: string;
-  desc: string;
-}
-
-interface AreaOutcome {
-  metric: string;
-  label: string;
-  desc: string;
-}
-
-interface GlobalArea {
-  id: string;
-  num: string;
-  title: string;
-  supportingLabel: string;
-  referenceLabel: string;
-  path: string;
-  icon: React.ComponentType<{ className?: string }>;
-  color: string;
-  desc: string;
-  capabilities: AreaCapability[];
-  outcomes: AreaOutcome[];
-}
-
-const globalAccelerationAreas: GlobalArea[] = [
-  {
-    id: 'global-market-access',
-    num: '01',
-    title: 'Global Market Access',
-    supportingLabel: 'Expansion Intelligence',
-    referenceLabel: 'Global Market Intelligence',
-    path: '/global-acceleration/market-intelligence',
-    icon: Globe,
-    color: 'blue',
-    desc: 'Institutional market validation and intelligence systems that evaluate territory viability, unit economics, regulatory risk, and competitive saturation before capital commitment.',
-    capabilities: [
-      { title: 'Country Opportunity Analysis', desc: 'Unit-economic validation ranking foreign markets by contribution margin and purchasing power over vanity GDP headlines.' },
-      { title: 'Market Opportunity Mapping', desc: 'Systematic heat-mapping of market density, sector growth rates, and structural headroom across cross-border territories.' },
-      { title: 'TAM / SAM / SOM Assessment', desc: 'Rigorous territory addressable market sizing with realistic penetration modeling calibrated against regional incumbents.' },
-      { title: 'Competitive Intelligence', desc: 'Reverse-engineering regional competitors, pricing power, distribution lock-ins, and defensible counter-positioning.' },
-      { title: 'Trade Corridor Intelligence', desc: 'Analysis of bilateral trade agreements, tariffs, customs clearance dynamics, and cross-border commercial flows.' },
-      { title: 'Regulatory Intelligence', desc: 'Pre-emptive compliance modeling for data residency, labor codes, cross-border privacy laws, and corporate governance.' },
-      { title: 'Market Entry Feasibility', desc: 'Quantitative feasibility indexing assessing capital requirements, payback horizons, operational barriers, and local talent.' },
-      { title: 'Geo-Economic Risk Analysis', desc: 'Scenario stress-testing against currency volatility, geopolitical exposure, capital repatriation constraints, and supply shocks.' }
-    ],
-    outcomes: [
-      { metric: '60% Faster', label: 'Faster Market Selection', desc: 'Compression of market validation and prioritization cycles.' },
-      { metric: '70% Lower', label: 'Lower Expansion Risk', desc: 'Reduction in exploratory capital misallocation and false starts.' },
-      { metric: 'Tier 1–3', label: 'Market Prioritization', desc: 'Objective territory ranking backed by audited unit economics.' },
-      { metric: '100% Audit', label: 'Expansion Readiness', desc: 'Pre-entry compliance, tax structuring, and regulatory clearance.' }
-    ]
-  },
-  {
-    id: 'global-demand-networks',
-    num: '02',
-    title: 'Global Demand Networks',
-    supportingLabel: 'Demand Ecosystems',
-    referenceLabel: 'Global Demand Chain Discovery',
-    path: '/global-acceleration/cross-border-strategy',
-    icon: Network,
-    color: 'indigo',
-    desc: 'Algorithmic discovery and qualification of commercial demand corridors, connecting enterprises with verified buyers, channel distributors, and institutional procurement networks.',
-    capabilities: [
-      { title: 'Distributor Discovery', desc: 'Algorithmic sourcing of top-quartile distributor organizations with verified regional sales reach and active commercial infrastructure.' },
-      { title: 'Retail Network Discovery', desc: 'Precision identification of retail chains, boutique outlets, and department stores primed for immediate product placement.' },
-      { title: 'Importer & Buyer Discovery', desc: 'Direct access to credentialed cross-border importers, customs clearing houses, and high-volume corporate procurement buyers.' },
-      { title: 'Dealer & Reseller Mapping', desc: 'Exhaustive territory mapping of certified value-added resellers (VARs) and localized dealer networks.' },
-      { title: 'Strategic Account Discovery', desc: 'Target identification of multinational enterprise accounts with verified buying intent in target regional corridors.' },
-      { title: 'Procurement Network Intelligence', desc: 'Reverse-engineering RFP schedules, procurement cycles, and approved vendor requirements across institutional buyers.' },
-      { title: 'Industry Demand Ecosystem Mapping', desc: 'Cross-industry relationship mapping identifying ecosystem clusters, tier-1 suppliers, and secondary buyers.' },
-      { title: 'Revenue Corridor Discovery', desc: 'Longitudinal modeling of active commercial trade corridors with accelerating import velocity and unmet demand.' }
-    ],
-    outcomes: [
-      { metric: '250+ Accounts', label: 'Global Buyers', desc: 'Direct discovery of vetted international enterprise buyer accounts per territory.' },
-      { metric: '3.5x Faster', label: 'Channel Expansion', desc: 'Acceleration in distribution network onboarding and regional market coverage.' },
-      { metric: '90-Day Pre-Test', label: 'Demand Validation', desc: 'Empirical customer intent validation prior to field deployment.' },
-      { metric: '$15M–$45M', label: 'Revenue Discovery', desc: 'Identified qualified foreign pipeline headroom per target corridor.' }
-    ]
-  },
-  {
-    id: 'export-growth-engine',
-    num: '03',
-    title: 'Export Growth Engine',
-    supportingLabel: 'Export Growth Engine',
-    referenceLabel: 'Export Acceleration',
-    path: '/global-acceleration/cross-border-strategy',
-    icon: TrendingUp,
-    color: 'emerald',
-    desc: 'Institutional export acceleration architecture engineered to assess readiness, acquire foreign buyers, and scale cross-border sales velocity.',
-    capabilities: [
-      { title: 'Export Readiness Assessment', desc: 'Systematic operational, compliance, and product localization diagnostic scoring enterprise export viability.' },
-      { title: 'Export GTM Strategy', desc: 'End-to-end go-to-market architecture tailored to customs regimes, currency exposure, and regional buyer habits.' },
-      { title: 'International Buyer Acquisition', desc: 'Multi-channel buyer engagement frameworks securing direct commercial meetings with verified cross-border decision-makers.' },
-      { title: 'Export Lead Generation', desc: 'Continuous pipeline generation feeding commercial reps with pre-qualified international purchasing inquiries.' },
-      { title: 'International Channel Development', desc: 'Structuring, contracting, and incentivizing foreign distribution channels for sustainable volume throughput.' },
-      { title: 'Trade Promotion Programs', desc: 'Strategic execution of bilateral trade missions, bilateral subsidies, and state-sponsored export incentives.' },
-      { title: 'Trade Event Intelligence', desc: 'Event intelligence mapping international congresses, reverse expos, and buyer delegations for targeted executive interaction.' },
-      { title: 'Export Revenue Programs', desc: 'Structured commercial campaigns orchestrating pipeline conversion across cross-border accounts.' }
-    ],
-    outcomes: [
-      { metric: '+40%–65%', label: 'Export Revenue Growth', desc: 'Year-over-year increase in foreign revenue contribution.' },
-      { metric: '2.8x Faster', label: 'International Customers', desc: 'Acceleration in initial cross-border deal closing cycles.' },
-      { metric: '90 Days', label: 'New Markets', desc: 'Repeatable operational blueprint for launching new national territories.' },
-      { metric: '>3.2x', label: 'Cross-Border Sales', desc: 'Pipeline coverage maintained across foreign operating corridors.' }
-    ]
-  },
-  {
-    id: 'strategic-partner-ecosystems',
-    num: '04',
-    title: 'Strategic Partner Ecosystems',
-    supportingLabel: 'Growth Alliances',
-    referenceLabel: 'Global Partner Ecosystems',
-    path: '/global-acceleration/partner-ecosystems',
-    icon: Users,
-    color: 'sky',
-    desc: 'Enterprise ecosystem architecture establishing co-sell alliances, master distribution networks, and trade partnerships that accelerate market penetration without linear overhead.',
-    capabilities: [
-      { title: 'Channel Partner Networks', desc: 'Systematic tiering and governance of multi-tier certified solution providers, distributors, and referral partners.' },
-      { title: 'Distributor Partnerships', desc: 'Master commercial structuring aligning minimum viable revenue quotas, territory exclusivity, and margin schedules.' },
-      { title: 'Strategic Alliances', desc: 'High-impact co-innovation and co-marketing partnerships with complementary industry market leaders.' },
-      { title: 'Joint Venture Opportunities', desc: 'Structured identification, commercial modeling, and operational alignment for local equity partnerships and JVs.' },
-      { title: 'Technology Partnerships', desc: 'API and product integrations embedding your solution into dominant regional enterprise tech stacks.' },
-      { title: 'Industry Associations', desc: 'Executive engagement and institutional sponsorship across high-influence regional industry bodies.' },
-      { title: 'Government Trade Programs', desc: 'Leveraging bilateral commerce ministries, export promotion councils, and state development grants.' },
-      { title: 'Ecosystem Development', desc: 'Fostering community, developer, and reseller networks that generate compounding inbound enterprise referral volume.' }
-    ],
-    outcomes: [
-      { metric: 'Instant Reach', label: 'Market Access', desc: 'Direct entry into pre-existing, trusted enterprise client relationships.' },
-      { metric: '45%–55%', label: 'Partner-Led Growth', desc: 'Share of international revenue generated through indirect partner co-sell.' },
-      { metric: '3x Velocity', label: 'Expansion Velocity', desc: 'Faster local account penetration compared to greenfield direct hiring.' },
-      { metric: 'Certified Hubs', label: 'Regional Presence', desc: 'Established local credibility and certified service delivery across all key hubs.' }
-    ]
-  },
-  {
-    id: 'global-supply-networks',
-    num: '05',
-    title: 'Global Supply Networks',
-    supportingLabel: 'Supply Networks',
-    referenceLabel: 'Global Supply Chain Integration',
-    path: '/global-acceleration/market-intelligence',
-    icon: Layers,
-    color: 'amber',
-    desc: 'Intelligence and mapping frameworks to evaluate cross-border supply chains, manufacturing partners, vendor resilience, and fulfillment routes for maximum margin.',
-    capabilities: [
-      { title: 'Supplier Discovery', desc: 'Algorithmic sourcing and qualification of regional component manufacturers, raw material producers, and OEM vendors.' },
-      { title: 'Procurement Ecosystem Mapping', desc: 'Complete visibility into secondary and tertiary sub-tier supplier dependencies and capacity limits.' },
-      { title: 'Manufacturing Partner Discovery', desc: 'Identifying ISO-certified contract manufacturers with audited capacity, quality standards, and localized labor advantages.' },
-      { title: 'Logistics Network Design', desc: 'Multi-modal freight optimization balancing maritime, air, and overland corridors for cost vs. transit speed.' },
-      { title: 'Vendor Intelligence', desc: 'Financial health checks, ESG compliance audits, and commercial reliability scoring across candidate suppliers.' },
-      { title: 'Trade Route Optimization', desc: 'Tracking and routing around customs bottlenecks, maritime chokepoints, and tariff escalation zones.' },
-      { title: 'Supply Chain Risk Assessment', desc: 'Quantitative vulnerability indexing for single-source dependencies, geopolitical disruption, and port delays.' },
-      { title: 'Cross-Border Operations', desc: 'Streamlining customs declarations, bonded warehousing, and localized inventory fulfillment staging.' }
-    ],
-    outcomes: [
-      { metric: '99.4%', label: 'Supply Resilience', desc: 'On-time delivery benchmark across multi-country procurement routes.' },
-      { metric: '3x Surge', label: 'Operational Scale', desc: 'Unlocking manufacturing surge capacity without fixed capital outlay.' },
-      { metric: '14%–22%', label: 'Cost Efficiency', desc: 'Reduction in landed cost of goods sold (COGS) through route optimization.' },
-      { metric: '4+ Corridors', label: 'Global Sourcing', desc: 'Diversified supplier base across resilient geographic jurisdictions.' }
-    ]
-  },
-  {
-    id: 'global-revenue-engines',
-    num: '06',
-    title: 'Global Revenue Engines',
-    supportingLabel: 'Revenue Infrastructure',
-    referenceLabel: 'Global Revenue Operations',
-    path: '/global-acceleration/global-revops',
-    icon: BarChart3,
-    color: 'cyan',
-    desc: 'Institutional revenue infrastructure orchestrating multi-region pipeline velocity, currency-aware CRM orchestration, and cross-border commercial execution.',
-    capabilities: [
-      { title: 'Multi-Country GTM Design', desc: 'Unified operating models defining regional quota ratios, compensation grids, and escalation pathways.' },
-      { title: 'Territory Planning', desc: 'Dynamic account routing based on market capacity, buyer propensity scores, and localized language coverage.' },
-      { title: 'Regional Revenue Hubs', desc: 'Shared services blueprint for localized customer onboarding, technical pre-sales, and tier-1 support.' },
-      { title: 'Multi-Language SDR Operations', desc: 'Deploying native-fluency outbound prospecting frameworks operating across 12+ timezones simultaneously.' },
-      { title: 'International Pipeline Management', desc: 'Unified deal inspection frameworks eliminating cross-border reporting latency and currency distortions.' },
-      { title: 'Revenue Intelligence', desc: 'Algorithmic signal detection monitoring win/loss drivers, rep productivity variance, and regional sales velocity.' },
-      { title: 'Customer Success Operations', desc: 'Proactive health monitoring and localized renewal playbooks preserving multi-currency Net Revenue Retention.' },
-      { title: 'Revenue Performance Optimization', desc: 'Continuous testing of messaging, pricing concessions, and contracting cycles across regional buyer cohorts.' }
-    ],
-    outcomes: [
-      { metric: '3.8x Lift', label: 'Pipeline Growth', desc: 'Expansion in qualified multi-region sales pipeline coverage.' },
-      { metric: '96%', label: 'Revenue Predictability', desc: 'Quarterly forecast accuracy across fragmented international entities.' },
-      { metric: '45 Days', label: 'International Scale', desc: 'Repeatable regional hub deployment model to reach operational readiness.' },
-      { metric: '28% Savings', label: 'Operational Excellence', desc: 'Reduction in cross-border customer acquisition and onboarding overhead.' }
-    ]
-  },
-  {
-    id: 'global-capital-finance',
-    num: '07',
-    title: 'Global Capital & Finance',
-    supportingLabel: 'Financial Infrastructure',
-    referenceLabel: 'Global Financial Ecosystem',
-    path: '/global-acceleration/expansion-office',
-    icon: DollarSign,
-    color: 'violet',
-    desc: 'Financial ecosystem discovery, capital readiness diagnostics, trade finance facilitation, and treasury advisory to fund cross-border expansion sustainably.',
-    capabilities: [
-      { title: 'Trade Finance Solutions', desc: 'Identifying and connecting letters of credit (LCs), invoice factoring, and export receivables financing options.' },
-      { title: 'Export Financing', desc: 'Navigating state export credit lines, sovereign buyer credit guarantees, and pre-shipment working capital facilities.' },
-      { title: 'International Banking Networks', desc: 'Mapping global correspondent banking relationships for efficient treasury operations and FX settlements.' },
-      { title: 'Cross-Border Payments', desc: 'Architecture for multi-currency merchant processing, localized payment gateways, and hedging transaction fees.' },
-      { title: 'Export Credit Agencies', desc: 'Engaging institutional ECAs (such as EXIM and Euler Hermes) to mitigate cross-border buyer default risks.' },
-      { title: 'Development Finance Institutions', desc: 'Exploring multilateral development finance (IFC, EBRD, ADB) for emerging market infrastructure and scale.' },
-      { title: 'Investor & Capital Access', desc: 'Readiness advisory connecting cross-border ventures with international growth equity and debt syndicates.' },
-      { title: 'Global Treasury Advisory', desc: 'Optimizing transfer pricing compliance, multi-jurisdiction tax efficiency, and dividend repatriation paths.' }
-    ],
-    outcomes: [
-      { metric: 'Non-Dilutive', label: 'Growth Capital', desc: 'Structured readiness for non-dilutive trade lines and expansion facilities.' },
-      { metric: '40 Days Less', label: 'Working Capital', desc: 'Compression in cash-to-cash cross-border operating cycles.' },
-      { metric: 'Audit-Ready', label: 'Expansion Financing', desc: 'Comprehensive financial dossier formatted for international lenders.' },
-      { metric: '40+ Corridors', label: 'Financial Connectivity', desc: 'Seamless multi-currency settlement across national banking networks.' }
-    ]
-  },
-  {
-    id: 'ai-powered-expansion',
-    num: '08',
-    title: 'AI-Powered Expansion',
-    supportingLabel: 'Autonomous Expansion Systems',
-    referenceLabel: 'AI-Powered Global Expansion',
-    path: '/global-acceleration/ai-global-scaling',
-    icon: Cpu,
-    color: 'emerald',
-    desc: 'Autonomous AI agent architecture delivering 24/7 market telemetry, localized buyer prospecting, automated distributor matching, and centralized expansion command.',
-    capabilities: [
-      { title: 'AI Market Intelligence', desc: 'Continuous agentic scanning of foreign registry filings, tender boards, and trade journals for emerging market opportunities.' },
-      { title: 'AI Buyer Discovery', desc: 'Autonomous identification and enrichment of cross-border executive decision-makers exhibiting live purchasing signals.' },
-      { title: 'AI Distributor Discovery', desc: 'Automated profiling and scoring of regional distributor capacity, brand portfolios, and operational readiness.' },
-      { title: 'AI Partner Matching', desc: 'Algorithmic compatibility scoring matching enterprise products with regional VAR and system integrator portfolios.' },
-      { title: 'AI Localization Engines', desc: 'Context-aware adaptation of sales collateral, contracts, and regulatory filings into 15+ native business dialects.' },
-      { title: 'AI Revenue Agents', desc: '24/7 autonomous SDR and lead qualification agents conducting outbound correspondence across global timezones.' },
-      { title: 'Autonomous Expansion Workflows', desc: 'Self-orchestrating task workflows connecting research, CRM enrichment, compliance checks, and outreach.' },
-      { title: 'Global Intelligence Command Center', desc: 'Unified executive telemetry dashboard aggregating cross-border pipeline, risks, and velocity metrics.' }
-    ],
-    outcomes: [
-      { metric: '80% Faster', label: 'Speed, Scale & Automation', desc: 'Reduction in research hours per country evaluation.' },
-      { metric: '24/7 Mesh', label: '24/7 Global Expansion', desc: 'Continuous autonomous prospecting across all timezones without human fatigue.' },
-      { metric: 'Zero Delay', label: 'AI Revenue Operations', desc: 'Instant response times to inbound international buyer requests.' },
-      { metric: 'Self-Learning', label: 'Autonomous Growth', desc: 'Playbook continuously refining tactics based on regional win/loss telemetry.' }
-    ]
-  }
-];
-
-const regions = [
-  { name: 'North America & UK', status: 'Core Tier 1', coverage: 'Direct + Hyperscaler Co-Sell', lat: '38%', lon: '24%', active: true },
-  { name: 'DACH & Western Europe', status: 'Sovereign GDPR', coverage: 'Local Sovereign Swarms', lat: '32%', lon: '49%', active: true },
-  { name: 'Nordics & Benelux', status: 'High Purchasing Power', coverage: 'Digital-First + Partner', lat: '25%', lon: '52%', active: true },
-  { name: 'Asia-Pacific & Japan', status: 'High-Touch / Alliance', coverage: 'Tier-1 Distributor Fabric', lat: '45%', lon: '82%', active: true },
-  { name: 'Middle East & GCC', status: 'Accelerating TAM', coverage: 'Enterprise Co-Sell Hub', lat: '42%', lon: '62%', active: true },
-  { name: 'Latin America', status: 'Micro-Segment Margin', coverage: 'Local Currency Hedged', lat: '65%', lon: '33%', active: true },
-];
+import { allGlobalAccelerationPages } from './data';
+import { GlobalExpansionIntakeForm } from '../../components/forms/GlobalExpansionIntakeForm';
 
 export default function GlobalAccelerationHub() {
-  const [activeRegion, setActiveRegion] = useState(0);
   const [activeAreaIndex, setActiveAreaIndex] = useState(0);
+  const [selectedObjective, setSelectedObjective] = useState<string>('market');
+  const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   useEffect(() => {
-    document.title = 'Global Business Acceleration | ProfitMachines';
+    document.title = 'Global Business Acceleration: Overview & Capability Navigator | ProfitMachines';
     window.scrollTo(0, 0);
   }, []);
 
-  const selectedArea = globalAccelerationAreas[activeAreaIndex];
-  const AreaIcon = selectedArea.icon;
+  const selectedArea = allGlobalAccelerationPages[activeAreaIndex];
+
+  // Starting point decision pathways
+  const startingPointPathways = [
+    {
+      id: 'market',
+      title: 'Choosing a Foreign Market',
+      priorityQuestion: 'Which international territories have the highest demand and lowest regulatory risk?',
+      recommendedArea: 'Global Market Access',
+      supportingHeading: 'Expansion Intelligence',
+      route: '/global-acceleration/market-access',
+      explanation: 'Evaluate country opportunities, bottom-up addressability (TAM/SAM/SOM), competitive positioning, and entry feasibility before allocating capital.',
+      keyCapabilityLink: '/global-acceleration/market-access#country-opportunity-analysis'
+    },
+    {
+      id: 'buyers',
+      title: 'Finding Buyers & Distributors',
+      priorityQuestion: 'Where are the active commercial buyers and credentialed channel distributors?',
+      recommendedArea: 'Global Demand Networks',
+      supportingHeading: 'Demand Ecosystems',
+      route: '/global-acceleration/demand-networks',
+      explanation: 'Systematically discover verified corporate buyers, customs importers, regional dealers, and institutional procurement networks along active commercial corridors.',
+      keyCapabilityLink: '/global-acceleration/demand-networks#distributor-discovery'
+    },
+    {
+      id: 'export',
+      title: 'Entering Markets via Exports',
+      priorityQuestion: 'How do we assess readiness and build a scalable export sales program?',
+      recommendedArea: 'Export Growth Engine',
+      supportingHeading: 'Export Growth Engine',
+      route: '/global-acceleration/export-growth-engine',
+      explanation: 'Assess operational export readiness, structure localized GTM pricing ladders, acquire international buyers, and run accountable 90-day export revenue campaigns.',
+      keyCapabilityLink: '/global-acceleration/export-growth-engine#export-readiness-assessment'
+    },
+    {
+      id: 'partners',
+      title: 'Developing Strategic Alliances',
+      priorityQuestion: 'How do we scale indirectly through master distributors, VARs, and alliances?',
+      recommendedArea: 'Strategic Partner Ecosystems',
+      supportingHeading: 'Growth Alliances',
+      route: '/global-acceleration/partner-ecosystems',
+      explanation: 'Design multi-tier channel programs, structure binding master distribution agreements with minimum quotas, and establish bilateral corporate co-selling alliances.',
+      keyCapabilityLink: '/global-acceleration/partner-ecosystems#channel-partner-networks'
+    },
+    {
+      id: 'supply',
+      title: 'Sourcing & Supply Resilience',
+      priorityQuestion: 'How do we optimize contract manufacturing, freight corridors, and supplier risk?',
+      recommendedArea: 'Global Supply Networks',
+      supportingHeading: 'Supply Networks',
+      route: '/global-acceleration/supply-networks',
+      explanation: 'Discover verified component suppliers, audit contract manufacturers, optimize multi-modal logistics networks, and stress-test single-source vulnerabilities.',
+      keyCapabilityLink: '/global-acceleration/supply-networks#supplier-discovery'
+    },
+    {
+      id: 'revenue',
+      title: 'Scaling Regional RevOps',
+      priorityQuestion: 'How do we unify multi-territory pipeline visibility and sales execution?',
+      recommendedArea: 'Global Revenue Engines',
+      supportingHeading: 'Revenue Infrastructure',
+      route: '/global-acceleration/revenue-engines',
+      explanation: 'Deploy balanced territory planning, multilingual SDR desks, standardized MEDDPICC stage-gate pipeline governance, and international customer success.',
+      keyCapabilityLink: '/global-acceleration/revenue-engines#multi-country-gtm-design'
+    },
+    {
+      id: 'finance',
+      title: 'Expansion Capital & Trade Finance',
+      priorityQuestion: 'What trade credit lines, export guarantees, and treasury rails fund our growth?',
+      recommendedArea: 'Global Capital & Finance',
+      supportingHeading: 'Financial Infrastructure',
+      route: '/global-acceleration/capital-finance',
+      explanation: 'Evaluate non-dilutive trade finance facilities, sovereign Export Credit Agency (ECA) insurance, international correspondent banking, and FX risk hedging.',
+      keyCapabilityLink: '/global-acceleration/capital-finance#trade-finance-solutions'
+    },
+    {
+      id: 'ai',
+      title: 'AI-Assisted Expansion Systems',
+      priorityQuestion: 'How can AI accelerate cross-border research and workflows safely?',
+      recommendedArea: 'AI-Powered Expansion',
+      supportingHeading: 'Autonomous Expansion Systems',
+      route: '/global-acceleration/ai-powered-expansion',
+      explanation: 'Explore retrieval-augmented market intelligence, algorithmic buyer discovery, localized drafting agents, and executive telemetry with human-in-the-loop governance.',
+      keyCapabilityLink: '/global-acceleration/ai-powered-expansion#ai-market-intelligence'
+    }
+  ];
+
+  const activePathway = startingPointPathways.find(p => p.id === selectedObjective) || startingPointPathways[0];
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans">
+    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900">
 
-      {/* ── HERO SECTION: GLOBAL COMMAND CENTER ── */}
-      <section className="relative pt-16 pb-16 sm:pt-24 sm:pb-24 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden border-b border-slate-800">
+      {/* ── SECTION 01: EXECUTIVE HERO ── */}
+      <section className="relative pt-16 pb-16 sm:pt-24 sm:pb-28 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden border-b border-slate-800">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute inset-0 opacity-[0.22]" style={{ backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.07) 1px, transparent 1px)', backgroundSize: '4rem 4rem' }} />
           <div className="absolute top-0 right-1/4 w-[700px] h-[700px] bg-blue-600/15 rounded-full blur-[150px]" />
@@ -289,71 +125,137 @@ export default function GlobalAccelerationHub() {
             <div className="lg:col-span-7">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-bold tracking-widest uppercase font-mono mb-4">
                 <Globe className="w-3.5 h-3.5 text-blue-400" />
-                SCALE REVENUE ACROSS BORDERS WITH AUTONOMOUS AI
+                <span>GLOBAL BUSINESS ACCELERATION</span>
               </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.1] mb-5 font-heading">
-                Global Business Acceleration:{' '}
+
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.12] mb-5 font-heading">
+                Turn Global Expansion into a{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-300">
-                  Engineer International Revenue at Market Speed
+                  Structured Growth System.
                 </span>
               </h1>
-              <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mb-6">
-                Most enterprises expand globally through trial and error — entering markets without validated demand, launching without localization, and scaling without compliance. We replace this approach with autonomous AI systems that identify high-propensity international opportunities, orchestrate cross-border revenue operations, and deploy multi-language AI agents that execute 24/7 across every timezone.
+
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed mb-6">
+                International growth involves far more than picking a country on a map. Organizations must understand true market demand, validate commercial opportunities, identify credentialed buyers and partners, evaluate operational supply constraints, navigate financing requirements, and coordinate revenue execution across jurisdictions. ProfitMachines brings these interconnected disciplines into a single deterministic expansion architecture.
               </p>
-              <div className="flex flex-wrap gap-3.5">
-                <a href="#diagnostic" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-3 rounded-xl text-xs sm:text-sm shadow-md shadow-blue-600/30 transition-all hover:-translate-y-0.5 group font-mono uppercase tracking-wider">
-                  Run a Global Expansion Diagnostic
+
+              {/* Target Audience Line */}
+              <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 mb-8 space-y-1">
+                <div className="text-[11px] font-mono font-bold text-blue-400 uppercase tracking-wider">
+                  Engineered for Enterprise Leaders:
+                </div>
+                <div className="text-slate-300 leading-relaxed">
+                  CEOs, Chief Strategy Officers, Heads of International Expansion, Chief Commercial Officers, and Global Supply Leaders evaluating cross-border scale.
+                </div>
+              </div>
+
+              {/* CTAs */}
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="#capabilities-overview"
+                  className="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30 inline-flex items-center gap-2 group cursor-pointer"
+                >
+                  <span>Explore Expansion Capabilities</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
-                <a href="#capabilities" className="inline-flex items-center gap-2 border border-slate-700 bg-slate-900/80 hover:bg-slate-800 text-slate-200 font-bold px-5 py-3 rounded-xl text-xs sm:text-sm transition-all font-mono uppercase tracking-wider">
-                  Explore Acceleration Areas
-                  <ChevronRight className="w-4 h-4 text-blue-400" />
+
+                <a
+                  href="#consultation"
+                  className="px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold text-sm transition-all inline-flex items-center gap-2 cursor-pointer"
+                >
+                  <span>Discuss Your Expansion Strategy</span>
+                  <ArrowUpRight className="w-4 h-4 text-slate-400" />
                 </a>
               </div>
             </div>
 
-            {/* Visual: Interactive World Command Center */}
+            {/* Right Hero Visual: Connected Enterprise Expansion System (NO PEOPLE PHOTOGRAPHY) */}
             <div className="lg:col-span-5">
-              <div className="p-5 sm:p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl relative backdrop-blur-xl">
-                <div className="flex items-center justify-between pb-3.5 mb-3.5 border-b border-slate-800">
+              <div className="rounded-2xl border border-slate-800 bg-slate-900/90 p-6 shadow-2xl relative overflow-hidden">
+                <div className="flex items-center justify-between pb-3.5 border-b border-slate-800 mb-4">
                   <div className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-blue-400 animate-pulse" />
-                    <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Global Operations Cockpit</span>
+                    <div className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse" />
+                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-300">
+                      Cross-Border Expansion Mesh
+                    </span>
                   </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30">
-                    40+ Sovereign Territories
+                  <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-400/20 font-bold">
+                    8 Interconnected Areas
                   </span>
                 </div>
 
-                {/* Simulated World Grid & Regional Telemetry */}
-                <div className="space-y-2 font-mono text-xs mb-3.5">
-                  {regions.map((reg, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setActiveRegion(idx)}
-                      className={`w-full p-2.5 rounded-xl border text-left transition-all flex items-center justify-between ${
-                        activeRegion === idx
-                          ? 'bg-blue-950/60 border-blue-500/60 text-white'
-                          : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:border-slate-700'
-                      }`}
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <span className={`w-2 h-2 rounded-full ${activeRegion === idx ? 'bg-blue-400 animate-ping' : 'bg-slate-600'}`} />
-                        <div>
-                          <div className="font-bold text-slate-200 text-xs">{reg.name}</div>
-                          <div className="text-[10px] text-slate-500">{reg.coverage}</div>
-                        </div>
-                      </div>
-                      <span className="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-blue-300 font-mono">
-                        {reg.status}
-                      </span>
-                    </button>
-                  ))}
+                {/* SVG Visualizing Connected Expansion Engine */}
+                <div className="py-2 text-center">
+                  <svg className="w-full h-44 text-blue-500" viewBox="0 0 380 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* Background trade lines */}
+                    <path d="M 40 90 Q 190 20 340 90" stroke="#334155" strokeWidth="1" strokeDasharray="3 3" />
+                    <path d="M 40 90 Q 190 160 340 90" stroke="#334155" strokeWidth="1" strokeDasharray="3 3" />
+                    <line x1="40" y1="90" x2="340" y2="90" stroke="#1e293b" strokeWidth="1.5" />
+
+                    {/* Nodes representing the expansion pillars */}
+                    {/* Node 1: Market Access */}
+                    <circle cx="50" cy="90" r="18" fill="#1e3a8a" stroke="#60a5fa" strokeWidth="2" />
+                    <text x="50" y="93" fill="#ffffff" fontSize="8" fontWeight="bold" textAnchor="middle">01</text>
+                    <text x="50" y="120" fill="#94a3b8" fontSize="7.5" fontWeight="600" textAnchor="middle">Market Access</text>
+
+                    {/* Node 2: Demand */}
+                    <circle cx="105" cy="45" r="15" fill="#312e81" stroke="#818cf8" strokeWidth="1.5" />
+                    <text x="105" y="48" fill="#ffffff" fontSize="7.5" fontWeight="bold" textAnchor="middle">02</text>
+                    <text x="105" y="24" fill="#94a3b8" fontSize="7" textAnchor="middle">Demand</text>
+
+                    {/* Node 3: Export */}
+                    <circle cx="160" cy="85" r="16" fill="#064e3b" stroke="#34d399" strokeWidth="1.5" />
+                    <text x="160" y="88" fill="#ffffff" fontSize="7.5" fontWeight="bold" textAnchor="middle">03</text>
+                    <text x="160" y="112" fill="#94a3b8" fontSize="7" textAnchor="middle">Export</text>
+
+                    {/* Node 4: Partners */}
+                    <circle cx="190" cy="35" r="15" fill="#0c4a6e" stroke="#38bdf8" strokeWidth="1.5" />
+                    <text x="190" y="38" fill="#ffffff" fontSize="7.5" fontWeight="bold" textAnchor="middle">04</text>
+                    <text x="190" y="18" fill="#94a3b8" fontSize="7" textAnchor="middle">Partners</text>
+
+                    {/* Node 5: Supply */}
+                    <circle cx="230" cy="135" r="15" fill="#78350f" stroke="#fbbf24" strokeWidth="1.5" />
+                    <text x="230" y="138" fill="#ffffff" fontSize="7.5" fontWeight="bold" textAnchor="middle">05</text>
+                    <text x="230" y="160" fill="#94a3b8" fontSize="7" textAnchor="middle">Supply</text>
+
+                    {/* Node 6: Revenue */}
+                    <circle cx="265" cy="80" r="16" fill="#164e63" stroke="#22d3ee" strokeWidth="1.5" />
+                    <text x="265" y="83" fill="#ffffff" fontSize="7.5" fontWeight="bold" textAnchor="middle">06</text>
+                    <text x="265" y="106" fill="#94a3b8" fontSize="7" textAnchor="middle">RevOps</text>
+
+                    {/* Node 7: Finance */}
+                    <circle cx="300" cy="35" r="15" fill="#4c1d95" stroke="#a78bfa" strokeWidth="1.5" />
+                    <text x="300" y="38" fill="#ffffff" fontSize="7.5" fontWeight="bold" textAnchor="middle">07</text>
+                    <text x="300" y="18" fill="#94a3b8" fontSize="7" textAnchor="middle">Finance</text>
+
+                    {/* Node 8: AI Expansion */}
+                    <circle cx="340" cy="90" r="18" fill="#065f46" stroke="#10b981" strokeWidth="2" />
+                    <text x="340" y="93" fill="#ffffff" fontSize="8" fontWeight="bold" textAnchor="middle">08</text>
+                    <text x="340" y="120" fill="#94a3b8" fontSize="7.5" fontWeight="600" textAnchor="middle">AI Systems</text>
+
+                    {/* Interconnecting dynamic arcs */}
+                    <path d="M 50 90 L 105 45 L 190 35 L 265 80 L 340 90" stroke="#38bdf8" strokeWidth="1.5" />
+                    <path d="M 50 90 L 160 85 L 230 135 L 340 90" stroke="#34d399" strokeWidth="1.5" />
+                  </svg>
                 </div>
 
-                <div className="pt-2.5 border-t border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-400">
-                  <span>Live Cross-Border Telemetry</span>
-                  <span className="text-emerald-400 font-bold">24/7 Multi-Region Mesh</span>
+                <div className="grid grid-cols-2 gap-2.5 pt-3 border-t border-slate-800 text-xs text-slate-300">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                    <span>8 Primary Capabilities</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                    <span>64 Detailed Modules</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                    <span>Zero People Photos</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                    <span>Empirical Evidence Only</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -361,160 +263,302 @@ export default function GlobalAccelerationHub() {
         </div>
       </section>
 
-      {/* ── THE GLOBAL CHALLENGE (SPLIT COMPARISON & BENCHMARKS) ── */}
-      <section className="py-14 sm:py-16 bg-slate-50 border-b border-slate-200">
+      {/* ── SECTION 02: THE GLOBAL EXPANSION CHALLENGE (6 SPECIFIC CHALLENGES) ── */}
+      <section className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-8">
-            <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">The Strategic Defect</span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 font-heading">
-              Why Most Global Expansion Initiatives Fail
+          <div className="max-w-3xl mb-12">
+            <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
+              The Reality of Cross-Border Growth
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 mb-3 font-heading">
+              Global Growth Creates Opportunities. Fragmented Execution Creates Friction.
             </h2>
-          </div>
-
-          {/* Executive Summary Card */}
-          <div className="p-6 sm:p-7 rounded-2xl bg-white border border-slate-200 shadow-sm relative mb-6">
-            <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-[11px] font-mono font-bold uppercase mb-2.5">
-              Executive Briefing
-            </div>
-            <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
-              Most enterprise cross-border expansions stall due to unvalidated demand signals, non-localized buyer journeys, and fragmented partner channels. ProfitMachines treats global acceleration as an engineered, deterministic system — validating unit-economic feasibility before capital commitment, automating native localization, and deploying autonomous AI sales agents across 40+ countries.
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Entering a foreign market involves dozens of interconnected dependencies. A business may identify a promising country but lack validated buyer demand. It may find distributors without partner qualification. Or it may generate orders without supply fulfillment resilience. Examine the six core friction points:
             </p>
           </div>
 
-          {/* Executive Benchmark Highlights */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-            <div className="p-4 sm:p-5 rounded-xl bg-white border border-slate-200">
-              <div className="text-[11px] font-mono text-slate-500 uppercase tracking-wider mb-1 font-bold">Legacy Launch Misses</div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-rose-600 font-mono mb-0.5">73%</div>
-              <div className="text-xs text-slate-600">Cross-border launches miss year-1 ARR targets without empirical validation.</div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+            {/* Challenge 1 */}
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between pb-2 border-b border-slate-100 mb-3">
+                  <span className="text-[10px] font-mono font-bold uppercase text-blue-600 bg-blue-50 px-2 py-0.5 rounded">Friction 01</span>
+                  <AlertCircle className="w-4 h-4 text-amber-500" />
+                </div>
+                <h3 className="text-base font-bold text-slate-900 font-heading mb-2">
+                  Market Selection Without Evidence
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                  Comparing countries using high-level GDP headlines, generic macro reports, or board member travel intuition that fails to reflect actual product accessibility.
+                </p>
+                <div className="text-xs text-slate-800 bg-slate-50 p-2.5 rounded-lg border border-slate-200 mb-3">
+                  <strong>Commercial Consequence:</strong> Capital committed to markets that appear attractive top-down but are blocked by incumbent lock-ins and high friction.
+                </div>
+              </div>
+              <div className="text-xs font-semibold text-blue-700">
+                Response: Structured Market Access & TAM/SAM/SOM assessment.
+              </div>
             </div>
 
-            <div className="p-4 sm:p-5 rounded-xl bg-white border border-slate-200">
-              <div className="text-[11px] font-mono text-slate-500 uppercase tracking-wider mb-1 font-bold">Time-to-First-Deal</div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-amber-600 font-mono mb-0.5">14.2 Mo</div>
-              <div className="text-xs text-slate-600">Average traditional timeline to secure initial customer traction abroad.</div>
+            {/* Challenge 2 */}
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between pb-2 border-b border-slate-100 mb-3">
+                  <span className="text-[10px] font-mono font-bold uppercase text-blue-600 bg-blue-50 px-2 py-0.5 rounded">Friction 02</span>
+                  <AlertCircle className="w-4 h-4 text-amber-500" />
+                </div>
+                <h3 className="text-base font-bold text-slate-900 font-heading mb-2">
+                  Fragmented Buyer & Channel Discovery
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                  Prospective enterprise buyers, importers, and regional distributors are difficult to locate and qualify across foreign languages and registries.
+                </p>
+                <div className="text-xs text-slate-800 bg-slate-50 p-2.5 rounded-lg border border-slate-200 mb-3">
+                  <strong>Commercial Consequence:</strong> Sales reps waste months pitching low-fit contacts while genuine demand corridors remain unmapped.
+                </div>
+              </div>
+              <div className="text-xs font-semibold text-blue-700">
+                Response: Demand Ecosystem mapping & verified buyer discovery.
+              </div>
             </div>
 
-            <div className="p-4 sm:p-5 rounded-xl bg-white border border-slate-200">
-              <div className="text-[11px] font-mono text-slate-500 uppercase tracking-wider mb-1 font-bold">Localized CAC Inflation</div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-rose-600 font-mono mb-0.5">3.4X</div>
-              <div className="text-xs text-slate-600">Higher customer acquisition cost without cultural and regulatory adaptation.</div>
+            {/* Challenge 3 */}
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between pb-2 border-b border-slate-100 mb-3">
+                  <span className="text-[10px] font-mono font-bold uppercase text-blue-600 bg-blue-50 px-2 py-0.5 rounded">Friction 03</span>
+                  <AlertCircle className="w-4 h-4 text-amber-500" />
+                </div>
+                <h3 className="text-base font-bold text-slate-900 font-heading mb-2">
+                  Uncoordinated Export Execution
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                  Treating exporting as ad-hoc order fulfillment without formal export-readiness audits, localized pricing ladders, or structured outbound acquisition.
+                </p>
+                <div className="text-xs text-slate-800 bg-slate-50 p-2.5 rounded-lg border border-slate-200 mb-3">
+                  <strong>Commercial Consequence:</strong> Unpredictable order volume, stranded customs shipments, and failure to build defensible market share.
+                </div>
+              </div>
+              <div className="text-xs font-semibold text-blue-700">
+                Response: Export Growth Engine & 90-day revenue programs.
+              </div>
             </div>
 
-            <div className="p-4 sm:p-5 rounded-xl bg-white border border-slate-200">
-              <div className="text-[11px] font-mono text-slate-500 uppercase tracking-wider mb-1 font-bold">Partner Slippage</div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-mono mb-0.5">68%</div>
-              <div className="text-xs text-slate-600">Of foreign distribution partnerships yield zero active commercial pipeline.</div>
+            {/* Challenge 4 */}
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between pb-2 border-b border-slate-100 mb-3">
+                  <span className="text-[10px] font-mono font-bold uppercase text-blue-600 bg-blue-50 px-2 py-0.5 rounded">Friction 04</span>
+                  <AlertCircle className="w-4 h-4 text-amber-500" />
+                </div>
+                <h3 className="text-base font-bold text-slate-900 font-heading mb-2">
+                  Weak Partner & Supply Network Visibility
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                  Lack of structured governance over foreign distributors combined with opaque single-region supply chain dependencies.
+                </p>
+                <div className="text-xs text-slate-800 bg-slate-50 p-2.5 rounded-lg border border-slate-200 mb-3">
+                  <strong>Commercial Consequence:</strong> Partners park products without selling, while component supply shocks paralyze fulfillment.
+                </div>
+              </div>
+              <div className="text-xs font-semibold text-blue-700">
+                Response: Strategic Partner Ecosystems & Global Supply Networks.
+              </div>
+            </div>
+
+            {/* Challenge 5 */}
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between pb-2 border-b border-slate-100 mb-3">
+                  <span className="text-[10px] font-mono font-bold uppercase text-blue-600 bg-blue-50 px-2 py-0.5 rounded">Friction 05</span>
+                  <AlertCircle className="w-4 h-4 text-amber-500" />
+                </div>
+                <h3 className="text-base font-bold text-slate-900 font-heading mb-2">
+                  Unscalable Regional Revenue Operations
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                  Sales territories, CRM pipelines, and customer success managed inconsistently across fragmented foreign subsidiaries.
+                </p>
+                <div className="text-xs text-slate-800 bg-slate-50 p-2.5 rounded-lg border border-slate-200 mb-3">
+                  <strong>Commercial Consequence:</strong> Leadership loses forecast visibility, rep productivity diverges, and international customers churn.
+                </div>
+              </div>
+              <div className="text-xs font-semibold text-blue-700">
+                Response: Unified Global Revenue Engines & RevOps architecture.
+              </div>
+            </div>
+
+            {/* Challenge 6 */}
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between pb-2 border-b border-slate-100 mb-3">
+                  <span className="text-[10px] font-mono font-bold uppercase text-blue-600 bg-blue-50 px-2 py-0.5 rounded">Friction 06</span>
+                  <AlertCircle className="w-4 h-4 text-amber-500" />
+                </div>
+                <h3 className="text-base font-bold text-slate-900 font-heading mb-2">
+                  Financial & Working Capital Blindspots
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                  Underestimating cross-border cash conversion cycles, foreign buyer default risks, and multi-currency foreign exchange drag.
+                </p>
+                <div className="text-xs text-slate-800 bg-slate-50 p-2.5 rounded-lg border border-slate-200 mb-3">
+                  <strong>Commercial Consequence:</strong> Trapped working capital starves the business, while unhedged currency swings erode profit.
+                </div>
+              </div>
+              <div className="text-xs font-semibold text-blue-700">
+                Response: Global Capital & Finance and trade credit advisory.
+              </div>
             </div>
           </div>
 
-          {/* Comparison Matrix */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div className="p-6 rounded-2xl bg-rose-50/60 border border-rose-200">
-              <div className="flex items-center gap-2 mb-3">
-                <AlertCircle className="w-4 h-4 text-rose-600" />
-                <h3 className="text-base font-bold text-rose-950 font-heading">Traditional Ad-Hoc Expansion</h3>
-              </div>
-              <ul className="space-y-2.5 text-xs sm:text-sm text-slate-700">
-                <li className="flex items-start gap-2">
-                  <span className="text-rose-500 font-bold shrink-0">✕</span>
-                  <span>Entering foreign markets on generic macro GDP data without territory unit economics</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-rose-500 font-bold shrink-0">✕</span>
-                  <span>Superficial translation that fails local buyer nuances, procurement standards, and compliance</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-rose-500 font-bold shrink-0">✕</span>
-                  <span>Unvetted distributor relationships that lock territory exclusivity with zero revenue quotas</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-rose-500 font-bold shrink-0">✕</span>
-                  <span>Linear hiring of expensive local sales teams before establishing product-market resonance</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-blue-50/60 border border-blue-200">
-              <div className="flex items-center gap-2 mb-3">
-                <CheckCircle2 className="w-4 h-4 text-blue-600" />
-                <h3 className="text-base font-bold text-blue-950 font-heading">The ProfitMachines Architecture</h3>
-              </div>
-              <ul className="space-y-2.5 text-xs sm:text-sm text-slate-700">
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                  <span>Empirical TAM/SAM/SOM and contribution margin audits before deploying local capital</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                  <span>Deep cultural localization calibrated against local purchasing power and workflow expectations</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                  <span>Scored partner alliance network with verified pipeline attribution and dynamic co-sell routing</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                  <span>Autonomous AI agents prospecting in 15+ native languages across 20+ global timezones</span>
-                </li>
-              </ul>
-            </div>
+          <div className="p-4 rounded-xl bg-blue-50 border border-blue-200 text-center text-xs sm:text-sm text-blue-900 font-medium">
+            <strong>Core Principle:</strong> Global expansion works better when market intelligence, demand discovery, operational readiness, and revenue execution inform one another continuously.
           </div>
         </div>
       </section>
 
-      {/* ── THE EIGHT GLOBAL BUSINESS ACCELERATION AREAS (COMPACT TWO-PANEL ARCHITECTURE) ── */}
-      <section id="capabilities" className="py-12 sm:py-16 bg-white border-b border-slate-200 scroll-mt-20">
+      {/* ── SECTION 03: THE GLOBAL BUSINESS ACCELERATION FRAMEWORK (5 CONNECTED STAGES) ── */}
+      <section className="py-16 sm:py-20 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-7">
+          <div className="max-w-3xl mb-12">
             <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
-              Global Business Acceleration Architecture
+              The Architectural Blueprint
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 mb-2 font-heading">
-              Eight Global Business Acceleration Areas
+              One Connected Approach to Global Expansion
             </h2>
-            <p className="text-slate-600 text-xs sm:text-sm max-w-3xl leading-relaxed">
-              Select an acceleration area on the left to inspect its eight capability modules and verified business-impact outcomes.
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Global expansion is not a single decision or disconnected checklist. Our five-stage framework connects strategic intelligence to operational readiness, commercial execution, and continuous measurement:
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 items-start">
+          {/* 5-Stage Responsive Framework Diagram */}
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-3 mb-8">
+            {/* Stage 1 */}
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <div className="text-[10px] font-mono font-bold uppercase text-blue-600 mb-1">Stage 01</div>
+                <h3 className="text-base font-bold text-slate-900 font-heading mb-1.5">Understand</h3>
+                <p className="text-xs text-slate-600 leading-snug mb-3">
+                  Assess target markets, competitive moats, regulatory burden, and risk-adjusted entry feasibility.
+                </p>
+              </div>
+              <div className="pt-2 border-t border-slate-200 text-[11px] font-mono text-slate-700 font-medium">
+                • Global Market Access<br />• AI-Powered Expansion
+              </div>
+            </div>
+
+            {/* Stage 2 */}
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <div className="text-[10px] font-mono font-bold uppercase text-blue-600 mb-1">Stage 02</div>
+                <h3 className="text-base font-bold text-slate-900 font-heading mb-1.5">Discover</h3>
+                <p className="text-xs text-slate-600 leading-snug mb-3">
+                  Identify enterprise buyers, master distributors, procurement networks, and demand corridors.
+                </p>
+              </div>
+              <div className="pt-2 border-t border-slate-200 text-[11px] font-mono text-slate-700 font-medium">
+                • Global Demand Networks<br />• Strategic Alliances
+              </div>
+            </div>
+
+            {/* Stage 3 */}
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <div className="text-[10px] font-mono font-bold uppercase text-blue-600 mb-1">Stage 03</div>
+                <h3 className="text-base font-bold text-slate-900 font-heading mb-1.5">Prepare & Enter</h3>
+                <p className="text-xs text-slate-600 leading-snug mb-3">
+                  Audit export readiness, contract manufacturers, trade finance facilities, and shipping lanes.
+                </p>
+              </div>
+              <div className="pt-2 border-t border-slate-200 text-[11px] font-mono text-slate-700 font-medium">
+                • Export Growth Engine<br />• Global Supply Networks<br />• Global Capital & Finance
+              </div>
+            </div>
+
+            {/* Stage 4 */}
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <div className="text-[10px] font-mono font-bold uppercase text-blue-600 mb-1">Stage 04</div>
+                <h3 className="text-base font-bold text-slate-900 font-heading mb-1.5">Coordinate & Scale</h3>
+                <p className="text-xs text-slate-600 leading-snug mb-3">
+                  Deploy regional hubs, multi-language SDR desks, pipeline stage gates, and customer success.
+                </p>
+              </div>
+              <div className="pt-2 border-t border-slate-200 text-[11px] font-mono text-slate-700 font-medium">
+                • Global Revenue Engines<br />• Partner Ecosystems
+              </div>
+            </div>
+
+            {/* Stage 5 */}
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <div className="text-[10px] font-mono font-bold uppercase text-blue-600 mb-1">Stage 05</div>
+                <h3 className="text-base font-bold text-slate-900 font-heading mb-1.5">Measure & Refine</h3>
+                <p className="text-xs text-slate-600 leading-snug mb-3">
+                  Inspect pipeline telemetry, stage velocity, customer retention, and external risk early-warnings.
+                </p>
+              </div>
+              <div className="pt-2 border-t border-slate-200 text-[11px] font-mono text-slate-700 font-medium">
+                • Executive Telemetry<br />• All 8 Capability Areas
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center text-xs font-mono text-slate-500">
+            Guiding Operational Principle: Start with the business objective. Select the relevant capabilities. Validate the evidence. Coordinate execution. Measure what changes.
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 04: EXPLORE THE EIGHT CAPABILITIES (TWO-PANEL NAVIGATOR & CARDS) ── */}
+      <section id="capabilities-overview" className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200 scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-10">
+            <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
+              Primary Capability Navigator
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 mb-2 font-heading">
+              Explore the Eight Global Business Acceleration Capabilities
+            </h2>
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Every organization enters international expansion from a distinct starting point. Use our two-panel navigator to inspect any capability area and click through to its dedicated deep-dive page:
+            </p>
+          </div>
+
+          {/* TWO-PANEL INTERACTIVE NAVIGATION CONTAINER */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start mb-14">
             
-            {/* ── LEFT NAVIGATION PANEL: COMPACT VERTICAL LIST (8 MAIN MENU ITEMS) ── */}
-            <div className="lg:col-span-4 bg-slate-50/80 border border-slate-200/90 rounded-2xl p-2.5 sm:p-3 flex flex-col gap-1.5 shadow-xs">
-              <div className="px-2 py-1 flex items-center justify-between text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 border-b border-slate-200/70 mb-1">
-                <span>Acceleration Areas</span>
+            {/* LEFT PANEL: 8 EXACT PRIMARY LABELS */}
+            <div className="lg:col-span-4 bg-white border border-slate-200 rounded-2xl p-3 shadow-xs space-y-1">
+              <div className="px-3 py-1.5 flex items-center justify-between text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 border-b border-slate-100 mb-1">
+                <span>Primary Capabilities</span>
                 <span>01–08</span>
               </div>
 
-              {globalAccelerationAreas.map((area, idx) => {
-                const Icon = area.icon;
+              {allGlobalAccelerationPages.map((page, idx) => {
                 const isActive = activeAreaIndex === idx;
 
                 return (
                   <button
-                    key={area.id}
+                    key={page.id}
                     onClick={() => setActiveAreaIndex(idx)}
                     className={`w-full text-left py-2.5 px-3 rounded-xl border transition-all duration-150 flex items-center justify-between group cursor-pointer ${
                       isActive
                         ? 'bg-slate-900 text-white border-slate-900 shadow-sm'
-                        : 'bg-white hover:bg-slate-100 text-slate-800 border-slate-200/80 hover:border-slate-300'
+                        : 'bg-white hover:bg-slate-50 text-slate-800 border-slate-200/80 hover:border-slate-300'
                     }`}
                   >
                     <div className="flex items-center gap-2.5 min-w-0">
-                      <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
-                        isActive ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 group-hover:text-blue-600'
+                      <span className={`w-6 h-6 rounded-md flex items-center justify-center font-mono font-bold text-xs shrink-0 ${
+                        isActive ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600'
                       }`}>
-                        <Icon className="w-4 h-4" />
-                      </div>
-                      <div className="flex items-center gap-2 min-w-0">
-                        <span className={`text-[11px] font-mono font-bold shrink-0 ${isActive ? 'text-blue-300' : 'text-slate-400'}`}>
-                          {area.num}
-                        </span>
-                        <span className={`text-xs sm:text-[13px] font-bold truncate ${isActive ? 'text-white' : 'text-slate-900'}`}>
-                          {area.title}
-                        </span>
-                      </div>
+                        {page.pageNumber}
+                      </span>
+                      <span className={`text-xs sm:text-[13px] font-bold truncate ${isActive ? 'text-white' : 'text-slate-900'}`}>
+                        {page.primaryNavLabel}
+                      </span>
                     </div>
 
                     <ChevronRight className={`w-3.5 h-3.5 shrink-0 transition-transform ${
@@ -525,50 +569,39 @@ export default function GlobalAccelerationHub() {
               })}
             </div>
 
-            {/* ── RIGHT SUBMENU PANEL: CAPABILITY MODULES & BUSINESS IMPACT OUTCOMES ── */}
-            <div className="lg:col-span-8">
-              <div className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-sm flex flex-col">
-                
-                {/* Panel Header */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3.5 border-b border-slate-100 mb-3.5">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
-                      <AreaIcon className="w-5 h-5" />
+            {/* RIGHT PANEL: SELECTED AREA CAPABILITY MODULES & OUTCOMES */}
+            <div className="lg:col-span-8 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+              <div>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3.5 border-b border-slate-100 mb-4">
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">
+                        {selectedArea.contentHeading}
+                      </span>
                     </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200/60">
-                          Area {selectedArea.num}
-                        </span>
-                        <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">
-                          {selectedArea.supportingLabel}
-                        </span>
-                      </div>
-                      <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 font-heading leading-tight mt-0.5">
-                        {selectedArea.title}
-                      </h3>
-                    </div>
+                    <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 font-heading">
+                      {selectedArea.primaryNavLabel}
+                    </h3>
                   </div>
 
                   <Link
-                    to={selectedArea.path}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-mono font-bold border border-blue-200/60 transition-colors shrink-0 self-start sm:self-auto"
+                    to={selectedArea.canonicalPath}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-colors shrink-0 self-start sm:self-auto shadow-xs"
                   >
-                    <span>Explore Area</span>
-                    <ArrowRight className="w-3 h-3" />
+                    <span>Open Dedicated Page</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
 
-                {/* Description */}
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
-                  {selectedArea.desc}
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5">
+                  {selectedArea.heroDescription}
                 </p>
 
-                {/* ── EIGHT CAPABILITY MODULES GRID (2 COLUMNS x 4 ROWS) ── */}
-                <div className="mb-4">
-                  <div className="flex items-center justify-between mb-2">
+                {/* 8 Capability Modules Grid linking directly to anchors */}
+                <div className="mb-6">
+                  <div className="flex items-center justify-between mb-2.5">
                     <h4 className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-bold">
-                      Eight Core Capabilities
+                      Eight Core Capability Modules (Click to jump to module):
                     </h4>
                     <span className="text-[10px] font-mono text-slate-400 bg-slate-100 px-2 py-0.5 rounded">
                       8 of 8 Modules Active
@@ -576,33 +609,33 @@ export default function GlobalAccelerationHub() {
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
-                    {selectedArea.capabilities.map((cap, cIdx) => (
-                      <div
-                        key={cIdx}
-                        className="p-3 rounded-xl bg-slate-50/70 border border-slate-200/70 hover:border-blue-300 transition-colors flex items-start gap-2.5"
+                    {selectedArea.capabilities.map((cap) => (
+                      <Link
+                        key={cap.id}
+                        to={`${selectedArea.canonicalPath}#${cap.id}`}
+                        className="p-3 rounded-xl bg-slate-50/70 border border-slate-200/80 hover:border-blue-400 hover:bg-blue-50/30 transition-all flex items-start gap-2.5 group"
                       >
-                        <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
                         <div className="min-w-0">
-                          <h5 className="text-xs sm:text-[13px] font-bold text-slate-900 font-heading leading-snug">
-                            {cap.title}
+                          <h5 className="text-xs font-bold text-slate-900 group-hover:text-blue-700 transition-colors leading-snug">
+                            {cap.name}
                           </h5>
-                          <p className="text-[11px] text-slate-600 leading-snug mt-0.5">
-                            {cap.desc}
+                          <p className="text-[11px] text-slate-500 leading-snug mt-0.5 line-clamp-2">
+                            {cap.problemAddressed}
                           </p>
                         </div>
-                      </div>
+                      </Link>
                     ))}
                   </div>
                 </div>
 
-                {/* ── FOUR BUSINESS-IMPACT OUTCOMES ── */}
-                <div className="pt-3.5 border-t border-slate-100">
-                  <h4 className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-bold mb-2">
-                    Target Business Outcomes
+                {/* Separate Target Business Outcomes */}
+                <div className="pt-4 border-t border-slate-100">
+                  <h4 className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-bold mb-2.5">
+                    Business-Impact Outcomes (Separately Measured)
                   </h4>
-
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-3">
-                    {selectedArea.outcomes.map((out, oIdx) => (
+                    {selectedArea.businessOutcomes.map((out, oIdx) => (
                       <div key={oIdx} className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
                         <div className="text-sm sm:text-base font-extrabold text-blue-600 font-mono leading-none mb-1">
                           {out.metric}
@@ -610,168 +643,710 @@ export default function GlobalAccelerationHub() {
                         <div className="text-xs font-bold text-slate-900 leading-tight mb-0.5">
                           {out.label}
                         </div>
-                        <div className="text-[10px] text-slate-500 leading-tight">
-                          {out.desc}
+                        <div className="text-[10px] text-slate-500 leading-snug line-clamp-2">
+                          {out.description}
                         </div>
                       </div>
                     ))}
                   </div>
-
-                  <div className="flex flex-wrap items-center justify-between gap-2 pt-2.5 border-t border-slate-100 text-xs text-slate-500">
-                    <span>Ready to operationalize {selectedArea.title} across your target territories?</span>
-                    <a
-                      href="#diagnostic"
-                      className="text-blue-600 font-bold font-mono inline-flex items-center hover:underline"
-                    >
-                      Run Expansion Diagnostic <ArrowRight className="w-3 h-3 ml-1" />
-                    </a>
-                  </div>
                 </div>
 
+              </div>
+
+              <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-xs text-slate-500">
+                <span>Direct link to full capability specifications:</span>
+                <Link
+                  to={selectedArea.canonicalPath}
+                  className="text-blue-600 font-bold inline-flex items-center hover:underline"
+                >
+                  Explore Complete {selectedArea.primaryNavLabel} Page <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                </Link>
               </div>
             </div>
 
           </div>
-        </div>
-      </section>
 
-      {/* ── THE CONNECTED EXPANSION JOURNEY (8 AREAS IN SEQUENCE) ── */}
-      <section className="py-14 sm:py-16 bg-slate-900 text-white border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-10">
-            <span className="text-xs font-mono text-blue-400 uppercase tracking-widest font-bold">Integrated Execution Fabric</span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-1.5 font-heading">
-              The Connected Global Expansion Journey
-            </h2>
-            <p className="text-slate-400 text-xs sm:text-sm mt-2">
-              How the eight Global Business Acceleration areas interconnect into a continuous, compounding international revenue engine.
-            </p>
-          </div>
+          {/* EIGHT STANDALONE CAPABILITY CARDS (SECTION 04 COMPONENT) */}
+          <div className="mb-8">
+            <h3 className="text-xl font-bold text-slate-900 font-heading mb-4">
+              All Eight Global Acceleration Areas at a Glance
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {allGlobalAccelerationPages.map((page) => (
+                <div
+                  key={page.id}
+                  className="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs flex flex-col justify-between hover:border-blue-400 transition-colors"
+                >
+                  <div>
+                    <div className="flex items-center justify-between pb-2 border-b border-slate-100 mb-3">
+                      <span className="text-[10px] font-mono text-slate-400">{page.contentHeading}</span>
+                    </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5">
-            {globalAccelerationAreas.map((area) => (
-              <div key={area.id} className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 relative flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-[11px] font-mono text-blue-400 font-bold">Stage {area.num}</span>
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500">
-                      {area.supportingLabel}
-                    </span>
+                    <h4 className="text-base font-bold text-slate-900 font-heading mb-2">
+                      {page.primaryNavLabel}
+                    </h4>
+
+                    <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                      {page.heroHeadline}
+                    </p>
+
+                    <div className="space-y-1 mb-4 text-[11px] text-slate-500">
+                      <div className="font-bold text-slate-700">Core Topics:</div>
+                      {page.capabilities.slice(0, 3).map((cap, cIdx) => (
+                        <div key={cIdx} className="truncate">• {cap.name}</div>
+                      ))}
+                    </div>
                   </div>
-                  <h4 className="text-sm sm:text-base font-bold text-white mb-1.5 leading-tight">
-                    {area.title}
-                  </h4>
-                  <p className="text-xs text-slate-400 leading-relaxed mb-3">
-                    {area.desc}
-                  </p>
+
+                  <Link
+                    to={page.canonicalPath}
+                    className="inline-flex items-center justify-between w-full pt-3 border-t border-slate-100 text-xs font-bold text-blue-600 hover:text-blue-700 group"
+                  >
+                    <span>Explore {page.primaryNavLabel}</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </div>
-                <div className="pt-2.5 border-t border-slate-800/80 text-[11px] font-mono text-emerald-400">
-                  {area.outcomes[0].label}: {area.outcomes[0].metric}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+
         </div>
       </section>
 
-      {/* ── 90-DAY ENGAGEMENT TIMELINE ── */}
-      <section className="py-14 sm:py-16 bg-slate-50 border-b border-slate-200">
+      {/* ── SECTION 05: FIND YOUR EXPANSION STARTING POINT (INTERACTIVE SELECTOR) ── */}
+      <section className="py-16 sm:py-20 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-10">
-            <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">Deterministic Pacing</span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 font-heading">
-              From Diagnostic to First Revenue in 90 Days
+            <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
+              Expansion Starting Point Guide
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 mb-2 font-heading">
+              Where Should Your Expansion Journey Begin?
             </h2>
-            <p className="text-slate-600 text-xs sm:text-sm mt-1.5">
-              A sequenced deployment protocol that eliminates multi-year delays and accelerates time-to-value.
+            <p className="text-slate-600 text-sm leading-relaxed">
+              Select your organization's primary immediate growth priority to receive an architectural recommendation on which capability area to activate first:
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm relative">
-              <div className="text-[11px] font-mono text-blue-600 font-bold uppercase tracking-wider mb-1.5">Days 1–14</div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Diagnostic & Market Validation</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Country opportunity scoring, unit-economic TAM/SAM/SOM dissection, regulatory pre-flight audit, and baseline readiness lock.
-              </p>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Left Priority Buttons */}
+            <div className="lg:col-span-5 space-y-2">
+              <span className="text-[11px] font-mono uppercase font-bold text-slate-400 block mb-1">
+                Select Your Immediate Priority:
+              </span>
+              {startingPointPathways.map((pathway) => (
+                <button
+                  key={pathway.id}
+                  onClick={() => setSelectedObjective(pathway.id)}
+                  className={`w-full text-left p-3.5 rounded-xl border transition-all text-xs font-bold flex items-center justify-between cursor-pointer ${
+                    selectedObjective === pathway.id
+                      ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+                      : 'bg-slate-50 hover:bg-slate-100 text-slate-800 border-slate-200'
+                  }`}
+                >
+                  <span>{pathway.title}</span>
+                  <ChevronRight className={`w-3.5 h-3.5 ${selectedObjective === pathway.id ? 'text-white' : 'text-slate-400'}`} />
+                </button>
+              ))}
             </div>
 
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm relative">
-              <div className="text-[11px] font-mono text-indigo-600 font-bold uppercase tracking-wider mb-1.5">Days 15–45</div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Strategy & Partner Network Activation</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Market-specific entry model finalization, cultural localization of collateral, purchasing-power pricing, and high-yield partner recruitment.
-              </p>
-            </div>
+            {/* Right Recommendation Card */}
+            <div className="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-100 text-blue-800">
+                  Recommended Starting Capability
+                </span>
+                <span className="text-[10px] font-mono text-slate-400">
+                  {activePathway.supportingHeading}
+                </span>
+              </div>
 
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm relative">
-              <div className="text-[11px] font-mono text-emerald-600 font-bold uppercase tracking-wider mb-1.5">Days 46–90</div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">AI Agent Deployment & First Revenue</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Multi-language AI SDR swarm activation, 24/7 timezone coverage, real-time telemetry dashboard handover, and contracted deal close.
+              <h3 className="text-xl font-extrabold text-slate-900 font-heading mb-2">
+                {activePathway.recommendedArea}
+              </h3>
+
+              <p className="text-sm font-semibold text-slate-800 mb-4 italic">
+                "{activePathway.priorityQuestion}"
               </p>
+
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+                {activePathway.explanation}
+              </p>
+
+              <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-200">
+                <Link
+                  to={activePathway.route}
+                  className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs inline-flex items-center gap-2 transition-all shadow-xs"
+                >
+                  <span>Open {activePathway.recommendedArea}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+
+                <Link
+                  to={activePathway.keyCapabilityLink}
+                  className="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 font-bold text-xs inline-flex items-center gap-2 transition-all"
+                >
+                  <span>Inspect Key Capability Module</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── FINAL CTA & INTAKE FORM ── */}
-      <section id="diagnostic" className="py-16 sm:py-20 bg-slate-950 text-white relative">
+      {/* ── SECTION 06: HOW THE EXPANSION JOURNEY WORKS (6 PRACTICAL STEPS) ── */}
+      <section className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-mono uppercase tracking-widest mb-4">
-                Expansion Readiness Protocol
-              </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight mb-4 font-heading">
-                Ready to Engineer Predictable Global Revenue?
-              </h2>
-              <p className="text-sm sm:text-base text-slate-300 mb-6 leading-relaxed">
-                Connect with our Global Expansion Partners. We will benchmark your target territories, audit regulatory requirements, and calculate unit-economic ROI probability across 40+ countries.
-              </p>
+          <div className="max-w-3xl mb-12">
+            <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
+              Execution Architecture
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 mb-2 font-heading">
+              From Market Opportunity to Coordinated Execution
+            </h2>
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+              International growth involves an accountable sequence of decisions. Review the 6-step operational journey that guides enterprises from initial mandate to sustained multi-country scale:
+            </p>
+          </div>
 
-              <div className="space-y-3 mb-6">
-                <div className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-200">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Confidential territory opportunity & TAM/SAM/SOM evaluation</span>
-                </div>
-                <div className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-200">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Sovereignty, data residency, and compliance pre-flight roadmap</span>
-                </div>
-                <div className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-200">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Autonomous multi-language AI SDR trial in your priority geography</span>
+          <div className="space-y-4">
+            {/* Step 1 */}
+            <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+              <div className="lg:col-span-3 flex items-center gap-3">
+                <span className="w-8 h-8 rounded-lg bg-blue-600 text-white font-mono font-bold flex items-center justify-center text-xs shrink-0">01</span>
+                <div>
+                  <h3 className="text-sm font-bold text-slate-900 font-heading">Define Expansion Objective</h3>
+                  <span className="text-[10px] font-mono text-slate-400">Capability: Global Market Access</span>
                 </div>
               </div>
-
-              {/* Trust Badges */}
-              <div className="pt-6 border-t border-slate-800 grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <div>
-                  <div className="text-xl sm:text-2xl font-extrabold text-white font-mono">500+</div>
-                  <div className="text-[11px] text-slate-400">B2B Companies</div>
-                </div>
-                <div>
-                  <div className="text-xl sm:text-2xl font-extrabold text-white font-mono">5X</div>
-                  <div className="text-[11px] text-slate-400">Avg Growth</div>
-                </div>
-                <div>
-                  <div className="text-xl sm:text-2xl font-extrabold text-white font-mono">24/7</div>
-                  <div className="text-[11px] text-slate-400">AI Coverage</div>
-                </div>
-                <div>
-                  <div className="text-xl sm:text-2xl font-extrabold text-white font-mono">40+</div>
-                  <div className="text-[11px] text-slate-400">Countries</div>
-                </div>
+              <div className="lg:col-span-5 text-xs text-slate-600">
+                Establish the commercial reason for expansion, product boundary, target growth rate, capital tolerance, and explicit decision criteria.
+              </div>
+              <div className="lg:col-span-4 text-xs font-mono text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                Output: Expansion Brief & Decision Criteria
               </div>
             </div>
 
-            <div className="lg:col-span-6">
-              <div className="p-6 sm:p-7 rounded-2xl bg-slate-900 border border-slate-800 shadow-xl">
-                <h3 className="text-lg font-bold text-white mb-1.5">Run Global Expansion Diagnostic</h3>
-                <p className="text-xs text-slate-400 mb-5">Confidential intake. Direct routing to Global Practice Leadership.</p>
-                <AiSalesIntakeForm />
+            {/* Step 2 */}
+            <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+              <div className="lg:col-span-3 flex items-center gap-3">
+                <span className="w-8 h-8 rounded-lg bg-blue-600 text-white font-mono font-bold flex items-center justify-center text-xs shrink-0">02</span>
+                <div>
+                  <h3 className="text-sm font-bold text-slate-900 font-heading">Evaluate Opportunities</h3>
+                  <span className="text-[10px] font-mono text-slate-400">Capability: Global Market Access</span>
+                </div>
               </div>
+              <div className="lg:col-span-5 text-xs text-slate-600">
+                Screen candidate countries against economic output, regulatory burden, and bottom-up addressable market (TAM/SAM/SOM).
+              </div>
+              <div className="lg:col-span-4 text-xs font-mono text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                Output: Country Attractiveness & Accessibility Dossier
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+              <div className="lg:col-span-3 flex items-center gap-3">
+                <span className="w-8 h-8 rounded-lg bg-blue-600 text-white font-mono font-bold flex items-center justify-center text-xs shrink-0">03</span>
+                <div>
+                  <h3 className="text-sm font-bold text-slate-900 font-heading">Discover & Qualify Demand</h3>
+                  <span className="text-[10px] font-mono text-slate-400">Capability: Global Demand Networks</span>
+                </div>
+              </div>
+              <div className="lg:col-span-5 text-xs text-slate-600">
+                Identify active commercial importers, corporate buyers, regional distributors, and institutional procurement portals.
+              </div>
+              <div className="lg:col-span-4 text-xs font-mono text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                Output: Ranked Target Buyer & Distributor Database
+              </div>
+            </div>
+
+            {/* Step 4 */}
+            <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+              <div className="lg:col-span-3 flex items-center gap-3">
+                <span className="w-8 h-8 rounded-lg bg-blue-600 text-white font-mono font-bold flex items-center justify-center text-xs shrink-0">04</span>
+                <div>
+                  <h3 className="text-sm font-bold text-slate-900 font-heading">Assess Readiness & Debt</h3>
+                  <span className="text-[10px] font-mono text-slate-400">Capability: Export Growth & Finance</span>
+                </div>
+              </div>
+              <div className="lg:col-span-5 text-xs text-slate-600">
+                Audit export documentation, contract manufacturing capacity, trade finance credit lines, and customs tariff schedules.
+              </div>
+              <div className="lg:col-span-4 text-xs font-mono text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                Output: Export Readiness Scorecard & Trade Finance Plan
+              </div>
+            </div>
+
+            {/* Step 5 */}
+            <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+              <div className="lg:col-span-3 flex items-center gap-3">
+                <span className="w-8 h-8 rounded-lg bg-blue-600 text-white font-mono font-bold flex items-center justify-center text-xs shrink-0">05</span>
+                <div>
+                  <h3 className="text-sm font-bold text-slate-900 font-heading">Design Commercial Approach</h3>
+                  <span className="text-[10px] font-mono text-slate-400">Capability: Export Growth & RevOps</span>
+                </div>
+              </div>
+              <div className="lg:col-span-5 text-xs text-slate-600">
+                Structure localized pricing ladders, channel incentives, outbound buyer acquisition campaigns, and regional Deal Desk workflows.
+              </div>
+              <div className="lg:col-span-4 text-xs font-mono text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                Output: Export GTM Blueprint & Deal Registration Charter
+              </div>
+            </div>
+
+            {/* Step 6 */}
+            <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+              <div className="lg:col-span-3 flex items-center gap-3">
+                <span className="w-8 h-8 rounded-lg bg-blue-600 text-white font-mono font-bold flex items-center justify-center text-xs shrink-0">06</span>
+                <div>
+                  <h3 className="text-sm font-bold text-slate-900 font-heading">Coordinate & Measure Scale</h3>
+                  <span className="text-[10px] font-mono text-slate-400">Capability: Global Revenue Engines</span>
+                </div>
+              </div>
+              <div className="lg:col-span-5 text-xs text-slate-600">
+                Execute weekly pipeline inspection reviews, track Net Revenue Retention (NRR), and monitor real-time command telemetry.
+              </div>
+              <div className="lg:col-span-4 text-xs font-mono text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                Output: Realized Revenue & Multi-Country Telemetry Cockpit
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 07: BUSINESS OUTCOMES AND MEASUREMENT (6 CATEGORIES) ── */}
+      <section className="py-16 sm:py-20 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
+              Accountability Architecture
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 mb-2 font-heading">
+              Measure Progress. Understand Risk. Make Better Expansion Decisions.
+            </h2>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              Global expansion should be evaluated through decision quality, operational readiness, and commercial revenue velocity. Review the six primary measurement categories:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {/* Category 1 */}
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <span className="text-[10px] font-mono font-bold uppercase text-blue-600 bg-blue-100/60 px-2 py-0.5 rounded">Category 01</span>
+                <h3 className="text-base font-bold text-slate-900 font-heading mt-2 mb-2">Market Intelligence</h3>
+                <ul className="text-xs text-slate-600 space-y-1.5 mb-4">
+                  <li>• Time required to complete country viability dossier</li>
+                  <li>• % of priority markets supported by verified trade data</li>
+                  <li>• Number of unresolved regulatory compliance gates</li>
+                  <li>• Ratio of accessible SOM to theoretical gross TAM</li>
+                </ul>
+              </div>
+              <div className="text-[11px] text-slate-500 font-mono pt-2 border-t border-slate-200">
+                Goal: Prevent premature capital misallocation.
+              </div>
+            </div>
+
+            {/* Category 2 */}
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <span className="text-[10px] font-mono font-bold uppercase text-blue-600 bg-blue-100/60 px-2 py-0.5 rounded">Category 02</span>
+                <h3 className="text-base font-bold text-slate-900 font-heading mt-2 mb-2">Demand Discovery</h3>
+                <ul className="text-xs text-slate-600 space-y-1.5 mb-4">
+                  <li>• Number of active corporate buyers mapped per corridor</li>
+                  <li>• % of candidate distributors meeting all 18 criteria</li>
+                  <li>• Target-account verified purchasing intent accuracy</li>
+                  <li>• Discovered qualified opportunity pipeline headroom</li>
+                </ul>
+              </div>
+              <div className="text-[11px] text-slate-500 font-mono pt-2 border-t border-slate-200">
+                Goal: Validate commercial willingness before hiring.
+              </div>
+            </div>
+
+            {/* Category 3 */}
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <span className="text-[10px] font-mono font-bold uppercase text-blue-600 bg-blue-100/60 px-2 py-0.5 rounded">Category 03</span>
+                <h3 className="text-base font-bold text-slate-900 font-heading mt-2 mb-2">Export & Market Entry</h3>
+                <ul className="text-xs text-slate-600 space-y-1.5 mb-4">
+                  <li>• Export Readiness Index (ERI) score out of 100</li>
+                  <li>• % of pre-entry statutory certification gates cleared</li>
+                  <li>• Order-to-delivery cross-border transit cycle time</li>
+                  <li>• Export quota attainment across operating corridors</li>
+                </ul>
+              </div>
+              <div className="text-[11px] text-slate-500 font-mono pt-2 border-t border-slate-200">
+                Goal: Ensure reliable cross-border sales velocity.
+              </div>
+            </div>
+
+            {/* Category 4 */}
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <span className="text-[10px] font-mono font-bold uppercase text-blue-600 bg-blue-100/60 px-2 py-0.5 rounded">Category 04</span>
+                <h3 className="text-base font-bold text-slate-900 font-heading mt-2 mb-2">Partners & Supply Networks</h3>
+                <ul className="text-xs text-slate-600 space-y-1.5 mb-4">
+                  <li>• Partner-led indirect share of international revenue</li>
+                  <li>• On-time-in-full (OTIF) component delivery rate</li>
+                  <li>• Time-to-Survive (TTS) vs. Time-to-Recover (TTR) ratio</li>
+                  <li>• Landed COGS reduction via tariff optimization</li>
+                </ul>
+              </div>
+              <div className="text-[11px] text-slate-500 font-mono pt-2 border-t border-slate-200">
+                Goal: Build resilient non-linear indirect scale.
+              </div>
+            </div>
+
+            {/* Category 5 */}
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <span className="text-[10px] font-mono font-bold uppercase text-blue-600 bg-blue-100/60 px-2 py-0.5 rounded">Category 05</span>
+                <h3 className="text-base font-bold text-slate-900 font-heading mt-2 mb-2">Global Revenue Operations</h3>
+                <ul className="text-xs text-slate-600 space-y-1.5 mb-4">
+                  <li>• International forecast variance from Day 1 Commit</li>
+                  <li>• Multi-territory Annual Contract Value (ACV) lift</li>
+                  <li>• International Net Revenue Retention (NRR) rate</li>
+                  <li>• Deal Desk contract turnaround velocity in hours</li>
+                </ul>
+              </div>
+              <div className="text-[11px] text-slate-500 font-mono pt-2 border-t border-slate-200">
+                Goal: Ensure predictable multi-territory earnings.
+              </div>
+            </div>
+
+            {/* Category 6 */}
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <span className="text-[10px] font-mono font-bold uppercase text-blue-600 bg-blue-100/60 px-2 py-0.5 rounded">Category 06</span>
+                <h3 className="text-base font-bold text-slate-900 font-heading mt-2 mb-2">AI-Assisted Workflows</h3>
+                <ul className="text-xs text-slate-600 space-y-1.5 mb-4">
+                  <li>• Source-verification citation coverage on AI outputs</li>
+                  <li>• Human-in-the-loop review compliance rate (100% target)</li>
+                  <li>• Sales rep administrative research hours reclaimed</li>
+                  <li>• Algorithmic intent signal confirmation precision</li>
+                </ul>
+              </div>
+              <div className="text-[11px] text-slate-500 font-mono pt-2 border-t border-slate-200">
+                Goal: Accelerate research without hallucination risk.
+              </div>
+            </div>
+          </div>
+
+          <div className="p-3 rounded-xl bg-slate-100 border border-slate-200 text-center text-[11px] font-mono text-slate-500">
+            All metric examples above reflect defined measurement methods and Illustrative Examples — Not Actual ProfitMachines Internal Data.
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 08: INTELLIGENCE, FRAMEWORKS AND EVIDENCE (5 CONCEPTS) ── */}
+      <section className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
+              Structured Decision Instruments
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 mb-2 font-heading">
+              Turn Expansion Information into Decision-Ready Intelligence
+            </h2>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              Expansion decisions often involve conflicting stakeholder priorities. These five structured framework concepts help organizations record assumptions, compare options, and eliminate guesswork:
+            </p>
+          </div>
+
+          <div className="space-y-4 mb-8">
+            {/* Framework 1 */}
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs">
+              <div className="flex items-center justify-between pb-2 border-b border-slate-100 mb-3">
+                <span className="text-xs font-mono font-bold text-blue-600 uppercase">Framework 01</span>
+                <span className="text-xs font-mono text-slate-400">Decision Tool</span>
+              </div>
+              <h3 className="text-base font-bold text-slate-900 font-heading mb-1.5">
+                Market Opportunity Scorecard
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                Compares potential foreign jurisdictions across business-specific criteria: verified demand signals, target customer density, competitive incumbent moats, regulatory burden, and risk-adjusted return on capital.
+              </p>
+              <div className="text-[11px] font-mono text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                Application: Distinguishes large headline markets from genuinely accessible, profitable markets.
+              </div>
+            </div>
+
+            {/* Framework 2 */}
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs">
+              <div className="flex items-center justify-between pb-2 border-b border-slate-100 mb-3">
+                <span className="text-xs font-mono font-bold text-blue-600 uppercase">Framework 02</span>
+                <span className="text-xs font-mono text-slate-400">Diagnostic Tool</span>
+              </div>
+              <h3 className="text-base font-bold text-slate-900 font-heading mb-1.5">
+                Expansion Readiness Checklist
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                Assesses 40 operational factors across four pillars: Product Readiness (specifications, labeling, packaging), Compliance & Legal (export licenses, HS codes), Financial Readiness (working capital, letters of credit), and Manufacturing Surge Capacity.
+              </p>
+              <div className="text-[11px] font-mono text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                Application: Identifies internal operational bottlenecks before launching commercial campaigns.
+              </div>
+            </div>
+
+            {/* Framework 3 */}
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs">
+              <div className="flex items-center justify-between pb-2 border-b border-slate-100 mb-3">
+                <span className="text-xs font-mono font-bold text-blue-600 uppercase">Framework 03</span>
+                <span className="text-xs font-mono text-slate-400">Evaluation Matrix</span>
+              </div>
+              <h3 className="text-base font-bold text-slate-900 font-heading mb-1.5">
+                Buyer & Partner Qualification Matrix
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                Evaluates candidate distributors, dealers, and corporate buyers across 18 operational criteria: commercial reach, certified engineering bench, non-competing brand portfolio synergy, and audited credit solvency.
+              </p>
+              <div className="text-[11px] font-mono text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                Application: Prevents granting territorial exclusivity to ineffective or conflicted partner organizations.
+              </div>
+            </div>
+
+            {/* Framework 4 */}
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs">
+              <div className="flex items-center justify-between pb-2 border-b border-slate-100 mb-3">
+                <span className="text-xs font-mono font-bold text-blue-600 uppercase">Framework 04</span>
+                <span className="text-xs font-mono text-slate-400">Risk Management</span>
+              </div>
+              <h3 className="text-base font-bold text-slate-900 font-heading mb-1.5">
+                Cross-Border Risk and Dependency Register
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                Maintains continuous tracking of external sovereign, currency, regulatory, and supply chain dependencies. Records risk triggers, affected operating entities, verified evidence, responsible executive owners, and pre-approved mitigation playbooks.
+              </p>
+              <div className="text-[11px] font-mono text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                Application: Replaces panic during external shocks with disciplined, pre-engineered business continuity.
+              </div>
+            </div>
+
+            {/* Framework 5 */}
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs">
+              <div className="flex items-center justify-between pb-2 border-b border-slate-100 mb-3">
+                <span className="text-xs font-mono font-bold text-blue-600 uppercase">Framework 05</span>
+                <span className="text-xs font-mono text-slate-400">Telemetry Cockpit</span>
+              </div>
+              <h3 className="text-base font-bold text-slate-900 font-heading mb-1.5">
+                Global Expansion Performance Dashboard Concept
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                Brings together market assessment progress, demand pipeline velocity, partner onboarding statuses, supply fulfillment SLAs, and currency foreign exchange exposures into a single consolidated executive cockpit.
+              </p>
+              <div className="text-[11px] font-mono text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                Application: Provides leadership with real-time operational visibility across distributed foreign entities.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 09: CONNECTED EXPANSION CAPABILITIES (7 CONNECTION EXAMPLES) ── */}
+      <section className="py-16 sm:py-20 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
+              Systemic Connectivity
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 mb-2 font-heading">
+              Eight Capabilities. One Connected Expansion Journey.
+            </h2>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              International business expansion decisions rarely exist in isolation. Discover how each capability naturally informs and reinforces the adjacent pillars:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {/* Connection 1 */}
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <div className="text-[10px] font-mono font-bold uppercase text-blue-600 mb-1">Connection 01</div>
+                <h3 className="text-sm font-bold text-slate-900 font-heading mb-2">
+                  Market Access → Demand Networks
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                  Market selection establishes which countries offer viable regulatory and economic conditions; Demand Networks then investigates the specific enterprise buyers and distributors inside those territories.
+                </p>
+              </div>
+              <div className="flex items-center gap-2 text-xs font-bold text-blue-600">
+                <Link to="/global-acceleration/market-access" className="hover:underline">Market Access</Link>
+                <span>→</span>
+                <Link to="/global-acceleration/demand-networks" className="hover:underline">Demand Networks</Link>
+              </div>
+            </div>
+
+            {/* Connection 2 */}
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <div className="text-[10px] font-mono font-bold uppercase text-blue-600 mb-1">Connection 02</div>
+                <h3 className="text-sm font-bold text-slate-900 font-heading mb-2">
+                  Demand Networks → Export Growth
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                  Discovered buyer and distributor lists provide the target account intelligence that the Export Growth Engine engages and converts through structured outbound campaigns.
+                </p>
+              </div>
+              <div className="flex items-center gap-2 text-xs font-bold text-blue-600">
+                <Link to="/global-acceleration/demand-networks" className="hover:underline">Demand Networks</Link>
+                <span>→</span>
+                <Link to="/global-acceleration/export-growth-engine" className="hover:underline">Export Growth</Link>
+              </div>
+            </div>
+
+            {/* Connection 3 */}
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <div className="text-[10px] font-mono font-bold uppercase text-blue-600 mb-1">Connection 03</div>
+                <h3 className="text-sm font-bold text-slate-900 font-heading mb-2">
+                  Market Access → Partner Ecosystems
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                  A market assessment reveals where local licensing, distribution cartels, or statutory ownership barriers make indirect partner alliances and joint ventures essential.
+                </p>
+              </div>
+              <div className="flex items-center gap-2 text-xs font-bold text-blue-600">
+                <Link to="/global-acceleration/market-access" className="hover:underline">Market Access</Link>
+                <span>→</span>
+                <Link to="/global-acceleration/partner-ecosystems" className="hover:underline">Partner Ecosystems</Link>
+              </div>
+            </div>
+
+            {/* Connection 4 */}
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <div className="text-[10px] font-mono font-bold uppercase text-blue-600 mb-1">Connection 04</div>
+                <h3 className="text-sm font-bold text-slate-900 font-heading mb-2">
+                  Export Growth → Supply Networks
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                  Aggressive cross-border sales commitments generate strict operational requirements for manufacturing surge capacity, component sourcing, and multi-modal logistics.
+                </p>
+              </div>
+              <div className="flex items-center gap-2 text-xs font-bold text-blue-600">
+                <Link to="/global-acceleration/export-growth-engine" className="hover:underline">Export Growth</Link>
+                <span>→</span>
+                <Link to="/global-acceleration/supply-networks" className="hover:underline">Supply Networks</Link>
+              </div>
+            </div>
+
+            {/* Connection 5 */}
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <div className="text-[10px] font-mono font-bold uppercase text-blue-600 mb-1">Connection 05</div>
+                <h3 className="text-sm font-bold text-slate-900 font-heading mb-2">
+                  Export Growth → Revenue Engines
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                  Initial customer acquisition and territory launches must transition into ongoing territory management, Deal Desk contracting, and customer success retention.
+                </p>
+              </div>
+              <div className="flex items-center gap-2 text-xs font-bold text-blue-600">
+                <Link to="/global-acceleration/export-growth-engine" className="hover:underline">Export Growth</Link>
+                <span>→</span>
+                <Link to="/global-acceleration/revenue-engines" className="hover:underline">Revenue Engines</Link>
+              </div>
+            </div>
+
+            {/* Connection 6 */}
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <div className="text-[10px] font-mono font-bold uppercase text-blue-600 mb-1">Connection 06</div>
+                <h3 className="text-sm font-bold text-slate-900 font-heading mb-2">
+                  Expansion Plans → Financial Pathways
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                  Entering markets and fulfilling large export orders reveals working capital gaps, necessitating letters of credit, export credit agency (ECA) insurance, and FX hedging.
+                </p>
+              </div>
+              <div className="flex items-center gap-2 text-xs font-bold text-blue-600">
+                <Link to="/global-acceleration/market-access" className="hover:underline">Market Access</Link>
+                <span>→</span>
+                <Link to="/global-acceleration/capital-finance" className="hover:underline">Capital & Finance</Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Connection 7 */}
+          <div className="p-5 rounded-2xl bg-blue-50 border border-blue-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <div className="text-[10px] font-mono font-bold uppercase text-blue-700 mb-0.5">Connection 07</div>
+              <h3 className="text-sm font-bold text-slate-900 font-heading">
+                AI-Powered Expansion ↔ Continuous Intelligence Across All Seven Pillars
+              </h3>
+              <p className="text-xs text-slate-600 mt-1 max-w-3xl">
+                AI-assisted synthesis, lead enrichment, localization, and telemetry orchestration support each of the seven capability areas—always subject to grounded data sources and human-in-the-loop governance.
+              </p>
+            </div>
+            <Link
+              to="/global-acceleration/ai-powered-expansion"
+              className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shrink-0 inline-flex items-center gap-1.5"
+            >
+              <span>Explore AI Systems</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 10: FINAL CONVERSION SECTION (INTAKE FORM & WORKING CTA) ── */}
+      <section id="consultation" className="py-16 sm:py-24 bg-slate-950 text-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-6">
+              <span className="text-xs font-mono text-blue-400 uppercase tracking-widest font-bold">
+                Expansion Strategy Briefing
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-1 mb-4 font-heading leading-tight">
+                Build Your Next Phase of Global Growth.
+              </h2>
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                Whether your organization is evaluating new international territories, identifying verified commercial buyers, planning export market entry, developing partner alliances, or scaling cross-border revenue operations—the first step is clarifying your business objective and required decisions.
+              </p>
+
+              <div className="space-y-3 mb-8">
+                <div className="flex items-start gap-2.5 text-xs text-slate-300">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span>Clarify expansion objectives, capital budgets, and target geographic corridors</span>
+                </div>
+                <div className="flex items-start gap-2.5 text-xs text-slate-300">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span>Identify critical regulatory, channel, and working capital dependencies</span>
+                </div>
+                <div className="flex items-start gap-2.5 text-xs text-slate-300">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span>Strictly confidential architectural review under mutual corporate NDA</span>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <Link
+                  to="/book-consultation"
+                  className="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30 inline-flex items-center gap-2 group cursor-pointer"
+                >
+                  <span>Discuss Your Expansion Strategy</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+
+                <a
+                  href="#capabilities-overview"
+                  className="px-5 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 font-bold text-sm transition-all cursor-pointer"
+                >
+                  <span>Explore All Capabilities</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Live Working Consultation Form */}
+            <div className="lg:col-span-6">
+              <GlobalExpansionIntakeForm
+                pageContext="Global Business Acceleration Hub"
+                defaultChallenge="Comprehensive international expansion assessment across target corridors"
+                buttonText="Request Confidential Expansion Briefing"
+              />
             </div>
           </div>
         </div>

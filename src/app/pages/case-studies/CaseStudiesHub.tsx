@@ -599,7 +599,7 @@ export default function CaseStudiesHub() {
       </section>
 
       {/* ── 3. EXPLORE BY BUSINESS CHALLENGE (Quick Toggles) ── */}
-      <section className="py-14 bg-white border-b border-slate-200">
+      <section id="challenge" className="py-14 bg-white border-b border-slate-200" style={{ scrollMarginTop: '80px' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-8">
             <span className="text-xs font-mono text-blue-600 font-bold uppercase tracking-wider block mb-2">
@@ -652,7 +652,7 @@ export default function CaseStudiesHub() {
       </section>
 
       {/* ── 4. CASE STUDY LIBRARY (Search + 5-Dimension Classification Toolbar) ── */}
-      <section id="case-study-library" className="py-20 sm:py-28 bg-white border-b border-slate-200">
+      <section id="case-study-library" className="py-20 sm:py-28 bg-white border-b border-slate-200" style={{ scrollMarginTop: '80px' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
             <div>

@@ -1401,292 +1401,476 @@ export default function Navigation() {
             path: '/growth-science',
             icon: TrendingUp,
             badge: 'Scientific Revenue OS',
-            summary: 'Five empirical pillars of revenue physics, forensic friction diagnostics, autonomous AI engines, proprietary models, and executive telemetry.',
+            summary: 'The empirical architecture of profitable scale: 9 connected capabilities across revenue physics, signal intelligence, latent discovery, forensic leakage recovery, offer engineering, and executive telemetry.',
             categories: [
                 // SUB-MENU 1: Revenue Physics
                 {
                     id: 'revenue-physics',
                     title: 'Revenue Physics',
-                    desc: 'Revenue mechanics, market dynamics, PLG triggers, and unit economics.',
+                    desc: 'Revenue mechanics, parametric equations, cohort dynamics, and unit economics.',
                     path: '/growth-science/revenue-physics',
-                    badge: '',
+                    badge: 'Pillar 01',
                     icon: Activity,
                     columns: [
                         {
-                            header: 'Core Economics',
-                            badge: '',
+                            header: 'Mathematical Models',
+                            badge: 'Empirical',
                             icon: Activity,
                             cards: [
                                 {
-                                    title: 'Customer Lifetime Value Mechanics',
-                                    description: 'Map cohort expansion trajectories and isolate high-compounding accounts from resource drains.',
-                                    path: '/growth-science/revenue-physics',
-                                    badge: '25-40% Lift',
+                                    title: 'Revenue Architecture',
+                                    description: 'Deconstruct revenue into deterministic flow equations, driver mapping, and velocity modeling.',
+                                    path: '/growth-science/revenue-physics#revenue-architecture',
+                                    badge: 'Velocity Index',
                                     icon: Activity,
-                                    tags: ['LTV:CAC', 'Cohort Dynamics']
+                                    tags: ['Driver Mapping', 'Parametric Equation']
                                 },
                                 {
-                                    title: 'Market & White-Space Dynamics',
-                                    description: 'Dissect TAM into unit-economic micro-segments and concentrate in defensible profit pools.',
-                                    path: '/growth-science/revenue-physics',
-                                    badge: '15-25% Margin',
-                                    icon: Globe,
-                                    tags: ['Whitespace', 'Profit Pools']
+                                    title: 'Customer Economics',
+                                    description: 'Audit multi-year cohort compounding, expansion mechanics, and retention survival curves.',
+                                    path: '/growth-science/revenue-physics#customer-economics',
+                                    badge: 'LTV:CAC 4.2x',
+                                    icon: LineChart,
+                                    tags: ['Cohort Compounding', 'NRR Dynamics']
                                 }
                             ]
                         },
                         {
-                            header: 'Conversion & Economics',
-                            badge: '',
+                            header: 'Unit Economics & Whitespace',
+                            badge: 'Defensibility',
                             icon: DollarSign,
                             cards: [
                                 {
-                                    title: 'Product-Led Growth Triggers',
-                                    description: 'Identify behavioral tipping points that predict paid expansion and wire automated triggers.',
-                                    path: '/growth-science/revenue-physics',
-                                    badge: '30-50% Convert',
-                                    icon: Sparkles,
-                                    tags: ['PLG Triggers', 'Monetization']
-                                },
-                                {
-                                    title: 'Unit Economic Fundamentals',
-                                    description: 'Audit true cost-to-serve at customer and SKU level to eliminate hidden margin erosion.',
-                                    path: '/growth-science/revenue-physics',
-                                    badge: '10-20 pts Margin',
+                                    title: 'Unit Economics',
+                                    description: 'Audit fully loaded CAC, cost-to-serve allocations, and margin stacks across customer deciles.',
+                                    path: '/growth-science/revenue-physics#unit-economics',
+                                    badge: 'Margin Stack',
                                     icon: Scale,
-                                    tags: ['Cost-to-Serve', 'Gross Margin']
+                                    tags: ['Cost-to-Serve', 'Profit Pools']
+                                },
+                                {
+                                    title: 'White Space Intelligence',
+                                    description: 'Dissect TAM into defensible, unit-economic micro-segments and uncontested profit pools.',
+                                    path: '/growth-science/revenue-physics#white-space-intelligence',
+                                    badge: 'Micro-TAM',
+                                    icon: Globe,
+                                    tags: ['Market Gaps', 'Growth Vectors']
                                 }
                             ]
                         }
                     ]
                 },
-
-                // SUB-MENU 2: Friction Diagnostics
+                // SUB-MENU 2: Revenue Intelligence
                 {
-                    id: 'friction-diagnostics',
-                    title: 'Friction Diagnostics',
-                    desc: 'Identifies where growth stalls — pipeline leakage, margin erosion, operational silos, and organizational resistance.',
-                    path: '/growth-science/friction-diagnostics',
+                    id: 'revenue-intelligence',
+                    title: 'Revenue Intelligence',
+                    desc: 'Buyer intent signals, competitive tracking, customer health, and stochastic forecasting.',
+                    path: '/growth-science/revenue-intelligence',
                     badge: 'Pillar 02',
-                    icon: Radar,
-                    columns: [
-                        {
-                            header: 'Commercial Breakdowns',
-                            badge: 'Stress 1 & 2',
-                            icon: Radar,
-                            cards: [
-                                {
-                                    title: 'Pipeline Leakage & Stall Points',
-                                    description: 'Pinpoint stage-by-stage deal drops between discovery, proposal, and procurement.',
-                                    path: '/growth-science/friction-diagnostics',
-                                    badge: '40-60% Cut',
-                                    icon: Radar,
-                                    tags: ['Leakage Map', 'Stage Velocity']
-                                },
-                                {
-                                    title: 'Margin Erosion & Pricing Friction',
-                                    description: 'Install discount governance and buyer-evidenced price points to halt discount creep.',
-                                    path: '/growth-science/friction-diagnostics',
-                                    badge: '5-15 pts Recovery',
-                                    icon: DollarSign,
-                                    tags: ['Discount Limits', 'Pricing Defense']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Operational Bottlenecks',
-                            badge: 'Stress 3 & 4',
-                            icon: ShieldCheck,
-                            cards: [
-                                {
-                                    title: 'Operational & Tech-Stack Silos',
-                                    description: 'Eliminate tool stack fragmentation and reduce rep administrative overhead.',
-                                    path: '/growth-science/friction-diagnostics',
-                                    badge: '60% Admin Cut',
-                                    icon: Layers,
-                                    tags: ['Stack Unification', 'Active Selling']
-                                },
-                                {
-                                    title: 'Organizational & Change Resistance',
-                                    description: 'Incentive alignment and structured change leadership to ensure new GTM motions stick.',
-                                    path: '/growth-science/friction-diagnostics',
-                                    badge: '80-90% Adoption',
-                                    icon: Users,
-                                    tags: ['Change Rigor', 'Enablement']
-                                }
-                            ]
-                        }
-                    ]
-                },
-
-                // SUB-MENU 3: AI Acceleration Engines
-                {
-                    id: 'ai-engines',
-                    title: 'AI Acceleration Engines',
-                    desc: 'Autonomous systems that accelerate every stage — agent deployment, predictive retention, ecosystem orchestration, algorithmic pricing.',
-                    path: '/growth-science/ai-engines',
-                    badge: 'Pillar 03',
-                    icon: Cpu,
-                    columns: [
-                        {
-                            header: 'Autonomous Execution',
-                            badge: 'Engines 1 & 2',
-                            icon: Bot,
-                            cards: [
-                                {
-                                    title: 'Autonomous Agent Deployment',
-                                    description: 'Deploy 24/7 AI agent swarms across research, outreach, qualification, and retention.',
-                                    path: '/growth-science/ai-engines',
-                                    badge: '60+ hrs Reclaimed',
-                                    icon: Bot,
-                                    tags: ['SDR Swarm', 'Zero Churn']
-                                },
-                                {
-                                    title: 'Predictive Expansion & Retention',
-                                    description: 'Behavioral signals identify churn risk and expansion triggers 60 days in advance.',
-                                    path: '/growth-science/ai-engines',
-                                    badge: '85-90% Precision',
-                                    icon: Activity,
-                                    tags: ['Churn Radar', '124% NRR']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Ecosystem & Pricing',
-                            badge: 'Engines 3 & 4',
-                            icon: Network,
-                            cards: [
-                                {
-                                    title: 'Ecosystem & Channel Orchestration',
-                                    description: 'Score alliances by attributed revenue and automate joint pipeline routing.',
-                                    path: '/growth-science/ai-engines',
-                                    badge: 'Attributed Pipeline',
-                                    icon: Network,
-                                    tags: ['Co-Sell Math', 'Partner ROI']
-                                },
-                                {
-                                    title: 'Algorithmic Pricing & Packaging',
-                                    description: 'Conjoint willingness-to-pay models and dynamic contract tiering optimization.',
-                                    path: '/growth-science/ai-engines',
-                                    badge: '10-20% Realization',
-                                    icon: Sparkles,
-                                    tags: ['Dynamic Pricing', 'Value Packaging']
-                                }
-                            ]
-                        }
-                    ]
-                },
-
-                // SUB-MENU 4: Proprietary Growth Models
-                {
-                    id: 'growth-models',
-                    title: 'Proprietary Growth Models',
-                    desc: 'Battle-tested frameworks that convert diagnosis to action — Revenue Velocity, Profit Pool Optimization, Demand Flywheel, AI-Native Transformation.',
-                    path: '/growth-science/growth-models',
-                    badge: 'Pillar 04',
-                    icon: Layers,
-                    columns: [
-                        {
-                            header: 'Velocity & Margins',
-                            badge: 'Models 1 & 2',
-                            icon: Layers,
-                            cards: [
-                                {
-                                    title: 'Revenue Velocity Model',
-                                    description: 'Balance opportunities, win rates, ACV, and cycle times to eliminate growth plateaus.',
-                                    path: '/growth-science/growth-models',
-                                    badge: '30-50% Velocity',
-                                    icon: TrendingUp,
-                                    tags: ['Velocity Math', 'Constraint Isolation']
-                                },
-                                {
-                                    title: 'Profit Pool Optimization Model',
-                                    description: 'Map contribution margins across accounts to reallocate capital into highest profit pools.',
-                                    path: '/growth-science/growth-models',
-                                    badge: '15-25% Margin',
-                                    icon: Target,
-                                    tags: ['Profit Pools', 'High-Yield Focus']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Flywheels & Operating OS',
-                            badge: 'Models 3 & 4',
-                            icon: Rocket,
-                            cards: [
-                                {
-                                    title: 'Demand-to-Revenue Flywheel',
-                                    description: 'Self-compounding demand engine leveraging referrals, brand authority, and network loops.',
-                                    path: '/growth-science/growth-models',
-                                    badge: '40-60% CAC Cut',
-                                    icon: RefreshCw,
-                                    tags: ['Compounding Demand', 'Organic ARR']
-                                },
-                                {
-                                    title: 'AI-Native Transformation Model',
-                                    description: 'Fundamental operating redesign around autonomous agents and telemetry for 3-5X productivity.',
-                                    path: '/growth-science/growth-models',
-                                    badge: '3-5X Productivity',
-                                    icon: Cpu,
-                                    tags: ['Revenue OS', 'Autonomous Scale']
-                                }
-                            ]
-                        }
-                    ]
-                },
-
-                // SUB-MENU 5: Executive Telemetry
-                {
-                    id: 'executive-telemetry',
-                    title: 'Executive Telemetry',
-                    desc: 'Real-time visibility for the C-suite — predictive forecasting, cohort analytics, productivity metrics, growth scorecards.',
-                    path: '/growth-science/executive-telemetry',
-                    badge: 'Pillar 05',
                     icon: LineChart,
                     columns: [
                         {
-                            header: 'Predictive Intelligence',
-                            badge: 'Telemetry 1 & 2',
-                            icon: LineChart,
+                            header: 'Signal & Market Sensing',
+                            badge: 'Real-Time',
+                            icon: Radar,
                             cards: [
                                 {
-                                    title: 'Predictive Revenue Forecasting',
-                                    description: 'Stochastic machine learning models deliver forecast accuracy within <5% variance.',
-                                    path: '/growth-science/executive-telemetry',
-                                    badge: '<5% Variance',
-                                    icon: LineChart,
-                                    tags: ['Stochastic Forecast', 'Zero Hope']
+                                    title: 'Revenue Signal Intelligence',
+                                    description: 'Capture active buyer intent signals, account triggers, and AI prospect discovery.',
+                                    path: '/growth-science/revenue-intelligence#revenue-signal-intelligence',
+                                    badge: 'Intent Signals',
+                                    icon: Radar,
+                                    tags: ['Buying Intent', 'Account Signals']
                                 },
                                 {
-                                    title: 'Cohort & Retention Analytics',
-                                    description: 'Longitudinal cohort tracking and retention decay curves to optimize account lifetime value.',
-                                    path: '/growth-science/executive-telemetry',
-                                    badge: '20-30% NRR Lift',
-                                    icon: Activity,
-                                    tags: ['Cohort Curves', 'NRR Telemetry']
+                                    title: 'Market Intelligence',
+                                    description: 'Benchmark competitor win rates, price concessions, and category displacement trends.',
+                                    path: '/growth-science/revenue-intelligence#market-intelligence',
+                                    badge: 'Win Rate 55%',
+                                    icon: Globe,
+                                    tags: ['Competitive Pricing', 'Share of Market']
                                 }
                             ]
                         },
                         {
-                            header: 'Bench Productivity & Scorecards',
-                            badge: 'Telemetry 3 & 4',
-                            icon: BarChart3,
+                            header: 'Customer & Forecast Models',
+                            badge: 'Predictive',
+                            icon: LineChart,
                             cards: [
                                 {
-                                    title: 'Sales Productivity Metrics',
-                                    description: 'Replicate the behavioral patterns of top commercial performers across the entire team.',
-                                    path: '/growth-science/executive-telemetry',
-                                    badge: '25-40% Rep Lift',
+                                    title: 'Customer Intelligence',
+                                    description: 'Predictive churn probability modeling, growth potential scoring, and health analytics.',
+                                    path: '/growth-science/revenue-intelligence#customer-intelligence',
+                                    badge: '88% Churn Predict',
                                     icon: Users,
-                                    tags: ['Behavioral Modeling', 'Quota Lift']
+                                    tags: ['Customer Health', 'Renewal Equity']
                                 },
                                 {
-                                    title: 'C-Suite Growth Scorecards',
-                                    description: 'Real-time executive cockpit unifying ARR velocity, margin realization, and friction radar.',
-                                    path: '/growth-science/executive-telemetry',
-                                    badge: 'Boardroom Ready',
+                                    title: 'Revenue Forecast Intelligence',
+                                    description: 'Stochastic Monte Carlo pipeline modeling delivering board forecast precision with <5% variance.',
+                                    path: '/growth-science/revenue-intelligence#revenue-forecast-intelligence',
+                                    badge: '<4.5% Variance',
+                                    icon: LineChart,
+                                    tags: ['Stochastic Forecast', 'Zero Bias']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                // SUB-MENU 3: Revenue Potential Discovery
+                {
+                    id: 'revenue-potential-discovery',
+                    title: 'Revenue Potential Discovery',
+                    desc: 'Installed base monetization, latent product features, adjacent verticals, and AI models.',
+                    path: '/growth-science/revenue-potential-discovery',
+                    badge: 'Pillar 03',
+                    icon: Compass,
+                    columns: [
+                        {
+                            header: 'Account & Product Headroom',
+                            badge: 'Expansion',
+                            icon: Compass,
+                            cards: [
+                                {
+                                    title: 'Existing Customer Growth',
+                                    description: 'Discover unharvested cross-sell equity, installed-base monetization, and multi-product adoption.',
+                                    path: '/growth-science/revenue-potential-discovery#existing-customer-growth',
+                                    badge: '+38% Expansion',
+                                    icon: Users,
+                                    tags: ['Cross-Sell', 'Installed Base']
+                                },
+                                {
+                                    title: 'Product Revenue Potential',
+                                    description: 'Monetize compute-intensive features, optimize packaging tiers, and rationalize low-margin SKUs.',
+                                    path: '/growth-science/revenue-potential-discovery#product-revenue-potential',
+                                    badge: 'ASP +54%',
+                                    icon: Layers,
+                                    tags: ['Feature Gating', 'Premiumization']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Market & AI Monetization',
+                            badge: 'Greenfield',
+                            icon: Sparkles,
+                            cards: [
+                                {
+                                    title: 'Market Revenue Potential',
+                                    description: 'Assess adjacent vertical industries, international corridors, and hyperscaler co-sell channels.',
+                                    path: '/growth-science/revenue-potential-discovery#market-revenue-potential',
+                                    badge: '28% Adjacency',
+                                    icon: Globe,
+                                    tags: ['New Verticals', 'Channel Growth']
+                                },
+                                {
+                                    title: 'AI Revenue Potential',
+                                    description: 'Package autonomous AI capabilities into value-based subscription and consumption tiers.',
+                                    path: '/growth-science/revenue-potential-discovery#ai-revenue-potential',
+                                    badge: '76% AI Margin',
+                                    icon: Cpu,
+                                    tags: ['AI Subscriptions', 'Outcome Pricing']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                // SUB-MENU 4: Revenue Leakage & Recovery
+                {
+                    id: 'revenue-leakage-recovery',
+                    title: 'Revenue Leakage & Recovery',
+                    desc: 'Forensic clawback across funnel stalls, rogue discounting, unbilled usage, and churn.',
+                    path: '/growth-science/revenue-leakage-recovery',
+                    badge: 'Pillar 04',
+                    icon: Radar,
+                    columns: [
+                        {
+                            header: 'Forensic Diagnostics',
+                            badge: 'Clawback',
+                            icon: Radar,
+                            cards: [
+                                {
+                                    title: 'Funnel Leakage Analysis',
+                                    description: 'Pinpoint lead decay latency, discovery drop-offs, and late-stage velocity bottlenecks.',
+                                    path: '/growth-science/revenue-leakage-recovery#funnel-leakage-analysis',
+                                    badge: '<22% Loss',
+                                    icon: Radar,
+                                    tags: ['Funnel Decay', 'SDR Latency']
+                                },
+                                {
+                                    title: 'Commercial Leakage',
+                                    description: 'Audit rogue sales discounting, unbilled engineering hours, and waived CPI escalations.',
+                                    path: '/growth-science/revenue-leakage-recovery#commercial-leakage',
+                                    badge: 'Price Realization',
+                                    icon: DollarSign,
+                                    tags: ['Discount Control', 'CPI Protection']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Retention & Recovery',
+                            badge: 'Cash Recovery',
+                            icon: ShieldCheck,
+                            cards: [
+                                {
+                                    title: 'Customer Leakage',
+                                    description: 'Isolate root-cause churn triggers, dormant account risks, and champion departure turnover.',
+                                    path: '/growth-science/revenue-leakage-recovery#customer-leakage',
+                                    badge: 'GRR 95%',
+                                    icon: Users,
+                                    tags: ['Churn Autopsy', 'Dormancy Recovery']
+                                },
+                                {
+                                    title: 'Revenue Recovery Programs',
+                                    description: 'Deploy targeted win-back campaigns and deal resurrection models that recover lost cash.',
+                                    path: '/growth-science/revenue-leakage-recovery#revenue-recovery-programs',
+                                    badge: '$4.8M Recovered',
+                                    icon: RefreshCw,
+                                    tags: ['Win-Back Engines', 'Pipeline Blitz']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                // SUB-MENU 5: Revenue Bundling & Offer Engineering
+                {
+                    id: 'revenue-bundling-offer-engineering',
+                    title: 'Revenue Bundling & Offer Engineering',
+                    desc: 'Commercial packaging, solution bundles, tier gating, and multi-product attach rates.',
+                    path: '/growth-science/revenue-bundling-offer-engineering',
+                    badge: 'Pillar 05',
+                    icon: Layers,
+                    columns: [
+                        {
+                            header: 'Packaging Architecture',
+                            badge: 'AOV Lift',
+                            icon: Layers,
+                            cards: [
+                                {
+                                    title: 'Product Bundling Science',
+                                    description: 'Structure high-converting solution bundles that elevate AOV while protecting 75%+ margins.',
+                                    path: '/growth-science/revenue-bundling-offer-engineering#product-bundling-science',
+                                    badge: 'Attach 74%',
+                                    icon: Layers,
+                                    tags: ['Solution Bundles', 'Blended Margins']
+                                },
+                                {
+                                    title: 'Commercial Packaging',
+                                    description: 'Design rigid tier fences and enterprise feature gating to prevent customer downselling.',
+                                    path: '/growth-science/revenue-bundling-offer-engineering#commercial-packaging',
+                                    badge: 'ARPA $56K',
+                                    icon: Target,
+                                    tags: ['Tier Fences', 'Value Packaging']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Expansion Mechanics',
+                            badge: 'Compounding',
+                            icon: TrendingUp,
+                            cards: [
+                                {
+                                    title: 'Revenue Expansion Models',
+                                    description: 'Automate post-sale add-on attach rates and in-app self-service cross-sell workflows.',
+                                    path: '/growth-science/revenue-bundling-offer-engineering#revenue-expansion-models',
+                                    badge: '58% Multi-Prod',
+                                    icon: TrendingUp,
+                                    tags: ['In-App Triggers', 'Upsell Engines']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                // SUB-MENU 6: Value Capture Engineering
+                {
+                    id: 'value-capture-engineering',
+                    title: 'Value Capture Engineering',
+                    desc: 'Value-based pricing, negotiation governance, concession matrices, and profit pool capture.',
+                    path: '/growth-science/value-capture-engineering',
+                    badge: 'Pillar 06',
+                    icon: DollarSign,
+                    columns: [
+                        {
+                            header: 'Pricing & Negotiation',
+                            badge: 'Defensibility',
+                            icon: DollarSign,
+                            cards: [
+                                {
+                                    title: 'Pricing Science',
+                                    description: 'Anchor software fees directly to verified economic surplus created for customer organizations.',
+                                    path: '/growth-science/value-capture-engineering#pricing-science',
+                                    badge: 'Price Realization 91%',
+                                    icon: DollarSign,
+                                    tags: ['EVC Pricing', 'Elasticity Curves']
+                                },
+                                {
+                                    title: 'Commercial Optimization',
+                                    description: 'Equip sales teams with structured 3-option proposals and mandatory concession trade-off rules.',
+                                    path: '/growth-science/value-capture-engineering#commercial-optimization',
+                                    badge: 'Win Rate 46%',
+                                    icon: Scale,
+                                    tags: ['Concession Governance', 'CFO Proposals']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Profit Pool Extraction',
+                            badge: 'EBITDA Lift',
+                            icon: Award,
+                            cards: [
+                                {
+                                    title: 'Profit Pool Capture',
+                                    description: 'Isolate high-margin enterprise segments and systematically reprice legacy underpaying accounts.',
+                                    path: '/growth-science/value-capture-engineering#profit-pool-capture',
+                                    badge: '84% Segment Margin',
+                                    icon: Award,
+                                    tags: ['Legacy Repricing', 'Strategic Accounts']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                // SUB-MENU 7: Product Innovation & Revenue Expansion
+                {
+                    id: 'product-innovation-revenue-expansion',
+                    title: 'Product Innovation & Revenue Expansion',
+                    desc: 'Convert customer research into scalable software. Productize bespoke services into SaaS.',
+                    path: '/growth-science/product-innovation-revenue-expansion',
+                    badge: 'Pillar 07',
+                    icon: Sparkles,
+                    columns: [
+                        {
+                            header: 'Intelligence & Models',
+                            badge: 'Monetization',
+                            icon: Sparkles,
+                            cards: [
+                                {
+                                    title: 'Product Innovation Intelligence',
+                                    description: 'Mine voice-of-customer transcripts and RFP loss gaps to identify high-conviction product opportunities.',
+                                    path: '/growth-science/product-innovation-revenue-expansion#product-innovation-intelligence',
+                                    badge: '21-Day Prototyping',
+                                    icon: Sparkles,
+                                    tags: ['VoC Mining', 'RFP Gaps']
+                                },
+                                {
+                                    title: 'New Revenue Models',
+                                    description: 'Deploy usage-based metering, marketplace take rates, and outcome-based pricing frameworks.',
+                                    path: '/growth-science/product-innovation-revenue-expansion#new-revenue-models',
+                                    badge: '92% Recurring',
+                                    icon: LineChart,
+                                    tags: ['Consumption Meters', 'Outcome Tiers']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Productization Journey',
+                            badge: 'SaaS Lift',
+                            icon: Layers,
+                            cards: [
+                                {
+                                    title: 'Growth Productization',
+                                    description: 'Transform manual consulting deliverables and internal IP into scalable recurring software subscriptions.',
+                                    path: '/growth-science/product-innovation-revenue-expansion#growth-productization',
+                                    badge: 'Gross Margin 84%',
+                                    icon: Layers,
+                                    tags: ['Service-to-Product', 'IP Monetization']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                // SUB-MENU 8: Revenue Acceleration
+                {
+                    id: 'revenue-acceleration',
+                    title: 'Revenue Acceleration',
+                    desc: 'AI sales engines, autonomous growth orchestration, and real-time deal risk coaching.',
+                    path: '/growth-science/revenue-acceleration',
+                    badge: 'Pillar 08',
+                    icon: Zap,
+                    columns: [
+                        {
+                            header: 'Autonomous Engines',
+                            badge: 'AI SDR',
+                            icon: Zap,
+                            cards: [
+                                {
+                                    title: 'AI Sales Engines',
+                                    description: 'Deploy AI agents that autonomously research buying committees and book pre-qualified meetings.',
+                                    path: '/growth-science/revenue-acceleration#ai-sales-engines',
+                                    badge: '142 Meetings/Mo',
+                                    icon: Bot,
+                                    tags: ['Autonomous Prospecting', 'Buying Committee']
+                                },
+                                {
+                                    title: 'Growth Automation',
+                                    description: 'Orchestrate multi-channel trigger workflows that respond to inbound intent in under 5 minutes.',
+                                    path: '/growth-science/revenue-acceleration#growth-automation',
+                                    badge: '<5 Min Response',
+                                    icon: Workflow,
+                                    tags: ['Trigger Workflows', 'Omni-Channel']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Deal Execution & Coaching',
+                            badge: 'Cycle Speed',
+                            icon: Gauge,
+                            cards: [
+                                {
+                                    title: 'Opportunity Acceleration',
+                                    description: 'In-call deal coaching, predictive deal slip alerts, and automated follow-up proposal copilots.',
+                                    path: '/growth-science/revenue-acceleration#opportunity-acceleration',
+                                    badge: 'Cycle -32%',
+                                    icon: Gauge,
+                                    tags: ['Deal Coaching', 'Risk Telemetry']
+                                }
+                            ]
+                        }
+                    ]
+                },
+                // SUB-MENU 9: Executive Revenue Command Center
+                {
+                    id: 'executive-revenue-command-center',
+                    title: 'Executive Revenue Command Center',
+                    desc: 'C-suite diagnostic indices, stochastic board forecast scenarios, and real-time leakage telemetry.',
+                    path: '/growth-science/executive-revenue-command-center',
+                    badge: 'Pillar 09',
+                    icon: Cpu,
+                    columns: [
+                        {
+                            header: 'C-Suite Cockpit',
+                            badge: 'Executive HUD',
+                            icon: Cpu,
+                            cards: [
+                                {
+                                    title: 'Growth Command Center',
+                                    description: 'Consolidated executive HUD tracking Revenue Health, Growth Velocity, and Rule of 40 performance.',
+                                    path: '/growth-science/executive-revenue-command-center#growth-command-center',
+                                    badge: 'Health 88/100',
+                                    icon: Cpu,
+                                    tags: ['Executive HUD', '5 Diagnostic Indices']
+                                },
+                                {
+                                    title: 'Board Intelligence',
+                                    description: 'Stochastic Monte Carlo scenario modeling delivering board forecast precision with <4% variance.',
+                                    path: '/growth-science/executive-revenue-command-center#board-intelligence',
+                                    badge: '<4% Variance',
+                                    icon: LineChart,
+                                    tags: ['Stochastic Forecast', 'VaR Analytics']
+                                }
+                            ]
+                        },
+                        {
+                            header: 'Real-Time Telemetry',
+                            badge: '24/7 Alarms',
+                            icon: ShieldCheck,
+                            cards: [
+                                {
+                                    title: 'Growth Telemetry',
+                                    description: 'Automated executive alarms on contract discounting anomalies, churn threats, and deal stalls.',
+                                    path: '/growth-science/executive-revenue-command-center#growth-telemetry',
+                                    badge: '<24h Resolution',
                                     icon: ShieldCheck,
-                                    tags: ['Executive Cockpit', 'Fast Decisions']
+                                    tags: ['Proactive Alarms', 'Intervention SLA']
                                 }
                             ]
                         }
@@ -1694,8 +1878,7 @@ export default function Navigation() {
                 }
             ]
         },
-
-        // 5. GLOBAL BUSINESS ACCELERATION
+// 5. GLOBAL BUSINESS ACCELERATION
         {
             id: 'global-business-accelerations',
             name: 'Global Scaling',
@@ -1709,8 +1892,8 @@ export default function Navigation() {
                     id: 'global-market-access',
                     title: 'Global Market Access',
                     desc: 'Validate country opportunity, TAM/SAM/SOM sizing, and regulatory burden before capital commitment',
-                    path: '/global-acceleration/market-intelligence',
-                    badge: 'Area 01',
+                    path: '/global-acceleration/market-access',
+                    badge: '',
                     icon: Globe,
                     columns: [
                         {
@@ -1721,7 +1904,7 @@ export default function Navigation() {
                                 {
                                     title: 'Country Opportunity Analysis',
                                     description: 'Unit-economic validation ranking foreign markets by contribution margin over GDP headlines.',
-                                    path: '/global-acceleration/market-intelligence',
+                                    path: '/global-acceleration/market-access#country-opportunity-analysis',
                                     badge: 'Unit Economics',
                                     icon: Globe,
                                     tags: ['ROI Ranking', 'Contribution Margin']
@@ -1729,7 +1912,7 @@ export default function Navigation() {
                                 {
                                     title: 'Market Opportunity Mapping',
                                     description: 'Systematic heat-mapping of market density, sector growth rates, and structural headroom.',
-                                    path: '/global-acceleration/market-intelligence',
+                                    path: '/global-acceleration/market-access#market-opportunity-mapping',
                                     badge: 'Market Density',
                                     icon: Target,
                                     tags: ['Territory Headroom', 'Density Score']
@@ -1737,7 +1920,7 @@ export default function Navigation() {
                                 {
                                     title: 'TAM / SAM / SOM Assessment',
                                     description: 'Country-specific addressable market modeling with realistic penetration rates.',
-                                    path: '/global-acceleration/market-intelligence',
+                                    path: '/global-acceleration/market-access#tam-sam-som-assessment',
                                     badge: 'Territory Sizing',
                                     icon: Target,
                                     tags: ['Territory TAM', '<15% Variance']
@@ -1745,7 +1928,7 @@ export default function Navigation() {
                                 {
                                     title: 'Competitive Intelligence',
                                     description: 'Reverse-engineering regional competitors, pricing power, distribution lock-ins, and counter-positioning.',
-                                    path: '/global-acceleration/market-intelligence',
+                                    path: '/global-acceleration/market-access#competitive-intelligence',
                                     badge: 'Incumbents',
                                     icon: ShieldCheck,
                                     tags: ['Rival Dissection', 'Win Rates']
@@ -1760,7 +1943,7 @@ export default function Navigation() {
                                 {
                                     title: 'Trade Corridor Intelligence',
                                     description: 'Analysis of bilateral trade agreements, tariffs, customs clearance dynamics, and cross-border commercial flows.',
-                                    path: '/global-acceleration/market-intelligence',
+                                    path: '/global-acceleration/market-access#trade-corridor-intelligence',
                                     badge: 'Corridors',
                                     icon: TrendingUp,
                                     tags: ['Tariff Modeling', 'Trade Flows']
@@ -1768,7 +1951,7 @@ export default function Navigation() {
                                 {
                                     title: 'Regulatory Intelligence',
                                     description: 'Pre-launch data residency and sovereign compliance mapping with real-time monitoring.',
-                                    path: '/global-acceleration/market-intelligence',
+                                    path: '/global-acceleration/market-access#regulatory-intelligence',
                                     badge: 'Sovereignty',
                                     icon: Landmark,
                                     tags: ['GDPR / LGPD', 'Zero Fines']
@@ -1776,7 +1959,7 @@ export default function Navigation() {
                                 {
                                     title: 'Market Entry Feasibility',
                                     description: 'Quantitative feasibility indexing assessing capital requirements, payback horizons, and local talent.',
-                                    path: '/global-acceleration/market-intelligence',
+                                    path: '/global-acceleration/market-access#market-entry-feasibility',
                                     badge: 'Feasibility',
                                     icon: Activity,
                                     tags: ['Capital Hurdle', 'Payback Horizon']
@@ -1784,7 +1967,7 @@ export default function Navigation() {
                                 {
                                     title: 'Geo-Economic Risk Analysis',
                                     description: 'Scenario stress-testing against currency volatility, geopolitical exposure, and supply shocks.',
-                                    path: '/global-acceleration/market-intelligence',
+                                    path: '/global-acceleration/market-access#geo-economic-risk-analysis',
                                     badge: 'Risk Hedging',
                                     icon: Shield,
                                     tags: ['Currency Risk', 'Capital Control']
@@ -1797,8 +1980,8 @@ export default function Navigation() {
                     id: 'global-demand-networks',
                     title: 'Global Demand Networks',
                     desc: 'Algorithmic discovery of regional demand ecosystems, commercial corridors, and institutional buyers',
-                    path: '/global-acceleration/cross-border-strategy',
-                    badge: 'Area 02',
+                    path: '/global-acceleration/demand-networks',
+                    badge: '',
                     icon: Network,
                     columns: [
                         {
@@ -1809,7 +1992,7 @@ export default function Navigation() {
                                 {
                                     title: 'Distributor Discovery',
                                     description: 'Algorithmic sourcing of top-quartile distributor organizations with verified regional sales reach.',
-                                    path: '/global-acceleration/cross-border-strategy',
+                                    path: '/global-acceleration/demand-networks#distributor-discovery',
                                     badge: 'Channel Fabric',
                                     icon: Building2,
                                     tags: ['Distributor Sourcing', 'Territory Reach']
@@ -1817,7 +2000,7 @@ export default function Navigation() {
                                 {
                                     title: 'Retail Network Discovery',
                                     description: 'Precision identification of retail chains, boutique outlets, and department stores primed for placement.',
-                                    path: '/global-acceleration/cross-border-strategy',
+                                    path: '/global-acceleration/demand-networks#retail-network-discovery',
                                     badge: 'Retail Networks',
                                     icon: Store,
                                     tags: ['Retail Distribution', 'Shelf Placement']
@@ -1825,7 +2008,7 @@ export default function Navigation() {
                                 {
                                     title: 'Importer & Buyer Discovery',
                                     description: 'Direct access to credentialed cross-border importers and corporate procurement buyers.',
-                                    path: '/global-acceleration/cross-border-strategy',
+                                    path: '/global-acceleration/demand-networks#importer-buyer-discovery',
                                     badge: 'Vetted Importers',
                                     icon: Network,
                                     tags: ['Direct Procurement', 'Customs Cleared']
@@ -1833,7 +2016,7 @@ export default function Navigation() {
                                 {
                                     title: 'Dealer & Reseller Mapping',
                                     description: 'Exhaustive territory mapping of certified value-added resellers (VARs) and localized dealer networks.',
-                                    path: '/global-acceleration/cross-border-strategy',
+                                    path: '/global-acceleration/demand-networks#dealer-reseller-mapping',
                                     badge: 'Dealer Networks',
                                     icon: Users,
                                     tags: ['Certified VARs', 'Dealer Mesh']
@@ -1848,7 +2031,7 @@ export default function Navigation() {
                                 {
                                     title: 'Strategic Account Discovery',
                                     description: 'Target identification of multinational enterprise accounts with verified cross-border buying intent.',
-                                    path: '/global-acceleration/cross-border-strategy',
+                                    path: '/global-acceleration/demand-networks#strategic-account-discovery',
                                     badge: 'Intent Corridors',
                                     icon: Target,
                                     tags: ['Enterprise Accounts', 'Active Surge']
@@ -1856,7 +2039,7 @@ export default function Navigation() {
                                 {
                                     title: 'Procurement Network Intelligence',
                                     description: 'Reverse-engineering RFP schedules, procurement cycles, and approved vendor requirements.',
-                                    path: '/global-acceleration/cross-border-strategy',
+                                    path: '/global-acceleration/demand-networks#procurement-network-intelligence',
                                     badge: 'Procurement Cycles',
                                     icon: Briefcase,
                                     tags: ['RFP Calendars', 'Approved Vendors']
@@ -1864,7 +2047,7 @@ export default function Navigation() {
                                 {
                                     title: 'Industry Demand Ecosystem Mapping',
                                     description: 'Cross-industry relationship mapping identifying ecosystem clusters, tier-1 suppliers, and secondary buyers.',
-                                    path: '/global-acceleration/cross-border-strategy',
+                                    path: '/global-acceleration/demand-networks#industry-demand-ecosystem-mapping',
                                     badge: 'Ecosystem Clusters',
                                     icon: GitMerge,
                                     tags: ['Cluster Mapping', 'Tier-1 Buyers']
@@ -1872,7 +2055,7 @@ export default function Navigation() {
                                 {
                                     title: 'Revenue Corridor Discovery',
                                     description: 'Longitudinal modeling of active commercial corridors with accelerating import velocity.',
-                                    path: '/global-acceleration/cross-border-strategy',
+                                    path: '/global-acceleration/demand-networks#revenue-corridor-discovery',
                                     badge: 'Corridor Velocity',
                                     icon: TrendingUp,
                                     tags: ['Trade Flows', 'Unmet Demand']
@@ -1885,8 +2068,8 @@ export default function Navigation() {
                     id: 'export-growth-engine',
                     title: 'Export Growth Engine',
                     desc: 'Institutional export acceleration architecture engineered to acquire foreign buyers and scale velocity',
-                    path: '/global-acceleration/cross-border-strategy',
-                    badge: 'Area 03',
+                    path: '/global-acceleration/export-growth-engine',
+                    badge: '',
                     icon: TrendingUp,
                     columns: [
                         {
@@ -1897,7 +2080,7 @@ export default function Navigation() {
                                 {
                                     title: 'Export Readiness Assessment',
                                     description: 'Operational, compliance, and product diagnostic scoring enterprise export viability.',
-                                    path: '/global-acceleration/cross-border-strategy',
+                                    path: '/global-acceleration/export-growth-engine#export-readiness-assessment',
                                     badge: 'Readiness Score',
                                     icon: Compass,
                                     tags: ['Export Diagnostic', 'Readiness Score']
@@ -1905,7 +2088,7 @@ export default function Navigation() {
                                 {
                                     title: 'Export GTM Strategy',
                                     description: 'End-to-end go-to-market architecture tailored to customs regimes and regional habits.',
-                                    path: '/global-acceleration/cross-border-strategy',
+                                    path: '/global-acceleration/export-growth-engine#export-gtm-strategy',
                                     badge: 'GTM Architecture',
                                     icon: Rocket,
                                     tags: ['Corridor Blueprint', 'Customs Regimes']
@@ -1913,7 +2096,7 @@ export default function Navigation() {
                                 {
                                     title: 'International Buyer Acquisition',
                                     description: 'Multi-channel engagement securing direct commercial meetings with verified cross-border buyers.',
-                                    path: '/global-acceleration/cross-border-strategy',
+                                    path: '/global-acceleration/export-growth-engine#international-buyer-acquisition',
                                     badge: 'Buyer Conversion',
                                     icon: UserCheck,
                                     tags: ['Cross-Border Meetings', 'Decision Makers']
@@ -1921,7 +2104,7 @@ export default function Navigation() {
                                 {
                                     title: 'Export Lead Generation',
                                     description: 'Continuous pipeline generation feeding commercial reps with pre-qualified international purchasing inquiries.',
-                                    path: '/global-acceleration/cross-border-strategy',
+                                    path: '/global-acceleration/export-growth-engine#export-lead-generation',
                                     badge: 'Lead Gen',
                                     icon: Zap,
                                     tags: ['Inbound Corridors', 'Pre-Qualified']
@@ -1936,7 +2119,7 @@ export default function Navigation() {
                                 {
                                     title: 'International Channel Development',
                                     description: 'Structuring, contracting, and incentivizing foreign distribution channels for sustainable throughput.',
-                                    path: '/global-acceleration/cross-border-strategy',
+                                    path: '/global-acceleration/export-growth-engine#international-channel-development',
                                     badge: 'Channel Contracts',
                                     icon: Handshake,
                                     tags: ['Volume Quotas', 'Channel Incentive']
@@ -1944,7 +2127,7 @@ export default function Navigation() {
                                 {
                                     title: 'Trade Promotion Programs',
                                     description: 'Strategic execution of bilateral trade missions, subsidies, and export incentives.',
-                                    path: '/global-acceleration/cross-border-strategy',
+                                    path: '/global-acceleration/export-growth-engine#trade-promotion-programs',
                                     badge: 'Trade Programs',
                                     icon: Award,
                                     tags: ['Export Incentives', 'Bilateral Missions']
@@ -1952,7 +2135,7 @@ export default function Navigation() {
                                 {
                                     title: 'Trade Event Intelligence',
                                     description: 'Event intelligence mapping international congresses, reverse expos, and buyer delegations.',
-                                    path: '/global-acceleration/cross-border-strategy',
+                                    path: '/global-acceleration/export-growth-engine#trade-event-intelligence',
                                     badge: 'Event Telemetry',
                                     icon: Radar,
                                     tags: ['Congress Mapping', 'Executive Meetings']
@@ -1960,7 +2143,7 @@ export default function Navigation() {
                                 {
                                     title: 'Export Revenue Programs',
                                     description: 'Structured commercial campaigns orchestrating pipeline conversion across cross-border accounts.',
-                                    path: '/global-acceleration/cross-border-strategy',
+                                    path: '/global-acceleration/export-growth-engine#export-revenue-programs',
                                     badge: 'Revenue Programs',
                                     icon: BarChart3,
                                     tags: ['Campaign Ops', 'Contract Execution']
@@ -1974,7 +2157,7 @@ export default function Navigation() {
                     title: 'Strategic Partner Ecosystems',
                     desc: 'Enterprise ecosystem architecture establishing co-sell alliances and master distribution networks',
                     path: '/global-acceleration/partner-ecosystems',
-                    badge: 'Area 04',
+                    badge: '',
                     icon: Users,
                     columns: [
                         {
@@ -1985,7 +2168,7 @@ export default function Navigation() {
                                 {
                                     title: 'Channel Partner Networks',
                                     description: 'Systematic tiering and governance of multi-tier certified solution providers.',
-                                    path: '/global-acceleration/partner-ecosystems',
+                                    path: '/global-acceleration/partner-ecosystems#channel-partner-networks',
                                     badge: 'Network Tiering',
                                     icon: Users,
                                     tags: ['Partner Governance', 'Quota Structuring']
@@ -1993,7 +2176,7 @@ export default function Navigation() {
                                 {
                                     title: 'Distributor Partnerships',
                                     description: 'Master commercial structuring aligning quotas, territory exclusivity, and margins.',
-                                    path: '/global-acceleration/partner-ecosystems',
+                                    path: '/global-acceleration/partner-ecosystems#distributor-partnerships',
                                     badge: 'Commercial Align',
                                     icon: Handshake,
                                     tags: ['Margin Schedules', 'Exclusivity Terms']
@@ -2001,7 +2184,7 @@ export default function Navigation() {
                                 {
                                     title: 'Strategic Alliances',
                                     description: 'High-impact co-innovation and co-marketing partnerships with complementary leaders.',
-                                    path: '/global-acceleration/partner-ecosystems',
+                                    path: '/global-acceleration/partner-ecosystems#strategic-alliances',
                                     badge: 'Alliances',
                                     icon: Shield,
                                     tags: ['Co-Selling Fabric', 'Joint Headroom']
@@ -2009,7 +2192,7 @@ export default function Navigation() {
                                 {
                                     title: 'Joint Venture Opportunities',
                                     description: 'Structured identification and commercial modeling for regional equity partnerships.',
-                                    path: '/global-acceleration/partner-ecosystems',
+                                    path: '/global-acceleration/partner-ecosystems#joint-venture-opportunities',
                                     badge: 'JV Structuring',
                                     icon: Scale,
                                     tags: ['Local Equity', 'Shared Governance']
@@ -2024,7 +2207,7 @@ export default function Navigation() {
                                 {
                                     title: 'Technology Partnerships',
                                     description: 'API and product integrations embedding your solution into dominant regional tech stacks.',
-                                    path: '/global-acceleration/partner-ecosystems',
+                                    path: '/global-acceleration/partner-ecosystems#technology-partnerships',
                                     badge: 'Tech Integrations',
                                     icon: Cpu,
                                     tags: ['API Ecosystem', 'Stack Embed']
@@ -2032,7 +2215,7 @@ export default function Navigation() {
                                 {
                                     title: 'Industry Associations',
                                     description: 'Executive engagement and institutional sponsorship across high-influence regional industry bodies.',
-                                    path: '/global-acceleration/partner-ecosystems',
+                                    path: '/global-acceleration/partner-ecosystems#industry-associations',
                                     badge: 'Associations',
                                     icon: Landmark,
                                     tags: ['Industry Leadership', 'Policy Alignment']
@@ -2040,7 +2223,7 @@ export default function Navigation() {
                                 {
                                     title: 'Government Trade Programs',
                                     description: 'Leveraging bilateral commerce ministries, export promotion councils, and state development grants.',
-                                    path: '/global-acceleration/partner-ecosystems',
+                                    path: '/global-acceleration/partner-ecosystems#government-trade-programs',
                                     badge: 'Government Grants',
                                     icon: Award,
                                     tags: ['Ministry Programs', 'Export Subsidies']
@@ -2048,7 +2231,7 @@ export default function Navigation() {
                                 {
                                     title: 'Ecosystem Development',
                                     description: 'Fostering community, developer, and reseller networks that generate compounding inbound referral volume.',
-                                    path: '/global-acceleration/partner-ecosystems',
+                                    path: '/global-acceleration/partner-ecosystems#ecosystem-development',
                                     badge: 'Compounding Scale',
                                     icon: Network,
                                     tags: ['Inbound Referrals', 'Developer Mesh']
@@ -2061,8 +2244,8 @@ export default function Navigation() {
                     id: 'global-supply-networks',
                     title: 'Global Supply Networks',
                     desc: 'Intelligence and mapping frameworks to optimize cross-border supply chains, manufacturing, and fulfillment',
-                    path: '/global-acceleration/market-intelligence',
-                    badge: 'Area 05',
+                    path: '/global-acceleration/supply-networks',
+                    badge: '',
                     icon: Layers,
                     columns: [
                         {
@@ -2073,7 +2256,7 @@ export default function Navigation() {
                                 {
                                     title: 'Supplier Discovery',
                                     description: 'Algorithmic sourcing and qualification of regional component manufacturers and OEMs.',
-                                    path: '/global-acceleration/market-intelligence',
+                                    path: '/global-acceleration/supply-networks#supplier-discovery',
                                     badge: 'Supplier Sourcing',
                                     icon: Factory,
                                     tags: ['OEM Qualification', 'Component Sourcing']
@@ -2081,7 +2264,7 @@ export default function Navigation() {
                                 {
                                     title: 'Procurement Ecosystem Mapping',
                                     description: 'Complete visibility into secondary and tertiary sub-tier supplier dependencies and capacity limits.',
-                                    path: '/global-acceleration/market-intelligence',
+                                    path: '/global-acceleration/supply-networks#procurement-ecosystem-mapping',
                                     badge: 'Tier-2 Mapping',
                                     icon: Network,
                                     tags: ['Sub-Tier Visibility', 'Capacity Limits']
@@ -2089,7 +2272,7 @@ export default function Navigation() {
                                 {
                                     title: 'Manufacturing Partner Discovery',
                                     description: 'Identifying ISO-certified contract manufacturers with audited capacity and quality.',
-                                    path: '/global-acceleration/market-intelligence',
+                                    path: '/global-acceleration/supply-networks#manufacturing-partner-discovery',
                                     badge: 'ISO Standards',
                                     icon: Building,
                                     tags: ['Contract Mfg', 'Audited Capacity']
@@ -2097,7 +2280,7 @@ export default function Navigation() {
                                 {
                                     title: 'Logistics Network Design',
                                     description: 'Multi-modal freight optimization balancing maritime, air, and overland corridors.',
-                                    path: '/global-acceleration/market-intelligence',
+                                    path: '/global-acceleration/supply-networks#logistics-network-design',
                                     badge: 'Multi-Modal',
                                     icon: Box,
                                     tags: ['Transit Time', 'Freight Margin']
@@ -2112,7 +2295,7 @@ export default function Navigation() {
                                 {
                                     title: 'Vendor Intelligence',
                                     description: 'Financial health checks, ESG compliance audits, and commercial reliability scoring across suppliers.',
-                                    path: '/global-acceleration/market-intelligence',
+                                    path: '/global-acceleration/supply-networks#vendor-intelligence',
                                     badge: 'Vendor Health',
                                     icon: ShieldCheck,
                                     tags: ['Financial Audit', 'Reliability Index']
@@ -2120,7 +2303,7 @@ export default function Navigation() {
                                 {
                                     title: 'Trade Route Optimization',
                                     description: 'Real-time tracking and routing around customs bottlenecks, maritime chokepoints, and tariff zones.',
-                                    path: '/global-acceleration/market-intelligence',
+                                    path: '/global-acceleration/supply-networks#trade-route-optimization',
                                     badge: 'Route Velocity',
                                     icon: Compass,
                                     tags: ['Chokepoint Bypass', 'Customs Transit']
@@ -2128,7 +2311,7 @@ export default function Navigation() {
                                 {
                                     title: 'Supply Chain Risk Assessment',
                                     description: 'Vulnerability indexing for single-source dependencies and geopolitical disruption.',
-                                    path: '/global-acceleration/market-intelligence',
+                                    path: '/global-acceleration/supply-networks#supply-chain-risk-assessment',
                                     badge: 'Resilience Audit',
                                     icon: AlertCircle,
                                     tags: ['Disruption Hedging', 'Single-Source Risk']
@@ -2136,7 +2319,7 @@ export default function Navigation() {
                                 {
                                     title: 'Cross-Border Operations',
                                     description: 'Streamlining customs declarations, bonded warehousing, and localized inventory fulfillment staging.',
-                                    path: '/global-acceleration/market-intelligence',
+                                    path: '/global-acceleration/supply-networks#cross-border-operations',
                                     badge: 'Bonded Warehousing',
                                     icon: Layers,
                                     tags: ['Customs Declarations', 'Local Staging']
@@ -2149,8 +2332,8 @@ export default function Navigation() {
                     id: 'global-revenue-engines',
                     title: 'Global Revenue Engines',
                     desc: 'Institutional revenue infrastructure orchestrating multi-region pipeline velocity and execution',
-                    path: '/global-acceleration/global-revops',
-                    badge: 'Area 06',
+                    path: '/global-acceleration/revenue-engines',
+                    badge: '',
                     icon: BarChart3,
                     columns: [
                         {
@@ -2161,7 +2344,7 @@ export default function Navigation() {
                                 {
                                     title: 'Multi-Country GTM Design',
                                     description: 'Unified operating models defining regional quota ratios and compensation grids.',
-                                    path: '/global-acceleration/global-revops',
+                                    path: '/global-acceleration/revenue-engines#multi-country-gtm-design',
                                     badge: 'Operating Model',
                                     icon: Workflow,
                                     tags: ['Regional Quotas', 'Operating Model']
@@ -2169,7 +2352,7 @@ export default function Navigation() {
                                 {
                                     title: 'Territory Planning',
                                     description: 'Dynamic account routing based on market capacity and localized language coverage.',
-                                    path: '/global-acceleration/global-revops',
+                                    path: '/global-acceleration/revenue-engines#territory-planning',
                                     badge: 'Dynamic Routing',
                                     icon: Compass,
                                     tags: ['Account Routing', 'Capacity Planning']
@@ -2177,7 +2360,7 @@ export default function Navigation() {
                                 {
                                     title: 'Regional Revenue Hubs',
                                     description: 'Shared services blueprint for localized customer onboarding, technical pre-sales, and tier-1 support.',
-                                    path: '/global-acceleration/global-revops',
+                                    path: '/global-acceleration/revenue-engines#regional-revenue-hubs',
                                     badge: 'Shared Services',
                                     icon: Building2,
                                     tags: ['Regional Hubs', 'Pre-Sales Pods']
@@ -2185,7 +2368,7 @@ export default function Navigation() {
                                 {
                                     title: 'Multi-Language SDR Operations',
                                     description: 'Native-fluency outbound prospecting frameworks operating across 12+ timezones.',
-                                    path: '/global-acceleration/global-revops',
+                                    path: '/global-acceleration/revenue-engines#multi-language-sdr-operations',
                                     badge: '24/7 Prospecting',
                                     icon: Bot,
                                     tags: ['15+ Dialects', 'Zero Response Lag']
@@ -2200,7 +2383,7 @@ export default function Navigation() {
                                 {
                                     title: 'International Pipeline Management',
                                     description: 'Unified deal inspection frameworks eliminating cross-border reporting latency and currency distortions.',
-                                    path: '/global-acceleration/global-revops',
+                                    path: '/global-acceleration/revenue-engines#international-pipeline-management',
                                     badge: 'Deal Inspection',
                                     icon: LineChart,
                                     tags: ['Multi-Currency CRM', 'Zero Latency']
@@ -2208,7 +2391,7 @@ export default function Navigation() {
                                 {
                                     title: 'Revenue Intelligence',
                                     description: 'Algorithmic signal detection monitoring win/loss drivers and regional sales velocity.',
-                                    path: '/global-acceleration/global-revops',
+                                    path: '/global-acceleration/revenue-engines#revenue-intelligence',
                                     badge: 'Signal Detection',
                                     icon: Activity,
                                     tags: ['Win/Loss Drivers', 'Pipeline Velocity']
@@ -2216,7 +2399,7 @@ export default function Navigation() {
                                 {
                                     title: 'Customer Success Operations',
                                     description: 'Proactive health monitoring and localized renewal playbooks preserving multi-currency Net Revenue Retention.',
-                                    path: '/global-acceleration/global-revops',
+                                    path: '/global-acceleration/revenue-engines#customer-success-operations',
                                     badge: 'Retention Engine',
                                     icon: UserCheck,
                                     tags: ['NRR Preservation', 'Localized Renewals']
@@ -2224,7 +2407,7 @@ export default function Navigation() {
                                 {
                                     title: 'Revenue Performance Optimization',
                                     description: 'Continuous testing of messaging, pricing concessions, and contracting cycles across regional buyer cohorts.',
-                                    path: '/global-acceleration/global-revops',
+                                    path: '/global-acceleration/revenue-engines#revenue-performance-optimization',
                                     badge: 'Continuous Testing',
                                     icon: RefreshCw,
                                     tags: ['Discount Control', 'Contract Velocity']
@@ -2237,8 +2420,8 @@ export default function Navigation() {
                     id: 'global-capital-finance',
                     title: 'Global Capital & Finance',
                     desc: 'Financial ecosystem discovery, trade finance facilitation, and treasury advisory for expansion',
-                    path: '/global-acceleration/expansion-office',
-                    badge: 'Area 07',
+                    path: '/global-acceleration/capital-finance',
+                    badge: '',
                     icon: DollarSign,
                     columns: [
                         {
@@ -2249,7 +2432,7 @@ export default function Navigation() {
                                 {
                                     title: 'Trade Finance Solutions',
                                     description: 'Connecting letters of credit, invoice factoring, and export receivables facilities.',
-                                    path: '/global-acceleration/expansion-office',
+                                    path: '/global-acceleration/capital-finance#trade-finance-solutions',
                                     badge: 'Credit Lines',
                                     icon: DollarSign,
                                     tags: ['LC Facility', 'Receivables Factoring']
@@ -2257,7 +2440,7 @@ export default function Navigation() {
                                 {
                                     title: 'Export Financing',
                                     description: 'Navigating state export credit lines, buyer guarantees, and pre-shipment facilities.',
-                                    path: '/global-acceleration/expansion-office',
+                                    path: '/global-acceleration/capital-finance#export-financing',
                                     badge: 'Credit Guarantees',
                                     icon: Coins,
                                     tags: ['ECA Backed', 'Pre-Shipment Lines']
@@ -2265,7 +2448,7 @@ export default function Navigation() {
                                 {
                                     title: 'International Banking Networks',
                                     description: 'Mapping correspondent banking relationships for treasury and FX settlements.',
-                                    path: '/global-acceleration/expansion-office',
+                                    path: '/global-acceleration/capital-finance#international-banking-networks',
                                     badge: 'Correspondent FX',
                                     icon: Landmark,
                                     tags: ['FX Settlement', 'Multi-Currency']
@@ -2273,7 +2456,7 @@ export default function Navigation() {
                                 {
                                     title: 'Cross-Border Payments',
                                     description: 'Architecture for multi-currency merchant processing, localized payment gateways, and hedging transaction fees.',
-                                    path: '/global-acceleration/expansion-office',
+                                    path: '/global-acceleration/capital-finance#cross-border-payments',
                                     badge: 'Multi-Currency Gateway',
                                     icon: DollarSign,
                                     tags: ['Payment Gateways', 'FX Hedging']
@@ -2288,7 +2471,7 @@ export default function Navigation() {
                                 {
                                     title: 'Export Credit Agencies',
                                     description: 'Engaging institutional ECAs (EXIM, Euler Hermes) to mitigate buyer default risks.',
-                                    path: '/global-acceleration/expansion-office',
+                                    path: '/global-acceleration/capital-finance#export-credit-agencies',
                                     badge: 'Default Risk',
                                     icon: ShieldCheck,
                                     tags: ['ECA Engagement', 'Sovereign Coverage']
@@ -2296,7 +2479,7 @@ export default function Navigation() {
                                 {
                                     title: 'Development Finance Institutions',
                                     description: 'Exploring multilateral development finance (IFC, EBRD, ADB) for emerging market infrastructure and scale.',
-                                    path: '/global-acceleration/expansion-office',
+                                    path: '/global-acceleration/capital-finance#development-finance-institutions',
                                     badge: 'DFI Facilities',
                                     icon: Building,
                                     tags: ['Multilateral Capital', 'Scale Facilities']
@@ -2304,7 +2487,7 @@ export default function Navigation() {
                                 {
                                     title: 'Investor & Capital Access',
                                     description: 'Readiness advisory connecting cross-border ventures with international growth equity and debt syndicates.',
-                                    path: '/global-acceleration/expansion-office',
+                                    path: '/global-acceleration/capital-finance#investor-capital-access',
                                     badge: 'Growth Syndicates',
                                     icon: TrendingUp,
                                     tags: ['Growth Equity', 'Debt Syndication']
@@ -2312,7 +2495,7 @@ export default function Navigation() {
                                 {
                                     title: 'Global Treasury Advisory',
                                     description: 'Optimizing transfer pricing compliance, multi-jurisdiction tax efficiency, and dividend repatriation paths.',
-                                    path: '/global-acceleration/expansion-office',
+                                    path: '/global-acceleration/capital-finance#global-treasury-advisory',
                                     badge: 'Treasury Advisory',
                                     icon: Scale,
                                     tags: ['Transfer Pricing', 'Repatriation Paths']
@@ -2325,8 +2508,8 @@ export default function Navigation() {
                     id: 'ai-powered-expansion',
                     title: 'AI-Powered Expansion',
                     desc: 'Autonomous AI agent architecture delivering 24/7 market telemetry, buyer prospecting, and command',
-                    path: '/global-acceleration/ai-global-scaling',
-                    badge: 'Area 08',
+                    path: '/global-acceleration/ai-powered-expansion',
+                    badge: '',
                     icon: Cpu,
                     columns: [
                         {
@@ -2337,7 +2520,7 @@ export default function Navigation() {
                                 {
                                     title: 'AI Market Intelligence',
                                     description: 'Continuous agentic scanning of foreign registry filings and trade journals.',
-                                    path: '/global-acceleration/ai-global-scaling',
+                                    path: '/global-acceleration/ai-powered-expansion#ai-market-intelligence',
                                     badge: '24/7 Radar',
                                     icon: Radar,
                                     tags: ['Registry Scans', 'Tender Monitoring']
@@ -2345,7 +2528,7 @@ export default function Navigation() {
                                 {
                                     title: 'AI Buyer Discovery',
                                     description: 'Autonomous identification and enrichment of cross-border executive decision-makers.',
-                                    path: '/global-acceleration/ai-global-scaling',
+                                    path: '/global-acceleration/ai-powered-expansion#ai-buyer-discovery',
                                     badge: 'Autonomous Enrichment',
                                     icon: Target,
                                     tags: ['Intent Discovery', 'C-Suite Leads']
@@ -2353,7 +2536,7 @@ export default function Navigation() {
                                 {
                                     title: 'AI Distributor Discovery',
                                     description: 'Automated profiling and scoring of regional distributor capacity, brand portfolios, and operational readiness.',
-                                    path: '/global-acceleration/ai-global-scaling',
+                                    path: '/global-acceleration/ai-powered-expansion#ai-distributor-discovery',
                                     badge: 'Distributor AI',
                                     icon: Building2,
                                     tags: ['Distributor Scoring', 'Capacity Profiling']
@@ -2361,7 +2544,7 @@ export default function Navigation() {
                                 {
                                     title: 'AI Partner Matching',
                                     description: 'Algorithmic compatibility scoring matching enterprise products with regional VAR and integrator portfolios.',
-                                    path: '/global-acceleration/ai-global-scaling',
+                                    path: '/global-acceleration/ai-powered-expansion#ai-partner-matching',
                                     badge: 'Partner Match',
                                     icon: GitMerge,
                                     tags: ['VAR Matching', 'Compatibility Score']
@@ -2376,7 +2559,7 @@ export default function Navigation() {
                                 {
                                     title: 'AI Localization Engines',
                                     description: 'Context-aware adaptation of sales collateral, contracts, and filings into 15+ native business dialects.',
-                                    path: '/global-acceleration/ai-global-scaling',
+                                    path: '/global-acceleration/ai-powered-expansion#ai-localization-engines',
                                     badge: 'Localization Swarms',
                                     icon: Globe,
                                     tags: ['15+ Dialects', 'Legal Adaptation']
@@ -2384,7 +2567,7 @@ export default function Navigation() {
                                 {
                                     title: 'AI Revenue Agents',
                                     description: '24/7 autonomous SDR and lead qualification agents conducting outbound correspondence.',
-                                    path: '/global-acceleration/ai-global-scaling',
+                                    path: '/global-acceleration/ai-powered-expansion#ai-revenue-agents',
                                     badge: 'Autonomous SDR',
                                     icon: Bot,
                                     tags: ['15+ Languages', 'Autonomous Pitch']
@@ -2392,7 +2575,7 @@ export default function Navigation() {
                                 {
                                     title: 'Autonomous Expansion Workflows',
                                     description: 'Self-orchestrating task workflows connecting research, CRM enrichment, compliance checks, and outreach.',
-                                    path: '/global-acceleration/ai-global-scaling',
+                                    path: '/global-acceleration/ai-powered-expansion#autonomous-expansion-workflows',
                                     badge: 'Agent Workflows',
                                     icon: Workflow,
                                     tags: ['Orchestrated Tasks', 'CRM Integration']
@@ -2400,7 +2583,7 @@ export default function Navigation() {
                                 {
                                     title: 'Global Intelligence Command Center',
                                     description: 'Unified executive telemetry dashboard aggregating pipeline and risk metrics.',
-                                    path: '/global-acceleration/ai-global-scaling',
+                                    path: '/global-acceleration/ai-powered-expansion#global-intelligence-command-center',
                                     badge: 'Cockpit View',
                                     icon: Gauge,
                                     tags: ['Cross-Border Telemetry', 'Risk Alerts']

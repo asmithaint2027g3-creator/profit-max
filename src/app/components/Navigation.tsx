@@ -3387,8 +3387,8 @@ export default function Navigation() {
                                 {/* Top row: Left Compact Sidebar + Right Content Panel (Balanced Height & Fully Filled) */}
                                 <div className="flex flex-col lg:flex-row items-stretch">
                                     {/* ── LEFT SIDEBAR (COMPACT, BOTTOM ANCHORED LINK, ZERO DEAD SPACE) ── */}
-                                    <aside className="w-full lg:w-[260px] xl:w-[275px] bg-slate-50/95 text-slate-900 p-3.5 sm:p-4 flex flex-col justify-between shrink-0 border-r border-slate-200/80">
-                                        <div className="space-y-2">
+                                    <aside className="w-full lg:w-[260px] xl:w-[275px] bg-slate-50/95 text-slate-900 p-3 sm:p-3.5 flex flex-col justify-between shrink-0 border-r border-slate-200/80">
+                                        <div className={`${currentMenu.categories.length > 7 ? 'space-y-1' : 'space-y-2'}`}>
                                             {/* Section Label */}
                                             <div>
                                                 <span className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-blue-600 block">
@@ -3403,7 +3403,7 @@ export default function Navigation() {
                                             </div>
 
                                             {/* Category List (Tight Vertical Rhythm) */}
-                                            <nav className="space-y-1 pt-0.5">
+                                            <nav className={ `pt-0.5 ${currentMenu.categories.length > 7 ? "space-y-px" : "space-y-1"}` }>
                                                 {currentMenu.categories.map((cat) => {
                                                     const isCatActive = currentCategory?.id === cat.id;
 
@@ -3412,7 +3412,7 @@ export default function Navigation() {
                                                             key={cat.id}
                                                             onMouseEnter={() => setActiveCategoryId(cat.id)}
                                                             onClick={() => setActiveCategoryId(cat.id)}
-                                                            className={`w-full group px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all duration-150 flex items-center justify-between cursor-pointer border ${
+                                                            className={`w-full group px-2.5 rounded-lg text-xs font-bold transition-all duration-150 flex items-center justify-between cursor-pointer border ${currentMenu.categories.length > 7 ? "py-1" : "py-1.5"} ${
                                                                 isCatActive
                                                                     ? 'bg-blue-600 text-white border-blue-600 shadow-sm shadow-blue-600/25'
                                                                     : 'text-slate-700 hover:text-blue-600 hover:bg-slate-100/90 border-transparent'

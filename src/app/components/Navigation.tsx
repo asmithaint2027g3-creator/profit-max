@@ -3404,6 +3404,28 @@ export default function Navigation() {
     // Current spotlight item for the active mega-menu
     const activeSpotlight = (currentMenu && spotlightConfigs[currentMenu.id]) || spotlightConfigs['offerings'];
 
+    // Smooth navigation helper for sub-menu and sub-sub menu clicks with hashes
+    const handleSubMenuCardClick = (path: string) => {
+        setActiveMenuId(null);
+        setMobileOpen(false);
+        if (path.includes('#')) {
+            const [targetPath, rawHash] = path.split('#');
+            const hash = decodeURIComponent(rawHash);
+            if (location.pathname === targetPath || (!targetPath && location.pathname)) {
+                const el = document.getElementById(hash) || 
+                           document.getElementById(hash.toLowerCase()) ||
+                           document.querySelector('[name="' + hash + '"]') ||
+                           document.querySelector('[data-section-id="' + hash + '"]');
+                if (el) {
+                    const navOffset = 85;
+                    const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = Math.max(0, elementPosition - navOffset);
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+            }
+        }
+    };
+
     return (
         <div ref={navRef} className="fixed top-0 left-0 right-0 z-50 select-none">
             {/* ── TOP HORIZONTAL HEADER BAR (TEMPLATE A: THE MODERN ENTERPRISE) ── */}
@@ -3449,20 +3471,7 @@ export default function Navigation() {
                                 >
                                     <Link
                                         to={menu.path}
-                                        onClick={() => {
-    setActiveMenuId(null);
-    if (card.path.includes('#')) {
-        const [targetPath, hash] = card.path.split('#');
-        if (location.pathname === targetPath) {
-            const el = document.getElementById(hash);
-            if (el) {
-                setTimeout(() => {
-                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 50);
-            }
-        }
-    }
-}}
+                                        onClick={() => setActiveMenuId(null)}
                                         className={`px-2.5 xl:px-3 py-1.5 xl:py-2 flex items-center cursor-pointer transition-colors whitespace-nowrap shrink-0 ${
                                             !hasSubNav ? 'px-3.5 xl:px-4' : ''
                                         }`}
@@ -3661,7 +3670,7 @@ export default function Navigation() {
                                                         <Link
                                                             key={idx}
                                                             to={card.path}
-                                                            onClick={() => setActiveMenuId(null)}
+                                                            onClick={() => handleSubMenuCardClick(card.path)}
                                                             className="group p-3 rounded-xl bg-slate-50/60 hover:bg-white border border-slate-200/80 hover:border-blue-400 hover:shadow-xs transition-all duration-150 flex items-start gap-2.5 cursor-pointer"
                                                         >
                                                             <div className="w-7 h-7 rounded-lg bg-white border border-slate-200/80 text-blue-600 group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-2xs mt-0.5">
@@ -3821,20 +3830,7 @@ export default function Navigation() {
                     {/* Backdrop */}
                     <div
                         className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity duration-300 animate-in fade-in"
-                        onClick={() => {
-    setMobileOpen(false);
-    if (card.path.includes('#')) {
-        const [targetPath, hash] = card.path.split('#');
-        if (location.pathname === targetPath) {
-            const el = document.getElementById(hash);
-            if (el) {
-                setTimeout(() => {
-                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 50);
-            }
-        }
-    }
-}}
+                        onClick={() => setMobileOpen(false)}
                         aria-hidden="true"
                     />
 
@@ -4058,7 +4054,7 @@ export default function Navigation() {
                                                                                 <Link
                                                                                     key={cIdx}
                                                                                     to={card.path}
-                                                                                    onClick={() => setMobileOpen(false)}
+                                                                                    onClick={() => handleSubMenuCardClick(card.path)}
                                                                                     className="group flex items-center justify-between p-2.5 rounded-lg bg-slate-50/80 hover:bg-white border border-slate-200/70 hover:border-blue-300 text-xs font-bold text-slate-800 hover:text-blue-600 transition-all shadow-2xs"
                                                                                 >
                                                                                     <span className="truncate">{card.title}</span>

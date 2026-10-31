@@ -65,362 +65,17 @@ interface SpotlightConfig {
 }
 
 
-// ── BESPOKE ENTERPRISE ARCHITECTURE SPECIFICATION FOR OFFERINGS ──
-export interface OfferingCapabilityItem {
-    title: string;
-    outcome: string;
-    path: string;
-    icon: any;
-    tag?: string;
-}
+import {
+    offeringsArchitecture,
+    industriesArchitecture,
+    OfferingCategoryDetail,
+    OfferingCapabilityItem,
+    IndustryCategoryDetail,
+    IndustryCapabilityItem
+} from '../../data/navigationArchitecture';
 
-export interface OfferingCategoryDetail {
-    id: string;
-    title: string;
-    path: string;
-    recommendedIndustries: string[];
-    keyRevenueOutcome: string;
-    businessImpacts: string[];
-    capabilities: OfferingCapabilityItem[];
-}
-
-export const offeringsArchitecture: OfferingCategoryDetail[] = [
-    // 01. Profit Pool Discovery
-    {
-        id: 'profit-pool-discovery',
-        title: 'Profit Pool Discovery',
-        path: '/offerings/profit-pool-discovery',
-        recommendedIndustries: ['Enterprise SaaS', 'BFSI', 'Healthcare'],
-        keyRevenueOutcome: '+18% - 32% Margin Expansion',
-        businessImpacts: [
-            'Increased Revenue Visibility',
-            'Higher Forecast Accuracy',
-            'Margin Protection'
-        ],
-        capabilities: [
-            {
-                title: 'Market Discovery',
-                outcome: 'Reveal emerging buyer demand and dark-funnel surge signals across whitespace TAM.',
-                path: '/offerings/profit-pool-discovery#market-whitespace',
-                icon: Globe,
-                tag: 'WHITESPACE'
-            },
-            {
-                title: 'Demand Discovery',
-                outcome: 'Isolate dark-funnel intent surges and diagnose funnel velocity bottlenecks.',
-                path: '/offerings/profit-pool-discovery#demand-intent',
-                icon: Radar,
-                tag: 'INTENT SIGNALS'
-            },
-            {
-                title: 'Customer & Ideal Customer Profile Discovery',
-                outcome: 'Segment high-contribution customer cohorts and identify target account propensity.',
-                path: '/offerings/profit-pool-discovery#customer-icp',
-                icon: Users,
-                tag: 'ICP DISCOVERY'
-            },
-            {
-                title: 'Competitive Intelligence',
-                outcome: 'Uncover displacement opportunities with deal-by-deal rival win/loss forensics.',
-                path: '/offerings/profit-pool-discovery#competitive',
-                icon: ShieldCheck,
-                tag: 'COMPETITIVE'
-            },
-            {
-                title: 'Pricing & Value Discovery',
-                outcome: 'Improve willingness-to-pay realization, pricing ladders, and eliminate unearned discounting.',
-                path: '/offerings/profit-pool-discovery#value-roi',
-                icon: DollarSign,
-                tag: 'MONETIZATION'
-            },
-            {
-                title: 'Product-Market Fit Discovery',
-                outcome: 'Validate feature-adoption ROI, commercial resonance, and customer value realization.',
-                path: '/offerings/profit-pool-discovery#pmf',
-                icon: Target,
-                tag: 'PMF ENGINE'
-            }
-        ]
-    },
-
-    // 02. Demand Engineering
-    {
-        id: 'demand-engineering',
-        title: 'Demand Engineering',
-        path: '/offerings/demand-engineering',
-        recommendedIndustries: ['B2B Tech', 'Manufacturing', 'Global Enterprise'],
-        keyRevenueOutcome: '3.4x Qualified Pipeline Velocity',
-        businessImpacts: [
-            'Accelerated Inbound Velocity',
-            'Lower Customer Acquisition Cost',
-            'Predictable Pipeline Generation'
-        ],
-        capabilities: [
-            {
-                title: 'Ideal Customer Identification',
-                outcome: 'Identify high-yield strategic enterprise accounts with automated firmographic scoring.',
-                path: '/offerings/demand-engineering#abm',
-                icon: Building2,
-                tag: 'ICP TARGETING'
-            },
-            {
-                title: 'Demand Generation',
-                outcome: 'Capture in-market buyer intent systematically through engineered inbound architectures.',
-                path: '/offerings/demand-engineering#demand-generation',
-                icon: Zap,
-                tag: 'DEMAND ENGINE'
-            },
-            {
-                title: 'AI Prospecting & Outreach',
-                outcome: 'Autonomous 24/7 multi-channel outbound qualification and calendar booking agents.',
-                path: '/offerings/demand-engineering#outbound',
-                icon: Bot,
-                tag: 'AUTONOMOUS SDR'
-            },
-            {
-                title: 'Lead Qualification',
-                outcome: 'Real-time intent-data enrichment and continuous lead qualification filtering.',
-                path: '/offerings/demand-engineering#intent-data',
-                icon: UserCheck,
-                tag: 'QUALIFICATION'
-            },
-            {
-                title: 'Pipeline Generation',
-                outcome: 'Engineered pipeline architectures that eliminate drop-off and ensure reliable pipeline volume.',
-                path: '/offerings/demand-engineering#content-pipeline',
-                icon: TrendingUp,
-                tag: 'PIPELINE'
-            }
-        ]
-    },
-
-    // 03. Sales Acceleration
-    {
-        id: 'sales-acceleration',
-        title: 'Sales Acceleration',
-        path: '/offerings/sales-acceleration',
-        recommendedIndustries: ['Mid-Market', 'Enterprise Software', 'Financial Services'],
-        keyRevenueOutcome: '28% Shorter Deal Cycles',
-        businessImpacts: [
-            'Reduced Deal Slippage',
-            'Higher Quota Attainment',
-            'Contract Margin Protection'
-        ],
-        capabilities: [
-            {
-                title: 'Revenue Intelligence',
-                outcome: 'Real-time conversation signals, account health alerts, and dark-funnel buying cues.',
-                path: '/ai-native-sales/revenue-intelligence',
-                icon: Activity,
-                tag: 'INTELLIGENCE'
-            },
-            {
-                title: 'AI-Assisted Sales Execution',
-                outcome: 'Automated call dossiers, dynamic objection clearing, and administrative relief for reps.',
-                path: '/offerings/sales-acceleration#autonomous-workflows',
-                icon: Sparkles,
-                tag: 'EXECUTION'
-            },
-            {
-                title: 'Opportunity & Deal Intelligence',
-                outcome: 'Bayesian win-probability scoring, buying committee consensus mapping, and deal slippage warnings.',
-                path: '/offerings/sales-acceleration#deal-intelligence',
-                icon: Scale,
-                tag: 'DEAL HEALTH'
-            },
-            {
-                title: 'Sales Process Optimization',
-                outcome: 'Eliminate stage bottlenecks, shorten review loops, and compress enterprise sales cycle time.',
-                path: '/offerings/sales-acceleration#quote-to-cash',
-                icon: Sliders,
-                tag: 'VELOCITY'
-            },
-            {
-                title: 'Revenue Forecasting',
-                outcome: 'Deterministic econometric pipeline models forecasting revenue with 99.4% precision.',
-                path: '/growth-science/revenue-physics',
-                icon: LineChart,
-                tag: 'FORECASTING'
-            }
-        ]
-    },
-
-    // 04. Revenue Operations
-    {
-        id: 'revenue-operations',
-        title: 'Revenue Operations',
-        path: '/offerings/revenue-operations',
-        recommendedIndustries: ['Enterprise SaaS', 'High-Growth Tech', 'Multi-Division Enterprise'],
-        keyRevenueOutcome: '98% Forecast Precision · <2% Variance',
-        businessImpacts: [
-            'Unified Data Hygiene',
-            'Zero Handoff Drag',
-            'Automated SLA Enforcement'
-        ],
-        capabilities: [
-            {
-                title: 'Revenue Process Automation',
-                outcome: 'Frictionless automated handoffs between marketing, sales, finance, and customer success.',
-                path: '/offerings/revenue-operations#command-center',
-                icon: Workflow,
-                tag: 'AUTOMATION'
-            },
-            {
-                title: 'CRM & Data Orchestration',
-                outcome: 'Unified cross-system customer identity resolution, bidirectional sync, and clean data hygiene.',
-                path: '/offerings/revenue-operations#crm-orchestration',
-                icon: Server,
-                tag: 'DATA HYGIENE'
-            },
-            {
-                title: 'AI Revenue Workflows',
-                outcome: 'Autonomous lead routing, dynamic territory rebalancing, and real-time SLA breach alerting.',
-                path: '/ai-native-sales/revops',
-                icon: Cpu,
-                tag: 'SMART ROUTING'
-            },
-            {
-                title: 'Executive Telemetry',
-                outcome: 'Consolidated real-time board-level revenue command center HUD and full-funnel attribution.',
-                path: '/growth-science/executive-telemetry',
-                icon: Gauge,
-                tag: 'EXECUTIVE HUD'
-            },
-            {
-                title: 'Performance & Forecast Visibility',
-                outcome: 'Continuous rep performance telemetry, cohort close-rate tracking, and conversion health visibility.',
-                path: '/offerings/revenue-operations#forecasting',
-                icon: BarChart3,
-                tag: 'VISIBILITY'
-            }
-        ]
-    },
-
-    // 05. Customer Growth
-    {
-        id: 'customer-growth',
-        title: 'Customer Growth',
-        path: '/offerings/customer-success',
-        recommendedIndustries: ['Subscription SaaS', 'Cloud Infrastructure', 'Telecom'],
-        keyRevenueOutcome: '118% - 134% Net Revenue Retention (NRR)',
-        businessImpacts: [
-            'Compounded Customer LTV',
-            'Automated Churn Mitigation',
-            'Predictable Renewal Stream'
-        ],
-        capabilities: [
-            {
-                title: 'Customer Success Intelligence',
-                outcome: 'Value realization workflows and outcome tracking aligned directly to customer business goals.',
-                path: '/offerings/customer-success#health',
-                icon: UserCheck,
-                tag: 'CS LIFECYCLE'
-            },
-            {
-                title: 'Retention & Churn Prevention',
-                outcome: 'Algorithmic churn prevention, pre-churn behavioral detection, and health sentinels.',
-                path: '/offerings/customer-success#retention',
-                icon: HeartHandshake,
-                tag: 'RETENTION'
-            },
-            {
-                title: 'Expansion Revenue',
-                outcome: 'Systematic identification of account expansion readiness, seat saturation, and division adoption.',
-                path: '/offerings/customer-success#expansion-engine',
-                icon: Rocket,
-                tag: 'EXPANSION'
-            },
-            {
-                title: 'Cross-Sell & Upsell Opportunities',
-                outcome: 'Automated propensity triggers that surface cross-product recommendations to account teams.',
-                path: '/offerings/customer-success#renewal',
-                icon: RefreshCw,
-                tag: 'UPSELL'
-            }
-        ]
-    },
-
-    // 06. GTM Transformation
-    {
-        id: 'gtm-transformation',
-        title: 'GTM Transformation',
-        path: '/offerings/gtm-transformation',
-        recommendedIndustries: ['PE-Backed Scaleups', 'Global 2000', 'Modernizing Enterprise'],
-        keyRevenueOutcome: '-40% Sales Cycle Duration',
-        businessImpacts: [
-            'Unified GTM Blueprint',
-            'Removed Cross-Functional Drag',
-            'Accelerated Field Adoption'
-        ],
-        capabilities: [
-            {
-                title: 'GTM Strategy & Design',
-                outcome: 'Architect unified go-to-market motions engineered for sustainable competitive advantage.',
-                path: '/offerings/gtm-transformation#gtm-strategy',
-                icon: Compass,
-                tag: 'STRATEGY'
-            },
-            {
-                title: 'Revenue Velocity Optimization',
-                outcome: 'Remove structural latency across discovery, legal redlining, security review, and deal closing.',
-                path: '/offerings/gtm-transformation#process',
-                icon: TrendingUp,
-                tag: 'VELOCITY'
-            },
-            {
-                title: 'AI-Native Operating Models',
-                outcome: 'Transition legacy revenue silos into unified, autonomous AI-orchestrated motions.',
-                path: '/offerings/gtm-transformation#multi-product',
-                icon: Layers,
-                tag: 'AI OPERATING MODEL'
-            },
-            {
-                title: 'Cross-Functional Revenue Alignment',
-                outcome: 'Synchronize marketing, product, sales, and CS under shared executive revenue mandates.',
-                path: '/offerings/gtm-transformation#adoption',
-                icon: GitMerge,
-                tag: 'ALIGNMENT'
-            }
-        ]
-    },
-
-    // 07. AI Governance & Performance
-    {
-        id: 'ai-governance',
-        title: 'AI Governance & Performance',
-        path: '/offerings/ai-trust-governance',
-        recommendedIndustries: ['BFSI', 'Healthcare & Life Sciences', 'Regulated Enterprise'],
-        keyRevenueOutcome: '100% Sovereign Data Compliance',
-        businessImpacts: [
-            'Eliminated Regulatory Exposure',
-            'Zero Data Leakage',
-            'Board-Level AI Verification'
-        ],
-        capabilities: [
-            {
-                title: 'AI Workflow Governance',
-                outcome: 'Enterprise policy frameworks, permission boundaries, and audit controls for autonomous agents.',
-                path: '/offerings/ai-trust-governance#executive',
-                icon: ShieldCheck,
-                tag: 'POLICY & CONTROLS'
-            },
-            {
-                title: 'AI Performance Monitoring',
-                outcome: 'Real-time algorithmic drift detection, accuracy telemetry, and decision latency audits.',
-                path: '/offerings/ai-trust-governance#bias',
-                icon: Activity,
-                tag: 'MONITORING'
-            },
-            {
-                title: 'Revenue Intelligence Controls',
-                outcome: 'Enterprise data sovereignty, SOC2 Type II, HIPAA, and GDPR guardrails across sales intelligence feeds.',
-                path: '/offerings/ai-trust-governance#compliance',
-                icon: Lock,
-                tag: 'SECURITY'
-            }
-        ]
-    }
-];
+export { offeringsArchitecture, industriesArchitecture };
+export type { OfferingCategoryDetail, OfferingCapabilityItem, IndustryCategoryDetail, IndustryCapabilityItem };
 
 const spotlightConfigs: Record<string, SpotlightConfig> = {
     'offerings': {
@@ -621,7 +276,7 @@ export default function Navigation() {
 
     // ── 7 MAIN MENUS DATA (EXACT SEVEN TOP-LEVEL MENU ITEMS AS SPECIFIED) ──
     const mainMenus: MainMenuItem[] = useMemo(() => [
-                // 1. OFFERINGS (EXACT 5 ARCHITECTURAL CATEGORIES)
+                // 1. OFFERINGS (ALL 8 ARCHITECTURAL OFFERINGS, 10 CAPABILITIES EACH)
         {
             id: 'offerings',
             name: 'Offerings',
@@ -639,10 +294,23 @@ export default function Navigation() {
                 icon: cat.capabilities[0].icon,
                 columns: [
                     {
-                        header: cat.title,
-                        badge: 'Capabilities',
+                        header: `${cat.title} · Pillars 01-05`,
+                        badge: 'Strategic',
                         icon: cat.capabilities[0].icon,
-                        cards: cat.capabilities.map(c => ({
+                        cards: cat.capabilities.slice(0, 5).map(c => ({
+                            title: c.title,
+                            description: c.outcome,
+                            path: c.path,
+                            badge: c.tag,
+                            icon: c.icon,
+                            tags: [cat.title]
+                        }))
+                    },
+                    {
+                        header: `${cat.title} · Engines 06-10`,
+                        badge: 'Execution',
+                        icon: cat.capabilities[5]?.icon || cat.capabilities[0].icon,
+                        cards: cat.capabilities.slice(5, 10).map(c => ({
                             title: c.title,
                             description: c.outcome,
                             path: c.path,
@@ -655,393 +323,51 @@ export default function Navigation() {
             }))
         },
 
-        // 2. INDUSTRIES
+        // 2. INDUSTRIES (ALL 6 BUSINESS-MODEL PRACTICE AREAS, 10 CAPABILITIES EACH)
         {
             id: 'industries',
             name: 'Industries',
             shortName: 'Industries',
-            path: '/industries/b2b',
+            path: '/industries',
             icon: Building2,
             badge: 'Vertical Engineering',
             summary: 'Vertical-specific revenue engineering: bespoke revenue operating systems tailored to your market nuances and compliance requirements.',
-            categories: [
-                {
-                    id: 'b2b-focus',
-                    title: 'B2B Focus',
-                    desc: 'Target account penetration, competitor displacement, autonomous SDRs, and mathematical revenue forecasting.',
-                    path: '/industries/b2b',
-                    badge: 'Pipeline Generation',
-                    icon: Target,
-                    columns: [
-                        {
-                            header: 'Targeting & Displacement',
-                            badge: 'Acquisition',
-                            icon: Target,
-                            cards: [
-                                {
-                                    title: 'AI Account-Based Marketing (ABM) Autopilot',
-                                    description: 'Orchestrate synchronized target account ads, personalized landing pages, and SDR outreach.',
-                                    path: '/industries/b2b#abm',
-                                    badge: '#abm',
-                                    icon: Target,
-                                    tags: ['CRM Ingestion', 'Dynamic Ads']
-                                },
-                                {
-                                    title: 'AI Competitor Displacement Engine',
-                                    description: 'Detect competitor migration signals, intercept renewal windows, and win back rival accounts.',
-                                    path: '/industries/b2b#competitor',
-                                    badge: '#competitor',
-                                    icon: ShieldCheck,
-                                    tags: ['Intent Signals', 'Win-Back']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Execution & Intelligence',
-                            badge: 'Velocity',
-                            icon: Zap,
-                            cards: [
-                                {
-                                    title: 'AI SDR Co-Pilot / Autopilot',
-                                    description: 'Autonomous outbound assistant that drafts outreach, resolves objections, and calendars demos.',
-                                    path: '/industries/b2b#sdr',
-                                    badge: '#sdr',
-                                    icon: Bot,
-                                    tags: ['Email Drafting', 'Meeting Booking']
-                                },
-                                {
-                                    title: 'AI Revenue Qualified Lead (RQL) Predictor',
-                                    description: 'Replace subjective gut feelings with mathematical close probability and velocity scoring.',
-                                    path: '/industries/b2b#rql',
-                                    badge: '#rql',
-                                    icon: BarChart3,
-                                    tags: ['Deal Scoring', 'Forecasting']
-                                },
-                                {
-                                    title: 'AI Contract & Expansion Opportunity Finder',
-                                    description: 'Monitor software usage trends to trigger seat expansion and renewal protection.',
-                                    path: '/industries/b2b#expansion',
-                                    badge: '#expansion',
-                                    icon: TrendingUp,
-                                    tags: ['NRR Growth', 'Usage Alerts']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'b2c-focus',
-                    title: 'B2C Focus',
-                    desc: 'High-propensity consumer intent capture, 1:1 personalized offer generation, and checkout bounce recovery.',
-                    path: '/industries/b2c',
-                    badge: 'Consumer Growth',
-                    icon: ShoppingBag,
-                    columns: [
-                        {
-                            header: 'Acquisition & Scaling',
-                            badge: 'Traffic',
-                            icon: ShoppingBag,
-                            cards: [
-                                {
-                                    title: 'AI Omnichannel Lead Generation',
-                                    description: 'Automate campaign execution across social, search, and email, optimizing budget in real time.',
-                                    path: '/industries/b2c#omnichannel',
-                                    badge: '#omnichannel',
-                                    icon: BarChart3,
-                                    tags: ['Multi-Channel Ad Sync', 'Max ROAS']
-                                },
-                                {
-                                    title: 'AI Lookalike Audience Auto-Scaling',
-                                    description: 'Auto-feed ad networks with custom seed lists to replicate highest-converting buyer cohorts.',
-                                    path: '/industries/b2c#lookalike',
-                                    badge: '#lookalike',
-                                    icon: Users,
-                                    tags: ['Seed Lists', 'Audience Scaling']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Conversion & Retention',
-                            badge: 'Checkout',
-                            icon: DollarSign,
-                            cards: [
-                                {
-                                    title: 'AI Personalized Offer Generation at Scale',
-                                    description: 'Analyze session context and cart value to trigger 1:1 dynamic pricing without margin erosion.',
-                                    path: '/industries/b2c#offers',
-                                    badge: '#offers',
-                                    icon: TrendingUp,
-                                    tags: ['Dynamic Pricing', 'Margin Protection']
-                                },
-                                {
-                                    title: 'AI Behavioral Retargeting Autopilot',
-                                    description: 'Trigger context-aware SMS and email sequences within minutes of an abandoned checkout.',
-                                    path: '/industries/b2c#retargeting',
-                                    badge: '#retargeting',
-                                    icon: Sparkles,
-                                    tags: ['Cart Recovery', 'SMS Cadence']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'enterprise-focus',
-                    title: 'Enterprise',
-                    desc: 'Complex buying committee navigation, parent-subsidiary mapping, and board-level C-suite engagement.',
-                    path: '/industries/enterprise',
-                    badge: 'Enterprise Scale',
-                    icon: Building2,
-                    columns: [
-                        {
-                            header: 'Global Penetration & Alliances',
-                            badge: 'Expansion',
-                            icon: Globe,
-                            cards: [
-                                {
-                                    title: 'AI Global Account Penetration',
-                                    description: 'Map internal buying circles across global corporate trees and scale ACV across divisions.',
-                                    path: '/industries/enterprise#global',
-                                    badge: '#global',
-                                    icon: Globe,
-                                    tags: ['Corporate Tree Mapping', 'Multi-Division']
-                                },
-                                {
-                                    title: 'AI Strategic Partnership Opportunity Finder',
-                                    description: 'Scan ecosystem integrators and distributors to identify high-yield co-sell alliances.',
-                                    path: '/industries/enterprise#partnerships',
-                                    badge: '#partnerships',
-                                    icon: Handshake,
-                                    tags: ['Co-Sell Scoring', 'Channel Acceleration']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Executive Consensus',
-                            badge: 'C-Suite',
-                            icon: Users,
-                            cards: [
-                                {
-                                    title: 'AI Executive Engagement Automation',
-                                    description: 'Extract priorities from SEC 10-K filings to generate board-ready ROI proposals.',
-                                    path: '/industries/enterprise#executive',
-                                    badge: '#executive',
-                                    icon: Users,
-                                    tags: ['SEC Filings', 'Board-Level ROI']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'mid-market',
-                    title: 'Mid-Market',
-                    desc: 'Rapid vertical expansion, 100% niche account cataloging, and multiplying sales output with lean teams.',
-                    path: '/industries/midmarket',
-                    badge: 'Niche Dominance',
-                    icon: TrendingUp,
-                    columns: [
-                        {
-                            header: 'Market Velocity',
-                            badge: 'Rapid GTM',
-                            icon: Zap,
-                            cards: [
-                                {
-                                    title: 'AI Rapid Market Entry Engine',
-                                    description: 'Deploy pre-configured vertical outreach campaigns and content vectors in days, not months.',
-                                    path: '/industries/midmarket#entry',
-                                    badge: '#entry',
-                                    icon: Zap,
-                                    tags: ['Pre-Built Vectors', 'Fast Deployment']
-                                },
-                                {
-                                    title: 'AI Niche Market Domination',
-                                    description: 'Catalog 100% of accounts within specialized verticals and eliminate generic messaging waste.',
-                                    path: '/industries/midmarket#niche',
-                                    badge: '#niche',
-                                    icon: Target,
-                                    tags: ['100% Coverage', 'Vertical Playbooks']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Team Efficiency',
-                            badge: 'Productivity',
-                            icon: Clock,
-                            cards: [
-                                {
-                                    title: 'AI Lean Team Productivity Amplifier',
-                                    description: 'Reclaim 15+ hours per rep per week by automating prospecting and CRM data entry.',
-                                    path: '/industries/midmarket#productivity',
-                                    badge: '#productivity',
-                                    icon: Clock,
-                                    tags: ['15 hrs Reclaimed', 'CRM Automation']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'startups',
-                    title: 'Startups',
-                    desc: 'Zero-to-one customer acquisition, empirical PMF signal detection, and capital-efficient runway extension.',
-                    path: '/industries/startups',
-                    badge: 'Capital Efficiency',
-                    icon: Rocket,
-                    columns: [
-                        {
-                            header: 'First Revenue & PMF',
-                            badge: 'Validation',
-                            icon: Rocket,
-                            cards: [
-                                {
-                                    title: 'AI Zero-to-One Lead Generation',
-                                    description: 'Automate first customer acquisition campaigns to validate market interest within 48 hours.',
-                                    path: '/industries/startups#zero-to-one',
-                                    badge: '#zero-to-one',
-                                    icon: Zap,
-                                    tags: ['48-Hour Launch', 'First 10-50 Customers']
-                                },
-                                {
-                                    title: 'AI Product-Market Fit Signal Detection',
-                                    description: 'Measure retention, feature adoption, and referral velocity for data-backed investor proof.',
-                                    path: '/industries/startups#pmf',
-                                    badge: '#pmf',
-                                    icon: BarChart3,
-                                    tags: ['Retention Scoring', 'PMF Proof']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Founder Scale & Runway',
-                            badge: 'Runway',
-                            icon: DollarSign,
-                            cards: [
-                                {
-                                    title: 'AI Founder-Led Sales Automation',
-                                    description: 'Automate inbound qualification, scheduling, and follow-ups to protect founder building time.',
-                                    path: '/industries/startups#founder',
-                                    badge: '#founder',
-                                    icon: Bot,
-                                    tags: ['Calendar Protection', 'Inbound Nurturing']
-                                },
-                                {
-                                    title: 'AI Burn-Rate Optimized Lead Capture',
-                                    description: 'Deploy low-cost intent capture and high-ROI outbound loops that preserve precious cash runway.',
-                                    path: '/industries/startups#burn-rate',
-                                    badge: '#burn-rate',
-                                    icon: DollarSign,
-                                    tags: ['Low-CAC', 'Runway Extension']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'specialized-sectors',
-                    title: 'Specialized Sectors',
-                    desc: 'Vertical-specific revenue engineering across 10 specialized industry domains and regulated sectors.',
-                    path: '/industries/sectors',
-                    badge: '10 Verticals',
-                    icon: Layers,
-                    columns: [
-                        {
-                            header: 'Service, Industrial & Consumer',
-                            badge: 'Part 1',
-                            icon: Briefcase,
-                            cards: [
-                                {
-                                    title: 'Service Industries',
-                                    description: 'Consulting, healthcare, education, logistics: reputation building and trust audits.',
-                                    path: '/industries/sectors#services',
-                                    badge: '#services',
-                                    icon: Briefcase,
-                                    tags: ['Trust Audits', 'Partner Inquiries']
-                                },
-                                {
-                                    title: 'Industrial Industries',
-                                    description: 'Manufacturing, supply chain, infrastructure: compliance and digital procurement outreach.',
-                                    path: '/industries/sectors#industrial',
-                                    badge: '#industrial',
-                                    icon: Factory,
-                                    tags: ['-47% Cycle Time', 'Dealer Sync']
-                                },
-                                {
-                                    title: 'D2C Companies',
-                                    description: 'Consumer brands, lifestyle, electronics: turn attention into high-propensity demand.',
-                                    path: '/industries/sectors#d2c',
-                                    badge: '#d2c',
-                                    icon: ShoppingBag,
-                                    tags: ['+30% Repeat', '-25% Ad Dependency']
-                                },
-                                {
-                                    title: 'FinTech & Lending',
-                                    description: 'Digital lending, wealth tech, insurance: acquire high-LTV borrowers under strict compliance.',
-                                    path: '/industries/sectors#fintech',
-                                    badge: '#fintech',
-                                    icon: Landmark,
-                                    tags: ['30-45% Activation', 'Fraud Defense']
-                                },
-                                {
-                                    title: 'SaaS Products',
-                                    description: 'Cloud software and AI tools: surface buying signals and map multi-stakeholder committees.',
-                                    path: '/industries/sectors#saas',
-                                    badge: '#saas',
-                                    icon: Cloud,
-                                    tags: ['6X Qualified Leads', '66% Faster Cycle']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Regulated & Mission-Critical',
-                            badge: 'Part 2',
-                            icon: ShieldCheck,
-                            cards: [
-                                {
-                                    title: 'Healthcare & Life Sciences',
-                                    description: 'Hospitals, pharma, biotech: strict HIPAA/EHR compliance and disaster readiness.',
-                                    path: '/industries/sectors#healthcare',
-                                    badge: '#healthcare',
-                                    icon: HeartPulse,
-                                    tags: ['HIPAA Compliant', 'Zero Breaches']
-                                },
-                                {
-                                    title: 'Education & EdTech',
-                                    description: 'Universities, learning platforms: enroll the right students and compress admissions.',
-                                    path: '/industries/sectors#education',
-                                    badge: '#education',
-                                    icon: GraduationCap,
-                                    tags: ['30-45% Enrollment', '-40% Workload']
-                                },
-                                {
-                                    title: 'Retail & FMCG',
-                                    description: 'Supermarkets, distributors: demand-driven supply and retail sell-through prediction.',
-                                    path: '/industries/sectors#retail',
-                                    badge: '#retail',
-                                    icon: Store,
-                                    tags: ['-20% Inventory', '2.5X Velocity']
-                                },
-                                {
-                                    title: 'Real Estate & Construction',
-                                    description: 'Developers, smart infrastructure: separate speculators from buyers and compress site tours.',
-                                    path: '/industries/sectors#real-estate',
-                                    badge: '#real-estate',
-                                    icon: Building,
-                                    tags: ['2X Booking Velocity', '-30% Cost']
-                                },
-                                {
-                                    title: 'Energy & Utilities',
-                                    description: 'Power generation, renewables, oil & gas: grid operational resilience and ESG compliance.',
-                                    path: '/industries/sectors#energy',
-                                    badge: '#energy',
-                                    icon: Zap,
-                                    tags: ['SCADA Security', '100% ESG Coverage']
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
+            categories: industriesArchitecture.map(ind => ({
+                id: ind.id,
+                title: ind.title,
+                desc: ind.desc,
+                path: ind.path,
+                badge: ind.badge,
+                icon: ind.icon,
+                columns: [
+                    {
+                        header: `${ind.title} · Pillars 01-05`,
+                        badge: 'Strategic',
+                        icon: ind.capabilities[0].icon,
+                        cards: ind.capabilities.slice(0, 5).map(c => ({
+                            title: c.title,
+                            description: c.outcome,
+                            path: c.path,
+                            badge: c.tag,
+                            icon: c.icon,
+                            tags: [ind.title]
+                        }))
+                    },
+                    {
+                        header: `${ind.title} · Engines 06-10`,
+                        badge: 'Execution',
+                        icon: ind.capabilities[5]?.icon || ind.capabilities[0].icon,
+                        cards: ind.capabilities.slice(5, 10).map(c => ({
+                            title: c.title,
+                            description: c.outcome,
+                            path: c.path,
+                            badge: c.tag,
+                            icon: c.icon,
+                            tags: [ind.title]
+                        }))
+                    }
+                ]
+            }))
         },
 
         // 3. AI NATIVE SALES
@@ -3548,7 +2874,7 @@ export default function Navigation() {
             {/* ── FLOATING MEGA-MENU DROPDOWN PANEL (UNIFIED COMPACT PROFITMACHINES DESIGN FOR ALL MENUS) ── */}
             {currentMenu && currentMenu.categories && currentMenu.categories.length > 0 && currentCategory && (() => {
                 const activeConfig = menuPresentationConfigs[currentMenu.id] || menuPresentationConfigs['offerings'];
-                const categoryConfig = offeringsArchitecture.find(c => c.id === currentCategory.id);
+                const categoryConfig = (offeringsArchitecture.find(c => c.id === currentCategory.id) || industriesArchitecture.find(c => c.id === currentCategory.id)) as any;
                 const displayOutcomeBadge = categoryConfig?.keyRevenueOutcome || activeConfig.outcomeBadge;
                 const displayRecommendedFor = categoryConfig?.recommendedIndustries || activeConfig.recommendedFor;
                 const displayBusinessImpacts = categoryConfig?.businessImpacts || activeConfig.businessImpacts;

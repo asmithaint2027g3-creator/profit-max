@@ -49,6 +49,7 @@ const IndustriesB2C = lazy(() => import('./pages/industries/IndustriesB2C'));
 const IndustriesEnterprise = lazy(() => import('./pages/industries/IndustriesEnterprise'));
 const IndustriesMidMarket = lazy(() => import('./pages/industries/IndustriesMidMarket'));
 const IndustriesStartups = lazy(() => import('./pages/industries/IndustriesStartups'));
+const IndustriesSaas = lazy(() => import('./pages/industries/IndustriesSaas'));
 const IndustriesSpecialized = lazy(() => import('./pages/industries/IndustriesSpecialized'));
 const Offerings = lazy(() => import('./pages/Offerings'));
 const ProfitPoolDiscovery = lazy(() => import('./pages/offerings/ProfitPoolDiscovery'));
@@ -312,8 +313,9 @@ export default function App() {
               <Route path="/industries/midmarket" element={<IndustriesMidMarket />} />
               <Route path="/industries/mid-market" element={<Navigate to="/industries/midmarket" replace />} />
               <Route path="/industries/startups" element={<IndustriesStartups />} />
-              <Route path="/industries/sectors" element={<IndustriesSpecialized />} />
-              <Route path="/industries/specialized" element={<Navigate to="/industries/sectors" replace />} />
+              <Route path="/industries/saas" element={<IndustriesSaas />} />
+              <Route path="/industries/sectors" element={<Navigate to="/industries/saas" replace />} />
+              <Route path="/industries/specialized" element={<Navigate to="/industries/saas" replace />} />
               <Route path="/industries/*" element={<Navigate to="/industries/b2b" replace />} />
               <Route path="/offerings" element={<Offerings />} />
               <Route path="/offerings/profit-pool-discovery" element={<ProfitPoolDiscovery />} />

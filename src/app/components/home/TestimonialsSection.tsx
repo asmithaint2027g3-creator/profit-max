@@ -60,7 +60,7 @@ export default function TestimonialsSection() {
     const visible = testimonials.slice(page * perPage, page * perPage + perPage);
 
     return (
-        <section className="py-20 md:py-24 lg:py-32 bg-slate-50 border-t border-slate-100 overflow-hidden">
+        <section className="py-10 md:py-14 bg-slate-50 border-t border-slate-100 overflow-hidden">
             <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Header */}

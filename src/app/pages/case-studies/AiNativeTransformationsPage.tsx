@@ -307,7 +307,7 @@ export default function AiNativeTransformationsPage() {
       </section>
 
       {/* ── SECTION 5: FULL REVENUE AGENT ECOSYSTEM SHOWCASE ── */}
-      <section className="py-20 sm:py-28 bg-slate-950 text-white border-b border-slate-800">
+      <section className="py-10 sm:py-14 bg-slate-950 text-white border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-mono text-purple-400 font-bold uppercase tracking-wider block mb-2">
@@ -392,7 +392,7 @@ export default function AiNativeTransformationsPage() {
       </section>
 
       {/* ── SECTION 6: INTERACTIVE AI AGENT ROI CALCULATOR ── */}
-      <section id="calculator" className="py-20 sm:py-28 bg-white border-b border-slate-200">
+      <section id="calculator" className="py-10 sm:py-14 bg-white border-b border-slate-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-xs font-mono font-bold uppercase mb-3">
@@ -509,7 +509,7 @@ export default function AiNativeTransformationsPage() {
       </section>
 
       {/* ── SECTION 7: FINAL CTA + INTAKE FORM ── */}
-      <section id="intake" className="py-20 sm:py-28 bg-white">
+      <section id="intake" className="py-10 sm:py-14 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-xs font-mono font-bold uppercase mb-4">

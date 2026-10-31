@@ -39,7 +39,7 @@ const getColorClasses = (color: string) => {
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-20 lg:py-32 bg-slate-50 border-t border-slate-200">
+    <section className="py-20 lg:py-12 bg-slate-50 border-t border-slate-200">
       <div className="max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">

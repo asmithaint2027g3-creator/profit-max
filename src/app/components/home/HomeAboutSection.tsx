@@ -58,11 +58,11 @@ export default function HomeAboutSection() {
     ];
 
     return (
-        <section className="py-20 md:py-28 bg-slate-50 border-b border-slate-200/80">
+        <section className="py-10 md:py-14 bg-slate-50 border-b border-slate-200/80">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 {/* Header */}
-                <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                <div className="max-w-3xl mx-auto text-center space-y-4 mb-8 sm:mb-5">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-blue-700 uppercase font-mono">
                         <Building2 className="w-3.5 h-3.5" />
                         <span>The ProfitMachines Operating Philosophy</span>
@@ -78,7 +78,7 @@ export default function HomeAboutSection() {
                 </div>
 
                 {/* Two-Column Composition: Left Model Stack + Right Connected System Visual */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-12">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-6 sm:mb-8">
                     
                     {/* Left: Connected Capabilities List */}
                     <div className="lg:col-span-6 space-y-3">

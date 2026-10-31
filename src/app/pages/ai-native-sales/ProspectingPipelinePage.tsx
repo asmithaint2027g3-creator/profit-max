@@ -182,7 +182,7 @@ export default function ProspectingPipelinePage() {
       </section>
 
       {/* ── SUB-SECTION 1: AI PROSPECTING ENGINE ── */}
-      <section id="engine" className="py-20 sm:py-24 border-b border-slate-200 bg-white scroll-mt-28">
+      <section id="engine" className="py-10 sm:py-14 border-b border-slate-200 bg-white scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
@@ -277,7 +277,7 @@ export default function ProspectingPipelinePage() {
       </section>
 
       {/* ── SUB-SECTION 2: DEMAND GENERATION ── */}
-      <section id="demand" className="py-20 sm:py-24 border-b border-slate-200 bg-slate-50/60 scroll-mt-28">
+      <section id="demand" className="py-10 sm:py-14 border-b border-slate-200 bg-slate-50/60 scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
@@ -372,7 +372,7 @@ export default function ProspectingPipelinePage() {
       </section>
 
       {/* ── SUB-SECTION 3: OUTREACH AUTOMATION ── */}
-      <section id="outreach" className="py-20 sm:py-24 border-b border-slate-200 bg-white scroll-mt-28">
+      <section id="outreach" className="py-10 sm:py-14 border-b border-slate-200 bg-white scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
@@ -467,7 +467,7 @@ export default function ProspectingPipelinePage() {
       </section>
 
       {/* ── SUB-SECTION 4: LEAD QUALIFICATION ── */}
-      <section id="qualification" className="py-20 sm:py-24 border-b border-slate-200 bg-slate-50/60 scroll-mt-28">
+      <section id="qualification" className="py-10 sm:py-14 border-b border-slate-200 bg-slate-50/60 scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
@@ -562,7 +562,7 @@ export default function ProspectingPipelinePage() {
       </section>
 
       {/* ── SECTION 5: VERIFIED OUTCOMES GRID ── */}
-      <section id="outcomes" className="py-20 sm:py-24 border-b border-slate-200 bg-white scroll-mt-28">
+      <section id="outcomes" className="py-10 sm:py-14 border-b border-slate-200 bg-white scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200 font-mono text-xs font-bold uppercase tracking-widest mb-3">
@@ -601,7 +601,7 @@ export default function ProspectingPipelinePage() {
       {/* ── SECTION 6: RELATED CAPABILITIES (3 CROSS-LINKS) ── */}
       
       {/* ── KPI METRICS & MEASUREMENT SPECIFICATION ── */}
-      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
+      <section className="py-10 sm:py-14 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-3">
@@ -729,7 +729,7 @@ export default function ProspectingPipelinePage() {
         </div>
       </section>
 
-      <section id="related" className="py-20 sm:py-24 border-b border-slate-200 bg-slate-50/60 scroll-mt-28">
+      <section id="related" className="py-10 sm:py-14 border-b border-slate-200 bg-slate-50/60 scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div>
@@ -819,7 +819,7 @@ export default function ProspectingPipelinePage() {
       </section>
 
       {/* ── SECTION 7: FINAL CTA & INTAKE FORM ── */}
-      <section id="audit" className="py-20 sm:py-28 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white relative overflow-hidden">
+      <section id="audit" className="py-10 sm:py-14 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 font-mono text-xs font-bold uppercase tracking-widest mb-4">
             <Target className="w-3.5 h-3.5 text-blue-400" />

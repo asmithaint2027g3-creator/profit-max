@@ -465,7 +465,7 @@ export default function Offerings() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-16">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-8 sm:mb-10">
             <a
               href="#situation-selector"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm tracking-wide shadow-lg shadow-blue-600/30 transition-all hover:-translate-y-0.5 font-mono uppercase"
@@ -588,9 +588,9 @@ export default function Offerings() {
       </section>
 
       {/* ── SECTION 2: WHY GTM FAILS (Fragmented vs Unified Systems Architecture) ── */}
-      <section className="py-20 sm:py-28 bg-slate-50/70 border-b border-slate-200">
+      <section className="py-10 sm:py-14 bg-slate-50/70 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-16">
+          <div className="max-w-3xl mb-8 sm:mb-10">
             <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-rose-600 uppercase tracking-widest mb-3">
               <AlertTriangle className="w-3.5 h-3.5" />
               <span>THE ARCHITECTURAL PROBLEM</span>
@@ -717,9 +717,9 @@ export default function Offerings() {
       </section>
 
       {/* ── SECTION 3: THE COMPLETE ARCHITECTURE STACK (8 Offerings) ── */}
-      <section id="architecture" className="py-20 sm:py-28 bg-white border-b border-slate-200 scroll-mt-28">
+      <section id="architecture" className="py-10 sm:py-14 bg-white border-b border-slate-200 scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14">
+          <div className="max-w-3xl mb-8 sm:mb-10">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
               <Layers className="w-3.5 h-3.5" />
               <span>THE 8 CORE ACCELERATION ENGINES</span>
@@ -784,9 +784,9 @@ export default function Offerings() {
       </section>
 
       {/* ── SECTION 4: NEW AI-NATIVE REVENUE LAYER (Palantir Multi-Agent Fleet) ── */}
-      <section id="ai-native-layer" className="py-20 sm:py-28 bg-slate-50/70 border-b border-slate-200 scroll-mt-28">
+      <section id="ai-native-layer" className="py-10 sm:py-14 bg-slate-50/70 border-b border-slate-200 scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14">
+          <div className="max-w-3xl mb-8 sm:mb-10">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
               <Cpu className="w-3.5 h-3.5" />
               <span>PERSISTENT AUTONOMOUS AGENT FLEETS</span>
@@ -905,9 +905,9 @@ export default function Offerings() {
       </section>
 
       {/* ── SECTION 5: REVENUE ARCHITECTURE FRAMEWORK (Discover → Design → Deploy → Measure → Optimise) ── */}
-      <section className="py-20 sm:py-28 bg-white border-b border-slate-200">
+      <section className="py-10 sm:py-14 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-16">
+          <div className="max-w-3xl mb-8 sm:mb-10">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
               <Workflow className="w-3.5 h-3.5" />
               <span>5-STAGE LIFECYCLE</span>
@@ -971,9 +971,9 @@ export default function Offerings() {
       </section>
 
       {/* ── SECTION 6: INTERACTIVE RECOMMENDATION ENGINE ── */}
-      <section id="situation-selector" className="py-20 sm:py-28 bg-slate-50/70 text-slate-900 border-b border-slate-200 scroll-mt-28">
+      <section id="situation-selector" className="py-10 sm:py-14 bg-slate-50/70 text-slate-900 border-b border-slate-200 scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14 text-center mx-auto">
+          <div className="max-w-3xl mb-8 sm:mb-10 text-center mx-auto">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-3">
               <Sliders className="w-3.5 h-3.5" />
               <span>DYNAMIC RECOMMENDATION MATRIX</span>
@@ -1086,9 +1086,9 @@ export default function Offerings() {
       </section>
 
       {/* ── SECTION 7: PROVEN INDUSTRY OUTCOMES & CASE STUDIES ── */}
-      <section className="py-20 sm:py-28 bg-white border-b border-slate-200">
+      <section className="py-10 sm:py-14 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14">
+          <div className="max-w-3xl mb-8 sm:mb-10">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>EMPIRICAL PROOF POINTS</span>
@@ -1153,9 +1153,9 @@ export default function Offerings() {
       </section>
 
       {/* ── SECTION 8: WHY PROFITMACHINES (Strategic Authority Comparison) ── */}
-      <section className="py-20 sm:py-28 bg-slate-50/70 border-b border-slate-200">
+      <section className="py-10 sm:py-14 bg-slate-50/70 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-16 text-center mx-auto">
+          <div className="max-w-3xl mb-8 sm:mb-10 text-center mx-auto">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
               <Compass className="w-3.5 h-3.5" />
               <span>MARKET POSITIONING</span>
@@ -1209,7 +1209,7 @@ export default function Offerings() {
       </section>
 
       {/* ── SECTION 9: DUAL-TRACK PROMISE & EXECUTION GUARANTEE ── */}
-      <section className="py-20 sm:py-24 bg-white border-b border-slate-200">
+      <section className="py-10 sm:py-14 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12 text-center mx-auto">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-3">
@@ -1259,9 +1259,9 @@ export default function Offerings() {
       </section>
 
       {/* ── SECTION 10: EXECUTIVE FAQS ── */}
-      <section className="py-20 sm:py-28 bg-slate-50/70 border-b border-slate-200">
+      <section className="py-10 sm:py-14 bg-slate-50/70 border-b border-slate-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
+          <div className="text-center mb-8 sm:mb-10">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
               <HelpCircle className="w-3.5 h-3.5" />
               <span>EXECUTIVE FAQS</span>
@@ -1304,7 +1304,7 @@ export default function Offerings() {
       </section>
 
       {/* ── SECTION 11: FINAL CTA & EXECUTIVE INTAKE ── */}
-      <section id="intake" className="py-20 sm:py-28 bg-slate-950 text-white relative overflow-hidden border-t border-slate-800">
+      <section id="intake" className="py-10 sm:py-14 bg-slate-950 text-white relative overflow-hidden border-t border-slate-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-xs font-bold uppercase tracking-widest mb-4">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />

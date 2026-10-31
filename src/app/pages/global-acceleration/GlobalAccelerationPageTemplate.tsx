@@ -888,7 +888,7 @@ export function GlobalAccelerationPageTemplate({ data }: GlobalAccelerationPageT
       </section>
 
       {/* ── SECTION 10: FINAL CONVERSION SECTION (INTAKE FORM & WORKING CTA) ── */}
-      <section id="consultation" className="py-16 sm:py-24 bg-slate-950 text-white relative overflow-hidden">
+      <section id="consultation" className="py-10 sm:py-14 bg-slate-950 text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-6">

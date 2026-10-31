@@ -344,7 +344,7 @@ export default function TechnologyCustomerExpansionPage() {
       </section>
 
       {/* ── SECTION 7: RESULTS DASHBOARD ── */}
-      <section id="outcomes" className="py-20 sm:py-28 bg-white border-b border-slate-200">
+      <section id="outcomes" className="py-10 sm:py-14 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs font-mono text-sky-600 font-bold uppercase tracking-wider block mb-2">
@@ -668,7 +668,7 @@ export default function TechnologyCustomerExpansionPage() {
       </section>
 
       {/* ── SECTION 12: FINAL CTA + INTAKE FORM ── */}
-      <section id="intake" className="py-20 sm:py-28 bg-white">
+      <section id="intake" className="py-10 sm:py-14 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-sky-700 text-xs font-mono font-bold uppercase mb-4">

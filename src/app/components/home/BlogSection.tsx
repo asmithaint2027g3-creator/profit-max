@@ -34,7 +34,7 @@ const blogs = [
 
 export default function BlogSection() {
     return (
-        <section className="py-20 md:py-24 lg:py-32 bg-slate-50 relative overflow-hidden" id="blogs">
+        <section className="py-10 md:py-14 bg-slate-50 relative overflow-hidden" id="blogs">
             <div className="absolute inset-0 bg-grid-slate-200 opacity-40 pointer-events-none"></div>
             
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

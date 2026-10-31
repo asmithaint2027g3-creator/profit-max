@@ -266,9 +266,9 @@ export default function Industries() {
       </nav>
 
       {/* ── SECTION 1: CHALLENGES ── */}
-      <section id="challenges" className="py-20 sm:py-24 bg-white scroll-mt-24">
+      <section id="challenges" className="py-10 sm:py-14 bg-white scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
+          <div className="text-center mb-8 sm:mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-600 font-mono text-xs font-bold uppercase tracking-widest mb-4">
               <Activity className="w-3.5 h-3.5" /> Revenue Friction
             </div>
@@ -301,9 +301,9 @@ export default function Industries() {
       </section>
 
       {/* ── SECTION 2: PATHWAY SELECTOR ── */}
-      <section id="pathways" className="py-20 sm:py-24 bg-slate-50 scroll-mt-24">
+      <section id="pathways" className="py-10 sm:py-14 bg-slate-50 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
+          <div className="text-center mb-8 sm:mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
               <Target className="w-3.5 h-3.5" /> Growth Pathways
             </div>
@@ -376,9 +376,9 @@ export default function Industries() {
       </section>
 
       {/* ── SECTION 3: HOW IT WORKS ── */}
-      <section id="how-it-works" className="py-20 sm:py-24 bg-white scroll-mt-24">
+      <section id="how-it-works" className="py-10 sm:py-14 bg-white scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
+          <div className="text-center mb-8 sm:mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
               <Activity className="w-3.5 h-3.5" /> Revenue Engineering Process
             </div>
@@ -418,9 +418,9 @@ export default function Industries() {
       </section>
 
       {/* ── SECTION 4: CAPABILITIES ── */}
-      <section id="capabilities" className="py-20 sm:py-24 bg-slate-50 scroll-mt-24">
+      <section id="capabilities" className="py-10 sm:py-14 bg-slate-50 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
+          <div className="text-center mb-8 sm:mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
               <Network className="w-3.5 h-3.5" /> Connected Capabilities
             </div>
@@ -454,7 +454,7 @@ export default function Industries() {
       </section>
 
       {/* ── SECTION 5: METRICS ── */}
-      <section id="metrics" className="py-20 sm:py-24 bg-white scroll-mt-24">
+      <section id="metrics" className="py-10 sm:py-14 bg-white scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -516,9 +516,9 @@ export default function Industries() {
       </section>
 
       {/* ── SECTION 6: APPROACH ── */}
-      <section id="approach" className="py-20 sm:py-24 bg-slate-50 scroll-mt-24">
+      <section id="approach" className="py-10 sm:py-14 bg-slate-50 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
+          <div className="text-center mb-8 sm:mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-50 border border-violet-200 text-violet-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
               <Settings className="w-3.5 h-3.5" /> Implementation
             </div>
@@ -553,7 +553,7 @@ export default function Industries() {
       </section>
 
       {/* ── SECTION 7: FAQ ── */}
-      <section id="faq" className="py-20 sm:py-24 bg-white scroll-mt-24">
+      <section id="faq" className="py-10 sm:py-14 bg-white scroll-mt-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-600 font-mono text-xs font-bold uppercase tracking-widest mb-4">
@@ -585,7 +585,7 @@ export default function Industries() {
       </section>
 
       {/* ── FINAL CTA ── */}
-      <section className="py-20 sm:py-28 bg-slate-950">
+      <section className="py-10 sm:py-14 bg-slate-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-xs font-bold uppercase tracking-widest mb-6">
             <Sparkles className="w-3.5 h-3.5" /> Revenue Discovery

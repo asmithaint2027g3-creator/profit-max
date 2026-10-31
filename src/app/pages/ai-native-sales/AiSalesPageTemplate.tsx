@@ -277,7 +277,7 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
       </section>
 
       {/* ── SECTION 03: SUB-SUBMENU CAPABILITY SECTIONS (FULL CONTENT DEPTH & DIRECT HASH ANCHORS) ── */}
-      <section id="subsections" className="py-16 sm:py-24 bg-white border-b border-slate-200 scroll-mt-20">
+      <section id="subsections" className="py-10 sm:py-14 bg-white border-b border-slate-200 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
             <div>
@@ -800,7 +800,7 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
       </section>
 
       {/* ── SECTION 10: CLOSING EXECUTIVE BRIEFING CTA ── */}
-      <section className="py-16 sm:py-24 bg-gradient-to-b from-slate-900 to-slate-950 text-white relative overflow-hidden">
+      <section className="py-10 sm:py-14 bg-gradient-to-b from-slate-900 to-slate-950 text-white relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-mono font-bold uppercase tracking-widest mb-4">
             <PageIcon className="w-3.5 h-3.5 text-blue-400" />

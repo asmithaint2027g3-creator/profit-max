@@ -711,7 +711,7 @@ export const RevenueOperationsPage: React.FC = () => {
       {/* Final CTA & Intake Form */}
       
       {/* ── KPI METRICS & MEASUREMENT SPECIFICATION ── */}
-      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
+      <section className="py-10 sm:py-14 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-3">

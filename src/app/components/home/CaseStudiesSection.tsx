@@ -77,7 +77,7 @@ export default function CaseStudiesSection() {
         : caseStudies.filter(c => c.category === selectedCategory);
 
     return (
-        <section className="py-20 md:py-28 bg-slate-50 relative overflow-hidden border-b border-slate-200" id="outcomes">
+        <section className="py-10 md:py-14 bg-slate-50 relative overflow-hidden border-b border-slate-200" id="outcomes">
             {/* Scroll Anchors */}
             <div id="case-studies" className="scroll-mt-28 absolute -top-28 left-0 pointer-events-none" />
 

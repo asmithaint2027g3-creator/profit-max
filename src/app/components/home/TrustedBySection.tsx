@@ -18,15 +18,15 @@ export default function TrustedBySection() {
     const loopPartners = [...partners, ...partners];
 
     return (
-        <section id="partners" className="py-12 md:py-16 border-b border-slate-200/80 bg-white relative z-10 overflow-hidden">
+        <section id="partners" className="py-6 md:py-8 border-b border-slate-200/80 bg-white relative z-10 overflow-hidden">
             <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-                <p className="text-center text-xs font-extrabold text-slate-400 uppercase tracking-widest mb-8">
+                <p className="text-center text-xs font-extrabold text-slate-400 uppercase tracking-widest mb-4">
                     Trusted by 100+ companies · Strategic Partners &amp; Enterprise Integrations
                 </p>
             </div>
 
             {/* Infinite scroll ticker */}
-            <div className="relative mb-10">
+            <div className="relative mb-5">
                 {/* Fade masks */}
                 <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-white to-transparent pointer-events-none" />
                 <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-white to-transparent pointer-events-none" />

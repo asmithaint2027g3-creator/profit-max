@@ -111,7 +111,7 @@ export default function IndustriesSection() {
         : industries.filter(i => i.sectorGroup === selectedSector);
 
     return (
-        <section className="py-20 md:py-28 bg-white text-slate-900 relative overflow-hidden border-b border-slate-200" id="industries">
+        <section className="py-10 md:py-14 bg-white text-slate-900 relative overflow-hidden border-b border-slate-200" id="industries">
             <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 
                 <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">

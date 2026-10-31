@@ -652,7 +652,7 @@ export default function CaseStudiesHub() {
       </section>
 
       {/* ── 4. CASE STUDY LIBRARY (Search + 5-Dimension Classification Toolbar) ── */}
-      <section id="case-study-library" className="py-20 sm:py-28 bg-white border-b border-slate-200" style={{ scrollMarginTop: '80px' }}>
+      <section id="case-study-library" className="py-10 sm:py-14 bg-white border-b border-slate-200" style={{ scrollMarginTop: '80px' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
             <div>
@@ -927,7 +927,7 @@ export default function CaseStudiesHub() {
       </section>
 
       {/* ── 5. TRANSFORMATION METHODOLOGY (4-Phase Architecture) ── */}
-      <section className="py-20 sm:py-28 bg-slate-50 border-b border-slate-200">
+      <section className="py-10 sm:py-14 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-mono font-bold uppercase mb-3">
@@ -1123,7 +1123,7 @@ export default function CaseStudiesHub() {
       </section>
 
       {/* ── 6. BOARDROOM VERIFICATION (Testimonials) ── */}
-      <section className="py-20 sm:py-28 bg-white border-b border-slate-200">
+      <section className="py-10 sm:py-14 bg-white border-b border-slate-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-xs font-mono text-blue-600 font-bold uppercase tracking-wider block mb-2">
@@ -1181,7 +1181,7 @@ export default function CaseStudiesHub() {
       </section>
 
       {/* ── 7. FINAL CTA + CONFIDENTIAL INTAKE ── */}
-      <section id="intake" className="py-20 sm:py-28 bg-white">
+      <section id="intake" className="py-10 sm:py-14 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-mono font-bold uppercase mb-4">

@@ -94,11 +94,11 @@ export default function HomeCaseStudiesSection() {
     ];
 
     return (
-        <section className="py-20 md:py-28 bg-white border-b border-slate-200/80">
+        <section className="py-10 md:py-14 bg-white border-b border-slate-200/80">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 {/* Header */}
-                <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                <div className="max-w-3xl mx-auto text-center space-y-4 mb-8 sm:mb-5">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-blue-700 uppercase font-mono">
                         <FileText className="w-3.5 h-3.5" />
                         <span>Execution Methodology &bull; Case Studies</span>
@@ -114,7 +114,7 @@ export default function HomeCaseStudiesSection() {
                 </div>
 
                 {/* 5-Stage Approach Process Diagram */}
-                <div className="mb-14 p-6 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200">
+                <div className="mb-6 sm:mb-8 p-6 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200">
                     <div className="text-xs font-mono font-bold text-blue-600 uppercase tracking-wider mb-6">
                         Our 5-Stage Growth Transformation Approach:
                     </div>
@@ -149,7 +149,7 @@ export default function HomeCaseStudiesSection() {
                 </div>
 
                 {/* Verified Case Study Cards Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 sm:mb-8">
                     {verifiedCaseStudies.map((cs, idx) => {
                         const Icon = cs.icon;
                         return (

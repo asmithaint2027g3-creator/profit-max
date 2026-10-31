@@ -27,7 +27,7 @@ const cryptoFeatures = [
 
 export default function CryptoSection() {
     return (
-        <section className="py-32 bg-slate-50 relative overflow-hidden border-t border-slate-200" id="crypto">
+        <section className="py-12 bg-slate-50 relative overflow-hidden border-t border-slate-200" id="crypto">
             {/* Background elements */}
             <div className="absolute inset-0 bg-grid-slate-200 opacity-40 pointer-events-none"></div>
             <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-indigo-600/5 rounded-full blur-[100px] pointer-events-none translate-x-1/3 -translate-y-1/2"></div>

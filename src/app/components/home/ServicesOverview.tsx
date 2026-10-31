@@ -123,7 +123,7 @@ export default function ServicesOverview() {
         : services.filter(s => s.categoryGroup === selectedCategory);
 
     return (
-        <section id="capabilities-solutions" className="py-20 md:py-28 bg-slate-50/70 relative overflow-hidden border-b border-slate-200">
+        <section id="capabilities-solutions" className="py-10 md:py-14 bg-slate-50/70 relative overflow-hidden border-b border-slate-200">
             {/* Scroll Anchors for backward compatibility */}
             <div id="capabilities" className="scroll-mt-28 absolute -top-28 left-0 pointer-events-none" />
             <div id="solutions" className="scroll-mt-28 absolute -top-28 left-0 pointer-events-none" />

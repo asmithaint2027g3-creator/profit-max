@@ -72,11 +72,11 @@ export default function HomeIndustriesSection() {
     ];
 
     return (
-        <section className="py-20 md:py-28 bg-white border-b border-slate-200/80">
+        <section className="py-10 md:py-14 bg-white border-b border-slate-200/80">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 {/* Header */}
-                <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                <div className="max-w-3xl mx-auto text-center space-y-4 mb-8 sm:mb-5">
                     <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 text-blue-700 font-bold text-xs uppercase tracking-wider border border-blue-100 shadow-xs">
                         <Sparkles className="w-3.5 h-3.5" />
                         <span>Business Model Specialization</span>
@@ -92,7 +92,7 @@ export default function HomeIndustriesSection() {
                 </div>
 
                 {/* 6 Industry Cards with Real Image Headers (No human faces) */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6 sm:mb-8">
                     {industries.map((ind, idx) => {
                         const Icon = ind.icon;
                         return (

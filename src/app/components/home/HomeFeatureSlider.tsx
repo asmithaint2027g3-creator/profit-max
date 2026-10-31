@@ -375,7 +375,7 @@ export default function HomeFeatureSlider() {
 
     return (
         <section 
-            className="pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20 bg-white relative overflow-hidden border-b border-slate-200"
+            className="pt-20 pb-8 sm:pt-24 sm:pb-10 lg:pt-24 lg:pb-12 bg-white relative overflow-hidden border-b border-slate-200"
             onMouseEnter={() => setIsPlaying(false)}
             onMouseLeave={() => setIsPlaying(true)}
             onTouchStart={handleTouchStart}

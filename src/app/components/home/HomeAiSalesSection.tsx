@@ -75,7 +75,7 @@ export default function HomeAiSalesSection() {
     ];
 
     return (
-        <section className="py-20 md:py-28 bg-slate-900 text-white relative overflow-hidden border-b border-slate-800">
+        <section className="py-10 md:py-14 bg-slate-900 text-white relative overflow-hidden border-b border-slate-800">
             {/* Ambient Background Grid */}
             <div className="absolute inset-0 opacity-10 bg-grid-slate-100 pointer-events-none" />
             <div className="absolute top-1/3 left-10 w-96 h-96 bg-blue-600/10 blur-[130px] rounded-full pointer-events-none" />
@@ -84,7 +84,7 @@ export default function HomeAiSalesSection() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 
                 {/* Header Section */}
-                <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                <div className="max-w-3xl mx-auto text-center space-y-4 mb-8 sm:mb-5">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-bold text-blue-400 uppercase font-mono">
                         <Bot className="w-3.5 h-3.5" />
                         <span>Connected Commercial Intelligence</span>
@@ -100,7 +100,7 @@ export default function HomeAiSalesSection() {
                 </div>
 
                 {/* Split Composition: Left Capability Selector + Right Sales Workflow Visual */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-6 sm:mb-8">
                     
                     {/* Left: 6 Verified Capability Cards */}
                     <div className="lg:col-span-5 space-y-3">

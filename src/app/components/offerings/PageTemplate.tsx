@@ -106,9 +106,9 @@ export default function PageTemplate({
 
   // 1. Challenges Section
   const renderChallenges = () => (
-    <section id="challenges" key="challenges" className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200 scroll-mt-28">
+    <section id="challenges" key="challenges" className="py-10 sm:py-12 bg-slate-50 border-b border-slate-200 scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mb-10">
+        <div className="max-w-3xl mb-6">
           <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
             Domain Friction &amp; Growth Constraints
           </span>
@@ -162,11 +162,11 @@ export default function PageTemplate({
 
   // 2. Capabilities Section with Numeric KPI Cards
   const renderCapabilities = () => (
-    <section id="capabilities" key="capabilities" className="py-14 sm:py-20 bg-white border-b border-slate-200 scroll-mt-28">
+    <section id="capabilities" key="capabilities" className="py-10 sm:py-12 bg-white border-b border-slate-200 scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header & Interactive Filter */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold font-mono tracking-wider uppercase mb-2">
               <Boxes className="w-3.5 h-3.5 text-blue-600" />
@@ -457,9 +457,9 @@ export default function PageTemplate({
 
   // 3. Workflow Section
   const renderWorkflow = () => (
-    <section id="workflow" key="workflow" className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200 scroll-mt-28">
+    <section id="workflow" key="workflow" className="py-10 sm:py-12 bg-slate-50 border-b border-slate-200 scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mb-10">
+        <div className="max-w-3xl mb-6">
           <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
             Execution Methodology
           </span>
@@ -520,9 +520,9 @@ export default function PageTemplate({
 
   // 4. Metrics & Provenance Section with High-Impact Numeric KPI Cards
   const renderMetrics = () => (
-    <section id="metrics" key="metrics" className="py-14 sm:py-20 bg-white border-b border-slate-200 scroll-mt-28">
+    <section id="metrics" key="metrics" className="py-10 sm:py-12 bg-white border-b border-slate-200 scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
           <div className="max-w-3xl">
             <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
               Quantitative Measurement &amp; Data Provenance
@@ -542,7 +542,7 @@ export default function PageTemplate({
         </div>
 
         {/* 6 Dedicated Numeric KPI Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-6">
           {data.metrics.map((met, mIdx) => {
             const bench = getMetricBenchmark(met.metricName, met.category);
             return (
@@ -628,9 +628,9 @@ export default function PageTemplate({
 
   // 5. FAQ Section
   const renderFaq = () => (
-    <section id="faq" key="faq" className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200 scroll-mt-28">
+    <section id="faq" key="faq" className="py-10 sm:py-12 bg-slate-50 border-b border-slate-200 scroll-mt-28">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
+        <div className="text-center mb-6">
           <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
             Executive Advisory
           </span>
@@ -669,7 +669,7 @@ export default function PageTemplate({
 
   // 6. Consultation Section
   const renderConsultation = () => (
-    <section id="consultation" key="consultation" className="py-16 sm:py-24 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white relative overflow-hidden border-t border-slate-800 scroll-mt-28">
+    <section id="consultation" key="consultation" className="py-12 sm:py-16 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white relative overflow-hidden border-t border-slate-800 scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
@@ -864,7 +864,7 @@ export default function PageTemplate({
       </nav>
 
       {/* ── SECTION 01: EXECUTIVE HERO (MATCHING GLOBAL ACCELERATION PALETTE) ── */}
-      <section id="overview" className="relative pt-12 pb-16 sm:pt-20 sm:pb-24 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden border-b border-slate-800">
+      <section id="overview" className="relative pt-8 pb-10 sm:pt-12 sm:pb-14 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden border-b border-slate-800">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute inset-0 opacity-[0.20]" style={{ backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.07) 1px, transparent 1px)', backgroundSize: '4rem 4rem' }} />
           <div className="absolute -top-40 right-1/4 w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[140px]" />
@@ -960,7 +960,7 @@ export default function PageTemplate({
           </div>
 
           {/* Key Executive Statistics / Metrics Strip with Clear Provenance */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 pt-8 border-t border-slate-800/80">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-6 border-t border-slate-800/80">
             {data.keyStats.map((stat, idx) => (
               <div key={idx} className="bg-slate-900/60 rounded-xl p-4 border border-slate-800/60 flex flex-col justify-between">
                 <div>

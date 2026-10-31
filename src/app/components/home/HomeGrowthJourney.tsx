@@ -82,11 +82,11 @@ export default function HomeGrowthJourney() {
     ];
 
     return (
-        <section className="py-20 md:py-28 bg-white relative overflow-hidden border-b border-slate-200" id="growth-journey">
+        <section className="py-10 md:py-14 bg-slate-50/70 relative overflow-hidden border-b border-slate-200" id="growth-journey">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 
                 {/* Header */}
-                <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+                <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-5 sm:mb-20">
                     <div className="inline-flex items-center justify-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 text-blue-700 font-bold text-xs uppercase tracking-wider mb-4 border border-blue-100 shadow-xs">
                         <Repeat className="w-3.5 h-3.5 text-blue-600" />
                         <span>Closed-Loop Operational Architecture</span>
@@ -102,7 +102,7 @@ export default function HomeGrowthJourney() {
                 </div>
 
                 {/* Horizontal Step Navigation Bar (Like Image 4) */}
-                <div className="hidden lg:grid grid-cols-7 gap-2.5 mb-16 max-w-6xl mx-auto">
+                <div className="hidden lg:grid grid-cols-7 gap-2.5 mb-8 sm:mb-5 max-w-6xl mx-auto">
                     {stages.map((step, idx) => {
                         const Icon = step.icon;
                         const isActive = activeStage === idx;

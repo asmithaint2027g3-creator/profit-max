@@ -110,11 +110,11 @@ export default function HomeOfferingsGrid() {
     ];
 
     return (
-        <section id="all-offerings" className="py-20 md:py-28 bg-slate-50 border-b border-slate-200/80">
+        <section id="all-offerings" className="py-10 md:py-14 bg-slate-50 border-b border-slate-200/80">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 {/* Header */}
-                <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                <div className="max-w-3xl mx-auto text-center space-y-4 mb-8 sm:mb-5">
                     <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-blue-600 font-bold text-xs uppercase tracking-wider shadow-xs border border-slate-200">
                         <Sparkles className="w-3.5 h-3.5" />
                         <span>The ProfitMachines Platform Suite</span>
@@ -130,7 +130,7 @@ export default function HomeOfferingsGrid() {
                 </div>
 
                 {/* 8 Offerings Grid with Real Visual Image Banners */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6 sm:mb-8">
                     {offerings.map((item) => {
                         const Icon = item.icon;
                         return (

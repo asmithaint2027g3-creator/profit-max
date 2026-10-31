@@ -6,7 +6,7 @@ import { trackEvent } from '../../../lib/analytics';
 
 export default function FinalCTASection() {
     return (
-        <section className="relative py-20 md:py-28 overflow-hidden bg-slate-900 text-white">
+        <section className="relative py-10 md:py-14 overflow-hidden bg-slate-900 text-white">
             {/* Subtle mesh background */}
             <div className="absolute inset-0 pointer-events-none opacity-20">
                 <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-600 rounded-full blur-[140px]" />
@@ -33,7 +33,7 @@ export default function FinalCTASection() {
                         </span>
                     </h2>
                     
-                    <p className="text-base sm:text-xl text-slate-300 mb-10 max-w-2xl mx-auto font-normal leading-relaxed">
+                    <p className="text-base sm:text-xl text-slate-300 mb-5 max-w-2xl mx-auto font-normal leading-relaxed">
                         Join forward-thinking enterprise teams replacing fragmented tools with a unified, self-learning GTM intelligence infrastructure.
                     </p>
                     

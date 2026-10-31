@@ -513,7 +513,7 @@ export default function GlobalAccelerationHub() {
       </section>
 
       {/* ── SECTION 04: EXPLORE THE EIGHT CAPABILITIES (TWO-PANEL NAVIGATOR & CARDS) ── */}
-      <section id="capabilities-overview" className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200 scroll-mt-20">
+      <section id="capabilities-overview" className="py-10 sm:py-14 bg-slate-50 border-b border-slate-200 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-10">
             <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
@@ -1293,7 +1293,7 @@ export default function GlobalAccelerationHub() {
       </section>
 
       {/* ── SECTION 10: FINAL CONVERSION SECTION (INTAKE FORM & WORKING CTA) ── */}
-      <section id="consultation" className="py-16 sm:py-24 bg-slate-950 text-white relative overflow-hidden">
+      <section id="consultation" className="py-10 sm:py-14 bg-slate-950 text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-6">

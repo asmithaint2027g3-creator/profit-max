@@ -363,7 +363,7 @@ export function GrowthSciencePageTemplate({ data }: GrowthSciencePageTemplatePro
       </section>
 
       {/* ── SECTION 04: SUB-SUBMENU CAPABILITY SECTIONS (THE 3-LEVEL ARCHITECTURE) ── */}
-      <section className="py-16 sm:py-24 bg-slate-900 text-white border-b border-slate-800">
+      <section className="py-10 sm:py-14 bg-slate-900 text-white border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <div className="text-xs font-mono font-bold text-blue-400 uppercase tracking-widest mb-2">
@@ -573,7 +573,7 @@ export function GrowthSciencePageTemplate({ data }: GrowthSciencePageTemplatePro
       </section>
 
       {/* ── SECTION 06: KPI & FINANCIAL IMPACT SCORECARD + INTERACTIVE CALCULATOR ── */}
-      <section id="scorecard" className="py-16 sm:py-24 bg-white border-b border-slate-200">
+      <section id="scorecard" className="py-10 sm:py-14 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
             <div className="max-w-2xl">
@@ -900,7 +900,7 @@ export function GrowthSciencePageTemplate({ data }: GrowthSciencePageTemplatePro
       </section>
 
       {/* ── SECTION 10: FINAL CONVERSION & INTAKE FORM ── */}
-      <section id="consultation" className="py-20 sm:py-28 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white relative overflow-hidden">
+      <section id="consultation" className="py-10 sm:py-14 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[140px]" />
           <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-indigo-600/10 rounded-full blur-[120px]" />

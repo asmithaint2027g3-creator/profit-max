@@ -222,7 +222,7 @@ export default function AiNativeSalesHub() {
       </section>
 
       {/* ── SECTION 02: THE REVENUE CHALLENGE (6 FRICTION POINTS) ── */}
-      <section className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200">
+      <section className="py-10 sm:py-14 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
@@ -271,7 +271,7 @@ export default function AiNativeSalesHub() {
       </section>
 
       {/* ── SECTION 03: WHAT AI NATIVE SALES CHANGES (8 OPERATING STEPS) ── */}
-      <section className="py-16 sm:py-24 bg-white border-b border-slate-200">
+      <section className="py-10 sm:py-14 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
@@ -320,7 +320,7 @@ export default function AiNativeSalesHub() {
       </section>
 
       {/* ── SECTION 04: EXPLORE THE NINE CAPABILITIES (INTERACTIVE TWO-PANEL EXPLORER) ── */}
-      <section id="capabilities" className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200 scroll-mt-20">
+      <section id="capabilities" className="py-10 sm:py-14 bg-slate-50 border-b border-slate-200 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
@@ -448,7 +448,7 @@ export default function AiNativeSalesHub() {
       </section>
 
       {/* ── SECTION 05: HOW THE SYSTEM WORKS TOGETHER (4-LAYER ARCHITECTURE) ── */}
-      <section className="py-16 sm:py-24 bg-white border-b border-slate-200">
+      <section className="py-10 sm:py-14 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
@@ -527,7 +527,7 @@ export default function AiNativeSalesHub() {
       </section>
 
       {/* ── SECTION 06: BUSINESS VALUE & KPI DASHBOARD ── */}
-      <section className="py-16 sm:py-24 bg-slate-900 text-white border-b border-slate-800">
+      <section className="py-10 sm:py-14 bg-slate-900 text-white border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-mono text-blue-400 uppercase tracking-widest font-bold">
@@ -582,7 +582,7 @@ export default function AiNativeSalesHub() {
       </section>
 
       {/* ── SECTION 07: HUMAN-GUIDED AUTONOMY & BOUNDARIES ── */}
-      <section className="py-16 sm:py-24 bg-white border-b border-slate-200">
+      <section className="py-10 sm:py-14 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
@@ -633,7 +633,7 @@ export default function AiNativeSalesHub() {
       </section>
 
       {/* ── SECTION 08: IMPLEMENTATION APPROACH (4-STAGE ROADMAP) ── */}
-      <section className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200">
+      <section className="py-10 sm:py-14 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
@@ -696,7 +696,7 @@ export default function AiNativeSalesHub() {
       </section>
 
       {/* ── SECTION 09: FREQUENTLY ASKED QUESTIONS ── */}
-      <section className="py-16 sm:py-24 bg-white border-b border-slate-200">
+      <section className="py-10 sm:py-14 bg-white border-b border-slate-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
@@ -742,7 +742,7 @@ export default function AiNativeSalesHub() {
       </section>
 
       {/* ── SECTION 10: FINAL EXECUTIVE CTA ── */}
-      <section className="py-20 sm:py-28 bg-gradient-to-b from-slate-900 to-slate-950 text-white text-center relative overflow-hidden">
+      <section className="py-10 sm:py-14 bg-gradient-to-b from-slate-900 to-slate-950 text-white text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-mono font-bold uppercase tracking-widest mb-6">
             <BrainCircuit className="w-4 h-4 text-blue-400" />

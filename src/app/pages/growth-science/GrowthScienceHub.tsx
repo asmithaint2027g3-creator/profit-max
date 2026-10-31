@@ -343,7 +343,7 @@ export default function GrowthScienceHub() {
       </section>
 
       {/* ── SECTION 02: CENTRAL GROWTH SYSTEM ARCHITECTURE ── */}
-      <section id="architecture" className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200">
+      <section id="architecture" className="py-10 sm:py-14 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <div className="text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-2">
@@ -493,7 +493,7 @@ export default function GrowthScienceHub() {
       </section>
 
       {/* ── SECTION 04: ALL 9 CAPABILITY CARDS ── */}
-      <section id="capabilities" className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200">
+      <section id="capabilities" className="py-10 sm:py-14 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <div className="text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-2">
@@ -614,7 +614,7 @@ export default function GrowthScienceHub() {
       </section>
 
       {/* ── SECTION 06: FINAL CONVERSION SECTION & CONSULTATION FORM ── */}
-      <section id="consultation" className="py-20 sm:py-28 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white relative overflow-hidden">
+      <section id="consultation" className="py-10 sm:py-14 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[140px]" />
           <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-indigo-600/10 rounded-full blur-[120px]" />

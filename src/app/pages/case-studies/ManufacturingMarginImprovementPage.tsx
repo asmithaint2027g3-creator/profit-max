@@ -950,7 +950,7 @@ export default function ManufacturingMarginImprovementPage() {
       </section>
 
       {/* ── SECTION 12: EXECUTIVE CONFIDENTIAL INTAKE FORM ── */}
-      <section id="intake-form" className="py-20 sm:py-28 bg-slate-50 border-t border-slate-200">
+      <section id="intake-form" className="py-10 sm:py-14 bg-slate-50 border-t border-slate-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-800 text-xs font-mono font-bold uppercase shadow-xs mb-4">

@@ -56,11 +56,11 @@ export default function HomeChallenges() {
     ];
 
     return (
-        <section className="py-20 md:py-28 bg-white border-b border-slate-200/80 relative">
+        <section className="py-10 md:py-14 bg-white border-b border-slate-200/80 relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 {/* Header Section */}
-                <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                <div className="max-w-3xl mx-auto text-center space-y-4 mb-8 sm:mb-5">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-bold text-slate-700 uppercase font-mono">
                         <ShieldAlert className="w-3.5 h-3.5 text-slate-500" />
                         <span>The Cost of Fragmentation</span>
@@ -76,7 +76,7 @@ export default function HomeChallenges() {
                 </div>
 
                 {/* 5 Concise Challenge Panels */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-14">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-6 sm:mb-8">
                     {challenges.map((c, idx) => {
                         const Icon = c.icon;
                         return (

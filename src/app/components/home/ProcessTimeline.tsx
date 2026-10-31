@@ -64,7 +64,7 @@ export default function ProcessTimeline() {
     const [activeStep, setActiveStep] = useState<number>(0);
 
     return (
-        <section className="py-20 md:py-28 bg-white relative overflow-hidden border-b border-slate-200" id="methodology">
+        <section className="py-10 md:py-14 bg-white relative overflow-hidden border-b border-slate-200" id="methodology">
             {/* Scroll Anchor for backward compatibility */}
             <div id="solutions-methodology" className="scroll-mt-28 absolute -top-28 left-0 pointer-events-none" />
 

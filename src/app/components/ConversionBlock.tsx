@@ -18,7 +18,7 @@ export default function ConversionBlock({ data, index }: { data: ConversionBlock
     const themeGradient = getColorTheme(index);
 
     return (
-        <section className={`py-20 lg:py-32 relative overflow-hidden ${isAltBackground ? 'bg-slate-50' : 'bg-white'}`}>
+        <section className={`py-20 lg:py-12 relative overflow-hidden ${isAltBackground ? 'bg-slate-50' : 'bg-white'}`}>
 
             {/* Background Ambience */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">

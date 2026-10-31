@@ -63,11 +63,11 @@ export default function HomeGrowthScienceSection() {
     ];
 
     return (
-        <section className="py-20 md:py-28 bg-white border-b border-slate-200/80">
+        <section className="py-10 md:py-14 bg-slate-50/70 border-b border-slate-200/80">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 {/* Header */}
-                <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                <div className="max-w-3xl mx-auto text-center space-y-4 mb-8 sm:mb-5">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-blue-700 uppercase font-mono">
                         <Activity className="w-3.5 h-3.5" />
                         <span>Empirical Revenue Methodology</span>
@@ -83,7 +83,7 @@ export default function HomeGrowthScienceSection() {
                 </div>
 
                 {/* 5-Step Visual Framework Pipeline: Diagnose -> Prioritize -> Implement -> Measure -> Improve */}
-                <div className="mb-14">
+                <div className="mb-6 sm:mb-8">
                     <div className="p-6 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm">
                         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                             {frameworkSteps.map((step, idx) => {
@@ -140,7 +140,7 @@ export default function HomeGrowthScienceSection() {
                 </div>
 
                 {/* Detailed Active Step & Concept Callout Panel */}
-                <div className="p-6 sm:p-8 rounded-2xl bg-slate-900 text-white shadow-xl border border-slate-800 mb-12">
+                <div className="p-6 sm:p-8 rounded-2xl bg-slate-900 text-white shadow-xl border border-slate-800 mb-6 sm:mb-8">
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
                         <div className="md:col-span-8 space-y-3">
                             <div className="flex items-center gap-2">

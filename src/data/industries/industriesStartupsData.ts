@@ -537,3 +537,4 @@ export const industriesStartupsData: PageContentData = {
   primaryCtaText: 'Find Your Repeatable Revenue Engine',
   secondaryCtaText: 'Discuss Startup Growth Priorities'
 };
+

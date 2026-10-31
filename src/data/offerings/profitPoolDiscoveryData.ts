@@ -538,3 +538,4 @@ export const profitPoolDiscoveryData: PageContentData = {
   primaryCtaText: 'Explore Discovery Capabilities',
   secondaryCtaText: 'Discuss Market Opportunities'
 };
+

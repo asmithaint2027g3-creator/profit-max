@@ -537,3 +537,4 @@ export const industriesMidMarketData: PageContentData = {
   primaryCtaText: 'Scale Revenue Efficiently',
   secondaryCtaText: 'Discuss Scaling Priorities'
 };
+

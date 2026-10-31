@@ -7,6 +7,7 @@ import "./lib/analytics"; // Initialize analytics auto-tracking
 
 // Global auto-recovery for Vite dynamic module chunk version mismatches across deployments
 window.addEventListener("vite:preloadError", (event) => {
+  if (import.meta.env.DEV) return;
   event.preventDefault();
   const reloadKey = "pm_chunk_reload";
   const lastReload = sessionStorage.getItem(reloadKey);
@@ -39,19 +40,21 @@ class RootErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error("Root Error Boundary caught an error:", error, errorInfo);
     
-    // Auto-reload on dynamic import failure caused by new deployments
-    const msg = error?.message || "";
-    if (
-      msg.includes("dynamically imported module") ||
-      msg.includes("Loading chunk") ||
-      msg.includes("Importing a module script failed")
-    ) {
-      const reloadKey = "pm_chunk_reload";
-      const lastReload = sessionStorage.getItem(reloadKey);
-      const now = Date.now();
-      if (!lastReload || now - parseInt(lastReload, 10) > 10000) {
-        sessionStorage.setItem(reloadKey, now.toString());
-        window.location.reload();
+    // Auto-reload on dynamic import failure caused by new deployments (production only)
+    if (!import.meta.env.DEV) {
+      const msg = error?.message || "";
+      if (
+        msg.includes("dynamically imported module") ||
+        msg.includes("Loading chunk") ||
+        msg.includes("Importing a module script failed")
+      ) {
+        const reloadKey = "pm_chunk_reload";
+        const lastReload = sessionStorage.getItem(reloadKey);
+        const now = Date.now();
+        if (!lastReload || now - parseInt(lastReload, 10) > 10000) {
+          sessionStorage.setItem(reloadKey, now.toString());
+          window.location.reload();
+        }
       }
     }
   }

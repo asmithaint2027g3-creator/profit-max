@@ -537,3 +537,4 @@ export const revenueOperationsData: PageContentData = {
   primaryCtaText: 'Connect Your Revenue Engine',
   secondaryCtaText: 'Discuss RevOps Priorities'
 };
+

@@ -537,3 +537,4 @@ export const industriesB2BData: PageContentData = {
   primaryCtaText: 'Accelerate B2B Pipeline',
   secondaryCtaText: 'Discuss B2B Sales Priorities'
 };
+

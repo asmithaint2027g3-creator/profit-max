@@ -5,3 +5,4 @@ import { industriesSaasData } from '../../../data/industries/industriesSaasData'
 export default function IndustriesSaas() {
   return <PageTemplate data={industriesSaasData} />;
 }
+

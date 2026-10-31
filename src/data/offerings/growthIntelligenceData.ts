@@ -537,3 +537,4 @@ export const growthIntelligenceData: PageContentData = {
   primaryCtaText: 'Deploy Growth Intelligence',
   secondaryCtaText: 'Discuss Financial Priorities'
 };
+

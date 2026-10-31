@@ -11,6 +11,19 @@ import {
     Percent, GitMerge, Award, Workflow, Gauge
 } from 'lucide-react';
 
+import {
+    offeringsArchitecture,
+    industriesArchitecture,
+    OfferingCategoryDetail,
+    OfferingCapabilityItem,
+    IndustryCategoryDetail,
+    IndustryCapabilityItem
+} from '../../data/navigationArchitecture';
+
+export { offeringsArchitecture, industriesArchitecture };
+export type { OfferingCategoryDetail, OfferingCapabilityItem, IndustryCategoryDetail, IndustryCapabilityItem };
+
+
 // ── Types for Navigation & Mega-Menu ──
 interface NavCard {
     title: string;
@@ -65,17 +78,7 @@ interface SpotlightConfig {
 }
 
 
-import {
-    offeringsArchitecture,
-    industriesArchitecture,
-    OfferingCategoryDetail,
-    OfferingCapabilityItem,
-    IndustryCategoryDetail,
-    IndustryCapabilityItem
-} from '../../data/navigationArchitecture';
 
-export { offeringsArchitecture, industriesArchitecture };
-export type { OfferingCategoryDetail, OfferingCapabilityItem, IndustryCategoryDetail, IndustryCapabilityItem };
 
 const spotlightConfigs: Record<string, SpotlightConfig> = {
     'offerings': {

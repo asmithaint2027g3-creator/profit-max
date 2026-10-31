@@ -537,3 +537,4 @@ export const industriesB2CData: PageContentData = {
   primaryCtaText: 'Accelerate Consumer Growth',
   secondaryCtaText: 'Discuss Consumer Priorities'
 };
+

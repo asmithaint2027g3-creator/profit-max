@@ -537,3 +537,4 @@ export const salesAccelerationData: PageContentData = {
   primaryCtaText: 'Accelerate Sales Execution',
   secondaryCtaText: 'Discuss Deal Progression'
 };
+

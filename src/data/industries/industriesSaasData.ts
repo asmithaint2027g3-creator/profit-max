@@ -537,3 +537,4 @@ export const industriesSaasData: PageContentData = {
   primaryCtaText: 'Accelerate SaaS Recurring Growth',
   secondaryCtaText: 'Discuss SaaS Retention Priorities'
 };
+

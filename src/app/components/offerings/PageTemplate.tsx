@@ -748,23 +748,23 @@ export default function PageTemplate({
         // AI Trust & Governance: Challenges (Risk First) -> Capabilities -> Metrics -> Workflow -> FAQ -> Consultation
         return [renderChallenges(), renderCapabilities(), renderMetrics(), renderWorkflow(), renderFaq(), renderConsultation()];
       case 'b2b-strategy':
-        // B2B Businesses: Capabilities -> Metrics -> Workflow -> Challenges -> FAQ -> Consultation
-        return [renderCapabilities(), renderMetrics(), renderWorkflow(), renderChallenges(), renderFaq(), renderConsultation()];
+        // B2B Businesses: Target Account Journey -> Capabilities -> Friction Points -> FAQ -> Key Metrics -> Consultation
+        return [renderWorkflow(), renderCapabilities(), renderChallenges(), renderFaq(), renderMetrics(), renderConsultation()];
       case 'b2c-consumer':
-        // B2C Consumer: Metrics (MER, AOV) -> Capabilities -> Challenges -> Workflow -> FAQ -> Consultation
-        return [renderMetrics(), renderCapabilities(), renderChallenges(), renderWorkflow(), renderFaq(), renderConsultation()];
+        // B2C Consumer: Consumer Journey Funnel -> Cart Friction -> Capabilities -> FAQ -> Key Metrics -> Consultation
+        return [renderWorkflow(), renderChallenges(), renderCapabilities(), renderFaq(), renderMetrics(), renderConsultation()];
       case 'enterprise-scale':
-        // Enterprise Scale: Challenges (Silos) -> Workflow -> Capabilities -> Metrics -> FAQ -> Consultation
-        return [renderChallenges(), renderWorkflow(), renderCapabilities(), renderMetrics(), renderFaq(), renderConsultation()];
+        // Enterprise Scale: Departmental Silos -> Capabilities -> Operating Model -> FAQ -> Key Metrics -> Consultation
+        return [renderChallenges(), renderCapabilities(), renderWorkflow(), renderFaq(), renderMetrics(), renderConsultation()];
       case 'midmarket-ops':
-        // Mid-Market Ops: Metrics (Sales Capacity) -> Workflow -> Capabilities -> Challenges -> FAQ -> Consultation
-        return [renderMetrics(), renderWorkflow(), renderCapabilities(), renderChallenges(), renderFaq(), renderConsultation()];
+        // Mid-Market Ops: Scalable Capabilities -> Sales Cadence Workflow -> Founder Bottlenecks -> FAQ -> Key Metrics -> Consultation
+        return [renderCapabilities(), renderWorkflow(), renderChallenges(), renderFaq(), renderMetrics(), renderConsultation()];
       case 'startup-pmf':
-        // Startups & Scaleups: Challenges (PMF & Runway) -> Capabilities -> Metrics -> Workflow -> FAQ -> Consultation
-        return [renderChallenges(), renderCapabilities(), renderMetrics(), renderWorkflow(), renderFaq(), renderConsultation()];
+        // Startups & Scaleups: Runway Drag -> Iteration Loops -> Capabilities -> FAQ -> Key Metrics -> Consultation
+        return [renderChallenges(), renderWorkflow(), renderCapabilities(), renderFaq(), renderMetrics(), renderConsultation()];
       case 'saas-lifecycle':
-        // SaaS Lifecycle: Metrics (NRR/Quick Ratio) -> Workflow -> Capabilities -> Challenges -> FAQ -> Consultation
-        return [renderMetrics(), renderWorkflow(), renderCapabilities(), renderChallenges(), renderFaq(), renderConsultation()];
+        // SaaS Lifecycle: Retention Loop Workflow -> Capabilities -> Churn Friction -> FAQ -> Key Metrics -> Consultation
+        return [renderWorkflow(), renderCapabilities(), renderChallenges(), renderFaq(), renderMetrics(), renderConsultation()];
       default:
         // Standard baseline ordering
         return [renderChallenges(), renderCapabilities(), renderWorkflow(), renderMetrics(), renderFaq(), renderConsultation()];
@@ -795,9 +795,6 @@ export default function PageTemplate({
       case 'opportunity-progression':
       case 'decision-support':
       case 'customer-lifecycle':
-      case 'b2c-consumer':
-      case 'midmarket-ops':
-      case 'saas-lifecycle':
         return [
           { id: 'overview', label: 'Overview' },
           { id: 'metrics', label: 'Numeric KPIs' },
@@ -805,6 +802,60 @@ export default function PageTemplate({
           { id: 'workflow', label: 'Workflow' },
           { id: 'challenges', label: 'Friction Points' },
           { id: 'faq', label: 'FAQ' }
+        ];
+      case 'b2b-strategy':
+        return [
+          { id: 'overview', label: 'Overview' },
+          { id: 'workflow', label: 'Target Account Journey' },
+          { id: 'capabilities', label: `Capabilities (${data.capabilities.length})` },
+          { id: 'challenges', label: 'Friction Points' },
+          { id: 'faq', label: 'FAQ' },
+          { id: 'metrics', label: 'Numeric KPIs' }
+        ];
+      case 'b2c-consumer':
+        return [
+          { id: 'overview', label: 'Overview' },
+          { id: 'workflow', label: 'Consumer Funnel' },
+          { id: 'challenges', label: 'Cart Friction' },
+          { id: 'capabilities', label: `Capabilities (${data.capabilities.length})` },
+          { id: 'faq', label: 'FAQ' },
+          { id: 'metrics', label: 'Numeric KPIs' }
+        ];
+      case 'enterprise-scale':
+        return [
+          { id: 'overview', label: 'Overview' },
+          { id: 'challenges', label: 'Departmental Silos' },
+          { id: 'capabilities', label: `Capabilities (${data.capabilities.length})` },
+          { id: 'workflow', label: 'Operating Model' },
+          { id: 'faq', label: 'FAQ' },
+          { id: 'metrics', label: 'Numeric KPIs' }
+        ];
+      case 'midmarket-ops':
+        return [
+          { id: 'overview', label: 'Overview' },
+          { id: 'capabilities', label: `Capabilities (${data.capabilities.length})` },
+          { id: 'workflow', label: 'Sales Cadence' },
+          { id: 'challenges', label: 'Founder Bottlenecks' },
+          { id: 'faq', label: 'FAQ' },
+          { id: 'metrics', label: 'Numeric KPIs' }
+        ];
+      case 'startup-pmf':
+        return [
+          { id: 'overview', label: 'Overview' },
+          { id: 'challenges', label: 'Runway Drag' },
+          { id: 'workflow', label: 'Iteration Loops' },
+          { id: 'capabilities', label: `Capabilities (${data.capabilities.length})` },
+          { id: 'faq', label: 'FAQ' },
+          { id: 'metrics', label: 'Numeric KPIs' }
+        ];
+      case 'saas-lifecycle':
+        return [
+          { id: 'overview', label: 'Overview' },
+          { id: 'workflow', label: 'Retention Loop' },
+          { id: 'capabilities', label: `Capabilities (${data.capabilities.length})` },
+          { id: 'challenges', label: 'Churn Friction' },
+          { id: 'faq', label: 'FAQ' },
+          { id: 'metrics', label: 'Numeric KPIs' }
         ];
       case 'connected-systems':
       case 'strategic-roadmap':

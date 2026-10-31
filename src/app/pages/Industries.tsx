@@ -255,9 +255,9 @@ export default function Industries() {
               { href: '#pathways', label: 'Industry Pathways' },
               { href: '#how-it-works', label: 'How It Works' },
               { href: '#capabilities', label: 'Capabilities' },
-              { href: '#metrics', label: 'Metrics' },
               { href: '#approach', label: 'Approach' },
               { href: '#faq', label: 'FAQ' },
+              { href: '#metrics', label: 'Metrics' },
             ].map(item => (
               <a key={item.href} href={item.href} className="flex-shrink-0 px-4 py-1.5 rounded-lg text-xs font-mono font-semibold text-slate-600 hover:text-blue-700 hover:bg-blue-50 transition-all whitespace-nowrap">
                 {item.label}
@@ -455,7 +455,76 @@ export default function Industries() {
         </div>
       </section>
 
-      {/* ── SECTION 5: METRICS ── */}
+      {/* ── SECTION 6: APPROACH ── */}
+      <section id="approach" className="py-10 sm:py-14 bg-white scroll-mt-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 sm:mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-50 border border-violet-200 text-violet-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
+              <Settings className="w-3.5 h-3.5" /> Implementation
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading tracking-tight mb-4">
+              Start With the Highest-Value Opportunity.
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 max-w-3xl mx-auto">
+              A four-stage approach that prioritizes measurable impact before scaling. Scope, timing, integration requirements, and expected value depend on the specific organization.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { step: '01', title: 'Diagnose', desc: 'Understand the current revenue system: data availability, workflow bottlenecks, team capacity, system integrations, and the specific constraints that limit performance.', icon: Search, color: 'bg-blue-600' },
+              { step: '02', title: 'Prioritize', desc: 'Identify a high-value, measurable use case. Evaluate business impact, data readiness, implementation complexity, risk, and strategic fit before committing resources.', icon: BarChart3, color: 'bg-indigo-600' },
+              { step: '03', title: 'Implement', desc: 'Configure the relevant workflows, integrations, governance controls, and human oversight mechanisms. Establish the baseline measurement before deployment.', icon: Settings, color: 'bg-violet-600' },
+              { step: '04', title: 'Evaluate & Expand', desc: 'Compare results against the pre-implementation baseline. Document what worked, what limitations emerged, and whether the use case justifies expansion or adjustment.', icon: TrendingUp, color: 'bg-emerald-600' },
+            ].map(stage => {
+              const Icon = stage.icon;
+              return (
+                <div key={stage.step} className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                  <div className={`w-10 h-10 rounded-xl ${stage.color} flex items-center justify-center mb-4`}>
+                    <Icon className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest mb-1">Stage {stage.step}</div>
+                  <h3 className="text-base font-extrabold text-slate-900 mb-3">{stage.title}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">{stage.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 7: FAQ ── */}
+      <section id="faq" className="py-10 sm:py-14 bg-slate-50 scroll-mt-24">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-600 font-mono text-xs font-bold uppercase tracking-widest mb-4">
+              <HelpCircle className="w-3.5 h-3.5" /> Common Questions
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading tracking-tight mb-4">
+              Frequently Asked Questions
+            </h2>
+          </div>
+          <div className="space-y-3">
+            {faqs.map((faq, i) => (
+              <div key={i} className="rounded-2xl border border-slate-200 overflow-hidden">
+                <button
+                  onClick={() => setActiveFaq(activeFaq === i ? null : i)}
+                  className="w-full flex items-center justify-between px-6 py-4 text-left bg-white hover:bg-slate-50 transition-colors"
+                >
+                  <span className="text-sm font-bold text-slate-900 pr-4">{faq.q}</span>
+                  <ChevronRight className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200 ${activeFaq === i ? 'rotate-90' : ''}`} />
+                </button>
+                {activeFaq === i && (
+                  <div className="px-6 pb-5 bg-white">
+                    <p className="text-sm text-slate-600 leading-relaxed">{faq.a}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 7: METRICS ── */}
       <section id="metrics" className="py-10 sm:py-14 bg-white scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -517,75 +586,7 @@ export default function Industries() {
         </div>
       </section>
 
-      {/* ── SECTION 6: APPROACH ── */}
-      <section id="approach" className="py-10 sm:py-14 bg-slate-50 scroll-mt-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 sm:mb-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-50 border border-violet-200 text-violet-700 font-mono text-xs font-bold uppercase tracking-widest mb-4">
-              <Settings className="w-3.5 h-3.5" /> Implementation
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading tracking-tight mb-4">
-              Start With the Highest-Value Opportunity.
-            </h2>
-            <p className="text-base sm:text-lg text-slate-600 max-w-3xl mx-auto">
-              A four-stage approach that prioritizes measurable impact before scaling. Scope, timing, integration requirements, and expected value depend on the specific organization.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { step: '01', title: 'Diagnose', desc: 'Understand the current revenue system: data availability, workflow bottlenecks, team capacity, system integrations, and the specific constraints that limit performance.', icon: Search, color: 'bg-blue-600' },
-              { step: '02', title: 'Prioritize', desc: 'Identify a high-value, measurable use case. Evaluate business impact, data readiness, implementation complexity, risk, and strategic fit before committing resources.', icon: BarChart3, color: 'bg-indigo-600' },
-              { step: '03', title: 'Implement', desc: 'Configure the relevant workflows, integrations, governance controls, and human oversight mechanisms. Establish the baseline measurement before deployment.', icon: Settings, color: 'bg-violet-600' },
-              { step: '04', title: 'Evaluate & Expand', desc: 'Compare results against the pre-implementation baseline. Document what worked, what limitations emerged, and whether the use case justifies expansion or adjustment.', icon: TrendingUp, color: 'bg-emerald-600' },
-            ].map(stage => {
-              const Icon = stage.icon;
-              return (
-                <div key={stage.step} className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-                  <div className={`w-10 h-10 rounded-xl ${stage.color} flex items-center justify-center mb-4`}>
-                    <Icon className="w-5 h-5 text-white" />
-                  </div>
-                  <div className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest mb-1">Stage {stage.step}</div>
-                  <h3 className="text-base font-extrabold text-slate-900 mb-3">{stage.title}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{stage.desc}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION 7: FAQ ── */}
-      <section id="faq" className="py-10 sm:py-14 bg-white scroll-mt-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-600 font-mono text-xs font-bold uppercase tracking-widest mb-4">
-              <HelpCircle className="w-3.5 h-3.5" /> Common Questions
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading tracking-tight mb-4">
-              Frequently Asked Questions
-            </h2>
-          </div>
-          <div className="space-y-3">
-            {faqs.map((faq, i) => (
-              <div key={i} className="rounded-2xl border border-slate-200 overflow-hidden">
-                <button
-                  onClick={() => setActiveFaq(activeFaq === i ? null : i)}
-                  className="w-full flex items-center justify-between px-6 py-4 text-left bg-white hover:bg-slate-50 transition-colors"
-                >
-                  <span className="text-sm font-bold text-slate-900 pr-4">{faq.q}</span>
-                  <ChevronRight className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200 ${activeFaq === i ? 'rotate-90' : ''}`} />
-                </button>
-                {activeFaq === i && (
-                  <div className="px-6 pb-5 bg-white">
-                    <p className="text-sm text-slate-600 leading-relaxed">{faq.a}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      
       {/* ── FINAL CTA ── */}
       <section className="py-10 sm:py-14 bg-slate-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

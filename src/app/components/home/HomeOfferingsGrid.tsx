@@ -11,14 +11,9 @@ import {
     ShieldCheck, 
     ArrowRight,
     ArrowUpRight,
-    Activity,
     Layers,
-    CheckCircle2,
-    Compass,
-    Workflow,
-    Sliders,
-    Cpu,
-    GitMerge
+    Sparkles,
+    CheckCircle2
 } from 'lucide-react';
 import { trackEvent } from '../../../lib/analytics';
 
@@ -30,39 +25,10 @@ export default function HomeOfferingsGrid() {
             title: 'Profit Pool Discovery',
             path: '/offerings/profit-pool-discovery',
             description: 'Identify attractive market opportunities, customer segments, demand signals, and areas where the business can focus its growth efforts.',
-            visualBadge: 'Market Opportunity Map',
+            badge: 'Market Discovery',
             icon: Radar,
-            color: 'text-blue-600 bg-blue-50 border-blue-200',
-            capabilityTag: 'Strategic Whitespace Mapping',
-            graphic: (
-                <div className="h-28 w-full bg-slate-950 rounded-xl p-3 flex flex-col justify-between border border-slate-800 text-white font-mono text-[10px]">
-                    <div className="flex justify-between items-center text-slate-400">
-                        <span className="flex items-center gap-1.5">
-                            <Compass className="w-3.5 h-3.5 text-blue-400" />
-                            <span>MARKET OPPORTUNITY MAP</span>
-                        </span>
-                        <span className="text-blue-400 font-bold">SEGMENT FIT</span>
-                    </div>
-                    <div className="grid grid-cols-3 gap-1.5 py-1">
-                        <div className="bg-slate-900 border border-slate-800 rounded p-1.5 text-center">
-                            <span className="text-[9px] text-slate-400 block">SEGMENT</span>
-                            <span className="text-[10px] font-bold text-white">Enterprise</span>
-                        </div>
-                        <div className="bg-slate-900 border border-blue-500/40 rounded p-1.5 text-center">
-                            <span className="text-[9px] text-blue-400 block">DEMAND</span>
-                            <span className="text-[10px] font-bold text-blue-300">High Intent</span>
-                        </div>
-                        <div className="bg-slate-900 border border-slate-800 rounded p-1.5 text-center">
-                            <span className="text-[9px] text-slate-400 block">PRIORITY</span>
-                            <span className="text-[10px] font-bold text-emerald-400">P1 Focus</span>
-                        </div>
-                    </div>
-                    <div className="flex justify-between text-slate-400 text-[9px] border-t border-slate-800/80 pt-1">
-                        <span>Whitespace Detection</span>
-                        <span className="text-emerald-400">Signal Verified</span>
-                    </div>
-                </div>
-            )
+            image: '/images/hero-profit-pool.png',
+            tag: 'Whitespace TAM'
         },
         {
             id: 'demand-engineering',
@@ -70,32 +36,10 @@ export default function HomeOfferingsGrid() {
             title: 'Demand Engineering',
             path: '/offerings/demand-engineering',
             description: 'Improve customer targeting, prospecting, campaign coordination, qualification, and lead progression to support a more consistent flow of qualified demand.',
-            visualBadge: 'Demand Generation Workflow',
+            badge: 'Pipeline Generation',
             icon: Target,
-            color: 'text-indigo-600 bg-indigo-50 border-indigo-200',
-            capabilityTag: 'Targeted Pipeline Generation',
-            graphic: (
-                <div className="h-28 w-full bg-slate-950 rounded-xl p-3 flex flex-col justify-between border border-slate-800 text-white font-mono text-[10px]">
-                    <div className="flex justify-between items-center text-slate-400">
-                        <span className="flex items-center gap-1.5">
-                            <Workflow className="w-3.5 h-3.5 text-indigo-400" />
-                            <span>CAMPAIGN WORKFLOW</span>
-                        </span>
-                        <span className="text-indigo-400 font-bold">PIPELINE FLOW</span>
-                    </div>
-                    <div className="flex items-center justify-between py-1 px-1">
-                        <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-[9px] text-slate-300">Target ICP</span>
-                        <span className="text-slate-600">&rarr;</span>
-                        <span className="px-2 py-0.5 rounded bg-indigo-950 border border-indigo-800 text-[9px] text-indigo-300">Intent Intake</span>
-                        <span className="text-slate-600">&rarr;</span>
-                        <span className="px-2 py-0.5 rounded bg-blue-950 border border-blue-800 text-[9px] text-blue-300">Qualification</span>
-                    </div>
-                    <div className="flex justify-between text-slate-400 text-[9px] border-t border-slate-800/80 pt-1">
-                        <span>Campaign Coordination</span>
-                        <span className="text-indigo-400">Lead Progression</span>
-                    </div>
-                </div>
-            )
+            image: '/images/demand-pulse-dashboard.png',
+            tag: 'Inbound Flow'
         },
         {
             id: 'sales-acceleration',
@@ -103,39 +47,10 @@ export default function HomeOfferingsGrid() {
             title: 'Sales Acceleration',
             path: '/offerings/sales-acceleration',
             description: 'Help sales teams prioritize opportunities, prepare for conversations, improve follow-up, and make sales execution more informed and efficient.',
-            visualBadge: 'Sales Process Workflow',
+            badge: 'Deal Velocity',
             icon: Bot,
-            color: 'text-emerald-600 bg-emerald-50 border-emerald-200',
-            capabilityTag: 'Deal Execution & Guidance',
-            graphic: (
-                <div className="h-28 w-full bg-slate-950 rounded-xl p-3 flex flex-col justify-between border border-slate-800 text-white font-mono text-[10px]">
-                    <div className="flex justify-between items-center text-slate-400">
-                        <span className="flex items-center gap-1.5">
-                            <Sliders className="w-3.5 h-3.5 text-emerald-400" />
-                            <span>OPPORTUNITY PROGRESSION</span>
-                        </span>
-                        <span className="text-emerald-400 font-bold">DEAL GUIDANCE</span>
-                    </div>
-                    <div className="grid grid-cols-3 gap-1.5 py-1 text-center">
-                        <div className="p-1 rounded bg-slate-900 border border-slate-800">
-                            <div className="text-[8px] text-slate-400">STAGE 1</div>
-                            <div className="text-[9px] font-bold text-white">Account Dossier</div>
-                        </div>
-                        <div className="p-1 rounded bg-slate-900 border border-emerald-500/40">
-                            <div className="text-[8px] text-emerald-400">STAGE 2</div>
-                            <div className="text-[9px] font-bold text-emerald-300">Committee Map</div>
-                        </div>
-                        <div className="p-1 rounded bg-slate-900 border border-slate-800">
-                            <div className="text-[8px] text-slate-400">STAGE 3</div>
-                            <div className="text-[9px] font-bold text-white">Closing Plan</div>
-                        </div>
-                    </div>
-                    <div className="flex justify-between text-slate-400 text-[9px] border-t border-slate-800/80 pt-1">
-                        <span>Follow-up Cadence</span>
-                        <span className="text-emerald-400">Informed Execution</span>
-                    </div>
-                </div>
-            )
+            image: '/images/hero-revenue-acceleration.png',
+            tag: 'Sales Intelligence'
         },
         {
             id: 'revenue-operations',
@@ -143,41 +58,10 @@ export default function HomeOfferingsGrid() {
             title: 'Revenue Operations',
             path: '/offerings/revenue-operations',
             description: 'Connect revenue data, workflows, reporting, forecasting, and operational processes to improve coordination and visibility.',
-            visualBadge: 'Connected Business Systems',
+            badge: 'Unified Systems',
             icon: LineChart,
-            color: 'text-blue-600 bg-blue-50 border-blue-200',
-            capabilityTag: 'Unified Systems & Telemetry',
-            graphic: (
-                <div className="h-28 w-full bg-slate-950 rounded-xl p-3 flex flex-col justify-between border border-slate-800 text-white font-mono text-[10px]">
-                    <div className="flex justify-between items-center text-slate-400">
-                        <span className="flex items-center gap-1.5">
-                            <Cpu className="w-3.5 h-3.5 text-blue-400" />
-                            <span>PROCESS AUTOMATION</span>
-                        </span>
-                        <span className="text-blue-400 font-bold">REVOPS</span>
-                    </div>
-                    <div className="flex items-center justify-between py-1 px-1">
-                        <div className="text-center">
-                            <span className="text-[8px] text-slate-400 block">CRM Data</span>
-                            <div className="w-2 h-2 rounded-full bg-blue-400 mx-auto mt-1" />
-                        </div>
-                        <div className="h-px w-6 bg-slate-700" />
-                        <div className="text-center">
-                            <span className="text-[8px] text-slate-400 block">Workflows</span>
-                            <div className="w-2 h-2 rounded-full bg-indigo-400 mx-auto mt-1" />
-                        </div>
-                        <div className="h-px w-6 bg-slate-700" />
-                        <div className="text-center">
-                            <span className="text-[8px] text-slate-400 block">Forecasting</span>
-                            <div className="w-2 h-2 rounded-full bg-emerald-400 mx-auto mt-1" />
-                        </div>
-                    </div>
-                    <div className="flex justify-between text-slate-400 text-[9px] border-t border-slate-800/80 pt-1">
-                        <span>Zero Data Silos</span>
-                        <span className="text-blue-400">Operational Alignment</span>
-                    </div>
-                </div>
-            )
+            image: '/images/revenue-acceleration-engine.png',
+            tag: 'RevOps Orchestration'
         },
         {
             id: 'customer-success',
@@ -185,32 +69,10 @@ export default function HomeOfferingsGrid() {
             title: 'Customer Success Engine',
             path: '/offerings/customer-success',
             description: 'Support onboarding, adoption, customer health monitoring, retention, renewals, and expansion opportunities.',
-            visualBadge: 'Customer Lifecycle Journey',
+            badge: 'Retention & Growth',
             icon: Users,
-            color: 'text-emerald-600 bg-emerald-50 border-emerald-200',
-            capabilityTag: 'Adoption & Retention Health',
-            graphic: (
-                <div className="h-28 w-full bg-slate-950 rounded-xl p-3 flex flex-col justify-between border border-slate-800 text-white font-mono text-[10px]">
-                    <div className="flex justify-between items-center text-slate-400">
-                        <span className="flex items-center gap-1.5">
-                            <Activity className="w-3.5 h-3.5 text-emerald-400" />
-                            <span>CUSTOMER LIFECYCLE</span>
-                        </span>
-                        <span className="text-emerald-400 font-bold">RETENTION</span>
-                    </div>
-                    <div className="flex items-center justify-between py-1 px-1">
-                        <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-[8px] text-slate-300">Onboarding</span>
-                        <span className="text-slate-600">&rarr;</span>
-                        <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-[8px] text-slate-300">Adoption</span>
-                        <span className="text-slate-600">&rarr;</span>
-                        <span className="px-1.5 py-0.5 rounded bg-emerald-950 border border-emerald-800 text-[8px] text-emerald-300">Renewal &amp; Growth</span>
-                    </div>
-                    <div className="flex justify-between text-slate-400 text-[9px] border-t border-slate-800/80 pt-1">
-                        <span>Health Monitoring</span>
-                        <span className="text-emerald-400">Expansion Signals</span>
-                    </div>
-                </div>
-            )
+            image: '/images/industry-saas.png',
+            tag: 'Account Expansion'
         },
         {
             id: 'gtm-transformation',
@@ -218,32 +80,10 @@ export default function HomeOfferingsGrid() {
             title: 'GTM Transformation',
             path: '/offerings/gtm-transformation',
             description: 'Align market positioning, customer targeting, routes to market, pricing, launch execution, and growth priorities.',
-            visualBadge: 'Go-To-Market Roadmap',
+            badge: 'GTM Alignment',
             icon: Rocket,
-            color: 'text-amber-600 bg-amber-50 border-amber-200',
-            capabilityTag: 'Market-Entry Alignment',
-            graphic: (
-                <div className="h-28 w-full bg-slate-950 rounded-xl p-3 flex flex-col justify-between border border-slate-800 text-white font-mono text-[10px]">
-                    <div className="flex justify-between items-center text-slate-400">
-                        <span className="flex items-center gap-1.5">
-                            <GitMerge className="w-3.5 h-3.5 text-amber-400" />
-                            <span>GTM TRANSFORMATION MATRIX</span>
-                        </span>
-                        <span className="text-amber-400 font-bold">ALIGNMENT</span>
-                    </div>
-                    <div className="flex items-center justify-between py-1 px-1">
-                        <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-[8px] text-slate-300">Positioning</span>
-                        <span className="text-slate-600">&rarr;</span>
-                        <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-[8px] text-slate-300">Pricing</span>
-                        <span className="text-slate-600">&rarr;</span>
-                        <span className="px-1.5 py-0.5 rounded bg-amber-950 border border-amber-800 text-[8px] text-amber-300">Commercial Launch</span>
-                    </div>
-                    <div className="flex justify-between text-slate-400 text-[9px] border-t border-slate-800/80 pt-1">
-                        <span>Route to Market</span>
-                        <span className="text-amber-400">Execution Cadence</span>
-                    </div>
-                </div>
-            )
+            image: '/images/hero-end-to-end-transformation.png',
+            tag: 'Commercial Launch'
         },
         {
             id: 'growth-intelligence',
@@ -251,39 +91,10 @@ export default function HomeOfferingsGrid() {
             title: 'Growth Intelligence',
             path: '/offerings/growth-intelligence',
             description: 'Connect business diagnostics, growth experiments, strategic priorities, and decision support to help teams identify where to improve.',
-            visualBadge: 'Strategy Planning Workspace',
+            badge: 'Decision Support',
             icon: BarChart3,
-            color: 'text-purple-600 bg-purple-50 border-purple-200',
-            capabilityTag: 'Decision Support Architecture',
-            graphic: (
-                <div className="h-28 w-full bg-slate-950 rounded-xl p-3 flex flex-col justify-between border border-slate-800 text-white font-mono text-[10px]">
-                    <div className="flex justify-between items-center text-slate-400">
-                        <span className="flex items-center gap-1.5">
-                            <Layers className="w-3.5 h-3.5 text-purple-400" />
-                            <span>STRATEGY WORKSPACE</span>
-                        </span>
-                        <span className="text-purple-400 font-bold">DECISION SUPPORT</span>
-                    </div>
-                    <div className="grid grid-cols-3 gap-1.5 py-1 text-center">
-                        <div className="bg-slate-900 p-1.5 rounded border border-slate-800">
-                            <span className="text-[8px] text-slate-400 block">DIAGNOSTICS</span>
-                            <span className="text-[9px] font-bold text-white">Systemic Audit</span>
-                        </div>
-                        <div className="bg-slate-900 p-1.5 rounded border border-purple-500/40">
-                            <span className="text-[8px] text-purple-400 block">EXPERIMENTS</span>
-                            <span className="text-[9px] font-bold text-purple-300">Validated</span>
-                        </div>
-                        <div className="bg-slate-900 p-1.5 rounded border border-slate-800">
-                            <span className="text-[8px] text-slate-400 block">DECISIONS</span>
-                            <span className="text-[9px] font-bold text-white">Prioritized</span>
-                        </div>
-                    </div>
-                    <div className="flex justify-between text-slate-400 text-[9px] border-t border-slate-800/80 pt-1">
-                        <span>Continuous Improvement</span>
-                        <span className="text-purple-400">Executive Insight</span>
-                    </div>
-                </div>
-            )
+            image: '/images/hero-data-intelligence.png',
+            tag: 'Strategy Planning'
         },
         {
             id: 'ai-trust-governance',
@@ -291,36 +102,10 @@ export default function HomeOfferingsGrid() {
             title: 'AI Trust & Governance',
             path: '/offerings/ai-trust-governance',
             description: 'Support appropriate AI adoption through governance, risk awareness, oversight, evaluation, and responsible operational controls.',
-            visualBadge: 'Responsible AI Workflow',
+            badge: 'Responsible AI',
             icon: ShieldCheck,
-            color: 'text-blue-600 bg-blue-50 border-blue-200',
-            capabilityTag: 'Operational Governance & Controls',
-            graphic: (
-                <div className="h-28 w-full bg-slate-950 rounded-xl p-3 flex flex-col justify-between border border-slate-800 text-white font-mono text-[10px]">
-                    <div className="flex justify-between items-center text-slate-400">
-                        <span className="flex items-center gap-1.5">
-                            <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
-                            <span>RESPONSIBLE AI WORKFLOW</span>
-                        </span>
-                        <span className="text-emerald-400 font-bold">GOVERNED</span>
-                    </div>
-                    <div className="flex items-center justify-between py-1 px-1">
-                        <div className="p-1.5 rounded bg-slate-900 border border-slate-800 text-center flex-1 mx-1">
-                            <span className="text-[8px] text-slate-400 block">Access Controls</span>
-                        </div>
-                        <div className="p-1.5 rounded bg-slate-900 border border-blue-500/40 text-center flex-1 mx-1">
-                            <span className="text-[8px] text-blue-400 block">Human Oversight</span>
-                        </div>
-                        <div className="p-1.5 rounded bg-slate-900 border border-emerald-500/40 text-center flex-1 mx-1">
-                            <span className="text-[8px] text-emerald-400 block">System Auditing</span>
-                        </div>
-                    </div>
-                    <div className="flex justify-between text-slate-400 text-[9px] border-t border-slate-800/80 pt-1">
-                        <span>Operational Controls</span>
-                        <span className="text-blue-400">Risk Awareness</span>
-                    </div>
-                </div>
-            )
+            image: '/images/home-why-choose.png',
+            tag: 'System Oversight'
         }
     ];
 
@@ -330,8 +115,8 @@ export default function HomeOfferingsGrid() {
                 
                 {/* Header */}
                 <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-blue-700 uppercase font-mono">
-                        <Layers className="w-3.5 h-3.5" />
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-blue-600 font-bold text-xs uppercase tracking-wider shadow-xs border border-slate-200">
+                        <Sparkles className="w-3.5 h-3.5" />
                         <span>The ProfitMachines Platform Suite</span>
                     </div>
 
@@ -344,7 +129,7 @@ export default function HomeOfferingsGrid() {
                     </p>
                 </div>
 
-                {/* 8 Offerings Responsive Grid */}
+                {/* 8 Offerings Grid with Real Visual Image Banners */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                     {offerings.map((item) => {
                         const Icon = item.icon;
@@ -353,50 +138,58 @@ export default function HomeOfferingsGrid() {
                                 key={item.id}
                                 to={item.path}
                                 onClick={() => trackEvent({ eventName: `OFFERING_CARD_CLICK_${item.id.toUpperCase()}` })}
-                                className="group p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                                className="group flex flex-col justify-between rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:shadow-2xl hover:shadow-blue-600/10 hover:border-blue-400 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden"
                             >
-                                <div className="space-y-4">
-                                    {/* Card Top: Icon & Visual Badge */}
-                                    <div className="flex items-center justify-between">
-                                        <div className={`p-2.5 rounded-xl border ${item.color} group-hover:scale-105 transition-transform`}>
-                                            <Icon className="w-5 h-5" />
+                                <div>
+                                    {/* High-Quality Visual Image Header (No human faces) */}
+                                    <div className="relative h-44 w-full overflow-hidden bg-slate-950">
+                                        <img 
+                                            src={item.image} 
+                                            alt={item.title} 
+                                            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90"
+                                            loading="lazy"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
+                                        
+                                        {/* Tag Badge */}
+                                        <div className="absolute top-3 left-3 bg-slate-900/90 backdrop-blur-md px-2.5 py-1 rounded-md border border-slate-700/80 text-[10px] font-mono font-bold text-blue-400">
+                                            {item.tag}
                                         </div>
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-mono">
-                                                {item.visualBadge}
-                                            </span>
-                                            <span className="text-xs font-black font-mono text-slate-400">
-                                                {item.num}
-                                            </span>
+
+                                        {/* Slide Number */}
+                                        <div className="absolute top-3 right-3 text-[10px] font-mono font-bold text-slate-400 bg-slate-900/80 px-2 py-0.5 rounded border border-slate-700">
+                                            {item.num}
+                                        </div>
+
+                                        {/* Bottom Icon Box */}
+                                        <div className="absolute bottom-3 right-3 w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center shadow-md">
+                                            <Icon className="w-4 h-4" />
                                         </div>
                                     </div>
 
-                                    {/* Visual Diagram Element */}
-                                    <div className="pt-1">
-                                        {item.graphic}
-                                    </div>
+                                    {/* Content Body */}
+                                    <div className="p-6">
+                                        <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-600 mb-1 block font-mono">
+                                            // {item.badge}
+                                        </span>
 
-                                    {/* Title & Description */}
-                                    <div>
-                                        <h3 className="text-base font-extrabold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors flex items-center justify-between">
+                                        <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2.5 leading-snug flex items-center justify-between">
                                             <span>{item.title}</span>
-                                            <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                                            <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0 ml-1" />
                                         </h3>
-                                        <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
+
+                                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal line-clamp-3">
                                             {item.description}
                                         </p>
                                     </div>
                                 </div>
 
-                                {/* Card Footer: Capability Tag & Link */}
-                                <div className="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                                    <span className="font-semibold text-slate-700 font-mono text-[11px]">
-                                        {item.capabilityTag}
-                                    </span>
-                                    <span className="font-bold text-blue-600 group-hover:underline inline-flex items-center gap-1">
-                                        <span>View</span>
-                                        <ArrowRight className="w-3 h-3" />
-                                    </span>
+                                {/* Card Footer Link */}
+                                <div className="px-6 pb-6 pt-2">
+                                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-600">
+                                        <span>Explore Offering</span>
+                                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                    </div>
                                 </div>
                             </Link>
                         );

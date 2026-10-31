@@ -570,11 +570,10 @@ export default function HomeFeatureSlider() {
                         </div>
                     </div>
 
-                    {/* Right: Slide Controls, Dots & Arrows (No numerical counter) */}
-                    <div className="flex items-center gap-3">
-                        
+                    {/* Right: Slide Navigation Dots */}
+                    <div className="flex items-center gap-2">
                         {/* 8 Small Dot Indicators with Active Progress Fill */}
-                        <div className="flex items-center gap-1.5">
+                        <div className="flex items-center gap-1.5 bg-slate-100/80 px-3 py-1.5 rounded-full border border-slate-200">
                             {homeSliders.map((s, dotIdx) => (
                                 <button
                                     key={s.id}
@@ -596,39 +595,6 @@ export default function HomeFeatureSlider() {
                                 </button>
                             ))}
                         </div>
-
-                        {/* Navigation Controls: Play/Pause, Prev, Next */}
-                        <div className="flex items-center bg-white border border-slate-200 rounded-lg p-0.5 shadow-xs">
-                            <button
-                                onClick={() => setIsPlaying(!isPlaying)}
-                                className="p-1.5 text-slate-500 hover:text-slate-900 rounded-md hover:bg-slate-100 transition-colors cursor-pointer"
-                                title={isPlaying ? "Pause autoplay" : "Start autoplay"}
-                                aria-label={isPlaying ? "Pause autoplay" : "Start autoplay"}
-                            >
-                                {isPlaying ? <Pause className="w-3.5 h-3.5 text-blue-600" /> : <Play className="w-3.5 h-3.5 text-emerald-600" />}
-                            </button>
-                            
-                            <div className="h-3 w-px bg-slate-200 mx-0.5" />
-
-                            <button
-                                onClick={prevSlide}
-                                className="p-1.5 text-slate-700 hover:text-blue-600 rounded-md hover:bg-slate-100 transition-colors cursor-pointer"
-                                aria-label="Previous slide"
-                                title="Previous slide"
-                            >
-                                <ChevronLeft className="w-4 h-4" />
-                            </button>
-
-                            <button
-                                onClick={nextSlide}
-                                className="p-1.5 text-slate-700 hover:text-blue-600 rounded-md hover:bg-slate-100 transition-colors cursor-pointer"
-                                aria-label="Next slide"
-                                title="Next slide"
-                            >
-                                <ChevronRight className="w-4 h-4" />
-                            </button>
-                        </div>
-
                     </div>
                 </div>
 

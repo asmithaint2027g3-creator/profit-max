@@ -1,5 +1,36 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, useParams } from 'react-router-dom';
-import { Suspense, lazy } from 'react';
+import React, { Suspense, lazy as reactLazy } from 'react';
+
+// Auto-recovery wrapper for lazy chunk loading across deployments
+function lazy<T extends React.ComponentType<any>>(
+  factory: () => Promise<{ default: T }>
+): React.LazyExoticComponent<T> {
+  return reactLazy(async () => {
+    try {
+      return await factory();
+    } catch (error: any) {
+      console.warn("Dynamic import chunk load failure:", error);
+      const msg = error?.message || "";
+      const isChunkError =
+        msg.includes("dynamically imported module") ||
+        msg.includes("Loading chunk") ||
+        msg.includes("Failed to fetch") ||
+        msg.includes("Importing a module script failed");
+
+      if (isChunkError) {
+        const reloadKey = "pm_chunk_reload";
+        const lastReload = sessionStorage.getItem(reloadKey);
+        const now = Date.now();
+        if (!lastReload || now - parseInt(lastReload, 10) > 8000) {
+          sessionStorage.setItem(reloadKey, now.toString());
+          window.location.reload();
+          return new Promise<{ default: T }>(() => {});
+        }
+      }
+      throw error;
+    }
+  });
+}
 import Navigation from './components/Navigation';
 import ChatBot from './components/ChatBot';
 import Footer from './components/Footer';

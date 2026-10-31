@@ -13,7 +13,7 @@ import HomeIndustriesSection from '../components/home/HomeIndustriesSection';
 import HomeGlobalAccelerationSection from '../components/home/HomeGlobalAccelerationSection';
 import HomeCaseStudiesSection from '../components/home/HomeCaseStudiesSection';
 import HomeAboutSection from '../components/home/HomeAboutSection';
-import HomeConversionSection from '../components/home/HomeConversionSection';
+import FinalCTASection from '../components/home/FinalCTASection';
 
 export default function Home() {
     const location = useLocation();
@@ -57,8 +57,8 @@ export default function Home() {
             {/* Section 10 — About ProfitMachines */}
             <HomeAboutSection />
 
-            {/* Section 11 — Final Conversion Section */}
-            <HomeConversionSection />
+            {/* Section 11 — Final Conversion Section (Exact Design from Image 5) */}
+            <FinalCTASection />
 
             {/* Section 12 (Footer) is rendered persistently in App.tsx */}
         </main>

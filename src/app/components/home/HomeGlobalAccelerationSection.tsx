@@ -11,13 +11,12 @@ import {
     CheckCircle2,
     ShieldCheck,
     Building2,
-    MapPin
+    MapPin,
+    Sparkles
 } from 'lucide-react';
 import { trackEvent } from '../../../lib/analytics';
 
 export default function HomeGlobalAccelerationSection() {
-    const [activeRegion, setActiveRegion] = useState<string>('Americas');
-
     const verifiedTracks = [
         {
             title: "Global Market Access",
@@ -46,32 +45,8 @@ export default function HomeGlobalAccelerationSection() {
         {
             title: "Global Revenue Engines",
             path: "/global-acceleration/revenue-engines",
-            summary: "Establish continuous operational telemetry and multi-region RevOps alignment across distributed commercial teams.",
+            summary: "Establish operational coordination and multi-region RevOps alignment across distributed commercial teams.",
             badge: "Operational Alignment"
-        }
-    ];
-
-    const regions = [
-        {
-            id: 'Americas',
-            label: 'North America & LatAm',
-            focus: 'Enterprise Tech & Financial Services Expansion',
-            indicator: 'Tier 1 Priority',
-            color: 'text-blue-500'
-        },
-        {
-            id: 'EMEA',
-            label: 'Europe, Middle East & Africa',
-            focus: 'Cross-Border Compliance & Distributed Distribution',
-            indicator: 'Regulated Scale',
-            color: 'text-indigo-500'
-        },
-        {
-            id: 'APAC',
-            label: 'Asia-Pacific Markets',
-            focus: 'High-Velocity Manufacturing & Regional Supply Networks',
-            indicator: 'Fast-Growth Demand',
-            color: 'text-emerald-500'
         }
     ];
 
@@ -81,7 +56,7 @@ export default function HomeGlobalAccelerationSection() {
                 
                 {/* Header */}
                 <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-blue-700 uppercase font-mono">
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 text-blue-700 font-bold text-xs uppercase tracking-wider border border-blue-100 shadow-xs">
                         <Globe className="w-3.5 h-3.5" />
                         <span>Cross-Border Commercial Strategy</span>
                     </div>
@@ -91,117 +66,68 @@ export default function HomeGlobalAccelerationSection() {
                     </h2>
 
                     <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
-                        Introduce the verified capabilities that help businesses assess market opportunities, align customer and market priorities, plan go-to-market activities, coordinate execution, and measure performance.
+                        Introduce verified capabilities that help businesses assess market opportunities, align customer and market priorities, plan go-to-market activities, coordinate execution, and measure progress.
                     </p>
                 </div>
 
-                {/* Split Composition: Global Opportunity Interface + Verified Expansion Tracks */}
+                {/* Split Composition: Left Clean Corporate Image Panel + Right Verified Tracks */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
                     
-                    {/* Left: Global Opportunity Planning Interface Visual */}
-                    <div className="lg:col-span-7">
-                        <div className="rounded-2xl bg-slate-900 text-white border border-slate-800 shadow-xl overflow-hidden">
-                            
-                            {/* Window Header */}
-                            <div className="px-5 py-3.5 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
-                                <div className="flex items-center gap-2 font-mono text-xs text-slate-400">
-                                    <Globe className="w-4 h-4 text-blue-400" />
-                                    <span>Market Expansion Assessment Matrix</span>
-                                </div>
-                                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                                    CROSS-BORDER MODEL
-                                </span>
-                            </div>
-
-                            {/* World Clusters Map Representation */}
-                            <div className="p-6 space-y-6">
+                    {/* Left: High-Quality Strategy Visual Panel (No human faces) */}
+                    <div className="lg:col-span-6">
+                        <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-slate-900 relative group">
+                            <div className="relative h-80 sm:h-96 w-full overflow-hidden">
+                                <img 
+                                    src="/images/company-hero.png" 
+                                    alt="Global Business Expansion Strategy" 
+                                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90"
+                                    loading="lazy"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
                                 
-                                {/* Region Selector Tabs */}
-                                <div className="grid grid-cols-3 gap-2">
-                                    {regions.map((reg) => (
-                                        <button
-                                            key={reg.id}
-                                            onClick={() => setActiveRegion(reg.id)}
-                                            className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
-                                                activeRegion === reg.id
-                                                    ? 'bg-slate-800 border-blue-500 text-white shadow-xs'
-                                                    : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:bg-slate-800/40 hover:text-slate-200'
-                                            }`}
-                                        >
-                                            <div className="text-xs font-bold">{reg.id}</div>
-                                            <div className="text-[10px] font-mono text-slate-400 truncate mt-0.5">{reg.indicator}</div>
-                                        </button>
-                                    ))}
+                                <div className="absolute top-4 left-4 bg-slate-900/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-slate-700/80 text-xs font-mono font-bold text-blue-400 flex items-center gap-2">
+                                    <Globe className="w-3.5 h-3.5 text-blue-400" />
+                                    <span>Market Expansion Framework</span>
                                 </div>
-
-                                {/* Abstract Connected Territory Routes Matrix */}
-                                <div className="p-5 rounded-xl bg-slate-950 border border-slate-800 space-y-4">
-                                    <div className="flex items-center justify-between text-xs font-mono">
-                                        <span className="text-slate-400">TERRITORY CORRIDOR</span>
-                                        <span className="text-emerald-400">FEASIBILITY: 94.6%</span>
-                                    </div>
-
-                                    {/* Visual Connection Nodes */}
-                                    <div className="relative py-4">
-                                        <div className="flex items-center justify-between relative z-10 text-center">
-                                            <div className="p-3 rounded-xl bg-slate-900 border border-blue-500/40">
-                                                <div className="text-[10px] font-mono text-slate-400">ORIGIN</div>
-                                                <div className="text-xs font-bold text-white mt-0.5">Primary TAM</div>
-                                            </div>
-                                            
-                                            <div className="flex-1 px-4 flex items-center justify-center">
-                                                <div className="w-full h-0.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-500 relative">
-                                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2 py-0.5 rounded bg-slate-900 border border-slate-700 text-[9px] font-mono text-blue-300">
-                                                        Synchronized Route
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="p-3 rounded-xl bg-slate-900 border border-emerald-500/40">
-                                                <div className="text-[10px] font-mono text-slate-400">DESTINATION</div>
-                                                <div className="text-xs font-bold text-emerald-400 mt-0.5">{activeRegion} Target</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="grid grid-cols-2 gap-3 pt-2 text-[11px] font-mono">
-                                        <div className="p-2 rounded bg-slate-900/60 border border-slate-800">
-                                            <span className="text-slate-400 block text-[9px]">GTM READINESS</span>
-                                            <span className="font-bold text-white">Full Compliance Alignment</span>
-                                        </div>
-                                        <div className="p-2 rounded bg-slate-900/60 border border-slate-800">
-                                            <span className="text-slate-400 block text-[9px]">PARTNER ECOSYSTEM</span>
-                                            <span className="font-bold text-emerald-400">Channel Integration Active</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="text-[11px] text-slate-400 flex items-center justify-between pt-1 font-mono">
-                                    <span>Methodology: Rigorous commercial validation</span>
-                                    <span className="text-slate-500">No fictional offices implied</span>
-                                </div>
-
                             </div>
 
+                            <div className="p-6 bg-slate-950 border-t border-slate-800 text-white space-y-3">
+                                <div className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">
+                                    COORDINATED TERRITORY ROADMAP
+                                </div>
+                                <h3 className="text-lg font-bold text-white">
+                                    Strategic Territory Assessment &amp; Ecosystem Alignment
+                                </h3>
+                                <p className="text-xs text-slate-400 leading-relaxed">
+                                    Assess regulatory feasibility, distributor channels, and regional customer readiness before committing commercial expansion capital.
+                                </p>
+                                
+                                <div className="pt-2 flex flex-wrap gap-2 text-[10px] font-mono text-slate-300">
+                                    <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Americas</span>
+                                    <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">EMEA</span>
+                                    <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">APAC</span>
+                                    <span className="px-2 py-0.5 rounded bg-blue-900/40 text-blue-300 border border-blue-800/60">Cross-Border Compliance</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     {/* Right: 5 Verified Expansion Capability Tracks */}
-                    <div className="lg:col-span-5 space-y-3">
+                    <div className="lg:col-span-6 space-y-3">
                         {verifiedTracks.map((track, idx) => (
                             <Link
                                 key={idx}
                                 to={track.path}
                                 onClick={() => trackEvent({ eventName: `GLOBAL_TRACK_CLICK_${track.title.toUpperCase()}` })}
-                                className="group p-4 rounded-xl bg-slate-50 border border-slate-200 hover:bg-white hover:border-blue-400 hover:shadow-md transition-all duration-200 block"
+                                className="group p-5 rounded-2xl bg-slate-50 border border-slate-200 hover:bg-white hover:border-blue-400 hover:shadow-lg transition-all duration-300 block"
                             >
-                                <div className="flex items-center justify-between mb-1">
-                                    <span className="text-[10px] font-mono font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded border border-blue-100">
+                                <div className="flex items-center justify-between mb-1.5">
+                                    <span className="text-[10px] font-mono font-bold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-100">
                                         {track.badge}
                                     </span>
                                     <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                                 </div>
-                                <h3 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                                <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                                     {track.title}
                                 </h3>
                                 <p className="text-xs text-slate-600 mt-1 leading-relaxed">
@@ -229,4 +155,3 @@ export default function HomeGlobalAccelerationSection() {
         </section>
     );
 }
-

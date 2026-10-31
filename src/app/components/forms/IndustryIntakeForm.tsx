@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { CheckCircle2, Send, Lock, ArrowRight } from 'lucide-react';
 
 interface IndustryIntakeFormProps {
-  industryName: string;
+  industryName?: string;
   accentColorClass?: string;
 }
 
 export default function IndustryIntakeForm({
-  industryName,
+  industryName = 'Enterprise Practice',
   accentColorClass = 'text-blue-400'
 }: IndustryIntakeFormProps) {
   const [submitted, setSubmitted] = useState(false);
@@ -50,7 +50,7 @@ export default function IndustryIntakeForm({
     <div className="rounded-2xl bg-slate-900/95 border border-slate-800 p-6 sm:p-8 backdrop-blur-xl shadow-2xl text-left">
       <div className="flex items-center gap-2 mb-6 pb-4 border-b border-slate-800 text-xs font-mono text-slate-400">
         <Lock className="w-3.5 h-3.5 text-blue-400" />
-        <span>CONFIDENTIAL REVENUE ARCHITECTURE INTAKE // {industryName.toUpperCase()}</span>
+        <span>CONFIDENTIAL REVENUE ARCHITECTURE INTAKE // {(industryName || 'Enterprise Practice').toUpperCase()}</span>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">

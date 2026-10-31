@@ -41,7 +41,6 @@ export default function PageTemplate({ data }: PageTemplateProps) {
     }
   }, [location.hash, data]);
 
-  const IntakeFormComponent = data.pageCategory === 'Industry' ? IndustryIntakeForm : OfferingsIntakeForm;
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900">
@@ -660,7 +659,11 @@ export default function PageTemplate({ data }: PageTemplateProps) {
 
             <div className="lg:col-span-7">
               <div className="bg-slate-900/90 rounded-2xl border border-slate-800 p-6 sm:p-8 shadow-2xl">
-                <IntakeFormComponent />
+                {data.pageCategory === 'Industry' ? (
+                  <IndustryIntakeForm industryName={data.title} />
+                ) : (
+                  <OfferingsIntakeForm />
+                )}
               </div>
             </div>
 

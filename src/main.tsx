@@ -77,7 +77,7 @@ class RootErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState
             <p style={{ fontSize: "14px", color: "#94a3b8", lineHeight: "1.6", marginBottom: "24px" }}>
               {isChunkError
                 ? "The application was updated in the background. Please click below to refresh and load the latest release."
-                : "An unexpected error occurred while rendering this page."}
+                : (this.state.error?.message || "An unexpected error occurred while rendering this page.")}
             </p>
             <button
               onClick={() => {

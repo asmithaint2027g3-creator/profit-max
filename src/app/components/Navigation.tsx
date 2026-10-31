@@ -2878,10 +2878,10 @@ export default function Navigation() {
             {currentMenu && currentMenu.categories && currentMenu.categories.length > 0 && currentCategory && (() => {
                 const activeConfig = menuPresentationConfigs[currentMenu.id] || menuPresentationConfigs['offerings'];
                 const categoryConfig = (offeringsArchitecture.find(c => c.id === currentCategory.id) || industriesArchitecture.find(c => c.id === currentCategory.id)) as any;
-                const displayOutcomeBadge = categoryConfig?.keyRevenueOutcome || activeConfig.outcomeBadge;
-                const displayRecommendedFor = categoryConfig?.recommendedIndustries || activeConfig.recommendedFor;
-                const displayBusinessImpacts = categoryConfig?.businessImpacts || activeConfig.businessImpacts;
-                const allLinks = currentCategory.columns ? currentCategory.columns.flatMap(col => col.cards) : [];
+                const displayOutcomeBadge = categoryConfig?.keyRevenueOutcome || activeConfig?.outcomeBadge || '';
+                const displayRecommendedFor = categoryConfig?.recommendedIndustries || categoryConfig?.recommendedAudience || activeConfig?.recommendedFor || [];
+                const displayBusinessImpacts = categoryConfig?.businessImpacts || activeConfig?.businessImpacts || [];
+                const allLinks = currentCategory?.columns ? currentCategory.columns.flatMap((col: any) => col.cards || []) : [];
 
                 return (
                     <div

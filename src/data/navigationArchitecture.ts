@@ -2,7 +2,8 @@ import {
   Search, Zap, TrendingUp, Gauge, Workflow, HeartPulse, Eye, ShieldCheck,
   Target, ShoppingBag, Building2, Rocket, Layers, Activity, Server, Cpu,
   BarChart3, LineChart, Globe, DollarSign, Users, Scale, Sliders, Box,
-  Sparkles, RefreshCw, UserCheck, HeartHandshake, GitMerge, Lock, Radar
+  Sparkles, RefreshCw, UserCheck, HeartHandshake, GitMerge, Lock, Radar,
+  Compass, Shield
 } from 'lucide-react';
 
 export interface OfferingCapabilityItem {

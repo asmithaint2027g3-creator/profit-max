@@ -12,6 +12,7 @@ import {
 import { PageContentData } from '../../types/offeringsIndustries';
 import OfferingsIntakeForm from '../forms/OfferingsIntakeForm';
 import IndustryIntakeForm from '../forms/IndustryIntakeForm';
+import { getMetricBenchmark, getCapabilityKpiBenchmark } from '../../data/kpiBenchmarks';
 
 export type PageLayoutVariant =
   | 'market-strategy'
@@ -52,17 +53,49 @@ export default function PageTemplate({
     ? data.capabilities
     : data.capabilities.filter(c => c.groupName === selectedGroup);
 
-  // Sync hash with expanded capability and scroll
+  // Sync hash with expanded capability, group selection, and smooth scroll
   useEffect(() => {
     document.title = `${data.title} | ProfitMachines ${data.pageCategory}`;
     if (location.hash) {
-      const hashId = location.hash.replace(/^#/, '');
-      const match = data.capabilities.find(c => c.id.toLowerCase() === hashId.toLowerCase());
+      const rawHash = location.hash.replace(/^#/, '');
+      const hashId = decodeURIComponent(rawHash).toLowerCase();
+
+      // Check if hash matches a capability
+      const match = data.capabilities.find(c => c.id.toLowerCase() === hashId);
       if (match) {
+        setSelectedGroup('All'); // Prevent capability being hidden by filter
         setExpandedCapId(match.id);
       }
+
+      // Smooth scroll with sticky navbar offset (main nav + sub nav + breathing room)
+      const timer = setTimeout(() => {
+        const el = document.getElementById(match ? match.id : rawHash) ||
+                   document.getElementById(hashId) ||
+                   document.querySelector(`[data-section-id="${rawHash}"]`);
+        if (el) {
+          const navOffset = 115;
+          const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+          const offsetPosition = Math.max(0, elementPosition - navOffset);
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      }, 150);
+
+      return () => clearTimeout(timer);
     }
-  }, [location.hash, data]);
+  }, [location.pathname, location.hash, data]);
+
+  // Smooth scroll handler for sticky subnav links
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const el = document.getElementById(targetId);
+    if (el) {
+      const navOffset = 115;
+      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = Math.max(0, elementPosition - navOffset);
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      window.history.pushState(null, '', `#${targetId}`);
+    }
+  };
 
   // Sub-nav label helpers
   const isOffering = data.pageCategory === 'Offering';
@@ -73,7 +106,7 @@ export default function PageTemplate({
 
   // 1. Challenges Section
   const renderChallenges = () => (
-    <section id="challenges" key="challenges" className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200 scroll-mt-20">
+    <section id="challenges" key="challenges" className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200 scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-10">
           <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
@@ -98,38 +131,27 @@ export default function PageTemplate({
                   <span className="w-7 h-7 rounded-lg bg-red-50 text-red-600 text-xs font-mono font-bold flex items-center justify-center border border-red-100">
                     !
                   </span>
-                  <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider font-semibold">
-                    Structural Constraint
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold">
+                    Root Constraint
                   </span>
                 </div>
-
-                <h3 className="text-base sm:text-lg font-bold text-slate-900 font-heading mb-2">
+                <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-2 font-heading">
                   {ch.title}
                 </h3>
-
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
-                  {ch.situation}
-                </p>
-
-                <div className="space-y-2.5 pt-3 border-t border-slate-100 text-xs text-slate-600">
-                  <div>
-                    <span className="font-semibold text-slate-800">Commercial Consequence:</span>{' '}
-                    <span>{ch.commercialConsequence}</span>
-                  </div>
-                  <div>
-                    <span className="font-semibold text-slate-800">Why Legacy Methods Fail:</span>{' '}
-                    <span>{ch.whyTraditionalMethodsFail}</span>
-                  </div>
+                <div className="space-y-3 text-xs sm:text-sm text-slate-600">
+                  <p><strong className="text-slate-800">Situation:</strong> {ch.situation}</p>
+                  <p><strong className="text-slate-800">Commercial Consequence:</strong> {ch.commercialConsequence}</p>
+                  <p className="text-slate-500 italic"><strong className="not-italic text-slate-700">Why legacy fixes fail:</strong> {ch.whyTraditionalMethodsFail}</p>
                 </div>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-slate-100 text-xs">
-                <div className="text-[11px] font-mono font-bold text-blue-600 uppercase mb-1">
-                  Required Executive Decision:
+              <div className="mt-5 pt-4 border-t border-slate-100">
+                <div className="text-[11px] font-mono font-bold text-blue-600 uppercase tracking-wider mb-1">
+                  Required Executive Decision
                 </div>
-                <div className="text-slate-900 font-medium leading-snug">
+                <p className="text-xs font-semibold text-slate-800">
                   {ch.requiredExecutiveDecision}
-                </div>
+                </p>
               </div>
             </div>
           ))}
@@ -138,20 +160,23 @@ export default function PageTemplate({
     </section>
   );
 
-  // 2. Capabilities Section
+  // 2. Capabilities Section with Numeric KPI Cards
   const renderCapabilities = () => (
-    <section id="capabilities" key="capabilities" className="py-14 sm:py-20 bg-white border-b border-slate-200 scroll-mt-20">
+    <section id="capabilities" key="capabilities" className="py-14 sm:py-20 bg-white border-b border-slate-200 scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header & Interactive Filter */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
-            <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
-              Modular Capability Engine
-            </span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold font-mono tracking-wider uppercase mb-2">
+              <Boxes className="w-3.5 h-3.5 text-blue-600" />
+              <span>Full Capability Architecture &bull; 10 Production Nodes</span>
+            </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 mb-2 font-heading">
               Ten Dedicated Capabilities of {data.title}
             </h2>
             <p className="text-slate-600 text-sm max-w-2xl leading-relaxed">
-              Click any capability module to inspect its business challenge, how it works, inputs required, practical deliverables, KPIs, and real-world use case.
+              Click any capability module to inspect its business challenge, how it works, inputs required, practical deliverables, numeric KPIs, and real-world use case.
             </p>
           </div>
 
@@ -301,36 +326,69 @@ export default function PageTemplate({
                       </div>
                     </div>
 
-                    {/* 4. Business Value & KPIs Table */}
-                    <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                    {/* 4. Business Value & Dedicated Numeric KPI Cards */}
+                    <div className="p-4 sm:p-5 rounded-xl bg-slate-50 border border-slate-200">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                         <span className="text-[11px] font-mono font-bold text-blue-700 uppercase tracking-wider">
-                          Governed Performance Metrics &amp; KPIs
+                          Governed Performance Metrics &amp; Numeric KPI Cards
                         </span>
                         <span className="text-[10px] text-slate-500 font-mono">
-                          Defined mathematically &bull; Not fabricated claims
+                          Modeled targets with empirical calculation formulas
                         </span>
                       </div>
 
-                      <div className="overflow-x-auto">
-                        <table className="w-full text-left text-xs">
-                          <thead className="bg-slate-200/70 text-slate-700 font-mono uppercase text-[10px]">
-                            <tr>
-                              <th className="p-2 rounded-l">Metric Name</th>
-                              <th className="p-2">Calculation / Definition</th>
-                              <th className="p-2 rounded-r">Strategic Purpose</th>
-                            </tr>
-                          </thead>
-                          <tbody className="divide-y divide-slate-200 text-slate-700">
-                            {cap.kpis.map((kpi, kIdx) => (
-                              <tr key={kIdx} className="hover:bg-slate-100/50">
-                                <td className="p-2 font-bold text-slate-900">{kpi.name}</td>
-                                <td className="p-2 font-mono text-[11px] text-slate-600">{kpi.formula}</td>
-                                <td className="p-2 text-slate-600">{kpi.purpose}</td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
+                      {/* Numeric KPI Cards Grid */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+                        {cap.kpis.map((kpi, kIdx) => {
+                          const kpiBenchmark = getCapabilityKpiBenchmark(kpi.name, cap.id);
+                          return (
+                            <div key={kIdx} className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-2xs flex flex-col justify-between">
+                              <div>
+                                <div className="flex items-center justify-between gap-1 mb-1.5">
+                                  <span className="text-xs font-bold text-slate-900">{kpi.name}</span>
+                                  <span className="text-[9px] font-mono text-slate-400 font-semibold uppercase shrink-0">
+                                    KPI 0{kIdx + 1}
+                                  </span>
+                                </div>
+
+                                {/* Prominent Numeric Value Hero */}
+                                <div className="my-2 p-2.5 rounded-lg bg-slate-900 text-white flex items-center justify-between">
+                                  <div>
+                                    <span className="text-lg sm:text-xl font-extrabold font-mono text-blue-400">
+                                      {kpiBenchmark.value}
+                                    </span>
+                                    <span className="text-[10px] font-mono text-slate-400 block mt-0.5">
+                                      Scope: {kpiBenchmark.period}
+                                    </span>
+                                  </div>
+                                  <span className="text-[10px] font-mono text-emerald-400 font-bold px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
+                                    {kpiBenchmark.badge}
+                                  </span>
+                                </div>
+
+                                <div className="p-2 rounded bg-slate-50 border border-slate-100 text-[11px] font-mono text-slate-600 mb-2">
+                                  <span className="text-[9px] uppercase font-bold text-slate-400 block">Calculation Formula:</span>
+                                  {kpi.formula}
+                                </div>
+
+                                <p className="text-[11px] text-slate-600 leading-snug">
+                                  <strong className="text-slate-800">Strategic Purpose:</strong> {kpi.purpose}
+                                </p>
+                              </div>
+
+                              <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] font-mono text-amber-700">
+                                <span className="bg-amber-50 px-2 py-0.5 rounded border border-amber-200/60 font-medium">
+                                  Illustrative data — not actual ProfitMachines results
+                                </span>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      <div className="p-3 rounded-lg bg-blue-50/50 border border-blue-100 text-xs text-slate-700">
+                        <strong className="text-blue-900 block mb-0.5">Commercial Bottom-Line Impact:</strong>
+                        <span>{cap.businessValue}</span>
                       </div>
                     </div>
 
@@ -377,17 +435,16 @@ export default function PageTemplate({
                       </div>
                     </div>
 
-                    {/* Card Bottom CTA */}
-                    <div className="pt-2 flex items-center justify-end gap-3">
+                    {/* Next Step CTA */}
+                    <div className="pt-2 flex items-center justify-end">
                       <a
                         href="#consultation"
-                        className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs inline-flex items-center gap-1.5 shadow-xs"
+                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-xs transition-all"
                       >
-                        <span>Discuss {cap.title}</span>
+                        <span>{cap.nextStepCta.label}</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </a>
                     </div>
-
                   </div>
                 )}
               </div>
@@ -400,53 +457,51 @@ export default function PageTemplate({
 
   // 3. Workflow Section
   const renderWorkflow = () => (
-    <section id="workflow" key="workflow" className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200 scroll-mt-20">
+    <section id="workflow" key="workflow" className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200 scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-10">
           <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
-            Implementation Cadence
+            Execution Methodology
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 mb-3 font-heading">
-            Four-Phase Deployment Lifecycle for {data.title}
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 mb-2 font-heading">
+            Four-Phase Implementation Workflow for {data.title}
           </h2>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Every implementation follows an empirical sequence: discovery and baseline auditing, architecture design, execution sprints, and ongoing telemetry governance.
+            Every transformation follows an audited four-stage lifecycle. Each phase terminates at an objective decision gate with verifiable commercial artifacts before advancing to subsequent stages.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {data.workflow.map((wf, wIdx) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {data.workflow.map((wf) => (
             <div
-              key={wIdx}
+              key={wf.stepNumber}
               className="bg-white rounded-2xl p-5 border border-slate-200 shadow-2xs flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center justify-between mb-3 pb-2 border-b border-slate-100">
-                  <span className="text-[11px] font-mono font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">
-                    Phase {wf.stepNumber} // {wf.phase}
+                <div className="flex items-center justify-between mb-3">
+                  <span className="font-mono text-xs font-extrabold text-blue-600 px-2 py-0.5 rounded bg-blue-50 border border-blue-200">
+                    Phase {wf.stepNumber}
                   </span>
                   <span className="text-[11px] font-mono text-slate-500 font-bold">{wf.duration}</span>
                 </div>
+                <h3 className="text-base font-bold text-slate-900 mb-1 font-heading">{wf.title}</h3>
+                <p className="text-xs text-blue-700 font-semibold mb-3">{wf.phase}</p>
+                
+                <p className="text-xs text-slate-600 mb-4 leading-relaxed">{wf.objective}</p>
 
-                <h3 className="text-base font-bold text-slate-900 font-heading mb-2">
-                  {wf.title}
-                </h3>
-
-                <p className="text-xs text-slate-600 leading-relaxed mb-3">
-                  {wf.objective}
-                </p>
-
-                <div className="text-[11px] font-mono font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                  Key Activities:
+                <div className="space-y-1.5 mb-4">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 block">
+                    Core Activities:
+                  </span>
+                  <ul className="text-xs text-slate-700 space-y-1">
+                    {wf.keyActivities.map((act, aIdx) => (
+                      <li key={aIdx} className="flex items-start gap-1.5">
+                        <span className="text-blue-500 font-bold">&bull;</span>
+                        <span>{act}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="space-y-1 text-xs text-slate-600 mb-4">
-                  {wf.keyActivities.map((act, aIdx) => (
-                    <li key={aIdx} className="flex items-start gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1 shrink-0" />
-                      <span>{act}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
 
               <div className="pt-3 border-t border-slate-100 text-xs">
@@ -463,9 +518,9 @@ export default function PageTemplate({
     </section>
   );
 
-  // 4. Metrics & Provenance Section
+  // 4. Metrics & Provenance Section with High-Impact Numeric KPI Cards
   const renderMetrics = () => (
-    <section id="metrics" key="metrics" className="py-14 sm:py-20 bg-white border-b border-slate-200 scroll-mt-20">
+    <section id="metrics" key="metrics" className="py-14 sm:py-20 bg-white border-b border-slate-200 scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div className="max-w-3xl">
@@ -473,10 +528,10 @@ export default function PageTemplate({
               Quantitative Measurement &amp; Data Provenance
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 mb-2 font-heading">
-              Key Metrics, Decision Formulas &amp; Telemetry
+              Key Metrics, Decision Formulas &amp; Numeric KPI Cards
             </h2>
             <p className="text-slate-600 text-sm leading-relaxed">
-              We define KPIs mathematically and trace them to empirical business events. All benchmarks shown below represent illustrative industry baselines, not unverified ProfitMachines guarantees.
+              We define KPIs mathematically and trace them to empirical business events. Numeric values shown in the cards below represent representative baseline standards and illustrative targets, not unverified claims.
             </p>
           </div>
 
@@ -486,45 +541,83 @@ export default function PageTemplate({
           </div>
         </div>
 
+        {/* 6 Dedicated Numeric KPI Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
-          {data.metrics.map((met, mIdx) => (
-            <div key={mIdx} className="p-5 rounded-2xl bg-slate-50 border border-slate-200/90 shadow-2xs flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-bold text-blue-700">{met.metricName}</span>
-                  <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-white border border-slate-200 text-slate-600">
-                    {met.category}
-                  </span>
-                </div>
-                <div className="font-mono text-xs text-slate-900 font-bold bg-white p-2 rounded border border-slate-200/80 mb-2">
-                  {met.formula}
-                </div>
-                <p className="text-xs text-slate-600 leading-snug mb-3">
-                  {met.definition}
-                </p>
-              </div>
+          {data.metrics.map((met, mIdx) => {
+            const bench = getMetricBenchmark(met.metricName, met.category);
+            return (
+              <div
+                key={mIdx}
+                className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-blue-400 transition-all flex flex-col justify-between"
+              >
+                <div>
+                  {/* Card Header */}
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-bold text-slate-900 line-clamp-1">{met.metricName}</span>
+                    <span className="text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200 shrink-0">
+                      {met.category}
+                    </span>
+                  </div>
 
-              <div className="pt-2 border-t border-slate-200/60 text-[11px] text-slate-500">
-                <span className="font-semibold text-slate-700">Data Provenance:</span> {met.benchmarkContext}
+                  {/* Prominent Numeric Hero Value */}
+                  <div className="my-2.5 p-3 rounded-xl bg-slate-900 text-white flex items-baseline justify-between shadow-xs">
+                    <div>
+                      <div className="text-2xl sm:text-3xl font-extrabold font-mono text-blue-400 tracking-tight">
+                        {bench.value}
+                      </div>
+                      <div className="text-[10px] font-mono text-slate-400 mt-0.5">
+                        Scope: {bench.period}
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-xs font-mono font-bold text-emerald-400">
+                        {bench.delta}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Calculation Formula Monospace Box */}
+                  <div className="mt-2.5 mb-2 p-2 rounded-lg bg-slate-50 border border-slate-200 text-[11px] font-mono text-slate-700">
+                    <span className="text-[9px] uppercase font-bold text-slate-400 block mb-0.5">Calculation Formula:</span>
+                    {met.formula}
+                  </div>
+
+                  {/* Operational Definition */}
+                  <p className="text-xs text-slate-600 leading-snug mb-3">
+                    {met.definition}
+                  </p>
+                </div>
+
+                {/* Footer with Mandatory Provenance Tag & Benchmark Reference */}
+                <div className="pt-2.5 border-t border-slate-100 flex flex-col gap-1.5 text-[11px]">
+                  <div className="flex items-center justify-between">
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-50 text-amber-700 border border-amber-200/80">
+                      {bench.provenance}
+                    </span>
+                  </div>
+                  <div className="text-[10px] text-slate-500 leading-tight">
+                    <span className="font-semibold text-slate-700">Benchmark Reference:</span> {met.benchmarkContext}
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Empty State / Connect Live Data Source Callout */}
         <div className="p-4 rounded-xl bg-slate-50 border border-dashed border-slate-300 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+            <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold shrink-0">
               <Database className="w-4 h-4" />
             </div>
             <div>
               <strong className="text-slate-900 block">Streaming Live Enterprise Telemetry:</strong>
-              <span>Connect verified CRM / ERP pipelines during diagnostic briefing to replace industry benchmarks with your actual telemetry.</span>
+              <span>Connect verified CRM / ERP pipelines during diagnostic briefing to replace illustrative industry baselines with your verified company metrics.</span>
             </div>
           </div>
           <a
             href="#consultation"
-            className="px-3 py-1.5 rounded-lg bg-white border border-slate-300 hover:border-blue-500 font-bold text-slate-900 whitespace-nowrap"
+            className="px-3 py-1.5 rounded-lg bg-white border border-slate-300 hover:border-blue-500 font-bold text-slate-900 whitespace-nowrap cursor-pointer shadow-2xs"
           >
             Connect Data Source &rarr;
           </a>
@@ -535,7 +628,7 @@ export default function PageTemplate({
 
   // 5. FAQ Section
   const renderFaq = () => (
-    <section id="faq" key="faq" className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200 scroll-mt-20">
+    <section id="faq" key="faq" className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200 scroll-mt-28">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <span className="text-xs font-mono text-blue-600 uppercase tracking-widest font-bold">
@@ -576,7 +669,7 @@ export default function PageTemplate({
 
   // 6. Consultation Section
   const renderConsultation = () => (
-    <section id="consultation" key="consultation" className="py-16 sm:py-24 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white relative overflow-hidden border-t border-slate-800 scroll-mt-20">
+    <section id="consultation" key="consultation" className="py-16 sm:py-24 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white relative overflow-hidden border-t border-slate-800 scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
@@ -601,7 +694,7 @@ export default function PageTemplate({
               </div>
               <div className="flex items-center gap-2.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Empirical Diagnostic Plan Tailored to Your Stack Parameters</span>
+                <span>Zero Sales Representative Harassment &bull; Executive Engineering Only</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
@@ -625,18 +718,20 @@ export default function PageTemplate({
     </section>
   );
 
-  // Determine section ordering based on page variant
+  // ──────────────────────────────────────────────────────────────────────────
+  // DYNAMIC SECTION ORDERING ACCORDING TO DISTINCT LAYOUT VARIANT
+  // ──────────────────────────────────────────────────────────────────────────
   const getOrderedSections = () => {
     switch (layoutVariant) {
       case 'market-strategy':
-        // Profit Pool Discovery: Market Whitespace -> Capabilities -> Workflow -> Metrics -> Challenges -> FAQ -> Consultation
+        // Profit Pool Discovery: Market Opportunity Matrix -> Capabilities -> Workflow -> Metrics -> Challenges -> FAQ -> Consultation
         return [renderChallenges(), renderCapabilities(), renderWorkflow(), renderMetrics(), renderFaq(), renderConsultation()];
       case 'demand-generation':
         // Demand Engineering: Funnel First -> Capabilities -> Workflow -> Metrics -> Challenges -> FAQ -> Consultation
         return [renderCapabilities(), renderWorkflow(), renderChallenges(), renderMetrics(), renderFaq(), renderConsultation()];
       case 'opportunity-progression':
-        // Sales Acceleration: Deal Progression & Buying Committee -> Capabilities -> Workflow -> Metrics -> FAQ -> Consultation
-        return [renderChallenges(), renderCapabilities(), renderWorkflow(), renderMetrics(), renderFaq(), renderConsultation()];
+        // Sales Acceleration: Deal Progression -> Metrics (High) -> Capabilities -> Challenges -> Workflow -> FAQ -> Consultation
+        return [renderMetrics(), renderCapabilities(), renderChallenges(), renderWorkflow(), renderFaq(), renderConsultation()];
       case 'connected-systems':
         // Revenue Operations: System Architecture -> Workflow -> Capabilities -> Metrics -> Challenges -> FAQ -> Consultation
         return [renderWorkflow(), renderCapabilities(), renderChallenges(), renderMetrics(), renderFaq(), renderConsultation()];
@@ -644,28 +739,100 @@ export default function PageTemplate({
         // GTM Transformation: Roadmap Workflow -> Capabilities -> Challenges -> Metrics -> FAQ -> Consultation
         return [renderWorkflow(), renderCapabilities(), renderChallenges(), renderMetrics(), renderFaq(), renderConsultation()];
       case 'customer-lifecycle':
-        // Customer Success: Lifecycle Workflow -> Metrics (NRR) -> Capabilities -> Challenges -> FAQ -> Consultation
-        return [renderWorkflow(), renderMetrics(), renderCapabilities(), renderChallenges(), renderFaq(), renderConsultation()];
+        // Customer Success: Metrics (NRR Compounding First) -> Capabilities -> Workflow -> Challenges -> FAQ -> Consultation
+        return [renderMetrics(), renderCapabilities(), renderWorkflow(), renderChallenges(), renderFaq(), renderConsultation()];
       case 'decision-support':
         // Growth Intelligence: Metrics (KPI Tree) -> Capabilities -> Workflow -> Challenges -> FAQ -> Consultation
         return [renderMetrics(), renderCapabilities(), renderWorkflow(), renderChallenges(), renderFaq(), renderConsultation()];
       case 'governance-control':
-        // AI Trust & Governance: Challenges -> Capabilities -> Metrics -> Workflow -> FAQ -> Consultation
+        // AI Trust & Governance: Challenges (Risk First) -> Capabilities -> Metrics -> Workflow -> FAQ -> Consultation
+        return [renderChallenges(), renderCapabilities(), renderMetrics(), renderWorkflow(), renderFaq(), renderConsultation()];
+      case 'b2b-strategy':
+        // B2B Businesses: Capabilities -> Metrics -> Workflow -> Challenges -> FAQ -> Consultation
+        return [renderCapabilities(), renderMetrics(), renderWorkflow(), renderChallenges(), renderFaq(), renderConsultation()];
+      case 'b2c-consumer':
+        // B2C Consumer: Metrics (MER, AOV) -> Capabilities -> Challenges -> Workflow -> FAQ -> Consultation
+        return [renderMetrics(), renderCapabilities(), renderChallenges(), renderWorkflow(), renderFaq(), renderConsultation()];
+      case 'enterprise-scale':
+        // Enterprise Scale: Challenges (Silos) -> Workflow -> Capabilities -> Metrics -> FAQ -> Consultation
+        return [renderChallenges(), renderWorkflow(), renderCapabilities(), renderMetrics(), renderFaq(), renderConsultation()];
+      case 'midmarket-ops':
+        // Mid-Market Ops: Metrics (Sales Capacity) -> Workflow -> Capabilities -> Challenges -> FAQ -> Consultation
+        return [renderMetrics(), renderWorkflow(), renderCapabilities(), renderChallenges(), renderFaq(), renderConsultation()];
+      case 'startup-pmf':
+        // Startups & Scaleups: Challenges (PMF & Runway) -> Capabilities -> Metrics -> Workflow -> FAQ -> Consultation
         return [renderChallenges(), renderCapabilities(), renderMetrics(), renderWorkflow(), renderFaq(), renderConsultation()];
       case 'saas-lifecycle':
-        // SaaS: Lifecycle Workflow -> Capabilities -> Challenges -> Metrics -> FAQ -> Consultation
-        return [renderWorkflow(), renderCapabilities(), renderChallenges(), renderMetrics(), renderFaq(), renderConsultation()];
+        // SaaS Lifecycle: Metrics (NRR/Quick Ratio) -> Workflow -> Capabilities -> Challenges -> FAQ -> Consultation
+        return [renderMetrics(), renderWorkflow(), renderCapabilities(), renderChallenges(), renderFaq(), renderConsultation()];
       default:
-        // Standard ordering
+        // Standard baseline ordering
         return [renderChallenges(), renderCapabilities(), renderWorkflow(), renderMetrics(), renderFaq(), renderConsultation()];
+    }
+  };
+
+  // Generate dynamic subnav links based on layoutVariant ordering
+  const getSubNavLinks = () => {
+    switch (layoutVariant) {
+      case 'market-strategy':
+        return [
+          { id: 'overview', label: 'Overview' },
+          { id: 'challenges', label: 'Constraints' },
+          { id: 'capabilities', label: `Capabilities (${data.capabilities.length})` },
+          { id: 'workflow', label: 'Workflow' },
+          { id: 'metrics', label: 'Numeric KPIs' },
+          { id: 'faq', label: 'FAQ' }
+        ];
+      case 'demand-generation':
+        return [
+          { id: 'overview', label: 'Overview' },
+          { id: 'capabilities', label: `Capabilities (${data.capabilities.length})` },
+          { id: 'workflow', label: 'Campaign Engine' },
+          { id: 'challenges', label: 'Bottlenecks' },
+          { id: 'metrics', label: 'Numeric KPIs' },
+          { id: 'faq', label: 'FAQ' }
+        ];
+      case 'opportunity-progression':
+      case 'decision-support':
+      case 'customer-lifecycle':
+      case 'b2c-consumer':
+      case 'midmarket-ops':
+      case 'saas-lifecycle':
+        return [
+          { id: 'overview', label: 'Overview' },
+          { id: 'metrics', label: 'Numeric KPIs' },
+          { id: 'capabilities', label: `Capabilities (${data.capabilities.length})` },
+          { id: 'workflow', label: 'Workflow' },
+          { id: 'challenges', label: 'Friction Points' },
+          { id: 'faq', label: 'FAQ' }
+        ];
+      case 'connected-systems':
+      case 'strategic-roadmap':
+        return [
+          { id: 'overview', label: 'Overview' },
+          { id: 'workflow', label: 'Roadmap & Architecture' },
+          { id: 'capabilities', label: `Capabilities (${data.capabilities.length})` },
+          { id: 'challenges', label: 'Drag Factors' },
+          { id: 'metrics', label: 'Numeric KPIs' },
+          { id: 'faq', label: 'FAQ' }
+        ];
+      default:
+        return [
+          { id: 'overview', label: 'Overview' },
+          { id: 'challenges', label: 'Challenges' },
+          { id: 'capabilities', label: `Capabilities (${data.capabilities.length})` },
+          { id: 'workflow', label: 'Workflow' },
+          { id: 'metrics', label: 'Numeric KPIs' },
+          { id: 'faq', label: 'FAQ' }
+        ];
     }
   };
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900">
 
-      {/* ── STICKY PAGE SUB-NAV BAR (FOR FAST AUDIT JUMPING & ANCHOR NAVIGATION) ── */}
-      <nav aria-label="Page Sub Navigation" className="sticky top-16 z-30 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white text-xs">
+      {/* ── STICKY PAGE SUB-NAV BAR (FOR FAST AUDIT JUMPING & PRECISE ANCHOR NAVIGATION) ── */}
+      <nav aria-label="Page Sub Navigation" className="sticky top-16 lg:top-[72px] z-30 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white text-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-11 flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
           <div className="flex items-center gap-2.5 shrink-0">
             <span className="font-mono text-blue-400 font-bold">{data.pageNumber}</span>
@@ -675,15 +842,21 @@ export default function PageTemplate({
           </div>
 
           <div className="flex items-center gap-3.5 shrink-0 text-slate-300 font-medium">
-            <a href="#overview" className="hover:text-blue-400 transition-colors">Overview</a>
-            <a href="#challenges" className="hover:text-blue-400 transition-colors">Challenges</a>
-            <a href="#capabilities" className="hover:text-blue-400 text-blue-400 font-bold transition-colors">
-              Capabilities ({data.capabilities.length})
-            </a>
-            <a href="#workflow" className="hover:text-blue-400 transition-colors">Workflow</a>
-            <a href="#metrics" className="hover:text-blue-400 transition-colors">Metrics</a>
-            <a href="#faq" className="hover:text-blue-400 transition-colors">FAQ</a>
-            <a href="#consultation" className="px-2.5 py-1 rounded bg-blue-600 hover:bg-blue-500 text-white font-bold transition-colors">
+            {getSubNavLinks().map((link) => (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                onClick={(e) => handleAnchorClick(e, link.id)}
+                className={`hover:text-blue-400 transition-colors ${link.id === 'capabilities' ? 'text-blue-400 font-bold' : ''}`}
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="#consultation"
+              onClick={(e) => handleAnchorClick(e, 'consultation')}
+              className="px-2.5 py-1 rounded bg-blue-600 hover:bg-blue-500 text-white font-bold transition-colors cursor-pointer"
+            >
               Consultation
             </a>
           </div>
@@ -742,6 +915,7 @@ export default function PageTemplate({
               <div className="flex flex-wrap items-center gap-3">
                 <a
                   href="#capabilities"
+                  onClick={(e) => handleAnchorClick(e, 'capabilities')}
                   className="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30 inline-flex items-center gap-2 group cursor-pointer"
                 >
                   <span>{data.primaryCtaText}</span>
@@ -749,7 +923,8 @@ export default function PageTemplate({
                 </a>
                 <a
                   href="#consultation"
-                  className="px-6 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 font-bold text-sm border border-slate-700 transition-all inline-flex items-center gap-2"
+                  onClick={(e) => handleAnchorClick(e, 'consultation')}
+                  className="px-6 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 font-bold text-sm border border-slate-700 transition-all inline-flex items-center gap-2 cursor-pointer"
                 >
                   <span>{data.secondaryCtaText}</span>
                 </a>
@@ -784,7 +959,7 @@ export default function PageTemplate({
             </div>
           </div>
 
-          {/* Key Executive Statistics / Metrics Strip with Data Provenance Notes */}
+          {/* Key Executive Statistics / Metrics Strip with Clear Provenance */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 pt-8 border-t border-slate-800/80">
             {data.keyStats.map((stat, idx) => (
               <div key={idx} className="bg-slate-900/60 rounded-xl p-4 border border-slate-800/60 flex flex-col justify-between">
@@ -795,8 +970,9 @@ export default function PageTemplate({
                   <div className="text-xs font-bold text-white mb-0.5">{stat.label}</div>
                   <div className="text-[11px] text-slate-400 leading-snug">{stat.context}</div>
                 </div>
-                <div className="mt-2 pt-2 border-t border-slate-800/40 text-[9px] font-mono text-slate-500">
-                  Data Scope: Enterprise GTM Baseline
+                <div className="mt-2 pt-2 border-t border-slate-800/40 text-[9px] font-mono text-slate-400 flex items-center justify-between">
+                  <span>Scope: Domain Baseline</span>
+                  <span className="text-amber-400/80">Illustrative</span>
                 </div>
               </div>
             ))}
@@ -804,7 +980,7 @@ export default function PageTemplate({
         </div>
       </section>
 
-      {/* ── DYNAMICALLY ORDERED BODY SECTIONS ── */}
+      {/* ── DYNAMICALLY ORDERED BODY SECTIONS ACCORDING TO DISTINCT LAYOUT VARIANT ── */}
       {getOrderedSections()}
 
     </div>

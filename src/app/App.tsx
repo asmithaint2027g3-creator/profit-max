@@ -280,8 +280,9 @@ export default function App() {
               <Route path="/industries/b2c" element={<IndustriesB2C />} />
               <Route path="/industries/enterprise" element={<IndustriesEnterprise />} />
               <Route path="/industries/midmarket" element={<IndustriesMidMarket />} />
-              <Route path="/industries/mid-market" element={<Navigate to="/industries/midmarket" replace />} />
+              <Route path="/industries/mid-market" element={<IndustriesMidMarket />} />
               <Route path="/industries/startups" element={<IndustriesStartups />} />
+              <Route path="/industries/startups-scaleups" element={<IndustriesStartups />} />
               <Route path="/industries/saas" element={<IndustriesSaas />} />
               <Route path="/industries/sectors" element={<Navigate to="/industries/saas" replace />} />
               <Route path="/industries/specialized" element={<Navigate to="/industries/saas" replace />} />

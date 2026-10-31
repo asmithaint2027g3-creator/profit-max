@@ -2741,16 +2741,18 @@ export default function Navigation() {
             const [targetPath, rawHash] = path.split('#');
             const hash = decodeURIComponent(rawHash);
             if (location.pathname === targetPath || (!targetPath && location.pathname)) {
-                const el = document.getElementById(hash) || 
-                           document.getElementById(hash.toLowerCase()) ||
-                           document.querySelector('[name="' + hash + '"]') ||
-                           document.querySelector('[data-section-id="' + hash + '"]');
-                if (el) {
-                    const navOffset = 85;
-                    const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
-                    const offsetPosition = Math.max(0, elementPosition - navOffset);
-                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                }
+                setTimeout(() => {
+                    const el = document.getElementById(hash) || 
+                               document.getElementById(hash.toLowerCase()) ||
+                               document.querySelector('[name="' + hash + '"]') ||
+                               document.querySelector('[data-section-id="' + hash + '"]');
+                    if (el) {
+                        const navOffset = 115;
+                        const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = Math.max(0, elementPosition - navOffset);
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    }
+                }, 100);
             }
         }
     };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { 
     ArrowRight, 
+    ChevronLeft, ChevronRight, Pause, Play,
     Radar, Target, Bot, LineChart, Database, Cpu, 
     ShieldCheck, Globe, CheckCircle2, TrendingUp, Layers,
     Activity, Sparkles, Workflow, ArrowUpRight
@@ -569,19 +570,19 @@ export default function HomeFeatureSlider() {
                         </div>
                     </div>
 
-                    {/* Right: Slide Pagination Dots */}
-                    <div className="flex items-center">
+                    {/* Right: Slide Controls, Dots & Arrows (No numerical counter) */}
+                    <div className="flex items-center gap-3">
                         
-                        {/* 8 Dot Indicators with Active Progress Fill */}
+                        {/* 8 Small Dot Indicators with Active Progress Fill */}
                         <div className="flex items-center gap-1.5">
                             {homeSliders.map((s, dotIdx) => (
                                 <button
                                     key={s.id}
                                     onClick={() => goToSlide(dotIdx)}
-                                    className={`relative h-2.5 rounded-full overflow-hidden transition-all duration-300 cursor-pointer ${
+                                    className={`relative h-2 rounded-full overflow-hidden transition-all duration-300 cursor-pointer ${
                                         dotIdx === currentIndex 
-                                            ? 'w-8 bg-blue-100' 
-                                            : 'w-2.5 bg-slate-300 hover:bg-slate-400'
+                                            ? 'w-7 bg-blue-100' 
+                                            : 'w-2 bg-slate-300 hover:bg-slate-400'
                                     }`}
                                     aria-label={`Go to slide ${dotIdx + 1}: ${s.tag}`}
                                     title={s.tag}
@@ -594,6 +595,38 @@ export default function HomeFeatureSlider() {
                                     )}
                                 </button>
                             ))}
+                        </div>
+
+                        {/* Navigation Controls: Play/Pause, Prev, Next */}
+                        <div className="flex items-center bg-white border border-slate-200 rounded-lg p-0.5 shadow-xs">
+                            <button
+                                onClick={() => setIsPlaying(!isPlaying)}
+                                className="p-1.5 text-slate-500 hover:text-slate-900 rounded-md hover:bg-slate-100 transition-colors cursor-pointer"
+                                title={isPlaying ? "Pause autoplay" : "Start autoplay"}
+                                aria-label={isPlaying ? "Pause autoplay" : "Start autoplay"}
+                            >
+                                {isPlaying ? <Pause className="w-3.5 h-3.5 text-blue-600" /> : <Play className="w-3.5 h-3.5 text-emerald-600" />}
+                            </button>
+                            
+                            <div className="h-3 w-px bg-slate-200 mx-0.5" />
+
+                            <button
+                                onClick={prevSlide}
+                                className="p-1.5 text-slate-700 hover:text-blue-600 rounded-md hover:bg-slate-100 transition-colors cursor-pointer"
+                                aria-label="Previous slide"
+                                title="Previous slide"
+                            >
+                                <ChevronLeft className="w-4 h-4" />
+                            </button>
+
+                            <button
+                                onClick={nextSlide}
+                                className="p-1.5 text-slate-700 hover:text-blue-600 rounded-md hover:bg-slate-100 transition-colors cursor-pointer"
+                                aria-label="Next slide"
+                                title="Next slide"
+                            >
+                                <ChevronRight className="w-4 h-4" />
+                            </button>
                         </div>
 
                     </div>

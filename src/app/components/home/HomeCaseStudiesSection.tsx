@@ -11,7 +11,12 @@ import {
     HeartPulse, 
     Code, 
     TrendingUp,
-    ShieldCheck
+    ShieldCheck,
+    Compass,
+    Sliders,
+    Workflow,
+    Cpu,
+    RefreshCw
 } from 'lucide-react';
 import { trackEvent } from '../../../lib/analytics';
 
@@ -23,8 +28,8 @@ export default function HomeCaseStudiesSection() {
             industry: "B2B Software",
             icon: Code,
             challenge: "Manual SDR research drag and inconsistent account prioritization across enterprise sales tiers.",
-            solution: "Deployed intent-driven ICP ingestion and automated deal briefing dossiers for account executives.",
-            badge: "Pipeline Acceleration"
+            solution: "Deployed intent-driven ICP ingestion and structured deal briefing dossiers for account executives.",
+            badge: "Pipeline Progression"
         },
         {
             title: "Global Manufacturing Expansion",
@@ -32,7 +37,7 @@ export default function HomeCaseStudiesSection() {
             industry: "Industrial Manufacturing",
             icon: Factory,
             challenge: "Fragmented dealer networks and limited visibility into cross-border industrial demand signals.",
-            solution: "Built a connected distributor coordination mesh and real-time demand telemetry across regional hubs.",
+            solution: "Built a connected distributor coordination workflow and real-time demand signals across regional hubs.",
             badge: "Cross-Border GTM"
         },
         {
@@ -40,27 +45,52 @@ export default function HomeCaseStudiesSection() {
             path: "/case-studies/healthcare-forecast-accuracy",
             industry: "Healthcare & Life Sciences",
             icon: HeartPulse,
-            challenge: "Quarterly forecast variance exceeding 18% due to disconnected hospital procurement sales data.",
-            solution: "Unified CRM, contract cycles, and clinical approval milestones into a single predictive RevOps model.",
-            badge: "RevOps Precision"
+            challenge: "Quarterly forecast variance due to disconnected hospital procurement and complex approval cycles.",
+            solution: "Unified CRM workflows, contract milestones, and clinical approval stages into a single operating model.",
+            badge: "RevOps Alignment"
         },
         {
             title: "Technology Customer Expansion",
             path: "/case-studies/technology-customer-expansion",
             industry: "Enterprise Technology",
             icon: Building2,
-            challenge: "Missed expansion signals resulting in silent contract renewals without upsell realization.",
-            solution: "Engineered customer adoption telemetry with automated alerts triggered by milestone usage thresholds.",
-            badge: "Net Retention Lift"
+            challenge: "Missed expansion signals resulting in contract renewals without upsell realization.",
+            solution: "Engineered customer adoption monitoring with timely workflows triggered by milestone usage thresholds.",
+            badge: "Retention & Expansion"
         }
     ];
 
-    const frameworkSteps = [
-        { num: "01", label: "Understand the business challenge", detail: "Examine revenue bottlenecks and data silos." },
-        { num: "02", label: "Identify the most relevant opportunity", detail: "Map highest-leverage growth levers." },
-        { num: "03", label: "Design the appropriate growth approach", detail: "Formulate targeted playbooks." },
-        { num: "04", label: "Connect workflows & intelligence", detail: "Integrate with CRM and pipeline tools." },
-        { num: "05", label: "Measure progress against agreed objectives", detail: "Track validated operational telemetry." }
+    const approachStages = [
+        {
+            num: "01",
+            title: "Understand the business challenge and growth objectives",
+            desc: "Examine commercial constraints, sales bottlenecks, and data silos across current go-to-market operations.",
+            icon: Compass
+        },
+        {
+            num: "02",
+            title: "Identify the most relevant opportunity",
+            desc: "Isolate the highest-priority market segments, buyer intent signals, and customer accounts with strong growth potential.",
+            icon: Sliders
+        },
+        {
+            num: "03",
+            title: "Design an appropriate sales and demand approach",
+            desc: "Formulate targeted prospecting workflows, opportunity playbooks, and qualification criteria adapted to the business model.",
+            icon: Workflow
+        },
+        {
+            num: "04",
+            title: "Connect processes, intelligence, and automation",
+            desc: "Integrate CRM workflows, research tools, and rep guidance to eliminate repetitive manual overhead.",
+            icon: Cpu
+        },
+        {
+            num: "05",
+            title: "Review progress and refine the approach",
+            desc: "Review execution against agreed business objectives and continuously refine targeting and workflows.",
+            icon: RefreshCw
+        }
     ];
 
     return (
@@ -71,37 +101,50 @@ export default function HomeCaseStudiesSection() {
                 <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-blue-700 uppercase font-mono">
                         <FileText className="w-3.5 h-3.5" />
-                        <span>Documented Architectural Transformations</span>
+                        <span>Execution Methodology &bull; Case Studies</span>
                     </div>
 
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                        See How Growth Challenges Can Be Addressed.
+                        A Practical Path From Business Challenges to Coordinated Growth.
                     </h2>
 
                     <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
-                        Explore verified transformation architectures showing how organizations transition from fragmented sales operations to unified, telemetry-backed revenue execution.
+                        Explore how ProfitMachines systematically guides organizations from fragmented sales operations to unified, coordinated revenue execution.
                     </p>
                 </div>
 
-                {/* 5-Stage Framework Banner */}
+                {/* 5-Stage Approach Process Diagram */}
                 <div className="mb-14 p-6 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200">
-                    <div className="text-xs font-mono font-bold text-blue-600 uppercase tracking-wider mb-4">
-                        How We Approach Growth Challenges:
+                    <div className="text-xs font-mono font-bold text-blue-600 uppercase tracking-wider mb-6">
+                        Our 5-Stage Growth Transformation Approach:
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-                        {frameworkSteps.map((s, idx) => (
-                            <div key={idx} className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs">
-                                <span className="text-xs font-mono font-black text-blue-600 block mb-1">
-                                    {s.num}
-                                </span>
-                                <h4 className="text-xs font-bold text-slate-900 leading-snug mb-1">
-                                    {s.label}
-                                </h4>
-                                <p className="text-[11px] text-slate-500 leading-tight">
-                                    {s.detail}
-                                </p>
-                            </div>
-                        ))}
+                        {approachStages.map((s, idx) => {
+                            const Icon = s.icon;
+                            return (
+                                <div key={idx} className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between">
+                                    <div>
+                                        <div className="flex items-center justify-between mb-3">
+                                            <div className="p-2 rounded-lg bg-blue-50 text-blue-600">
+                                                <Icon className="w-4 h-4" />
+                                            </div>
+                                            <span className="text-xs font-mono font-black text-slate-400">
+                                                {s.num}
+                                            </span>
+                                        </div>
+                                        <h4 className="text-xs font-bold text-slate-900 leading-snug mb-1.5">
+                                            {s.title}
+                                        </h4>
+                                        <p className="text-[11px] text-slate-500 leading-relaxed">
+                                            {s.desc}
+                                        </p>
+                                    </div>
+                                    <div className="mt-3 pt-2 border-t border-slate-100 text-[10px] font-mono text-blue-600 font-semibold">
+                                        Stage {s.num}
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
 
@@ -176,4 +219,3 @@ export default function HomeCaseStudiesSection() {
         </section>
     );
 }
-

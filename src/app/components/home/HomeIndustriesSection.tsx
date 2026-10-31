@@ -12,7 +12,10 @@ import {
     CheckCircle2,
     Users,
     TrendingUp,
-    ShieldCheck
+    ShieldCheck,
+    Compass,
+    Workflow,
+    Sliders
 } from 'lucide-react';
 import { trackEvent } from '../../../lib/analytics';
 
@@ -21,33 +24,33 @@ export default function HomeIndustriesSection() {
         {
             title: "B2B",
             path: "/industries/b2b",
-            focus: "Ideal customer profiles, account targeting, qualified pipeline, opportunity progression, and longer-term customer relationships.",
+            focus: "Ideal customer profiles, account targeting, qualified pipeline, opportunity progression, and customer relationships.",
             icon: Briefcase,
             badge: "Account-Based Growth",
             color: "text-blue-600 bg-blue-50 border-blue-200",
             visualGraphic: (
                 <div className="h-28 w-full bg-slate-950 rounded-xl p-3 flex flex-col justify-between border border-slate-800 text-white font-mono text-[10px]">
                     <div className="flex justify-between items-center text-slate-400">
-                        <span>TARGET ACCOUNT PIPELINE</span>
-                        <span className="text-emerald-400">QUALIFIED</span>
+                        <span>TARGET ACCOUNT WORKFLOW</span>
+                        <span className="text-blue-400">COORDINATED</span>
                     </div>
                     <div className="grid grid-cols-3 gap-1.5 py-1 text-center">
                         <div className="bg-slate-900 p-1.5 rounded border border-slate-800">
-                            <div className="text-[8px] text-slate-400">TIER 1 ACCOUNTS</div>
-                            <div className="text-xs font-bold text-white">450</div>
+                            <span className="text-[8px] text-slate-400 block">STEP 1</span>
+                            <span className="text-[9px] font-bold text-white">ICP Identification</span>
+                        </div>
+                        <div className="bg-slate-900 p-1.5 rounded border border-blue-500/40">
+                            <span className="text-[8px] text-blue-400 block">STEP 2</span>
+                            <span className="text-[9px] font-bold text-blue-300">Committee Map</span>
                         </div>
                         <div className="bg-slate-900 p-1.5 rounded border border-slate-800">
-                            <div className="text-[8px] text-slate-400">INTENT SURGE</div>
-                            <div className="text-xs font-bold text-blue-400">89%</div>
-                        </div>
-                        <div className="bg-slate-900 p-1.5 rounded border border-slate-800">
-                            <div className="text-[8px] text-slate-400">ACTIVE DEALS</div>
-                            <div className="text-xs font-bold text-emerald-400">$8.4M</div>
+                            <span className="text-[8px] text-slate-400 block">STEP 3</span>
+                            <span className="text-[9px] font-bold text-emerald-400">Outreach Playbook</span>
                         </div>
                     </div>
-                    <div className="flex justify-between text-slate-400 text-[9px]">
-                        <span>Multi-stakeholder alignment</span>
-                        <span className="text-blue-400">SLA Active</span>
+                    <div className="flex justify-between text-slate-400 text-[9px] border-t border-slate-800/80 pt-1">
+                        <span>Multi-Stakeholder Alignment</span>
+                        <span className="text-blue-400">Active Workflow</span>
                     </div>
                 </div>
             )
@@ -55,32 +58,26 @@ export default function HomeIndustriesSection() {
         {
             title: "B2C",
             path: "/industries/b2c",
-            focus: "Audience segmentation, customer journeys, campaign performance, conversion, repeat purchases, and retention.",
+            focus: "Audience segmentation, customer journeys, campaign coordination, conversion, repeat purchases, and retention.",
             icon: ShoppingBag,
             badge: "Lifecycle & Retention",
             color: "text-indigo-600 bg-indigo-50 border-indigo-200",
             visualGraphic: (
                 <div className="h-28 w-full bg-slate-950 rounded-xl p-3 flex flex-col justify-between border border-slate-800 text-white font-mono text-[10px]">
                     <div className="flex justify-between items-center text-slate-400">
-                        <span>CUSTOMER JOURNEY FUNNEL</span>
-                        <span className="text-indigo-400">CONVERSION</span>
+                        <span>CONSUMER JOURNEY MAP</span>
+                        <span className="text-indigo-400">LIFECYCLE</span>
                     </div>
-                    <div className="space-y-1.5 py-1">
-                        <div className="flex items-center justify-between text-[9px] text-slate-300">
-                            <span>Reach &rarr; Cart</span>
-                            <span className="font-bold text-white">38.2%</span>
-                        </div>
-                        <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-                            <div className="bg-indigo-500 h-1.5 rounded-full" style={{ width: '68%' }} />
-                        </div>
-                        <div className="flex items-center justify-between text-[9px] text-slate-300">
-                            <span>Repeat Purchase Rate</span>
-                            <span className="font-bold text-emerald-400">42.8%</span>
-                        </div>
+                    <div className="flex items-center justify-between py-1 px-1">
+                        <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-[8px] text-slate-300">Audience Segment</span>
+                        <span className="text-slate-600">&rarr;</span>
+                        <span className="px-1.5 py-0.5 rounded bg-indigo-950 border border-indigo-800 text-[8px] text-indigo-300">Targeted Campaign</span>
+                        <span className="text-slate-600">&rarr;</span>
+                        <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-[8px] text-slate-300">Repeat Retention</span>
                     </div>
-                    <div className="flex justify-between text-slate-400 text-[9px]">
-                        <span>LTV:CAC Ratio: 3.8x</span>
-                        <span className="text-emerald-400">Churn: Low</span>
+                    <div className="flex justify-between text-slate-400 text-[9px] border-t border-slate-800/80 pt-1">
+                        <span>Campaign Coordination</span>
+                        <span className="text-indigo-400">Retention Strategy</span>
                     </div>
                 </div>
             )
@@ -88,33 +85,33 @@ export default function HomeIndustriesSection() {
         {
             title: "Enterprise",
             path: "/industries/enterprise",
-            focus: "Complex buying groups, account intelligence, coordinated sales processes, forecasting, and expansion opportunities.",
+            focus: "Complex buying groups, account intelligence, coordinated sales processes, and expansion opportunities.",
             icon: Building2,
-            badge: "Multi-Entity Scaling",
+            badge: "Complex Buying Groups",
             color: "text-emerald-600 bg-emerald-50 border-emerald-200",
             visualGraphic: (
                 <div className="h-28 w-full bg-slate-950 rounded-xl p-3 flex flex-col justify-between border border-slate-800 text-white font-mono text-[10px]">
                     <div className="flex justify-between items-center text-slate-400">
-                        <span>BUYING GROUP MATRIX</span>
+                        <span>BUYING COMMITTEE MATRIX</span>
                         <span className="text-emerald-400">CONSENSUS</span>
                     </div>
                     <div className="grid grid-cols-3 gap-1.5 py-1 text-center">
                         <div className="bg-slate-900 p-1.5 rounded border border-slate-800">
-                            <div className="text-[8px] text-slate-400">DECISION MAKERS</div>
-                            <div className="text-xs font-bold text-white">8 Execs</div>
+                            <span className="text-[8px] text-slate-400 block">DECISION</span>
+                            <span className="text-[9px] font-bold text-white">Executive</span>
+                        </div>
+                        <div className="bg-slate-900 p-1.5 rounded border border-emerald-500/40">
+                            <span className="text-[8px] text-emerald-400 block">SECURITY</span>
+                            <span className="text-[9px] font-bold text-emerald-300">Governance</span>
                         </div>
                         <div className="bg-slate-900 p-1.5 rounded border border-slate-800">
-                            <div className="text-[8px] text-slate-400">SECURITY REVIEW</div>
-                            <div className="text-xs font-bold text-emerald-400">Approved</div>
-                        </div>
-                        <div className="bg-slate-900 p-1.5 rounded border border-slate-800">
-                            <div className="text-[8px] text-slate-400">EXPANSION ACCOUNTS</div>
-                            <div className="text-xs font-bold text-blue-400">12 Subsid.</div>
+                            <span className="text-[8px] text-slate-400 block">DIVISION</span>
+                            <span className="text-[9px] font-bold text-white">Expansion</span>
                         </div>
                     </div>
-                    <div className="flex justify-between text-slate-400 text-[9px]">
-                        <span>ACV: $240K+</span>
-                        <span className="text-blue-400">Enterprise SLA</span>
+                    <div className="flex justify-between text-slate-400 text-[9px] border-t border-slate-800/80 pt-1">
+                        <span>Corporate Account Planning</span>
+                        <span className="text-emerald-400">Coordinated Motion</span>
                     </div>
                 </div>
             )
@@ -122,29 +119,26 @@ export default function HomeIndustriesSection() {
         {
             title: "Mid-Market",
             path: "/industries/midmarket",
-            focus: "Repeatable demand generation, sales productivity, workflow automation, and better visibility with limited resources.",
+            focus: "Repeatable demand generation, sales productivity, workflow automation, and efficient growth with limited resources.",
             icon: BarChart3,
             badge: "Productivity & Velocity",
             color: "text-amber-600 bg-amber-50 border-amber-200",
             visualGraphic: (
                 <div className="h-28 w-full bg-slate-950 rounded-xl p-3 flex flex-col justify-between border border-slate-800 text-white font-mono text-[10px]">
                     <div className="flex justify-between items-center text-slate-400">
-                        <span>VELOCITY REVOPS DASHBOARD</span>
-                        <span className="text-amber-400">AUTOMATED</span>
+                        <span>STREAMLINED WORKFLOW</span>
+                        <span className="text-amber-400">LEAN OPS</span>
                     </div>
-                    <div className="grid grid-cols-2 gap-2 py-1">
-                        <div className="bg-slate-900 p-1.5 rounded border border-slate-800">
-                            <div className="text-[8px] text-slate-400">SALES REPS SUPPORTED</div>
-                            <div className="text-xs font-bold text-white">18 Reps</div>
-                        </div>
-                        <div className="bg-slate-900 p-1.5 rounded border border-slate-800">
-                            <div className="text-[8px] text-slate-400">TIME SAVED / REP</div>
-                            <div className="text-xs font-bold text-emerald-400">12 hrs/wk</div>
-                        </div>
+                    <div className="flex items-center justify-between py-1 px-1">
+                        <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-[8px] text-slate-300">Inbound Lead</span>
+                        <span className="text-slate-600">&rarr;</span>
+                        <span className="px-1.5 py-0.5 rounded bg-amber-950 border border-amber-800 text-[8px] text-amber-300">Automated CRM Task</span>
+                        <span className="text-slate-600">&rarr;</span>
+                        <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-[8px] text-slate-300">Rep Action</span>
                     </div>
-                    <div className="flex justify-between text-slate-400 text-[9px]">
-                        <span>Overhead: Minimal</span>
-                        <span className="text-emerald-400">Quota Attainment: 82%</span>
+                    <div className="flex justify-between text-slate-400 text-[9px] border-t border-slate-800/80 pt-1">
+                        <span>Workflow Automation</span>
+                        <span className="text-amber-400">High Productivity</span>
                     </div>
                 </div>
             )
@@ -152,33 +146,33 @@ export default function HomeIndustriesSection() {
         {
             title: "Startups & Founders",
             path: "/industries/startups",
-            focus: "Customer and market validation, ideal customer profiles, early demand generation, founder-led sales processes, and funnel measurement.",
+            focus: "Customer and market validation, ideal customer profiles, early demand generation, founder-led sales, and funnel measurement.",
             icon: Rocket,
             badge: "Validation & Traction",
             color: "text-purple-600 bg-purple-50 border-purple-200",
             visualGraphic: (
                 <div className="h-28 w-full bg-slate-950 rounded-xl p-3 flex flex-col justify-between border border-slate-800 text-white font-mono text-[10px]">
                     <div className="flex justify-between items-center text-slate-400">
-                        <span>PMF &amp; TRACTION SCORECARD</span>
-                        <span className="text-purple-400">EARLY STAGE</span>
+                        <span>MARKET VALIDATION JOURNEY</span>
+                        <span className="text-purple-400">FOUNDER-LED</span>
                     </div>
                     <div className="grid grid-cols-3 gap-1.5 py-1 text-center">
                         <div className="bg-slate-900 p-1.5 rounded border border-slate-800">
-                            <div className="text-[8px] text-slate-400">ICP EXPERIMENTS</div>
-                            <div className="text-xs font-bold text-white">14 Tested</div>
+                            <span className="text-[8px] text-slate-400 block">PHASE 1</span>
+                            <span className="text-[9px] font-bold text-white">ICP Discovery</span>
+                        </div>
+                        <div className="bg-slate-900 p-1.5 rounded border border-purple-500/40">
+                            <span className="text-[8px] text-purple-400 block">PHASE 2</span>
+                            <span className="text-[9px] font-bold text-purple-300">Demand Signal</span>
                         </div>
                         <div className="bg-slate-900 p-1.5 rounded border border-slate-800">
-                            <div className="text-[8px] text-slate-400">LEAD VELOCITY</div>
-                            <div className="text-xs font-bold text-emerald-400">+4.2x</div>
-                        </div>
-                        <div className="bg-slate-900 p-1.5 rounded border border-slate-800">
-                            <div className="text-[8px] text-slate-400">FOUNDER TIME</div>
-                            <div className="text-xs font-bold text-blue-400">Focused</div>
+                            <span className="text-[8px] text-slate-400 block">PHASE 3</span>
+                            <span className="text-[9px] font-bold text-white">Early Pipeline</span>
                         </div>
                     </div>
-                    <div className="flex justify-between text-slate-400 text-[9px]">
-                        <span>Initial 100 Customers</span>
-                        <span className="text-emerald-400">Seed to Series A</span>
+                    <div className="flex justify-between text-slate-400 text-[9px] border-t border-slate-800/80 pt-1">
+                        <span>Capital Efficiency</span>
+                        <span className="text-purple-400">Traction Building</span>
                     </div>
                 </div>
             )
@@ -186,33 +180,26 @@ export default function HomeIndustriesSection() {
         {
             title: "Specialized Business Models",
             path: "/industries/sectors",
-            focus: "Reflect relevant models confirmed by the existing page, such as SaaS and subscriptions, professional services, digital businesses, and education platforms.",
+            focus: "Focus on business models that fit ProfitMachines' sales, demand generation, customer acquisition, and revenue-growth positioning (SaaS, platforms, services).",
             icon: Layers,
             badge: "Recurring & Vertical Models",
             color: "text-blue-600 bg-blue-50 border-blue-200",
             visualGraphic: (
                 <div className="h-28 w-full bg-slate-950 rounded-xl p-3 flex flex-col justify-between border border-slate-800 text-white font-mono text-[10px]">
                     <div className="flex justify-between items-center text-slate-400">
-                        <span>RECURRING REVENUE MESH</span>
+                        <span>RECURRING REVENUE WORKFLOW</span>
                         <span className="text-blue-400">EXPANSION</span>
                     </div>
-                    <div className="grid grid-cols-3 gap-1.5 py-1 text-center">
-                        <div className="bg-slate-900 p-1.5 rounded border border-slate-800">
-                            <div className="text-[8px] text-slate-400">NET RETENTION</div>
-                            <div className="text-xs font-bold text-emerald-400">122%</div>
-                        </div>
-                        <div className="bg-slate-900 p-1.5 rounded border border-slate-800">
-                            <div className="text-[8px] text-slate-400">CONTRACT TYPE</div>
-                            <div className="text-xs font-bold text-white">ARR / Usage</div>
-                        </div>
-                        <div className="bg-slate-900 p-1.5 rounded border border-slate-800">
-                            <div className="text-[8px] text-slate-400">EXPANSION LIFT</div>
-                            <div className="text-xs font-bold text-indigo-400">+28%</div>
-                        </div>
+                    <div className="flex items-center justify-between py-1 px-1">
+                        <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-[8px] text-slate-300">Subscription Intake</span>
+                        <span className="text-slate-600">&rarr;</span>
+                        <span className="px-1.5 py-0.5 rounded bg-blue-950 border border-blue-800 text-[8px] text-blue-300">Usage Alignment</span>
+                        <span className="text-slate-600">&rarr;</span>
+                        <span className="px-1.5 py-0.5 rounded bg-emerald-950 border border-emerald-800 text-[8px] text-emerald-300">Account Expansion</span>
                     </div>
-                    <div className="flex justify-between text-slate-400 text-[9px]">
-                        <span>SaaS &bull; Services &bull; Platforms</span>
-                        <span className="text-blue-400">Active</span>
+                    <div className="flex justify-between text-slate-400 text-[9px] border-t border-slate-800/80 pt-1">
+                        <span>Vertical Specialization</span>
+                        <span className="text-blue-400">SaaS &bull; Services &bull; Platforms</span>
                     </div>
                 </div>
             )
@@ -235,7 +222,7 @@ export default function HomeIndustriesSection() {
                     </h2>
 
                     <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
-                        Growth priorities vary with the customer, sales cycle, business model, available resources, and revenue structure. ProfitMachines should reflect these differences rather than present one identical growth approach for every business.
+                        Every business has different customers, sales cycles, growth constraints, and operational requirements. ProfitMachines should adapt its revenue approach to the business model and growth priorities.
                     </p>
                 </div>
 
@@ -304,4 +291,3 @@ export default function HomeIndustriesSection() {
         </section>
     );
 }
-

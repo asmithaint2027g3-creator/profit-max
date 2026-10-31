@@ -122,7 +122,7 @@ export default function HomeChallenges() {
                             <span>The ProfitMachines Revenue Architecture</span>
                         </div>
                         <p className="text-base sm:text-lg text-slate-100 font-medium leading-relaxed">
-                            ProfitMachines connects these challenges into a coordinated approach to discovering opportunities, generating demand, improving sales execution, and measuring growth.
+                            ProfitMachines connects these challenges through a coordinated approach to discovering opportunities, generating demand, improving sales execution, and measuring growth.
                         </p>
                     </div>
 

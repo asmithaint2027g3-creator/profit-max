@@ -10,36 +10,50 @@ import {
     Target, 
     LineChart,
     Building2,
-    Users
+    Users,
+    Compass,
+    Workflow,
+    Cpu,
+    TrendingUp
 } from 'lucide-react';
 import { trackEvent } from '../../../lib/analytics';
 
 export default function HomeAboutSection() {
-    const operatingPillars = [
+    const connectedCapabilities = [
         {
             title: "Business Objectives",
-            desc: "Align executive growth priorities, commercial margin targets, and resource allocation with market realities.",
+            desc: "Anchor growth priorities, commercial margin targets, and strategic focus on validated market realities.",
             icon: Target
         },
         {
-            title: "Relevant Growth Capabilities",
-            desc: "Deploy modular intelligence blocks tailored to business model needs rather than monolithic tech stacks.",
-            icon: Layers
+            title: "Customer Targeting",
+            desc: "Isolate high-propensity segments and target accounts with clear commercial demand signals.",
+            icon: Compass
         },
         {
-            title: "Connected Processes & Data",
-            desc: "Bridge silos between marketing intent, CRM pipelines, and customer success data lakes into a single source of truth.",
-            icon: LineChart
+            title: "Demand Generation",
+            desc: "Build repeatable inbound interest and qualified pipeline flow through coordinated campaigns.",
+            icon: Workflow
         },
         {
-            title: "Practical AI & Automation",
-            desc: "Automate repetitive administrative drag with supervised AI agents while preserving human executive judgment.",
+            title: "Sales Execution",
+            desc: "Equip revenue teams with account dossiers, deal guidance, and streamlined engagement workflows.",
             icon: Bot
         },
         {
-            title: "Performance Telemetry",
-            desc: "Continuously measure conversion velocity, forecast precision, and unit economics with real-time feedback loops.",
-            icon: Activity
+            title: "Revenue Operations",
+            desc: "Connect CRM, data lakes, and reporting pipelines to eliminate silos and manual administrative drag.",
+            icon: LineChart
+        },
+        {
+            title: "Customer Growth",
+            desc: "Monitor adoption health and usage milestones to support retention and discover expansion opportunities.",
+            icon: TrendingUp
+        },
+        {
+            title: "Appropriate AI & Automation",
+            desc: "Deploy supervised AI assistants with human-in-the-loop oversight to automate repetitive tasks safely.",
+            icon: ShieldCheck
         }
     ];
 
@@ -59,30 +73,30 @@ export default function HomeAboutSection() {
                     </h2>
 
                     <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
-                        ProfitMachines brings business priorities, customer targeting, demand generation, sales execution, revenue operations, customer growth, and appropriate AI adoption into a coordinated approach.
+                        ProfitMachines connects business objectives, customer targeting, demand generation, sales execution, revenue operations, customer growth, and appropriate AI and automation into one cohesive operating system.
                     </p>
                 </div>
 
                 {/* Two-Column Composition: Left Model Stack + Right Connected System Visual */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-12">
                     
-                    {/* Left: 5 Pillars List */}
-                    <div className="lg:col-span-6 space-y-4">
-                        {operatingPillars.map((p, idx) => {
+                    {/* Left: Connected Capabilities List */}
+                    <div className="lg:col-span-6 space-y-3">
+                        {connectedCapabilities.map((p, idx) => {
                             const Icon = p.icon;
                             return (
                                 <div 
                                     key={idx}
-                                    className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs flex items-start gap-3.5"
+                                    className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-xs flex items-start gap-3.5"
                                 >
                                     <div className="p-2 rounded-lg bg-blue-50 border border-blue-100 text-blue-600 shrink-0 mt-0.5">
                                         <Icon className="w-4 h-4" />
                                     </div>
                                     <div>
-                                        <h3 className="text-sm font-bold text-slate-900 mb-0.5">
+                                        <h3 className="text-xs font-bold text-slate-900 mb-0.5">
                                             {idx + 1}. {p.title}
                                         </h3>
-                                        <p className="text-xs text-slate-600 leading-relaxed">
+                                        <p className="text-[11px] text-slate-600 leading-relaxed">
                                             {p.desc}
                                         </p>
                                     </div>
@@ -98,14 +112,14 @@ export default function HomeAboutSection() {
                             <div className="flex items-center justify-between border-b border-slate-800 pb-4">
                                 <div className="space-y-0.5">
                                     <span className="text-[10px] font-mono text-blue-400 uppercase tracking-wider">
-                                        ARCHITECTURE SPECIFICATION
+                                        CONNECTED ARCHITECTURE
                                     </span>
                                     <h4 className="text-base font-bold text-white">
-                                        Unified Revenue Operating System
+                                        Revenue Operating System
                                     </h4>
                                 </div>
                                 <span className="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/20">
-                                    SYNCHRONIZED
+                                    COORDINATED
                                 </span>
                             </div>
 
@@ -115,11 +129,11 @@ export default function HomeAboutSection() {
                                 {/* Layer 1: Strategic Layer */}
                                 <div className="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700/80 space-y-1">
                                     <div className="flex justify-between text-blue-400 text-[11px] font-bold">
-                                        <span>LAYER 01: STRATEGIC INTENT</span>
-                                        <span>EXECUTIVE LEVEL</span>
+                                        <span>LAYER 01: COMMERCIAL STRATEGY</span>
+                                        <span>OBJECTIVES</span>
                                     </div>
                                     <div className="text-[11px] text-slate-300">
-                                        TAM Discovery &bull; Pricing Architecture &bull; ICP Propensity Mapping
+                                        Market Whitespace &bull; Target Account Profiles &bull; Commercial Priorities
                                     </div>
                                 </div>
 
@@ -131,11 +145,11 @@ export default function HomeAboutSection() {
                                 {/* Layer 2: Execution Engine */}
                                 <div className="p-3.5 rounded-xl bg-slate-800/80 border border-blue-500/50 space-y-1">
                                     <div className="flex justify-between text-emerald-400 text-[11px] font-bold">
-                                        <span>LAYER 02: AUTONOMOUS EXECUTION MESH</span>
-                                        <span>REVENUE PIPELINE</span>
+                                        <span>LAYER 02: EXECUTION &amp; PIPELINE</span>
+                                        <span>COORDINATED WORKFLOWS</span>
                                     </div>
                                     <div className="text-[11px] text-slate-300">
-                                        Intent Prospecting &bull; Deal Briefing &bull; Coordinated Rep Workflows
+                                        Demand Generation &bull; Sales Engagement &bull; Opportunity Progression
                                     </div>
                                 </div>
 
@@ -147,23 +161,23 @@ export default function HomeAboutSection() {
                                 {/* Layer 3: Data & Governance */}
                                 <div className="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700/80 space-y-1">
                                     <div className="flex justify-between text-indigo-400 text-[11px] font-bold">
-                                        <span>LAYER 03: TELEMETRY &amp; GOVERNANCE</span>
-                                        <span>ZERO-DATA SILOS</span>
+                                        <span>LAYER 03: REVOPS &amp; CUSTOMER RETENTION</span>
+                                        <span>ZERO SILOS</span>
                                     </div>
                                     <div className="text-[11px] text-slate-300">
-                                        Executive Forecasting &bull; Customer Telemetry &bull; Closed-Loop Feedback
+                                        CRM Synchronization &bull; Adoption Monitoring &bull; Supervised AI Controls
                                     </div>
                                 </div>
 
                             </div>
 
-                            {/* Compliance Badges */}
+                            {/* Guardrails Strip */}
                             <div className="pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
                                 <div className="flex items-center gap-1.5">
                                     <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                                    <span>SOC2 Type II Standard</span>
+                                    <span>Human Oversight Guardrails</span>
                                 </div>
-                                <span>Zero-Leakage Architecture</span>
+                                <span>Zero-Data Leakage Architecture</span>
                             </div>
 
                         </div>
@@ -187,4 +201,3 @@ export default function HomeAboutSection() {
         </section>
     );
 }
-

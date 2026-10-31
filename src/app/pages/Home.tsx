@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-// 13-Section Core Architecture Components
-import HomeHero from '../components/home/HomeHero';
+// Homepage Core Architecture Components (Strictly Excludes KPI/Chart Tiles)
+import HomeFeatureSlider from '../components/home/HomeFeatureSlider';
 import TrustedBySection from '../components/home/TrustedBySection';
 import HomeChallenges from '../components/home/HomeChallenges';
 import HomeOfferingsGrid from '../components/home/HomeOfferingsGrid';
@@ -11,7 +11,6 @@ import HomeAiSalesSection from '../components/home/HomeAiSalesSection';
 import HomeGrowthScienceSection from '../components/home/HomeGrowthScienceSection';
 import HomeIndustriesSection from '../components/home/HomeIndustriesSection';
 import HomeGlobalAccelerationSection from '../components/home/HomeGlobalAccelerationSection';
-import HomeExecutiveTelemetrySection from '../components/home/HomeExecutiveTelemetrySection';
 import HomeCaseStudiesSection from '../components/home/HomeCaseStudiesSection';
 import HomeAboutSection from '../components/home/HomeAboutSection';
 import HomeConversionSection from '../components/home/HomeConversionSection';
@@ -25,16 +24,16 @@ export default function Home() {
 
     return (
         <main className="bg-white min-h-screen overflow-x-hidden selection:bg-blue-600 selection:text-white">
-            {/* Section 1 — Hero */}
-            <HomeHero />
+            {/* Section 1 — 8-Slide Automatic Hero Slider */}
+            <HomeFeatureSlider />
 
             {/* Strategic Partner & Ingestion Ecosystem Trust Bar */}
             <TrustedBySection />
 
-            {/* Section 2 — Growth Challenges */}
+            {/* Section 2 — Business Growth Challenges */}
             <HomeChallenges />
 
-            {/* Section 3 — All Eight Offerings */}
+            {/* Section 3 — Eight Offerings */}
             <HomeOfferingsGrid />
 
             {/* Section 4 — Connected Revenue Growth Journey */}
@@ -52,19 +51,16 @@ export default function Home() {
             {/* Section 8 — Global Business Acceleration */}
             <HomeGlobalAccelerationSection />
 
-            {/* Section 9 — Growth Intelligence and Business Outcomes */}
-            <HomeExecutiveTelemetrySection />
-
-            {/* Section 10 — Case Studies and Trust */}
+            {/* Section 9 — How ProfitMachines Approaches Growth Challenges */}
             <HomeCaseStudiesSection />
 
-            {/* Section 11 — About ProfitMachines */}
+            {/* Section 10 — About ProfitMachines */}
             <HomeAboutSection />
 
-            {/* Section 12 — Final Conversion Section */}
+            {/* Section 11 — Final Conversion Section */}
             <HomeConversionSection />
 
-            {/* Section 13 (Footer) is rendered persistently in App.tsx */}
+            {/* Section 12 (Footer) is rendered persistently in App.tsx */}
         </main>
     );
 }

@@ -534,7 +534,7 @@ export const demandEngineeringData: PageContentData = {
       answer: 'We employ multi-touch, multi-stakeholder attribution models that track all organizational touches across the entire 9-month horizon, weighting early-stage discovery touches, mid-stage technical validation content, and late-stage proposal assists appropriately.'
     }
   ],
-  primaryCtaText: 'Build Your Demand Engine',
-  secondaryCtaText: 'Discuss Pipeline Priorities'
+  primaryCtaText: 'Build a Qualified Demand Engine',
+  secondaryCtaText: 'Review Your Demand Strategy'
 };
 

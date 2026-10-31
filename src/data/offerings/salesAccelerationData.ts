@@ -534,7 +534,7 @@ export const salesAccelerationData: PageContentData = {
       answer: 'Process standardization and deal intelligence typically produce visible pipeline hygiene and forecast accuracy within 30 days. Measurable win-rate lift and sales cycle compression are consistently observed across the first full sales cycle following deployment (typically 60 to 90 days).'
     }
   ],
-  primaryCtaText: 'Accelerate Sales Execution',
-  secondaryCtaText: 'Discuss Deal Progression'
+  primaryCtaText: 'Talk to an AI Sales Expert',
+  secondaryCtaText: 'Improve My Sales Pipeline'
 };
 

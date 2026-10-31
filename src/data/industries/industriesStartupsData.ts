@@ -534,7 +534,7 @@ export const industriesStartupsData: PageContentData = {
       answer: 'Our startup acceleration engagement runs in four 2-week sprints over 8 weeks: Sprint 1 (Demand Validation & PMF Telemetry), Sprint 2 (Lighthouse Acquisition & Founder Sales Automation), Sprint 3 (Pricing Optimization & Runway Financial Modeling), and Sprint 4 (Repeatable Sales Playbook & Scale Readiness).'
     }
   ],
-  primaryCtaText: 'Find Your Repeatable Revenue Engine',
-  secondaryCtaText: 'Discuss Startup Growth Priorities'
+  primaryCtaText: 'Build Your Repeatable Revenue Engine',
+  secondaryCtaText: 'Validate Your Growth Priorities'
 };
 

@@ -534,7 +534,7 @@ export const customerSuccessData: PageContentData = {
       answer: 'The complete transformation is delivered in four 2-week sprints over 8 weeks: Sprint 1 (Diagnostic Churn Audit), Sprint 2 (30-Day Onboarding Engine & Health Radar), Sprint 3 (Renewal Cadence & Expansion Workflows), and Sprint 4 (Advocacy Architecture & Executive LTV Cockpit).'
     }
   ],
-  primaryCtaText: 'Build Customer Success Engine',
-  secondaryCtaText: 'Discuss Retention Priorities'
+  primaryCtaText: 'Strengthen Customer Retention',
+  secondaryCtaText: 'Improve My Customer Growth Strategy'
 };
 

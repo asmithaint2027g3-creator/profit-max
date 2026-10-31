@@ -534,7 +534,7 @@ export const industriesB2BData: PageContentData = {
       answer: 'Target account list calibration and intent telemetry are configured in the first 2-3 weeks. Synchronized ABM and outbound campaigns typically generate the first wave of qualified enterprise sales meetings within 30 to 45 days of launch.'
     }
   ],
-  primaryCtaText: 'Accelerate B2B Pipeline',
-  secondaryCtaText: 'Discuss B2B Sales Priorities'
+  primaryCtaText: 'Build a Stronger B2B Pipeline',
+  secondaryCtaText: 'Discuss Your B2B Sales Strategy'
 };
 

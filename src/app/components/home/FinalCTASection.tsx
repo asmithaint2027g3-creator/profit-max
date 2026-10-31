@@ -43,15 +43,15 @@ export default function FinalCTASection() {
                             onClick={() => trackEvent({ eventName: 'FINAL_CTA_BOOK_CLICK' })}
                             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-blue-600/30 transition-all hover:-translate-y-0.5 group"
                         >
-                            <span>Schedule Executive Consultation</span>
+                            <span>Discuss Your Revenue Growth Priorities</span>
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <Link 
-                            to="/talk-to-expert" 
-                            onClick={() => trackEvent({ eventName: 'FINAL_CTA_EXPERT_CLICK' })}
+                            to="/offerings" 
+                            onClick={() => trackEvent({ eventName: 'FINAL_CTA_OFFERINGS_CLICK' })}
                             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-8 py-4 rounded-xl border border-slate-700 transition-all hover:-translate-y-0.5"
                         >
-                            <span>Talk to Principal Architect</span>
+                            <span>Explore Our Revenue Capabilities</span>
                         </Link>
                     </div>
                     

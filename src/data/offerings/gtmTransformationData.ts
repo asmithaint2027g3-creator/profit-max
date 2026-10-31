@@ -534,7 +534,7 @@ export const gtmTransformationData: PageContentData = {
       answer: 'A comprehensive GTM Transformation is executed in an 8-week structured sprint: Weeks 1–2 (Market Attractiveness & Strategic Audit), Weeks 3–4 (Positioning, Messaging & Pricing Architecture), Weeks 5–6 (Field Enablement & Launch Readiness), and Weeks 7–8 (Launch Execution & Governance Activation).'
     }
   ],
-  primaryCtaText: 'Transform Your GTM Engine',
-  secondaryCtaText: 'Discuss Market Strategy'
+  primaryCtaText: 'Plan Your Next Growth Move',
+  secondaryCtaText: 'Discuss Your Go-to-Market Strategy'
 };
 

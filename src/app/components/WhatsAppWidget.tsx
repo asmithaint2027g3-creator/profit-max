@@ -1,7 +1,7 @@
 import { MessageCircle } from 'lucide-react';
 
 export default function WhatsAppWidget() {
-    const number = '919876543210'; // Replace with real WhatsApp number
+    const number = '919513288612'; // Verified contact number
     const message = "Hi ProfitMachines, I'd like to discuss my revenue growth goals.";
     const href = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 

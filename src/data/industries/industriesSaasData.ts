@@ -534,7 +534,7 @@ export const industriesSaasData: PageContentData = {
       answer: 'Our SaaS acceleration engagement runs in four 2-week sprints over 8 weeks: Sprint 1 (Funnel & Cohort Retention Audit), Sprint 2 (PLG-SLG Alignment & Onboarding Acceleration), Sprint 3 (Health Telemetry & Renewal Cadence Activation), and Sprint 4 (ARR Waterfall Cockpit & NRR Scaling).'
     }
   ],
-  primaryCtaText: 'Accelerate SaaS Recurring Growth',
-  secondaryCtaText: 'Discuss SaaS Retention Priorities'
+  primaryCtaText: 'Improve Subscription Growth and Retention',
+  secondaryCtaText: 'Review Your SaaS Growth Metrics'
 };
 

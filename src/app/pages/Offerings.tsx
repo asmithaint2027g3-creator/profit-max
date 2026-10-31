@@ -466,18 +466,18 @@ export default function Offerings() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-8 sm:mb-10">
-            <a
-              href="#situation-selector"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm tracking-wide shadow-lg shadow-blue-600/30 transition-all hover:-translate-y-0.5 font-mono uppercase"
+            <Link
+              to="/book-consultation"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm tracking-wide shadow-lg shadow-blue-600/30 transition-all hover:-translate-y-0.5"
             >
-              <span>RUN ARCHITECTURAL DIAGNOSTIC</span>
+              <span>Build Your AI-Native Revenue Engine</span>
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
             <a
-              href="#ai-native-layer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-sm tracking-wide shadow-xs transition-all hover:-translate-y-0.5 font-mono uppercase"
+              href="#architecture"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-sm tracking-wide shadow-xs transition-all hover:-translate-y-0.5"
             >
-              <span>INSPECT AI REVENUE AGENTS</span>
+              <span>Explore the Eight Capabilities</span>
               <Cpu className="w-4 h-4 text-blue-400" />
             </a>
           </div>

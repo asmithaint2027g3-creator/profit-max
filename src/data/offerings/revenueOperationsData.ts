@@ -534,7 +534,7 @@ export const revenueOperationsData: PageContentData = {
       answer: 'A comprehensive Revenue Operations engagement runs in four 2-week sprints over 8 weeks: Sprint 1 (Diagnostic Audit), Sprint 2 (Schema Cleanse & Data Integration), Sprint 3 (Workflow Automation & Billing Reconciliation), and Sprint 4 (Executive Telemetry & Cadence Activation).'
     }
   ],
-  primaryCtaText: 'Connect Your Revenue Engine',
-  secondaryCtaText: 'Discuss RevOps Priorities'
+  primaryCtaText: 'Optimize Your Revenue Operations',
+  secondaryCtaText: 'Review Your Revenue Workflows'
 };
 

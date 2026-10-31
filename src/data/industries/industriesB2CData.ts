@@ -534,7 +534,7 @@ export const industriesB2CData: PageContentData = {
       answer: 'Our consumer transformation runs in four 2-week sprints over 8 weeks: Sprint 1 (Funnel & RFM Forensic Audit), Sprint 2 (Checkout Streamlining & High-Margin Bundling), Sprint 3 (Cart Recovery & Personalized Journeys), and Sprint 4 (Replenishment Automation & Cohort LTV Cockpit).'
     }
   ],
-  primaryCtaText: 'Accelerate Consumer Growth',
-  secondaryCtaText: 'Discuss Consumer Priorities'
+  primaryCtaText: 'Improve Customer Acquisition and Conversion',
+  secondaryCtaText: 'Review Your Customer Journey'
 };
 

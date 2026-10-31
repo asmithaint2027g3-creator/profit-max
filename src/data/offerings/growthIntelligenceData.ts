@@ -534,7 +534,7 @@ export const growthIntelligenceData: PageContentData = {
       answer: 'Yes. Private equity operating partners and corporate development leaders frequently use our Diagnostic Audits and Unit Economics Forensics during due diligence to stress-test target company pipeline health, true customer churn, and margin resilience before acquiring or investing.'
     }
   ],
-  primaryCtaText: 'Deploy Growth Intelligence',
-  secondaryCtaText: 'Discuss Financial Priorities'
+  primaryCtaText: 'Turn Revenue Data Into Better Decisions',
+  secondaryCtaText: 'Discuss Your Growth Metrics'
 };
 

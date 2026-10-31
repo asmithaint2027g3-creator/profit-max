@@ -534,7 +534,7 @@ export const industriesMidMarketData: PageContentData = {
       answer: 'Our mid-market transformation runs in four 2-week sprints over 8 weeks: Sprint 1 (Diagnostic Friction Audit), Sprint 2 (ICP Calibration & Sales Process Standardization), Sprint 3 (Workflow Automation & Copilot Deployment), and Sprint 4 (Executive Telemetry & Retention Scaling).'
     }
   ],
-  primaryCtaText: 'Scale Revenue Efficiently',
-  secondaryCtaText: 'Discuss Scaling Priorities'
+  primaryCtaText: 'Scale Revenue Without Adding Complexity',
+  secondaryCtaText: 'Identify Your Growth Bottlenecks'
 };
 

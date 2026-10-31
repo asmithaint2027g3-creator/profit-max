@@ -535,7 +535,7 @@ export const profitPoolDiscoveryData: PageContentData = {
       answer: 'Yes. Market Opportunity Mapping and Whitespace Identification are specifically engineered to evaluate cross-border commercial corridors, foreign regulatory friction, and regional willingness to pay before committing expansion capital.'
     }
   ],
-  primaryCtaText: 'Explore Discovery Capabilities',
-  secondaryCtaText: 'Discuss Market Opportunities'
+  primaryCtaText: 'Identify Your Next Growth Opportunity',
+  secondaryCtaText: 'Discuss Your Market Strategy'
 };
 

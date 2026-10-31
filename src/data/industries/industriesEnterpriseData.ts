@@ -534,7 +534,7 @@ export const industriesEnterpriseData: PageContentData = {
       answer: 'An enterprise transformation runs across four 2-week sprints over 8 weeks: Sprint 1 (Account & RevOps Forensic Audit), Sprint 2 (Strategic Account & Multi-Threading Architecture), Sprint 3 (Multi-CRM Integration & Governed AI Deployment), and Sprint 4 (Executive Telemetry & Global Cadence Activation).'
     }
   ],
-  primaryCtaText: 'Coordinate Enterprise Revenue',
-  secondaryCtaText: 'Discuss Enterprise Priorities'
+  primaryCtaText: 'Discuss Your Enterprise Revenue Strategy',
+  secondaryCtaText: 'Assess Your Revenue Workflows'
 };
 

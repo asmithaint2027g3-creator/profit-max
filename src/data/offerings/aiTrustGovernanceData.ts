@@ -534,7 +534,7 @@ export const aiTrustGovernanceData: PageContentData = {
       answer: 'The complete enterprise governance deployment runs across four 2-week sprints over 8 weeks: Sprint 1 (Governance & Risk Exposure Audit), Sprint 2 (Security Gateway & Guardrail Deployment), Sprint 3 (Human-in-the-Loop & Evaluation Suites), and Sprint 4 (Observability, Audit Logging & Lifecycle CI/CD).'
     }
   ],
-  primaryCtaText: 'Deploy AI Governance Architecture',
-  secondaryCtaText: 'Discuss Security Priorities'
+  primaryCtaText: 'Plan Your Governed AI Implementation',
+  secondaryCtaText: 'Review Your AI Governance Needs'
 };
 

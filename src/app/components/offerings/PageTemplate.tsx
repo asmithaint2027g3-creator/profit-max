@@ -912,23 +912,30 @@ export default function PageTemplate({
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-wrap items-center gap-3">
-                <a
-                  href="#capabilities"
-                  onClick={(e) => handleAnchorClick(e, 'capabilities')}
-                  className="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30 inline-flex items-center gap-2 group cursor-pointer"
-                >
-                  <span>{data.primaryCtaText}</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </a>
-                <a
-                  href="#consultation"
-                  onClick={(e) => handleAnchorClick(e, 'consultation')}
-                  className="px-6 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 font-bold text-sm border border-slate-700 transition-all inline-flex items-center gap-2 cursor-pointer"
-                >
-                  <span>{data.secondaryCtaText}</span>
-                </a>
-              </div>
+              {(() => {
+                const isPrimaryConsultation = data.primaryCtaText.toLowerCase().includes('talk') || data.primaryCtaText.toLowerCase().includes('discuss');
+                const primaryAnchor = isPrimaryConsultation ? 'consultation' : 'capabilities';
+                const secondaryAnchor = isPrimaryConsultation ? 'capabilities' : 'consultation';
+                return (
+                  <div className="flex flex-wrap items-center gap-3">
+                    <a
+                      href={`#${primaryAnchor}`}
+                      onClick={(e) => handleAnchorClick(e, primaryAnchor)}
+                      className="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30 inline-flex items-center gap-2 group cursor-pointer"
+                    >
+                      <span>{data.primaryCtaText}</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                    <a
+                      href={`#${secondaryAnchor}`}
+                      onClick={(e) => handleAnchorClick(e, secondaryAnchor)}
+                      className="px-6 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 font-bold text-sm border border-slate-700 transition-all inline-flex items-center gap-2 cursor-pointer"
+                    >
+                      <span>{data.secondaryCtaText}</span>
+                    </a>
+                  </div>
+                );
+              })()}
             </div>
 
             {/* Right Hero Visual Card */}

@@ -43,6 +43,12 @@ const EngagementOnboarding = lazy(() => import('./pages/engagement/EngagementOnb
 const EngagementGlossaryFaq = lazy(() => import('./pages/engagement/EngagementGlossaryFaq'));
 const Resources = lazy(() => import('./pages/Resources'));
 const Company = lazy(() => import('./pages/Company'));
+const AboutProfitMachinesPage = lazy(() => import('./pages/AboutProfitMachinesPage'));
+const LeadershipTeamsPage = lazy(() => import('./pages/LeadershipTeamsPage'));
+const CareersFellowshipsPage = lazy(() => import('./pages/CareersFellowshipsPage'));
+const GlobalPresencePage = lazy(() => import('./pages/GlobalPresencePage'));
+const BlogInsightsPage = lazy(() => import('./pages/BlogInsightsPage'));
+const ContactInquiriesPage = lazy(() => import('./pages/ContactInquiriesPage'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 const Terms = lazy(() => import('./pages/Terms'));
 const Security = lazy(() => import('./pages/Security'));
@@ -325,10 +331,18 @@ export default function App() {
               <Route path="/services/customer-discovery" element={<ServicePage />} />
               <Route path="/services/competitive-discovery" element={<ServicePage />} />
               <Route path="/services/product-market-fit" element={<ServicePage />} />
-              {/* ── New top-level routes ── */}
-              <Route path="/company" element={<Company />} />
-              <Route path="/about" element={<Company />} />
-              <Route path="/about-us" element={<Company />} />
+              {/* ── Company & Talent Core Destinations ── */}
+              <Route path="/about" element={<AboutProfitMachinesPage />} />
+              <Route path="/company" element={<AboutProfitMachinesPage />} />
+              <Route path="/about-us" element={<AboutProfitMachinesPage />} />
+              <Route path="/leadership" element={<LeadershipTeamsPage />} />
+              <Route path="/careers" element={<CareersFellowshipsPage />} />
+              <Route path="/career" element={<CareersFellowshipsPage />} />
+              <Route path="/global-presence" element={<GlobalPresencePage />} />
+              <Route path="/offices" element={<GlobalPresencePage />} />
+              <Route path="/blog" element={<BlogInsightsPage />} />
+              <Route path="/resources" element={<BlogInsightsPage />} />
+              <Route path="/contact" element={<ContactInquiriesPage />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/security" element={<Security />} />
@@ -337,7 +351,6 @@ export default function App() {
               <Route path="/sitemap" element={<Sitemap />} />
               <Route path="/demand-pulse" element={<DemandPulse />} />
               <Route path="/partners" element={<Partners />} />
-              <Route path="/career" element={<Career />} />
               <Route path="/talk-to-expert" element={<TalkToExpert />} />
               <Route path="/ai-demand-discovery" element={<Navigate to="/solutions#ai-demand-discovery" replace />} />
               <Route path="/ai-lead-generation" element={<Navigate to="/offerings" replace />} />
@@ -352,12 +365,7 @@ export default function App() {
               <Route path="/ai-brand-acceleration" element={<Navigate to="/solutions#ai-brand-acceleration" replace />} />
               <Route path="/ai-reputation-acceleration" element={<Navigate to="/solutions#ai-reputation-acceleration" replace />} />
               <Route path="/hidden-revenue-capture" element={<Navigate to="/solutions#hidden-revenue-capture" replace />} />
-              <Route path="/about" element={<Navigate to="/company#about" replace />} />
-              <Route path="/mission" element={<Navigate to="/company#mission" replace />} />
-              <Route path="/leadership" element={<Navigate to="/company#leadership" replace />} />
-              <Route path="/offices" element={<Navigate to="/company#offices" replace />} />
-              <Route path="/careers" element={<Navigate to="/career" replace />} />
-              <Route path="/contact" element={<Navigate to="/book-consultation" replace />} />
+              <Route path="/mission" element={<Navigate to="/about#mission" replace />} />
               <Route path="/explore/:slug" element={<NavigateToExploreSection />} />
               <Route path="/products" element={<Navigate to="/demand-pulse" replace />} />
             </Routes>

@@ -8,14 +8,14 @@ export default function Footer() {
 
     const quickLinks: { [key: string]: string } = {
         'Home': '/',
+        'About Us': '/about',
+        'Leadership & Teams': '/leadership',
+        'Careers & Fellowships': '/careers',
+        'Global Presence': '/global-presence',
+        'Blog & Insights': '/blog',
         'Offerings': '/offerings',
-        'Engagement Model': '/engagement-model',
-        'About Us': '/#about-us',
-        'Case Studies': '/#case-studies',
-        'Blogs': '/#blogs',
-        'Careers': '/career',
-        'ICO Acceleration': '/ico-acceleration',
-        'Contact Us': '/book-consultation'
+        'Case Studies': '/outcomes',
+        'Contact Us': '/contact'
     };
 
     const icoLinks: { [key: string]: string } = {

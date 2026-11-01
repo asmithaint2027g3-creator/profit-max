@@ -24,7 +24,8 @@ export default function ScrollToTopAndHash() {
           document.getElementById(elementId) ||
           document.getElementById(elementId.toLowerCase()) ||
           document.querySelector(`[name="${elementId}"]`) ||
-          document.querySelector(`[data-section-id="${elementId}"]`);
+          document.querySelector(`[data-section-id="${elementId}"]`) ||
+          document.querySelector(`[data-section-id="${elementId.toLowerCase()}"]`);
 
         if (el) {
           const navOffset = 85;

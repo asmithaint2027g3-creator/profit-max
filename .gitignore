@@ -13,6 +13,7 @@ yarn-error.log*
 microvectors.tar
 profitmachines-email-templates/
 profit-machines-linkedin-templates/
+profitmachines-youtube-videos/
 *.tar
 *.tar.gz
 *.zip

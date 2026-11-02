@@ -107,7 +107,7 @@ export default function GlobalPresencePage() {
         'Mumbai, Maharashtra 400059'
       ],
       email: 'cs@profitmachines.com',
-      phone: '+91 9513088612',
+      phone: '+91 7889397999',
       hours: '09:30 - 18:30 IST &bull; Mon - Fri',
       capabilities: [
         'Commercial Account Management',

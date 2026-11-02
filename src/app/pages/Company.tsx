@@ -289,7 +289,7 @@ export default function Company() {
                                 country: 'Mumbai Office',
                                 address: ['WeWork, Raheja Platinum', 'off Andheri - Kurla Road', 'Mumbai, Maharashtra 400059'],
                                 email: 'cs@profitmachines.com',
-                                phone: '+91 9513088612',
+                                phone: '+91 7889397999',
                                 color: 'purple'
                             }
                         ].map((office, i) => (

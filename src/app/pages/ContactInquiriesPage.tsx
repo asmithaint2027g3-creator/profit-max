@@ -464,8 +464,8 @@ export default function ContactInquiriesPage() {
                 <a href="mailto:cs@profitmachines.com" className="flex items-center gap-2 text-slate-700 hover:text-blue-600">
                   <Mail className="w-3.5 h-3.5 text-purple-600" /> cs@profitmachines.com
                 </a>
-                <a href="tel:+919513088612" className="flex items-center gap-2 text-slate-700 hover:text-blue-600">
-                  <Phone className="w-3.5 h-3.5 text-purple-600" /> +91 9513088612
+                <a href="tel:+917889397999" className="flex items-center gap-2 text-slate-700 hover:text-blue-600">
+                  <Phone className="w-3.5 h-3.5 text-purple-600" /> +91 7889397999
                 </a>
               </div>
             </div>

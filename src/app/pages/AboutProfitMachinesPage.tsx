@@ -498,7 +498,7 @@ export default function AboutProfitMachinesPage() {
       city: 'Mumbai',
       label: 'Western Operations',
       address: 'WeWork, Raheja Platinum, Road off Andheri - Kurla Road, Sag Baug, Marol, Andheri East, Mumbai, Maharashtra 400059',
-      phone: '+91 9513288612',
+      phone: '+91 7889397999',
       email: 'connect@profitmachines.com'
     },
     {
@@ -1181,15 +1181,36 @@ export default function AboutProfitMachinesPage() {
             {/* Global Team Members Tile */}
             <div className="p-5 rounded-xl bg-gradient-to-br from-blue-900 via-slate-900 to-indigo-950 text-white border border-blue-500/30 flex flex-col justify-between shadow-sm">
               <div>
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30">
-                  Global Network
-                </span>
-                <h3 className="text-base font-black text-white font-heading mt-3">
-                  +30 Global Team Members
+                <div className="flex items-center justify-between mb-2.5">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30">
+                    Global Network
+                  </span>
+                  <span className="text-[10px] font-mono text-blue-400 font-bold">
+                    60+ Strong
+                  </span>
+                </div>
+                <h3 className="text-base font-black text-white font-heading mt-2">
+                  +60 Global Team Members
                 </h3>
                 <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                  Distributed Systems, R&amp;D Fellows, and Field Deployment Network across Americas, Asia-Pacific &amp; India.
+                  Specialized talent network across Americas, Asia-Pacific &amp; India:
                 </p>
+
+                <div className="mt-3 space-y-1.5">
+                  <div className="flex items-center gap-2 text-xs text-blue-100 bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/10">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0" />
+                    <span className="font-semibold text-white">AI FDEs</span>
+                    <span className="text-[11px] text-slate-300">(Forward Deployed Engineers)</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-cyan-100 bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/10">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 flex-shrink-0" />
+                    <span className="font-semibold text-white">AI Sales Acceleration Experts</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-indigo-100 bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/10">
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 flex-shrink-0" />
+                    <span className="font-semibold text-white">AI Domain Engineers</span>
+                  </div>
+                </div>
               </div>
               <div className="mt-4 pt-3 border-t border-blue-500/20 text-[11px] font-mono text-blue-300 font-bold">
                 COMMUNITY &amp; RESEARCH FELLOWSHIPS

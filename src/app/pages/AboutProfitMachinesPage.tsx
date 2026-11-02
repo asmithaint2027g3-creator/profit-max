@@ -139,6 +139,7 @@ export default function AboutProfitMachinesPage() {
       tagline: 'Mathematical Pipeline Forecasting & Risk Modeling',
       desc: 'Replaces subjective sales rep confidence with empirical win-probability indices computed from authentic stage progression velocity, stakeholder engagement cadence, and historical deal behavior.',
       metrics: '98.4% Board Forecast Accuracy Rate',
+      icon: Activity,
       deliverables: ['Leading vs. lagging telemetry modeling', 'Pipeline risk heatmaps', 'Deal slip early warning systems', 'Continuous scenario simulations']
     },
     {
@@ -147,6 +148,7 @@ export default function AboutProfitMachinesPage() {
       tagline: 'Transforming Legacy Teams into Capital-Efficient Engines',
       desc: 'Restructures enterprise go-to-market motions from ad-hoc rep intuition into mathematically validated sales engineering frameworks aligned with CFO business cases and capital efficiency.',
       metrics: '40% Lower Customer Acquisition Cost (CAC)',
+      icon: Layers,
       deliverables: ['Territory capacity modeling', 'Outcome-based pricing architectures', 'Compensation & incentive alignment', 'Board-level commercial predictability']
     }
   ];
@@ -896,7 +898,7 @@ export default function AboutProfitMachinesPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {technicalPillars.map((pillar) => {
-              const IconComponent = pillar.icon;
+              const IconComponent = pillar.icon || Cpu;
               return (
                 <div
                   key={pillar.id}
@@ -966,7 +968,7 @@ export default function AboutProfitMachinesPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {valueAdditionQuadrants.map((item, idx) => {
-              const IconComp = item.icon;
+              const IconComp = item.icon || Zap;
               return (
                 <div key={idx} className="p-7 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between">
                   <div>

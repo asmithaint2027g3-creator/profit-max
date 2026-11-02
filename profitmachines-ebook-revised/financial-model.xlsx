@@ -1,0 +1,435 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="10" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="Header">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2" ss:Color="#1E293B"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="10" ss:Color="#FFFFFF" ss:Bold="1"/>
+   <Interior ss:Color="#0F172A" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="Row">
+   <Alignment ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+   </Borders>
+   <Font ss:FontName="Calibri" ss:Size="9.5" ss:Color="#1E293B"/>
+  </Style>
+  <Style ss:ID="Highlight">
+   <Alignment ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#CBD5E1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" ss:Size="10" ss:Color="#0F172A" ss:Bold="1"/>
+   <Interior ss:Color="#F1F5F9" ss:Pattern="Solid"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Financial Model">
+  <Table ss:DefaultRowHeight="20">
+   <Column ss:Width="220"/>
+   <Column ss:Width="110"/>
+   <Column ss:Width="80"/>
+   <Column ss:Width="95"/>
+   <Column ss:Width="85"/>
+   <Column ss:Width="85"/>
+   <Column ss:Width="85"/>
+   <Column ss:Width="95"/>
+   <Column ss:Width="250"/>
+   <Row ss:Height="26">
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Parameter / Line Item</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Category</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Timing</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Baseline Value</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Year 1</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Year 2</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Year 3</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">3-Year Total</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Formula / Methodological Rationale</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Baseline Annual Recurring Revenue (ARR)</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Operating Parameter</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Historical</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$100</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$100</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$100</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$100</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Representative mid-market/enterprise B2B organization</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Quota-Carrying Account Executives (AEs)</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Operating Parameter</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Historical</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Representative sales capacity</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Average Contract Value (ACV)</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Operating Parameter</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Historical</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$85</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$85</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$85</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$85</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Mid-market to enterprise contract threshold</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Average Sales Cycle Duration (Days)</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Operating Parameter</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Historical</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">94</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">84</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">76</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">72</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Baseline cross-industry enterprise B2B sales cycle</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Opportunity-to-Close Win Rate</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Operating Parameter</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Historical</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">21.5%</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">23.3%</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">25.0%</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">25.5%</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Baseline conversion on qualified opportunities</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Gross Margin Percentage</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Operating Parameter</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Historical</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">76.0%</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">76.0%</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">76.0%</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">76.0%</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Standard enterprise technology gross margin</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Corporate Discount Rate (WACC)</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Financial Parameter</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Standard</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">10.0%</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">10.0%</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">10.0%</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">10.0%</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Conservative enterprise capital hurdle rate</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Enterprise Platform Subscription</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">TCO Investment Outflow</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Operating</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$0</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$240</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$260</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$280</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$780</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Annual software platform license</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Data Ingestion &amp; Integration Setup</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">TCO Investment Outflow</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Capital/Setup</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$75</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$0</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$15</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$15</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$105</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$75k upfront in M0; $15k/yr recurring maintenance</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Revenue Architecture Customization</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">TCO Investment Outflow</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Capital/Setup</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$45</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$0</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$10</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$10</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$65</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$45k upfront in M0; $10k/yr workflow optimization</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Executive &amp; Rep Enablement / Change Mgmt</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">TCO Investment Outflow</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Operating</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$0</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$50</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$15</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$15</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$80</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$50k onboarding in Yr 1; $15k/yr refresher</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Internal Operations Allocation (0.5 FTE)</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">TCO Investment Outflow</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Operating</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$0</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$65</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$70</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$75</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$210</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">0.5 internal RevOps analyst time dedicated</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Total Investment Cash Outflow</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">TCO Summary</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Outflow</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$120</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$355</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$370</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$395</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$1</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">240</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Sum of setup (M0: $120k) and operating cash outflows</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Incremental Net New ARR Booked</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Benefit Vector</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Top-Line</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$0</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$2</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">800</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$5</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">800</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$8</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">700</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$17</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">300</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Modeled top-line ARR expansion from win-rate and velocity</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Incremental Gross Profit (76% Margin)</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Benefit Vector</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Profit Inflow</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$0</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$2</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">128</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$4</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">408</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$6</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">612</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$13</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">148</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Incremental ARR * 76% Gross Margin</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Direct Cost Savings &amp; Tool Rationalization</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Benefit Vector</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Cost Savings</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$0</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$322</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$712</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$868</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$1</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">902</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Eliminating redundant point tools &amp; data clean-up fees</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Total Gross Cash Value Inflow</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Benefit Summary</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Inflow</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$0</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$2</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">450</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$5</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">120</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$7</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">480</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$15</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">050</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Incremental Gross Profit + Direct Cost Savings</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Net Operating Cash Flow (Undiscounted)</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Cash Flow</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Net Inflow</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">($120</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">000)</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$2</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">095</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$4</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">750</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$7</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">085</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$13</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">810</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">000</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Gross Cash Value Inflow minus Total Cash Outflow</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Discount Factor (10% WACC)</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Valuation</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Factor</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">1.0000</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">0.9091</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">0.8264</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">0.7513</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">1 / (1 + 0.10)^t</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Present Value of Cash Flow (PV)</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Valuation</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Discounted</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">($120</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">000)</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$1</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">904</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">545</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$3</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">925</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">620</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$5</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">323</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">065</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">$11</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">033</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">231</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Net Operating Cash Flow * Discount Factor</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Cumulative Net Present Value (NPV)</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Valuation</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Metric</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">($120</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">000)</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$1</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">784</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">545</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$5</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">710</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">165</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$11</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">033</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">231</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">$11</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">033</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">231</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Sum of all discounted cash flows</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Internal Rate of Return (IRR)</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Valuation</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Metric</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">148.6%</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Discount rate at which 3-year NPV equals zero</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Cumulative 3-Year ROI</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Valuation</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Metric</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">1113.7%</Data></Cell>
+    <Cell ss:StyleID="Highlight"><Data ss:Type="String">Cumulative Net Cash Flow ($13.81M) / Total Cost ($1.24M)</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Cash Breakeven Point</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Payback</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Timeline</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Month 7</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Month at which cumulative monthly cash flow turns positive</Data></Cell>
+   </Row>
+   <Row ss:Height="20">
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Full Capital Payback Period</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Payback</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Timeline</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">8.2 Months</Data></Cell>
+    <Cell ss:StyleID="Row"><Data ss:Type="String">Time required to fully recover total Year 1 investment</Data></Cell>
+   </Row>
+  </Table>
+ </Worksheet>
+</Workbook>

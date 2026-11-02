@@ -268,14 +268,14 @@ export default function Company() {
                             {
                                 country: 'US Office',
                                 address: ['501 E Kennedy Blvd Suite 1400', 'Tampa, FL 33602', 'United States'],
-                                email: 'connect@profitmachines.com',
+                                email: 'connect@trustgrid.ai',
                                 phone: '+91 9513288612',
                                 color: 'blue'
                             },
                             {
                                 country: 'Singapore Office',
                                 address: ['5 Temasek Boulevard, 17th Floor', 'Singapore 038985'],
-                                email: 'connect@profitmachines.com',
+                                email: 'connect@trustgrid.ai',
                                 phone: '+65 6050 5235',
                                 color: 'indigo'
                             },

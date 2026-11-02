@@ -43,7 +43,7 @@ export default function GlobalPresencePage() {
         'Tampa, FL 33602',
         'United States'
       ],
-      email: 'connect@profitmachines.com',
+      email: 'connect@trustgrid.ai',
       phone: '+91 9513288612',
       hours: '08:00 - 18:00 EST &bull; Mon - Fri',
       capabilities: [
@@ -63,7 +63,7 @@ export default function GlobalPresencePage() {
         '5 Temasek Boulevard, 17th Floor',
         'Singapore 038985'
       ],
-      email: 'connect@profitmachines.com',
+      email: 'connect@trustgrid.ai',
       phone: '+65 6050 5235',
       hours: '09:00 - 18:00 SGT &bull; Mon - Fri',
       capabilities: [
@@ -85,7 +85,7 @@ export default function GlobalPresencePage() {
         '2nd Floor, 13th Cross Road',
         'Bengaluru – 560038, India'
       ],
-      email: 'connect@profitmachines.com',
+      email: 'connect@trustgrid.ai',
       phone: '+91 9513288612',
       hours: '09:30 - 19:00 IST &bull; Mon - Fri',
       capabilities: [

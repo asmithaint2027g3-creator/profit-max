@@ -73,7 +73,7 @@ export default function Footer() {
                         <Link to="/book-consultation" className="btn-cta-primary w-full sm:w-auto">
                             Book Free Consultation
                         </Link>
-                        <a href="mailto:connect@profitmachines.com" className="btn-cta-secondary text-slate-300 border-white/20 hover:bg-white/10 hover:border-white/30 hover:text-white w-full sm:w-auto">
+                        <a href="mailto:connect@trustgrid.ai" className="btn-cta-secondary text-slate-300 border-white/20 hover:bg-white/10 hover:border-white/30 hover:text-white w-full sm:w-auto">
                             Email Us Directly
                         </a>
                     </div>
@@ -99,11 +99,11 @@ export default function Footer() {
                             </p>
 
                             <div className="space-y-4 mb-8">
-                                <a href="mailto:connect@profitmachines.com" className="group flex items-center gap-4 text-slate-400 hover:text-white transition-colors duration-300">
+                                <a href="mailto:connect@trustgrid.ai" className="group flex items-center gap-4 text-slate-400 hover:text-white transition-colors duration-300">
                                     <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-blue-500 group-hover:bg-blue-600 transition-all">
                                         <Mail className="w-4 h-4" />
                                     </div>
-                                    <span className="font-medium text-sm tracking-wide">connect@profitmachines.com</span>
+                                    <span className="font-medium text-sm tracking-wide">connect@trustgrid.ai</span>
                                 </a>
                                 <a href="tel:+919513288612" className="group flex items-center gap-4 text-slate-400 hover:text-white transition-colors duration-300">
                                     <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-blue-500 group-hover:bg-blue-600 transition-all">

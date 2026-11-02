@@ -103,7 +103,7 @@ export default function ContactInquiriesPage() {
       setSubmitted(true);
     } catch (error: any) {
       console.error("Error submitting contact form:", error);
-      setSubmitError("We couldn't submit your inquiry just now. Please try again or reach out directly at connect@profitmachines.com.");
+      setSubmitError("We couldn't submit your inquiry just now. Please try again or reach out directly at connect@trustgrid.ai.");
     } finally {
       setIsSubmitting(false);
     }
@@ -429,8 +429,8 @@ export default function ContactInquiriesPage() {
                 501 E Kennedy Blvd Suite 1400<br />Tampa, FL 33602, United States
               </p>
               <div className="space-y-1.5 text-xs font-medium">
-                <a href="mailto:connect@profitmachines.com" className="flex items-center gap-2 text-slate-700 hover:text-blue-600">
-                  <Mail className="w-3.5 h-3.5 text-blue-600" /> connect@profitmachines.com
+                <a href="mailto:connect@trustgrid.ai" className="flex items-center gap-2 text-slate-700 hover:text-blue-600">
+                  <Mail className="w-3.5 h-3.5 text-blue-600" /> connect@trustgrid.ai
                 </a>
                 <a href="tel:+919513288612" className="flex items-center gap-2 text-slate-700 hover:text-blue-600">
                   <Phone className="w-3.5 h-3.5 text-blue-600" /> +91 9513288612
@@ -445,8 +445,8 @@ export default function ContactInquiriesPage() {
                 5 Temasek Boulevard, 17th Floor<br />Singapore 038985
               </p>
               <div className="space-y-1.5 text-xs font-medium">
-                <a href="mailto:connect@profitmachines.com" className="flex items-center gap-2 text-slate-700 hover:text-blue-600">
-                  <Mail className="w-3.5 h-3.5 text-indigo-600" /> connect@profitmachines.com
+                <a href="mailto:connect@trustgrid.ai" className="flex items-center gap-2 text-slate-700 hover:text-blue-600">
+                  <Mail className="w-3.5 h-3.5 text-indigo-600" /> connect@trustgrid.ai
                 </a>
                 <a href="tel:+6560505235" className="flex items-center gap-2 text-slate-700 hover:text-blue-600">
                   <Phone className="w-3.5 h-3.5 text-indigo-600" /> +65 6050 5235
@@ -462,8 +462,8 @@ export default function ContactInquiriesPage() {
                 Suite 32, 235, Binnamangala, 2nd Floor, 13th Cross Road, Bengaluru – 560038, India
               </p>
               <div className="space-y-1.5 text-xs font-medium">
-                <a href="mailto:connect@profitmachines.com" className="flex items-center gap-2 text-slate-700 hover:text-blue-600">
-                  <Mail className="w-3.5 h-3.5 text-emerald-600" /> connect@profitmachines.com
+                <a href="mailto:connect@trustgrid.ai" className="flex items-center gap-2 text-slate-700 hover:text-blue-600">
+                  <Mail className="w-3.5 h-3.5 text-emerald-600" /> connect@trustgrid.ai
                 </a>
                 <a href="tel:+919513288612" className="flex items-center gap-2 text-slate-700 hover:text-blue-600">
                   <Phone className="w-3.5 h-3.5 text-emerald-600" /> +91 9513288612

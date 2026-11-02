@@ -938,42 +938,50 @@ export default function PageTemplate({
                 {data.description}
               </p>
 
-              {/* Target Audience Line */}
-              <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 mb-6 space-y-1.5">
-                <div className="text-[11px] font-mono font-bold text-blue-400 uppercase tracking-wider">
-                  Engineered for Decision-Makers:
-                </div>
-                <div className="text-slate-300 leading-relaxed">
-                  <span className="font-semibold text-white">Primary:</span> {data.targetAudience.primary} &bull;{' '}
-                  <span className="font-semibold text-white">Executive Stakeholders:</span> {data.targetAudience.executives}
-                </div>
+              {/* Crisp Core Focus Badge (matching Reference Design) */}
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-slate-900/90 border border-slate-800 text-xs text-slate-300 mb-6 shadow-sm">
+                <Zap className="w-4 h-4 text-blue-400 shrink-0" />
+                <span>
+                  <strong className="text-blue-400 font-semibold font-mono">Core Focus:</strong> Deterministic Gates • Lossless RoCEv2 Delivery • Continuous FinOps Optimization
+                </span>
               </div>
 
-              {/* CTAs */}
-              {(() => {
-                const isPrimaryConsultation = data.primaryCtaText.toLowerCase().includes('talk') || data.primaryCtaText.toLowerCase().includes('discuss');
-                const primaryAnchor = isPrimaryConsultation ? 'consultation' : 'capabilities';
-                const secondaryAnchor = isPrimaryConsultation ? 'capabilities' : 'consultation';
-                return (
-                  <div className="flex flex-wrap items-center gap-3">
-                    <a
-                      href={`#${primaryAnchor}`}
-                      onClick={(e) => handleAnchorClick(e, primaryAnchor)}
-                      className="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30 inline-flex items-center gap-2 group cursor-pointer"
-                    >
-                      <span>{data.primaryCtaText}</span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </a>
-                    <a
-                      href={`#${secondaryAnchor}`}
-                      onClick={(e) => handleAnchorClick(e, secondaryAnchor)}
-                      className="px-6 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 font-bold text-sm border border-slate-700 transition-all inline-flex items-center gap-2 cursor-pointer"
-                    >
-                      <span>{data.secondaryCtaText}</span>
-                    </a>
-                  </div>
-                );
-              })()}
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                <a
+                  href="#capabilities"
+                  onClick={(e) => handleAnchorClick(e, 'capabilities')}
+                  className="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30 inline-flex items-center gap-2 group cursor-pointer"
+                >
+                  <span>{data.primaryCtaText}</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+
+                <a
+                  href="#consultation"
+                  onClick={(e) => handleAnchorClick(e, 'consultation')}
+                  className="px-5 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 font-bold text-sm border border-slate-700 transition-all inline-flex items-center gap-2 cursor-pointer"
+                >
+                  <span>{data.secondaryCtaText}</span>
+                  <ArrowUpRight className="w-4 h-4 text-slate-400" />
+                </a>
+
+                <Link
+                  to="/talk-to-expert"
+                  className="text-xs text-blue-400 hover:text-blue-300 font-semibold px-2 py-1 transition-colors"
+                >
+                  Talk to a Revenue Architect &rarr;
+                </Link>
+              </div>
+
+              {/* Numbered Milestone Stage Pills */}
+              <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
+                {['1. Full-Spectrum', '2. Diagnostic', '3. Architecture', '4. Deployment', '5. Compounding'].map((step, idx) => (
+                  <span key={idx} className="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800/90 text-slate-400 text-[11px]">
+                    {step}
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* Right Hero Visual Card */}

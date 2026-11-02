@@ -204,18 +204,33 @@ export default function Industries() {
                 </span>{' '}
                 Your Growth System Should Reflect That.
               </h1>
-              <p className="text-lg sm:text-xl text-slate-300 max-w-xl mb-8 leading-relaxed">
+              <p className="text-lg sm:text-xl text-slate-300 max-w-xl mb-6 leading-relaxed">
                 ProfitMachines helps organizations identify revenue opportunities, reduce execution friction, and coordinate AI-enabled growth workflows around their market, customers, and business model.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-12">
+              {/* Crisp Core Focus Badge */}
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-slate-900/90 border border-slate-800 text-xs text-slate-300 mb-6 shadow-sm">
+                <Zap className="w-4 h-4 text-blue-400 shrink-0" />
+                <span>
+                  <strong className="text-blue-400 font-semibold font-mono">Core Focus:</strong> Deterministic Gates • Lossless RoCEv2 Delivery • Continuous FinOps Optimization
+                </span>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <Link to="/book-consultation" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm tracking-wide shadow-lg shadow-blue-600/30 transition-all hover:-translate-y-0.5">
-                  <span>Find the Right Growth Approach for Your Business</span>
+                  <span>Find the Right Growth Approach</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <a href="#pathways" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-sm tracking-wide transition-all hover:-translate-y-0.5">
                   <span>Explore Business Models</span>
                   <ArrowUpRight className="w-4 h-4" />
                 </a>
+              </div>
+              {/* Numbered Milestone Stage Pills */}
+              <div className="flex flex-wrap items-center gap-2 mb-10 text-xs font-mono">
+                {['1. Full-Spectrum', '2. Diagnostic', '3. Architecture', '4. Deployment', '5. Compounding'].map((step, idx) => (
+                  <span key={idx} className="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800/90 text-slate-400 text-[11px]">
+                    {step}
+                  </span>
+                ))}
               </div>
               <div className="grid grid-cols-3 gap-6 pt-8 border-t border-slate-800">
                 {[{ val: '6', label: 'Industry Pathways' }, { val: '10+', label: 'Specialized Sectors' }, { val: '30+', label: 'Capability Areas' }].map(m => (

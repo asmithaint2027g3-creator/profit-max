@@ -109,21 +109,12 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
                 {data.heroSupporting}
               </p>
 
-              {/* Target Decision Makers */}
-              <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 mb-8 space-y-1">
-                <div className="text-[11px] font-mono font-bold text-blue-400 uppercase tracking-wider">
-                  Target Decision-Makers:
-                </div>
-                <div className="flex flex-wrap gap-2 pt-1">
-                  {data.targetDecisionMakers.map((aud, aIdx) => (
-                    <span
-                      key={aIdx}
-                      className="px-2.5 py-1 rounded bg-slate-800/90 text-slate-300 border border-slate-700/80 text-xs font-medium"
-                    >
-                      {aud}
-                    </span>
-                  ))}
-                </div>
+              {/* Crisp Core Focus Badge */}
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-slate-900/90 border border-slate-800 text-xs text-slate-300 mb-6 shadow-sm">
+                <Zap className="w-4 h-4 text-blue-400 shrink-0" />
+                <span>
+                  <strong className="text-blue-400 font-semibold font-mono">Core Focus:</strong> Deterministic Gates • Lossless RoCEv2 Delivery • Continuous FinOps Optimization
+                </span>
               </div>
 
               {/* Hero CTAs */}
@@ -143,6 +134,15 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
                   <Sparkles className="w-4 h-4 text-blue-400" />
                   <span>{data.secondaryCTA}</span>
                 </Link>
+              </div>
+
+              {/* Numbered Milestone Stage Pills */}
+              <div className="flex flex-wrap items-center gap-2 pt-5 text-xs font-mono">
+                {['1. Full-Spectrum', '2. Diagnostic', '3. Architecture', '4. Deployment', '5. Compounding'].map((step, idx) => (
+                  <span key={idx} className="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800/90 text-slate-400 text-[11px]">
+                    {step}
+                  </span>
+                ))}
               </div>
             </div>
 

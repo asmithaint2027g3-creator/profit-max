@@ -208,39 +208,47 @@ export default function GrowthScienceHub() {
                 Move past subjective sales forecasting and fragmented GTM silos. ProfitMachines Growth Science deconstructs enterprise revenue into deterministic mathematical equations, connects buyer signals to commercial execution, and captures high-margin economic value.
               </p>
 
-              {/* 3 Core System Pillars Summary */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
-                <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs space-y-1">
-                  <span className="font-mono text-blue-400 font-bold block uppercase">01. Physics</span>
-                  <span className="text-slate-300">Deterministic modeling of drivers, CAC, and cohorts</span>
-                </div>
-                <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs space-y-1">
-                  <span className="font-mono text-sky-400 font-bold block uppercase">02. Execution</span>
-                  <span className="text-slate-300">AI sales engines & autonomous multi-channel acceleration</span>
-                </div>
-                <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs space-y-1">
-                  <span className="font-mono text-emerald-400 font-bold block uppercase">03. Governance</span>
-                  <span className="text-slate-300">Real-time C-suite telemetry & stochastic board forecasting</span>
-                </div>
+              {/* Crisp Core Focus Badge (matching Reference Design) */}
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-slate-900/90 border border-slate-800 text-xs text-slate-300 mb-6 shadow-sm">
+                <Zap className="w-4 h-4 text-blue-400 shrink-0" />
+                <span>
+                  <strong className="text-blue-400 font-semibold font-mono">Core Focus:</strong> Deterministic Gates • Lossless RoCEv2 Delivery • Continuous FinOps Optimization
+                </span>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-3">
-                <a
-                  href="#capabilities"
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                <Link
+                  to="/book-consultation"
                   className="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30 inline-flex items-center gap-2 group cursor-pointer"
                 >
-                  <span>Explore 9 Capabilities</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                </a>
+                  <span>Book Revenue Diagnostic</span>
+                  <ArrowUpRight className="w-4 h-4" />
+                </Link>
 
                 <a
-                  href="#diagnostic"
-                  className="px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold text-sm transition-all inline-flex items-center gap-2"
+                  href="#capabilities"
+                  className="px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold text-sm transition-all inline-flex items-center gap-2 cursor-pointer"
                 >
-                  <Radar className="w-4 h-4 text-blue-400" />
-                  <span>Start Friction Diagnostic</span>
+                  <span>Explore 9 Capabilities</span>
+                  <ArrowRight className="w-4 h-4 text-slate-400 group-hover:translate-x-0.5 transition-transform" />
                 </a>
+
+                <Link
+                  to="/talk-to-expert"
+                  className="text-xs text-blue-400 hover:text-blue-300 font-semibold px-2 py-1 transition-colors"
+                >
+                  Talk to a Revenue Architect &rarr;
+                </Link>
+              </div>
+
+              {/* Numbered Milestone Stage Pills */}
+              <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
+                {['1. Full-Spectrum', '2. Diagnostic', '3. Architecture', '4. Deployment', '5. Compounding'].map((step, idx) => (
+                  <span key={idx} className="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800/90 text-slate-400 text-[11px]">
+                    {step}
+                  </span>
+                ))}
               </div>
             </div>
 

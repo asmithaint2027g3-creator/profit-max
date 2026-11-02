@@ -1,85 +1,106 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { X, ShieldCheck, Cookie } from 'lucide-react';
+import { X, Cookie } from 'lucide-react';
 import { Button } from './ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const STORAGE_KEY = 'trustgrid_cookie_consent';
+
 export default function CookieConsent() {
-    const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
-    useEffect(() => {
-        // Check if user has already accepted cookies
-        const consent = localStorage.getItem('trustgrid_cookie_consent');
-        if (!consent) {
-            // Show popup after a small delay for better UX
-            const timer = setTimeout(() => setIsVisible(true), 1500);
-            return () => clearTimeout(timer);
-        }
-    }, []);
+  useEffect(() => {
+    try {
+      const consent = localStorage.getItem(STORAGE_KEY);
+      if (!consent) {
+        // Show after initial engagement delay for smooth first paint
+        const timer = setTimeout(() => setIsVisible(true), 1200);
+        return () => clearTimeout(timer);
+      }
+    } catch {
+      // Graceful fallback if cookies/storage are restricted
+    }
+  }, []);
 
-    const handleAccept = () => {
-        localStorage.setItem('trustgrid_cookie_consent', 'accepted');
-        setIsVisible(false);
-    };
+  const handleAccept = () => {
+    try {
+      localStorage.setItem(STORAGE_KEY, 'accepted');
+    } catch {
+      // Storage failure handled gracefully
+    }
+    setIsVisible(false);
+  };
 
-    const handleDecline = () => {
-        localStorage.setItem('trustgrid_cookie_consent', 'declined');
-        setIsVisible(false);
-    };
+  const handleDecline = () => {
+    try {
+      localStorage.setItem(STORAGE_KEY, 'declined');
+    } catch {
+      // Storage failure handled gracefully
+    }
+    setIsVisible(false);
+  };
 
-    return (
-        <AnimatePresence>
-            {isVisible && (
-                <motion.div
-                    initial={{ y: 100, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: 100, opacity: 0 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    className="fixed bottom-6 left-6 right-6 md:left-auto md:right-6 md:w-[480px] z-[100]"
-                >
-                    <div className="bg-white/90 backdrop-blur-xl border border-white/20 shadow-2xl rounded-2xl p-6 ring-1 ring-slate-900/5 dark:bg-slate-900/90 dark:border-slate-800">
-                        <div className="flex items-start gap-4">
-                            <div className="p-3 bg-blue-50 rounded-xl text-blue-600 shrink-0">
-                                <Cookie className="w-6 h-6" />
-                            </div>
-                            <div className="flex-1 space-y-3">
-                                <div className="flex items-start justify-between">
-                                    <h3 className="text-lg font-bold text-slate-900">Cookie Policy</h3>
-                                    <button
-                                        onClick={() => setIsVisible(false)}
-                                        aria-label="Close dialog"
-                                        title="Close dialog"
-                                        className="text-slate-400 hover:text-slate-600 transition-colors p-1"
-                                    >
-                                        <X className="w-4 h-4" />
-                                        <span className="sr-only">Close dialog</span>
-                                    </button>
-                                </div>
-                                <p className="text-sm text-slate-600 leading-relaxed font-medium">
-                                    We use cookies to enhance your experience, analyze site traffic, and assist in our marketing efforts. By continuing to visit this site, you agree to our use of cookies.
-                                    Read our <Link to="/privacy" className="text-blue-600 hover:underline">Privacy Policy</Link> and <Link to="/terms" className="text-blue-600 hover:underline">Terms of Service</Link>.
-                                </p>
-                                <div className="flex gap-3 pt-2">
-                                    <Button
-                                        onClick={handleAccept}
-                                        className="bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/20 font-semibold flex-1 h-10 rounded-lg text-sm"
-                                    >
-                                        Accept All
-                                    </Button>
-                                    <Button
-                                        onClick={handleDecline}
-                                        variant="outline"
-                                        className="border-slate-200 text-slate-600 hover:bg-slate-50 font-medium flex-1 h-10 rounded-lg text-sm"
-                                    >
-                                        Decline
-                                    </Button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
-            )}
-        </AnimatePresence>
-    );
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          role="region"
+          aria-label="Cookie consent banner"
+          initial={{ y: 80, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 80, opacity: 0 }}
+          transition={{ type: 'spring', stiffness: 320, damping: 28 }}
+          // Anchored on the bottom-left on desktop (md:left-6 md:right-auto) so it never collides with the ChatBot launcher at bottom-right
+          className="fixed bottom-6 left-6 right-6 md:right-auto md:left-6 md:w-[420px] z-[100]"
+        >
+          <div className="bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-2xl rounded-2xl p-5 ring-1 ring-slate-900/5">
+            <div className="flex items-start gap-3.5">
+              <div className="p-2.5 bg-blue-50 rounded-xl text-blue-600 shrink-0">
+                <Cookie className="w-5 h-5" />
+              </div>
+              <div className="flex-1 space-y-2.5">
+                <div className="flex items-start justify-between">
+                  <h3 className="text-base font-bold text-slate-900">Cookie Notice</h3>
+                  <button
+                    onClick={() => setIsVisible(false)}
+                    aria-label="Dismiss cookie notice"
+                    title="Dismiss cookie notice"
+                    className="text-slate-400 hover:text-slate-600 transition-colors p-1 cursor-pointer"
+                  >
+                    <X className="w-4 h-4" />
+                    <span className="sr-only">Dismiss</span>
+                  </button>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                  We use cookies to analyze telemetry and enhance platform performance. See our{' '}
+                  <Link to="/privacy" className="text-blue-600 font-semibold hover:underline">
+                    Privacy Policy
+                  </Link>{' '}
+                  and{' '}
+                  <Link to="/terms" className="text-blue-600 font-semibold hover:underline">
+                    Terms
+                  </Link>.
+                </p>
+                <div className="flex gap-2.5 pt-1">
+                  <Button
+                    onClick={handleAccept}
+                    className="bg-blue-600 hover:bg-blue-700 text-white shadow-sm font-semibold flex-1 h-9 rounded-lg text-xs cursor-pointer"
+                  >
+                    Accept All
+                  </Button>
+                  <Button
+                    onClick={handleDecline}
+                    variant="outline"
+                    className="border-slate-200 text-slate-600 hover:bg-slate-50 font-medium flex-1 h-9 rounded-lg text-xs cursor-pointer"
+                  >
+                    Decline
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
 }

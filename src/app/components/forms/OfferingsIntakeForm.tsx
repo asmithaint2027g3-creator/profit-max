@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { CheckCircle2, Lock, ArrowRight, ShieldCheck, Sparkles, Building2, Mail, Phone, User } from 'lucide-react';
+import { recordPopupSubmitted } from '../../utils/popupSuppression';
 
 interface OfferingsIntakeFormProps {
   pageContext?: string;
@@ -25,6 +26,7 @@ export default function OfferingsIntakeForm({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.fullName || !formData.email) return;
+    recordPopupSubmitted('marketing_exit_intent', 30);
     setSubmitted(true);
   };
 

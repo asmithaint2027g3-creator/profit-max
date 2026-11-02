@@ -84,6 +84,23 @@ export default function PageTemplate({
     }
   }, [location.pathname, location.hash, data]);
 
+  // Support direct internal menu selection
+  useEffect(() => {
+    const handleHashEvent = (e: Event) => {
+      const customEvent = e as CustomEvent<{ path: string; hash: string }>;
+      if (customEvent.detail && customEvent.detail.hash) {
+        const hashId = customEvent.detail.hash.toLowerCase();
+        const match = data.capabilities.find(c => c.id.toLowerCase() === hashId);
+        if (match) {
+          setSelectedGroup('All');
+          setExpandedCapId(match.id);
+        }
+      }
+    };
+    window.addEventListener('pm:hash-navigate', handleHashEvent);
+    return () => window.removeEventListener('pm:hash-navigate', handleHashEvent);
+  }, [data]);
+
   // Smooth scroll handler for sticky subnav links
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();

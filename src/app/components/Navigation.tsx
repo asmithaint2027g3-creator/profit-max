@@ -2800,18 +2800,22 @@ export default function Navigation() {
         if (menu.categories[0]) setActiveCategoryId(menu.categories[0].id);
     };
 
-    // Handle mouse leave with small grace period to prevent accidental closing
+    // Handle mouse leave with intentional 250ms hover-bridge to prevent accidental closing
     const handleMenuMouseLeave = () => {
+        if (closeTimeoutRef.current) {
+            clearTimeout(closeTimeoutRef.current);
+        }
         closeTimeoutRef.current = setTimeout(() => {
             setActiveMenuId(null);
-        }, 150);
+        }, 250);
     };
 
-    // Close on route change or Escape key
+    // Close on route change or hash change, ensuring body scroll is cleanly restored
     useEffect(() => {
         setActiveMenuId(null);
         setMobileOpen(false);
         setSearchOpen(false);
+        document.body.style.overflow = '';
     }, [location.pathname, location.hash]);
 
     // Prevent background scrolling when mobile menu drawer is open
@@ -2836,6 +2840,17 @@ export default function Navigation() {
         };
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
+    }, []);
+
+    // Outside click handler to immediately close mega-menu when clicking elsewhere
+    useEffect(() => {
+        const handleOutsideClick = (e: MouseEvent) => {
+            if (navRef.current && !navRef.current.contains(e.target as Node)) {
+                setActiveMenuId(null);
+            }
+        };
+        document.addEventListener('mousedown', handleOutsideClick);
+        return () => document.removeEventListener('mousedown', handleOutsideClick);
     }, []);
 
     // Toggle top-level menu in mobile accordion
@@ -2929,25 +2944,43 @@ export default function Navigation() {
 
     // Smooth navigation helper for sub-menu and sub-sub menu clicks with hashes
     const handleSubMenuCardClick = (path: string) => {
+        if (closeTimeoutRef.current) {
+            clearTimeout(closeTimeoutRef.current);
+            closeTimeoutRef.current = null;
+        }
         setActiveMenuId(null);
         setMobileOpen(false);
+        document.body.style.overflow = '';
+
         if (path.includes('#')) {
             const [targetPath, rawHash] = path.split('#');
             const hash = decodeURIComponent(rawHash);
+
+            // Notify document listeners to prepare or expand target panels
+            window.dispatchEvent(new CustomEvent('pm:hash-navigate', { detail: { path, hash } }));
+
+            const performScroll = () => {
+                const el = document.getElementById(hash) || 
+                           document.getElementById(hash.toLowerCase()) ||
+                           document.querySelector('[name="' + hash + '"]') ||
+                           document.querySelector('[data-section-id="' + hash + '"]') ||
+                           document.querySelector('[data-section-id="' + hash.toLowerCase() + '"]');
+                if (el) {
+                    const navOffset = 95;
+                    const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = Math.max(0, elementPosition - navOffset);
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    return true;
+                }
+                return false;
+            };
+
+            // Immediate scroll if already on the destination page
             if (location.pathname === targetPath || (!targetPath && location.pathname)) {
-                setTimeout(() => {
-                    const el = document.getElementById(hash) || 
-                               document.getElementById(hash.toLowerCase()) ||
-                               document.querySelector('[name="' + hash + '"]') ||
-                               document.querySelector('[data-section-id="' + hash + '"]') ||
-                               document.querySelector('[data-section-id="' + hash.toLowerCase() + '"]');
-                    if (el) {
-                        const navOffset = 95;
-                        const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
-                        const offsetPosition = Math.max(0, elementPosition - navOffset);
-                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                    }
-                }, 80);
+                if (!performScroll()) {
+                    setTimeout(performScroll, 80);
+                    setTimeout(performScroll, 250);
+                }
             }
         }
     };

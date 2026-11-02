@@ -1,5 +1,6 @@
 import React from 'react';
 import { CheckCircle2, AlertCircle, Copy, Check, ArrowRight, ShieldCheck, RefreshCw } from 'lucide-react';
+import { recordPopupSubmitted } from '../../utils/popupSuppression';
 
 export interface FormSuccessModalProps {
     isOpen: boolean;
@@ -19,6 +20,13 @@ export const FormSuccessModal: React.FC<FormSuccessModalProps> = ({
     message = "Your strategic request has been securely logged. Our executive consulting team will review your architecture and contact you within 1 business day."
 }) => {
     const [copied, setCopied] = React.useState(false);
+
+    React.useEffect(() => {
+        if (isOpen) {
+            // Suppress marketing/acquisition popups for 30 days upon successful submission
+            recordPopupSubmitted('marketing_exit_intent', 30);
+        }
+    }, [isOpen]);
 
     if (!isOpen) return null;
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { recordPopupSubmitted } from '../../utils/popupSuppression';
 import { CheckCircle2, Send, Lock, ArrowRight } from 'lucide-react';
 
 interface IndustryIntakeFormProps {
@@ -23,6 +24,7 @@ export default function IndustryIntakeForm({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.fullName || !formData.email) return;
+    recordPopupSubmitted('marketing_exit_intent', 30);
     setSubmitted(true);
   };
 

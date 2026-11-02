@@ -24,7 +24,7 @@ export default function AboutProfitMachinesPage() {
     if (metaDescription) {
       metaDescription.setAttribute(
         'content',
-        'ProfitMachines, powered by TRUSTGRID.AI, is an enterprise AI-native revenue transformation platform helping global organizations engineer predictable pipeline, accelerate sales execution, and achieve mathematical growth.'
+        'ProfitMachines is an enterprise AI-native revenue transformation platform helping global organizations engineer predictable pipeline, accelerate sales execution, and achieve mathematical growth.'
       );
     }
 
@@ -483,7 +483,7 @@ export default function AboutProfitMachinesPage() {
       label: 'Global R&D Center',
       address: 'Suite 32, 235, Binnamangala, 2nd Floor, 13th Cross Road, Indira Nagar 2nd Stage, Hoysala Nagar, Bengaluru – 560038, India',
       phone: '+91 9513288612',
-      email: 'connect@trustgrid.ai'
+      email: 'connect@profitmachines.com'
     },
     {
       region: 'AI Systems Engineering Lab',
@@ -491,7 +491,7 @@ export default function AboutProfitMachinesPage() {
       label: 'Hardware & Systems Lab',
       address: 'WeWork, 13th Floor, Tin Factory, Salarpuria Magnificia, 78, Old Madras Rd, next to KR Puram, Bengaluru, Karnataka 560016',
       phone: '+91 9513288612',
-      email: 'connect@trustgrid.ai'
+      email: 'connect@profitmachines.com'
     },
     {
       region: 'Western India Operations',
@@ -499,7 +499,7 @@ export default function AboutProfitMachinesPage() {
       label: 'Western Operations',
       address: 'WeWork, Raheja Platinum, Road off Andheri - Kurla Road, Sag Baug, Marol, Andheri East, Mumbai, Maharashtra 400059',
       phone: '+91 9513288612',
-      email: 'connect@trustgrid.ai'
+      email: 'connect@profitmachines.com'
     },
     {
       region: 'Silicon Valley Office',
@@ -507,7 +507,7 @@ export default function AboutProfitMachinesPage() {
       label: 'West Coast AI Center',
       address: 'Suite 21, 400 Concar Dr, San Mateo, CA 94402, United States',
       phone: '+1 650 772 4145',
-      email: 'connect@trustgrid.ai'
+      email: 'connect@profitmachines.com'
     },
     {
       region: 'New York Office',
@@ -515,7 +515,7 @@ export default function AboutProfitMachinesPage() {
       label: 'East Coast Center',
       address: '33 Irving Pl, New York, NY 10003, United States',
       phone: '+1 650 772 4145',
-      email: 'connect@trustgrid.ai'
+      email: 'connect@profitmachines.com'
     },
     {
       region: 'Americas Headquarters',
@@ -523,7 +523,7 @@ export default function AboutProfitMachinesPage() {
       label: 'Americas HQ',
       address: '501 E Kennedy Blvd Suite 1400, Tampa, FL 33602, United States',
       phone: '+1 650 772 4145',
-      email: 'connect@trustgrid.ai'
+      email: 'connect@profitmachines.com'
     },
     {
       region: 'Southeast Asia Hub',
@@ -531,7 +531,7 @@ export default function AboutProfitMachinesPage() {
       label: 'APAC Regional Center',
       address: '5 Temasek Boulevard, 17th Floor, Singapore 038985',
       phone: '+65 6050 5235',
-      email: 'connect@trustgrid.ai'
+      email: 'connect@profitmachines.com'
     },
     {
       region: 'Australia Operations',
@@ -539,7 +539,7 @@ export default function AboutProfitMachinesPage() {
       label: 'ANZ Regional Office',
       address: '120 Spencer St, Melbourne VIC 3000, Australia',
       phone: '+65 6050 5235',
-      email: 'connect@trustgrid.ai'
+      email: 'connect@profitmachines.com'
     },
     {
       region: 'East Asia Center',
@@ -547,7 +547,7 @@ export default function AboutProfitMachinesPage() {
       label: 'East Asia Hub',
       address: '〒530-0002 Osaka, Kita Ward, Sonezakishinchi, 1 Chome−13−22 WeWork 御堂筋フロンティア, Japan',
       phone: '+65 6050 5235',
-      email: 'connect@trustgrid.ai'
+      email: 'connect@profitmachines.com'
     },
     {
       region: 'Canada Center',
@@ -555,38 +555,14 @@ export default function AboutProfitMachinesPage() {
       label: 'North America Hub',
       address: '1050 King St W, Toronto, Ontario M6K 0A5, Canada',
       phone: '+1 650 772 4145',
-      email: 'connect@trustgrid.ai'
+      email: 'connect@profitmachines.com'
     }
   ];
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900">
 
-      {/* ── STICKY ANCHOR SUB-NAV (LIGHT ENTERPRISE THEME) ── */}
-      <nav className="sticky top-16 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 text-xs hidden md:block shadow-2xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-3 overflow-x-auto scrollbar-none gap-6">
-            <div className="flex items-center gap-1.5 shrink-0 font-bold text-slate-900">
-              <Building2 className="w-4 h-4 text-blue-600" />
-              <span className="tracking-wide">ABOUT PROFITMACHINES</span>
-            </div>
-            <div className="flex items-center gap-5 text-slate-600 font-medium whitespace-nowrap">
-              <a href="#overview" className="hover:text-blue-600 transition-colors">Platform</a>
-              <a href="#mission-vision" className="hover:text-blue-600 transition-colors">Mission &amp; Vision</a>
-              <a href="#roadmap" className="hover:text-blue-600 text-blue-600 font-bold transition-colors">Value Roadmap</a>
-              <a href="#capabilities" className="hover:text-blue-600 transition-colors">6 Pillars</a>
-              <a href="#value-addition" className="hover:text-blue-600 transition-colors">Value Addition</a>
-              <a href="#principles" className="hover:text-blue-600 transition-colors">Principles</a>
-              <a href="#outcomes" className="hover:text-blue-600 transition-colors">Proven Outcomes</a>
-              <a href="#team" className="hover:text-blue-600 transition-colors">Architects &amp; Team</a>
-              <a href="#global-presence" className="hover:text-blue-600 transition-colors">Global Hubs</a>
-              <a href="#consultation" className="text-white bg-blue-600 hover:bg-blue-700 px-3.5 py-1.5 rounded-lg transition-colors font-bold shadow-xs">
-                Schedule Briefing
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
+      
 
       {/* ── SECTION 01: EXECUTIVE HERO (MATCHING GLOBAL ACCELERATION HERO) ── */}
       <section id="overview" className="relative pt-16 pb-16 sm:pt-24 sm:pb-28 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden border-b border-slate-800">
@@ -615,9 +591,7 @@ export default function AboutProfitMachinesPage() {
                 From Infrastructure to Compounding Intelligence.
               </p>
 
-              <p className="text-base sm:text-lg text-slate-300 leading-relaxed mb-6">
-                ProfitMachines, powered by TRUSTGRID.AI, replaces subjective sales intuition, point-tool bloat, and pipeline decay with an empirical revenue engineering system. We connect top-of-funnel dark demand discovery, autonomous sales acceleration agents, and auditable telemetry fabrics into an automated growth engine.
-              </p>
+              
 
               {/* Target Audience Line (Matching Global Acceleration) */}
               <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 mb-8 space-y-1">
@@ -959,7 +933,7 @@ export default function AboutProfitMachinesPage() {
               Enterprise Value Addition
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 font-heading tracking-tight mt-3 mb-4">
-              The ProfitMachines &amp; TRUSTGRID.AI Value Addition
+              The ProfitMachines Value Addition
             </h2>
             <p className="text-slate-600 text-base sm:text-lg">
               The bottleneck to modern enterprise revenue growth is operational latency, seat sprawl, and subjective guesswork. We serve as the critical catalyst between theoretical intelligence and real-world commercial compounding.

@@ -899,37 +899,7 @@ export default function PageTemplate({
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900">
 
-      {/* ── STICKY PAGE SUB-NAV BAR (FOR FAST AUDIT JUMPING & PRECISE ANCHOR NAVIGATION) ── */}
-      <nav aria-label="Page Sub Navigation" className="sticky top-16 lg:top-[72px] z-30 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white text-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-11 flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
-          <div className="flex items-center gap-2.5 shrink-0">
-            <span className="font-mono text-blue-400 font-bold">{data.pageNumber}</span>
-            <span className="font-bold text-slate-200">{data.title}</span>
-            <span className="hidden sm:inline text-slate-500">|</span>
-            <span className="hidden sm:inline text-slate-400 font-medium">{data.eyebrow}</span>
-          </div>
-
-          <div className="flex items-center gap-3.5 shrink-0 text-slate-300 font-medium">
-            {getSubNavLinks().map((link) => (
-              <a
-                key={link.id}
-                href={`#${link.id}`}
-                onClick={(e) => handleAnchorClick(e, link.id)}
-                className={`hover:text-blue-400 transition-colors ${link.id === 'capabilities' ? 'text-blue-400 font-bold' : ''}`}
-              >
-                {link.label}
-              </a>
-            ))}
-            <a
-              href="#consultation"
-              onClick={(e) => handleAnchorClick(e, 'consultation')}
-              className="px-2.5 py-1 rounded bg-blue-600 hover:bg-blue-500 text-white font-bold transition-colors cursor-pointer"
-            >
-              Consultation
-            </a>
-          </div>
-        </div>
-      </nav>
+      
 
       {/* ── SECTION 01: EXECUTIVE HERO (MATCHING GLOBAL ACCELERATION PALETTE) ── */}
       <section id="overview" className="relative pt-8 pb-10 sm:pt-12 sm:pb-14 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden border-b border-slate-800">

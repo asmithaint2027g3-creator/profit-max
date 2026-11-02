@@ -246,26 +246,7 @@ export default function Industries() {
         </div>
       </section>
 
-      {/* ── STICKY SUBNAV ── */}
-      <nav className="sticky top-16 z-30 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex gap-1 overflow-x-auto py-2.5 scrollbar-hide">
-            {[
-              { href: '#challenges', label: 'Challenges' },
-              { href: '#pathways', label: 'Industry Pathways' },
-              { href: '#how-it-works', label: 'How It Works' },
-              { href: '#capabilities', label: 'Capabilities' },
-              { href: '#approach', label: 'Approach' },
-              { href: '#faq', label: 'FAQ' },
-              { href: '#metrics', label: 'Metrics' },
-            ].map(item => (
-              <a key={item.href} href={item.href} className="flex-shrink-0 px-4 py-1.5 rounded-lg text-xs font-mono font-semibold text-slate-600 hover:text-blue-700 hover:bg-blue-50 transition-all whitespace-nowrap">
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </nav>
+      
 
       {/* ── SECTION 1: CHALLENGES ── */}
       <section id="challenges" className="py-10 sm:py-14 bg-white scroll-mt-24">

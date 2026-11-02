@@ -6,7 +6,8 @@ import {
   Zap, Globe, Sparkles, ChevronRight, Lock, Users, Network,
   AlertCircle, Scale, Database, Clock, RefreshCw, Check, MapPin,
   Mail, Phone, ExternalLink, Award, FileText, Binary, Server, Code,
-  Flame, Leaf, HeartHandshake, Eye, Briefcase
+  Flame, Leaf, HeartHandshake, Eye, Briefcase, Filter, Search,
+  DollarSign, Sliders, CheckSquare, ShieldAlert
 } from 'lucide-react';
 import { Reveal } from '../components/ui/Reveal';
 import LeadCaptureSection from '../components/LeadCaptureSection';
@@ -15,18 +16,30 @@ export default function AboutProfitMachinesPage() {
   const location = useLocation();
   const [activeRoadmapStage, setActiveRoadmapStage] = useState<number>(0);
   const [selectedTeamCategory, setSelectedTeamCategory] = useState<string>('all');
-  const [selectedCapabilityIndex, setSelectedCapabilityIndex] = useState<number>(0);
+  const [activeTab, setActiveTab] = useState<'mission' | 'approach' | 'governance'>('mission');
 
   useEffect(() => {
-    document.title = "About Us | ProfitMachines — Full-Spectrum Revenue Engineering & AI Architecture";
+    document.title = "About ProfitMachines | AI-Native Revenue Transformation Platform";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
         'content',
-        'ProfitMachines, powered by TRUSTGRID.AI, is an enterprise-grade AI-native revenue transformation platform helping global businesses engineer predictable pipeline, compress sales cycles, and scale frontier intelligence.'
+        'ProfitMachines, powered by TRUSTGRID.AI, is an enterprise AI-native revenue transformation platform helping global organizations engineer predictable pipeline, accelerate sales execution, and achieve mathematical growth.'
       );
     }
-  }, []);
+
+    if (location.hash) {
+      const elementId = location.hash.replace('#', '');
+      const el = document.getElementById(elementId);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location.hash]);
 
   // ── VALUE ENGINEERING ROADMAP (OPERATING AT FRONTIER SCALE) ──
   const roadmapStages = [
@@ -35,168 +48,221 @@ export default function AboutProfitMachinesPage() {
       timeframe: 'T + 2 Weeks',
       title: 'Proof of Feasibility',
       question: '“Can it be built?”',
-      desc: 'Validate technical feasibility, telemetry connectors, CRM integration, and operational readiness.',
+      desc: 'Validate technical data connectors, CRM telemetry sync, pipeline intake pipelines, and commercial architecture readiness.',
       milestone: 'MILESTONE 01',
-      kpi: 'Data Pipeline Validation'
+      kpi: 'Telemetry Pipeline Validation',
+      deliverable: 'Data ingestion audit & telemetry connector verification.'
     },
     {
       stage: 'STAGE 02',
       timeframe: 'T + 4 Weeks',
       title: 'Proof of Value',
       question: '“Does it deliver benefit?”',
-      desc: 'Demonstrate measurable business outcomes, early pipeline conversion signals, and preliminary ROI validation.',
+      desc: 'Demonstrate measurable pipeline conversion uplift, autonomous account qualification signals, and initial ROI validation.',
       milestone: 'MILESTONE 02',
-      kpi: 'Measurable ROI Lift'
+      kpi: 'Measurable Conversion Lift',
+      deliverable: 'Live pilot pipeline generation & early win-rate uplift.'
     },
     {
       stage: 'STAGE 03',
       timeframe: 'T + 6 Weeks',
       title: 'Proof of Performance',
       question: '“Does it scale?”',
-      desc: 'Validate scalability, reliability, resilience, deal-triage throughput, and latency benchmarks.',
+      desc: 'Validate enterprise scalability, high-throughput deal triage, low-latency rep brief generation, and reliability benchmarks.',
       milestone: 'MILESTONE 03',
-      kpi: 'Sub-60s Execution SLA'
+      kpi: 'Sub-60s Inbound Briefing SLA',
+      deliverable: 'Full sales team adoption & automated deal hygiene.'
     },
     {
       stage: 'STAGE 04',
       timeframe: 'T + 8 Weeks',
       title: 'Proof of Recurring Value',
       question: '“Is it sustainable?”',
-      desc: 'Demonstrate repeatable value, sales rep adoption, automated hygiene, and long-term operating stability.',
+      desc: 'Demonstrate repeatable rep productivity gains, continuous forecast precision, and ongoing commercial friction elimination.',
       milestone: 'MILESTONE 04',
-      kpi: 'Systemic Rep Adoption'
+      kpi: '14 hrs/wk Rep Drag Reduction',
+      deliverable: 'Deterministic stage gating & closed-loop CRM hygiene.'
     },
     {
       stage: 'STAGE 05',
       timeframe: 'T + 12 Weeks',
       title: 'Proof of Compounding',
       question: '“Does value multiply?”',
-      desc: 'Show compounded business impact, cross-functional leverage, Net Revenue Retention (NRR) expansion, and measurable growth.',
+      desc: 'Realize compounded enterprise valuation impact, Net Revenue Retention (NRR) expansion, and dual-track revenue acceleration.',
       milestone: 'MILESTONE 05',
-      kpi: 'Compounding Enterprise NRR'
+      kpi: '124% Average Enterprise NRR',
+      deliverable: 'CFO-auditable board forecasts & compounding ARR growth.'
     }
   ];
 
-  // ── 6 CORE ENGINEERING PILLARS ──
-  const corePillars = [
+  // ── 6 CORE TECHNICAL PILLARS (PROFITMACHINES REVENUE ENGINE) ──
+  const technicalPillars = [
     {
-      id: 'compute',
-      title: 'GPU & Compute Optimization',
-      tagline: 'High-Throughput Inference & Signal Processing',
-      desc: 'Dynamic voltage/frequency scaling, kernel optimization, and continuous batching across distributed GPU clusters to reduce inference latency and power consumption.',
+      id: 'signal-inference',
+      title: 'Signal Sensing & Dark-Funnel Inference Engine',
+      tagline: 'High-Throughput Demand Capture & Buyer Intent',
+      desc: 'Replaces generic outbound outreach with real-time demand telemetry. Continuously analyzes executive leadership reshuffles, category evaluations, and tech stack transitions to isolate underserved commercial headroom.',
+      metrics: '3.8× Increase in Sales-Accepted Pipeline',
       icon: Cpu,
-      stats: '74% Less Inspection Energy',
-      color: 'blue'
+      deliverables: ['Dark-funnel intent surge monitoring', 'Parent-subsidiary expansion mapping', 'Micro-niche commercial sizing', 'Dynamic buyer willingness-to-pay indexing']
     },
     {
-      id: 'agentic',
-      title: 'LLM & AI Agent Engineering',
-      tagline: 'Autonomous Context Dossiers & Deal Execution',
-      desc: 'Multi-agent orchestration frameworks generating real-time account dossiers, stakeholder maps, dynamic battlecards, and autonomous intake triage.',
+      id: 'agentic-sales',
+      title: 'Autonomous Revenue Agent Architecture',
+      tagline: 'Instant Rep Briefs & Dynamic Deal Execution',
+      desc: 'Autonomous multi-agent orchestration frameworks generating zero-touch account briefings, stakeholder power maps, real-time objection battlecards, and sub-60-second inbound lead qualification dossiers.',
+      metrics: '52% Compression in Sales Cycle Latency',
       icon: Network,
-      stats: 'Sub-60s Inbound Briefing',
-      color: 'indigo'
+      deliverables: ['Sub-60s autonomous intake dossiers', 'Executive objection counter-battlecards', 'Buying committee persona orchestration', 'Dynamic deal desk calculation engines']
     },
     {
-      id: 'infrastructure',
-      title: 'AI Infrastructure Engineering',
-      tagline: 'Continuous Revenue Data Fabric & Bidirectional Sync',
-      desc: 'Resilient, high-availability pipelines integrating Salesforce, HubSpot, NetSuite, ERPs, and calendar telemetry into an auditable single source of truth.',
+      id: 'data-fabric',
+      title: 'Unified Revenue Data Fabric & Bidirectional Sync',
+      tagline: 'Single-Source Commercial Truth & Data Hygiene',
+      desc: 'Unifies fragmented CRM pipelines, ERP records, billing systems, and customer engagement telemetry into an automated, zero-touch operational data backbone with bidirectional synchronization.',
+      metrics: '14 hrs/week Saved per Sales Representative',
       icon: Server,
-      stats: '99.99% Fabric Availability',
-      color: 'emerald'
+      deliverables: ['Zero-touch CRM data enrichment', 'Stage progression gate validation', 'Automated cross-functional handoffs', 'Multi-source attribution reconciliation']
     },
     {
-      id: 'security',
-      title: 'AI Cybersecurity & Quantum Safe',
-      tagline: 'Zero Data Retention & Enterprise Sovereign AI',
-      desc: 'Air-gapped deployment readiness, post-quantum cryptography, strict mutual NDA governance, and zero-client-data-leakage architecture.',
+      id: 'sovereign-ai',
+      title: 'Enterprise Sovereign AI & Zero-Data-Retention',
+      tagline: 'Strict Mutual NDA & Client IP Isolation',
+      desc: 'Enterprise-grade cognitive security, SOC-2 Type II readiness, and deterministic verification protocols ensuring proprietary commercial data, deal pipelines, and client transcripts remain strictly isolated.',
+      metrics: '100% Client Data Isolation Guaranteed',
       icon: ShieldCheck,
-      stats: '100% Client Data Isolation',
-      color: 'purple'
+      deliverables: ['Zero-data-retention AI inference', 'Strict mutual NDA protocols', 'Audit-ready compliance reporting', 'Enterprise role-based permissions']
     },
     {
-      id: 'reliability',
-      title: 'Reliability & Trust Engineering',
-      tagline: 'Algorithmic Deal Health & CFO-Auditable Telemetry',
-      desc: 'Deterministic deal-slip prediction, objective win-rate scoring, and auditable forecast models replacing speculative rep confidence.',
-      icon: Activity,
-      stats: '98.4% Forecast Precision',
-      color: 'cyan'
+      id: 'algorithmic-forecasting',
+      title: 'Algorithmic Deal Health & CFO-Auditable Telemetry',
+      tagline: 'Mathematical Pipeline Forecasting & Risk Modeling',
+      desc: 'Replaces subjective sales rep confidence with empirical win-probability indices computed from authentic stage progression velocity, stakeholder engagement cadence, and historical deal behavior.',
+      metrics: '98.4% Board Forecast Accuracy Rate',
+      deliverables: ['Leading vs. lagging telemetry modeling', 'Pipeline risk heatmaps', 'Deal slip early warning systems', 'Continuous scenario simulations']
     },
     {
-      id: 'modernization',
-      title: 'Infrastructure Modernization & AI Operating Model',
+      id: 'gtm-transformation',
+      title: 'Commercial Modernization & GTM Operating Model',
       tagline: 'Transforming Legacy Teams into Capital-Efficient Engines',
-      desc: 'Complete commercial restructuring: aligning compensation, territory capacity, sales velocity science, and phased human-in-the-loop governance.',
-      icon: Layers,
-      stats: '40% Lower Customer Acquisition Cost',
-      color: 'amber'
+      desc: 'Restructures enterprise go-to-market motions from ad-hoc rep intuition into mathematically validated sales engineering frameworks aligned with CFO business cases and capital efficiency.',
+      metrics: '40% Lower Customer Acquisition Cost (CAC)',
+      deliverables: ['Territory capacity modeling', 'Outcome-based pricing architectures', 'Compensation & incentive alignment', 'Board-level commercial predictability']
     }
   ];
 
-  // ── THE VALUE ADDITION QUADRANTS ──
-  const valueAddition = [
+  // ── THE VALUE ADDITION QUADRANTS (PROFITMACHINES VALUE MULTIPLIERS) ──
+  const valueAdditionQuadrants = [
     {
-      category: 'Value to AI Progress',
+      category: 'Value to Sales Velocity',
       title: 'The Acceleration Multiplier',
-      desc: "The bottleneck to enterprise commercial progress is operational friction, not talent. We serve as the critical catalyst between theoretical AI research and scalable, real-world revenue deployment.",
+      tag: 'Velocity & Capacity',
+      desc: 'The greatest bottleneck to enterprise revenue growth is operational friction, rep administrative drag, and stalled pipeline latency. We eliminate manual overhead, empowering commercial teams to close deals 52% faster with existing headcount.',
       icon: Zap,
-      color: 'blue'
+      kpi: '52% Cycle Compression'
     },
     {
-      category: 'Value to the Planet & Capital',
-      title: 'The Sustainability Shield',
-      desc: "Enterprise compute sprawl is an efficiency and capital crisis. Through carbon-aware workload routing, kernel optimization, and lean data pipelines, we drastically curtail waste while maximizing capital return.",
+      category: 'Value to Margin & Capital',
+      title: 'The Capital Efficiency Shield',
+      tag: 'CAC & Free Cash Flow',
+      desc: 'Brute-force sales expansion with point-tool bloat, seat sprawl, and vanity MQLs destroys EBITDA margin. We engineer lean, automated revenue systems that reduce customer acquisition costs by 40% and compound free cash flow.',
       icon: Leaf,
-      color: 'emerald'
+      kpi: '40% Lower CAC Drag'
     },
     {
-      category: 'Value to Human Governance',
-      title: 'The Trust Anchor',
-      desc: "As autonomous agentic systems make high-stakes commercial and operational decisions, we provide verifiable guardrails, explainability traces, and SOC-2 standard cryptographic envelopes.",
+      category: 'Value to Executive Governance',
+      title: 'The Commercial Trust Anchor',
+      tag: 'Empirical Forecast Truth',
+      desc: 'Subjective rep optimism and end-of-quarter pipeline surprises jeopardize executive credibility. We provide deterministic, mathematically auditable forecasting telemetry anchored in verified deal velocity and buyer engagement.',
       icon: Lock,
-      color: 'purple'
+      kpi: '98.4% Forecast Precision'
     },
     {
-      category: 'Real-World Impact',
-      title: 'The Net Societal Outcome',
-      desc: "We ensure enterprise AI investments translate into genuine productivity gains, sustainable job empowerment, and resilient supply chains—rather than vanishing into technical debt.",
+      category: 'Real-World Economic Return',
+      title: 'The Net Compounding Outcome',
+      tag: 'NRR & Valuation Lift',
+      desc: 'We connect top-of-funnel demand generation directly to customer expansion and retention. By continuously sensing consumption ceilings and churn risks, our clients achieve sustained Net Revenue Retention above 124%.',
       icon: HeartHandshake,
-      color: 'indigo'
+      kpi: '124%+ Net Retention'
     }
   ];
 
-  // ── RADICAL ENGINEERING PRECISION (CULTURE & PRINCIPLES) ──
-  const principles = [
+  // ── RADICAL ENGINEERING PRECISION (5 OPERATING PRINCIPLES) ──
+  const operatingPrinciples = [
     {
       num: 'PRIN 01',
       title: 'Systems-Level Thinking',
-      desc: 'We do not patch symptoms. Our engineers look at the entire stack—from underlying silicon and CRM interconnects up to the agentic attention mechanisms driving revenue decisions.'
+      subtitle: 'Eliminating Fragmented Point Tools',
+      desc: 'We do not patch commercial symptoms with disconnected point solutions. Our revenue engineers look at the entire commercial architecture—from dark-funnel intent signals through CRM workflows to billing and retention telemetry.'
     },
     {
       num: 'PRIN 02',
       title: 'Relentless Optimization',
-      desc: 'Every cycle of compute, every minute of sales rep latency, and every dollar of CAC matters. We push workflows to the mathematical limit of efficiency.'
+      subtitle: 'Halting Pipeline Latency Drag',
+      desc: 'Every minute of sales rep latency, every day of procurement stalling, and every basis point of customer churn represents quantifiable financial destruction. We engineer commercial workflows to the mathematical limit of efficiency.'
     },
     {
       num: 'PRIN 03',
       title: 'Truth Over Trend',
-      desc: 'While the market chases hype and ungrounded chat interfaces, we are anchored in mathematics, physics, and empirical telemetry. We prioritize deterministic business outcomes over flashy demos.'
+      subtitle: 'Deterministic Mathematics vs. AI Hype',
+      desc: 'While the industry chases flashy generic chatbots and ungrounded demos, we are anchored in empirical revenue mathematics, stage-progression probability, and auditable telemetry that CFOs can sign off on.'
     },
     {
       num: 'PRIN 04',
       title: 'High-Trust, High-Ownership',
-      desc: 'We operate with radical transparency, rigorous peer review, and deep responsibility for the mission-critical systems and proprietary data entrusted to us.'
+      subtitle: 'Radical Sovereignty & Client IP Isolation',
+      desc: 'We operate with complete transparency, rigorous peer review, and deep responsibility for the mission-critical revenue architectures and proprietary customer datasets entrusted to us under strict mutual NDA.'
     },
     {
       num: 'PRIN 05',
-      title: 'Impact-Driven Focus',
-      desc: 'Every line of code and every operational blueprint is evaluated through the lens of measurable economic return, building the sustainable foundation for enterprise growth.'
+      title: 'Economic Alignment',
+      subtitle: 'Outcomes-Driven Value Realization',
+      desc: 'We measure success exclusively in verified economic outcomes: contribution margin expansion, CAC payback compression, win-rate lift, and sustained ARR compounding rather than vanity software licenses.'
     }
   ];
 
-  // ── LEADERSHIP & ARCHITECTURAL TEAM ROSTER ──
+  // ── CASE STUDIES & PROVEN OUTCOMES (PROFITMACHINES ENTERPRISE EVIDENCE) ──
+  const caseStudies = [
+    {
+      sector: 'Enterprise B2B SaaS & Cloud Platforms',
+      client: 'Global Enterprise B2B SaaS & Cloud Platform',
+      tag: 'Pipeline & Sales Velocity Acceleration',
+      challenge: 'A $140M ARR enterprise software firm suffered from elongated 78-day sales cycles, 38% pipeline leakage across mid-funnel stages, and sales reps spending 14 hours per week on manual CRM data entry and meeting preparation.',
+      interventions: [
+        { label: 'Signal Intent Interception', detail: 'Deployed dark-funnel buying intent telemetry capturing executive hiring surges and technology transition signals in real time.' },
+        { label: 'Autonomous Context Dossiers', detail: 'Zero-touch synthesis generating CFO-ready business cases, buying committee maps, and objection counter-battlecards before calls.' },
+        { label: 'Stage-Gate Velocity Enforcement', detail: 'Algorithmic progression gates validating verified MEDDPICC criteria before advancing pipeline stages.' },
+        { label: 'Automated CRM Synchronization', detail: 'Zero-touch bidirectional synchronization between call transcripts, email exchanges, and Salesforce opportunities.' }
+      ],
+      outcome: 'Sales cycle compressed from 78 to 36 days (53% compression), $48M in incremental sales-accepted pipeline within 180 days, and win-rates lifted by 28.4%.'
+    },
+    {
+      sector: 'Medical Technology & Healthcare Systems',
+      client: 'Global Medical Technology & Healthcare Enterprise',
+      tag: 'Commercial Scaling & Regulatory Intelligence',
+      challenge: 'Distributing specialized medical devices across 40+ international regional healthcare systems required navigating complex hospital buying committees, delayed procurement approvals, and strict clinical data privacy mandates.',
+      interventions: [
+        { label: 'Buying Committee Graph Mapping', detail: 'Automated stakeholder mapping connecting clinical directors, procurement officers, and hospital CFO requirements.' },
+        { label: 'Regulatory-Compliant Dossiers', detail: 'Instant synthesis of localized clinical evidence and reimbursement calculators tailored to regional health authorities.' },
+        { label: 'Air-Gapped Telemetry Architecture', detail: 'Zero-client-data-retention security controls ensuring zero leakage of protected clinical or provider telemetry.' }
+      ],
+      outcome: '300% increase in qualified hospital network opportunities, 62% faster RFP turnaround, and zero compliance breaches across international jurisdictions.'
+    },
+    {
+      sector: 'Financial Technology & Institutional Infrastructure',
+      client: 'Tier-1 FinTech & Commercial Lending Infrastructure',
+      tag: 'Algorithmic Deal Health & Underwriting Velocity',
+      challenge: 'An institutional financial platform experienced severe deal slippage at quarter-end, manual deal underwriting taking 18 business days, and erratic forecast accuracy leading to board-level friction.',
+      interventions: [
+        { label: 'Autonomous Financial Intake Dossiers', detail: 'Instant synthesis of audited corporate financials, debt schedules, and covenant buffers into CFO-ready packages.' },
+        { label: 'Algorithmic Deal Health Scoring', detail: 'Continuous mathematical win-probability calculation based on authentic stage velocity and executive engagement.' },
+        { label: 'CFO-Auditable Forecast Engine', detail: 'Empirical telemetry model replacing rep intuition with statistically validated quarterly revenue predictions.' }
+      ],
+      outcome: 'Commercial underwriting cycle compressed from 18 days to 48 hours, 98.4% board forecast accuracy across four consecutive quarters, and Net Revenue Retention lifted to 124%.'
+    }
+  ];
+
+  // ── THE ARCHITECTS & ENGINEERS ROSTER ──
   const teamMembers = [
     {
       name: 'Shaji Namath',
@@ -407,44 +473,6 @@ export default function AboutProfitMachinesPage() {
     ? teamMembers
     : teamMembers.filter(m => m.domain === selectedTeamCategory);
 
-  // ── CASE STUDIES (PRODUCTION AI, MEASURED IN OUTCOMES) ──
-  const caseStudies = [
-    {
-      sector: 'Medical Supplies & Manufacturing',
-      client: 'Global Medical Supplies & Manufacturing Enterprise',
-      challenge: 'Distributing disposable hygiene and sterile surgical supplies across 40+ international markets required 3–4 weeks of localized legal review per market, manual conveyor seal inspection with 4.5% returns, and slow 10–14 day warranty claim processing.',
-      interventions: [
-        { label: 'Generative AI Compliance', detail: 'Automated multi-jurisdiction warranty T&C generation across 40+ countries in 3 days vs 3-4 weeks.' },
-        { label: 'Dynamic Regulatory Labeling', detail: 'Direct factory inkjet integration printing verified regional registrations (FDA, ANVISA, CDSCO).' },
-        { label: 'Edge Computer Vision', detail: 'Optical beam-triggered OCR and seal integrity checks with 74% inspection power reduction.' },
-        { label: 'Touchless Claim Adjudication', detail: '85% auto-approval straight-through processing in under 2 minutes.' }
-      ],
-      outcome: '3-day T&C turnaround, 300% distribution velocity increase, 90% return/recall reduction, and 99.9% license placement defect prevention.'
-    },
-    {
-      sector: 'Public Sector / Air-Gapped',
-      client: 'Government Defense & Intelligence Agency',
-      challenge: 'Air-gapped 200-GPU A100 network processing 50K intelligence docs/day. Mission required doubling throughput with zero new hardware during an 18-month procurement cycle.',
-      interventions: [
-        { label: 'Domain Quantization', detail: 'GPTQ INT4 with defense-domain calibration; <0.8% accuracy loss.' },
-        { label: 'Continuous Batching', detail: 'Migrated to vLLM; average batch size jumped from 1.2 to 8.4.' },
-        { label: 'Speculative Decoding', detail: '7B draft model paired with 70B target — 2.1x speedup on long document summarization.' }
-      ],
-      outcome: '2.4x throughput increase, zero hardware expansion cost, and sub-second classification SLA.'
-    },
-    {
-      sector: 'Financial Services / WealthTech',
-      client: 'Tier-1 Global Investment Bank',
-      challenge: 'Manual commercial lending underwriting taking 18 business days with dispersed client financial telemetry, delayed risk assessment, and elevated compliance friction.',
-      interventions: [
-        { label: 'Autonomous Financial Dossiers', detail: 'Zero-touch synthesis of 10-K, audited P&L, and debt schedules into CFO-ready credit packages.' },
-        { label: 'Algorithmic Risk Scoring', detail: 'Real-time multi-variable probability modeling across macro volatility and covenant buffers.' },
-        { label: 'Explainable Audit Trails', detail: 'Every AI decision mapped to cryptographic governance chains for regulatory inspection.' }
-      ],
-      outcome: 'Underwriting cycle compressed from 18 days to 48 hours, 42% operational cost savings, and 100% regulatory compliance validation.'
-    }
-  ];
-
   // ── GLOBAL TECH HUBS ──
   const globalHubs = [
     {
@@ -530,84 +558,169 @@ export default function AboutProfitMachinesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 font-sans selection:bg-blue-600 selection:text-white">
-      {/* ── STICKY ANCHOR SUB-NAV ── */}
-      <nav className="sticky top-16 z-30 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-xs hidden md:block">
+    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900">
+
+      {/* ── STICKY ANCHOR SUB-NAV (LIGHT ENTERPRISE THEME) ── */}
+      <nav className="sticky top-16 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 text-xs hidden md:block shadow-2xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-3 overflow-x-auto scrollbar-none gap-6">
-            <div className="flex items-center gap-1 shrink-0 font-semibold text-slate-300">
-              <Building2 className="w-4 h-4 text-blue-400 mr-1.5" />
-              <span>ABOUT US</span>
+            <div className="flex items-center gap-1.5 shrink-0 font-bold text-slate-900">
+              <Building2 className="w-4 h-4 text-blue-600" />
+              <span className="tracking-wide">ABOUT PROFITMACHINES</span>
             </div>
-            <div className="flex items-center gap-5 text-slate-400 font-medium whitespace-nowrap">
-              <a href="#overview" className="hover:text-blue-400 transition-colors">Overview</a>
-              <a href="#mission-vision" className="hover:text-blue-400 transition-colors">Mission & Vision</a>
-              <a href="#roadmap" className="hover:text-blue-400 text-blue-400 font-bold transition-colors">Value Roadmap</a>
-              <a href="#pillars" className="hover:text-blue-400 transition-colors">Engineering Pillars</a>
-              <a href="#value-addition" className="hover:text-blue-400 transition-colors">Value Addition</a>
-              <a href="#principles" className="hover:text-blue-400 transition-colors">Culture & DNA</a>
-              <a href="#team" className="hover:text-blue-400 transition-colors">Architects & Team</a>
-              <a href="#outcomes" className="hover:text-blue-400 transition-colors">Proven Outcomes</a>
-              <a href="#global-presence" className="hover:text-blue-400 transition-colors">Global Hubs</a>
-              <a href="#consultation" className="text-white bg-blue-600 hover:bg-blue-500 px-3 py-1 rounded-md transition-colors font-semibold">
-                Briefing
+            <div className="flex items-center gap-5 text-slate-600 font-medium whitespace-nowrap">
+              <a href="#overview" className="hover:text-blue-600 transition-colors">Platform</a>
+              <a href="#mission-vision" className="hover:text-blue-600 transition-colors">Mission &amp; Vision</a>
+              <a href="#roadmap" className="hover:text-blue-600 text-blue-600 font-bold transition-colors">Value Roadmap</a>
+              <a href="#capabilities" className="hover:text-blue-600 transition-colors">6 Pillars</a>
+              <a href="#value-addition" className="hover:text-blue-600 transition-colors">Value Addition</a>
+              <a href="#principles" className="hover:text-blue-600 transition-colors">Principles</a>
+              <a href="#outcomes" className="hover:text-blue-600 transition-colors">Proven Outcomes</a>
+              <a href="#team" className="hover:text-blue-600 transition-colors">Architects &amp; Team</a>
+              <a href="#global-presence" className="hover:text-blue-600 transition-colors">Global Hubs</a>
+              <a href="#consultation" className="text-white bg-blue-600 hover:bg-blue-700 px-3.5 py-1.5 rounded-lg transition-colors font-bold shadow-xs">
+                Schedule Briefing
               </a>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* ── SECTION 01: HERO ── */}
-      <section id="overview" className="relative pt-16 pb-20 sm:pt-24 sm:pb-28 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden border-b border-slate-800">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.12),transparent_45%)] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(99,102,241,0.08),transparent_40%)] pointer-events-none" />
+      {/* ── SECTION 01: EXECUTIVE HERO (MATCHING GLOBAL ACCELERATION HERO) ── */}
+      <section id="overview" className="relative pt-16 pb-16 sm:pt-24 sm:pb-28 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden border-b border-slate-800">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.22]" style={{ backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.07) 1px, transparent 1px)', backgroundSize: '4rem 4rem' }} />
+          <div className="absolute top-0 right-1/4 w-[700px] h-[700px] bg-blue-600/15 rounded-full blur-[150px]" />
+          <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-indigo-600/12 rounded-full blur-[130px]" />
+        </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-mono font-semibold tracking-wide uppercase mb-6">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Full-Spectrum AI Engineering &amp; Revenue Architecture</span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-bold tracking-widest uppercase font-mono mb-4">
+                <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+                <span>AI-NATIVE REVENUE TRANSFORMATION PLATFORM</span>
+              </div>
+
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.12] mb-5 font-heading">
+                Engineering the resilient, hyper-optimized backbone of{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-300">
+                  Enterprise Revenue.
+                </span>
+              </h1>
+
+              <p className="text-lg sm:text-xl font-light text-slate-200 mb-4 leading-relaxed">
+                From Infrastructure to Compounding Intelligence.
+              </p>
+
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed mb-6">
+                ProfitMachines, powered by TRUSTGRID.AI, replaces subjective sales intuition, point-tool bloat, and pipeline decay with an empirical revenue engineering system. We connect top-of-funnel dark demand discovery, autonomous sales acceleration agents, and auditable telemetry fabrics into an automated growth engine.
+              </p>
+
+              {/* Target Audience Line (Matching Global Acceleration) */}
+              <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 mb-8 space-y-1">
+                <div className="text-[11px] font-mono font-bold text-blue-400 uppercase tracking-wider">
+                  Engineered for Enterprise Leaders:
+                </div>
+                <div className="text-slate-300 leading-relaxed">
+                  Enterprise CROs, CFOs, Board Members, CMOs, and Revenue Operations Leaders modernizing their commercial execution.
+                </div>
+              </div>
+
+              {/* CTAs */}
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="#roadmap"
+                  className="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30 inline-flex items-center gap-2 group cursor-pointer"
+                >
+                  <span>Explore Value Engineering Roadmap</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+
+                <a
+                  href="#capabilities"
+                  className="px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold text-sm transition-all inline-flex items-center gap-2 cursor-pointer"
+                >
+                  <span>View 6 Revenue Pillars</span>
+                  <ArrowUpRight className="w-4 h-4 text-slate-400" />
+                </a>
+
+                <Link
+                  to="/book-consultation"
+                  className="px-6 py-3.5 rounded-xl bg-transparent hover:bg-white/5 border border-slate-700/60 text-slate-300 font-bold text-sm transition-all inline-flex items-center gap-2 cursor-pointer"
+                >
+                  <span>Schedule Scoping Call</span>
+                  <ArrowRight className="w-4 h-4 text-slate-400" />
+                </Link>
+              </div>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black font-heading tracking-tight text-white mb-6 leading-[1.1]">
-              Engineering the resilient, hyper-optimized backbone of the AI economy.
-            </h1>
+            {/* Right Hero Visual: Connected Enterprise Revenue Engine */}
+            <div className="lg:col-span-5">
+              <div className="rounded-2xl border border-slate-800 bg-slate-900/90 p-6 shadow-2xl relative overflow-hidden">
+                <div className="flex items-center justify-between pb-3.5 border-b border-slate-800 mb-4">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse" />
+                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-300">
+                      Autonomous Revenue Mesh
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-400/20 font-bold">
+                    Single Source of Truth
+                  </span>
+                </div>
 
-            <p className="text-xl sm:text-2xl font-light text-slate-300 mb-6 leading-relaxed">
-              From Infrastructure to Compounding Intelligence.
-            </p>
+                <div className="space-y-3">
+                  <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold">
+                        <Target className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <div className="text-xs font-bold text-white">Demand Sensing</div>
+                        <div className="text-[11px] text-slate-400">Dark-funnel intent surge</div>
+                      </div>
+                    </div>
+                    <span className="text-[11px] font-mono text-emerald-400 font-bold">+28.4% TAM Lift</span>
+                  </div>
 
-            <p className="text-base sm:text-lg text-slate-400 max-w-3xl mb-10 leading-relaxed">
-              ProfitMachines, in strategic partnership with TRUSTGRID.AI, bridges the gap between frontier AI research and deterministic enterprise scale. We do not build speculative models; we engineer the autonomous systems, low-latency telemetry fabrics, and revenue acceleration engines that make modern organizations predictably compound.
-            </p>
+                  <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold">
+                        <Zap className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <div className="text-xs font-bold text-white">Sales Acceleration</div>
+                        <div className="text-[11px] text-slate-400">Autonomous context dossiers</div>
+                      </div>
+                    </div>
+                    <span className="text-[11px] font-mono text-blue-400 font-bold">52% Latency Drop</span>
+                  </div>
 
-            <div className="flex flex-wrap items-center gap-4">
-              <a
-                href="#roadmap"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm tracking-wide shadow-lg shadow-blue-500/25 transition-all"
-              >
-                <span>Explore Value Engineering Roadmap</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
-              <a
-                href="#team"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-sm transition-all"
-              >
-                <Users className="w-4 h-4 text-blue-400" />
-                <span>Meet the Architects</span>
-              </a>
-              <Link
-                to="/book-consultation"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-transparent hover:bg-white/5 text-slate-300 border border-slate-700/60 font-semibold text-sm transition-all"
-              >
-                <span>Schedule Executive Briefing</span>
-                <ArrowUpRight className="w-4 h-4 text-slate-400" />
-              </Link>
+                  <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold">
+                        <Activity className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <div className="text-xs font-bold text-white">Forecasting Precision</div>
+                        <div className="text-[11px] text-slate-400">Empirical deal slip telemetry</div>
+                      </div>
+                    </div>
+                    <span className="text-[11px] font-mono text-purple-400 font-bold">98.4% Auditable</span>
+                  </div>
+                </div>
+
+                <div className="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                  <span>CONFIDENTIAL &amp; NDA BOUND</span>
+                  <span className="text-blue-400 font-bold">SOC-2 STANDARD CONTROLS</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* KPI Summary Bar */}
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 pt-10 border-t border-slate-800/80">
+          {/* Metric Bar (Matching Global Acceleration) */}
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-slate-800/80">
             <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
               <div className="text-2xl sm:text-3xl font-black text-blue-400 font-heading">$420M+</div>
               <div className="text-xs text-slate-400 mt-1 font-medium">Enterprise Pipeline Generated</div>
@@ -622,48 +735,73 @@ export default function AboutProfitMachinesPage() {
             </div>
             <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
               <div className="text-2xl sm:text-3xl font-black text-purple-400 font-heading">100%</div>
-              <div className="text-xs text-slate-400 mt-1 font-medium">Zero Data Leakage Sovereignty</div>
+              <div className="text-xs text-slate-400 mt-1 font-medium">Zero Client Data Leakage</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── SECTION 02: MISSION & VISION ── */}
-      <section id="mission-vision" className="py-20 sm:py-24 bg-slate-950 text-white relative overflow-hidden border-b border-slate-800">
+      {/* ── SECTION 02: MISSION & VISION (LIGHT SLATE-50 SECTION) ── */}
+      <section id="mission-vision" className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 bg-blue-50 border border-blue-200/60 px-3 py-1 rounded-full">
+              Firm Foundation &amp; Philosophy
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 font-heading tracking-tight mt-3 mb-4">
+              Our Mission &amp; Strategic Vision
+            </h2>
+            <p className="text-slate-600 text-base sm:text-lg">
+              Democratizing frontier-grade revenue intelligence and autonomous operational infrastructure for modern organizations.
+            </p>
+          </div>
+
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-8 sm:p-10 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-900/60 border border-slate-800 shadow-xl relative overflow-hidden group hover:border-blue-500/50 transition-all">
-              <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold mb-6 border border-blue-500/20">
-                <Target className="w-6 h-6" />
+            <div className="p-8 sm:p-10 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold mb-6 border border-blue-100">
+                  <Target className="w-6 h-6" />
+                </div>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 mb-2 block">Core Purpose</span>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading tracking-tight mb-4">
+                  Our Mission
+                </h3>
+                <p className="text-slate-600 text-base leading-relaxed">
+                  To eliminate enterprise revenue friction by replacing disconnected point tools, subjective sales confidence, and lead decay with connected intelligence. We engineer deterministic pipeline flow, accelerate sales execution, and align commercial systems directly to CFO-auditable business outcomes.
+                </p>
               </div>
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-400 mb-2 block">Core Purpose</span>
-              <h2 className="text-3xl sm:text-4xl font-black text-white font-heading tracking-tight mb-4">
-                Our Mission
-              </h2>
-              <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
-                To democratize frontier-grade revenue intelligence and autonomous operational infrastructure for modern enterprises. We eliminate commercial latency, unblock stalled pipelines, and empower organizations to grow predictably through empirical mathematics rather than speculative intuition.
-              </p>
+              <div className="mt-8 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-mono text-slate-500">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                <span>Empirical Velocity • Zero Subjective Guesswork</span>
+              </div>
             </div>
 
-            <div className="p-8 sm:p-10 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-900/60 border border-slate-800 shadow-xl relative overflow-hidden group hover:border-indigo-500/50 transition-all">
-              <div className="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold mb-6 border border-indigo-500/20">
-                <Compass className="w-6 h-6" />
+            <div className="p-8 sm:p-10 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold mb-6 border border-indigo-100">
+                  <Compass className="w-6 h-6" />
+                </div>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-indigo-600 mb-2 block">Long-Term Horizon</span>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading tracking-tight mb-4">
+                  Our Vision
+                </h3>
+                <p className="text-slate-600 text-base leading-relaxed">
+                  A future where global commercial decisions are mathematically validated, capital-efficient, and continuously compounding. Modern sales organizations will operate with autonomous intake dossiers, instant buyer context, zero administrative drag, and complete privacy-preserving data sovereignty.
+                </p>
               </div>
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-indigo-400 mb-2 block">Long-Term Horizon</span>
-              <h2 className="text-3xl sm:text-4xl font-black text-white font-heading tracking-tight mb-4">
-                Our Vision
-              </h2>
-              <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
-                A world where enterprise commercial decisions are deterministic, capital-efficient, and mathematically auditable. We envision a future where commercial teams operate with zero operational drag, instant context dossiers, and continuous compound growth anchored in privacy-preserving AI.
-              </p>
+              <div className="mt-8 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-mono text-slate-500">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                <span>Continuous Compounding • Capital-Efficient Scale</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── SECTION 03: VALUE ENGINEERING ROADMAP (OPERATING AT FRONTIER SCALE) ── */}
-      <section id="roadmap" className="py-20 sm:py-28 bg-slate-900 text-white relative overflow-hidden border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── SECTION 03: VALUE ENGINEERING ROADMAP (OPERATING AT FRONTIER SCALE - DARK ACCENT) ── */}
+      <section id="roadmap" className="py-20 sm:py-28 bg-slate-950 text-white relative overflow-hidden border-b border-slate-800 scroll-mt-20">
+        <div id="methodology" className="scroll-mt-20" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="mb-14">
             <div className="flex flex-wrap items-center gap-3 mb-4">
               <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-400">
@@ -678,11 +816,11 @@ export default function AboutProfitMachinesPage() {
               Operating at Frontier Scale
             </h2>
             <p className="text-slate-400 text-base sm:text-lg max-w-3xl">
-              Designed and engineered to sustainably impact global AI infrastructure and enterprise revenue velocity.
+              Designed and engineered to predictably accelerate enterprise revenue architectures and AI infrastructure.
             </p>
           </div>
 
-          {/* 5 Milestone Cards */}
+          {/* 5 Milestone Cards (Direct Visual Match to User Screenshot) */}
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {roadmapStages.map((stage, idx) => (
               <div
@@ -691,7 +829,7 @@ export default function AboutProfitMachinesPage() {
                 className={`p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between cursor-pointer border ${
                   activeRoadmapStage === idx
                     ? 'bg-slate-800/90 border-blue-500 shadow-xl shadow-blue-500/10 ring-1 ring-blue-500/50'
-                    : 'bg-slate-950/60 border-slate-800/90 hover:bg-slate-800/50 hover:border-slate-700'
+                    : 'bg-slate-900/60 border-slate-800 hover:bg-slate-800/50 hover:border-slate-700'
                 }`}
               >
                 <div>
@@ -708,7 +846,7 @@ export default function AboutProfitMachinesPage() {
                     {stage.title}
                   </h3>
 
-                  <div className="text-xs italic font-semibold text-blue-400 mb-3">
+                  <div className="text-xs italic font-semibold text-blue-400 mb-3 font-sans">
                     {stage.question}
                   </div>
 
@@ -727,10 +865,10 @@ export default function AboutProfitMachinesPage() {
             ))}
           </div>
 
-          <div className="mt-8 p-4 rounded-xl bg-slate-950/50 border border-slate-800 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-slate-400">
+          <div className="mt-8 p-4 rounded-xl bg-slate-900/70 border border-slate-800 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-slate-400">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block" />
-              <span>DETERMINISTIC VERIFICATION: Each stage requires CFO-auditable KPI sign-off prior to advancing.</span>
+              <span>DETERMINISTIC VALUE GATE: Every phase requires audited commercial KPI validation before progressing.</span>
             </div>
             <Link to="/growth-science" className="text-blue-400 hover:text-blue-300 font-semibold inline-flex items-center gap-1">
               <span>View Acceleration Science Blueprint</span>
@@ -740,53 +878,69 @@ export default function AboutProfitMachinesPage() {
         </div>
       </section>
 
-      {/* ── SECTION 04: CORE ARCHITECTURAL PILLARS ── */}
-      <section id="pillars" className="py-20 sm:py-28 bg-slate-950 text-white relative border-b border-slate-800">
+      {/* ── SECTION 04: CORE CAPABILITY ENGINE (6 TECHNICAL PILLARS) ── */}
+      <section id="capabilities" className="py-16 sm:py-24 bg-white border-b border-slate-200 scroll-mt-20">
+        <div id="pillars" className="scroll-mt-20" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14">
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full">
-              Full-Spectrum Engineering
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 bg-blue-50 border border-blue-200/60 px-3 py-1 rounded-full">
+              Full-Spectrum Revenue Architecture
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading tracking-tight mt-4 mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 font-heading tracking-tight mt-3 mb-4">
               We do not build speculative AI models; we build the engines that make revenue work at scale.
             </h2>
-            <p className="text-slate-400 text-base sm:text-lg">
-              Six synchronized operational disciplines engineered to transform commercial unpredictability into scalable compound growth.
+            <p className="text-slate-600 text-base sm:text-lg">
+              Six synchronized operational disciplines engineered to transform commercial unpredictability into scalable, compounding ARR growth.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {corePillars.map((pillar) => {
+            {technicalPillars.map((pillar) => {
               const IconComponent = pillar.icon;
               return (
                 <div
                   key={pillar.id}
-                  className="p-7 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-blue-500/50 transition-all hover:bg-slate-900 group shadow-lg flex flex-col justify-between"
+                  className="p-7 rounded-2xl bg-white border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group"
                 >
                   <div>
-                    <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold mb-6 border border-blue-500/20 group-hover:scale-105 transition-transform">
+                    <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold mb-6 border border-blue-100 group-hover:scale-105 transition-transform">
                       <IconComponent className="w-6 h-6" />
                     </div>
 
-                    <h3 className="text-xl font-bold text-white font-heading mb-2">
+                    <h3 className="text-xl font-bold text-slate-900 font-heading mb-2">
                       {pillar.title}
                     </h3>
-                    <div className="text-xs font-semibold text-blue-400 mb-3 font-mono">
+                    <div className="text-xs font-semibold text-blue-600 mb-3 font-mono">
                       {pillar.tagline}
                     </div>
-                    <p className="text-sm text-slate-400 leading-relaxed mb-6">
+                    <p className="text-xs text-slate-600 leading-relaxed mb-6">
                       {pillar.desc}
                     </p>
+
+                    <div className="mb-6 space-y-1.5 pt-4 border-t border-slate-100">
+                      <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 mb-2">
+                        Core Capabilities
+                      </div>
+                      {pillar.deliverables.map((del, dIdx) => (
+                        <div key={dIdx} className="text-xs text-slate-700 flex items-center gap-2">
+                          <Check className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                          <span>{del}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
-                  <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between">
-                    <span className="text-xs font-mono font-bold text-slate-300">
-                      {pillar.stats}
+                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <span className="text-xs font-mono font-bold text-slate-900">
+                      {pillar.metrics}
                     </span>
-                    <span className="text-xs text-blue-400 font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                    <Link
+                      to="/offerings/profit-pool-discovery"
+                      className="text-xs text-blue-600 font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1"
+                    >
                       <span>Explore</span>
                       <ChevronRight className="w-3.5 h-3.5" />
-                    </span>
+                    </Link>
                   </div>
                 </div>
               );
@@ -795,39 +949,47 @@ export default function AboutProfitMachinesPage() {
         </div>
       </section>
 
-      {/* ── SECTION 05: THE VALUE ADDITION ── */}
-      <section id="value-addition" className="py-20 sm:py-24 bg-slate-900 text-white relative border-b border-slate-800">
+      {/* ── SECTION 05: THE VALUE ADDITION (LIGHT SLATE-50 SECTION) ── */}
+      <section id="value-addition" className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14">
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 bg-blue-50 border border-blue-200/60 px-3 py-1 rounded-full">
               Enterprise Value Addition
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-heading tracking-tight mt-3 mb-4">
-              The TRUSTGRID.AI &amp; ProfitMachines Value Addition
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 font-heading tracking-tight mt-3 mb-4">
+              The ProfitMachines &amp; TRUSTGRID.AI Value Addition
             </h2>
-            <p className="text-slate-400 text-base sm:text-lg">
-              The bottleneck to humanity's next great leap forward is operational and physical, not algorithmic. We serve as the critical catalyst between theoretical breakthroughs and real-world economic impact.
+            <p className="text-slate-600 text-base sm:text-lg">
+              The bottleneck to modern enterprise revenue growth is operational latency, seat sprawl, and subjective guesswork. We serve as the critical catalyst between theoretical intelligence and real-world commercial compounding.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {valueAddition.map((item, idx) => {
+            {valueAdditionQuadrants.map((item, idx) => {
               const IconComp = item.icon;
               return (
-                <div key={idx} className="p-7 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between">
+                <div key={idx} className="p-7 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between">
                   <div>
-                    <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-blue-400 mb-4">
+                    <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-blue-600 mb-4">
                       {item.category}
                     </div>
-                    <div className="w-10 h-10 rounded-xl bg-slate-900 text-blue-400 flex items-center justify-center font-bold mb-4 border border-slate-800">
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold mb-4 border border-blue-100">
                       <IconComp className="w-5 h-5" />
                     </div>
-                    <h3 className="text-lg font-bold text-white font-heading mb-2">
+                    <h3 className="text-lg font-bold text-slate-900 font-heading mb-1">
                       {item.title}
                     </h3>
-                    <p className="text-xs text-slate-400 leading-relaxed">
+                    <div className="text-xs font-semibold text-slate-500 font-mono mb-3">
+                      {item.tag}
+                    </div>
+                    <p className="text-xs text-slate-600 leading-relaxed">
                       {item.desc}
                     </p>
+                  </div>
+
+                  <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono">
+                    <span className="text-slate-500 font-medium">Impact Index</span>
+                    <span className="font-bold text-blue-600">{item.kpi}</span>
                   </div>
                 </div>
               );
@@ -836,52 +998,61 @@ export default function AboutProfitMachinesPage() {
         </div>
       </section>
 
-      {/* ── SECTION 06: RADICAL ENGINEERING PRECISION (CULTURE) ── */}
-      <section id="principles" className="py-20 sm:py-24 bg-slate-950 text-white relative border-b border-slate-800">
+      {/* ── SECTION 06: RADICAL ENGINEERING PRECISION (CULTURE & PRINCIPLES) ── */}
+      <section id="principles" className="py-16 sm:py-24 bg-white border-b border-slate-200 scroll-mt-20">
+        <div id="values" className="scroll-mt-20" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14">
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full">
-              Core DNA &amp; Culture
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 bg-blue-50 border border-blue-200/60 px-3 py-1 rounded-full">
+              Core DNA &amp; Principles
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-heading tracking-tight mt-3 mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 font-heading tracking-tight mt-3 mb-4">
               Radical Engineering Precision
             </h2>
-            <p className="text-slate-400 text-base sm:text-lg">
-              We are a collective of systems architects, hardware hackers, and AI strategists who thrive in the technical trenches of the world's most complex commercial and computing infrastructure.
+            <p className="text-slate-600 text-base sm:text-lg">
+              We are a cadre of revenue architects, systems researchers, and growth strategists who thrive in the technical trenches of the world's most demanding commercial organizations.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {principles.map((pr, idx) => (
-              <div key={idx} className="p-7 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-blue-500/40 transition-all">
-                <span className="text-xs font-mono font-bold text-blue-400 block mb-3">
-                  {pr.num}
-                </span>
-                <h3 className="text-lg font-bold text-white font-heading mb-2">
-                  {pr.title}
-                </h3>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  {pr.desc}
-                </p>
+            {operatingPrinciples.map((pr, idx) => (
+              <div key={idx} className="p-7 rounded-2xl bg-slate-50 border border-slate-200 hover:border-blue-300 hover:bg-white transition-all shadow-2xs flex flex-col justify-between">
+                <div>
+                  <span className="text-xs font-mono font-bold text-blue-600 block mb-2">
+                    {pr.num}
+                  </span>
+                  <h3 className="text-lg font-bold text-slate-900 font-heading mb-1">
+                    {pr.title}
+                  </h3>
+                  <div className="text-xs font-semibold text-slate-500 font-mono mb-3">
+                    {pr.subtitle}
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    {pr.desc}
+                  </p>
+                </div>
               </div>
             ))}
 
-            <div className="p-7 rounded-2xl bg-gradient-to-br from-blue-900/20 to-indigo-900/20 border border-blue-500/30 flex flex-col justify-between">
+            <div className="p-7 rounded-2xl bg-gradient-to-br from-blue-900 to-indigo-950 text-white border border-blue-500/30 flex flex-col justify-between shadow-md">
               <div>
-                <span className="text-xs font-mono font-bold text-blue-400 block mb-3">
-                  ETHICAL COGNITION
+                <span className="text-xs font-mono font-bold text-blue-300 block mb-2">
+                  CLIENT DATA SOVEREIGNTY
                 </span>
-                <h3 className="text-lg font-bold text-white font-heading mb-2">
+                <h3 className="text-lg font-bold text-white font-heading mb-1">
                   Deterministic Governance
                 </h3>
+                <div className="text-xs font-semibold text-blue-200 font-mono mb-3">
+                  Zero Data Retention Architecture
+                </div>
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  We guarantee full client data isolation, strict mutual NDAs, and auditable cryptographic validation across all client deployments.
+                  We guarantee complete client data isolation, strict mutual NDAs, and auditable cryptographic validation across all enterprise deployments.
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-blue-500/20">
-                <Link to="/security" className="text-xs font-semibold text-blue-400 hover:text-blue-300 inline-flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4" />
-                  <span>Review Security Posture</span>
+              <div className="mt-6 pt-4 border-t border-white/10">
+                <Link to="/security" className="text-xs font-bold text-blue-300 hover:text-white inline-flex items-center gap-1.5">
+                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                  <span>Review Security &amp; Compliance Posture</span>
                 </Link>
               </div>
             </div>
@@ -889,18 +1060,86 @@ export default function AboutProfitMachinesPage() {
         </div>
       </section>
 
-      {/* ── SECTION 07: LEADERSHIP & ARCHITECTURAL ROSTER ── */}
-      <section id="team" className="py-20 sm:py-28 bg-slate-900 text-white relative border-b border-slate-800">
+      {/* ── SECTION 07: CASE STUDIES & PROVEN OUTCOMES (LIGHT SLATE-50 SECTION) ── */}
+      <section id="outcomes" className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200 scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-14">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 bg-blue-50 border border-blue-200/60 px-3 py-1 rounded-full">
+              Enterprise Case Studies
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 font-heading tracking-tight mt-3 mb-4">
+              Production AI, Measured in Outcomes
+            </h2>
+            <p className="text-slate-600 text-base sm:text-lg">
+              A selection of recent enterprise revenue engagements. Client identities protected under mutual non-disclosure agreements.
+            </p>
+          </div>
+
+          <div className="space-y-8">
+            {caseStudies.map((cs, idx) => (
+              <div key={idx} className="p-8 sm:p-10 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition-all">
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-700 px-3 py-1 rounded-full bg-blue-50 border border-blue-200">
+                    {cs.sector}
+                  </span>
+                  <span className="text-xs font-mono text-slate-400">
+                    CONFIDENTIAL ENTERPRISE ENGAGEMENT
+                  </span>
+                </div>
+
+                <h3 className="text-2xl font-bold text-slate-900 font-heading mb-1">
+                  {cs.client}
+                </h3>
+                <div className="text-xs font-semibold text-blue-600 font-mono mb-4">
+                  {cs.tag}
+                </div>
+
+                <div className="mb-6 p-4 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-700">
+                  <span className="font-bold text-slate-900">Situation &amp; Challenge: </span>
+                  {cs.challenge}
+                </div>
+
+                <div className="mb-6">
+                  <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500 mb-3">
+                    Engineering Interventions Deployed:
+                  </h4>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    {cs.interventions.map((inv, iIdx) => (
+                      <div key={iIdx} className="p-3.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-700">
+                        <span className="font-bold text-blue-600">{inv.label}: </span>
+                        <span>{inv.detail}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-sm flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-bold font-mono uppercase tracking-wider block text-xs mb-1 text-emerald-800">
+                      Verified Business Outcome:
+                    </span>
+                    <span>{cs.outcome}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 08: LEADERSHIP & ARCHITECTURAL ROSTER (WHITE SECTION) ── */}
+      <section id="team" className="py-16 sm:py-24 bg-white border-b border-slate-200 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
             <div>
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 bg-blue-50 border border-blue-200/60 px-3 py-1 rounded-full">
                 World-Class Talent
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading tracking-tight mt-3 mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 font-heading tracking-tight mt-3 mb-4">
                 The Architects &amp; Engineers Behind the Platform
               </h2>
-              <p className="text-slate-400 text-base max-w-2xl">
+              <p className="text-slate-600 text-base max-w-2xl">
                 A globally distributed collective of systems architects, AI engineering fellows, and revenue operations leaders.
               </p>
             </div>
@@ -919,8 +1158,8 @@ export default function AboutProfitMachinesPage() {
                   onClick={() => setSelectedTeamCategory(cat.id)}
                   className={`px-3 py-1.5 rounded-lg border transition-all ${
                     selectedTeamCategory === cat.id
-                      ? 'bg-blue-600 border-blue-500 text-white font-bold'
-                      : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:text-white'
+                      ? 'bg-blue-600 border-blue-600 text-white font-bold shadow-xs'
+                      : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300 hover:text-slate-900'
                   }`}
                 >
                   {cat.label}
@@ -934,11 +1173,11 @@ export default function AboutProfitMachinesPage() {
             {filteredTeam.map((member, idx) => (
               <div
                 key={idx}
-                className="p-5 rounded-xl bg-slate-950/70 border border-slate-800/90 hover:border-blue-500/40 hover:bg-slate-900/90 transition-all flex flex-col justify-between group"
+                className="p-5 rounded-xl bg-slate-50 border border-slate-200 hover:border-blue-300 hover:bg-white transition-all flex flex-col justify-between group shadow-2xs"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">
                       {member.badge}
                     </span>
                     <span className="text-[10px] text-slate-500 font-mono">
@@ -946,10 +1185,10 @@ export default function AboutProfitMachinesPage() {
                     </span>
                   </div>
 
-                  <h3 className="text-base font-bold text-white font-heading group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-base font-bold text-slate-900 font-heading group-hover:text-blue-600 transition-colors">
                     {member.name}
                   </h3>
-                  <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">
                     {member.role}
                   </p>
                 </div>
@@ -957,7 +1196,7 @@ export default function AboutProfitMachinesPage() {
             ))}
 
             {/* Global Team Members Tile */}
-            <div className="p-5 rounded-xl bg-gradient-to-br from-blue-950/40 via-slate-900 to-indigo-950/40 border border-blue-500/40 flex flex-col justify-between">
+            <div className="p-5 rounded-xl bg-gradient-to-br from-blue-900 via-slate-900 to-indigo-950 text-white border border-blue-500/30 flex flex-col justify-between shadow-sm">
               <div>
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30">
                   Global Network
@@ -969,125 +1208,60 @@ export default function AboutProfitMachinesPage() {
                   Distributed Systems, R&amp;D Fellows, and Field Deployment Network across Americas, Asia-Pacific &amp; India.
                 </p>
               </div>
-              <div className="mt-4 pt-3 border-t border-blue-500/20 text-[11px] font-mono text-blue-400 font-bold">
-                COMMUNITY &amp; FELLOWSHIPS
+              <div className="mt-4 pt-3 border-t border-blue-500/20 text-[11px] font-mono text-blue-300 font-bold">
+                COMMUNITY &amp; RESEARCH FELLOWSHIPS
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── SECTION 08: CASE STUDIES & OUTCOMES ── */}
-      <section id="outcomes" className="py-20 sm:py-28 bg-slate-950 text-white relative border-b border-slate-800">
+      {/* ── SECTION 09: GLOBAL TECH HUBS (LIGHT SLATE-50 SECTION) ── */}
+      <section id="global-presence" className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14">
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full">
-              Enterprise Case Studies
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading tracking-tight mt-3 mb-4">
-              Production AI, Measured in Outcomes
-            </h2>
-            <p className="text-slate-400 text-base sm:text-lg">
-              A selection of recent enterprise engagements. Client identities protected under mutual non-disclosure agreements.
-            </p>
-          </div>
-
-          <div className="space-y-8">
-            {caseStudies.map((cs, idx) => (
-              <div key={idx} className="p-8 sm:p-10 rounded-2xl bg-slate-900/60 border border-slate-800 shadow-xl">
-                <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-400 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20">
-                    {cs.sector}
-                  </span>
-                  <span className="text-xs font-mono text-slate-500">
-                    CONFIDENTIAL ENTERPRISE ENGAGEMENT
-                  </span>
-                </div>
-
-                <h3 className="text-2xl font-bold text-white font-heading mb-4">
-                  {cs.client}
-                </h3>
-
-                <div className="mb-6 p-4 rounded-xl bg-slate-950/70 border border-slate-800 text-sm text-slate-300">
-                  <span className="font-bold text-slate-200">Situation &amp; Challenge: </span>
-                  {cs.challenge}
-                </div>
-
-                <div className="mb-6">
-                  <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 mb-3">
-                    Engineering Interventions Deployed:
-                  </h4>
-                  <div className="grid md:grid-cols-2 gap-3">
-                    {cs.interventions.map((inv, iIdx) => (
-                      <div key={iIdx} className="p-3.5 rounded-lg bg-slate-950/40 border border-slate-800/80 text-xs text-slate-300">
-                        <span className="font-bold text-blue-400">{inv.label}: </span>
-                        <span>{inv.detail}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/30 text-emerald-300 text-sm flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold font-mono uppercase tracking-wider block text-xs mb-1">
-                      Verified Business Outcome:
-                    </span>
-                    <span>{cs.outcome}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION 09: GLOBAL TECH HUBS ── */}
-      <section id="global-presence" className="py-20 sm:py-28 bg-slate-900 text-white relative border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14">
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 bg-blue-50 border border-blue-200/60 px-3 py-1 rounded-full">
               Global Presence
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading tracking-tight mt-3 mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 font-heading tracking-tight mt-3 mb-4">
               Operating in Key Global Tech Hubs
             </h2>
-            <p className="text-slate-400 text-base sm:text-lg">
+            <p className="text-slate-600 text-base sm:text-lg">
               Our engineering clusters, systems labs, and executive offices operate across 10 international hubs to serve global enterprises.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {globalHubs.map((hub, idx) => (
-              <div key={idx} className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between">
+              <div key={idx} className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-400 px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/20">
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700 px-2 py-0.5 rounded bg-blue-50 border border-blue-200">
                       {hub.label}
                     </span>
-                    <MapPin className="w-4 h-4 text-slate-500" />
+                    <MapPin className="w-4 h-4 text-slate-400" />
                   </div>
 
-                  <h3 className="text-lg font-bold text-white font-heading mb-1">
+                  <h3 className="text-lg font-bold text-slate-900 font-heading mb-1">
                     {hub.city}
                   </h3>
-                  <div className="text-xs text-slate-400 font-mono mb-4">
+                  <div className="text-xs text-slate-500 font-mono mb-4">
                     {hub.region}
                   </div>
 
-                  <p className="text-xs text-slate-400 leading-relaxed mb-6">
+                  <p className="text-xs text-slate-600 leading-relaxed mb-6">
                     {hub.address}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-slate-800/80 space-y-2 text-xs font-mono text-slate-400">
+                <div className="pt-4 border-t border-slate-100 space-y-2 text-xs font-mono text-slate-600">
                   <div className="flex items-center gap-2">
-                    <Phone className="w-3.5 h-3.5 text-blue-400" />
+                    <Phone className="w-3.5 h-3.5 text-blue-600" />
                     <span>{hub.phone}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Mail className="w-3.5 h-3.5 text-blue-400" />
-                    <a href={`mailto:${hub.email}`} className="text-slate-300 hover:text-white transition-colors">
+                    <Mail className="w-3.5 h-3.5 text-blue-600" />
+                    <a href={`mailto:${hub.email}`} className="text-slate-700 hover:text-blue-600 transition-colors">
                       {hub.email}
                     </a>
                   </div>
@@ -1098,7 +1272,7 @@ export default function AboutProfitMachinesPage() {
         </div>
       </section>
 
-      {/* ── SECTION 10: EXECUTIVE CONSULTATION & INTAKE ── */}
+      {/* ── SECTION 10: EXECUTIVE CONSULTATION & INTAKE (MATCHING GLOBAL ACCELERATION) ── */}
       <section id="consultation" className="scroll-mt-20">
         <LeadCaptureSection />
       </section>

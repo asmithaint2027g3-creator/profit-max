@@ -2498,25 +2498,25 @@ export default function Navigation() {
                                     tags: ['Mission', 'Vision']
                                 },
                                 {
-                                    title: 'Connected Methodology',
-                                    description: '4-stage revenue acceleration methodology replacing fragmented point tools.',
-                                    path: '/about#methodology',
-                                    badge: 'Methodology',
+                                    title: 'Value Engineering Roadmap',
+                                    description: 'Operating at Frontier Scale: 5-stage milestone realization from T+2 to T+12.',
+                                    path: '/about#roadmap',
+                                    badge: 'Roadmap',
                                     icon: Layers,
-                                    tags: ['Continuous', 'Closed-Loop']
+                                    tags: ['Frontier Scale', 'Milestones']
                                 },
                                 {
-                                    title: '8 Core Capabilities',
-                                    description: 'From Profit Pool Discovery to AI Trust & Enterprise Data Isolation.',
+                                    title: '6 Architecture Pillars',
+                                    description: 'From Signal Inference to AI Trust & Enterprise Data Isolation.',
                                     path: '/about#capabilities',
-                                    badge: 'Capabilities',
+                                    badge: 'Pillars',
                                     icon: Target,
-                                    tags: ['8 Capabilities', 'Architecture']
+                                    tags: ['6 Pillars', 'Architecture']
                                 },
                                 {
-                                    title: 'Operating Principles',
+                                    title: 'Radical Engineering Precision',
                                     description: 'Empirical velocity, radical transparency, and measurable ARR compounding.',
-                                    path: '/about#values',
+                                    path: '/about#principles',
                                     badge: 'Principles',
                                     icon: ShieldCheck,
                                     tags: ['Values', 'Governance']

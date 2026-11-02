@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ArrowRight, ChevronRight, TrendingUp, Zap, BarChart3,
+  ArrowRight, ArrowUpRight, ChevronRight, TrendingUp, Zap, BarChart3,
   Layers, Activity, Target, CheckCircle2, AlertCircle,
   HelpCircle, ChevronDown, Cpu, Radar, Clock, Shield,
   Sparkles, DollarSign, LineChart, Network, Sliders, Scale,

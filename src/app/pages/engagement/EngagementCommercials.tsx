@@ -19,6 +19,7 @@ import {
   Cpu,
   UserCheck,
   BarChart3,
+  ShieldCheck,
 } from 'lucide-react';
 
 interface PricingRow {

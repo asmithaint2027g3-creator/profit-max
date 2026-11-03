@@ -81,10 +81,10 @@ The database in Sheet 1 (`Live_Traffic_Events`) captures the exact 95 granular a
 ## ⚙️ Step-by-Step Deployment Guide
 
 ### 1️⃣ Sheet 1 Configuration (Data Collection & Webhook)
-- **Live Spreadsheet**: [`1fdZl2it4O86OUB92DvBaeeEM75fXue1yqjcvLq51gVs`](https://docs.google.com/spreadsheets/d/1fdZl2it4O86OUB92DvBaeeEM75fXue1yqjcvLq51gVs/edit)
+- **Live Spreadsheet**: [`1KXcYogXkE3mlNTA-WMpBADlzXO6TAlJCeK4OaQiNlTY`](https://docs.google.com/spreadsheets/d/1KXcYogXkE3mlNTA-WMpBADlzXO6TAlJCeK4OaQiNlTY/edit)
 - **Live Web App Webhook URL**: `https://script.google.com/macros/s/AKfycbzWtOiEWIBxZnB6s0LAZbwqUnEcBxYcMlp2dFmQMwMBvwGJxKttxV59jT35Esdvph6QJw/exec`
 
-1. Open your **Sheet 1 Spreadsheet** (`1fdZl2it4O86OUB92DvBaeeEM75fXue1yqjcvLq51gVs`).
+1. Open your **Sheet 1 Spreadsheet** (`1KXcYogXkE3mlNTA-WMpBADlzXO6TAlJCeK4OaQiNlTY`).
 2. Go to **Extensions $\rightarrow$ Apps Script**.
 3. Paste [`google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.js`](file:///d:/profit-vector--main/google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.js).
 4. In the Apps Script toolbar function dropdown:
@@ -96,13 +96,13 @@ The database in Sheet 1 (`Live_Traffic_Events`) captures the exact 95 granular a
 ---
 
 ### 2️⃣ Sheet 2 Configuration (Behavioral Analytics Hub)
-- **Live Spreadsheet**: [`1NSnGji4KqVuWaM1jGEjX87mkjFsoVN9u5SG6TJ0qZoU`](https://docs.google.com/spreadsheets/d/1NSnGji4KqVuWaM1jGEjX87mkjFsoVN9u5SG6TJ0qZoU/edit)
+- **Live Spreadsheet**: [`1t69wLDto7T0p5SE9yKDwEK1gnBfawAkV3AuQFbrlbzw`](https://docs.google.com/spreadsheets/d/1t69wLDto7T0p5SE9yKDwEK1gnBfawAkV3AuQFbrlbzw/edit)
 - **Live Web App Analytics API URL**: `https://script.google.com/macros/s/AKfycbx7R9VaqLbn0fv6E10n4t2ppOpQ46DpfxQv_xo0Eh29NbqWwveJNK1SkPvrrwzA1G9_pw/exec`
 
-1. Open your **Sheet 2 Spreadsheet** (`1NSnGji4KqVuWaM1jGEjX87mkjFsoVN9u5SG6TJ0qZoU`).
+1. Open your **Sheet 2 Spreadsheet** (`1t69wLDto7T0p5SE9yKDwEK1gnBfawAkV3AuQFbrlbzw`).
 2. Go to **Extensions $\rightarrow$ Apps Script**.
 3. Paste [`google-apps-script/SHEET2_ANALYTICS_PROCESSING.js`](file:///d:/profit-vector--main/google-apps-script/SHEET2_ANALYTICS_PROCESSING.js).
-4. Verify `DATA_SHEET_ID` is set to your Sheet 1 ID (`1fdZl2it4O86OUB92DvBaeeEM75fXue1yqjcvLq51gVs`). Note: `SITE_BASE_URL` is empty (`""`) and can be populated once the production website URL is deployed.
+4. Verify `DATA_SHEET_ID` is set to your Sheet 1 ID (`1KXcYogXkE3mlNTA-WMpBADlzXO6TAlJCeK4OaQiNlTY`). Note: `SITE_BASE_URL` is empty (`""`) and can be populated once the production website URL is deployed.
 5. Refresh the spreadsheet page. A custom top menu **🚀 PROFIT MACHINES ANALYTICS** will appear:
    - Click **🧠 Run Deep Behavioral Analysis** to generate the 6 behavioral tabs:
      - `🎯 Buyer Intent Matrix`

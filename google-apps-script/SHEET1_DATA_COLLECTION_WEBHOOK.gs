@@ -23,10 +23,10 @@
 
 const CONFIG = {
   // Main Profit Machines Data Collection & Multi-Form Tracking Spreadsheet ID (Sheet 1)
-  MAIN_SPREADSHEET_ID: "1fdZl2it4O86OUB92DvBaeeEM75fXue1yqjcvLq51gVs",
+  MAIN_SPREADSHEET_ID: "1KXcYogXkE3mlNTA-WMpBADlzXO6TAlJCeK4OaQiNlTY",
 
   // Dedicated Analytics & Intelligence Spreadsheet ID (Sheet 2)
-  ANALYTICS_SPREADSHEET_ID: "1NSnGji4KqVuWaM1jGEjX87mkjFsoVN9u5SG6TJ0qZoU",
+  ANALYTICS_SPREADSHEET_ID: "1t69wLDto7T0p5SE9yKDwEK1gnBfawAkV3AuQFbrlbzw",
 
   // Google Drive folder used to archive candidate resumes
   CAREER_RESUMES_FOLDER_NAME: "ProfitMachines_Career_Resumes"
@@ -41,24 +41,28 @@ const EMAIL_CONFIG = {
   
   // Recipients for Lead & Sales Inquiries (Strictly limited to authorized team)
   salesEmails: [
+    "poojasri@trustgrid.ai",
     "asmitha.int2027g3@gmail.com",
     "bv@trustflow.in"
   ],
   
   // Recipients for Ad Campaign Lead Generation
   adCampaignEmails: [
+    "poojasri@trustgrid.ai",
     "asmitha.int2027g3@gmail.com",
     "bv@trustflow.in"
   ],
 
   // Recipients for Career Applications & Monthly Resumes
   careerEmails: [
+    "poojasri@trustgrid.ai",
     "asmitha.int2027g3@gmail.com",
     "bv@trustflow.in"
   ],
 
   // Recipients for Daily, Weekly & Monthly Analytics Reports
   reportEmails: [
+    "poojasri@trustgrid.ai",
     "asmitha.int2027g3@gmail.com",
     "bv@trustflow.in"
   ],

@@ -11,8 +11,8 @@ This directory contains the production Google Apps Script backends powering the 
 
 | File | Target Spreadsheet | Spreadsheet ID | Live Web App Endpoint |
 | :--- | :--- | :--- | :--- |
-| [`SHEET1_DATA_COLLECTION_WEBHOOK.js`](file:///d:/profit-vector--main/google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.js) <br> *(alias: [`Code.gs`](file:///d:/profit-vector--main/google-apps-script/Code.gs), [`SHEET1_DATA_COLLECTION_WEBHOOK.gs`](file:///d:/profit-vector--main/google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.gs))* | **Sheet 1**<br>(Data Collection & Webhooks) | `1fdZl2it4O86OUB92DvBaeeEM75fXue1yqjcvLq51gVs` | `https://script.google.com/macros/s/AKfycbzWtOiEWIBxZnB6s0LAZbwqUnEcBxYcMlp2dFmQMwMBvwGJxKttxV59jT35Esdvph6QJw/exec` |
-| [`SHEET2_ANALYTICS_PROCESSING.js`](file:///d:/profit-vector--main/google-apps-script/SHEET2_ANALYTICS_PROCESSING.js) <br> *(alias: [`SHEET2_ANALYTICS_PROCESSING.gs`](file:///d:/profit-vector--main/google-apps-script/SHEET2_ANALYTICS_PROCESSING.gs))* | **Sheet 2**<br>(Executive Analytics Hub) | `1NSnGji4KqVuWaM1jGEjX87mkjFsoVN9u5SG6TJ0qZoU` | `https://script.google.com/macros/s/AKfycbx7R9VaqLbn0fv6E10n4t2ppOpQ46DpfxQv_xo0Eh29NbqWwveJNK1SkPvrrwzA1G9_pw/exec` |
+| [`SHEET1_DATA_COLLECTION_WEBHOOK.js`](file:///d:/profit-vector--main/google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.js) <br> *(alias: [`Code.gs`](file:///d:/profit-vector--main/google-apps-script/Code.gs), [`SHEET1_DATA_COLLECTION_WEBHOOK.gs`](file:///d:/profit-vector--main/google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.gs))* | **Sheet 1**<br>(Data Collection & Webhooks) | `1KXcYogXkE3mlNTA-WMpBADlzXO6TAlJCeK4OaQiNlTY` | `https://script.google.com/macros/s/AKfycbzWtOiEWIBxZnB6s0LAZbwqUnEcBxYcMlp2dFmQMwMBvwGJxKttxV59jT35Esdvph6QJw/exec` |
+| [`SHEET2_ANALYTICS_PROCESSING.js`](file:///d:/profit-vector--main/google-apps-script/SHEET2_ANALYTICS_PROCESSING.js) <br> *(alias: [`SHEET2_ANALYTICS_PROCESSING.gs`](file:///d:/profit-vector--main/google-apps-script/SHEET2_ANALYTICS_PROCESSING.gs))* | **Sheet 2**<br>(Executive Analytics Hub) | `1t69wLDto7T0p5SE9yKDwEK1gnBfawAkV3AuQFbrlbzw` | `https://script.google.com/macros/s/AKfycbx7R9VaqLbn0fv6E10n4t2ppOpQ46DpfxQv_xo0Eh29NbqWwveJNK1SkPvrrwzA1G9_pw/exec` |
 
 ---
 
@@ -29,7 +29,7 @@ This directory contains the production Google Apps Script backends powering the 
   - `forwardMonthlyCareerApplications`: 1st of each month at 09:00 AM IST candidate digest with Drive attachments.
 
 ### Deployment Steps (Sheet 1):
-1. Open Spreadsheet `1fdZl2it4O86OUB92DvBaeeEM75fXue1yqjcvLq51gVs`.
+1. Open Spreadsheet `1KXcYogXkE3mlNTA-WMpBADlzXO6TAlJCeK4OaQiNlTY`.
 2. Go to **Extensions > Apps Script**.
 3. Paste the contents of [`SHEET1_DATA_COLLECTION_WEBHOOK.js`](file:///d:/profit-vector--main/google-apps-script/SHEET1_DATA_COLLECTION_WEBHOOK.js) into `Code.gs`.
 4. In the function dropdown, run:
@@ -65,10 +65,10 @@ This directory contains the production Google Apps Script backends powering the 
 - **Custom UI Menu**: Adds `🚀 PROFIT MACHINES ANALYTICS` to the top menu bar with `🔄 Refresh All 16 Dashboards`.
 
 ### Deployment Steps (Sheet 2):
-1. Open Spreadsheet `1NSnGji4KqVuWaM1jGEjX87mkjFsoVN9u5SG6TJ0qZoU`.
+1. Open Spreadsheet `1t69wLDto7T0p5SE9yKDwEK1gnBfawAkV3AuQFbrlbzw`.
 2. Go to **Extensions > Apps Script**.
 3. Paste the contents of [`SHEET2_ANALYTICS_PROCESSING.js`](file:///d:/profit-vector--main/google-apps-script/SHEET2_ANALYTICS_PROCESSING.js) into `Code.gs`.
-4. Verify `DATA_SHEET_ID = "1fdZl2it4O86OUB92DvBaeeEM75fXue1yqjcvLq51gVs"`.
+4. Verify `DATA_SHEET_ID = "1KXcYogXkE3mlNTA-WMpBADlzXO6TAlJCeK4OaQiNlTY"`.
 5. Run `PULL_DATA_AND_BUILD_ALL_DASHBOARDS` once to generate all 16 tabs.
 6. Click **Deploy > Manage deployments > Edit > New version > Deploy** (Who has access: Anyone) to serve the analytics JSON API.
 

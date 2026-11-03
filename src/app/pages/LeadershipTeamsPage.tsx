@@ -8,12 +8,11 @@ import {
 import LeadCaptureSection from '../components/LeadCaptureSection';
 
 interface TeamMember {
+  initials: string;
   name: string;
   role: string;
-  category: 'strategy' | 'ai' | 'product' | 'infra' | 'governance';
-  credentials?: string;
-  bio: string;
-  expertise: string[];
+  badge: string;
+  category: 'leadership' | 'architecture' | 'engineering' | 'governance';
 }
 
 export default function LeadershipTeamsPage() {
@@ -29,172 +28,214 @@ export default function LeadershipTeamsPage() {
 
   const teamMembers: TeamMember[] = [
     {
+      initials: "SN",
+      name: "Shaji Namath",
+      role: "Managing Partner - GCC Practice",
+      badge: "Product Leadership",
+      category: "leadership"
+    },
+    {
+      initials: "PR",
+      name: "Pranav PR",
+      role: "Director & Chief Operating Officer",
+      badge: "Director",
+      category: "leadership"
+    },
+    {
+      initials: "BV",
       name: "Balaji Venkatraman",
-      role: "Director of Growth",
-      category: "strategy",
-      credentials: "Commercial Strategy & Enterprise GTM",
-      bio: "Leads commercial architecture, global revenue growth, and enterprise board advisory. Veteran revenue operator specializing in mathematical GTM systems and dark-funnel intent capture.",
-      expertise: ["Enterprise GTM", "Pipeline Engineering", "Revenue Operations", "Board Advisory"]
+      role: "Director & Growth & Acceleration",
+      badge: "Growth & Acceleration",
+      category: "leadership"
     },
     {
+      initials: "KV",
+      name: "Kumar V",
+      role: "Global Head - AI Infra & Cybersecurity Practice",
+      badge: "AI Cybersecurity & FDE Cybersecurity",
+      category: "architecture"
+    },
+    {
+      initials: "LS",
       name: "Lavanya Seshadri",
-      role: "Engineering Head",
-      category: "product",
-      credentials: "Core Architecture & Engineering Leadership",
-      bio: "Directs end-to-end platform engineering, distributed system design, and AI orchestration pipelines powering the ProfitMachines autonomous commercial engine.",
-      expertise: ["System Architecture", "Platform Engineering", "Cloud Infrastructure", "Engineering Leadership"]
+      role: "Head - FDE Practice (AJPC)",
+      badge: "AI Value Engineering",
+      category: "architecture"
     },
     {
+      initials: "VK",
       name: "Vignesh KS",
-      role: "Product Lead",
-      category: "product",
-      credentials: "Revenue Product Strategy & UX",
-      bio: "Heads product innovation, deal velocity workflow tooling, and revenue telemetry user experiences across enterprise commercial suites.",
-      expertise: ["Product Strategy", "Deal Flow Engineering", "User Experience", "Enterprise Workflow"]
+      role: "Product Lead (FinTech & Escrow Platforms)",
+      badge: "Product Lead",
+      category: "architecture"
     },
     {
-      name: "Dinesh Kumar",
-      role: "Lead AI Engineer",
-      category: "ai",
-      credentials: "Cognitive AI & Neural Architectures",
-      bio: "Specializes in multi-agent orchestration, proprietary commercial LLM inference pipelines, and autonomous account research synthesis engines.",
-      expertise: ["Multi-Agent Systems", "Neural NLP", "Intent Sensing", "Cognitive Architecture"]
+      initials: "H",
+      name: "Hemalata Niyogi",
+      role: "Lead Architect - AI FDE Practice (Mfg)",
+      badge: "Lead AI Architect",
+      category: "architecture"
     },
     {
-      name: "Hemalata",
-      role: "AI Engineer & Tech Lead",
-      category: "ai",
-      credentials: "Agentic Systems & Machine Learning",
-      bio: "Architects autonomous sales intelligence workflows, dynamic objection battlecard engines, and real-time CRM data enrichment pipelines.",
-      expertise: ["Agentic Workflows", "Sales Intelligence", "RAG Pipelines", "Automated Enrichment"]
+      initials: "PL",
+      name: "Prithivin L",
+      role: "Project Lead - EscrowChain Platform",
+      badge: "Systems Lead",
+      category: "engineering"
     },
     {
+      initials: "SK",
       name: "Shiva Kumar",
-      role: "Senior Product Architect",
-      category: "product",
-      credentials: "Scalable Enterprise Systems",
-      bio: "Focuses on high-throughput enterprise integrations, CRM synchronization APIs, and deterministic stage progression state machines.",
-      expertise: ["Enterprise APIs", "State Machines", "Pipeline Governance", "System Integration"]
+      role: "Managing Partner & Advisor - Mfg Domain",
+      badge: "Product Architecture",
+      category: "architecture"
     },
     {
+      initials: "MR",
+      name: "Mahadaven Ramasumbramanian",
+      role: "Managing Partner - FDE (Energy & Telecom)",
+      badge: "Practice Leader (Energy & Telecom)",
+      category: "leadership"
+    },
+    {
+      initials: "SP",
+      name: "Sonu Priyadharshini",
+      role: "Chief Financial Controller (Acting)",
+      badge: "Finance",
+      category: "governance"
+    },
+    {
+      initials: "DK",
+      name: "Dinesh Kumar",
+      role: "Senior AI FDE (Finance & Healthcare)",
+      badge: "Senior AI FDE",
+      category: "engineering"
+    },
+    {
+      initials: "R",
+      name: "Risihi Kumar",
+      role: "AI/ML Engineer",
+      badge: "AI Architecture",
+      category: "engineering"
+    },
+    {
+      initials: "R",
       name: "Ritin",
       role: "Senior AI Architect",
-      category: "ai",
-      credentials: "Deep Learning & Intent Modeling",
-      bio: "Designs mathematical progression algorithms, empirical forecasting indices, and buyer propensity classification models.",
-      expertise: ["Predictive Analytics", "Forecasting Models", "Propensity Scoring", "Mathematical Modeling"]
+      badge: "AI Architecture",
+      category: "architecture"
     },
     {
-      name: "Viswanath",
-      role: "Senior DevOps Engineer",
-      category: "infra",
-      credentials: "High-Availability Cloud Infrastructure",
-      bio: "Ensures zero-downtime scalability, low-latency telemetry ingestion, and enterprise SOC-2 Type II data residency and governance.",
-      expertise: ["Cloud Security", "Kubernetes / CI/CD", "Data Residency", "SOC-2 Governance"]
-    },
-    {
-      name: "Subashini Kaushik",
-      role: "AI Engineer - LLM / RAG",
-      category: "ai",
-      credentials: "Knowledge Retrieval & Semantic Search",
-      bio: "Builds high-precision retrieval-augmented generation systems that turn fragmented corporate sales assets into real-time deal guidance.",
-      expertise: ["RAG Systems", "Semantic Search", "Knowledge Synthesis", "Vector Databases"]
-    },
-    {
-      name: "Sonu Priyadarshini",
-      role: "Chief Financial Officer (CFO)",
-      category: "governance",
-      credentials: "Financial Engineering & Capital Allocation",
-      bio: "Oversees fiscal governance, capital efficiency, unit economics modeling, and enterprise compliance across international corporate entities.",
-      expertise: ["Unit Economics", "Financial Governance", "Cross-Border Tax", "Capital Efficiency"]
-    },
-    {
-      name: "Aswathi Nair",
-      role: "Corporate Counsel",
-      category: "governance",
-      credentials: "Enterprise Legal & Regulatory Compliance",
-      bio: "Directs legal frameworks, mutual confidentiality protocols, intellectual property protection, and global SaaS regulatory compliance.",
-      expertise: ["Enterprise Contracts", "Mutual NDAs", "Data Privacy (GDPR/HIPAA)", "Corporate Law"]
-    },
-    {
-      name: "Prithivin L",
-      role: "Project Lead - EscrowChain",
-      category: "product",
-      credentials: "Decentralized Settlement & Contracts",
-      bio: "Leads smart commercial contract verification, multi-party milestone escrow, and automated cross-border billing protocols.",
-      expertise: ["Smart Contracts", "Settlement Protocols", "Escrow Engineering", "FinTech Systems"]
-    },
-    {
+      initials: "N",
       name: "Natarajan",
       role: "Sr Blockchain Architect",
-      category: "infra",
-      credentials: "Cryptographic Ledger Infrastructure",
-      bio: "Engineers tamper-evident audit logs, cryptographic transaction proofing, and deterministic revenue verification chains.",
-      expertise: ["Cryptographic Ledgers", "Audit Infrastructure", "Deterministic State", "System Security"]
+      badge: "Blockchain",
+      category: "engineering"
     },
     {
+      initials: "V",
+      name: "Viswanath",
+      role: "Sr DevOps Engineer",
+      badge: "DevOps & Cloud",
+      category: "engineering"
+    },
+    {
+      initials: "SK",
+      name: "Subashini Kaushik",
+      role: "Lead AI FDE Practice (GRC / FinTech)",
+      badge: "GRC / FinTech",
+      category: "engineering"
+    },
+    {
+      initials: "NH",
       name: "Neha Hebber",
-      role: "FinTech Platform Engineer",
-      category: "product",
-      credentials: "IIT Bombay - Core Engineering",
-      bio: "Develops automated pricing engine calculators, enterprise discounting governance rules, and margin reconciliation engines.",
-      expertise: ["Pricing Engines", "Discount Control", "Financial Modeling", "FinTech Architecture"]
+      role: "FDE Practice (Finance & GRC)",
+      badge: "IIT Bombay",
+      category: "engineering"
     },
     {
+      initials: "A",
+      name: "Annapoorani",
+      role: "Lead AI FDE Practice (GRC / FinTech)",
+      badge: "Automation",
+      category: "engineering"
+    },
+    {
+      initials: "SI",
       name: "Swathi Iyer",
-      role: "Platform Engineer",
-      category: "product",
-      credentials: "IIT Madras - BTech",
-      bio: "Specializes in high-speed telemetry ingestion pipelines, low-latency API bridges, and multi-tenant data segmentation.",
-      expertise: ["Telemetry Ingestion", "API Bridges", "Multi-Tenancy", "Data Engineering"]
+      role: "Lead Investor & Strategic Advisor",
+      badge: "IIT Madras",
+      category: "governance"
     },
     {
-      name: "Aishwarya L Bhatt",
+      initials: "AL",
+      name: "Aiswhwarya LN Bhatt",
       role: "AI Performance Marketing & Strategy",
-      category: "strategy",
-      credentials: "Quantitative Demand Generation",
-      bio: "Designs algorithmic paid acquisition structures, intent-driven audience segmentation, and dark-funnel inbound conversion mechanics.",
-      expertise: ["Intent Marketing", "Demand Engineering", "Audience Scoring", "Growth Analytics"]
+      badge: "Strategy",
+      category: "leadership"
     },
     {
+      initials: "CL",
       name: "Chintiya Liu",
-      role: "Industry Consultant",
-      category: "strategy",
-      credentials: "Cross-Border Commercial Strategy",
-      bio: "Provides vertical market expertise across Southeast Asian and Pan-Pacific enterprise ecosystems, advising on regional commercial expansion.",
-      expertise: ["APAC Expansion", "Cross-Border Commercials", "Market Entry", "Industry Playbooks"]
+      role: "Lead Consultant (China)",
+      badge: "Consultant",
+      category: "governance"
     },
     {
+      initials: "KP",
       name: "Kallol Pal",
-      role: "Technology Advisor",
-      category: "governance",
-      credentials: "Enterprise AI & Scalability Advisor",
-      bio: "Advises executive leadership on cognitive software scaling, enterprise AI governance, and defensive technology moat construction.",
-      expertise: ["Technology Moats", "Enterprise Scalability", "AI Governance", "Executive Advisory"]
+      role: "Technology Advisor & CTO",
+      badge: "Advisor",
+      category: "architecture"
     },
     {
-      name: "Soumya S",
+      initials: "SS",
+      name: "Soumya Sommiah",
       role: "Company Secretary & Advisor",
-      category: "governance",
-      credentials: "Corporate Governance & Compliance",
-      bio: "Maintains international corporate compliance, board resolutions, regulatory filings, and statutory enterprise standards.",
-      expertise: ["Corporate Secretarial", "Board Resolutions", "Statutory Compliance", "Audits"]
+      badge: "Corporate Governance",
+      category: "governance"
     },
     {
+      initials: "SS",
+      name: "Soumya S",
+      role: "Corporate Counsel",
+      badge: "Legal Counsel",
+      category: "governance"
+    },
+    {
+      initials: "AN",
+      name: "Aswathi Nair",
+      role: "Corporate Counsel",
+      badge: "Legal Counsel",
+      category: "governance"
+    },
+    {
+      initials: "SP",
+      name: "Sonu Priyadharshini",
+      role: "Sr Manager - Talent Acceleration",
+      badge: "Talent Acceleration",
+      category: "governance"
+    },
+    {
+      initials: "VT",
+      name: "Vanitha T",
+      role: "Manager - General Admin",
+      badge: "General Admin",
+      category: "governance"
+    },
+    {
+      initials: "GS",
+      name: "Gagna Sindhu",
+      role: "HR Operations Specialist",
+      badge: "HR Operations",
+      category: "governance"
+    },
+    {
+      initials: "P",
       name: "Poojasri",
       role: "AI/ML Engineer",
-      category: "ai",
-      credentials: "Machine Learning & Predictive Telemetry",
-      bio: "Builds lead propensity models, automated CRM hygiene enrichment scripts, and response latency monitoring algorithms.",
-      expertise: ["Predictive Models", "CRM Automation", "Data Science", "Python / PyTorch"]
-    },
-    {
-      name: "Annapoorani",
-      role: "Automation Engineering",
-      category: "infra",
-      credentials: "Workflow Automation & Telemetry",
-      bio: "Implements automated revenue testing harnesses, continuous telemetry validation, and stage routing reliability checks.",
-      expertise: ["Workflow Automation", "Integration Testing", "Process Orchestration", "Python"]
+      badge: "AI Architecture",
+      category: "engineering"
     }
   ];
 
@@ -235,8 +276,6 @@ export default function LeadershipTeamsPage() {
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900">
-      
-      
 
       {/* ── SECTION 01: EXECUTIVE HERO (GLOBAL ACCELERATION PALETTE) ── */}
       <section id="overview" className="relative pt-12 pb-16 sm:pt-20 sm:pb-24 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden border-b border-slate-800">
@@ -286,7 +325,7 @@ export default function LeadershipTeamsPage() {
                 href="#team-directory"
                 className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold text-sm transition-all"
               >
-                <span>View Full Team Directory ({teamMembers.length})</span>
+                <span>View Full Team Directory ({teamMembers.length + 1})</span>
                 <ArrowUpRight className="w-4 h-4 text-slate-400" />
               </a>
             </div>
@@ -295,7 +334,7 @@ export default function LeadershipTeamsPage() {
       </section>
 
       {/* ── SECTION 02: ROLE OF LEADERSHIP IN REVENUE TRANSFORMATION ── */}
-      <section id="role-of-leadership" className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
+      <section id="role-of-leadership" className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6">
@@ -405,7 +444,7 @@ export default function LeadershipTeamsPage() {
         </div>
       </section>
 
-      {/* ── SECTION 04: FULL TEAM DIRECTORY (21 VERIFIED PROFILES) ── */}
+      {/* ── SECTION 04: FULL TEAM DIRECTORY (CLEAN, COMPACT CARDS) ── */}
       <section id="team-directory" data-section-id="teams" className="scroll-mt-24 py-20 sm:py-24 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
@@ -414,7 +453,7 @@ export default function LeadershipTeamsPage() {
                 Verified Directory
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading tracking-tight mt-3">
-                Leadership, Engineering & Advisory Profiles
+                Leadership, Engineering &amp; Advisory Profiles
               </h2>
               <p className="text-slate-600 text-sm sm:text-base mt-2">
                 Profiles and domain contributions of our verified core team members.
@@ -425,10 +464,9 @@ export default function LeadershipTeamsPage() {
             <div className="flex flex-wrap items-center gap-1.5 bg-white p-1.5 rounded-xl border border-slate-200 shadow-2xs">
               {[
                 { id: 'all', label: 'All Members' },
-                { id: 'strategy', label: 'Strategy & GTM' },
-                { id: 'ai', label: 'AI & ML' },
-                { id: 'product', label: 'Product & Systems' },
-                { id: 'infra', label: 'Infra & DevOps' },
+                { id: 'leadership', label: 'Leadership' },
+                { id: 'architecture', label: 'Architecture' },
+                { id: 'engineering', label: 'Engineering' },
                 { id: 'governance', label: 'Governance & Advisory' },
               ].map(tab => (
                 <button
@@ -446,47 +484,73 @@ export default function LeadershipTeamsPage() {
             </div>
           </div>
 
-          {/* Team Cards Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {/* Clean, Simple 4-Column Card Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {filteredMembers.map((member, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-blue-300 transition-all flex flex-col justify-between"
+                className="p-4 rounded-xl bg-white border border-slate-200/90 hover:border-blue-300 hover:shadow-xs transition-all flex items-start gap-3.5 group shadow-2xs"
               >
-                <div>
-                  <div className="flex items-start justify-between gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 text-blue-700 font-mono font-black text-sm flex items-center justify-center shrink-0">
-                      {member.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
-                    </div>
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2 py-0.5 rounded border border-blue-200/60">
-                      {member.category.toUpperCase()}
-                    </span>
-                  </div>
-
-                  <h3 className="text-lg font-bold text-slate-900 font-heading mb-1">{member.name}</h3>
-                  <div className="text-xs font-bold text-blue-600 mb-2">{member.role}</div>
-                  {member.credentials && (
-                    <div className="text-[11px] font-mono font-semibold text-slate-500 mb-3">
-                      {member.credentials}
-                    </div>
-                  )}
-
-                  <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                    {member.bio}
-                  </p>
+                {/* Initials Avatar Badge */}
+                <div className="w-10 h-10 rounded-lg bg-blue-50 border border-blue-200/60 text-blue-700 font-mono font-bold text-xs flex items-center justify-center shrink-0">
+                  {member.initials}
                 </div>
 
-                <div className="pt-4 border-t border-slate-100">
-                  <div className="flex flex-wrap gap-1.5">
-                    {member.expertise.map((exp, eIdx) => (
-                      <span key={eIdx} className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[10px] font-semibold">
-                        {exp}
-                      </span>
-                    ))}
-                  </div>
+                {/* Member Info */}
+                <div className="min-w-0 flex-1">
+                  <h3 className="font-bold text-slate-900 text-sm font-heading leading-tight group-hover:text-blue-600 transition-colors">
+                    {member.name}
+                  </h3>
+                  <p className="text-xs text-slate-600 mt-1 leading-snug">
+                    {member.role}
+                  </p>
+                  {member.badge && (
+                    <span className="inline-block text-[10px] font-mono font-bold text-blue-700 bg-blue-50 border border-blue-200/60 px-2 py-0.5 rounded mt-2.5">
+                      {member.badge}
+                    </span>
+                  )}
                 </div>
               </div>
             ))}
+
+            {/* Global Team Members Tile (31st Tile) */}
+            <div className="p-5 rounded-xl bg-gradient-to-br from-blue-900 via-slate-900 to-indigo-950 text-white border border-blue-500/30 flex flex-col justify-between shadow-sm">
+              <div>
+                <div className="flex items-center justify-between mb-2.5">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30">
+                    Global Network
+                  </span>
+                  <span className="text-[10px] font-mono text-blue-400 font-bold">
+                    60+ Strong
+                  </span>
+                </div>
+                <h3 className="text-base font-black text-white font-heading mt-2">
+                  +60 Global Team Members
+                </h3>
+                <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                  Specialized talent network across Americas, Asia-Pacific &amp; India:
+                </p>
+
+                <div className="mt-3 space-y-1.5">
+                  <div className="flex items-center gap-2 text-xs text-blue-100 bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/10">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0" />
+                    <span className="font-semibold text-white">AI FDEs</span>
+                    <span className="text-[11px] text-slate-300">(Forward Deployed Engineers)</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-cyan-100 bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/10">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 flex-shrink-0" />
+                    <span className="font-semibold text-white">AI Sales Acceleration Experts</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-indigo-100 bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/10">
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 flex-shrink-0" />
+                    <span className="font-semibold text-white">AI Domain Engineers</span>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 pt-3 border-t border-blue-500/20 text-[11px] font-mono text-blue-300 font-bold">
+                COMMUNITY &amp; RESEARCH FELLOWSHIPS
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -498,4 +562,3 @@ export default function LeadershipTeamsPage() {
     </div>
   );
 }
-

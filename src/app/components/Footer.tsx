@@ -1,6 +1,6 @@
 import React from 'react';
 import { 
-    Linkedin, Twitter, Mail, Phone, MapPin, 
+    Linkedin, Twitter, Facebook, Mail, Phone,
     Cloud, Share2, LayoutGrid, Box, Server, ArrowUpRight 
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -150,80 +150,62 @@ export default function Footer() {
                 {/* Top Section: Brand & Contact Column + 6 Navigation Columns */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
 
-                    {/* Brand & Direct Contact (Left 3.5 Columns on Desktop) */}
-                    <div className="lg:col-span-3 space-y-6">
+                    {/* Brand & Direct Contact (Left Side - matching reference design) */}
+                    <div className="lg:col-span-4 space-y-6 lg:pr-6">
                         <div>
-                            <Link to="/" className="inline-block mb-3">
-                                <div className="flex items-center gap-2">
-                                    <div className="text-2xl font-black tracking-tight text-white flex items-center font-heading">
-                                        <span>Profit</span>
-                                        <span className="text-blue-500">Machines</span>
-                                    </div>
+                            <Link to="/" className="inline-block mb-2">
+                                <div className="text-2xl md:text-3xl font-extrabold tracking-tight text-white flex items-center font-heading">
+                                    <span>Profit</span>
+                                    <span className="text-blue-500">Machines</span>
                                 </div>
                             </Link>
-                            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
-                                AI-native revenue transformation systems. Engineering measurable pipeline generation, sales acceleration, and margin expansion for modern enterprises.
+                            <p className="text-slate-400 leading-relaxed mb-8 font-normal text-sm max-w-sm">
+                                Building Enterprise AI Solutions for the Future. AI. Cloud. Automation. Software. Delivered End-to-End.
                             </p>
 
-                            {/* Direct Contact Points */}
-                            <div className="space-y-3.5 mb-6 text-xs sm:text-sm">
+                            {/* Circular Contact Badges */}
+                            <div className="space-y-4 mb-8">
                                 <a 
-                                    href="mailto:connect@profitmachines.com" 
-                                    className="group flex items-center gap-3 text-slate-300 hover:text-blue-400 transition-colors"
+                                    href="mailto:connect@trustgrid.ai" 
+                                    className="group flex items-center gap-4 text-slate-400 hover:text-white transition-colors duration-300"
                                 >
-                                    <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-blue-500/50 group-hover:bg-blue-600/20 transition-all shrink-0">
-                                        <Mail className="w-4 h-4 text-blue-400" />
+                                    <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-blue-500 group-hover:bg-blue-600 transition-all shrink-0">
+                                        <Mail className="w-4 h-4 text-slate-300 group-hover:text-white" />
                                     </div>
-                                    <span className="font-medium truncate">connect@profitmachines.com</span>
+                                    <span className="font-normal text-sm tracking-wide">connect@trustgrid.ai</span>
                                 </a>
 
                                 <a 
-                                    href="tel:+917889397999" 
-                                    className="group flex items-center gap-3 text-slate-300 hover:text-blue-400 transition-colors"
+                                    href="tel:+919513288612" 
+                                    className="group flex items-center gap-4 text-slate-400 hover:text-white transition-colors duration-300"
                                 >
-                                    <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-blue-500/50 group-hover:bg-blue-600/20 transition-all shrink-0">
-                                        <Phone className="w-4 h-4 text-cyan-400" />
+                                    <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-blue-500 group-hover:bg-blue-600 transition-all shrink-0">
+                                        <Phone className="w-4 h-4 text-slate-300 group-hover:text-white" />
                                     </div>
-                                    <span className="font-medium">+91 7889397999</span>
+                                    <span className="font-normal text-sm tracking-wide">+91 9513288612</span>
                                 </a>
-
-                                <div className="flex items-start gap-3 text-slate-400 text-xs pt-1">
-                                    <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 mt-0.5">
-                                        <MapPin className="w-4 h-4 text-indigo-400" />
-                                    </div>
-                                    <div className="leading-snug">
-                                        <div className="font-semibold text-slate-300">Western Operations</div>
-                                        <div>WeWork Raheja Platinum, Marol, Andheri East, Mumbai 400059</div>
-                                    </div>
-                                </div>
                             </div>
 
-                            {/* Social Presence */}
-                            <div className="flex items-center gap-3 pt-2">
-                                <a 
-                                    href="https://www.linkedin.com" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer" 
-                                    aria-label="ProfitMachines LinkedIn"
-                                    className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-blue-600 hover:border-blue-500 transition-all"
-                                >
-                                    <Linkedin className="w-4 h-4" />
-                                </a>
-                                <a 
-                                    href="https://twitter.com" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer" 
-                                    aria-label="ProfitMachines Twitter"
-                                    className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-blue-600 hover:border-blue-500 transition-all"
-                                >
-                                    <Twitter className="w-4 h-4" />
-                                </a>
+                            {/* Social Buttons */}
+                            <div className="flex gap-4">
+                                {[Linkedin, Twitter, Facebook].map((Icon, i) => (
+                                    <a 
+                                        key={i} 
+                                        href="#" 
+                                        aria-label={['LinkedIn', 'Twitter', 'Facebook'][i]} 
+                                        title={['LinkedIn', 'Twitter', 'Facebook'][i]} 
+                                        className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-white hover:bg-blue-600 hover:border-blue-500 transition-all hover:shadow-[0_0_15px_rgba(37,99,235,0.5)] hover:-translate-y-1"
+                                    >
+                                        <Icon className="w-4 h-4" />
+                                        <span className="sr-only">{['LinkedIn', 'Twitter', 'Facebook'][i]}</span>
+                                    </a>
+                                ))}
                             </div>
                         </div>
                     </div>
 
-                    {/* Navigation Columns (Right 9 Columns on Desktop -> 6 Submenu Columns) */}
-                    <div className="lg:col-span-9 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8">
+                    {/* Navigation Columns (Right 8 Columns on Desktop -> 6 Submenu Columns) */}
+                    <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
                         {linkGroups.map((group, groupIndex) => (
                             <div key={groupIndex} className="space-y-3.5">
                                 <Link 

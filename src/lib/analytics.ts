@@ -121,6 +121,21 @@ export function getSessionId(): string {
 /**
  * 3. UTM PARAMETER CAPTURE & ATTRIBUTION
  */
+export function isIgnoredAttributionSource(val?: string | null): boolean {
+    if (!val) return true;
+    const lower = val.toLowerCase().trim();
+    return (
+        lower === 'direct' ||
+        lower === 'undefined' ||
+        lower === 'null' ||
+        lower === 'none' ||
+        lower.includes('chatgpt') ||
+        lower.includes('openai') ||
+        lower.includes('claude') ||
+        lower.includes('anthropic')
+    );
+}
+
 export function captureCurrentUTMs(): Record<string, string> {
     if (typeof window === 'undefined') return {};
 
@@ -130,7 +145,9 @@ export function captureCurrentUTMs(): Record<string, string> {
 
     utmKeys.forEach(k => {
         const val = urlParams.get(k);
-        if (val) captured[k] = val;
+        if (val && !isIgnoredAttributionSource(val)) {
+            captured[k] = val;
+        }
     });
 
     if (Object.keys(captured).length > 0) {
@@ -146,8 +163,22 @@ export function captureCurrentUTMs(): Record<string, string> {
 export function getStoredUTMs(): Record<string, string> {
     if (typeof window === 'undefined') return {};
     try {
-        const stored = localStorage.getItem(STORAGE_KEYS.STORED_UTMS);
-        return stored ? JSON.parse(stored) : {};
+        const storedStr = localStorage.getItem(STORAGE_KEYS.STORED_UTMS);
+        if (!storedStr) return {};
+        const stored = JSON.parse(storedStr);
+        let modified = false;
+
+        ['utm_source', 'source', 'ref'].forEach(k => {
+            if (stored[k] && isIgnoredAttributionSource(stored[k])) {
+                delete stored[k];
+                modified = true;
+            }
+        });
+
+        if (modified) {
+            localStorage.setItem(STORAGE_KEYS.STORED_UTMS, JSON.stringify(stored));
+        }
+        return stored;
     } catch {
         return {};
     }

@@ -2,7 +2,7 @@
  * sheets.ts — Enterprise Form Submission & Google Sheets Bridge for ProfitMachines
  */
 
-import { getVisitorId, getSessionId, getStoredUTMs } from './analytics';
+import { getVisitorId, getSessionId, getStoredUTMs, isIgnoredAttributionSource } from './analytics';
 
 export interface FormSubmissionPayload {
     formName?: string;
@@ -56,11 +56,23 @@ export const submitToSheet = async (
     const sessionId = getSessionId();
     const utms = getStoredUTMs();
 
-    // Compile standardized enterprise payload
+    // Compile standardized enterprise payload with attribution sanitization
+    const formDisplayName = fields.formName || tableOrFormName || 'Enterprise Lead Form';
+    const rawUtm = utms.utm_source || '';
+    const cleanUtmSource = isIgnoredAttributionSource(rawUtm) ? '' : rawUtm;
+    
+    const rawRef = typeof document !== 'undefined' ? document.referrer : '';
+    const cleanReferrer = isIgnoredAttributionSource(rawRef) ? '' : rawRef;
+
+    const rawSrc = fields.source || '';
+    const cleanLeadSource = (rawSrc && !isIgnoredAttributionSource(rawSrc) && rawSrc !== 'Website Inbound Form')
+        ? rawSrc
+        : formDisplayName;
+
     const enrichedFields = {
         submission_id: submissionId,
         timestamp,
-        form_name: fields.formName || tableOrFormName || 'Enterprise Lead Form',
+        form_name: formDisplayName,
         name: fields.name || (fields.firstName ? `${fields.firstName} ${fields.lastName || ''}`.trim() : fields.Name || ''),
         first_name: fields.firstName || '',
         last_name: fields.lastName || '',
@@ -74,18 +86,20 @@ export const submitToSheet = async (
         message: fields.message || fields.Message || fields.requirement || '',
         page_url: typeof window !== 'undefined' ? window.location.href : '',
         page_title: typeof document !== 'undefined' ? document.title : '',
-        referrer: typeof document !== 'undefined' ? document.referrer : '',
-        utm_source: utms.utm_source || 'direct',
-        utm_medium: utms.utm_medium || '',
-        utm_campaign: utms.utm_campaign || '',
+        referrer: cleanReferrer,
+        utm_source: cleanUtmSource,
+        utm_medium: isIgnoredAttributionSource(utms.utm_medium) ? '' : (utms.utm_medium || ''),
+        utm_campaign: isIgnoredAttributionSource(utms.utm_campaign) ? '' : (utms.utm_campaign || ''),
         utm_term: utms.utm_term || '',
         utm_content: utms.utm_content || '',
         visitor_id: visitorId,
         session_id: sessionId,
         device: typeof navigator !== 'undefined' ? (/Mobi/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop') : 'Desktop',
         browser: typeof navigator !== 'undefined' ? navigator.userAgent : '',
-        lead_source: fields.source || 'Website Inbound Form',
-        ...fields
+        lead_source: cleanLeadSource,
+        ...fields,
+        utm_source: cleanUtmSource,
+        source: cleanLeadSource
     };
 
     const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || 

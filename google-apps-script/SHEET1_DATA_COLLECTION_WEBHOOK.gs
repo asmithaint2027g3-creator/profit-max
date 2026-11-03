@@ -2500,7 +2500,31 @@ function sendReportEmail(subject, htmlBody) {
 
 /**
  * Intelligently computes the true traffic attribution channel from UTMs, Referrer, and triggers.
+ * Filters out internal development / AI chat links (e.g. chatgpt.com, claude.ai) so they never
+ * appear as false marketing lead sources.
  */
+function isIgnoredMarketingSource(val) {
+  if (!val) return true;
+  var low = String(val).toLowerCase().trim();
+  return (
+    low === "direct" ||
+    low === "undefined" ||
+    low === "null" ||
+    low === "none" ||
+    low.indexOf("chatgpt") !== -1 ||
+    low.indexOf("openai") !== -1 ||
+    low.indexOf("claude") !== -1 ||
+    low.indexOf("anthropic") !== -1
+  );
+}
+
+function cleanMarketingField(val) {
+  if (!val) return "";
+  var s = String(val).trim();
+  if (isIgnoredMarketingSource(s)) return "";
+  return s;
+}
+
 function computeAttributionSource(data) {
   var utmSource = (data.utm_source || data.utmSource || "").toString().trim();
   var utmMedium = (data.utm_medium || data.utmMedium || "").toString().trim();
@@ -2508,34 +2532,27 @@ function computeAttributionSource(data) {
   var referrer = (data.referrer || data.referrer_url || data.Referrer || data.referrerHost || "").toString().trim();
   var explicitSource = (data.source || data.lead_source || data.trafficSource || data.traffic_source || "").toString().trim();
 
-  // 1. UTM Attribution (Highest fidelity for marketing campaigns)
-  if (utmSource && 
-      utmSource.toLowerCase() !== "direct" && 
-      utmSource.toLowerCase() !== "undefined" && 
-      utmSource.toLowerCase() !== "null" && 
-      utmSource.toLowerCase() !== "none") {
+  // 1. UTM Attribution (Highest fidelity for marketing campaigns - ignore development AI referrers)
+  if (!isIgnoredMarketingSource(utmSource)) {
     var sourceLabel = utmSource;
-    if (utmMedium) {
+    if (utmMedium && !isIgnoredMarketingSource(utmMedium)) {
       sourceLabel += " / " + utmMedium;
     }
-    if (utmCampaign) {
+    if (utmCampaign && !isIgnoredMarketingSource(utmCampaign)) {
       sourceLabel += " (" + utmCampaign + ")";
     }
     return sourceLabel;
   }
 
   // 2. Referrer Attribution (Search engines, social media, external partners)
-  if (referrer && 
-      referrer.toLowerCase() !== "direct" && 
-      referrer.toLowerCase() !== "undefined" && 
-      referrer.toLowerCase() !== "null") {
+  if (!isIgnoredMarketingSource(referrer)) {
     var hostMatch = referrer.match(/^https?:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
     var host = hostMatch ? hostMatch[1].toLowerCase() : "";
     var isSelfDomain = host.indexOf("profit-max") !== -1 || 
                        host.indexOf("profitmachines") !== -1 || 
                        host.indexOf("localhost") !== -1 || 
                        host.indexOf("127.0.0.1") !== -1;
-    if (!isSelfDomain) {
+    if (!isSelfDomain && !isIgnoredMarketingSource(host)) {
       if (host.indexOf("google.") !== -1 || referrer.indexOf("google.") !== -1) return "Google / Organic";
       if (host.indexOf("bing.") !== -1 || referrer.indexOf("bing.") !== -1) return "Bing / Organic";
       if (host.indexOf("duckduckgo.") !== -1 || referrer.indexOf("duckduckgo.") !== -1) return "DuckDuckGo / Organic";
@@ -2543,7 +2560,7 @@ function computeAttributionSource(data) {
       if (host.indexOf("baidu.") !== -1 || referrer.indexOf("baidu.") !== -1) return "Baidu / Organic";
       if (host.indexOf("linkedin.") !== -1 || host.indexOf("lnkd.in") !== -1) return "LinkedIn / Referral";
       if (host.indexOf("twitter.") !== -1 || host.indexOf("t.co") !== -1 || host.indexOf("x.com") !== -1) return "X (Twitter) / Social";
-      if (host.indexOf("facebook.") !== -1 || host.indexOf("fb.me") !== -1 || host.indexOf("fb.com") !== -1) return "Facebook / Social";
+      if (host.indexOf("facebook.") !== -1 || host.indexOf("fb.me") !== -1) return "Facebook / Social";
       if (host.indexOf("instagram.") !== -1) return "Instagram / Social";
       if (host.indexOf("youtube.") !== -1 || host.indexOf("youtu.be") !== -1) return "YouTube / Social";
       if (host.indexOf("reddit.") !== -1) return "Reddit / Community";
@@ -2557,12 +2574,8 @@ function computeAttributionSource(data) {
     }
   }
 
-  // 3. Explicit meaningful trigger passed from form UI (e.g. Hero Section, TalkToExpert Modal)
-  if (explicitSource && 
-      explicitSource !== "Website Inbound Form" && 
-      explicitSource !== "Direct" && 
-      explicitSource !== "direct" && 
-      explicitSource !== "undefined") {
+  // 3. Explicit meaningful trigger passed from form UI (e.g. Hero Section, TalkToExpert Modal, Consultation Booking)
+  if (!isIgnoredMarketingSource(explicitSource) && explicitSource !== "Website Inbound Form") {
     return explicitSource;
   }
 
@@ -2630,18 +2643,18 @@ function resolveField(header, data) {
     "Page Title":             data.pageTitle || data.page_title || data["Page Title"] || "",
     "Traffic Source":         computedSource,
     "Initial Source":         computedSource,
-    "Referrer":               data.referrer || data.referrer_url || documentReferrerFallback(data) || "",
+    "Referrer":               cleanMarketingField(data.referrer || data.referrer_url || documentReferrerFallback(data)),
     "Device":                 data.device || data.device_type || "Desktop",
     "Browser":                data.browser || "Chrome / Safari",
     "OS":                     data.os || data.operating_system || "Windows / macOS",
     "CTA Name":               data.ctaName || data.event_name || data.eventName || data["CTA Name"] || "",
     "Destination URL":        data.destinationUrl || data.page_url || data.pageUrl || "",
     "Section":                data.section || data.event_category || "General",
-    "UTM Source":             data.utmSource || data.utm_source || "",
-    "UTM Medium":             data.utmMedium || data.utm_medium || "",
-    "UTM Campaign":           data.utmCampaign || data.utm_campaign || "",
-    "UTM Term":               data.utmTerm || data.utm_term || "",
-    "UTM Content":            data.utmContent || data.utm_content || "",
+    "UTM Source":             cleanMarketingField(data.utmSource || data.utm_source),
+    "UTM Medium":             cleanMarketingField(data.utmMedium || data.utm_medium),
+    "UTM Campaign":           cleanMarketingField(data.utmCampaign || data.utm_campaign),
+    "UTM Term":               cleanMarketingField(data.utmTerm || data.utm_term),
+    "UTM Content":            cleanMarketingField(data.utmContent || data.utm_content),
     "Timestamp":              normalizeTimestamp(data.timestamp || data.Timestamp || new Date().toISOString())
   };
   
@@ -2667,6 +2680,7 @@ function resolveField(header, data) {
   
   return (value !== null && typeof value === 'object') ? JSON.stringify(value) : value;
 }
+
 
 function documentReferrerFallback(data) {
   return data.referrer || data.referrer_url || "";

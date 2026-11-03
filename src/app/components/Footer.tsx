@@ -29,6 +29,19 @@ export default function Footer() {
             ]
         },
         {
+            title: 'Industries',
+            path: '/industries',
+            links: [
+                { name: 'Industries Overview', path: '/industries' },
+                { name: 'Enterprise Scale', path: '/industries/enterprise' },
+                { name: 'B2B Revenue', path: '/industries/b2b' },
+                { name: 'SaaS & Subscription', path: '/industries/saas' },
+                { name: 'Mid-Market Acceleration', path: '/industries/midmarket' },
+                { name: 'Startups & Scaleups', path: '/industries/startups' },
+                { name: 'Consumer & B2C', path: '/industries/b2c' },
+            ]
+        },
+        {
             title: 'AI Sales',
             path: '/ai-native-sales',
             links: [
@@ -39,6 +52,8 @@ export default function Footer() {
                 { name: 'Intelligent Sales Agents', path: '/ai-native-sales/intelligent-sales-agents' },
                 { name: 'Revenue Acceleration', path: '/ai-native-sales/revenue-acceleration' },
                 { name: 'Pricing Intelligence', path: '/ai-native-sales/pricing-intelligence' },
+                { name: 'Ecosystem Revenue', path: '/ai-native-sales/ecosystem-revenue-growth' },
+                { name: 'Customer Growth', path: '/ai-native-sales/customer-growth-intelligence' },
                 { name: 'Autonomous GTM Command', path: '/ai-native-sales/autonomous-gtm-command-center' },
             ]
         },
@@ -48,12 +63,14 @@ export default function Footer() {
             links: [
                 { name: 'Growth Science Hub', path: '/growth-science' },
                 { name: 'Revenue Physics', path: '/growth-science/revenue-physics' },
-                { name: 'Friction Diagnostics', path: '/growth-science/friction-diagnostics' },
-                { name: 'AI Engines', path: '/growth-science/ai-engines' },
-                { name: 'Proprietary Growth Models', path: '/growth-science/growth-models' },
-                { name: 'Executive Telemetry', path: '/growth-science/executive-telemetry' },
+                { name: 'Revenue Intelligence', path: '/growth-science/revenue-intelligence' },
                 { name: 'Revenue Potential Discovery', path: '/growth-science/revenue-potential-discovery' },
                 { name: 'Revenue Leakage Recovery', path: '/growth-science/revenue-leakage-recovery' },
+                { name: 'Offer Engineering', path: '/growth-science/revenue-bundling-offer-engineering' },
+                { name: 'Value Capture Engineering', path: '/growth-science/value-capture-engineering' },
+                { name: 'Product Innovation', path: '/growth-science/product-innovation-revenue-expansion' },
+                { name: 'Revenue Acceleration', path: '/growth-science/revenue-acceleration' },
+                { name: 'Executive Telemetry', path: '/growth-science/executive-telemetry' },
             ]
         },
         {
@@ -68,33 +85,35 @@ export default function Footer() {
                 { name: 'Supply Networks', path: '/global-acceleration/supply-networks' },
                 { name: 'Global Revenue Engines', path: '/global-acceleration/revenue-engines' },
                 { name: 'Capital & Finance', path: '/global-acceleration/capital-finance' },
+                { name: 'AI-Powered Expansion', path: '/global-acceleration/ai-powered-expansion' },
             ]
         },
         {
-            title: 'Industries',
-            path: '/industries',
+            title: 'Case Studies',
+            path: '/case-studies',
             links: [
-                { name: 'Industries Overview', path: '/industries' },
-                { name: 'Enterprise Scale', path: '/industries/enterprise' },
-                { name: 'B2B Revenue', path: '/industries/b2b' },
-                { name: 'SaaS & Subscription', path: '/industries/saas' },
-                { name: 'Mid-Market Acceleration', path: '/industries/midmarket' },
-                { name: 'Startups & Scaleups', path: '/industries/startups' },
-                { name: 'Consumer & B2C', path: '/industries/b2c' },
+                { name: 'Case Studies Archive', path: '/case-studies' },
+                { name: 'Client Outcomes', path: '/outcomes' },
+                { name: 'AI-Native Transformations', path: '/case-studies/ai-native' },
+                { name: 'Enterprise SaaS Case', path: '/case-studies/enterprise-saas-pipeline-growth' },
+                { name: 'Manufacturing Margin', path: '/case-studies/manufacturing-margin-improvement' },
+                { name: 'Healthcare Forecast Case', path: '/case-studies/healthcare-forecast-accuracy' },
+                { name: 'Global Expansion Case', path: '/case-studies/global-manufacturing-expansion' },
+                { name: 'By Business Challenge', path: '/case-studies#challenge' },
+                { name: 'By Industry Solution', path: '/case-studies#industry' },
             ]
         },
         {
-            title: 'Company',
+            title: 'About Us',
             path: '/about',
             links: [
                 { name: 'About ProfitMachines', path: '/about' },
-                { name: 'Leadership & Teams', path: '/leadership' },
+                { name: 'Leadership & Team', path: '/leadership' },
                 { name: 'Careers & Fellowships', path: '/careers' },
                 { name: 'Global Presence', path: '/global-presence' },
-                { name: 'Case Studies', path: '/case-studies' },
-                { name: 'Outcomes & Metrics', path: '/outcomes' },
                 { name: 'Blog & Insights', path: '/blog' },
-                { name: 'Contact Inquiries', path: '/contact' },
+                { name: 'Contact & Inquiries', path: '/contact' },
+                { name: 'Book Consultation', path: '/book-consultation' },
             ]
         }
     ];
@@ -116,7 +135,7 @@ export default function Footer() {
                 <div className="absolute bottom-[-20%] left-[-10%] w-[700px] h-[700px] bg-indigo-900/15 rounded-full blur-[140px] opacity-60" />
             </div>
 
-            <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
                 {/* Executive Call to Action Banner */}
                 <div className="bg-gradient-to-r from-slate-900 via-blue-950/40 to-slate-900 border border-blue-500/20 rounded-3xl p-8 md:p-12 mb-16 text-center lg:text-left flex flex-col lg:flex-row items-center justify-between gap-8 shadow-xl shadow-black/40">
@@ -139,7 +158,7 @@ export default function Footer() {
                             Book Free Consultation
                         </Link>
                         <a 
-                            href="mailto:connect@profitmachines.com" 
+                            href="mailto:connect@trustgrid.ai" 
                             className="w-full sm:w-auto px-6 py-3.5 rounded-xl font-bold text-sm text-slate-200 border border-slate-700 hover:border-slate-500 hover:bg-white/5 transition-all text-center"
                         >
                             Email Us Directly
@@ -147,11 +166,11 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* Top Section: Brand & Contact Column + 6 Navigation Columns */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+                {/* Top Section: Brand & Contact Column + 7 Navigation Columns matching Header exactly */}
+                <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 xl:gap-8 mb-16">
 
                     {/* Brand & Direct Contact (Left Side - matching reference design) */}
-                    <div className="lg:col-span-4 space-y-6 lg:pr-6">
+                    <div className="xl:col-span-3 space-y-6 xl:pr-4">
                         <div>
                             <Link to="/" className="inline-block mb-2">
                                 <div className="text-2xl md:text-3xl font-extrabold tracking-tight text-white flex items-center font-heading">
@@ -204,8 +223,8 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Navigation Columns (Right 8 Columns on Desktop -> 6 Submenu Columns) */}
-                    <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+                    {/* Navigation Columns: Exactly 7 Main Navigation Menus */}
+                    <div className="xl:col-span-9 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-7 gap-6 xl:gap-4 2xl:gap-6">
                         {linkGroups.map((group, groupIndex) => (
                             <div key={groupIndex} className="space-y-3.5">
                                 <Link 
@@ -213,7 +232,7 @@ export default function Footer() {
                                     className="group inline-flex items-center gap-1 text-[11px] font-bold text-white uppercase tracking-wider border-b border-white/10 pb-2.5 hover:text-blue-400 transition-colors w-full"
                                 >
                                     <span>{group.title}</span>
-                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-blue-400" />
+                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-blue-400 shrink-0" />
                                 </Link>
                                 <ul className="space-y-2.5 text-xs">
                                     {group.links.map((link, linkIndex) => (

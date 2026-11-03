@@ -81,6 +81,18 @@ export default function BookDemo() {
                 "Preferred Time": formData.time
             });
             setSubmitted(true);
+            setFormData({
+                firstName: '',
+                lastName: '',
+                email: '',
+                phone: '',
+                company: '',
+                revenue: '',
+                interest: '',
+                message: '',
+                date: '',
+                time: ''
+            });
         } catch (error: any) {
             console.error("Error submitting form:", error);
             setSubmitError("We couldn't submit your request just now. Please try again in a moment, or contact us directly.");

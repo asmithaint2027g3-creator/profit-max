@@ -43,6 +43,15 @@ export default function TalkToExpert() {
     const [submitted, setSubmitted] = useState(false);
     const [submissionId, setSubmissionId] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [lastSubmittedData, setLastSubmittedData] = useState<{ name: string; email: string }>({ name: '', email: '' });
+
+    const handleReset = () => {
+        setSubmitted(false);
+        setSubmissionId('');
+        setEmailError(null);
+        setPhoneError(null);
+        setSubmitError(null);
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -67,6 +76,9 @@ export default function TalkToExpert() {
         setIsSubmitting(true);
         trackEvent({ eventName: 'FORM_SUBMIT_START', category: 'LEAD', label: 'Talk To Expert' });
 
+        const submittedName = `${formData.firstName} ${formData.lastName}`.trim();
+        const submittedEmail = formData.email;
+
         try {
             const res = await submitToSheet('Talk to Expert', {
                 formName: 'Expert Technical Consultation',
@@ -81,9 +93,25 @@ export default function TalkToExpert() {
                 source: 'Talk to Expert Page'
             });
 
+            setLastSubmittedData({
+                name: submittedName,
+                email: submittedEmail
+            });
             setSubmissionId(res.submissionId);
             setSubmitted(true);
             trackEvent({ eventName: 'FORM_SUBMIT_SUCCESS', category: 'LEAD', label: res.submissionId });
+
+            // Clear inputs immediately
+            setFormData({
+                firstName: '',
+                lastName: '',
+                email: '',
+                phone: '',
+                company: '',
+                jobTitle: '',
+                challenge: 'Autonomous Intent Discovery & SDR Engine',
+                message: ''
+            });
         } catch (error: any) {
             console.error("Error submitting form:", error);
             setSubmitError("We couldn't reach our systems just now. Please try again in a moment.");
@@ -160,154 +188,201 @@ export default function TalkToExpert() {
                     {/* Right Column: Form */}
                     <div className="lg:w-1/2 w-full">
                         <div className="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200/90 shadow-2xl shadow-slate-900/5 relative">
-                            <div className="mb-6 border-b border-slate-100 pb-5">
-                                <h3 className="text-2xl font-bold text-slate-900">Direct Expert Inquiry</h3>
-                                <p className="text-xs text-slate-500 mt-1">Directly connects to our Technical Solutions Engineering Practice.</p>
-                            </div>
+                            {submitted ? (
+                                <div className="text-center py-8 space-y-6 animate-fade-in-up">
+                                    <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto border border-emerald-100 shadow-sm">
+                                        <CheckCircle2 className="w-8 h-8" />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                            Briefing Transmitted Successfully
+                                        </span>
+                                        <h3 className="text-2xl font-bold text-slate-900">Inquiry Dispatched</h3>
+                                        <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+                                            Thank you, <span className="font-semibold text-slate-900">{lastSubmittedData.name || 'Leader'}</span>. Your technical briefing has been assigned directly to our Solutions Engineering Practice Lead.
+                                        </p>
+                                    </div>
 
-                            <form onSubmit={handleSubmit} className="space-y-4">
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <Label className="text-xs font-bold text-slate-700">First Name *</Label>
-                                        <Input
-                                            required
-                                            name="firstName"
-                                            value={formData.firstName}
-                                            onChange={handleChange}
-                                            placeholder="David"
-                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
-                                        />
-                                    </div>
-                                    <div>
-                                        <Label className="text-xs font-bold text-slate-700">Last Name *</Label>
-                                        <Input
-                                            required
-                                            name="lastName"
-                                            value={formData.lastName}
-                                            onChange={handleChange}
-                                            placeholder="Miller"
-                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
-                                        />
-                                    </div>
-                                </div>
+                                    {submissionId && (
+                                        <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-left max-w-sm mx-auto space-y-1">
+                                            <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Tracking Reference ID</div>
+                                            <div className="font-mono text-sm font-extrabold text-blue-600">{submissionId}</div>
+                                            {lastSubmittedData.email && (
+                                                <div className="text-xs text-slate-500 pt-1">
+                                                    Confirmation sent to: <span className="font-semibold text-slate-700">{lastSubmittedData.email}</span>
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
 
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <Label className="text-xs font-bold text-slate-700">Work Email *</Label>
-                                        <Input
-                                            required
-                                            type="email"
-                                            name="email"
-                                            value={formData.email}
-                                            onChange={handleChange}
-                                            placeholder="david@enterprise.com"
-                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
-                                        />
-                                        {emailError && (
-                                            <p className="text-[11px] text-red-600 font-semibold mt-1">{emailError}</p>
-                                        )}
+                                    <div className="pt-2 flex flex-col sm:flex-row gap-3 justify-center">
+                                        <Button
+                                            type="button"
+                                            onClick={handleReset}
+                                            variant="outline"
+                                            className="px-6 py-2.5 rounded-xl border-slate-300 text-slate-700 hover:bg-slate-50 font-semibold text-xs"
+                                        >
+                                            Submit Another Inquiry
+                                        </Button>
                                     </div>
-                                    <div>
-                                        <Label className="text-xs font-bold text-slate-700">Phone Number *</Label>
-                                        <Input
-                                            required
-                                            type="tel"
-                                            name="phone"
-                                            value={formData.phone}
-                                            onChange={handleChange}
-                                            placeholder="+1 (555) 123-4567"
-                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
-                                        />
-                                        {phoneError && (
-                                            <p className="text-[11px] text-red-600 font-semibold mt-1">{phoneError}</p>
-                                        )}
+
+                                    <div className="flex items-center justify-center gap-2 text-[11px] text-slate-400 pt-2">
+                                        <Lock className="w-3.5 h-3.5 text-slate-400" />
+                                        <span>Direct routing to practice leads • No unsolicited marketing</span>
                                     </div>
                                 </div>
-
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <Label className="text-xs font-bold text-slate-700">Company Name *</Label>
-                                        <Input
-                                            required
-                                            name="company"
-                                            value={formData.company}
-                                            onChange={handleChange}
-                                            placeholder="Apex Technologies"
-                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
-                                        />
+                            ) : (
+                                <>
+                                    <div className="mb-6 border-b border-slate-100 pb-5">
+                                        <h3 className="text-2xl font-bold text-slate-900">Direct Expert Inquiry</h3>
+                                        <p className="text-xs text-slate-500 mt-1">Directly connects to our Technical Solutions Engineering Practice.</p>
                                     </div>
-                                    <div>
-                                        <Label className="text-xs font-bold text-slate-700">Designation / Role *</Label>
-                                        <Input
-                                            required
-                                            name="jobTitle"
-                                            value={formData.jobTitle}
-                                            onChange={handleChange}
-                                            placeholder="Director of Revenue Ops / CTO"
-                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
-                                        />
-                                    </div>
-                                </div>
 
-                                <div>
-                                    <Label className="text-xs font-bold text-slate-700">Technical or Strategic Challenge</Label>
-                                    <select
-                                        name="challenge"
-                                        value={formData.challenge}
-                                        onChange={handleChange}
-                                        className="w-full mt-1 h-11 px-3 rounded-xl bg-slate-50/70 border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                                    >
-                                        <option value="Scaling Multi-Touch Revenue Attribution">Scaling Multi-Touch Revenue Attribution</option>
-                                        <option value="Autonomous Intent Discovery & SDR Engine">Autonomous Intent Discovery & SDR Engine</option>
-                                        <option value="Hidden Revenue Leak Auditing">Hidden Revenue Leak Auditing</option>
-                                        <option value="Enterprise Security & Private AI Sandbox">Enterprise Security & Private AI Sandbox</option>
-                                        <option value="Web3 / High-Frequency GTM Automation">Web3 / High-Frequency GTM Automation</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <Label className="text-xs font-bold text-slate-700">Your Technical Question or Architecture Brief</Label>
-                                    <Textarea
-                                        name="message"
-                                        rows={3}
-                                        value={formData.message}
-                                        onChange={handleChange}
-                                        placeholder="Describe your current tech stack, scale, or specific question for the Principal Architect..."
-                                        className="mt-1 rounded-xl bg-slate-50/70 border-slate-200 text-xs leading-relaxed"
-                                    />
-                                </div>
-
-                                <div className="pt-2">
-                                    <Button
-                                        type="submit"
-                                        disabled={isSubmitting}
-                                        className="w-full py-3.5 h-12 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-600/25 transition-all flex items-center justify-center gap-2 group"
-                                    >
-                                        {isSubmitting ? (
-                                            <div className="flex items-center gap-2">
-                                                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                                                <span>Submitting Inquiry...</span>
+                                    <form onSubmit={handleSubmit} className="space-y-4">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                            <div>
+                                                <Label className="text-xs font-bold text-slate-700">First Name *</Label>
+                                                <Input
+                                                    required
+                                                    name="firstName"
+                                                    value={formData.firstName}
+                                                    onChange={handleChange}
+                                                    placeholder="David"
+                                                    className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                                />
                                             </div>
-                                        ) : (
-                                            <>
-                                                <span>Connect with Solutions Architect</span>
-                                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                            </>
+                                            <div>
+                                                <Label className="text-xs font-bold text-slate-700">Last Name *</Label>
+                                                <Input
+                                                    required
+                                                    name="lastName"
+                                                    value={formData.lastName}
+                                                    onChange={handleChange}
+                                                    placeholder="Miller"
+                                                    className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                            <div>
+                                                <Label className="text-xs font-bold text-slate-700">Work Email *</Label>
+                                                <Input
+                                                    required
+                                                    type="email"
+                                                    name="email"
+                                                    value={formData.email}
+                                                    onChange={handleChange}
+                                                    placeholder="david@enterprise.com"
+                                                    className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                                />
+                                                {emailError && (
+                                                    <p className="text-[11px] text-red-600 font-semibold mt-1">{emailError}</p>
+                                                )}
+                                            </div>
+                                            <div>
+                                                <Label className="text-xs font-bold text-slate-700">Phone Number *</Label>
+                                                <Input
+                                                    required
+                                                    type="tel"
+                                                    name="phone"
+                                                    value={formData.phone}
+                                                    onChange={handleChange}
+                                                    placeholder="+1 (555) 123-4567"
+                                                    className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                                />
+                                                {phoneError && (
+                                                    <p className="text-[11px] text-red-600 font-semibold mt-1">{phoneError}</p>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                            <div>
+                                                <Label className="text-xs font-bold text-slate-700">Company Name *</Label>
+                                                <Input
+                                                    required
+                                                    name="company"
+                                                    value={formData.company}
+                                                    onChange={handleChange}
+                                                    placeholder="Apex Technologies"
+                                                    className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                                />
+                                            </div>
+                                            <div>
+                                                <Label className="text-xs font-bold text-slate-700">Designation / Role *</Label>
+                                                <Input
+                                                    required
+                                                    name="jobTitle"
+                                                    value={formData.jobTitle}
+                                                    onChange={handleChange}
+                                                    placeholder="Director of Revenue Ops / CTO"
+                                                    className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <Label className="text-xs font-bold text-slate-700">Technical or Strategic Challenge</Label>
+                                            <select
+                                                name="challenge"
+                                                value={formData.challenge}
+                                                onChange={handleChange}
+                                                className="w-full mt-1 h-11 px-3 rounded-xl bg-slate-50/70 border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                            >
+                                                <option value="Scaling Multi-Touch Revenue Attribution">Scaling Multi-Touch Revenue Attribution</option>
+                                                <option value="Autonomous Intent Discovery & SDR Engine">Autonomous Intent Discovery & SDR Engine</option>
+                                                <option value="Hidden Revenue Leak Auditing">Hidden Revenue Leak Auditing</option>
+                                                <option value="Enterprise Security & Private AI Sandbox">Enterprise Security & Private AI Sandbox</option>
+                                                <option value="Web3 / High-Frequency GTM Automation">Web3 / High-Frequency GTM Automation</option>
+                                            </select>
+                                        </div>
+
+                                        <div>
+                                            <Label className="text-xs font-bold text-slate-700">Your Technical Question or Architecture Brief</Label>
+                                            <Textarea
+                                                name="message"
+                                                rows={3}
+                                                value={formData.message}
+                                                onChange={handleChange}
+                                                placeholder="Describe your current tech stack, scale, or specific question for the Principal Architect..."
+                                                className="mt-1 rounded-xl bg-slate-50/70 border-slate-200 text-xs leading-relaxed"
+                                            />
+                                        </div>
+
+                                        <div className="pt-2">
+                                            <Button
+                                                type="submit"
+                                                disabled={isSubmitting}
+                                                className="w-full py-3.5 h-12 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-600/25 transition-all flex items-center justify-center gap-2 group"
+                                            >
+                                                {isSubmitting ? (
+                                                    <div className="flex items-center gap-2">
+                                                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                                        <span>Submitting Inquiry...</span>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <span>Connect with Solutions Architect</span>
+                                                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                                    </>
+                                                )}
+                                            </Button>
+                                        </div>
+
+                                        <HoneypotField value={honeypot} onChange={setHoneypot} />
+
+                                        {submitError && (
+                                            <FormErrorBanner message={submitError} onDismiss={() => setSubmitError(null)} />
                                         )}
-                                    </Button>
-                                </div>
 
-                                <HoneypotField value={honeypot} onChange={setHoneypot} />
-
-                                {submitError && (
-                                    <FormErrorBanner message={submitError} onDismiss={() => setSubmitError(null)} />
-                                )}
-
-                                <div className="flex items-center justify-center gap-2 text-[11px] text-slate-400 text-center pt-2">
-                                    <Lock className="w-3.5 h-3.5 text-slate-400" />
-                                    <span>Direct routing to practice leads • No unsolicited marketing</span>
-                                </div>
-                            </form>
+                                        <div className="flex items-center justify-center gap-2 text-[11px] text-slate-400 text-center pt-2">
+                                            <Lock className="w-3.5 h-3.5 text-slate-400" />
+                                            <span>Direct routing to practice leads • No unsolicited marketing</span>
+                                        </div>
+                                    </form>
+                                </>
+                            )}
                         </div>
                     </div>
 
@@ -316,9 +391,9 @@ export default function TalkToExpert() {
 
             <FormSuccessModal
                 isOpen={submitted}
-                onClose={() => setSubmitted(false)}
+                onClose={handleReset}
                 submissionId={submissionId}
-                email={formData.email}
+                email={lastSubmittedData.email}
                 title="Inquiry Dispatched to Architect"
                 message="Your technical briefing has been assigned to our sector practice lead. Expect an architecture-level response within 24 hours."
             />

@@ -87,7 +87,6 @@ export const submitToSheet = async (
         page_url: typeof window !== 'undefined' ? window.location.href : '',
         page_title: typeof document !== 'undefined' ? document.title : '',
         referrer: cleanReferrer,
-        utm_source: cleanUtmSource,
         utm_medium: isIgnoredAttributionSource(utms.utm_medium) ? '' : (utms.utm_medium || ''),
         utm_campaign: isIgnoredAttributionSource(utms.utm_campaign) ? '' : (utms.utm_campaign || ''),
         utm_term: utms.utm_term || '',

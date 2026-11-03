@@ -48,6 +48,15 @@ export default function BookConsultation() {
     const [submitted, setSubmitted] = useState(false);
     const [submissionId, setSubmissionId] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [lastSubmittedData, setLastSubmittedData] = useState<{ name: string; email: string }>({ name: '', email: '' });
+
+    const handleReset = () => {
+        setSubmitted(false);
+        setSubmissionId('');
+        setEmailError(null);
+        setPhoneError(null);
+        setSubmitError(null);
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -72,6 +81,9 @@ export default function BookConsultation() {
         setIsSubmitting(true);
         trackEvent({ eventName: 'FORM_SUBMIT_START', category: 'LEAD', label: 'Book Consultation' });
 
+        const submittedName = `${formData.firstName} ${formData.lastName}`.trim();
+        const submittedEmail = formData.email;
+
         try {
             const res = await submitToSheet('Book for Consultation', {
                 formName: 'Executive Consultation Booking',
@@ -89,9 +101,29 @@ export default function BookConsultation() {
                 source: 'Book Consultation Page'
             });
 
+            setLastSubmittedData({
+                name: submittedName,
+                email: submittedEmail
+            });
             setSubmissionId(res.submissionId);
             setSubmitted(true);
             trackEvent({ eventName: 'FORM_SUBMIT_SUCCESS', category: 'LEAD', label: res.submissionId });
+
+            // Clear form inputs immediately so stale data is never shown
+            setFormData({
+                firstName: '',
+                lastName: '',
+                email: '',
+                phone: '',
+                company: '',
+                jobTitle: '',
+                revenue: '$10M - $50M ARR',
+                interest: 'AI Revenue Engine & Autonomous SDR',
+                message: '',
+                date: '',
+                time: 'Morning (9:00 AM - 12:00 PM EST)',
+                consent: true
+            });
         } catch (error: any) {
             console.error("Error submitting form:", error);
             setSubmitError("We couldn't reach our scheduling system just now. Please try again in a moment, or email us directly.");
@@ -174,170 +206,217 @@ export default function BookConsultation() {
                     {/* Right Column: Standardized Enterprise Booking Form */}
                     <div className="lg:w-1/2 w-full">
                         <div className="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200/90 shadow-2xl shadow-slate-900/5 relative">
-                            <div className="mb-6 border-b border-slate-100 pb-5">
-                                <h3 className="text-2xl font-bold text-slate-900">Request Executive Consultation</h3>
-                                <p className="text-xs text-slate-500 mt-1">Please provide your corporate details to route to the appropriate sector practice.</p>
-                            </div>
+                            {submitted ? (
+                                <div className="text-center py-8 space-y-6 animate-fade-in-up">
+                                    <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto border border-emerald-100 shadow-sm">
+                                        <CheckCircle2 className="w-8 h-8" />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                            Request Successfully Registered
+                                        </span>
+                                        <h3 className="text-2xl font-bold text-slate-900">Consultation Confirmed</h3>
+                                        <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+                                            Thank you, <span className="font-semibold text-slate-900">{lastSubmittedData.name || 'Executive'}</span>. Your strategic consultation request has been routed to our enterprise sector team.
+                                        </p>
+                                    </div>
 
-                            <form onSubmit={handleSubmit} className="space-y-4">
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <Label className="text-xs font-bold text-slate-700">First Name *</Label>
-                                        <Input
-                                            required
-                                            name="firstName"
-                                            value={formData.firstName}
-                                            onChange={handleChange}
-                                            placeholder="Sarah"
-                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
-                                        />
-                                    </div>
-                                    <div>
-                                        <Label className="text-xs font-bold text-slate-700">Last Name *</Label>
-                                        <Input
-                                            required
-                                            name="lastName"
-                                            value={formData.lastName}
-                                            onChange={handleChange}
-                                            placeholder="Jenkins"
-                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
-                                        />
-                                    </div>
-                                </div>
+                                    {submissionId && (
+                                        <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-left max-w-sm mx-auto space-y-1">
+                                            <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Tracking Reference ID</div>
+                                            <div className="font-mono text-sm font-extrabold text-blue-600">{submissionId}</div>
+                                            {lastSubmittedData.email && (
+                                                <div className="text-xs text-slate-500 pt-1">
+                                                    Confirmation sent to: <span className="font-semibold text-slate-700">{lastSubmittedData.email}</span>
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
 
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <Label className="text-xs font-bold text-slate-700">Corporate Work Email *</Label>
-                                        <Input
-                                            required
-                                            type="email"
-                                            name="email"
-                                            value={formData.email}
-                                            onChange={handleChange}
-                                            placeholder="sarah@enterprise.com"
-                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
-                                        />
-                                        {emailError && (
-                                            <p className="text-[11px] text-red-600 font-semibold mt-1">{emailError}</p>
-                                        )}
-                                    </div>
-                                    <div>
-                                        <Label className="text-xs font-bold text-slate-700">Phone Number *</Label>
-                                        <Input
-                                            required
-                                            type="tel"
-                                            name="phone"
-                                            value={formData.phone}
-                                            onChange={handleChange}
-                                            placeholder="+1 (555) 000-0000"
-                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
-                                        />
-                                        {phoneError && (
-                                            <p className="text-[11px] text-red-600 font-semibold mt-1">{phoneError}</p>
-                                        )}
-                                    </div>
-                                </div>
-
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <Label className="text-xs font-bold text-slate-700">Company Name *</Label>
-                                        <Input
-                                            required
-                                            name="company"
-                                            value={formData.company}
-                                            onChange={handleChange}
-                                            placeholder="Acme Global Inc."
-                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
-                                        />
-                                    </div>
-                                    <div>
-                                        <Label className="text-xs font-bold text-slate-700">Designation / Title *</Label>
-                                        <Input
-                                            required
-                                            name="jobTitle"
-                                            value={formData.jobTitle}
-                                            onChange={handleChange}
-                                            placeholder="Chief Revenue Officer / VP"
-                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <Label className="text-xs font-bold text-slate-700">Annual Revenue Stage</Label>
-                                        <select
-                                            name="revenue"
-                                            value={formData.revenue}
-                                            onChange={handleChange}
-                                            className="w-full mt-1 h-11 px-3 rounded-xl bg-slate-50/70 border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                    <div className="pt-2 flex flex-col sm:flex-row gap-3 justify-center">
+                                        <Button
+                                            type="button"
+                                            onClick={handleReset}
+                                            variant="outline"
+                                            className="px-6 py-2.5 rounded-xl border-slate-300 text-slate-700 hover:bg-slate-50 font-semibold text-xs"
                                         >
-                                            <option value="Under $5M ARR">Under $5M ARR</option>
-                                            <option value="$5M - $20M ARR">$5M - $20M ARR</option>
-                                            <option value="$20M - $100M ARR">$20M - $100M ARR</option>
-                                            <option value="$100M+ Enterprise">$100M+ Enterprise</option>
-                                        </select>
+                                            Submit Another Request
+                                        </Button>
                                     </div>
-                                    <div>
-                                        <Label className="text-xs font-bold text-slate-700">Primary Strategic Focus</Label>
-                                        <select
-                                            name="interest"
-                                            value={formData.interest}
-                                            onChange={handleChange}
-                                            className="w-full mt-1 h-11 px-3 rounded-xl bg-slate-50/70 border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                                        >
-                                            <option value="AI Revenue Engine & Autonomous SDR">AI Revenue Engine & Autonomous SDR</option>
-                                            <option value="Intent Demand Discovery">Intent Demand Discovery</option>
-                                            <option value="Hidden Revenue & Leak Capture">Hidden Revenue & Leak Capture</option>
-                                            <option value="Brand & Reputation Acceleration">Brand & Reputation Acceleration</option>
-                                            <option value="B2B / Web3 Enterprise Scale">B2B / Web3 Enterprise Scale</option>
-                                        </select>
+
+                                    <div className="flex items-center justify-center gap-2 text-[11px] text-slate-400 pt-2">
+                                        <Lock className="w-3.5 h-3.5 text-slate-400" />
+                                        <span>Enterprise SLA: A Principal Architect will connect within 2 hours</span>
                                     </div>
                                 </div>
+                            ) : (
+                                <>
+                                    <div className="mb-6 border-b border-slate-100 pb-5">
+                                        <h3 className="text-2xl font-bold text-slate-900">Request Executive Consultation</h3>
+                                        <p className="text-xs text-slate-500 mt-1">Please provide your corporate details to route to the appropriate sector practice.</p>
+                                    </div>
 
-                                <div>
-                                    <Label className="text-xs font-bold text-slate-700">Specific Architecture Goals or Requirements</Label>
-                                    <Textarea
-                                        name="message"
-                                        rows={3}
-                                        value={formData.message}
-                                        onChange={handleChange}
-                                        placeholder="Outline your primary growth bottleneck, existing stack, or target timeline..."
-                                        className="mt-1 rounded-xl bg-slate-50/70 border-slate-200 text-xs leading-relaxed"
-                                    />
-                                </div>
-
-                                <HoneypotField value={honeypot} onChange={setHoneypot} />
-
-                                {submitError && (
-                                    <FormErrorBanner message={submitError} onDismiss={() => setSubmitError(null)} />
-                                )}
-
-                                <div className="pt-2">
-                                    <Button
-                                        type="submit"
-                                        disabled={isSubmitting}
-                                        className="w-full py-3.5 h-12 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-600/25 transition-all flex items-center justify-center gap-2 group"
-                                    >
-                                        {isSubmitting ? (
-                                            <div className="flex items-center gap-2">
-                                                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                                                <span>Connecting to Enterprise Gateway...</span>
+                                    <form onSubmit={handleSubmit} className="space-y-4">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                            <div>
+                                                <Label className="text-xs font-bold text-slate-700">First Name *</Label>
+                                                <Input
+                                                    required
+                                                    name="firstName"
+                                                    value={formData.firstName}
+                                                    onChange={handleChange}
+                                                    placeholder="Sarah"
+                                                    className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                                />
                                             </div>
-                                        ) : (
-                                            <>
-                                                <span>Confirm Consultation Request</span>
-                                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                            </>
-                                        )}
-                                    </Button>
-                                </div>
+                                            <div>
+                                                <Label className="text-xs font-bold text-slate-700">Last Name *</Label>
+                                                <Input
+                                                    required
+                                                    name="lastName"
+                                                    value={formData.lastName}
+                                                    onChange={handleChange}
+                                                    placeholder="Jenkins"
+                                                    className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                                />
+                                            </div>
+                                        </div>
 
-                                <div className="flex items-center justify-center gap-2 text-[11px] text-slate-400 text-center pt-2">
-                                    <Lock className="w-3.5 h-3.5 text-slate-400" />
-                                    <span>Encrypted submission • Protected by Mutual Enterprise NDA</span>
-                                </div>
-                            </form>
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                            <div>
+                                                <Label className="text-xs font-bold text-slate-700">Corporate Work Email *</Label>
+                                                <Input
+                                                    required
+                                                    type="email"
+                                                    name="email"
+                                                    value={formData.email}
+                                                    onChange={handleChange}
+                                                    placeholder="sarah@enterprise.com"
+                                                    className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                                />
+                                                {emailError && (
+                                                    <p className="text-[11px] text-red-600 font-semibold mt-1">{emailError}</p>
+                                                )}
+                                            </div>
+                                            <div>
+                                                <Label className="text-xs font-bold text-slate-700">Phone Number *</Label>
+                                                <Input
+                                                    required
+                                                    type="tel"
+                                                    name="phone"
+                                                    value={formData.phone}
+                                                    onChange={handleChange}
+                                                    placeholder="+1 (555) 000-0000"
+                                                    className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                                />
+                                                {phoneError && (
+                                                    <p className="text-[11px] text-red-600 font-semibold mt-1">{phoneError}</p>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                            <div>
+                                                <Label className="text-xs font-bold text-slate-700">Company Name *</Label>
+                                                <Input
+                                                    required
+                                                    name="company"
+                                                    value={formData.company}
+                                                    onChange={handleChange}
+                                                    placeholder="Acme Global Inc."
+                                                    className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                                />
+                                            </div>
+                                            <div>
+                                                <Label className="text-xs font-bold text-slate-700">Designation / Title *</Label>
+                                                <Input
+                                                    required
+                                                    name="jobTitle"
+                                                    value={formData.jobTitle}
+                                                    onChange={handleChange}
+                                                    placeholder="Chief Revenue Officer / VP"
+                                                    className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                            <div>
+                                                <Label className="text-xs font-bold text-slate-700">Annual Revenue Stage</Label>
+                                                <select
+                                                    name="revenue"
+                                                    value={formData.revenue}
+                                                    onChange={handleChange}
+                                                    className="w-full mt-1 h-11 px-3 rounded-xl bg-slate-50/70 border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                                >
+                                                    <option value="Under $5M ARR">Under $5M ARR</option>
+                                                    <option value="$5M - $20M ARR">$5M - $20M ARR</option>
+                                                    <option value="$20M - $100M ARR">$20M - $100M ARR</option>
+                                                    <option value="$100M+ Enterprise">$100M+ Enterprise</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <Label className="text-xs font-bold text-slate-700">Primary Strategic Focus</Label>
+                                                <select
+                                                    name="interest"
+                                                    value={formData.interest}
+                                                    onChange={handleChange}
+                                                    className="w-full mt-1 h-11 px-3 rounded-xl bg-slate-50/70 border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                                >
+                                                    <option value="AI Revenue Engine & Autonomous SDR">AI Revenue Engine & Autonomous SDR</option>
+                                                    <option value="Intent Demand Discovery">Intent Demand Discovery</option>
+                                                    <option value="Hidden Revenue & Leak Capture">Hidden Revenue & Leak Capture</option>
+                                                    <option value="Brand & Reputation Acceleration">Brand & Reputation Acceleration</option>
+                                                    <option value="B2B / Web3 Enterprise Scale">B2B / Web3 Enterprise Scale</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <Label className="text-xs font-bold text-slate-700">Specific Architecture Goals or Requirements</Label>
+                                            <Textarea
+                                                name="message"
+                                                rows={3}
+                                                value={formData.message}
+                                                onChange={handleChange}
+                                                placeholder="Outline your primary growth bottleneck, existing stack, or target timeline..."
+                                                className="mt-1 rounded-xl bg-slate-50/70 border-slate-200 text-xs leading-relaxed"
+                                            />
+                                        </div>
+
+                                        <HoneypotField value={honeypot} onChange={setHoneypot} />
+
+                                        {submitError && (
+                                            <FormErrorBanner message={submitError} onDismiss={() => setSubmitError(null)} />
+                                        )}
+
+                                        <div className="pt-2">
+                                            <Button
+                                                type="submit"
+                                                disabled={isSubmitting}
+                                                className="w-full py-3.5 h-12 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-600/25 transition-all flex items-center justify-center gap-2 group"
+                                            >
+                                                {isSubmitting ? (
+                                                    <div className="flex items-center gap-2">
+                                                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                                        <span>Connecting to Enterprise Gateway...</span>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <span>Confirm Consultation Request</span>
+                                                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                                    </>
+                                                )}
+                                            </Button>
+                                        </div>
+
+                                        <div className="flex items-center justify-center gap-2 text-[11px] text-slate-400 text-center pt-2">
+                                            <Lock className="w-3.5 h-3.5 text-slate-400" />
+                                            <span>Encrypted submission • Protected by Mutual Enterprise NDA</span>
+                                        </div>
+                                    </form>
+                                </>
+                            )}
                         </div>
                     </div>
 
@@ -347,9 +426,9 @@ export default function BookConsultation() {
             {/* Success Reference Confirmation Modal */}
             <FormSuccessModal
                 isOpen={submitted}
-                onClose={() => setSubmitted(false)}
+                onClose={handleReset}
                 submissionId={submissionId}
-                email={formData.email}
+                email={lastSubmittedData.email}
                 title="Consultation Request Logged"
                 message="Your consultation request has been registered in the ProfitMachines executive queue. A Principal AI Strategist has been assigned and will connect with your scheduling link."
             />

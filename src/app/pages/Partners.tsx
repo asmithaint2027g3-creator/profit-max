@@ -62,6 +62,7 @@ export default function Partners() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [submissionId, setSubmissionId] = useState('');
+    const [submittedEmail, setSubmittedEmail] = useState('');
     const [emailError, setEmailError] = useState<string | null>(null);
     const [submitError, setSubmitError] = useState<string | null>(null);
     const [honeypot, setHoneypot] = useState('');
@@ -87,6 +88,7 @@ export default function Partners() {
         trackEvent({ eventName: 'PARTNER_FORM_SUBMIT', category: 'PARTNERSHIP' });
 
         try {
+            const emailToSave = formData.email;
             const res = await submitToSheet('Partners', {
                 formName: 'Partnership Program Application',
                 firstName: formData.firstName,
@@ -100,7 +102,17 @@ export default function Partners() {
                 source: 'Partners Page'
             });
             setSubmissionId(res.submissionId);
+            setSubmittedEmail(emailToSave);
             setSubmitted(true);
+            setFormData({
+                firstName: '',
+                lastName: '',
+                email: '',
+                website: '',
+                company: '',
+                partnerType: 'Solution Partner',
+                message: ''
+            });
         } catch (error: any) {
             console.error(error);
             setSubmitError(error.message || "We couldn't submit your application just now. Please try again.");
@@ -450,7 +462,7 @@ export default function Partners() {
                 isOpen={submitted}
                 onClose={() => setSubmitted(false)}
                 submissionId={submissionId}
-                email={formData.email}
+                email={submittedEmail}
                 title="Partner Application Received"
                 message="Your partnership application has been registered with our Alliances & Channel Strategy team. We will review your submission and reach out shortly."
             />

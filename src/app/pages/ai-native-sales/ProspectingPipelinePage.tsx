@@ -612,7 +612,7 @@ export default function ProspectingPipelinePage() {
               Metrics That Matter: Measurable KPI Architecture
             </h2>
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-              Every AI Prospecting & Pipeline capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs, formulas, and operational rationales that determine success.
+              Every AI Prospecting & Pipeline capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs and operational rationales that determine success.
             </p>
           </div>
 
@@ -626,9 +626,6 @@ export default function ProspectingPipelinePage() {
                   <span className="text-xs font-mono text-slate-500 font-bold">Continuous 24/7 Flow</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Autonomous Verified Leads Generated</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Total Enterprise Prospects Researched, Enriched, and Verified per Cycle
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Number of decision-makers matching precise buying committee criteria ingested into active outbound.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
@@ -644,9 +641,6 @@ export default function ProspectingPipelinePage() {
                   <span className="text-xs font-mono text-slate-500 font-bold">12-18% Response Rate</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Positive Executive Response Rate</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Prospects Replying with In-Market Interest / Total Outbound Engaged) × 100
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Proportion of personalized outbound touches that produce positive commercial dialogue with buyers.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
@@ -662,9 +656,6 @@ export default function ProspectingPipelinePage() {
                   <span className="text-xs font-mono text-slate-500 font-bold">3-5x Meeting Lift</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Discovery Meeting Booking Rate</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Confirmed Qualified Meetings Scheduled / Total Positive Responses) × 100
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Efficiency of autonomous agents in navigating calendar coordination and securing executive attendance.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
@@ -680,9 +671,6 @@ export default function ProspectingPipelinePage() {
                   <span className="text-xs font-mono text-slate-500 font-bold">&gt;60% Held-to-Opp Rate</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Lead-to-Opportunity Progression</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Meetings Resulting in Active Mutual Evaluation / Total Discovery Meetings Held) × 100
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Percentage of booked meetings that pass formal qualification criteria and advance to active pipeline.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
@@ -698,9 +686,6 @@ export default function ProspectingPipelinePage() {
                   <span className="text-xs font-mono text-slate-500 font-bold">-65% Cost Reduction</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Cost per Qualified Lead (CPQL)</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Total Outbound Infrastructure & AI Compute Expense / Total SQLs Produced
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Fully loaded commercial expenditure required to deliver an enterprise sales-qualified meeting.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
@@ -716,9 +701,6 @@ export default function ProspectingPipelinePage() {
                   <span className="text-xs font-mono text-slate-500 font-bold">&gt;70% Sourced by Agents</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Autonomous Sourced Pipeline Volume</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> ∑ (AI-Sourced Opportunities Advanced to Stage 2+ × Average Contract ACV)
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Total dollar volume of qualified enterprise sales pipeline initiated entirely by autonomous agent swarms.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">

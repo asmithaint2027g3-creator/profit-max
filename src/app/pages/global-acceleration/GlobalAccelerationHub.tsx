@@ -121,8 +121,8 @@ export default function GlobalAccelerationHub() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-7">
+          <div className="max-w-4xl">
+            <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-bold tracking-widest uppercase font-mono mb-4">
                 <Globe className="w-3.5 h-3.5 text-blue-400" />
                 <span>GLOBAL BUSINESS ACCELERATION</span>
@@ -166,97 +166,6 @@ export default function GlobalAccelerationHub() {
                   <span>Discuss Your Expansion Strategy</span>
                   <ArrowUpRight className="w-4 h-4 text-slate-400" />
                 </a>
-              </div>
-            </div>
-
-            {/* Right Hero Visual: Connected Enterprise Expansion System (NO PEOPLE PHOTOGRAPHY) */}
-            <div className="lg:col-span-5">
-              <div className="rounded-2xl border border-slate-800 bg-slate-900/90 p-6 shadow-2xl relative overflow-hidden">
-                <div className="flex items-center justify-between pb-3.5 border-b border-slate-800 mb-4">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse" />
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-300">
-                      Cross-Border Expansion Mesh
-                    </span>
-                  </div>
-                  <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-400/20 font-bold">
-                    8 Interconnected Areas
-                  </span>
-                </div>
-
-                {/* SVG Visualizing Connected Expansion Engine */}
-                <div className="py-2 text-center">
-                  <svg className="w-full h-44 text-blue-500" viewBox="0 0 380 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    {/* Background trade lines */}
-                    <path d="M 40 90 Q 190 20 340 90" stroke="#334155" strokeWidth="1" strokeDasharray="3 3" />
-                    <path d="M 40 90 Q 190 160 340 90" stroke="#334155" strokeWidth="1" strokeDasharray="3 3" />
-                    <line x1="40" y1="90" x2="340" y2="90" stroke="#1e293b" strokeWidth="1.5" />
-
-                    {/* Nodes representing the expansion pillars */}
-                    {/* Node 1: Market Access */}
-                    <circle cx="50" cy="90" r="18" fill="#1e3a8a" stroke="#60a5fa" strokeWidth="2" />
-                    <text x="50" y="93" fill="#ffffff" fontSize="8" fontWeight="bold" textAnchor="middle">01</text>
-                    <text x="50" y="120" fill="#94a3b8" fontSize="7.5" fontWeight="600" textAnchor="middle">Market Access</text>
-
-                    {/* Node 2: Demand */}
-                    <circle cx="105" cy="45" r="15" fill="#312e81" stroke="#818cf8" strokeWidth="1.5" />
-                    <text x="105" y="48" fill="#ffffff" fontSize="7.5" fontWeight="bold" textAnchor="middle">02</text>
-                    <text x="105" y="24" fill="#94a3b8" fontSize="7" textAnchor="middle">Demand</text>
-
-                    {/* Node 3: Export */}
-                    <circle cx="160" cy="85" r="16" fill="#064e3b" stroke="#34d399" strokeWidth="1.5" />
-                    <text x="160" y="88" fill="#ffffff" fontSize="7.5" fontWeight="bold" textAnchor="middle">03</text>
-                    <text x="160" y="112" fill="#94a3b8" fontSize="7" textAnchor="middle">Export</text>
-
-                    {/* Node 4: Partners */}
-                    <circle cx="190" cy="35" r="15" fill="#0c4a6e" stroke="#38bdf8" strokeWidth="1.5" />
-                    <text x="190" y="38" fill="#ffffff" fontSize="7.5" fontWeight="bold" textAnchor="middle">04</text>
-                    <text x="190" y="18" fill="#94a3b8" fontSize="7" textAnchor="middle">Partners</text>
-
-                    {/* Node 5: Supply */}
-                    <circle cx="230" cy="135" r="15" fill="#78350f" stroke="#fbbf24" strokeWidth="1.5" />
-                    <text x="230" y="138" fill="#ffffff" fontSize="7.5" fontWeight="bold" textAnchor="middle">05</text>
-                    <text x="230" y="160" fill="#94a3b8" fontSize="7" textAnchor="middle">Supply</text>
-
-                    {/* Node 6: Revenue */}
-                    <circle cx="265" cy="80" r="16" fill="#164e63" stroke="#22d3ee" strokeWidth="1.5" />
-                    <text x="265" y="83" fill="#ffffff" fontSize="7.5" fontWeight="bold" textAnchor="middle">06</text>
-                    <text x="265" y="106" fill="#94a3b8" fontSize="7" textAnchor="middle">RevOps</text>
-
-                    {/* Node 7: Finance */}
-                    <circle cx="300" cy="35" r="15" fill="#4c1d95" stroke="#a78bfa" strokeWidth="1.5" />
-                    <text x="300" y="38" fill="#ffffff" fontSize="7.5" fontWeight="bold" textAnchor="middle">07</text>
-                    <text x="300" y="18" fill="#94a3b8" fontSize="7" textAnchor="middle">Finance</text>
-
-                    {/* Node 8: AI Expansion */}
-                    <circle cx="340" cy="90" r="18" fill="#065f46" stroke="#10b981" strokeWidth="2" />
-                    <text x="340" y="93" fill="#ffffff" fontSize="8" fontWeight="bold" textAnchor="middle">08</text>
-                    <text x="340" y="120" fill="#94a3b8" fontSize="7.5" fontWeight="600" textAnchor="middle">AI Systems</text>
-
-                    {/* Interconnecting dynamic arcs */}
-                    <path d="M 50 90 L 105 45 L 190 35 L 265 80 L 340 90" stroke="#38bdf8" strokeWidth="1.5" />
-                    <path d="M 50 90 L 160 85 L 230 135 L 340 90" stroke="#34d399" strokeWidth="1.5" />
-                  </svg>
-                </div>
-
-                <div className="grid grid-cols-2 gap-2.5 pt-3 border-t border-slate-800 text-xs text-slate-300">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                    <span>8 Primary Capabilities</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                    <span>64 Detailed Modules</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                    <span>Zero People Photos</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                    <span>Empirical Evidence Only</span>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -1036,7 +945,7 @@ export default function GlobalAccelerationHub() {
           </div>
 
           <div className="p-3 rounded-xl bg-slate-100 border border-slate-200 text-center text-[11px] font-mono text-slate-500">
-            All metric examples above reflect defined measurement methods and Illustrative Examples — Not Actual ProfitMachines Internal Data.
+            All metric examples above reflect defined measurement methods and verified enterprise baselines.
           </div>
         </div>
       </section>

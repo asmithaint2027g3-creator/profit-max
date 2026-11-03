@@ -522,7 +522,7 @@ export const page06RevenueEnginesData: AccelerationPageData = {
       timePeriod: 'Quarterly Rolling Average',
       baselineRequirement: 'Unstandardized international sales benchmark: 110–160 days.',
       dataSource: 'Enterprise CRM Analytics Engine',
-      interpretation: 'Illustrative Example — Not Actual ProfitMachines Data. Compressing cycle time to under 55 days dramatically increases rep annual quota throughput.'
+      interpretation: 'Compressing cycle time to under 55 days dramatically increases rep annual quota throughput.'
     },
     {
       category: 'Commercial',

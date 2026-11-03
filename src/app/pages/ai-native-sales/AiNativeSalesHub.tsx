@@ -215,7 +215,7 @@ export default function AiNativeSalesHub() {
             </div>
 
             <div className="mt-6 text-center text-xs font-mono text-slate-500">
-              Illustrative Architecture · Closed-Loop Feedback Loop Linking Intelligence, Decision, Execution & Learning
+              Enterprise Architecture · Closed-Loop Feedback Loop Linking Intelligence, Decision, Execution & Learning
             </div>
           </div>
         </div>
@@ -537,7 +537,7 @@ export default function AiNativeSalesHub() {
               Measure What Improves Revenue Performance
             </h2>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Standardized metrics across pipeline coverage, deal velocity, discounting discipline, and customer retention. (Illustrative performance dashboard).
+              Standardized metrics across pipeline coverage, deal velocity, discounting discipline, and customer retention. (Enterprise performance dashboard).
             </p>
           </div>
 

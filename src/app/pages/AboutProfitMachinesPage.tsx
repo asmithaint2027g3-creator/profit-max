@@ -573,8 +573,8 @@ export default function AboutProfitMachinesPage() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-7">
+          <div className="max-w-4xl">
+            <div>
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-bold tracking-widest uppercase font-mono mb-4">
                 <Sparkles className="w-3.5 h-3.5 text-blue-400" />
                 <span>AI-NATIVE REVENUE TRANSFORMATION PLATFORM</span>
@@ -635,69 +635,6 @@ export default function AboutProfitMachinesPage() {
                     {step}
                   </span>
                 ))}
-              </div>
-            </div>
-
-            {/* Right Hero Visual: Connected Enterprise Revenue Engine */}
-            <div className="lg:col-span-5">
-              <div className="rounded-2xl border border-slate-800 bg-slate-900/90 p-6 shadow-2xl relative overflow-hidden">
-                <div className="flex items-center justify-between pb-3.5 border-b border-slate-800 mb-4">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse" />
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-300">
-                      Autonomous Revenue Mesh
-                    </span>
-                  </div>
-                  <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-400/20 font-bold">
-                    Single Source of Truth
-                  </span>
-                </div>
-
-                <div className="space-y-3">
-                  <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold">
-                        <Target className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <div className="text-xs font-bold text-white">Demand Sensing</div>
-                        <div className="text-[11px] text-slate-400">Dark-funnel intent surge</div>
-                      </div>
-                    </div>
-                    <span className="text-[11px] font-mono text-emerald-400 font-bold">+28.4% TAM Lift</span>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold">
-                        <Zap className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <div className="text-xs font-bold text-white">Sales Acceleration</div>
-                        <div className="text-[11px] text-slate-400">Autonomous context dossiers</div>
-                      </div>
-                    </div>
-                    <span className="text-[11px] font-mono text-blue-400 font-bold">52% Latency Drop</span>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold">
-                        <Activity className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <div className="text-xs font-bold text-white">Forecasting Precision</div>
-                        <div className="text-[11px] text-slate-400">Empirical deal slip telemetry</div>
-                      </div>
-                    </div>
-                    <span className="text-[11px] font-mono text-purple-400 font-bold">98.4% Auditable</span>
-                  </div>
-                </div>
-
-                <div className="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
-                  <span>CONFIDENTIAL &amp; NDA BOUND</span>
-                  <span className="text-blue-400 font-bold">SOC-2 STANDARD CONTROLS</span>
-                </div>
               </div>
             </div>
           </div>

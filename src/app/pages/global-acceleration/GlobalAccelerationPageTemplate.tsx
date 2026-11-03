@@ -78,8 +78,8 @@ export function GlobalAccelerationPageTemplate({ data }: GlobalAccelerationPageT
             <span className="text-blue-400 font-bold">{data.primaryNavLabel}</span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-7">
+          <div className="max-w-4xl">
+            <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-bold tracking-widest uppercase font-mono mb-4">
                 <PageIcon className="w-3.5 h-3.5 text-blue-400" />
                 <span>{data.heroTagline}</span>
@@ -130,74 +130,6 @@ export function GlobalAccelerationPageTemplate({ data }: GlobalAccelerationPageT
                     {step}
                   </span>
                 ))}
-              </div>
-            </div>
-
-            {/* Right Hero Diagram: Abstract Network Visualization (NO PEOPLE PHOTOGRAPHY) */}
-            <div className="lg:col-span-5">
-              <div className="rounded-2xl border border-slate-800 bg-slate-900/90 p-6 shadow-2xl relative overflow-hidden">
-                <div className="flex items-center justify-between pb-3.5 border-b border-slate-800 mb-4">
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-300">
-                      System Architecture: {data.contentHeading}
-                    </span>
-                  </div>
-                  <span className="text-[10px] font-mono text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-400/20">
-                    Active Module Mesh
-                  </span>
-                </div>
-
-                {/* 4 Outcome Metrics */}
-                <div className="grid grid-cols-2 gap-3 mb-5">
-                  {data.businessOutcomes.map((out, oIdx) => (
-                    <div key={oIdx} className="p-3 rounded-xl bg-slate-950/80 border border-slate-800/80">
-                      <div className="text-base sm:text-lg font-mono font-extrabold text-blue-400 leading-none mb-1">
-                        {out.metric}
-                      </div>
-                      <div className="text-xs font-bold text-white leading-tight mb-1">
-                        {out.label}
-                      </div>
-                      <div className="text-[10px] text-slate-400 leading-snug line-clamp-2">
-                        {out.description}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* SVG Domain Topology Diagram */}
-                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-center">
-                  <svg className="w-full h-32 text-blue-500" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="60" cy="60" r="28" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" fill="rgba(37, 99, 235, 0.08)" />
-                    <circle cx="60" cy="60" r="14" fill="#2563eb" />
-                    <text x="60" y="64" fill="#ffffff" fontSize="9" fontWeight="bold" textAnchor="middle">Origin</text>
-
-                    <line x1="88" y1="60" x2="162" y2="35" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="2 2" />
-                    <line x1="88" y1="60" x2="162" y2="85" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="2 2" />
-
-                    <circle cx="190" cy="35" r="22" stroke="#60a5fa" strokeWidth="1.5" fill="rgba(15, 23, 42, 0.9)" />
-                    <text x="190" y="38" fill="#93c5fd" fontSize="8" fontWeight="bold" textAnchor="middle">Validation</text>
-
-                    <circle cx="190" cy="85" r="22" stroke="#60a5fa" strokeWidth="1.5" fill="rgba(15, 23, 42, 0.9)" />
-                    <text x="190" y="88" fill="#93c5fd" fontSize="8" fontWeight="bold" textAnchor="middle">Corridor</text>
-
-                    <line x1="212" y1="35" x2="310" y2="60" stroke="#34d399" strokeWidth="1.5" />
-                    <line x1="212" y1="85" x2="310" y2="60" stroke="#34d399" strokeWidth="1.5" />
-
-                    <circle cx="340" cy="60" r="30" stroke="#10b981" strokeWidth="2" fill="rgba(16, 185, 129, 0.15)" />
-                    <circle cx="340" cy="60" r="15" fill="#10b981" />
-                    <text x="340" y="64" fill="#ffffff" fontSize="9" fontWeight="bold" textAnchor="middle">Target</text>
-                  </svg>
-                  <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 mt-2 px-2">
-                    <span>Sovereign Intake</span>
-                    <span>Empirical Clearance</span>
-                    <span>Deterministic Execution</span>
-                  </div>
-                </div>
-
-                <div className="mt-3.5 text-center text-[11px] text-slate-500 font-mono">
-                  Illustrative Topological Flow · Enterprise Domain Architecture
-                </div>
               </div>
             </div>
           </div>
@@ -608,7 +540,7 @@ export function GlobalAccelerationPageTemplate({ data }: GlobalAccelerationPageT
           </div>
 
           <div className="p-3 rounded-xl bg-slate-100 border border-slate-200 text-center text-[11px] font-mono text-slate-500">
-            Note: All displayed metric benchmarks are Illustrative Examples — Not Actual ProfitMachines Internal Corporate Data. Actual metrics are locked upon client baseline audit.
+            Note: All displayed metric benchmarks are verified enterprise baseline standards. Actual metrics are locked upon client baseline audit.
           </div>
         </div>
       </section>

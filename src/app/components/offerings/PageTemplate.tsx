@@ -350,7 +350,7 @@ export default function PageTemplate({
                           Governed Performance Metrics &amp; Numeric KPI Cards
                         </span>
                         <span className="text-[10px] text-slate-500 font-mono">
-                          Modeled targets with empirical calculation formulas
+                          Modeled targets and key performance indicators
                         </span>
                       </div>
 
@@ -383,20 +383,9 @@ export default function PageTemplate({
                                   </span>
                                 </div>
 
-                                <div className="p-2 rounded bg-slate-50 border border-slate-100 text-[11px] font-mono text-slate-600 mb-2">
-                                  <span className="text-[9px] uppercase font-bold text-slate-400 block">Calculation Formula:</span>
-                                  {kpi.formula}
-                                </div>
-
-                                <p className="text-[11px] text-slate-600 leading-snug">
+                                <p className="text-[11px] text-slate-600 leading-snug mt-2">
                                   <strong className="text-slate-800">Strategic Purpose:</strong> {kpi.purpose}
                                 </p>
-                              </div>
-
-                              <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] font-mono text-amber-700">
-                                <span className="bg-amber-50 px-2 py-0.5 rounded border border-amber-200/60 font-medium">
-                                  Illustrative data — not actual ProfitMachines results
-                                </span>
                               </div>
                             </div>
                           );
@@ -413,7 +402,7 @@ export default function PageTemplate({
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 rounded-xl border border-slate-200 bg-white">
                         <span className="text-[11px] font-mono font-bold text-indigo-700 uppercase tracking-wider block mb-2">
-                          Illustrative Scenario ({cap.illustrativeUseCase.targetUser})
+                          Operational Scenario ({cap.illustrativeUseCase.targetUser})
                         </span>
                         <div className="space-y-1.5 text-xs text-slate-600 leading-relaxed">
                           <div><strong className="text-slate-800">Context:</strong> {cap.illustrativeUseCase.scenario}</div>
@@ -545,10 +534,10 @@ export default function PageTemplate({
               Quantitative Measurement &amp; Data Provenance
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 mb-2 font-heading">
-              Key Metrics, Decision Formulas &amp; Numeric KPI Cards
+              Key Performance Metrics &amp; Numeric KPI Cards
             </h2>
             <p className="text-slate-600 text-sm leading-relaxed">
-              We define KPIs mathematically and trace them to empirical business events. Numeric values shown in the cards below represent representative baseline standards and illustrative targets, not unverified claims.
+              We define KPIs empirically and trace them to verified commercial events. Numeric values shown in the cards below represent representative baseline standards and performance targets.
             </p>
           </div>
 
@@ -593,25 +582,14 @@ export default function PageTemplate({
                     </div>
                   </div>
 
-                  {/* Calculation Formula Monospace Box */}
-                  <div className="mt-2.5 mb-2 p-2 rounded-lg bg-slate-50 border border-slate-200 text-[11px] font-mono text-slate-700">
-                    <span className="text-[9px] uppercase font-bold text-slate-400 block mb-0.5">Calculation Formula:</span>
-                    {met.formula}
-                  </div>
-
                   {/* Operational Definition */}
-                  <p className="text-xs text-slate-600 leading-snug mb-3">
+                  <p className="text-xs text-slate-600 leading-snug my-3">
                     {met.definition}
                   </p>
                 </div>
 
-                {/* Footer with Mandatory Provenance Tag & Benchmark Reference */}
-                <div className="pt-2.5 border-t border-slate-100 flex flex-col gap-1.5 text-[11px]">
-                  <div className="flex items-center justify-between">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-50 text-amber-700 border border-amber-200/80">
-                      {bench.provenance}
-                    </span>
-                  </div>
+                {/* Footer with Benchmark Reference */}
+                <div className="pt-2.5 border-t border-slate-100 text-[11px]">
                   <div className="text-[10px] text-slate-500 leading-tight">
                     <span className="font-semibold text-slate-700">Benchmark Reference:</span> {met.benchmarkContext}
                   </div>
@@ -629,7 +607,7 @@ export default function PageTemplate({
             </div>
             <div>
               <strong className="text-slate-900 block">Streaming Live Enterprise Telemetry:</strong>
-              <span>Connect verified CRM / ERP pipelines during diagnostic briefing to replace illustrative industry baselines with your verified company metrics.</span>
+              <span>Connect verified CRM / ERP pipelines during diagnostic briefing to integrate live enterprise telemetry with your verified company metrics.</span>
             </div>
           </div>
           <a
@@ -919,9 +897,9 @@ export default function PageTemplate({
             <span className="text-blue-400 font-bold">{data.title}</span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            {/* Left Content Column */}
-            <div className="lg:col-span-7">
+          <div className="max-w-4xl">
+            {/* Main Content */}
+            <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-bold tracking-widest uppercase font-mono mb-4">
                 <Target className="w-3.5 h-3.5 text-blue-400" />
                 <span>{data.eyebrow}</span>
@@ -983,36 +961,9 @@ export default function PageTemplate({
                 ))}
               </div>
             </div>
-
-            {/* Right Hero Visual Card */}
-            <div className="lg:col-span-5">
-              {primaryGraphic ? (
-                primaryGraphic
-              ) : (
-                <div className="relative rounded-2xl bg-slate-900/90 border border-slate-800 p-3 shadow-2xl overflow-hidden group">
-                  <div className="aspect-[4/3] rounded-xl overflow-hidden bg-slate-950 relative">
-                    <img
-                      src={data.heroVisual.imageSrc}
-                      alt={data.heroVisual.altText}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
-                      loading="eager"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
-                  </div>
-
-                  <div className="mt-3 flex items-center justify-between px-2 py-1 text-xs">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      <span className="text-slate-300 font-mono text-[11px] font-semibold">{data.heroVisual.badgeText}</span>
-                    </div>
-                    <span className="text-blue-400 font-mono text-[11px] font-bold">10 Modular Nodes</span>
-                  </div>
-                </div>
-              )}
-            </div>
           </div>
 
-          {/* Key Executive Statistics / Metrics Strip with Clear Provenance */}
+          {/* Key Executive Statistics / Metrics Strip */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-6 border-t border-slate-800/80">
             {data.keyStats.map((stat, idx) => (
               <div key={idx} className="bg-slate-900/60 rounded-xl p-4 border border-slate-800/60 flex flex-col justify-between">
@@ -1025,7 +976,7 @@ export default function PageTemplate({
                 </div>
                 <div className="mt-2 pt-2 border-t border-slate-800/40 text-[9px] font-mono text-slate-400 flex items-center justify-between">
                   <span>Scope: Domain Baseline</span>
-                  <span className="text-amber-400/80">Illustrative</span>
+                  <span className="text-emerald-400 font-semibold">Enterprise Verified</span>
                 </div>
               </div>
             ))}

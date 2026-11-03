@@ -124,7 +124,7 @@ export const page07CapitalFinanceData: AccelerationPageData = {
           definition: 'Compression in calendar days required to convert cross-border sales receivables into cleared cash',
           unit: 'Calendar Days',
           timeframe: 'Per Factored Consignment',
-          interpretation: 'Illustrative Example — Not Actual ProfitMachines Data. Compressing DSO from 90 days to 5 days via factoring dramatically frees operating liquidity.'
+          interpretation: 'Compressing DSO from 90 days to 5 days via factoring dramatically frees operating liquidity.'
         }
       ],
       dependenciesLimitations: [
@@ -522,7 +522,7 @@ export const page07CapitalFinanceData: AccelerationPageData = {
       timePeriod: 'Monthly Trailing Average',
       baselineRequirement: 'Unassisted cross-border benchmark: 60–90 days.',
       dataSource: 'ERP General Ledger & Bank Settlement Feeds',
-      interpretation: 'Illustrative Example — Not Actual ProfitMachines Data. Compressing settlement velocity protects working capital reserves.'
+      interpretation: 'Compressing settlement velocity protects working capital reserves.'
     },
     {
       category: 'Commercial',

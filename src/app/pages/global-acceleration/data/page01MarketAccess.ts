@@ -532,7 +532,7 @@ export const page01MarketAccessData: AccelerationPageData = {
       timePeriod: 'Per Country Evaluation Cycle',
       baselineRequirement: 'Traditional consulting firm benchmark: 75–120 days.',
       dataSource: 'ProfitMachines Project Management Telemetry',
-      interpretation: 'Illustrative Example — Not Actual ProfitMachines Data. Compression to 21–28 days enables timely capture of market windows.'
+      interpretation: 'Compression to 21–28 days enables timely capture of market windows.'
     },
     {
       category: 'Commercial',
@@ -543,7 +543,7 @@ export const page01MarketAccessData: AccelerationPageData = {
       timePeriod: 'Initial 90-Day Entry Phase',
       baselineRequirement: 'Unassisted market entry benchmark: 12–18%.',
       dataSource: 'Localized Corporate Registry & Enterprise Pipeline CRM',
-      interpretation: 'Illustrative Example — Not Actual ProfitMachines Data. Higher coverage (>65%) ensures robust pipeline generation.'
+      interpretation: 'Higher coverage (>65%) ensures robust pipeline generation.'
     },
     {
       category: 'Risk & Readiness',

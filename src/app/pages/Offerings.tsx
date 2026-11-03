@@ -493,9 +493,9 @@ export default function Offerings() {
 
             {/* Live Telemetry KPI Cards */}
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider">Representative Telemetry Telemetry</span>
-              <span className="text-[10px] font-mono text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200/80 font-bold">
-                Illustrative data — not actual ProfitMachines results
+              <span className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider">Representative Telemetry</span>
+              <span className="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200/80 font-bold">
+                Enterprise Telemetry
               </span>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">

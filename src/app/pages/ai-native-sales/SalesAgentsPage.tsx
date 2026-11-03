@@ -996,7 +996,7 @@ export const SalesAgentsPage: React.FC = () => {
               Metrics That Matter: Measurable KPI Architecture
             </h2>
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-              Every AI Sales Agents capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs, formulas, and operational rationales that determine success.
+              Every AI Sales Agents capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs and operational rationales that determine success.
             </p>
           </div>
 
@@ -1010,9 +1010,6 @@ export const SalesAgentsPage: React.FC = () => {
                   <span className="text-xs font-mono text-slate-500 font-bold">Thousands Tasks / Day</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Autonomous Tasks Executed</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Total Commercial Operations Completed by Autonomous Agents Without Human Manual Action
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Aggregate volume of prospect research dossiers, email drafts, CRM updates, and meeting invites processed.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
@@ -1028,9 +1025,6 @@ export const SalesAgentsPage: React.FC = () => {
                   <span className="text-xs font-mono text-slate-500 font-bold">&gt;98.4% Execution Quality</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Autonomous Workflow Success Rate</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Agent Tasks Meeting Quality Benchmarks / Total Agent Tasks Completed) × 100
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Proportion of autonomous operations executed flawlessly in compliance with enterprise brand guidelines.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
@@ -1046,9 +1040,6 @@ export const SalesAgentsPage: React.FC = () => {
                   <span className="text-xs font-mono text-slate-500 font-bold">Calibrated Risk Gating</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Human Escalation Gating Frequency</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Workflows Routed to Human Supervisors / Total Initiated Agent Operations) × 100
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Percentage of complex inquiries, high-value deals, or edge cases routed to human account executives.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
@@ -1064,9 +1055,6 @@ export const SalesAgentsPage: React.FC = () => {
                   <span className="text-xs font-mono text-slate-500 font-bold">&lt;60 Seconds Response</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Inbound & Signal Response Latency</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Average Seconds from Buyer Signal Ingestion to Contextual Personalized Action
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Speed with which autonomous agents engage prospective buyers when active intent signals spike.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
@@ -1082,9 +1070,6 @@ export const SalesAgentsPage: React.FC = () => {
                   <span className="text-xs font-mono text-slate-500 font-bold">-90% vs Manual Cost</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Cost per Completed Commercial Action</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Total Cloud Compute and Model API Expenditure / Total Commercial Tasks Finished
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Unit economic cost of executing research dossiers, meeting bookings, and contract follow-ups.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
@@ -1100,9 +1085,6 @@ export const SalesAgentsPage: React.FC = () => {
                   <span className="text-xs font-mono text-slate-500 font-bold">&gt;80% Deals Co-Piloted</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Opportunities Assisted Through Close</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Closed Deals Utilizing Agent Research, Proposals, or Follow-up / Total Deals) × 100
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Proportion of active revenue pipeline co-piloted by autonomous agents across the sales cycle.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">

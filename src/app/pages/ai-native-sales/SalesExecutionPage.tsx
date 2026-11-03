@@ -642,7 +642,7 @@ export const SalesExecutionPage: React.FC = () => {
               Metrics That Matter: Measurable KPI Architecture
             </h2>
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-              Every AI Sales Execution capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs, formulas, and operational rationales that determine success.
+              Every AI Sales Execution capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs and operational rationales that determine success.
             </p>
           </div>
 
@@ -656,9 +656,6 @@ export const SalesExecutionPage: React.FC = () => {
                   <span className="text-xs font-mono text-slate-500 font-bold">50% Shorter Cycles</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Sales Cycle Compression</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> [(Historic Average Cycle Days - AI-Assisted Cycle Days) / Historic Days] × 100
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Percentage reduction in calendar days required to progress opportunities from discovery to contract close.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
@@ -674,9 +671,6 @@ export const SalesExecutionPage: React.FC = () => {
                   <span className="text-xs font-mono text-slate-500 font-bold">+10-15% Win Rate Gain</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Opportunity Win Rate Lift</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Won Opportunities Assisted by Deal Co-Pilots / Total Closed Proposals) × 100
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Close rate achieved on competitive proposals leveraging automated battlecards and deal intelligence.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
@@ -692,9 +686,6 @@ export const SalesExecutionPage: React.FC = () => {
                   <span className="text-xs font-mono text-slate-500 font-bold">&gt;70% Conversion Gate</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Meeting-to-Proposal Conversion</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Discovery Meetings Advancing to Formal Commercial Proposal / Total Held) × 100
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Efficiency of diagnosing customer requirements and delivering tailored commercial proposals rapidly.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
@@ -710,9 +701,6 @@ export const SalesExecutionPage: React.FC = () => {
                   <span className="text-xs font-mono text-slate-500 font-bold">Value-Based Pricing Lift</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Average Contract Value (ACV)</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Total Closed ARR / Total Number of Executed Enterprise Agreements
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Average annual recurring revenue secured across enterprise customer contracts.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
@@ -728,9 +716,6 @@ export const SalesExecutionPage: React.FC = () => {
                   <span className="text-xs font-mono text-slate-500 font-bold">&gt;80% Customer Facing Time</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Active Selling Time Ratio</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Hours Spent in Direct Customer Dialogue & Strategy / Total Working Hours) × 100
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Proportion of an Account Executive’s weekly schedule freed from manual administrative CRM chores.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
@@ -746,9 +731,6 @@ export const SalesExecutionPage: React.FC = () => {
                   <span className="text-xs font-mono text-slate-500 font-bold">&lt;5% Forecast Variance</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Stochastic Forecast Precision</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> 1 - (|Machine-Predicted Pipeline Commit - Actual Closed Book| / Predicted Commit)
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Algorithmic accuracy of quarterly closing revenue projections based on multi-factor deal signals.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">

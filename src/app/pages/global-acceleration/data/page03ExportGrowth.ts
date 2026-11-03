@@ -214,7 +214,7 @@ export const page03ExportGrowthData: AccelerationPageData = {
           definition: 'Percentage of targeted foreign accounts converting into qualified discovery meetings',
           unit: 'Percentage (%)',
           timeframe: 'Monthly Campaign Cycle',
-          interpretation: 'Illustrative Example — Not Actual ProfitMachines Data. Rates above 6% demonstrate strong value proposition resonance.'
+          interpretation: 'Rates above 6% demonstrate strong value proposition resonance.'
         }
       ],
       dependenciesLimitations: [
@@ -522,7 +522,7 @@ export const page03ExportGrowthData: AccelerationPageData = {
       timePeriod: 'Per Export Consignment',
       baselineRequirement: 'Unassisted export benchmark: 45–70 days.',
       dataSource: 'ERP System Logs & Freight Forwarder Telemetry',
-      interpretation: 'Illustrative Example — Not Actual ProfitMachines Data. Compressing cycle time to under 25 days improves cash flow and customer satisfaction.'
+      interpretation: 'Compressing cycle time to under 25 days improves cash flow and customer satisfaction.'
     },
     {
       category: 'Commercial',

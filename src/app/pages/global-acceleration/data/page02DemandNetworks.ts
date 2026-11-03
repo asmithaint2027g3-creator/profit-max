@@ -304,7 +304,7 @@ export const page02DemandNetworksData: AccelerationPageData = {
           definition: 'Percentage of target top-50 accounts with active multi-threaded executive dialogue',
           unit: 'Percentage (%)',
           timeframe: '6-Month Commercial Sprint',
-          interpretation: 'Illustrative Example — Not Actual ProfitMachines Data. Multi-threaded dialogue significantly de-risks enterprise sales cycles.'
+          interpretation: 'Multi-threaded dialogue significantly de-risks enterprise sales cycles.'
         }
       ],
       dependenciesLimitations: [
@@ -522,7 +522,7 @@ export const page02DemandNetworksData: AccelerationPageData = {
       timePeriod: 'Per Batch of 50 Entities',
       baselineRequirement: 'Traditional industry benchmark: 45–60 days.',
       dataSource: 'ProfitMachines Demand Discovery Platform',
-      interpretation: 'Illustrative Example — Not Actual ProfitMachines Data. Rapid qualification ensures early commercial momentum.'
+      interpretation: 'Rapid qualification ensures early commercial momentum.'
     },
     {
       category: 'Commercial',

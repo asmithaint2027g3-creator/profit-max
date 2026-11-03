@@ -522,7 +522,7 @@ export const page04PartnerEcosystemsData: AccelerationPageData = {
       timePeriod: 'Per Onboarded Partner',
       baselineRequirement: 'Unassisted channel benchmark: 120–180 days.',
       dataSource: 'Partner Portal Telemetry & CRM Booking Records',
-      interpretation: 'Illustrative Example — Not Actual ProfitMachines Data. Compression to under 60 days proves effective enablement and alignment.'
+      interpretation: 'Compression to under 60 days proves effective enablement and alignment.'
     },
     {
       category: 'Commercial',

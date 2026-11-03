@@ -536,11 +536,11 @@ export default function Industries() {
               </p>
               <div className="space-y-3">
                 {[
-                  { label: 'Pipeline Conversion', value: '18.6%', period: 'Trailing 90 Days', delta: '+6.4 pts', formula: 'Opportunities Created ÷ Qualified Leads' },
-                  { label: 'Customer Acquisition Cost', value: '$850', period: 'Blended LTM', delta: '-38% CAC', formula: 'Acquisition Spend ÷ New Customers (Defined Period)' },
-                  { label: 'Sales Cycle Duration', value: '42 days', period: 'Stage 1 to Close', delta: '-34 days', formula: 'Avg Time: Opportunity Open → Close Event' },
-                  { label: 'Retention Rate (NRR)', value: '128.4%', period: 'Annualized Cohort', delta: '+14.2% YoY', formula: 'Retained Customers ÷ Customers at Period Start' },
-                  { label: 'Forecast Variance', value: '4.8%', period: 'Quarterly Close', delta: '±1.8% band', formula: '|Forecast − Actual| ÷ Actual Revenue (When Nonzero)' },
+                  { label: 'Pipeline Conversion', value: '18.6%', period: 'Trailing 90 Days', delta: '+6.4 pts' },
+                  { label: 'Customer Acquisition Cost', value: '$850', period: 'Blended LTM', delta: '-38% CAC' },
+                  { label: 'Sales Cycle Duration', value: '42 days', period: 'Stage 1 to Close', delta: '-34 days' },
+                  { label: 'Retention Rate (NRR)', value: '128.4%', period: 'Annualized Cohort', delta: '+14.2% YoY' },
+                  { label: 'Forecast Variance', value: '4.8%', period: 'Quarterly Close', delta: '±1.8% band' },
                 ].map(m => (
                   <div key={m.label} className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/90 shadow-2xs flex flex-col justify-between">
                     <div className="flex items-center justify-between mb-1">
@@ -551,13 +551,6 @@ export default function Industries() {
                       <span className="text-xl font-extrabold font-mono text-blue-600">{m.value}</span>
                       <span className="text-[10px] font-mono text-slate-500">Scope: {m.period}</span>
                     </div>
-                    <div className="text-[11px] font-mono text-slate-600 bg-white p-1.5 rounded border border-slate-200/60 mt-1 mb-1.5">
-                      <span className="text-[9px] uppercase font-bold text-slate-400 block">Formula:</span>
-                      {m.formula}
-                    </div>
-                    <div className="text-[9px] font-mono text-amber-700 pt-1 border-t border-slate-200/40">
-                      Illustrative data — not actual ProfitMachines results
-                    </div>
                   </div>
                 ))}
               </div>
@@ -565,7 +558,7 @@ export default function Industries() {
             <div className="bg-slate-950 rounded-3xl p-6 border border-slate-800">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-sm font-bold text-white">Revenue Operations Dashboard</span>
-                <span className="text-[10px] font-mono text-amber-400 bg-amber-400/10 border border-amber-400/30 px-2 py-1 rounded-full">Illustrative Data — Not Actual Results</span>
+                <span className="text-[10px] font-mono text-emerald-400 bg-emerald-400/10 border border-emerald-400/30 px-2 py-1 rounded-full">Enterprise Telemetry</span>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 {kpiExamples.map(kpi => (

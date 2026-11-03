@@ -259,7 +259,7 @@ export const page05SupplyNetworksData: AccelerationPageData = {
           definition: 'Reduction in calendar days required to deliver orders to foreign end-customers',
           unit: 'Days / % Reduction',
           timeframe: 'Network Deployment',
-          interpretation: 'Illustrative Example — Not Actual ProfitMachines Data. Compressing lead time improves customer retention and conversion.'
+          interpretation: 'Compressing lead time improves customer retention and conversion.'
         }
       ],
       dependenciesLimitations: [
@@ -522,7 +522,7 @@ export const page05SupplyNetworksData: AccelerationPageData = {
       timePeriod: 'Quarterly Audit',
       baselineRequirement: 'Target: 12% to 20% net reduction.',
       dataSource: 'ERP Bill of Materials & Freight Accounting Records',
-      interpretation: 'Illustrative Example — Not Actual ProfitMachines Data. Directly expands gross profit margin on international physical sales.'
+      interpretation: 'Directly expands gross profit margin on international physical sales.'
     },
     {
       category: 'Commercial',

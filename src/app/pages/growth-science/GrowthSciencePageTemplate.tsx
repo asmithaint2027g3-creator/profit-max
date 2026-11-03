@@ -81,9 +81,8 @@ export function GrowthSciencePageTemplate({ data }: GrowthSciencePageTemplatePro
             <span className="text-blue-400 font-bold">{data.title}</span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            {/* Left Column: Crisp, Neat Content (matching Reference Design) */}
-            <div className="lg:col-span-7">
+          <div className="max-w-4xl">
+            <div>
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-300 text-xs font-mono font-bold tracking-wider uppercase mb-4">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span>METHODOLOGY ENGINE</span>
@@ -143,77 +142,6 @@ export function GrowthSciencePageTemplate({ data }: GrowthSciencePageTemplatePro
                     {step}
                   </span>
                 ))}
-              </div>
-            </div>
-
-            {/* Right Column: Verified Architecture Card */}
-            <div className="lg:col-span-5">
-              <div className="rounded-2xl bg-gradient-to-br from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800 p-6 shadow-2xl relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-
-                {/* Card Top Header */}
-                <div className="flex items-center justify-between pb-3.5 border-b border-slate-800 mb-5">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="text-xs font-mono font-bold text-slate-200 tracking-wider uppercase">
-                      VERIFIED ARCHITECTURE
-                    </span>
-                  </div>
-                  <span className="text-[11px] font-mono text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20 uppercase font-semibold">
-                    DIAGNOSTIC TO VALUE
-                  </span>
-                </div>
-
-                {/* Graphic / Metric Display */}
-                <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800/80 mb-5 text-center">
-                  <div className="text-xs font-mono text-slate-400 mb-1 flex items-center justify-between">
-                    <span>Parametric Driver</span>
-                    <span className="text-emerald-400 font-semibold">Deterministic</span>
-                  </div>
-                  <div className="text-base font-bold text-white font-mono py-1.5 tracking-wide">
-                    R = f(V × W% × ACV ÷ T)
-                  </div>
-                  <div className="text-[11px] text-slate-500">Parametric pipeline compounding formula</div>
-                </div>
-
-                {/* 3 Crisp Bullet Checkmarks */}
-                <div className="space-y-2.5 mb-5 text-xs text-slate-300">
-                  <div className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>Mathematical Stage Gates & Telemetry</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>Lossless RoCEv2 Delivery & Pipeline Routing</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>Real-Time Telemetry & Continuous FinOps Optimization</span>
-                  </div>
-                </div>
-
-                {/* Card Bottom Bar */}
-                <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs font-mono text-slate-300">
-                    <Zap className="w-4 h-4 text-blue-400" />
-                    <span className="font-bold">5-Tier Compounding Engine</span>
-                  </div>
-                  <Link
-                    to="/book-consultation"
-                    className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs font-mono inline-flex items-center gap-1 transition-colors"
-                  >
-                    <span>Initiate</span>
-                    <ArrowRight className="w-3 h-3" />
-                  </Link>
-                </div>
-
-                <div className="mt-4 pt-3 border-t border-slate-800/60 flex items-center justify-between text-[10px] font-mono text-slate-500 uppercase tracking-wider">
-                  <span>VERIFIABLE</span>
-                  <span>•</span>
-                  <span>AUTONOMOUS</span>
-                  <span>•</span>
-                  <span>PRODUCTION-GRADE</span>
-                </div>
               </div>
             </div>
           </div>
@@ -586,9 +514,6 @@ export function GrowthSciencePageTemplate({ data }: GrowthSciencePageTemplatePro
                   Simulate Sales Velocity & Revenue Leverage Impact
                 </h3>
               </div>
-              <div className="text-xs font-mono text-slate-400">
-                Formula: (Opps × Win Rate × ACV) ÷ Cycle Days
-              </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
@@ -687,11 +612,6 @@ export function GrowthSciencePageTemplate({ data }: GrowthSciencePageTemplatePro
                   <p className="text-xs text-slate-600 mt-1 leading-relaxed">{kpi.definition}</p>
                 </div>
 
-                <div className="p-3 rounded-xl bg-white border border-slate-200 text-xs font-mono space-y-1">
-                  <div className="text-[10px] uppercase font-bold text-slate-400">Mathematical Formula:</div>
-                  <div className="text-slate-800 font-semibold">{kpi.formula}</div>
-                </div>
-
                 <div className="grid grid-cols-3 gap-2 text-center pt-1">
                   <div className="p-2 rounded-lg bg-white border border-slate-200">
                     <div className="text-[10px] font-mono text-slate-400">Baseline</div>
@@ -702,7 +622,7 @@ export function GrowthSciencePageTemplate({ data }: GrowthSciencePageTemplatePro
                     <div className="text-xs font-bold text-blue-700 mt-0.5">{kpi.target}</div>
                   </div>
                   <div className="p-2 rounded-lg bg-emerald-50 border border-emerald-200">
-                    <div className="text-[10px] font-mono text-emerald-600">Illustrative</div>
+                    <div className="text-[10px] font-mono text-emerald-600">Benchmark</div>
                     <div className="text-xs font-bold text-emerald-700 mt-0.5">{kpi.illustrativeValue}</div>
                   </div>
                 </div>

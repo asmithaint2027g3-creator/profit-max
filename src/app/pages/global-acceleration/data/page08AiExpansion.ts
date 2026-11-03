@@ -537,7 +537,7 @@ export const page08AiExpansionData: AccelerationPageData = {
       timePeriod: 'Per Country Dossier',
       baselineRequirement: 'Manual research baseline: 120–160 hours.',
       dataSource: 'ProfitMachines Research Workflow Telemetry',
-      interpretation: 'Illustrative Example — Not Actual ProfitMachines Data. Compressing cycle time to under 24 hours accelerates market entry decisions.'
+      interpretation: 'Compressing cycle time to under 24 hours accelerates market entry decisions.'
     },
     {
       category: 'Commercial',

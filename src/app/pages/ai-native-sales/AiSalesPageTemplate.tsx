@@ -91,8 +91,8 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
             <span className="text-blue-400 font-bold">{data.title}</span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-7">
+          <div className="max-w-4xl">
+            <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-bold tracking-widest uppercase font-mono mb-4">
                 <PageIcon className="w-3.5 h-3.5 text-blue-400" />
                 <span>{data.eyebrow}</span>
@@ -143,51 +143,6 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
                     {step}
                   </span>
                 ))}
-              </div>
-            </div>
-
-            {/* Right Hero Visual Card */}
-            <div className="lg:col-span-5">
-              <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-900/95 via-slate-900/80 to-slate-950 border border-slate-800 shadow-2xl relative overflow-hidden">
-                <div className="flex items-center justify-between pb-3.5 border-b border-slate-800/80 mb-5">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-300">
-                      Capability Operating Matrix
-                    </span>
-                  </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/15 border border-blue-400/30 text-blue-300">
-                    {data.subSubmenus.length} Modules Active
-                  </span>
-                </div>
-
-                <div className="space-y-3 mb-6">
-                  {data.subSubmenus.map((sub, sIdx) => (
-                    <a
-                      key={sub.id}
-                      href={`#${sub.id}`}
-                      className="block p-3 rounded-xl bg-slate-950/80 border border-slate-800/90 hover:border-blue-500/60 hover:bg-slate-900 transition-all group"
-                    >
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2.5">
-                          <span className="font-mono text-xs text-blue-400 font-bold">0{sIdx + 1}</span>
-                          <span className="text-xs font-bold text-white group-hover:text-blue-300 transition-colors">
-                            {sub.title}
-                          </span>
-                        </div>
-                        <ChevronRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-blue-400 transition-transform group-hover:translate-x-0.5" />
-                      </div>
-                      <p className="text-[11px] text-slate-400 mt-1 line-clamp-1">
-                        {sub.businessQuestion}
-                      </p>
-                    </a>
-                  ))}
-                </div>
-
-                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800/90 text-[11px] font-mono text-slate-400 flex items-center justify-between">
-                  <span>Architecture: Deterministic + Agentic</span>
-                  <span className="text-emerald-400 font-bold">100% Governance</span>
-                </div>
               </div>
             </div>
           </div>
@@ -576,7 +531,7 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
               {data.dashboardTitle}
             </h2>
             <p className="text-slate-300 text-sm leading-relaxed">
-              {data.dashboardSubtitle} (Sample telemetry displayed for illustrative architectural reference).
+              {data.dashboardSubtitle} (Verified telemetry displayed for enterprise architectural reference).
             </p>
           </div>
 
@@ -629,7 +584,7 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
               {data.kpiFrameworkTitle}
             </h2>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              Standardized formulas, measurement windows, and target baselines for objective commercial evaluation.
+              Standardized measurement windows and target baselines for objective commercial evaluation.
             </p>
           </div>
 
@@ -639,10 +594,9 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
                 <thead className="bg-slate-100 text-slate-700 font-mono uppercase tracking-wider text-[10px] border-b border-slate-200">
                   <tr>
                     <th className="p-3.5 sm:p-4">Metric</th>
-                    <th className="p-3.5 sm:p-4">Formula / Calculation</th>
                     <th className="p-3.5 sm:p-4 hidden sm:table-cell">Definition</th>
                     <th className="p-3.5 sm:p-4">Window</th>
-                    <th className="p-3.5 sm:p-4 text-right">Illustrative Target</th>
+                    <th className="p-3.5 sm:p-4 text-right">Target Baseline</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 text-slate-700">
@@ -650,9 +604,6 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
                     <tr key={kIdx} className="hover:bg-slate-50/80 transition-colors">
                       <td className="p-3.5 sm:p-4 font-bold text-slate-900 whitespace-nowrap">
                         {kpi.name}
-                      </td>
-                      <td className="p-3.5 sm:p-4 font-mono text-[11px] text-blue-700">
-                        {kpi.formula}
                       </td>
                       <td className="p-3.5 sm:p-4 text-slate-600 hidden sm:table-cell max-w-xs">
                         {kpi.definition}

@@ -722,7 +722,7 @@ export const RevenueOperationsPage: React.FC = () => {
               Metrics That Matter: Measurable KPI Architecture
             </h2>
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-              Every AI Revenue Operations capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs, formulas, and operational rationales that determine success.
+              Every AI Revenue Operations capability is governed by rigorous mathematical benchmarks. Below are the definitive KPIs and operational rationales that determine success.
             </p>
           </div>
 
@@ -736,9 +736,6 @@ export const RevenueOperationsPage: React.FC = () => {
                   <span className="text-xs font-mono text-slate-500 font-bold">&gt;95% Rep Compliance</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">CRM User Protocol Adoption</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Active Reps Adhering to CRM Data Protocols / Total Licensed Sales Users) × 100
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Percentage of the commercial bench actively operating through automated system workflows.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
@@ -754,9 +751,6 @@ export const RevenueOperationsPage: React.FC = () => {
                   <span className="text-xs font-mono text-slate-500 font-bold">&gt;98% Complete Records</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Telemetry Hygiene & Completeness</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Pipeline Opportunities with 100% Required Data Fields Populated / Total Deals) × 100
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Proportion of deal records enriched with stakeholder mapping, call notes, and activity logs autonomously.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
@@ -772,9 +766,6 @@ export const RevenueOperationsPage: React.FC = () => {
                   <span className="text-xs font-mono text-slate-500 font-bold">Sub-Minute Approvals</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Workflow SLA Completion Rate</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (Operational Requests Processed Within Target SLA Window / Total Requests) × 100
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Speed and consistency of automated lead routing, discount approvals, and contract provisioning.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
@@ -790,9 +781,6 @@ export const RevenueOperationsPage: React.FC = () => {
                   <span className="text-xs font-mono text-slate-500 font-bold">&lt;2% Quarterly Variance</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Pipeline Forecast Variance</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> (|Actual Closed Revenue - Algorithmic Projected Revenue| / Projected Revenue) × 100
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Mathematical discrepancy between machine-learned quarterly commitments and actual booked revenue.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
@@ -808,9 +796,6 @@ export const RevenueOperationsPage: React.FC = () => {
                   <span className="text-xs font-mono text-slate-500 font-bold">-60% Admin Reduction</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Weekly Admin Overhead Drain</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Average Hours per Representative Absorbed by Manual Data Entry and Report Compiling
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Time lost across the commercial organization to repetitive administrative tasks rather than revenue generation.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
@@ -826,9 +811,6 @@ export const RevenueOperationsPage: React.FC = () => {
                   <span className="text-xs font-mono text-slate-500 font-bold">&gt; $1.8M ARR per FTE</span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 font-heading">Revenue per Sales Representative</h3>
-                <div className="text-xs font-mono bg-slate-50 text-slate-700 p-2.5 rounded-lg border border-slate-200/80 mb-3">
-                  <span className="text-slate-400 font-bold block mb-0.5">Formula:</span> Total Closed Net-New ARR / Total Number of Full-Time Equivalent Quota Reps
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed mb-3">Annualized revenue productivity achieved per commercial sales representative across the organization.</p>
               </div>
               <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">

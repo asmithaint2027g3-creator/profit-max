@@ -187,6 +187,26 @@ var TAB_CONFIGS = {
   // 11. CTA & Interaction Clicks
   "CTA_Clicks": [
     "Session ID", "Visitor ID", "CTA Name", "Destination URL", "Section", "Page Path", "Device", "Timestamp"
+  ],
+
+  // 12. Enterprise User Registration (Two-Step Authentication & Onboarding)
+  "User_Registration": [
+    "Registration ID", "Full Name", "Business Email", "Mobile Number", "Preferred User ID",
+    "Company Name", "Official Website", "Country", "State / Region", "City",
+    "Industry Sector", "Sub-industry", "Company Headcount", "Business Operations",
+    "Consent Status", "Registration Date", "Account Status"
+  ],
+
+  // 13. Security & Login Activity Audit Trail
+  "Login_Activity": [
+    "Activity ID", "User ID", "Full Name", "Business Email",
+    "Login Date", "Login Time", "Login Status", "Logout Date and Time"
+  ],
+
+  // 14. Sales Calculator Telemetry
+  "Calculator_Activity": [
+    "Activity ID", "User ID", "Full Name", "Business Email",
+    "Calculator Name", "Activity Date", "Activity Type"
   ]
 };
 
@@ -279,7 +299,29 @@ var SHEET_NAME_ALIASES = {
   // 8. Consolidated Master Form Submissions
   "formsubmissions": "Form_Submissions",
   "form_submissions": "Form_Submissions",
-  "submissions": "Form_Submissions"
+  "submissions": "Form_Submissions",
+
+  // 12. User Registration & Auth Tracking
+  "userregistration": "User_Registration",
+  "user_registration": "User_Registration",
+  "userregistrations": "User_Registration",
+  "user_registrations": "User_Registration",
+  "registration": "User_Registration",
+  "registrations": "User_Registration",
+  "signup": "User_Registration",
+  "register": "User_Registration",
+
+  // 13. Login Activity
+  "loginactivity": "Login_Activity",
+  "login_activity": "Login_Activity",
+  "logins": "Login_Activity",
+  "login": "Login_Activity",
+
+  // 14. Calculator Activity
+  "calculatoractivity": "Calculator_Activity",
+  "calculator_activity": "Calculator_Activity",
+  "calculators": "Calculator_Activity",
+  "calculator": "Calculator_Activity"
 };
 
 /**
@@ -375,6 +417,33 @@ function doPost(e) {
       Object.keys(data.fields).forEach(function(k) {
         if (data[k] === undefined) data[k] = data.fields[k];
       });
+    }
+
+    // Special Handlers: User Registration, Login Activity & Calculator Activity
+    var action = (data.action || data.event || "").toString().trim().toLowerCase();
+
+    if (action === "user_registration" || action === "register_user") {
+      var ssReg = SpreadsheetApp.openById(CONFIG.MAIN_SPREADSHEET_ID);
+      var regResult = handleUserRegistration(ssReg, data);
+      return ContentService.createTextOutput(JSON.stringify(regResult)).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    if (action === "login_activity" || action === "record_login") {
+      var ssLog = SpreadsheetApp.openById(CONFIG.MAIN_SPREADSHEET_ID);
+      var logResult = handleLoginActivity(ssLog, data);
+      return ContentService.createTextOutput(JSON.stringify(logResult)).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    if (action === "calculator_activity" || action === "record_calculator") {
+      var ssCalc = SpreadsheetApp.openById(CONFIG.MAIN_SPREADSHEET_ID);
+      var calcResult = handleCalculatorActivity(ssCalc, data);
+      return ContentService.createTextOutput(JSON.stringify(calcResult)).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    if (action === "check_user_exists") {
+      var ssCheck = SpreadsheetApp.openById(CONFIG.MAIN_SPREADSHEET_ID);
+      var checkResult = handleCheckUserExists(ssCheck, data);
+      return ContentService.createTextOutput(JSON.stringify(checkResult)).setMimeType(ContentService.MimeType.JSON);
     }
 
     // 2. Extract user contact info
@@ -3056,5 +3125,475 @@ function initializeAllDatabaseTables() {
     }
   });
 
-  console.log("All 11 Profit Machines database tabs initialized with enterprise styling.");
+  console.log("All 14 Profit Machines database tabs initialized with enterprise styling.");
+}
+
+// =========================================================================================
+// 12. ENTERPRISE USER REGISTRATION, AUTHENTICATION & CALCULATOR EXTENSIONS
+// =========================================================================================
+
+/**
+ * Checks whether a User ID or Business Email is already registered in the 'User_Registration' tab.
+ */
+function handleCheckUserExists(ss, data) {
+  try {
+    var sheet = findSheetFlexible(ss, "User_Registration");
+    if (!sheet || sheet.getLastRow() <= 1) {
+      return { status: "success", exists: false, field: null };
+    }
+
+    var checkEmail = (data.email || data.businessEmail || "").toString().trim().toLowerCase();
+    var checkUserId = (data.userId || data.preferredUserId || "").toString().trim().toLowerCase();
+
+    var lastRow = sheet.getLastRow();
+    var values = sheet.getRange(2, 1, lastRow - 1, sheet.getLastColumn()).getValues();
+
+    // Col 3: Business Email (index 2), Col 5: Preferred User ID (index 4)
+    for (var i = 0; i < values.length; i++) {
+      var rowEmail = (values[i][2] || "").toString().trim().toLowerCase();
+      var rowUserId = (values[i][4] || "").toString().trim().toLowerCase();
+
+      if (checkUserId && rowUserId === checkUserId) {
+        return { status: "success", exists: true, field: "userId", message: "User ID '" + data.userId + "' is already registered." };
+      }
+      if (checkEmail && rowEmail === checkEmail) {
+        return { status: "success", exists: true, field: "email", message: "Business Email '" + data.email + "' is already registered." };
+      }
+    }
+
+    return { status: "success", exists: false, field: null };
+  } catch (err) {
+    console.error("Error in handleCheckUserExists: " + err.toString());
+    return { status: "error", message: err.toString(), exists: false };
+  }
+}
+
+/**
+ * Handles two-step enterprise user registration, logs to 'User_Registration', and dispatches emails.
+ */
+function handleUserRegistration(ss, data) {
+  try {
+    var check = handleCheckUserExists(ss, data);
+    if (check.exists) {
+      return {
+        status: "error",
+        code: "DUPLICATE_USER",
+        field: check.field,
+        message: check.message || "User ID or Business Email is already registered."
+      };
+    }
+
+    var sheet = findSheetFlexible(ss, "User_Registration");
+    var defaultHeaders = TAB_CONFIGS["User_Registration"];
+
+    if (!sheet) {
+      sheet = ss.insertSheet("User_Registration");
+      sheet.getRange(1, 1, 1, defaultHeaders.length)
+           .setValues([defaultHeaders])
+           .setFontWeight("bold")
+           .setBackground("#0f172a")
+           .setFontColor("#ffffff");
+      sheet.setFrozenRows(1);
+    } else if (sheet.getLastRow() === 0) {
+      sheet.getRange(1, 1, 1, defaultHeaders.length)
+           .setValues([defaultHeaders])
+           .setFontWeight("bold")
+           .setBackground("#0f172a")
+           .setFontColor("#ffffff");
+      sheet.setFrozenRows(1);
+    }
+
+    var regId = data.registrationId || ("PM-REG-" + Utilities.formatDate(new Date(), "GMT+05:30", "yyyyMMdd") + "-" + Math.floor(1000 + Math.random() * 9000));
+    var fullName = (data.fullName || data.name || "").toString().trim();
+    var email = (data.email || data.businessEmail || "").toString().trim();
+    var mobile = (data.mobile || data.phone || "").toString().trim();
+    var userId = (data.userId || data.preferredUserId || "").toString().trim();
+    var company = (data.company || data.companyName || "").toString().trim();
+    var website = (data.website || data.officialWebsite || "").toString().trim();
+    var country = (data.country || "").toString().trim();
+    var state = (data.state || data.region || "").toString().trim();
+    var city = (data.city || "").toString().trim();
+    var industry = (data.industry || data.industrySector || "").toString().trim();
+    var subIndustry = (data.subIndustry || "").toString().trim();
+    var headcount = (data.headcount || data.companyHeadcount || "").toString().trim();
+    var operations = Array.isArray(data.operations) ? data.operations.join(", ") : (data.operations || data.businessOperations || "").toString().trim();
+    var consent = data.consent ? "Accepted: Terms & Privacy" : "Accepted";
+    var regDate = Utilities.formatDate(new Date(), "GMT+05:30", "yyyy-MM-dd HH:mm:ss");
+    var status = "Active";
+
+    var newRow = [
+      regId, fullName, email, mobile, userId, company, website,
+      country, state, city, industry, subIndustry, headcount,
+      operations, consent, regDate, status
+    ];
+
+    sheet.appendRow(newRow);
+
+    // 1. Dispatch Registration Confirmation Email to the Registered User
+    sendUserRegistrationConfirmationEmail(email, fullName, userId);
+
+    // 2. Dispatch New Registration Alert to Admin Team (poojasri@trustgrid.ai & asmitha.int2027g3@gmail.com)
+    sendAdminNewRegistrationNotification({
+      registrationId: regId,
+      fullName: fullName,
+      email: email,
+      mobile: mobile,
+      userId: userId,
+      company: company,
+      website: website,
+      country: country,
+      state: state,
+      city: city,
+      industry: industry,
+      subIndustry: subIndustry,
+      headcount: headcount,
+      operations: operations,
+      registrationDate: regDate
+    });
+
+    return {
+      status: "success",
+      registrationId: regId,
+      userId: userId,
+      email: email,
+      message: "Account created successfully. Confirmation email dispatched."
+    };
+  } catch (err) {
+    console.error("Error in handleUserRegistration: " + err.toString());
+    return { status: "error", message: err.toString() };
+  }
+}
+
+/**
+ * Handles recording login activity to the 'Login_Activity' tab and alerts admin on success.
+ */
+function handleLoginActivity(ss, data) {
+  try {
+    var sheet = findSheetFlexible(ss, "Login_Activity");
+    var defaultHeaders = TAB_CONFIGS["Login_Activity"];
+
+    if (!sheet) {
+      sheet = ss.insertSheet("Login_Activity");
+      sheet.getRange(1, 1, 1, defaultHeaders.length)
+           .setValues([defaultHeaders])
+           .setFontWeight("bold")
+           .setBackground("#0f172a")
+           .setFontColor("#ffffff");
+      sheet.setFrozenRows(1);
+    } else if (sheet.getLastRow() === 0) {
+      sheet.getRange(1, 1, 1, defaultHeaders.length)
+           .setValues([defaultHeaders])
+           .setFontWeight("bold")
+           .setBackground("#0f172a")
+           .setFontColor("#ffffff");
+      sheet.setFrozenRows(1);
+    }
+
+    var actId = data.activityId || ("PM-LOG-" + Utilities.formatDate(new Date(), "GMT+05:30", "yyyyMMdd") + "-" + Math.floor(1000 + Math.random() * 9000));
+    var userId = (data.userId || data.preferredUserId || "").toString().trim();
+    var fullName = (data.fullName || data.name || "").toString().trim();
+    var email = (data.email || data.businessEmail || "").toString().trim();
+    var loginDate = Utilities.formatDate(new Date(), "GMT+05:30", "yyyy-MM-dd");
+    var loginTime = Utilities.formatDate(new Date(), "GMT+05:30", "HH:mm:ss");
+    var loginStatus = (data.loginStatus || data.status || "Success").toString().trim();
+    var logoutTime = (data.logoutTime || "").toString().trim();
+
+    var newRow = [
+      actId, userId, fullName, email, loginDate, loginTime, loginStatus, logoutTime
+    ];
+
+    sheet.appendRow(newRow);
+
+    // Alert Admin upon successful sign-in
+    if (loginStatus.toLowerCase().indexOf("success") !== -1) {
+      sendAdminLoginNotification({
+        activityId: actId,
+        userId: userId,
+        fullName: fullName,
+        email: email,
+        loginDate: loginDate,
+        loginTime: loginTime,
+        loginStatus: loginStatus,
+        ipAddress: data.ipAddress || data.ip || "N/A"
+      });
+    }
+
+    return { status: "success", activityId: actId, message: "Login activity recorded" };
+  } catch (err) {
+    console.error("Error in handleLoginActivity: " + err.toString());
+    return { status: "error", message: err.toString() };
+  }
+}
+
+/**
+ * Handles recording Sales Calculator usage to the 'Calculator_Activity' tab.
+ */
+function handleCalculatorActivity(ss, data) {
+  try {
+    var sheet = findSheetFlexible(ss, "Calculator_Activity");
+    var defaultHeaders = TAB_CONFIGS["Calculator_Activity"];
+
+    if (!sheet) {
+      sheet = ss.insertSheet("Calculator_Activity");
+      sheet.getRange(1, 1, 1, defaultHeaders.length)
+           .setValues([defaultHeaders])
+           .setFontWeight("bold")
+           .setBackground("#0f172a")
+           .setFontColor("#ffffff");
+      sheet.setFrozenRows(1);
+    } else if (sheet.getLastRow() === 0) {
+      sheet.getRange(1, 1, 1, defaultHeaders.length)
+           .setValues([defaultHeaders])
+           .setFontWeight("bold")
+           .setBackground("#0f172a")
+           .setFontColor("#ffffff");
+      sheet.setFrozenRows(1);
+    }
+
+    var actId = data.activityId || ("PM-CALC-" + Utilities.formatDate(new Date(), "GMT+05:30", "yyyyMMdd") + "-" + Math.floor(1000 + Math.random() * 9000));
+    var userId = (data.userId || "").toString().trim();
+    var fullName = (data.fullName || data.name || "").toString().trim();
+    var email = (data.email || "").toString().trim();
+    var calcName = (data.calculatorName || data.name || "Sales Velocity Calculator").toString().trim();
+    var actDate = Utilities.formatDate(new Date(), "GMT+05:30", "yyyy-MM-dd HH:mm:ss");
+    var actType = (data.activityType || data.type || "Compute").toString().trim();
+
+    var newRow = [
+      actId, userId, fullName, email, calcName, actDate, actType
+    ];
+
+    sheet.appendRow(newRow);
+    return { status: "success", activityId: actId, message: "Calculator activity logged" };
+  } catch (err) {
+    console.error("Error in handleCalculatorActivity: " + err.toString());
+    return { status: "error", message: err.toString() };
+  }
+}
+
+/**
+ * Sends branded User Registration Confirmation Email to the new user.
+ */
+function sendUserRegistrationConfirmationEmail(userEmail, userName, userId) {
+  if (!userEmail || userEmail.indexOf("@") === -1) return;
+
+  var signInUrl = (EMAIL_CONFIG.website || "https://profit-max-delta.vercel.app") + "/sign-in";
+  var subject = "Welcome to ProfitMachines — Account Confirmed & Executive Access Granted";
+
+  var plainBody = "Dear " + (userName || "Executive Leader") + ",\n\n" +
+    "Welcome to ProfitMachines. Your enterprise account has been successfully created.\n\n" +
+    "ACCOUNT DETAILS:\n" +
+    "-----------------------------------------\n" +
+    "Full Name: " + userName + "\n" +
+    "Registered User ID: " + userId + "\n" +
+    "Business Email: " + userEmail + "\n" +
+    "Sign In Portal: " + signInUrl + "\n\n" +
+    "You now have verified access to our exclusive Sales Calculators, proprietary revenue acceleration models, and commercial telemetry.\n\n" +
+    "Sign in to your account at: " + signInUrl + "\n\n" +
+    "For enterprise inquiries or technical assistance, contact connect@trustgrid.ai or poojasri@trustgrid.ai.\n\n" +
+    "Security Notice: Your password is encrypted and never stored in plain text or transmitted via email.\n\n" +
+    "Warm regards,\n" +
+    "The ProfitMachines Leadership & Solutions Team";
+
+  var htmlBody = "<!DOCTYPE html><html><head><meta charset='UTF-8'></head>" +
+    "<body style='font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,sans-serif; background-color:#090d16; color:#f8fafc; margin:0; padding:30px 10px;'>" +
+    "<div style='max-width:600px; margin:0 auto; background:#0f172a; border:1px solid #1e293b; border-radius:16px; overflow:hidden; box-shadow:0 20px 40px rgba(0,0,0,0.5);'>" +
+    
+    // Header
+    "<div style='background:linear-gradient(135deg,#0b1329,#1e293b); padding:28px 32px; border-bottom:1px solid #334155; text-align:left;'>" +
+    "<span style='background:#2563eb; color:#ffffff; font-size:10px; font-weight:800; letter-spacing:0.15em; padding:4px 10px; border-radius:6px; text-transform:uppercase;'>PROFITMACHINES ENTERPRISE</span>" +
+    "<h1 style='margin:16px 0 4px 0; color:#ffffff; font-size:22px; font-weight:800; letter-spacing:-0.02em;'>Account Confirmed & Access Granted</h1>" +
+    "<p style='margin:0; color:#94a3b8; font-size:13px;'>Welcome to the AI-Native Revenue Transformation Platform</p>" +
+    "</div>" +
+
+    // Body
+    "<div style='padding:32px;'>" +
+    "<p style='color:#e2e8f0; font-size:14px; line-height:1.6; margin:0 0 20px 0;'>Dear <strong style='color:#ffffff;'>" + (userName || "Executive Leader") + "</strong>,</p>" +
+    "<p style='color:#cbd5e1; font-size:14px; line-height:1.6; margin:0 0 24px 0;'>Your ProfitMachines account has been successfully registered and provisioned with verified access to our proprietary revenue architecture suite.</p>" +
+
+    // Credentials Box
+    "<div style='background:#1e293b; border:1px solid #334155; border-radius:12px; padding:20px; margin:0 0 24px 0;'>" +
+    "<div style='color:#64748b; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;'>Verified Account Credentials</div>" +
+    "<table style='width:100%; border-collapse:collapse; font-size:13px;'>" +
+    "<tr><td style='color:#94a3b8; padding:6px 0; width:40%;'>User ID:</td><td style='color:#60a5fa; font-family:monospace; font-weight:800; padding:6px 0;'>" + userId + "</td></tr>" +
+    "<tr><td style='color:#94a3b8; padding:6px 0;'>Business Email:</td><td style='color:#f8fafc; font-weight:600; padding:6px 0;'>" + userEmail + "</td></tr>" +
+    "<tr><td style='color:#94a3b8; padding:6px 0;'>Account Tier:</td><td style='color:#10b981; font-weight:700; padding:6px 0;'>Enterprise Verified</td></tr>" +
+    "<tr><td style='color:#94a3b8; padding:6px 0;'>Protected Tools:</td><td style='color:#cbd5e1; padding:6px 0;'>Sales Calculators & Telemetry</td></tr>" +
+    "</table>" +
+    "</div>" +
+
+    // Action CTA
+    "<div style='text-align:center; margin:32px 0;'>" +
+    "<a href='" + signInUrl + "' style='display:inline-block; background:linear-gradient(135deg,#2563eb,#4f46e5); color:#ffffff; font-size:14px; font-weight:700; text-decoration:none; padding:14px 32px; border-radius:10px; box-shadow:0 8px 20px rgba(37,99,235,0.35);'>Sign In to Enterprise Portal &rarr;</a>" +
+    "</div>" +
+
+    "<p style='color:#94a3b8; font-size:12px; line-height:1.6; margin:0 0 16px 0;'><strong style='color:#e2e8f0;'>Security Notice:</strong> Your password is protected with zero-knowledge cryptographic hashing. It is never stored in plain text or transmitted over email.</p>" +
+    "<p style='color:#94a3b8; font-size:12px; line-height:1.6; margin:0;'>Need support? Reach our solutions architecture team at <a href='mailto:poojasri@trustgrid.ai' style='color:#60a5fa; text-decoration:none;'>poojasri@trustgrid.ai</a> or <a href='mailto:connect@trustgrid.ai' style='color:#60a5fa; text-decoration:none;'>connect@trustgrid.ai</a>.</p>" +
+    "</div>" +
+
+    // Footer
+    "<div style='background:#0b1329; border-top:1px solid #1e293b; padding:20px 32px; text-align:center; color:#64748b; font-size:11px;'>" +
+    "&copy; " + new Date().getFullYear() + " ProfitMachines. All Rights Reserved. Enterprise Revenue Science." +
+    "</div>" +
+    "</div></body></html>";
+
+  sendEmailDirect({
+    to: userEmail,
+    subject: subject,
+    body: plainBody,
+    htmlBody: htmlBody,
+    name: EMAIL_CONFIG.name,
+    replyTo: EMAIL_CONFIG.replyTo
+  });
+}
+
+/**
+ * Sends Admin Notification Email whenever a new user registers.
+ */
+function sendAdminNewRegistrationNotification(regData) {
+  var recipients = [EMAIL_CONFIG.adminEmail].concat(EMAIL_CONFIG.salesEmails);
+  // Deduplicate recipients
+  var uniqueRecipients = [];
+  recipients.forEach(function(email) {
+    if (email && email.indexOf("@") !== -1 && uniqueRecipients.indexOf(email) === -1) {
+      uniqueRecipients.push(email);
+    }
+  });
+
+  if (uniqueRecipients.length === 0) return;
+
+  var subject = "👤 New User Registration: " + regData.fullName + " (" + regData.company + ") — User ID: " + regData.userId;
+  var spreadsheetUrl = "https://docs.google.com/spreadsheets/d/" + CONFIG.MAIN_SPREADSHEET_ID + "/edit#gid=0";
+
+  var plainBody = "PROFITMACHINES - NEW USER REGISTRATION ALERT\n" +
+    "---------------------------------------------------\n" +
+    "Registration ID: " + regData.registrationId + "\n" +
+    "Full Name: " + regData.fullName + "\n" +
+    "Preferred User ID: " + regData.userId + "\n" +
+    "Business Email: " + regData.email + "\n" +
+    "Mobile Number: " + regData.mobile + "\n" +
+    "Company: " + regData.company + "\n" +
+    "Website: " + (regData.website || "N/A") + "\n" +
+    "Location: " + (regData.city ? regData.city + ", " : "") + (regData.state ? regData.state + ", " : "") + regData.country + "\n" +
+    "Industry Sector: " + regData.industry + "\n" +
+    "Sub-industry: " + (regData.subIndustry || "N/A") + "\n" +
+    "Company Headcount: " + regData.headcount + "\n" +
+    "Business Operations: " + regData.operations + "\n" +
+    "Registration Date: " + regData.registrationDate + " IST\n" +
+    "Spreadsheet: " + spreadsheetUrl;
+
+  var htmlBody = "<!DOCTYPE html><html><head><meta charset='UTF-8'></head>" +
+    "<body style='font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,sans-serif; background-color:#090d16; color:#f8fafc; margin:0; padding:30px 10px;'>" +
+    "<div style='max-width:650px; margin:0 auto; background:#0f172a; border:1px solid #1e293b; border-radius:16px; overflow:hidden; box-shadow:0 20px 40px rgba(0,0,0,0.5);'>" +
+    
+    // Header
+    "<div style='background:linear-gradient(135deg,#1e1b4b,#0f172a); padding:28px 32px; border-bottom:1px solid #334155;'>" +
+    "<span style='background:#6366f1; color:#ffffff; font-size:10px; font-weight:800; letter-spacing:0.15em; padding:4px 10px; border-radius:6px; text-transform:uppercase;'>NEW USER REGISTRATION</span>" +
+    "<h1 style='margin:16px 0 4px 0; color:#ffffff; font-size:22px; font-weight:800;'>" + regData.fullName + "</h1>" +
+    "<p style='margin:0; color:#94a3b8; font-size:13px;'>" + regData.company + " &bull; User ID: <span style='color:#a5b4fc; font-family:monospace; font-weight:bold;'>" + regData.userId + "</span></p>" +
+    "</div>" +
+
+    // Content Grid
+    "<div style='padding:32px;'>" +
+    "<table style='width:100%; border-collapse:collapse; font-size:13px;'>" +
+    "<tr style='border-bottom:1px solid #1e293b;'><td style='color:#64748b; padding:10px 0; width:35%; font-weight:600;'>Registration ID:</td><td style='color:#38bdf8; font-family:monospace; font-weight:700; padding:10px 0;'>" + regData.registrationId + "</td></tr>" +
+    "<tr style='border-bottom:1px solid #1e293b;'><td style='color:#64748b; padding:10px 0; font-weight:600;'>Full Name:</td><td style='color:#ffffff; font-weight:700; padding:10px 0;'>" + regData.fullName + "</td></tr>" +
+    "<tr style='border-bottom:1px solid #1e293b;'><td style='color:#64748b; padding:10px 0; font-weight:600;'>Business Email:</td><td style='color:#60a5fa; padding:10px 0;'><a href='mailto:" + regData.email + "' style='color:#60a5fa; text-decoration:none;'>" + regData.email + "</a></td></tr>" +
+    "<tr style='border-bottom:1px solid #1e293b;'><td style='color:#64748b; padding:10px 0; font-weight:600;'>Mobile Number:</td><td style='color:#ffffff; padding:10px 0;'>" + regData.mobile + "</td></tr>" +
+    "<tr style='border-bottom:1px solid #1e293b;'><td style='color:#64748b; padding:10px 0; font-weight:600;'>Preferred User ID:</td><td style='color:#a5b4fc; font-family:monospace; font-weight:700; padding:10px 0;'>" + regData.userId + "</td></tr>" +
+    "<tr style='border-bottom:1px solid #1e293b;'><td style='color:#64748b; padding:10px 0; font-weight:600;'>Company Name:</td><td style='color:#ffffff; font-weight:700; padding:10px 0;'>" + regData.company + "</td></tr>" +
+    "<tr style='border-bottom:1px solid #1e293b;'><td style='color:#64748b; padding:10px 0; font-weight:600;'>Official Website:</td><td style='color:#cbd5e1; padding:10px 0;'>" + (regData.website || "N/A") + "</td></tr>" +
+    "<tr style='border-bottom:1px solid #1e293b;'><td style='color:#64748b; padding:10px 0; font-weight:600;'>Country & Region:</td><td style='color:#ffffff; padding:10px 0;'>" + (regData.city ? regData.city + ", " : "") + (regData.state ? regData.state + ", " : "") + regData.country + "</td></tr>" +
+    "<tr style='border-bottom:1px solid #1e293b;'><td style='color:#64748b; padding:10px 0; font-weight:600;'>Industry Sector:</td><td style='color:#ffffff; font-weight:600; padding:10px 0;'>" + regData.industry + (regData.subIndustry ? " (" + regData.subIndustry + ")" : "") + "</td></tr>" +
+    "<tr style='border-bottom:1px solid #1e293b;'><td style='color:#64748b; padding:10px 0; font-weight:600;'>Company Headcount:</td><td style='color:#10b981; font-weight:700; padding:10px 0;'>" + regData.headcount + "</td></tr>" +
+    "<tr style='border-bottom:1px solid #1e293b;'><td style='color:#64748b; padding:10px 0; font-weight:600;'>Active Operations:</td><td style='color:#cbd5e1; padding:10px 0;'>" + regData.operations + "</td></tr>" +
+    "<tr><td style='color:#64748b; padding:10px 0; font-weight:600;'>Registration Time:</td><td style='color:#94a3b8; padding:10px 0;'>" + regData.registrationDate + " IST</td></tr>" +
+    "</table>" +
+
+    // Action Button
+    "<div style='margin-top:28px; text-align:center;'>" +
+    "<a href='" + spreadsheetUrl + "' style='display:inline-block; background:#1e293b; color:#38bdf8; border:1px solid #334155; font-size:13px; font-weight:700; text-decoration:none; padding:12px 24px; border-radius:8px;'>Open 'User_Registration' in Google Sheets &rarr;</a>" +
+    "</div>" +
+    "</div>" +
+
+    // Footer
+    "<div style='background:#0b1329; border-top:1px solid #1e293b; padding:16px 32px; text-align:center; color:#64748b; font-size:11px;'>" +
+    "Dispatched exclusively to authorized administrators: poojasri@trustgrid.ai & asmitha.int2027g3@gmail.com" +
+    "</div>" +
+    "</div></body></html>";
+
+  sendEmailDirect({
+    to: uniqueRecipients.join(","),
+    subject: subject,
+    body: plainBody,
+    htmlBody: htmlBody,
+    name: EMAIL_CONFIG.name,
+    replyTo: regData.email || EMAIL_CONFIG.replyTo
+  });
+}
+
+/**
+ * Sends Admin Notification Email whenever an existing user logs in.
+ */
+function sendAdminLoginNotification(loginData) {
+  var recipients = [EMAIL_CONFIG.adminEmail].concat(EMAIL_CONFIG.salesEmails);
+  var uniqueRecipients = [];
+  recipients.forEach(function(email) {
+    if (email && email.indexOf("@") !== -1 && uniqueRecipients.indexOf(email) === -1) {
+      uniqueRecipients.push(email);
+    }
+  });
+
+  if (uniqueRecipients.length === 0) return;
+
+  var subject = "🔐 User Login: " + loginData.fullName + " (" + loginData.userId + ") — ProfitMachines Enterprise";
+  var spreadsheetUrl = "https://docs.google.com/spreadsheets/d/" + CONFIG.MAIN_SPREADSHEET_ID + "/edit#gid=0";
+
+  var plainBody = "PROFITMACHINES - USER LOGIN NOTIFICATION\n" +
+    "---------------------------------------------------\n" +
+    "User ID: " + loginData.userId + "\n" +
+    "Full Name: " + loginData.fullName + "\n" +
+    "Business Email: " + loginData.email + "\n" +
+    "Login Date: " + loginData.loginDate + "\n" +
+    "Login Time: " + loginData.loginTime + " IST\n" +
+    "Status: " + loginData.loginStatus + "\n" +
+    "IP Address: " + loginData.ipAddress + "\n" +
+    "Audit Log: " + spreadsheetUrl;
+
+  var htmlBody = "<!DOCTYPE html><html><head><meta charset='UTF-8'></head>" +
+    "<body style='font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,sans-serif; background-color:#090d16; color:#f8fafc; margin:0; padding:25px 10px;'>" +
+    "<div style='max-width:550px; margin:0 auto; background:#0f172a; border:1px solid #1e293b; border-radius:14px; overflow:hidden;'>" +
+    
+    // Header
+    "<div style='background:linear-gradient(135deg,#064e3b,#0f172a); padding:20px 24px; border-bottom:1px solid #334155;'>" +
+    "<span style='background:#059669; color:#ffffff; font-size:10px; font-weight:800; letter-spacing:0.12em; padding:3px 8px; border-radius:4px; text-transform:uppercase;'>AUTHENTICATION AUDIT</span>" +
+    "<h2 style='margin:10px 0 2px 0; color:#ffffff; font-size:18px; font-weight:800;'>User Sign-In Verified</h2>" +
+    "<p style='margin:0; color:#6ee7b7; font-size:12px; font-weight:600;'>" + loginData.fullName + " (" + loginData.userId + ")</p>" +
+    "</div>" +
+
+    // Details Table
+    "<div style='padding:24px;'>" +
+    "<table style='width:100%; border-collapse:collapse; font-size:13px;'>" +
+    "<tr style='border-bottom:1px solid #1e293b;'><td style='color:#64748b; padding:8px 0; width:40%;'>User ID:</td><td style='color:#38bdf8; font-family:monospace; font-weight:700; padding:8px 0;'>" + loginData.userId + "</td></tr>" +
+    "<tr style='border-bottom:1px solid #1e293b;'><td style='color:#64748b; padding:8px 0;'>Full Name:</td><td style='color:#ffffff; font-weight:600; padding:8px 0;'>" + loginData.fullName + "</td></tr>" +
+    "<tr style='border-bottom:1px solid #1e293b;'><td style='color:#64748b; padding:8px 0;'>Business Email:</td><td style='color:#60a5fa; padding:8px 0;'>" + loginData.email + "</td></tr>" +
+    "<tr style='border-bottom:1px solid #1e293b;'><td style='color:#64748b; padding:8px 0;'>Timestamp:</td><td style='color:#ffffff; padding:8px 0;'>" + loginData.loginDate + " at " + loginData.loginTime + " IST</td></tr>" +
+    "<tr style='border-bottom:1px solid #1e293b;'><td style='color:#64748b; padding:8px 0;'>Login Status:</td><td style='color:#10b981; font-weight:700; padding:8px 0;'>" + loginData.loginStatus + "</td></tr>" +
+    "<tr><td style='color:#64748b; padding:8px 0;'>Client IP:</td><td style='color:#94a3b8; font-family:monospace; padding:8px 0;'>" + loginData.ipAddress + "</td></tr>" +
+    "</table>" +
+
+    "<div style='margin-top:20px; text-align:center;'>" +
+    "<a href='" + spreadsheetUrl + "' style='display:inline-block; background:#1e293b; color:#38bdf8; border:1px solid #334155; font-size:12px; font-weight:600; text-decoration:none; padding:10px 20px; border-radius:6px;'>View 'Login_Activity' Log &rarr;</a>" +
+    "</div>" +
+    "</div>" +
+
+    "</div></body></html>";
+
+  sendEmailDirect({
+    to: uniqueRecipients.join(","),
+    subject: subject,
+    body: plainBody,
+    htmlBody: htmlBody,
+    name: EMAIL_CONFIG.name,
+    replyTo: EMAIL_CONFIG.replyTo
+  });
 }

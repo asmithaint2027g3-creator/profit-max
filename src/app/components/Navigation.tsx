@@ -8,8 +8,9 @@ import {
     Network, Clock, BookOpen, HelpCircle, Landmark, HeartPulse, GraduationCap,
     Lightbulb, Shield, BarChart3, CheckCircle2, Phone, Radio, Factory, Server, Box, Scale,
     Flame, Store, Building, Cloud, HeartHandshake, Radar, LineChart, RefreshCw,
-    Percent, GitMerge, Award, Workflow, Gauge
+    Percent, GitMerge, Award, Workflow, Gauge, Calculator, LogIn, LogOut, User
 } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 import {
     offeringsArchitecture,
@@ -267,6 +268,9 @@ const menuPresentationConfigs: Record<string, MenuPresentationConfig> = {
 
 export default function Navigation() {
     const location = useLocation();
+    const { user, isAuthenticated, logout } = useAuth();
+    const [userMenuOpen, setUserMenuOpen] = useState(false);
+    const userMenuRef = useRef<HTMLDivElement>(null);
     const [activeMenuId, setActiveMenuId] = useState<string | null>(null);
     const [activeCategoryId, setActiveCategoryId] = useState<string>('');
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -276,6 +280,17 @@ export default function Navigation() {
     const [searchQuery, setSearchQuery] = useState('');
     const navRef = useRef<HTMLDivElement>(null);
     const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+    // Close user dropdown menu when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            if (userMenuRef.current && !userMenuRef.current.contains(e.target as Node)) {
+                setUserMenuOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
     // ── 7 MAIN MENUS DATA (EXACT SEVEN TOP-LEVEL MENU ITEMS AS SPECIFIED) ──
     const mainMenus: MainMenuItem[] = useMemo(() => [
@@ -3063,6 +3078,27 @@ export default function Navigation() {
                             </div>
                         );
                     })}
+
+                    {/* Protected Sales Calculators Menu (Visible when Authenticated) */}
+                    {isAuthenticated && (
+                        <div className="relative h-full flex items-center shrink-0">
+                            <Link
+                                to="/sales-calculators"
+                                onClick={() => setActiveMenuId(null)}
+                                className={`flex items-center gap-1.5 px-2.5 xl:px-3 py-1.5 xl:py-2 rounded-xl text-xs xl:text-[13px] 2xl:text-sm font-semibold tracking-tight transition-all duration-150 whitespace-nowrap shrink-0 ${
+                                    location.pathname.startsWith('/sales-calculators')
+                                        ? 'bg-blue-600 text-white shadow-sm font-bold'
+                                        : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/60'
+                                }`}
+                            >
+                                <Calculator className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+                                <span>Sales Calculators</span>
+                                <span className="ml-1 px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-700 border border-amber-300/60">
+                                    PRO
+                                </span>
+                            </Link>
+                        </div>
+                    )}
                 </nav>
 
                 {/* Right: Actions */}
@@ -3089,6 +3125,71 @@ export default function Navigation() {
                         <span className="whitespace-nowrap">Book Consultation</span>
                         <ArrowUpRight className="w-4 h-4 shrink-0" />
                     </Link>
+
+                    {/* Sign In / User Profile */}
+                    {!isAuthenticated ? (
+                        <Link
+                            to="/sign-in"
+                            className="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 active:bg-black text-white font-semibold text-xs xl:text-sm px-3 xl:px-3.5 py-2.5 rounded-xl transition-all shadow-sm hover:shadow hover:-translate-y-px whitespace-nowrap shrink-0 min-h-[40px]"
+                        >
+                            <LogIn className="w-4 h-4 shrink-0 text-blue-400" />
+                            <span>Sign In</span>
+                        </Link>
+                    ) : (
+                        <div className="relative shrink-0" ref={userMenuRef}>
+                            <button
+                                type="button"
+                                onClick={() => setUserMenuOpen(!userMenuOpen)}
+                                className="flex items-center gap-2 h-10 px-2.5 sm:px-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200/90 text-slate-700 text-xs font-semibold transition-all shadow-2xs cursor-pointer"
+                                aria-label="User account menu"
+                            >
+                                <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 text-white flex items-center justify-center text-[11px] font-bold shadow-xs">
+                                    {(user?.fullName || user?.userId || 'U').slice(0, 1).toUpperCase()}
+                                </div>
+                                <span className="hidden sm:inline max-w-[110px] truncate text-slate-800 font-bold">
+                                    {user?.userId || user?.fullName}
+                                </span>
+                                <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${userMenuOpen ? 'rotate-180 text-blue-600' : ''}`} />
+                            </button>
+
+                            {/* Dropdown Menu */}
+                            {userMenuOpen && (
+                                <div className="absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-slate-200/90 py-2 z-50 animate-in fade-in slide-in-from-top-1">
+                                    <div className="px-3.5 py-2.5 border-b border-slate-100">
+                                        <div className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">Signed in as</div>
+                                        <div className="font-bold text-sm text-slate-900 truncate">{user?.fullName}</div>
+                                        <div className="text-xs text-slate-500 truncate">@{user?.userId} {user?.companyName ? `• ${user?.companyName}` : ''}</div>
+                                    </div>
+
+                                    <div className="py-1">
+                                        <Link
+                                            to="/sales-calculators"
+                                            onClick={() => setUserMenuOpen(false)}
+                                            className="flex items-center gap-2.5 px-3.5 py-2 text-xs font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+                                        >
+                                            <Calculator className="w-4 h-4 text-blue-600" />
+                                            <span>Sales Calculators Suite</span>
+                                            <span className="ml-auto text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-blue-100 text-blue-700">PRO</span>
+                                        </Link>
+                                    </div>
+
+                                    <div className="pt-1 border-t border-slate-100">
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                setUserMenuOpen(false);
+                                                logout();
+                                            }}
+                                            className="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer text-left"
+                                        >
+                                            <LogOut className="w-4 h-4 text-rose-500" />
+                                            <span>Sign Out</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    )}
 
                     {/* Mobile Hamburger Button (< xl) */}
                     <button
@@ -3416,6 +3517,50 @@ export default function Navigation() {
 
                         {/* Top Drawer Quick Action Bar */}
                         <div className="p-3 sm:p-4 border-b border-slate-100 bg-slate-50/60 shrink-0 space-y-2">
+                            {/* Sign In / User Status Card for Mobile */}
+                            {!isAuthenticated ? (
+                                <Link
+                                    to="/sign-in"
+                                    onClick={() => setMobileOpen(false)}
+                                    className="w-full min-h-[44px] flex items-center justify-center gap-2 bg-slate-900 hover:bg-black text-white font-bold text-xs sm:text-sm py-2.5 px-4 rounded-xl shadow-sm transition-all"
+                                >
+                                    <LogIn className="w-4 h-4 text-blue-400" />
+                                    <span>Sign In to Account</span>
+                                </Link>
+                            ) : (
+                                <div className="p-2.5 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-2">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-2 min-w-0">
+                                            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 text-white flex items-center justify-center text-xs font-bold shrink-0">
+                                                {(user?.fullName || user?.userId || 'U').slice(0, 1).toUpperCase()}
+                                            </div>
+                                            <div className="min-w-0">
+                                                <div className="text-xs font-bold text-slate-900 truncate">{user?.fullName}</div>
+                                                <div className="text-[10px] text-slate-500 truncate">@{user?.userId} {user?.companyName ? `• ${user?.companyName}` : ''}</div>
+                                            </div>
+                                        </div>
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                logout();
+                                                setMobileOpen(false);
+                                            }}
+                                            className="px-2 py-1 text-[11px] font-bold text-rose-600 hover:bg-rose-50 rounded-lg transition-colors cursor-pointer"
+                                        >
+                                            Sign Out
+                                        </button>
+                                    </div>
+                                    <Link
+                                        to="/sales-calculators"
+                                        onClick={() => setMobileOpen(false)}
+                                        className="w-full min-h-[38px] flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs py-2 px-3 rounded-lg shadow-2xs transition-colors"
+                                    >
+                                        <Calculator className="w-3.5 h-3.5" />
+                                        <span>Open Sales Calculators</span>
+                                    </Link>
+                                </div>
+                            )}
+
                             {/* Search Trigger */}
                             <button
                                 type="button"
@@ -3443,6 +3588,30 @@ export default function Navigation() {
 
                         {/* Drawer Accordion List */}
                         <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-2.5 overscroll-contain">
+                            {/* Authenticated Sales Calculators Mobile Link */}
+                            {isAuthenticated && (
+                                <Link
+                                    to="/sales-calculators"
+                                    onClick={() => setMobileOpen(false)}
+                                    className={`rounded-xl border min-h-[44px] px-3.5 py-2.5 flex items-center justify-between gap-2.5 cursor-pointer select-none transition-all duration-150 ${
+                                        location.pathname.startsWith('/sales-calculators')
+                                            ? 'border-blue-500 bg-blue-50 text-blue-700 font-bold'
+                                            : 'border-blue-200 bg-blue-50/40 text-blue-900 hover:bg-blue-50'
+                                    }`}
+                                >
+                                    <div className="flex items-center gap-2.5 min-w-0">
+                                        <Calculator className="w-4 h-4 text-blue-600 shrink-0" />
+                                        <span className="text-xs sm:text-sm font-bold truncate block font-heading">
+                                            Sales Calculators
+                                        </span>
+                                        <span className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-700 border border-amber-300/60">
+                                            PRO
+                                        </span>
+                                    </div>
+                                    <ArrowRight className="w-4 h-4 text-blue-500 shrink-0" />
+                                </Link>
+                            )}
+
                             {mainMenus.map((menu) => {
                                 const hasSubNav = menu.categories && menu.categories.length > 0;
                                 const isExpanded = mobileExpandedMenu === menu.id;

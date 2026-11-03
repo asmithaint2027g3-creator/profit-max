@@ -3,9 +3,15 @@ import React, { Suspense, lazy } from 'react';
 import Navigation from './components/Navigation';
 import ChatBot from './components/ChatBot';
 import Footer from './components/Footer';
+import { AuthProvider } from './context/AuthContext';
+import { ProtectedRoute } from './components/auth/ProtectedRoute';
 
 import Home from './pages/Home';
 import ScrollToTopAndHash from './components/ScrollToTopAndHash';
+
+const SignIn = lazy(() => import('./pages/SignIn'));
+const Register = lazy(() => import('./pages/Register'));
+const SalesCalculators = lazy(() => import('./pages/SalesCalculators'));
 
 const BookConsultation = lazy(() => import('./pages/BookConsultation'));
 const Crypto = lazy(() => import('./pages/Crypto'));
@@ -189,16 +195,29 @@ function NavigateToSolutionsSection() {
 
 export default function App() {
   return (
-    <Router>
-      <ScrollToTopAndHash />
-      <AnalyticsTracker />
-      <div className="min-h-screen bg-white pb-20 lg:pb-0">
-        <Navigation />
-        <main>
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/book-consultation" element={<BookConsultation />} />
+    <AuthProvider>
+      <Router>
+        <ScrollToTopAndHash />
+        <AnalyticsTracker />
+        <div className="min-h-screen bg-white pb-20 lg:pb-0">
+          <Navigation />
+          <main>
+            <Suspense fallback={<PageLoader />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/sign-in" element={<SignIn />} />
+                <Route path="/login" element={<Navigate to="/sign-in" replace />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/signup" element={<Navigate to="/register" replace />} />
+                <Route
+                  path="/sales-calculators"
+                  element={
+                    <ProtectedRoute>
+                      <SalesCalculators />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route path="/book-consultation" element={<BookConsultation />} />
               <Route path="/crypto" element={<Crypto />} />
               <Route path="/ico-acceleration" element={<IcoLanding />} />
               <Route path="/ico-acceleration/intelligence" element={<IcoIntelligence />} />
@@ -380,5 +399,6 @@ export default function App() {
         <Footer />
       </div>
     </Router>
-  );
+  </AuthProvider>
+);
 }

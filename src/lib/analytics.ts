@@ -191,7 +191,7 @@ export function trackPageView(pathname?: string, title?: string) {
 
     // Sync to Google Apps Script backend
     const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || 
-        "https://script.google.com/macros/s/AKfycbzWtOiEWIBxZnB6s0LAZbwqUnEcBxYcMlp2dFmQMwMBvwGJxKttxV59jT35Esdvph6QJw/exec";
+        "https://script.google.com/macros/s/AKfycbz46112XdbuaowQcouaSzy83NtRtbZPbuULU2mlGM1De7tupz3ESzVxqTYU7WVXIU8P/exec";
 
     if (GOOGLE_SCRIPT_URL) {
         fetch(GOOGLE_SCRIPT_URL, {
@@ -247,7 +247,7 @@ export function trackEvent(event: TrackingEvent) {
 
     // Sync event to Google Apps Script
     const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || 
-        "https://script.google.com/macros/s/AKfycbzWtOiEWIBxZnB6s0LAZbwqUnEcBxYcMlp2dFmQMwMBvwGJxKttxV59jT35Esdvph6QJw/exec";
+        "https://script.google.com/macros/s/AKfycbz46112XdbuaowQcouaSzy83NtRtbZPbuULU2mlGM1De7tupz3ESzVxqTYU7WVXIU8P/exec";
 
     if (GOOGLE_SCRIPT_URL) {
         fetch(GOOGLE_SCRIPT_URL, {
@@ -267,7 +267,7 @@ export function trackEvent(event: TrackingEvent) {
  */
 function syncVisitorToBackend(profile: VisitorProfile) {
     const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || 
-        "https://script.google.com/macros/s/AKfycbzWtOiEWIBxZnB6s0LAZbwqUnEcBxYcMlp2dFmQMwMBvwGJxKttxV59jT35Esdvph6QJw/exec";
+        "https://script.google.com/macros/s/AKfycbz46112XdbuaowQcouaSzy83NtRtbZPbuULU2mlGM1De7tupz3ESzVxqTYU7WVXIU8P/exec";
 
     if (GOOGLE_SCRIPT_URL && typeof window !== 'undefined') {
         fetch(GOOGLE_SCRIPT_URL, {

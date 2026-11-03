@@ -320,6 +320,28 @@ function findSheetFlexible(spreadsheet, requestedName) {
 // 3. MAIN WEBHOOK ENDPOINT (doPost)
 // =========================================================================================
 
+/**
+ * GET Endpoint: Health check & Webhook verification
+ */
+function doGet(e) {
+  var response = {
+    status: "ok",
+    service: "ProfitMachines Enterprise Webhook & Automation Engine",
+    version: "V7.2-ULTRA-PRO",
+    timestamp: new Date().toISOString(),
+    spreadsheetId: CONFIG.MAIN_SPREADSHEET_ID,
+    recipientEmails: EMAIL_CONFIG.salesEmails,
+    replyTo: EMAIL_CONFIG.replyTo,
+    website: EMAIL_CONFIG.website
+  };
+  return ContentService.createTextOutput(JSON.stringify(response))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+// =========================================================================================
+// 3. MAIN WEBHOOK ENDPOINT (doPost)
+// =========================================================================================
+
 function doPost(e) {
   // Manual mode testing fallback
   if (!e || !e.postData || !e.postData.contents) {
@@ -327,12 +349,12 @@ function doPost(e) {
     e = {
       postData: {
         contents: JSON.stringify({
-          sheetName: "Traffic_Analytics",
-          sessionId: "MOCK_TG_" + Date.now(),
-          visitorId: "MOCK_VISITOR_" + Date.now(),
-          pagePath: "/manual-test",
-          ipAddress: "1.1.1.1",
-          location: "Bengaluru, India",
+          form_name: "Inbound Leads",
+          name: "Test Leader",
+          email: "asmitha.int2027g3@gmail.com",
+          company: "Enterprise AI Inc",
+          phone: "+91 9513288612",
+          message: "Manual test verification of lead engine and auto-responder.",
           timestamp: new Date().toISOString()
         })
       }
@@ -344,43 +366,99 @@ function doPost(e) {
     try {
       data = JSON.parse(e.postData.contents);
     } catch (parseErr) {
-      return ContentService.createTextOutput("Error: Invalid JSON payload.").setMimeType(ContentService.MimeType.TEXT);
+      return ContentService.createTextOutput(JSON.stringify({ status: "error", message: "Invalid JSON payload" }))
+        .setMimeType(ContentService.MimeType.JSON);
     }
-    
-    // lib/analytics.ts telemetry beacons (page views, clicks, CTA, visibility) only set
-    // event_type: 'telemetry_95' — without this fallback every beacon was silently rejected
-    // here and NEVER reached Live_Traffic_Events, starving Sessions/Visitors of real data.
-    var rawSheetName = data.sheetName || data.formType || data.table || data.type || data.event_type || "";
+
+    // 1. Unpack fields object if present (as sent by submitToSheet and api/submit)
     if (data.fields && typeof data.fields === "object") {
-      Object.keys(data.fields).forEach(function(k) { if (data[k] === undefined) data[k] = data.fields[k]; });
-    }
-    if (!rawSheetName) {
-      return ContentService.createTextOutput("Error: Missing sheetName or formType parameter").setMimeType(ContentService.MimeType.TEXT);
+      Object.keys(data.fields).forEach(function(k) {
+        if (data[k] === undefined) data[k] = data.fields[k];
+      });
     }
 
-    var norm = rawSheetName.toLowerCase().replace(/[\s\-_]/g, '');
-    var canonicalName = SHEET_NAME_ALIASES[norm] || rawSheetName;
+    // 2. Extract user contact info
+    var userEmail = (
+      data.email || 
+      data.Email || 
+      data.workEmail || 
+      data.work_email || 
+      data["Work Email"] || 
+      data["Corporate Email"] ||
+      (data.fields && (data.fields.email || data.fields.Email || data.fields.workEmail || data.fields.work_email)) ||
+      ""
+    ).toString().trim();
 
-    // Candidate profile-video link submission updates an existing Career_Applications row
-    // instead of writing to a sheet of its own — handled and returned before the generic flow.
-    if (canonicalName === "Career_Video_Submission") {
+    var userName = (
+      data.name || 
+      data.Name || 
+      data.fullName || 
+      data["Full Name"] || 
+      (data.firstName ? (data.firstName + (data.lastName ? " " + data.lastName : "")) : "") ||
+      (data.fields && (data.fields.name || data.fields.Name || data.fields.fullName)) ||
+      "Enterprise Leader"
+    ).toString().trim();
+
+    // 3. Determine the targeted form or event type
+    var rawFormName = (
+      data.form_name || 
+      data.formName || 
+      data["Form Name"] || 
+      data.tableOrFormName || 
+      (data.fields && (data.fields.form_name || data.fields.formName || data.fields.tableOrFormName)) || 
+      data.sheetName || 
+      data.formType || 
+      ""
+    ).toString().trim();
+
+    var typeOrTable = (data.table || data.type || data.event_type || "").toString().trim();
+
+    var targetIdentifier = rawFormName || (typeOrTable !== "FORM_SUBMISSIONS" && typeOrTable !== "form" ? typeOrTable : "") || "Form_Submissions";
+    var norm = targetIdentifier.toLowerCase().replace(/[\s\-_]/g, '');
+    var canonicalName = SHEET_NAME_ALIASES[norm];
+
+    if (!canonicalName) {
+      if (norm.indexOf("inbound") !== -1 || norm.indexOf("lead") !== -1 || norm.indexOf("quick") !== -1 || norm.indexOf("contact") !== -1) {
+        canonicalName = "Form_Inbound_Leads";
+      } else if (norm.indexOf("consult") !== -1 || norm.indexOf("demo") !== -1 || norm.indexOf("booking") !== -1) {
+        canonicalName = "Form_Consultation_Bookings";
+      } else if (norm.indexOf("expert") !== -1 || norm.indexOf("talk") !== -1) {
+        canonicalName = "Form_Expert_Consulting";
+      } else if (norm.indexOf("diagnostic") !== -1 || norm.indexOf("discovery") !== -1 || norm.indexOf("assessment") !== -1 || norm.indexOf("leakage") !== -1) {
+        canonicalName = "Form_Diagnostic_Assessments";
+      } else if (norm.indexOf("partner") !== -1) {
+        canonicalName = "Form_Partner_Applications";
+      } else if (norm.indexOf("career") !== -1 || norm.indexOf("job") !== -1 || norm.indexOf("fellowship") !== -1 || norm.indexOf("resume") !== -1) {
+        canonicalName = "Form_Career_Applications";
+      } else if (norm.indexOf("chat") !== -1) {
+        canonicalName = "Form_Chatbot_Conversations";
+      } else if (norm.indexOf("pageview") !== -1 || norm.indexOf("traffic") !== -1) {
+        canonicalName = "Page_Views";
+      } else if (norm.indexOf("session") !== -1 || norm.indexOf("visitor") !== -1) {
+        canonicalName = "Sessions";
+      } else if (norm.indexOf("click") !== -1 || norm.indexOf("cta") !== -1 || norm.indexOf("event") !== -1) {
+        canonicalName = "CTA_Clicks";
+      } else {
+        canonicalName = "Form_Submissions";
+      }
+    }
+
+    // Special handler: Career profile video submission
+    if (canonicalName === "Career_Video_Submission" || norm === "careervideosubmission") {
       var videoResult = handleCareerVideoSubmission(data);
       return ContentService.createTextOutput(videoResult.message).setMimeType(ContentService.MimeType.TEXT);
     }
 
-    var isAdLead = (canonicalName === "Google_Ad_Leads" || norm.indexOf("adcampaign") !== -1 || norm.indexOf("googlead") !== -1);
-    var isCareerApp = (canonicalName === "Career_Applications" || norm.indexOf("career") !== -1 || norm.indexOf("job") !== -1);
-
-        var LEAD_FORMS = [
+    var LEAD_FORMS = [
       "Form_Inbound_Leads", "Form_Consultation_Bookings", "Form_Expert_Consulting",
       "Form_Diagnostic_Assessments", "Form_Partner_Applications", "Form_Career_Applications",
       "Form_Chatbot_Conversations", "Form_Submissions"
     ];
 
-    var isLeadForm = (LEAD_FORMS.indexOf(canonicalName) !== -1) || isCareerApp || isAdLead;
+    var isLeadForm = (LEAD_FORMS.indexOf(canonicalName) !== -1) || (userEmail.indexOf("@") !== -1);
 
     // =====================================================================================
-    // STEP 1: DISPATCH EMAILS & RESUME ATTACHMENTS IMMEDIATELY (ZERO-DELAY EMAIL PRIORITY)
+    // STEP 1: DISPATCH EMAILS & RESUME ATTACHMENTS (IMMEDIATE AUTO-RESPONDER)
     // =====================================================================================
     var emailSent = false;
     var emailResult = { sent: false, delivered: 0, failed: 0, driveLink: "", driveFileId: "", message: "" };
@@ -388,13 +466,8 @@ function doPost(e) {
     if (isLeadForm) {
       try {
         var defaultSheetUrl = "https://docs.google.com/spreadsheets/d/" + CONFIG.MAIN_SPREADSHEET_ID;
-        emailResult = sendLeadEmails(data, canonicalName, defaultSheetUrl) || emailResult;
+        emailResult = sendLeadEmails(data, canonicalName, defaultSheetUrl, userEmail, userName) || emailResult;
         emailSent = !!emailResult.sent;
-        if (emailSent) {
-          console.log("⚡ [Email Priority] Email successfully dispatched for: " + canonicalName + " (" + emailResult.delivered + " delivered)");
-        } else {
-          console.warn("⚠️ [Email Priority] Email not delivered for: " + canonicalName + " — " + (emailResult.message || "unknown reason") + ".");
-        }
       } catch (emailErr) {
         console.error("❌ Failed to dispatch email in Step 1:", emailErr.toString());
       }
@@ -404,119 +477,287 @@ function doPost(e) {
     // STEP 2: LOG DATA TO GOOGLE SHEETS
     // =====================================================================================
     var rowSaved = false;
-
     try {
       var ss = SpreadsheetApp.openById(CONFIG.MAIN_SPREADSHEET_ID);
-      var targetSheet = findSheetFlexible(ss, canonicalName) || findSheetFlexible(ss, rawSheetName);
 
-      // Auto-create tab if not present
-      if (!targetSheet) {
-        var createName = canonicalName.replace(/_/g, ' ');
-        targetSheet = ss.insertSheet(createName);
-        var defaultHeaders = TAB_CONFIGS[canonicalName] || TAB_CONFIGS[rawSheetName] || Object.keys(data).filter(function(k) { return k !== 'sheetName'; });
-        targetSheet.getRange(1, 1, 1, defaultHeaders.length)
-                   .setValues([defaultHeaders])
-                   .setFontWeight("bold")
-                   .setBackground("#0f172a")
-                   .setFontColor("#ffffff");
-        targetSheet.setFrozenRows(1);
-      } else if (targetSheet.getLastRow() === 0) {
-        var defaultHeaders = TAB_CONFIGS[canonicalName] || TAB_CONFIGS[rawSheetName] || Object.keys(data).filter(function(k) { return k !== 'sheetName'; });
-        targetSheet.getRange(1, 1, 1, defaultHeaders.length)
-                   .setValues([defaultHeaders])
-                   .setFontWeight("bold")
-                   .setBackground("#0f172a")
-                   .setFontColor("#ffffff");
-        targetSheet.setFrozenRows(1);
-      }
+      if (isLeadForm) {
+        // A) Write to the Dedicated Form Tab
+        rowSaved = appendRowToSheet(ss, canonicalName, data, emailResult);
 
-      var lastCol = Math.max(targetSheet.getLastColumn(), 1);
-      var headers = targetSheet.getRange(1, 1, 1, lastCol).getValues()[0];
-
-      var hasResumeBlob = !!(data.resumeBlob || data.resume || data.resumeBase64 || data.fileBlob || data.attachmentBlob);
-      var newRow = headers.map(function(header) {
-        if (header === "Resume Blob" || header === "resumeBlob") {
-          return data.resumeDriveLink ? "Archived in Drive" : (hasResumeBlob ? (emailSent ? "Attached to Email" : "Decode/Archive Failed") : "None");
+        // B) Also log to Master Form Submissions if not already Form_Submissions
+        if (canonicalName !== "Form_Submissions") {
+          appendRowToSheet(ss, "Form_Submissions", data, emailResult, canonicalName.replace(/_/g, ' '));
         }
-        if (header === "Resume Drive Link" || header === "resumeDriveLink" || header === "Resume Link") {
-          return data.resumeDriveLink || emailResult.driveLink || (hasResumeBlob && emailSent ? "Attached to Email" : (hasResumeBlob ? "Unavailable" : "None"));
-        }
-        if (header === "Drive File ID" || header === "driveFileId") {
-          return data.driveFileId || emailResult.driveFileId || "";
-        }
-        return resolveField(header, data);
-      });
 
-      // Also log to Master Form Submissions if it's a lead form
-      if (isLeadForm && canonicalName !== "Form_Submissions") {
-        try {
-          var masterSheet = findSheetFlexible(ss, "Form_Submissions") || findSheetFlexible(ss, "Form Submissions");
-          if (masterSheet && masterSheet.getLastRow() > 0) {
-            var mHeaders = masterSheet.getRange(1, 1, 1, Math.max(masterSheet.getLastColumn(), 1)).getValues()[0];
-            var mRow = mHeaders.map(function(h) {
-              if (h === "Form Name") return canonicalName.replace(/_/g, ' ');
-              if (h === "Resume Drive Link") return data.resumeDriveLink || emailResult.driveLink || "";
-              if (h === "Drive File ID") return data.driveFileId || emailResult.driveFileId || "";
-              return resolveField(h, data);
-            });
-            masterSheet.appendRow(mRow);
-          }
-        } catch (mErr) {
-          console.warn("Could not log to master Form Submissions tab:", mErr.toString());
-        }
-      }
+        // C) Also record a high-value lead conversion event in Live_Traffic_Events
+        appendMasterTelemetryRow(ss, data);
+      } else {
+        // Telemetry beacon (Page View, Visitor, Session, CTA Click)
+        // A) Always write to Live_Traffic_Events (SCHEMA_95) so Sheet 2 builds all dashboards
+        rowSaved = appendMasterTelemetryRow(ss, data);
 
-      // Upsert / Dedup logic for Telemetry
-      var shouldUpsert = (canonicalName === "User_Behavior_Library" || canonicalName === "Engagement_Metrics");
-      var shouldDedup  = (canonicalName === "Traffic_Analytics" || canonicalName === "Page_Views");
-      var lastRow = targetSheet.getLastRow();
-
-      if ((shouldUpsert || shouldDedup) && lastRow > 1) {
-        var sessionCol = targetSheet.getRange(2, 1, lastRow - 1, 1).getValues().flat();
-        if (shouldUpsert) {
-          var rowIndex = sessionCol.indexOf(data.sessionId);
-          if (rowIndex !== -1) {
-            targetSheet.getRange(rowIndex + 2, 1, 1, newRow.length).setValues([newRow]);
-            rowSaved = true;
-          }
+        // B) Also write to the specific telemetry tab (Page_Views, Sessions, CTA_Clicks)
+        if (canonicalName !== "Live_Traffic_Events") {
+          appendRowToSheet(ss, canonicalName, data, emailResult);
         }
-        if (!rowSaved && shouldDedup) {
-          var pagePathColIndex = headers.indexOf("Page Path");
-          if (pagePathColIndex !== -1 && data.sessionId && data.pagePath) {
-            var pageCol = targetSheet.getRange(2, pagePathColIndex + 1, lastRow - 1, 1).getValues().flat();
-            for (var i = 0; i < sessionCol.length; i++) {
-              if (sessionCol[i] === data.sessionId && pageCol[i] === data.pagePath) {
-                targetSheet.getRange(i + 2, 1, 1, newRow.length).setValues([newRow]);
-                rowSaved = true;
-                break;
-              }
-            }
-          }
-        }
-      }
-
-      if (!rowSaved) {
-        targetSheet.appendRow(newRow);
-        rowSaved = true;
       }
     } catch (sheetErr) {
-      console.warn("⚠️ Google Sheets service error: " + sheetErr.toString());
+      console.warn("⚠️ Google Sheets logging error: " + sheetErr.toString());
     }
 
     var statusMsg = emailSent
       ? "Email Sent & Processed"
       : (rowSaved ? (emailResult.message ? "Saved (" + emailResult.message + ")" : "Saved") : "OK");
-    return ContentService.createTextOutput(statusMsg).setMimeType(ContentService.MimeType.TEXT);
-    
+
+    return ContentService.createTextOutput(JSON.stringify({
+      status: "success",
+      message: statusMsg,
+      canonicalTab: canonicalName,
+      userConfirmationSent: emailResult.delivered > 0,
+      timestamp: new Date().toISOString()
+    })).setMimeType(ContentService.MimeType.JSON);
+
   } catch (err) {
     console.error("doPost critical error:", err.toString());
-    return ContentService.createTextOutput("Error: " + err.toString()).setMimeType(ContentService.MimeType.TEXT);
+    return ContentService.createTextOutput(JSON.stringify({
+      status: "error",
+      message: err.toString()
+    })).setMimeType(ContentService.MimeType.JSON);
   }
 }
 
-// =========================================================================================
-// 4. RESUME ATTACHMENT DECODER + DRIVE ARCHIVE
-// =========================================================================================
+/**
+ * Appends a row to any specified tab in Sheet 1, creating and styling headers if missing.
+ */
+function appendRowToSheet(ss, tabKey, data, emailResult, formNameOverride) {
+  try {
+    var sheet = findSheetFlexible(ss, tabKey);
+    var defaultHeaders = TAB_CONFIGS[tabKey];
+
+    if (!sheet) {
+      sheet = ss.insertSheet(tabKey);
+      if (defaultHeaders && defaultHeaders.length > 0) {
+        sheet.getRange(1, 1, 1, defaultHeaders.length)
+             .setValues([defaultHeaders])
+             .setFontWeight("bold")
+             .setBackground("#0f172a")
+             .setFontColor("#ffffff");
+        sheet.setFrozenRows(1);
+      }
+    } else if (sheet.getLastRow() === 0 && defaultHeaders && defaultHeaders.length > 0) {
+      sheet.getRange(1, 1, 1, defaultHeaders.length)
+           .setValues([defaultHeaders])
+           .setFontWeight("bold")
+           .setBackground("#0f172a")
+           .setFontColor("#ffffff");
+      sheet.setFrozenRows(1);
+    }
+
+    var lastCol = Math.max(sheet.getLastColumn(), 1);
+    var headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
+
+    var hasResumeBlob = !!(data.resumeBlob || data.resume || data.resumeBase64 || data.fileBlob || data.attachmentBlob);
+    var newRow = headers.map(function(header) {
+      if (header === "Form Name" && formNameOverride) {
+        return formNameOverride;
+      }
+      if (header === "Resume Blob" || header === "resumeBlob") {
+        return data.resumeDriveLink ? "Archived in Drive" : (hasResumeBlob ? "Attached to Email" : "None");
+      }
+      if (header === "Resume Drive Link" || header === "resumeDriveLink" || header === "Resume Link") {
+        return data.resumeDriveLink || (emailResult ? emailResult.driveLink : "") || (hasResumeBlob ? "Attached to Email" : "None");
+      }
+      if (header === "Drive File ID" || header === "driveFileId") {
+        return data.driveFileId || (emailResult ? emailResult.driveFileId : "") || "";
+      }
+      return resolveField(header, data);
+    });
+
+    // Dedup / Update for Sessions and Page_Views if necessary
+    var shouldDedup = (tabKey === "Page_Views" || tabKey === "Sessions");
+    var lastRow = sheet.getLastRow();
+    var updated = false;
+
+    if (shouldDedup && lastRow > 1 && data.sessionId) {
+      var sessionCol = sheet.getRange(2, 1, lastRow - 1, 1).getValues().flat();
+      var sIdx = sessionCol.lastIndexOf(data.sessionId);
+      if (tabKey === "Sessions" && sIdx !== -1) {
+        sheet.getRange(sIdx + 2, 1, 1, newRow.length).setValues([newRow]);
+        updated = true;
+      }
+    }
+
+    if (!updated) {
+      sheet.appendRow(newRow);
+    }
+    return true;
+  } catch (err) {
+    console.warn("Could not append row to " + tabKey + ": " + err.toString());
+    return false;
+  }
+}
+
+/**
+ * Appends a master 95-column telemetry row to Live_Traffic_Events
+ */
+function appendMasterTelemetryRow(ss, data) {
+  try {
+    var masterSheet = findSheetFlexible(ss, "Live_Traffic_Events");
+    if (!masterSheet) {
+      masterSheet = ss.insertSheet("Live_Traffic_Events", 0);
+      masterSheet.getRange(1, 1, 1, SCHEMA_95_HEADERS.length)
+                 .setValues([SCHEMA_95_HEADERS])
+                 .setFontWeight("bold")
+                 .setBackground("#060e22")
+                 .setFontColor("#38bdf8")
+                 .setHorizontalAlignment("center");
+      masterSheet.setFrozenRows(1);
+    } else if (masterSheet.getLastRow() === 0) {
+      masterSheet.getRange(1, 1, 1, SCHEMA_95_HEADERS.length)
+                 .setValues([SCHEMA_95_HEADERS])
+                 .setFontWeight("bold")
+                 .setBackground("#060e22")
+                 .setFontColor("#38bdf8")
+                 .setHorizontalAlignment("center");
+      masterSheet.setFrozenRows(1);
+    }
+
+    var schema95Row = buildSchema95Row(data);
+    masterSheet.appendRow(schema95Row);
+    return true;
+  } catch (tErr) {
+    console.warn("Could not append to Live_Traffic_Events: " + tErr.toString());
+    return false;
+  }
+}
+
+/**
+ * Maps raw incoming event or lead data into the comprehensive 95-column schema
+ */
+function buildSchema95Row(data) {
+  var timestamp = normalizeTimestamp(data.timestamp || data.Timestamp || new Date().toISOString());
+  var visitorId = data.visitor_id || data.visitorId || data.user_id || data.userId || "";
+  var sessionId = data.session_id || data.sessionId || "";
+  var pageUrl = data.page_url || data.pageUrl || data.page || data.pagePath || "";
+  var pageTitle = data.page_title || data.pageTitle || "";
+  var referrer = data.referrer || data.referrer_url || "";
+  var trafficSource = computeAttributionSource(data);
+  var utmSource = data.utm_source || data.utmSource || "";
+  var utmMedium = data.utm_medium || data.utmMedium || "";
+  var utmCampaign = data.utm_campaign || data.utmCampaign || "";
+  var utmTerm = data.utm_term || data.utmTerm || "";
+  var utmContent = data.utm_content || data.utmContent || "";
+  var deviceType = data.device || data.device_type || "Desktop";
+  var browser = data.browser || "";
+  var os = data.os || data.operating_system || "";
+  var ipAddress = data.ip_address || data.ipAddress || "127.0.0.1";
+  var eventName = data.event_name || data.eventName || data.ctaName || "";
+  var eventCategory = data.event_category || data.category || (data.type === "pageview" ? "PAGE_VIEW" : "INTERACTION");
+
+  var explicitSchema95Map = {
+    "ip_address": ipAddress,
+    "geo_country": data.geo_country || data.country || "India",
+    "geo_state": data.geo_state || data.state || "",
+    "geo_city": data.geo_city || data.city || data.ipLocation || "",
+    "geo_latitude": data.geo_latitude || "",
+    "geo_longitude": data.geo_longitude || "",
+    "user_id": visitorId,
+    "user_name": data.name || data.Name || data.userName || "",
+    "user_email": data.email || data.Email || data.userEmail || "",
+    "user_type": data.user_type || "prospect",
+    "returning_user": data.returning_user || false,
+    "first_visit_timestamp": data.first_visit_timestamp || timestamp,
+    "last_visit_timestamp": timestamp,
+    "total_sessions": data.total_sessions || 1,
+    "total_time_spent": data.total_time_spent || data.dwellTime || 0,
+    "avg_session_duration": data.avg_session_duration || 0,
+    "session_id": sessionId,
+    "session_number": data.session_number || 1,
+    "session_start_time": data.session_start_time || timestamp,
+    "session_end_time": data.session_end_time || timestamp,
+    "total_session_duration": data.total_session_duration || 0,
+    "total_pages_visited": data.total_pages_visited || 1,
+    "bounce": data.bounce || false,
+    "traffic_source": trafficSource,
+    "referrer_url": referrer,
+    "campaign_name": utmCampaign,
+    "utm_source": utmSource,
+    "utm_medium": utmMedium,
+    "utm_campaign": utmCampaign,
+    "utm_term": utmTerm,
+    "utm_content": utmContent,
+    "page": pageUrl,
+    "page_url": pageUrl,
+    "previous_page": data.previous_page || "",
+    "next_page": data.next_page || "",
+    "entry_page": data.entry_page || pageUrl,
+    "exit_page": data.exit_page || pageUrl,
+    "page_title": pageTitle,
+    "time_on_page": data.time_on_page || data.dwellTime || 0,
+    "scroll_percentage": data.scroll_percentage || data.maxScrollDepth || 0,
+    "max_scroll_depth": data.max_scroll_depth || data.maxScrollDepth || 0,
+    "interaction_count": data.interaction_count || data.interactions || 0,
+    "inactivity_time": data.inactivity_time || 0,
+    "event_id": data.event_id || data.eventId || ("EVT_" + Date.now()),
+    "event_name": eventName,
+    "event_category": eventCategory,
+    "event_action": data.event_action || "view",
+    "event_label": data.event_label || data.element_text || "",
+    "section": data.section || "General",
+    "element_type": data.element_type || "button",
+    "element_id": data.element_id || "",
+    "element_class": data.element_class || "",
+    "element_text": data.element_text || data.elementText || "",
+    "click_position_x": data.click_position_x || 0,
+    "click_position_y": data.click_position_y || 0,
+    "form_id": data.form_id || data.form_name || data.formName || "",
+    "form_field_name": data.form_field_name || "",
+    "form_completion_status": data.form_completion_status || (data.email ? "completed" : "in_progress"),
+    "form_abandonment": data.form_abandonment || false,
+    "goal_name": data.goal_name || (data.email ? "lead_submission" : "page_view"),
+    "goal_completed": data.goal_completed || (data.email ? true : false),
+    "conversion_id": data.conversion_id || data.submission_id || "",
+    "conversion_value": data.conversion_value || 0,
+    "funnel_step": data.funnel_step || 1,
+    "device_type": deviceType,
+    "device_brand": data.device_brand || "",
+    "device_model": data.device_model || "",
+    "operating_system": os,
+    "browser": browser,
+    "browser_version": data.browser_version || "",
+    "screen_width": data.screen_width || 1920,
+    "screen_height": data.screen_height || 1080,
+    "viewport_width": data.viewport_width || 1920,
+    "viewport_height": data.viewport_height || 1080,
+    "language": data.language || "en",
+    "timezone": data.timezone || "Asia/Kolkata",
+    "network_type": data.network_type || "4g",
+    "connection_speed": data.connection_speed || "fast",
+    "page_load_time": data.page_load_time || 0,
+    "dom_load_time": data.dom_load_time || 0,
+    "first_contentful_paint": data.first_contentful_paint || 0,
+    "largest_contentful_paint": data.largest_contentful_paint || 0,
+    "time_to_interactive": data.time_to_interactive || 0,
+    "js_error_message": data.js_error_message || "",
+    "api_error_message": data.api_error_message || "",
+    "http_status_code": data.http_status_code || 200,
+    "cpu_cores": data.cpu_cores || 8,
+    "memory_size": data.memory_size || 16,
+    "tab_visibility_status": data.tab_visibility_status || "visible",
+    "back_button_used": data.back_button_used || false,
+    "copy_event": data.copy_event || false,
+    "paste_event": data.paste_event || false,
+    "rage_click_detected": data.rage_click_detected || false,
+    "user_segment": data.user_segment || "Enterprise Prospect",
+    "timestamp": timestamp
+  };
+
+  return SCHEMA_95_HEADERS.map(function(col) {
+    var val = explicitSchema95Map[col];
+    return val !== undefined ? val : "";
+  });
+}
+
 
 function escapeHtml(str) {
   return String(str == null ? "" : str)
@@ -678,34 +919,55 @@ function archiveResumeToDrive(attachments, data) {
   return result;
 }
 
-function sendEmailOnce(options) {
+function sendEmailDirect(options) {
+  if (!options || !options.to) {
+    return { ok: false, error: "Missing recipient email" };
+  }
+  var to = String(options.to).trim();
+  if (to.indexOf("@") === -1) {
+    return { ok: false, error: "Invalid recipient address: " + to };
+  }
+
+  var plainBody = options.body || "Notification from ProfitMachines.";
+  var htmlBody = options.htmlBody || plainBody;
+  var subject = options.subject || "Notification - ProfitMachines";
+  var senderName = options.name || EMAIL_CONFIG.name;
+  var replyTo = options.replyTo || EMAIL_CONFIG.replyTo;
+  var attachments = options.attachments || [];
+
+  // Try MailApp first (Highest reliability for Apps Script Web App without mailbox authorization hurdles)
   try {
-    GmailApp.sendEmail(options.to, options.subject, options.body || "", {
-      htmlBody: options.htmlBody,
-      name: options.name || EMAIL_CONFIG.name,
-      replyTo: options.replyTo || EMAIL_CONFIG.replyTo,
-      attachments: options.attachments
+    MailApp.sendEmail({
+      to: to,
+      subject: subject,
+      body: plainBody,
+      htmlBody: htmlBody,
+      name: senderName,
+      replyTo: replyTo,
+      attachments: attachments
     });
-    return { ok: true, via: "GmailApp" };
-  } catch (gmailErr) {
-    if (isEmailQuotaError(gmailErr)) {
-      return { ok: false, quota: true, error: gmailErr.toString() };
-    }
+    return { ok: true, via: "MailApp" };
+  } catch (mailErr) {
+    console.warn("MailApp warning: " + mailErr.toString() + ". Attempting GmailApp fallback...");
+    // Fallback to GmailApp if available
     try {
-      MailApp.sendEmail({
-        to: options.to,
-        subject: options.subject,
-        htmlBody: options.htmlBody,
-        body: options.body || "",
-        name: options.name || EMAIL_CONFIG.name,
-        replyTo: options.replyTo || EMAIL_CONFIG.replyTo,
-        attachments: options.attachments
+      GmailApp.sendEmail(to, subject, plainBody, {
+        htmlBody: htmlBody,
+        name: senderName,
+        replyTo: replyTo,
+        attachments: attachments
       });
-      return { ok: true, via: "MailApp" };
-    } catch (mailErr) {
-      return { ok: false, quota: isEmailQuotaError(mailErr), error: mailErr.toString() };
+      return { ok: true, via: "GmailApp" };
+    } catch (gmailErr) {
+      console.error("Both MailApp and GmailApp failed: " + mailErr.toString() + " | " + gmailErr.toString());
+      return { ok: false, error: mailErr.toString() + " | " + gmailErr.toString() };
     }
   }
+}
+
+// Backward-compatibility alias
+function sendEmailOnce(options) {
+  return sendEmailDirect(options);
 }
 
 // =========================================================================================
@@ -715,7 +977,7 @@ function sendEmailOnce(options) {
 /**
  * Dispatches notification emails with resume attachments exclusively to authorized team members.
  */
-function sendLeadEmails(data, sheetName, spreadsheetUrl) {
+function sendLeadEmails(data, sheetName, spreadsheetUrl, extractedEmail, extractedName) {
   var result = {
     sent: false,
     delivered: 0,
@@ -726,8 +988,9 @@ function sendLeadEmails(data, sheetName, spreadsheetUrl) {
     message: ""
   };
 
-  var userEmail = data.email || data.Email || data["Work Email"] || data.workEmail || data["work_email"] || "";
-  var userName  = data.name || data.Name || data["Full Name"] || data.fullName || "Valued Enterprise Prospect";
+  var userEmail = (extractedEmail || data.email || data.Email || data["Work Email"] || data.workEmail || data["work_email"] || (data.fields && (data.fields.email || data.fields.Email)) || "").toString().trim();
+  var userName  = (extractedName || data.name || data.Name || data["Full Name"] || data.fullName || (data.firstName ? (data.firstName + (data.lastName ? " " + data.lastName : "")) : "") || "Valued Enterprise Client").toString().trim();
+  
   var leadMeta = getLeadCategoryMeta(sheetName, data);
   var attachments = getAttachmentBlobs(data, userName);
   var driveMeta = archiveResumeToDrive(attachments, data);
@@ -735,93 +998,106 @@ function sendLeadEmails(data, sheetName, spreadsheetUrl) {
   result.driveFileId = driveMeta.driveFileId;
 
   var subjectUser = leadMeta.userSubject;
-  var htmlUser = buildUserConfirmationHtml(userName, leadMeta.categoryName, leadMeta.userMessage, leadMeta.leadPhone);
+  var htmlUser = buildUserConfirmationHtml(userName, leadMeta.categoryName, leadMeta.userMessage, leadMeta.leadPhone || data.phone || data.Phone);
   var subjectInternal = leadMeta.internalSubject;
   var htmlInternal = buildInternalLeadHtml(leadMeta, data, spreadsheetUrl);
 
   var isTest = data.testMode === true || data.isInternalTest === true || data.testMode === "true";
-  
-  // Strict recipient routing: poojasri@trustgrid.ai and asmitha.int2027g3@gmail.com
-  var targetRecipients = uniqueEmails(isTest
-    ? [userEmail || EMAIL_CONFIG.reportEmails[0]]
-    : (leadMeta.recipients || EMAIL_CONFIG.salesEmails));
 
-  var quota = getRemainingEmailQuota();
-  result.quotaRemaining = quota;
+  // Target team recipients: STRICTLY poojasri@trustgrid.ai and asmitha.int2027g3@gmail.com
+  var targetRecipients = isTest ? [userEmail || EMAIL_CONFIG.salesEmails[0]] : (leadMeta.recipients || EMAIL_CONFIG.salesEmails);
 
-  if (quota === 0) {
-    result.message = "email quota exhausted";
-    console.error("❌ Daily email quota is 0. Data archived to Sheet and Drive.");
-    return result;
-  }
+  // 1. DISPATCH USER CONFIRMATION IMMEDIATELY TO THE USER
+  if (userEmail && userEmail.indexOf("@") !== -1 && userEmail.indexOf(".") !== -1 && !isTest) {
+    try {
+      var plainTextUser = "Dear " + userName + ",\n\n" +
+        "Thank you for contacting ProfitMachines.\n\n" +
+        "We have received your submission for: " + leadMeta.categoryName + ".\n\n" +
+        leadMeta.userMessage + "\n\n" +
+        (leadMeta.leadPhone ? ("Executive Contact Phone: " + leadMeta.leadPhone + "\n") : "") +
+        "Official Website: " + EMAIL_CONFIG.website + "\n" +
+        "Inquiries: " + EMAIL_CONFIG.replyTo + "\n\n" +
+        "Warm regards,\n" +
+        "The ProfitMachines Leadership Team";
 
-  var skipUserConfirm = isTest || !userEmail || userEmail.indexOf("@") === -1;
-
-  // 1. User confirmation
-  if (!skipUserConfirm && quota > 1) {
-    var userSend = sendEmailOnce({
-      to: userEmail,
-      subject: subjectUser,
-      htmlBody: htmlUser,
-      name: EMAIL_CONFIG.name,
-      replyTo: EMAIL_CONFIG.replyTo
-    });
-    if (userSend.ok) {
-      result.delivered++;
-      console.log("✅ Sent user confirmation via " + userSend.via + " to: " + userEmail);
-      // Career applicants get a second email asking for their profile video as the next step
-      if (sheetName === "Career_Applications") {
-        sendCareerVideoRequestEmail(userEmail, userName);
-      }
-    } else {
-      result.failed++;
-      console.error("Failed to send user confirmation: " + userSend.error);
-    }
-  }
-
-  // 2. Batched internal alert to Poojasri & BV
-  if (targetRecipients.length > 0) {
-    var recipientBlobs = [];
-    if (attachments && attachments.length > 0) {
-      recipientBlobs = attachments.map(function(blob) {
-        try {
-          return Utilities.newBlob(blob.getBytes(), blob.getContentType(), blob.getName());
-        } catch (bErr) {
-          return blob;
-        }
+      var userSend = sendEmailDirect({
+        to: userEmail,
+        subject: subjectUser,
+        body: plainTextUser,
+        htmlBody: htmlUser,
+        name: EMAIL_CONFIG.name,
+        replyTo: EMAIL_CONFIG.replyTo
       });
+
+      if (userSend.ok) {
+        result.delivered++;
+        console.log("✅ [User Auto-Responder] Sent confirmation to: " + userEmail + " via " + userSend.via);
+        if (sheetName === "Form_Career_Applications" || sheetName === "Career_Applications") {
+          sendCareerVideoRequestEmail(userEmail, userName);
+        }
+      } else {
+        result.failed++;
+        console.error("❌ [User Auto-Responder] Failed to send to " + userEmail + ": " + userSend.error);
+      }
+    } catch (uErr) {
+      console.error("❌ [User Auto-Responder] Exception: " + uErr.toString());
     }
+  }
 
-    var driveNote = data.resumeDriveLink
-      ? "\nResume Drive copy: " + data.resumeDriveLink
-      : (recipientBlobs.length ? "" : "\n(No resume attachment could be decoded.)");
-    var plainTextBody = "Name: " + userName + "\n" +
-                        "Email: " + (userEmail || "N/A") + "\n" +
-                        "Company: " + (data.company || data.organization || "N/A") + "\n" +
-                        "Details: " + (data.message || data.requirement || "New Submission") + "\n" +
-                        driveNote;
+  // 2. DISPATCH INTERNAL ALERT TO POOJASRI & ASMITHA
+  if (targetRecipients.length > 0) {
+    try {
+      var recipientBlobs = [];
+      if (attachments && attachments.length > 0) {
+        recipientBlobs = attachments.map(function(blob) {
+          try {
+            return Utilities.newBlob(blob.getBytes(), blob.getContentType(), blob.getName());
+          } catch (bErr) {
+            return blob;
+          }
+        });
+      }
 
-    var mailOptions = {
-      to: targetRecipients.join(","),
-      subject: (isTest ? "[TEST] " : "") + subjectInternal,
-      body: plainTextBody,
-      htmlBody: htmlInternal,
-      name: EMAIL_CONFIG.name,
-      replyTo: (userEmail && userEmail.indexOf("@") !== -1) ? userEmail : EMAIL_CONFIG.replyTo
-    };
-    if (recipientBlobs.length > 0) {
-      mailOptions.attachments = recipientBlobs;
-    }
+      var driveNote = data.resumeDriveLink
+        ? "\nResume Drive copy: " + data.resumeDriveLink
+        : (recipientBlobs.length ? "" : "\n(No resume attachment)");
+      var plainTextBody = "PROFIT MACHINES - NEW LEAD ALERT\n" +
+        "---------------------------------------\n" +
+        "Form: " + leadMeta.categoryName + " (" + sheetName + ")\n" +
+        "Name: " + userName + "\n" +
+        "Email: " + (userEmail || "N/A") + "\n" +
+        "Phone: " + (data.phone || data.Phone || "N/A") + "\n" +
+        "Company: " + (data.company || data.organization || "N/A") + "\n" +
+        "Traffic Source: " + computeAttributionSource(data) + "\n" +
+        "Details: " + (data.message || data.requirement || "New Submission") + "\n" +
+        "Timestamp: " + normalizeTimestamp(data.timestamp || new Date().toISOString()) + "\n" +
+        "Spreadsheet: " + spreadsheetUrl + "\n" +
+        driveNote;
 
-    var teamSend = sendEmailOnce(mailOptions);
-    if (teamSend.ok) {
-      result.delivered++;
-      result.sent = true;
-      console.log("✅ Internal alert via " + teamSend.via + " to: " + mailOptions.to);
-    } else {
-      result.failed++;
-      result.message = teamSend.quota ? "email quota exhausted" : (teamSend.error || "internal email failed");
-      console.error("❌ Internal alert failed: " + teamSend.error);
+      var mailOptions = {
+        to: targetRecipients.join(","),
+        subject: (isTest ? "[TEST] " : "") + subjectInternal,
+        body: plainTextBody,
+        htmlBody: htmlInternal,
+        name: EMAIL_CONFIG.name,
+        replyTo: (userEmail && userEmail.indexOf("@") !== -1) ? userEmail : EMAIL_CONFIG.replyTo
+      };
+      if (recipientBlobs.length > 0) {
+        mailOptions.attachments = recipientBlobs;
+      }
+
+      var teamSend = sendEmailDirect(mailOptions);
+      if (teamSend.ok) {
+        result.delivered++;
+        result.sent = true;
+        console.log("✅ [Internal Alert] Successfully sent via " + teamSend.via + " to: " + mailOptions.to);
+      } else {
+        result.failed++;
+        result.message = teamSend.error || "internal email failed";
+        console.error("❌ [Internal Alert] Failed: " + teamSend.error);
+      }
+    } catch (teamErr) {
+      console.error("❌ [Internal Alert] Exception: " + teamErr.toString());
     }
   }
 
@@ -833,193 +1109,141 @@ function sendLeadEmails(data, sheetName, spreadsheetUrl) {
  * Returns customized category labels, badges, recipient lists, and subject lines for Profit Machines.
  */
 function getLeadCategoryMeta(sheetName, data) {
-  var name = data.name || data.Name || data["Full Name"] || data.fullName || "";
-  var company = data.company || data.Company || data.companyName || data["Company Name"] || data.organization || "";
-  var role = data.jobTitle || data["Job Title"] || data.designation || "";
-  var phone = data.phone || data.Phone || data["Phone Number"] || "";
+  var name = (data.name || data.Name || data["Full Name"] || data.fullName || (data.firstName ? (data.firstName + (data.lastName ? " " + data.lastName : "")) : "") || "").trim();
+  var company = (data.company || data.Company || data.companyName || data["Company Name"] || data.organization || "").trim();
+  var role = (data.jobTitle || data["Job Title"] || data.designation || data.role || "").trim();
+  var phone = (data.phone || data.Phone || data["Phone Number"] || data.phoneNumber || "").trim();
+  var interest = (data.interest || data.service || data.transformationInterest || "").trim();
 
-  switch (sheetName) {
-    case "AI_Diagnostic_Leads":
-      return {
-        categoryName: "Consulting Sessions",
-        badgeText: "CONSULTING SESSIONS",
-        badgeBg: "#6366f1",
-        badgeColor: "#ffffff",
-        leadName: name || "Enterprise Leader",
-        leadCompany: company || "AI Enterprise",
-        leadPhone: phone,
-        internalSubject: "[TG Consulting Sessions] " + (company ? company + " - " + name : name || "New Enterprise Diagnostic"),
-        userSubject: "Profit Machines - Consulting Session Confirmed",
-        userMessage: "Thank you for requesting an Executive AI Diagnostic session with Profit Machines. Our Principal AI Architect is reviewing your requirements and will connect with your team shortly.",
-        recipients: EMAIL_CONFIG.salesEmails
-      };
+  // Normalize sheetName for flexible matching
+  var norm = (sheetName || "").toLowerCase().replace(/[\s\-_]/g, '');
 
-    case "AI_Readiness_Leads":
-      return {
-        categoryName: "Consulting Sessions",
-        badgeText: "CONSULTING SESSIONS",
-        badgeBg: "#0ea5e9",
-        badgeColor: "#ffffff",
-        leadName: name || "Technology Executive",
-        leadCompany: company || "Enterprise",
-        leadPhone: phone,
-        internalSubject: "[TG Consulting Sessions] " + (company ? company + " (" + name + ")" : name || "New Readiness Audit"),
-        userSubject: "Profit Machines - AI Readiness Audit Confirmation",
-        userMessage: "We have received your AI Readiness assessment request. Our Solution Architects will analyze your tech stack and provide the governance roadmap.",
-        recipients: EMAIL_CONFIG.salesEmails
-      };
-
-    case "Workshop_Requests":
-      return {
-        categoryName: "Consulting Sessions",
-        badgeText: "CONSULTING SESSIONS",
-        badgeBg: "#8b5cf6",
-        badgeColor: "#ffffff",
-        leadName: name || "Team Lead",
-        leadCompany: company || "Organization",
-        leadPhone: phone,
-        internalSubject: "[TG Consulting Sessions] " + (company ? company + " - " + name : name || "New Workshop Booking"),
-        userSubject: "Profit Machines - AI Governance Workshop Request Received",
-        userMessage: "Thank you for scheduling an AI Governance & Agentic Trust workshop. We will customize the curriculum for your engineering and compliance teams.",
-        recipients: EMAIL_CONFIG.salesEmails
-      };
-
-    case "RFP_Proposals":
-      return {
-        categoryName: "Consulting Sessions",
-        badgeText: "CONSULTING SESSIONS",
-        badgeBg: "#dc2626",
-        badgeColor: "#ffffff",
-        leadName: name || "Procurement Lead",
-        leadCompany: company || "Enterprise Client",
-        leadPhone: phone,
-        internalSubject: "[TG Consulting Sessions] " + (company || name || "New Technical RFP"),
-        userSubject: "Profit Machines - RFP Proposal Received",
-        userMessage: "Thank you for submitting your RFP to Profit Machines. Our solutions engineering division is reviewing the scope of work and compliance specifications.",
-        recipients: EMAIL_CONFIG.salesEmails
-      };
-
-    case "Talk_To_Architect":
-      return {
-        categoryName: "Consulting Sessions",
-        badgeText: "CONSULTING SESSIONS",
-        badgeBg: "#14b8a6",
-        badgeColor: "#ffffff",
-        leadName: name || "Engineering Leader",
-        leadCompany: company || "Tech Team",
-        leadPhone: phone,
-        internalSubject: "[TG Consulting Sessions] " + (name ? name + (company ? " (" + company + ")" : "") : "New Consultation"),
-        userSubject: "Profit Machines - Consultation Confirmed",
-        userMessage: "Your technical consultation request with a Senior AI Architect has been scheduled. We look forward to discussing your agentic architecture and guardrails.",
-        recipients: EMAIL_CONFIG.salesEmails
-      };
-
-    case "Career_Applications":
-      return {
-        categoryName: "Career Applications",
-        badgeText: "CAREER APPLICATION",
-        badgeBg: "#10b981",
-        badgeColor: "#ffffff",
-        leadName: name || "Candidate Applicant",
-        leadCompany: role || "Engineering Role",
-        leadPhone: phone,
-        internalSubject: "[TG Career Application] " + (name || "Applicant") + " - " + (role || "AI Engineer"),
-        userSubject: "Profit Machines - Application Received",
-        userMessage: "Thank you for applying to join Profit Machines. Our Talent Acquisition & Research team is reviewing your profile and credentials.",
-        recipients: EMAIL_CONFIG.careerEmails
-      };
-
-    case "Partner_Applications":
-      return {
-        categoryName: "Partner Applications",
-        badgeText: "PARTNER APPLICATION",
-        badgeBg: "#a855f7",
-        badgeColor: "#ffffff",
-        leadName: name || "Partner Representative",
-        leadCompany: company || "Partner Agency",
-        leadPhone: phone,
-        internalSubject: "[TG Partner Application] " + (company || name || "New Strategic Partner"),
-        userSubject: "Profit Machines - Partnership Application Received",
-        userMessage: "Thank you for your interest in joining the Profit Machines Partner Ecosystem. Our Strategic Alliances team will reach out to discuss onboarding.",
-        recipients: EMAIL_CONFIG.salesEmails
-      };
-
-    case "Google_Ad_Leads":
-      return {
-        categoryName: "Consulting Sessions",
-        badgeText: "CONSULTING SESSIONS",
-        badgeBg: "#f59e0b",
-        badgeColor: "#ffffff",
-        leadName: name || "Campaign Lead",
-        leadCompany: company || "Business Prospect",
-        leadPhone: phone,
-        internalSubject: "[TG Consulting Sessions] " + (name ? name + (company ? " (" + company + ")" : "") : "New Campaign Lead"),
-        userSubject: "Profit Machines - Consultation Request Received",
-        userMessage: "Thank you for expressing interest in Profit Machines. An Enterprise AI Consultant will connect with you promptly.",
-        recipients: EMAIL_CONFIG.adCampaignEmails
-      };
-
-    case "Chatbot_Leads":
-      return {
-        categoryName: "Chatbot Inquiries",
-        badgeText: "CHATBOT INQUIRY",
-        badgeBg: "#0284c7",
-        badgeColor: "#ffffff",
-        leadName: name || "Chatbot Visitor",
-        leadCompany: company || "Interactive Inquirer",
-        leadPhone: phone,
-        internalSubject: "[TG Chatbot Lead] " + (name || "Visitor") + (company ? " (" + company + ")" : ""),
-        userSubject: "Profit Machines - Thank You for Connecting",
-        userMessage: "Thank you for chatting with the Profit Machines virtual assistant. An AI Governance Advisor will follow up with your specific query.",
-        recipients: EMAIL_CONFIG.salesEmails
-      };
-
-    case "Newsletter_Subscribers":
-      return {
-        categoryName: "Newsletter Subscribers",
-        badgeText: "NEWSLETTER SUBSCRIBER",
-        badgeBg: "#475569",
-        badgeColor: "#ffffff",
-        leadName: "Subscriber",
-        leadCompany: "Industry Reader",
-        leadPhone: "",
-        internalSubject: "[TG Newsletter Subscriber] " + (data.email || "New Insights Reader"),
-        userSubject: "Profit Machines - Welcome to Executive Insights",
-        userMessage: "Thank you for subscribing to Profit Machines Executive Briefings. You will receive our latest research on AI agent safety, EU AI Act compliance, and LLM red teaming.",
-        recipients: EMAIL_CONFIG.salesEmails
-      };
-
-    case "Quick_Enquiry_Leads":
-      return {
-        categoryName: "Quick Forms",
-        badgeText: "QUICK FORMS",
-        badgeBg: "#0ea5e9",
-        badgeColor: "#ffffff",
-        leadName: name || "Quick Prospect",
-        leadCompany: company || "Direct Inquirer",
-        leadPhone: phone,
-        internalSubject: "[TG Quick Forms] " + (name ? name + (company ? " (" + company + ")" : "") : "New Quick Lead"),
-        userSubject: "Profit Machines - Quick Enquiry Received",
-        userMessage: "Thank you for reaching out to Profit Machines via our Quick Enquiry form. Our enterprise solutions advisor will follow up with you promptly.",
-        recipients: EMAIL_CONFIG.salesEmails
-      };
-
-    case "Contact_Leads":
-    default:
-      return {
-        categoryName: "Consulting Sessions",
-        badgeText: "CONSULTING SESSIONS",
-        badgeBg: "#3b82f6",
-        badgeColor: "#ffffff",
-        leadName: name || "Website Visitor",
-        leadCompany: company || "Direct Inquirer",
-        leadPhone: phone,
-        internalSubject: "[TG Consulting Sessions] " + (name ? name + (company ? " (" + company + ")" : "") : "New Web Lead"),
-        userSubject: "Profit Machines - Inquiry Received",
-        userMessage: "Thank you for reaching out to Profit Machines. Our solutions team has received your inquiry and will respond within 24 hours.",
-        recipients: EMAIL_CONFIG.salesEmails
-      };
+  if (norm.indexOf("inbound") !== -1 || norm.indexOf("lead") !== -1 || norm.indexOf("quick") !== -1 || norm.indexOf("contact") !== -1) {
+    return {
+      categoryName: "Inbound Lead",
+      badgeText: "INBOUND LEAD",
+      badgeBg: "#2563eb",
+      badgeColor: "#ffffff",
+      leadName: name || "Enterprise Leader",
+      leadCompany: company || "Enterprise Organization",
+      leadPhone: phone,
+      internalSubject: "[ProfitMachines Lead] " + (company ? company + " - " + name : name || "New Enterprise Inbound Lead"),
+      userSubject: "ProfitMachines - Thank You for Your Inquiry",
+      userMessage: "Thank you for reaching out to ProfitMachines. We have received your inquiry (" + (interest || "Enterprise AI Acceleration") + ") and our enterprise consulting team is reviewing your requirements. A senior partner will reach out to you shortly.",
+      recipients: EMAIL_CONFIG.salesEmails
+    };
   }
+
+  if (norm.indexOf("consult") !== -1 || norm.indexOf("demo") !== -1 || norm.indexOf("booking") !== -1) {
+    return {
+      categoryName: "Consultation Booking",
+      badgeText: "CONSULTATION BOOKING",
+      badgeBg: "#4f46e5",
+      badgeColor: "#ffffff",
+      leadName: name || "Executive Client",
+      leadCompany: company || "Enterprise Organization",
+      leadPhone: phone,
+      internalSubject: "[ProfitMachines Consultation] " + (company ? company + " - " + name : name || "New Consultation Booking"),
+      userSubject: "ProfitMachines - Consultation Request Received",
+      userMessage: "Thank you for scheduling an Enterprise AI & Revenue Consultation with ProfitMachines. Our Principal AI Architect is reviewing your transformation scope and will confirm your session shortly.",
+      recipients: EMAIL_CONFIG.salesEmails
+    };
+  }
+
+  if (norm.indexOf("expert") !== -1 || norm.indexOf("talk") !== -1) {
+    return {
+      categoryName: "Talk to Expert",
+      badgeText: "EXPERT CONSULTATION",
+      badgeBg: "#0d9488",
+      badgeColor: "#ffffff",
+      leadName: name || "Engineering Leader",
+      leadCompany: company || "Technology Team",
+      leadPhone: phone,
+      internalSubject: "[ProfitMachines Expert Call] " + (company ? company + " - " + name : name || "New Expert Consultation"),
+      userSubject: "ProfitMachines - Expert Session Request Received",
+      userMessage: "Thank you for requesting to speak with our AI & Forward Deployed Engineering specialists. We will review your domain context and connect with you within 24 hours.",
+      recipients: EMAIL_CONFIG.salesEmails
+    };
+  }
+
+  if (norm.indexOf("diagnostic") !== -1 || norm.indexOf("discovery") !== -1 || norm.indexOf("assessment") !== -1 || norm.indexOf("leakage") !== -1) {
+    return {
+      categoryName: "Diagnostic Assessment",
+      badgeText: "PROFIT DIAGNOSTIC",
+      badgeBg: "#7c3aed",
+      badgeColor: "#ffffff",
+      leadName: name || "Strategic Leader",
+      leadCompany: company || "Enterprise Enterprise",
+      leadPhone: phone,
+      internalSubject: "[ProfitMachines Diagnostic] " + (company ? company + " - " + name : name || "New Profit Pool Diagnostic"),
+      userSubject: "ProfitMachines - Profit Pool Diagnostic Received",
+      userMessage: "Thank you for completing the Profit Pool Discovery Diagnostic. Our analytical engineering team has received your parameters and will deliver your custom revenue leakage analysis.",
+      recipients: EMAIL_CONFIG.salesEmails
+    };
+  }
+
+  if (norm.indexOf("partner") !== -1) {
+    return {
+      categoryName: "Partner Application",
+      badgeText: "PARTNER APPLICATION",
+      badgeBg: "#a855f7",
+      badgeColor: "#ffffff",
+      leadName: name || "Partner Representative",
+      leadCompany: company || "Partner Firm",
+      leadPhone: phone,
+      internalSubject: "[ProfitMachines Partner] " + (company ? company + " - " + name : name || "New Strategic Partner"),
+      userSubject: "ProfitMachines - Partner Application Received",
+      userMessage: "Thank you for your interest in the ProfitMachines Partner Ecosystem. Our Strategic Alliances team will review your application and reach out promptly.",
+      recipients: EMAIL_CONFIG.salesEmails
+    };
+  }
+
+  if (norm.indexOf("career") !== -1 || norm.indexOf("job") !== -1 || norm.indexOf("fellowship") !== -1) {
+    return {
+      categoryName: "Career Application",
+      badgeText: "CAREER APPLICATION",
+      badgeBg: "#059669",
+      badgeColor: "#ffffff",
+      leadName: name || "Candidate Applicant",
+      leadCompany: role || "Engineering Candidate",
+      leadPhone: phone,
+      internalSubject: "[ProfitMachines Career] " + (name || "Applicant") + " - " + (role || "AI Engineer"),
+      userSubject: "ProfitMachines - Application Received",
+      userMessage: "Thank you for applying to join ProfitMachines. Our Talent Acquisition & Research team is reviewing your profile and credentials.",
+      recipients: EMAIL_CONFIG.careerEmails
+    };
+  }
+
+  if (norm.indexOf("chat") !== -1) {
+    return {
+      categoryName: "Chatbot Inquiry",
+      badgeText: "CHATBOT INQUIRY",
+      badgeBg: "#0284c7",
+      badgeColor: "#ffffff",
+      leadName: name || "Chatbot Visitor",
+      leadCompany: company || "Website Inquirer",
+      leadPhone: phone,
+      internalSubject: "[ProfitMachines Chat] " + (name || "Visitor") + (company ? " (" + company + ")" : ""),
+      userSubject: "ProfitMachines - Thank You for Connecting",
+      userMessage: "Thank you for chatting with the ProfitMachines virtual assistant. A member of our enterprise team will follow up on your specific inquiry.",
+      recipients: EMAIL_CONFIG.salesEmails
+    };
+  }
+
+  // Default fallback for any other form submission
+  return {
+    categoryName: "Website Inquiry",
+    badgeText: "INBOUND INQUIRY",
+    badgeBg: "#2563eb",
+    badgeColor: "#ffffff",
+    leadName: name || "Website Visitor",
+    leadCompany: company || "Enterprise Organization",
+    leadPhone: phone,
+    internalSubject: "[ProfitMachines Lead] " + (name ? name + (company ? " (" + company + ")" : "") : "New Web Lead"),
+    userSubject: "ProfitMachines - Inquiry Received",
+    userMessage: "Thank you for reaching out to ProfitMachines. Our solutions team has received your inquiry and will respond within 24 hours.",
+    recipients: EMAIL_CONFIG.salesEmails
+  };
 }
 
 // =========================================================================================
@@ -2274,13 +2498,86 @@ function sendReportEmail(subject, htmlBody) {
 // 9. FIELD RESOLVER & UTILITIES
 // =========================================================================================
 
+/**
+ * Intelligently computes the true traffic attribution channel from UTMs, Referrer, and triggers.
+ */
+function computeAttributionSource(data) {
+  var utmSource = (data.utm_source || data.utmSource || "").toString().trim();
+  var utmMedium = (data.utm_medium || data.utmMedium || "").toString().trim();
+  var utmCampaign = (data.utm_campaign || data.utmCampaign || "").toString().trim();
+  var referrer = (data.referrer || data.referrer_url || data.Referrer || data.referrerHost || "").toString().trim();
+  var explicitSource = (data.source || data.lead_source || data.trafficSource || data.traffic_source || "").toString().trim();
+
+  // 1. UTM Attribution (Highest fidelity for marketing campaigns)
+  if (utmSource && 
+      utmSource.toLowerCase() !== "direct" && 
+      utmSource.toLowerCase() !== "undefined" && 
+      utmSource.toLowerCase() !== "null" && 
+      utmSource.toLowerCase() !== "none") {
+    var sourceLabel = utmSource;
+    if (utmMedium) {
+      sourceLabel += " / " + utmMedium;
+    }
+    if (utmCampaign) {
+      sourceLabel += " (" + utmCampaign + ")";
+    }
+    return sourceLabel;
+  }
+
+  // 2. Referrer Attribution (Search engines, social media, external partners)
+  if (referrer && 
+      referrer.toLowerCase() !== "direct" && 
+      referrer.toLowerCase() !== "undefined" && 
+      referrer.toLowerCase() !== "null") {
+    var hostMatch = referrer.match(/^https?:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
+    var host = hostMatch ? hostMatch[1].toLowerCase() : "";
+    var isSelfDomain = host.indexOf("profit-max") !== -1 || 
+                       host.indexOf("profitmachines") !== -1 || 
+                       host.indexOf("localhost") !== -1 || 
+                       host.indexOf("127.0.0.1") !== -1;
+    if (!isSelfDomain) {
+      if (host.indexOf("google.") !== -1 || referrer.indexOf("google.") !== -1) return "Google / Organic";
+      if (host.indexOf("bing.") !== -1 || referrer.indexOf("bing.") !== -1) return "Bing / Organic";
+      if (host.indexOf("duckduckgo.") !== -1 || referrer.indexOf("duckduckgo.") !== -1) return "DuckDuckGo / Organic";
+      if (host.indexOf("yahoo.") !== -1 || referrer.indexOf("yahoo.") !== -1) return "Yahoo / Organic";
+      if (host.indexOf("baidu.") !== -1 || referrer.indexOf("baidu.") !== -1) return "Baidu / Organic";
+      if (host.indexOf("linkedin.") !== -1 || host.indexOf("lnkd.in") !== -1) return "LinkedIn / Referral";
+      if (host.indexOf("twitter.") !== -1 || host.indexOf("t.co") !== -1 || host.indexOf("x.com") !== -1) return "X (Twitter) / Social";
+      if (host.indexOf("facebook.") !== -1 || host.indexOf("fb.me") !== -1 || host.indexOf("fb.com") !== -1) return "Facebook / Social";
+      if (host.indexOf("instagram.") !== -1) return "Instagram / Social";
+      if (host.indexOf("youtube.") !== -1 || host.indexOf("youtu.be") !== -1) return "YouTube / Social";
+      if (host.indexOf("reddit.") !== -1) return "Reddit / Community";
+      if (host.indexOf("github.") !== -1) return "GitHub / Referral";
+      if (host.indexOf("trustgrid.") !== -1) return "TrustGrid / Ecosystem";
+
+      if (host) {
+        return "Referral (" + host.replace(/^www\./i, '') + ")";
+      }
+      return "External Referral";
+    }
+  }
+
+  // 3. Explicit meaningful trigger passed from form UI (e.g. Hero Section, TalkToExpert Modal)
+  if (explicitSource && 
+      explicitSource !== "Website Inbound Form" && 
+      explicitSource !== "Direct" && 
+      explicitSource !== "direct" && 
+      explicitSource !== "undefined") {
+    return explicitSource;
+  }
+
+  // 4. Default to Direct / Organic
+  return "Direct / Organic";
+}
+
 function resolveField(header, data) {
+  var computedSource = computeAttributionSource(data);
   var explicitMap = {
-    "Name":                   data.name || data.fullName || data.full_name || data["Full Name"] || data["FullName"] || "",
-    "Full Name":              data.name || data.fullName || data.full_name || data["Full Name"] || data["FullName"] || "",
-    "Email":                  data.email || data.workEmail || data.work_email || data["Work Email"] || data["Corporate Email"] || "",
-    "Work Email":             data.email || data.workEmail || data.work_email || data["Work Email"] || data["Corporate Email"] || "",
-    "Corporate Email":        data.email || data.workEmail || data.work_email || data["Work Email"] || data["Corporate Email"] || "",
+    "Name":                   data.name || data.fullName || data.full_name || data["Full Name"] || data["FullName"] || (data.firstName ? (data.firstName + (data.lastName ? " " + data.lastName : "")) : "") || "",
+    "Full Name":              data.name || data.fullName || data.full_name || data["Full Name"] || data["FullName"] || (data.firstName ? (data.firstName + (data.lastName ? " " + data.lastName : "")) : "") || "",
+    "Email":                  data.email || data.workEmail || data.work_email || data["Work Email"] || data["Corporate Email"] || (data.fields && (data.fields.email || data.fields.Email)) || "",
+    "Work Email":             data.email || data.workEmail || data.work_email || data["Work Email"] || data["Corporate Email"] || (data.fields && (data.fields.email || data.fields.Email)) || "",
+    "Corporate Email":        data.email || data.workEmail || data.work_email || data["Work Email"] || data["Corporate Email"] || (data.fields && (data.fields.email || data.fields.Email)) || "",
     "Phone":                  data.phone || data.phoneNumber || data.phone_number || data["Phone Number"] || data["Contact Number"] || "",
     "Phone Number":           data.phone || data.phoneNumber || data.phone_number || data["Phone Number"] || data["Contact Number"] || "",
     "Company":                data.company || data.companyName || data.company_name || data["Company Name"] || data["organization"] || "",
@@ -2323,7 +2620,7 @@ function resolveField(header, data) {
     "Variant":                data.variant || "Standard",
     "Submission ID":          data.submissionId || data.submission_id || data.id || ("PM_" + Date.now()),
     "Location":               data.location || data.ipLocation || data.ip_location || data["Location"] || data["IP Location"] || "",
-    "Source":                 data.source || data.lead_source || data.utmSource || data.utm_source || "Website Inbound Form",
+    "Source":                 computedSource,
     "IP Location":            data.location || data.ipLocation || data.ip_location || data["IP Location"] || "",
     "IP Address":             data.ipAddress || data.ip_address || data["IP Address"] || "127.0.0.1",
     "Organization":           data.organization || data.company || data.company_name || data["Organization"] || "",
@@ -2331,7 +2628,8 @@ function resolveField(header, data) {
     "Visitor ID":             data.visitorId || data.visitor_id || data["Visitor ID"] || "",
     "Page Path":              data.pagePath || data.page_url || data.page || data["Page Path"] || "",
     "Page Title":             data.pageTitle || data.page_title || data["Page Title"] || "",
-    "Traffic Source":         data.trafficSource || data.traffic_source || data.utm_source || data.source || "Direct",
+    "Traffic Source":         computedSource,
+    "Initial Source":         computedSource,
     "Referrer":               data.referrer || data.referrer_url || documentReferrerFallback(data) || "",
     "Device":                 data.device || data.device_type || "Desktop",
     "Browser":                data.browser || "Chrome / Safari",
@@ -2729,13 +3027,12 @@ function initializeAllDatabaseTables() {
   // 2. Initialize All Dedicated Lead & Event Tabs
   Object.keys(TAB_CONFIGS).forEach(function(tabKey) {
     if (tabKey === "Live_Traffic_Events") return;
-    var tabName = tabKey.replace(/_/g, ' ');
-    var sheet = findSheetFlexible(ss, tabKey) || findSheetFlexible(ss, tabName);
+    var sheet = findSheetFlexible(ss, tabKey);
+    var headers = TAB_CONFIGS[tabKey];
     if (!sheet) {
-      sheet = ss.insertSheet(tabName);
+      sheet = ss.insertSheet(tabKey);
     }
     if (sheet.getLastRow() === 0) {
-      var headers = TAB_CONFIGS[tabKey];
       sheet.getRange(1, 1, 1, headers.length)
            .setValues([headers])
            .setFontWeight("bold")
@@ -2745,7 +3042,5 @@ function initializeAllDatabaseTables() {
     }
   });
 
-  console.log("All 20 Profit Machines database tabs initialized with enterprise styling.");
+  console.log("All 11 Profit Machines database tabs initialized with enterprise styling.");
 }
-
-

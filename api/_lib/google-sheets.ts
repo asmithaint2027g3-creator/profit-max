@@ -1,5 +1,5 @@
 
-const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbxnpkQyIM_BYBc9mdR8SskAbzb74v8idiwUMbzLuqKlCGRExzNkwRLloL63KQ-uhRqCYA/exec";
+const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbz46112XdbuaowQcouaSzy83NtRtbZPbuULU2mlGM1De7tupz3ESzVxqTYU7WVXIU8P/exec";
 const GOOGLE_ANALYTICS_SCRIPT_URL = process.env.GOOGLE_ANALYTICS_SCRIPT_URL || process.env.VITE_GOOGLE_ANALYTICS_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbz1gK24YtOmFpuTspRub3iQ5YGEhyvW_S3SqEmIwUg-OmFRbu4WRstiLEaQtOB32U5y/exec";
 const ANALYTICS_API_KEY = process.env.ANALYTICS_API_KEY;
 

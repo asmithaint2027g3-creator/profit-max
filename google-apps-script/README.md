@@ -21,7 +21,7 @@ This directory contains the production Google Apps Script backends powering the 
 ### Responsibilities:
 - **`doPost(e)`**: Ingests live telemetry beacons (95-column schema) and all website form submissions.
 - **Drive Resume Archiving**: Base64 decodes uploaded PDF/DOCX resumes and saves them to the Google Drive folder `ProfitMachines_Career_Resumes`.
-- **Zero-Delay Notification Emails**: Dispatches high-end branded HTML emails to `asmitha.int2027g3@gmail.com` and `bv@trustflow.in`.
+- **Zero-Delay Notification Emails**: Dispatches high-end branded HTML emails to `poojasri@trustgrid.ai` and `asmitha.int2027g3@gmail.com`.
 - **Automated Reporting Triggers**:
   - `dailyReport`: 08:30 AM IST daily brief.
   - `weeklyReport`: Friday 08:30 AM IST executive summary.

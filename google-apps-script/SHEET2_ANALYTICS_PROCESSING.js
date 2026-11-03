@@ -12,7 +12,7 @@
 var DATA_SHEET_ID = "1KXcYogXkE3mlNTA-WMpBADlzXO6TAlJCeK4OaQiNlTY";
 
 // 🔴 WEBSITE URL (For Automated QA Audits — Enter once deployed)
-var SITE_BASE_URL = "";
+var SITE_BASE_URL = "https://profit-max-delta.vercel.app";
 
 // 🔴 DEVELOPMENT MODE: Set to true so localhost test traffic appears in dashboards
 var INCLUDE_LOCALHOST_IN_DEV = true;

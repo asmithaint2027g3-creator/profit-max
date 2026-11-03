@@ -13,7 +13,7 @@
  * 3. Drive Resume Archiving: Automatically stores career applicant resumes into Google Drive.
  * 4. Monthly Career Digest: Monthly scheduled forwarder of candidate applications & resumes.
  * 5. Advanced Analytics & Reporting: Daily & weekly automated digests with KPI cards and metrics.
- * 6. Strict Recipient Routing: Exclusively delivers to asmitha.int2027g3@gmail.com & bv@trustflow.in.
+ * 6. Strict Recipient Routing: Exclusively delivers to poojasri@trustgrid.ai & asmitha.int2027g3@gmail.com.
  * =========================================================================================
  */
 
@@ -35,36 +35,32 @@ const CONFIG = {
 const EMAIL_CONFIG = {
   name: "PROFIT MACHINES Business Intelligence",
   companyName: "PROFIT MACHINES",
-  website: "", // Set production website URL once deployed
+  website: "https://profit-max-delta.vercel.app", // Production website URL
   replyTo: "asmitha.int2027g3@gmail.com",
   adminEmail: "asmitha.int2027g3@gmail.com",
   
   // Recipients for Lead & Sales Inquiries (Strictly limited to authorized team)
   salesEmails: [
     "poojasri@trustgrid.ai",
-    "asmitha.int2027g3@gmail.com",
-    "bv@trustflow.in"
+    "asmitha.int2027g3@gmail.com"
   ],
   
   // Recipients for Ad Campaign Lead Generation
   adCampaignEmails: [
     "poojasri@trustgrid.ai",
-    "asmitha.int2027g3@gmail.com",
-    "bv@trustflow.in"
+    "asmitha.int2027g3@gmail.com"
   ],
 
   // Recipients for Career Applications & Monthly Resumes
   careerEmails: [
     "poojasri@trustgrid.ai",
-    "asmitha.int2027g3@gmail.com",
-    "bv@trustflow.in"
+    "asmitha.int2027g3@gmail.com"
   ],
 
   // Recipients for Daily, Weekly & Monthly Analytics Reports
   reportEmails: [
     "poojasri@trustgrid.ai",
-    "asmitha.int2027g3@gmail.com",
-    "bv@trustflow.in"
+    "asmitha.int2027g3@gmail.com"
   ],
 
   // Same WhatsApp line used on the live site (components/ui/whatsapp-cta.tsx)
@@ -745,7 +741,7 @@ function sendLeadEmails(data, sheetName, spreadsheetUrl) {
 
   var isTest = data.testMode === true || data.isInternalTest === true || data.testMode === "true";
   
-  // Strict recipient routing: asmitha.int2027g3@gmail.com and bv@trustflow.in
+  // Strict recipient routing: poojasri@trustgrid.ai and asmitha.int2027g3@gmail.com
   var targetRecipients = uniqueEmails(isTest
     ? [userEmail || EMAIL_CONFIG.reportEmails[0]]
     : (leadMeta.recipients || EMAIL_CONFIG.salesEmails));

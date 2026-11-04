@@ -3202,9 +3202,12 @@ function initializeAllDatabaseTables() {
 // 12. ENTERPRISE USER REGISTRATION, AUTHENTICATION & CALCULATOR EXTENSIONS
 // =========================================================================================
 
+// Toggle: Set to true to allow gmail.com for testing; toggle to false for strict business-only production policy.
+var ALLOW_GMAIL_FOR_TESTING = true;
+
 // ── Free / Personal / Disposable Email Providers to Reject ──
 var PERSONAL_EMAIL_DOMAINS = [
-  "gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "live.com",
+  "yahoo.com", "hotmail.com", "outlook.com", "live.com",
   "msn.com", "aol.com", "icloud.com", "mail.com", "zoho.com",
   "proton.me", "protonmail.com", "yandex.com", "gmx.com",
   "tempmail.com", "guerrillamail.com", "10minutemail.com", "mailinator.com",
@@ -3222,6 +3225,14 @@ function validateBusinessEmailDomain(email) {
     return { valid: false, reason: "Malformed email format." };
   }
   var domain = parts[1];
+
+  if (!ALLOW_GMAIL_FOR_TESTING && domain === "gmail.com") {
+    return {
+      valid: false,
+      reason: "Corporate policy requires a verified business email. Free/personal email provider (@gmail.com) is not permitted."
+    };
+  }
+
   if (PERSONAL_EMAIL_DOMAINS.indexOf(domain) !== -1) {
     return {
       valid: false,

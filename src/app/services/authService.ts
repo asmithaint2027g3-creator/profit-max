@@ -42,8 +42,11 @@ export interface InitiateRegistrationResult {
   message: string;
 }
 
+// Toggle: Set to true to allow gmail.com for testing; toggle to false for strict corporate business-only policy.
+export const ALLOW_GMAIL_FOR_TESTING = true;
+
 export const PERSONAL_EMAIL_DOMAINS = [
-  'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'live.com',
+  'yahoo.com', 'hotmail.com', 'outlook.com', 'live.com',
   'msn.com', 'aol.com', 'icloud.com', 'mail.com', 'zoho.com',
   'proton.me', 'protonmail.com', 'yandex.com', 'gmx.com',
   'tempmail.com', 'guerrillamail.com', '10minutemail.com', 'mailinator.com',
@@ -58,6 +61,14 @@ export function validateBusinessEmail(email: string): { valid: boolean; reason?:
     return { valid: false, reason: 'Invalid email address format.' };
   }
   const domain = parts[1];
+
+  if (!ALLOW_GMAIL_FOR_TESTING && domain === 'gmail.com') {
+    return {
+      valid: false,
+      reason: 'Corporate policy requires a verified business email. Free/personal email provider (@gmail.com) is not permitted.'
+    };
+  }
+
   if (PERSONAL_EMAIL_DOMAINS.includes(domain)) {
     return {
       valid: false,

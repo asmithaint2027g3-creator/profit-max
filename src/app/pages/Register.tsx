@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {
   User,
   Mail,
@@ -19,9 +19,12 @@ import {
   ShieldCheck,
   Sparkles,
   Plus,
-  HelpCircle
+  RefreshCw,
+  KeyRound,
+  ShieldAlert
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { validateBusinessEmail } from '../services/authService';
 import { trackEvent } from '../../lib/analytics';
 
 // ── Industry Sector Options ─────────────────────────────────────────────────
@@ -73,12 +76,25 @@ const GLOBAL_COUNTRIES = [
 
 export default function Register() {
   const navigate = useNavigate();
-  const { register, isAuthenticated, checkDuplicate } = useAuth();
+  const location = useLocation();
+  const { initiateRegistration, verifyEmailCode, resendVerificationCode, checkDuplicate, isAuthenticated } = useAuth();
 
-  const [step, setStep] = useState<1 | 2>(1);
+  const [step, setStep] = useState<1 | 2 | 3>(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [registeredProfile, setRegisteredProfile] = useState<any>(null);
+
+  // Anti-Bot: Honeypot & Submission Timer
+  const [honeypot, setHoneypot] = useState('');
+  const [formStartTime] = useState<number>(Date.now());
+
+  // Email Verification State (Step 3)
+  const [verificationToken, setVerificationToken] = useState<string>('');
+  const [verificationCode, setVerificationCode] = useState<string>('');
+  const [verificationError, setVerificationError] = useState<string | null>(null);
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [resendCooldown, setResendCooldown] = useState<number>(0);
+  const [resendStatus, setResendStatus] = useState<string | null>(null);
 
   // Form State
   const [formData, setFormData] = useState({
@@ -118,21 +134,28 @@ export default function Register() {
     if (isAuthenticated && !isSuccess) {
       navigate('/sales-calculators', { replace: true });
     }
-  }, [isAuthenticated, isSuccess, navigate]);
 
-  // Validation helpers
-  const validateBusinessEmail = (email: string): { valid: boolean; message?: string } => {
-    const trimmed = email.trim().toLowerCase();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
-      return { valid: false, message: 'Please enter a valid corporate email format.' };
+    // Check if user came from a verification link in email
+    const params = new URLSearchParams(location.search);
+    const urlToken = params.get('verify_token');
+    const urlEmail = params.get('email');
+    if (urlToken) {
+      setVerificationToken(urlToken);
+      if (urlEmail) {
+        setFormData(prev => ({ ...prev, email: urlEmail }));
+      }
+      setStep(3);
     }
-    const freeDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.com', 'icloud.com'];
-    const domain = trimmed.split('@')[1];
-    if (freeDomains.includes(domain)) {
-      // Allowed but advised
+  }, [isAuthenticated, isSuccess, navigate, location.search]);
+
+  // Resend cooldown timer
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (resendCooldown > 0) {
+      timer = setTimeout(() => setResendCooldown(resendCooldown - 1), 1000);
     }
-    return { valid: true };
-  };
+    return () => clearTimeout(timer);
+  }, [resendCooldown]);
 
   const validatePhone = (phone: string): { valid: boolean; message?: string } => {
     const clean = phone.replace(/[\s\-\(\)\.]/g, '');
@@ -187,7 +210,7 @@ export default function Register() {
     } else {
       const emailCheck = validateBusinessEmail(formData.email);
       if (!emailCheck.valid) {
-        newErrors.email = emailCheck.message || 'Please provide a valid corporate business email.';
+        newErrors.email = emailCheck.reason || 'Please provide a valid corporate business email.';
       }
     }
 
@@ -257,16 +280,16 @@ export default function Register() {
     return Object.keys(newErrors).length === 0;
   };
 
-  // Handle transition to Step 2
+  // Handle transition from Step 1 to Step 2
   const handleNext = async () => {
     if (!validateStep1()) return;
 
     try {
-      const dup = await checkDuplicate(formData.userId, formData.email);
+      const dup = await checkDuplicate(formData.userId, formData.email, formData.mobile);
       if (dup.exists) {
         setErrors(prev => ({
           ...prev,
-          [dup.field || 'form']: dup.message || 'User ID or Email is already registered.'
+          [dup.field || 'form']: dup.message || 'User ID, Email, or Mobile is already registered.'
         }));
         return;
       }
@@ -279,7 +302,7 @@ export default function Register() {
     }
   };
 
-  // Handle final registration
+  // Handle final registration submission -> Triggers Bot Check, Policy Validation & Verification Code Email
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateStep1()) {
@@ -291,10 +314,13 @@ export default function Register() {
     }
 
     setIsSubmitting(true);
+    setErrors({});
     trackEvent({ eventName: 'REGISTER_ATTEMPT', category: 'AUTH' });
 
     try {
-      const profile = await register({
+      const timeElapsedMs = Date.now() - formStartTime;
+
+      const initRes = await initiateRegistration({
         fullName: formData.fullName,
         email: formData.email,
         mobile: formData.mobile,
@@ -309,18 +335,69 @@ export default function Register() {
         subIndustry: formData.subIndustry || undefined,
         headcount: formData.headcount,
         operations: formData.operations,
-        consent: formData.consent
+        consent: formData.consent,
+        honeypot: honeypot,
+        timeElapsedMs: timeElapsedMs
+      });
+
+      setVerificationToken(initRes.verificationToken);
+      setResendCooldown(60);
+      setStep(3);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      trackEvent({ eventName: 'REGISTER_CODE_DISPATCHED', category: 'AUTH', label: formData.email });
+    } catch (err: any) {
+      console.error('Registration initiation rejected:', err);
+      setErrors({ form: err.message || 'Unable to complete registration. Please verify your inputs.' });
+      trackEvent({ eventName: 'REGISTER_REJECTED', category: 'AUTH', label: err.message });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Handle Step 3 Verification Code submission
+  const handleVerifyCode = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setVerificationError(null);
+
+    const cleanCode = verificationCode.trim();
+    if (!cleanCode || cleanCode.length < 6) {
+      setVerificationError('Please enter the complete 6-digit verification code.');
+      return;
+    }
+
+    setIsVerifying(true);
+    try {
+      const profile = await verifyEmailCode({
+        verificationToken,
+        code: cleanCode,
+        email: formData.email,
+        registrationData: formData
       });
 
       setRegisteredProfile(profile);
       setIsSuccess(true);
-      trackEvent({ eventName: 'REGISTER_SUCCESS', category: 'AUTH', label: profile.userId });
+      trackEvent({ eventName: 'EMAIL_VERIFIED_SUCCESS', category: 'AUTH', label: profile.userId });
     } catch (err: any) {
-      console.error('Registration error:', err);
-      setErrors({ form: err.message || 'Unable to complete registration. Please check your inputs.' });
-      trackEvent({ eventName: 'REGISTER_FAILURE', category: 'AUTH', label: err.message });
+      console.error('Email code verification error:', err);
+      setVerificationError(err.message || 'Invalid or expired verification code. Please check and try again.');
+      trackEvent({ eventName: 'EMAIL_VERIFY_FAILURE', category: 'AUTH', label: err.message });
     } finally {
-      setIsSubmitting(false);
+      setIsVerifying(false);
+    }
+  };
+
+  // Handle Resend Verification Code
+  const handleResend = async () => {
+    if (resendCooldown > 0) return;
+    setResendStatus(null);
+    setVerificationError(null);
+
+    try {
+      const msg = await resendVerificationCode(verificationToken, formData.email);
+      setResendStatus(msg || `New verification code dispatched to ${formData.email}`);
+      setResendCooldown(60);
+    } catch (err: any) {
+      setVerificationError(err.message || 'Unable to resend verification code.');
     }
   };
 
@@ -330,6 +407,20 @@ export default function Register() {
       <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-0 left-10 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[140px] pointer-events-none" />
 
+      {/* Invisible Anti-Bot Honeypot Field */}
+      <div style={{ display: 'none', position: 'absolute', left: '-9999px', opacity: 0 }} aria-hidden="true">
+        <label htmlFor="website_fax_number">Leave this field blank</label>
+        <input
+          type="text"
+          id="website_fax_number"
+          name="website_fax_number"
+          tabIndex={-1}
+          autoComplete="off"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+        />
+      </div>
+
       <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 flex items-center justify-center relative z-10">
         <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 bg-white border border-slate-200/90 rounded-3xl shadow-2xl shadow-blue-900/5 overflow-hidden">
 
@@ -338,7 +429,7 @@ export default function Register() {
             <div className="space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 font-mono text-xs font-bold tracking-widest uppercase">
                 <ShieldCheck className="w-4 h-4 text-blue-400" />
-                Two-Step Registration
+                Verified Registration
               </div>
 
               <div>
@@ -354,7 +445,7 @@ export default function Register() {
               <div className="space-y-3 pt-2">
                 {/* Step 1 Pill */}
                 <div
-                  onClick={() => !isSuccess && setStep(1)}
+                  onClick={() => !isSuccess && step !== 3 && setStep(1)}
                   className={`p-3.5 rounded-2xl border transition-all cursor-pointer flex items-center gap-3.5 ${
                     step === 1
                       ? 'bg-blue-600/20 border-blue-400 text-white shadow-md'
@@ -376,7 +467,7 @@ export default function Register() {
 
                 {/* Step 2 Pill */}
                 <div
-                  onClick={() => !isSuccess && validateStep1() && setStep(2)}
+                  onClick={() => !isSuccess && step !== 3 && validateStep1() && setStep(2)}
                   className={`p-3.5 rounded-2xl border transition-all cursor-pointer flex items-center gap-3.5 ${
                     step === 2
                       ? 'bg-blue-600/20 border-blue-400 text-white shadow-md'
@@ -393,6 +484,27 @@ export default function Register() {
                   <div>
                     <div className="text-sm font-bold text-white">Company Information</div>
                     <div className="text-xs text-slate-300">Corporate & Operational Scope</div>
+                  </div>
+                </div>
+
+                {/* Step 3 Pill */}
+                <div
+                  className={`p-3.5 rounded-2xl border transition-all flex items-center gap-3.5 ${
+                    step === 3
+                      ? 'bg-blue-600/20 border-blue-400 text-white shadow-md'
+                      : 'bg-white/5 border-white/10 text-slate-400'
+                  }`}
+                >
+                  <div
+                    className={`w-9 h-9 rounded-xl flex items-center justify-center text-xs font-mono font-bold shrink-0 ${
+                      step === 3 ? 'bg-blue-600 text-white' : 'bg-slate-800 text-slate-400'
+                    }`}
+                  >
+                    03
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-white">Email Verification</div>
+                    <div className="text-xs text-slate-300">Corporate Security PIN</div>
                   </div>
                 </div>
               </div>
@@ -434,13 +546,13 @@ export default function Register() {
 
                 <div className="space-y-2">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                    Registration Successfully Logged
+                    Email Verified & Account Activated
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-heading">
                     Account Created Successfully
                   </h2>
                   <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                    Welcome to ProfitMachines, <span className="font-bold text-slate-900">{registeredProfile?.fullName}</span>. Your enterprise account has been registered and synced with our central directory.
+                    Welcome to ProfitMachines, <span className="font-bold text-slate-900">{registeredProfile?.fullName}</span>. Your enterprise account has been verified and registered in our central directory.
                   </p>
                 </div>
 
@@ -487,6 +599,88 @@ export default function Register() {
                   </button>
                 </div>
               </div>
+            ) : step === 3 ? (
+              /* ── STEP 3: EMAIL VERIFICATION CODE SCREEN ── */
+              <div className="py-6 space-y-6 animate-in fade-in">
+                <div className="text-center space-y-3">
+                  <div className="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center mx-auto shadow-xs">
+                    <Mail className="w-7 h-7" />
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading">Verify Your Corporate Email</h3>
+                  <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+                    We've sent a 6-digit verification code to <strong className="text-slate-900">{formData.email}</strong>. Enter the code below to activate your account.
+                  </p>
+                </div>
+
+                {verificationError && (
+                  <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm flex items-start gap-3">
+                    <AlertCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                    <span className="leading-relaxed font-medium">{verificationError}</span>
+                  </div>
+                )}
+
+                {resendStatus && (
+                  <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                    <span className="leading-relaxed font-medium">{resendStatus}</span>
+                  </div>
+                )}
+
+                <form onSubmit={handleVerifyCode} className="space-y-6 max-w-sm mx-auto">
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 text-center mb-2">
+                      Enter 6-Digit Code
+                    </label>
+                    <input
+                      type="text"
+                      autoFocus
+                      maxLength={6}
+                      value={verificationCode}
+                      onChange={(e) => setVerificationCode(e.target.value.replace(/\D/g, ''))}
+                      placeholder="000000"
+                      className="w-full h-16 text-center font-mono font-extrabold text-3xl tracking-[12px] rounded-2xl bg-slate-50 hover:bg-white focus:bg-white border-2 border-slate-300 focus:border-blue-600 focus:ring-4 focus:ring-blue-100 text-slate-900 transition-all"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isVerifying || verificationCode.length < 6}
+                    className="w-full h-12 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:from-blue-800 active:to-indigo-800 text-white font-bold text-base shadow-md shadow-blue-600/25 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  >
+                    {isVerifying ? (
+                      <>
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        <span>Verifying Code...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Verify & Activate Account</span>
+                        <ArrowRight className="w-5 h-5" />
+                      </>
+                    )}
+                  </button>
+
+                  <div className="pt-2 flex flex-col items-center gap-2 text-xs">
+                    <button
+                      type="button"
+                      disabled={resendCooldown > 0}
+                      onClick={handleResend}
+                      className="text-blue-600 hover:text-blue-700 font-bold transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5"
+                    >
+                      <RefreshCw className={`w-3.5 h-3.5 ${resendCooldown > 0 ? 'animate-spin' : ''}`} />
+                      <span>{resendCooldown > 0 ? `Resend code in ${resendCooldown}s` : 'Resend Verification Code'}</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setStep(1)}
+                      className="text-slate-500 hover:text-slate-800 transition-colors cursor-pointer mt-1"
+                    >
+                      Wrong email address? Edit details &rarr;
+                    </button>
+                  </div>
+                </form>
+              </div>
             ) : (
               /* ── TWO-STEP FORM ── */
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -528,9 +722,12 @@ export default function Register() {
 
                       {/* Business Email */}
                       <div>
-                        <label className="block text-sm font-bold text-slate-900 mb-1.5">
-                          Corporate Business Email <span className="text-blue-600">*</span>
-                        </label>
+                        <div className="flex items-center justify-between mb-1.5">
+                          <label className="block text-sm font-bold text-slate-900">
+                            Corporate Business Email <span className="text-blue-600">*</span>
+                          </label>
+                          <span className="text-[11px] font-semibold text-slate-400">Business domains only</span>
+                        </div>
                         <input
                           type="email"
                           required
@@ -895,12 +1092,12 @@ export default function Register() {
                         {isSubmitting ? (
                           <>
                             <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                            <span>Creating Account...</span>
+                            <span>Validating & Dispatching Code...</span>
                           </>
                         ) : (
                           <>
-                            <span>Register / Create Account</span>
-                            <CheckCircle2 className="w-5 h-5" />
+                            <span>Register & Verify Email</span>
+                            <Mail className="w-5 h-5" />
                           </>
                         )}
                       </button>

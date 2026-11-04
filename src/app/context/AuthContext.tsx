@@ -7,6 +7,10 @@ interface AuthContextType {
   isLoading: boolean;
   login: (identifier: string, password: string) => Promise<UserProfile>;
   register: (payload: RegisterPayload) => Promise<UserProfile>;
+  initiateRegistration: (data: RegisterPayload & { honeypot?: string; timeElapsedMs?: number }) => Promise<any>;
+  verifyEmailCode: (params: { verificationToken: string; code: string; email: string; registrationData: RegisterPayload }) => Promise<UserProfile>;
+  resendVerificationCode: (verificationToken: string, email: string) => Promise<string>;
+  checkDuplicate: (userId: string, email: string, mobile?: string) => Promise<{ exists: boolean; field: 'userId' | 'email' | 'mobile' | null; message?: string }>;
   logout: () => void;
   resetPassword: (identifier: string, newPassword: string) => Promise<boolean>;
   logCalculator: (calculatorName: string, activityType?: 'View' | 'Calculate' | 'Export') => void;
@@ -41,6 +45,24 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return newUser;
   };
 
+  const initiateRegistration = async (data: RegisterPayload & { honeypot?: string; timeElapsedMs?: number }): Promise<any> => {
+    return authService.initiateRegistration(data);
+  };
+
+  const verifyEmailCode = async (params: { verificationToken: string; code: string; email: string; registrationData: RegisterPayload }): Promise<UserProfile> => {
+    const newUser = await authService.verifyEmailCode(params);
+    setUser(newUser);
+    return newUser;
+  };
+
+  const resendVerificationCode = async (verificationToken: string, email: string): Promise<string> => {
+    return authService.resendVerificationCode(verificationToken, email);
+  };
+
+  const checkDuplicate = async (userId: string, email: string, mobile?: string) => {
+    return authService.checkDuplicate(userId, email, mobile);
+  };
+
   const logout = () => {
     authService.logout();
     setUser(null);
@@ -62,6 +84,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         isLoading,
         login,
         register,
+        initiateRegistration,
+        verifyEmailCode,
+        resendVerificationCode,
+        checkDuplicate,
         logout,
         resetPassword,
         logCalculator

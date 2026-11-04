@@ -212,6 +212,19 @@ var TAB_CONFIGS = {
   // 15. User Authentication Credentials Vault (Option B: Visible & Centralized Validation)
   "User_Credentials": [
     "User ID", "Business Email", "Full Name", "Password", "Created Date", "Account Status", "Last Login Date"
+  ],
+
+  // 16. Strict Anti-Bot & Policy Rejected Registrations Audit Trail
+  "Rejected_Registrations": [
+    "Rejection ID", "Timestamp", "Rejection Reason", "Candidate Name", "Input Email",
+    "Input Phone", "Input User ID", "Input Company", "Detection Flags", "IP Address", "User Agent"
+  ],
+
+  // 17. Pending Email Verification Tokens
+  "Pending_Verifications": [
+    "Verification ID", "Verification Code", "User ID", "Business Email", "Full Name",
+    "Mobile Number", "Company Name", "Country", "Industry", "Headcount", "Operations",
+    "Created Timestamp", "Expires Timestamp", "Status"
   ]
 };
 
@@ -228,6 +241,12 @@ var SHEET_NAME_ALIASES = {
   "credentials": "User_Credentials",
   "users": "User_Credentials",
   "auth": "User_Credentials",
+  "rejectedregistrations": "Rejected_Registrations",
+  "rejected_registrations": "Rejected_Registrations",
+  "rejected": "Rejected_Registrations",
+  "pendingverifications": "Pending_Verifications",
+  "pending_verifications": "Pending_Verifications",
+  "pending": "Pending_Verifications",
 
   // Telemetry Routes
   "pageview": "Page_Views",
@@ -383,6 +402,10 @@ function doGet(e) {
       var verifyResult = handleVerifyLogin(ss, e.parameter);
       return ContentService.createTextOutput(JSON.stringify(verifyResult)).setMimeType(ContentService.MimeType.JSON);
     }
+    if (getAction === "verify_email_code" || getAction === "verify_email" || getAction === "verify_token") {
+      var verifyCodeRes = handleVerifyEmailCode(ss, e.parameter);
+      return ContentService.createTextOutput(JSON.stringify(verifyCodeRes)).setMimeType(ContentService.MimeType.JSON);
+    }
     if (getAction === "check_user_exists") {
       var checkResult = handleCheckUserExists(ss, e.parameter);
       return ContentService.createTextOutput(JSON.stringify(checkResult)).setMimeType(ContentService.MimeType.JSON);
@@ -449,6 +472,24 @@ function doPost(e) {
       var ssLogin = SpreadsheetApp.openById(CONFIG.MAIN_SPREADSHEET_ID);
       var verifyResult = handleVerifyLogin(ssLogin, data);
       return ContentService.createTextOutput(JSON.stringify(verifyResult)).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    if (action === "initiate_registration" || action === "register_init") {
+      var ssInit = SpreadsheetApp.openById(CONFIG.MAIN_SPREADSHEET_ID);
+      var initResult = handleInitiateRegistration(ssInit, data);
+      return ContentService.createTextOutput(JSON.stringify(initResult)).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    if (action === "verify_email_code" || action === "verify_email" || action === "confirm_registration") {
+      var ssVer = SpreadsheetApp.openById(CONFIG.MAIN_SPREADSHEET_ID);
+      var verResult = handleVerifyEmailCode(ssVer, data);
+      return ContentService.createTextOutput(JSON.stringify(verResult)).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    if (action === "resend_verification_code" || action === "resend_code") {
+      var ssResend = SpreadsheetApp.openById(CONFIG.MAIN_SPREADSHEET_ID);
+      var resendResult = handleResendVerificationCode(ssResend, data);
+      return ContentService.createTextOutput(JSON.stringify(resendResult)).setMimeType(ContentService.MimeType.JSON);
     }
 
     if (action === "user_registration" || action === "register_user") {
@@ -3161,19 +3202,452 @@ function initializeAllDatabaseTables() {
 // 12. ENTERPRISE USER REGISTRATION, AUTHENTICATION & CALCULATOR EXTENSIONS
 // =========================================================================================
 
+// ── Free / Personal / Disposable Email Providers to Reject ──
+var PERSONAL_EMAIL_DOMAINS = [
+  "gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "live.com",
+  "msn.com", "aol.com", "icloud.com", "mail.com", "zoho.com",
+  "proton.me", "protonmail.com", "yandex.com", "gmx.com",
+  "tempmail.com", "guerrillamail.com", "10minutemail.com", "mailinator.com",
+  "trashmail.com", "throwawaymail.com", "getairmail.com", "sharklasers.com"
+];
+
 /**
- * Checks whether a User ID or Business Email is already registered in 'User_Credentials' or 'User_Registration'.
+ * Validates whether an email has a genuine business domain format.
+ */
+function validateBusinessEmailDomain(email) {
+  if (!email || typeof email !== "string") return { valid: false, reason: "Missing or invalid email address." };
+  var clean = email.trim().toLowerCase();
+  var parts = clean.split("@");
+  if (parts.length !== 2 || !parts[0] || !parts[1]) {
+    return { valid: false, reason: "Malformed email format." };
+  }
+  var domain = parts[1];
+  if (PERSONAL_EMAIL_DOMAINS.indexOf(domain) !== -1) {
+    return {
+      valid: false,
+      reason: "Corporate policy requires a verified business email. Free/personal email provider (@" + domain + ") is not permitted."
+    };
+  }
+  if (domain.indexOf(".") === -1 || domain.split(".").pop().length < 2) {
+    return { valid: false, reason: "Invalid domain extension (@" + domain + ")." };
+  }
+  return { valid: true, domain: domain };
+}
+
+/**
+ * Logs rejected registration attempts to 'Rejected_Registrations' tab without sensitive credentials.
+ */
+function logRejectedRegistration(ss, data, reason, flags) {
+  try {
+    var sheet = findSheetFlexible(ss, "Rejected_Registrations");
+    var defaultHeaders = TAB_CONFIGS["Rejected_Registrations"];
+    if (!sheet) {
+      sheet = ss.insertSheet("Rejected_Registrations");
+      sheet.getRange(1, 1, 1, defaultHeaders.length)
+           .setValues([defaultHeaders])
+           .setFontWeight("bold")
+           .setBackground("#450a0a")
+           .setFontColor("#ffffff");
+      sheet.setFrozenRows(1);
+    } else if (sheet.getLastRow() === 0) {
+      sheet.getRange(1, 1, 1, defaultHeaders.length)
+           .setValues([defaultHeaders])
+           .setFontWeight("bold")
+           .setBackground("#450a0a")
+           .setFontColor("#ffffff");
+      sheet.setFrozenRows(1);
+    }
+
+    var rejId = "PM-REJ-" + Utilities.formatDate(new Date(), "GMT+05:30", "yyyyMMdd") + "-" + Math.floor(1000 + Math.random() * 9000);
+    var timestamp = Utilities.formatDate(new Date(), "GMT+05:30", "yyyy-MM-dd HH:mm:ss");
+    var name = (data.fullName || data.name || "").toString().trim();
+    var email = (data.email || data.businessEmail || "").toString().trim();
+    var phone = (data.mobile || data.phone || "").toString().trim();
+    var userId = (data.userId || data.preferredUserId || "").toString().trim();
+    var company = (data.company || data.companyName || "").toString().trim();
+    var ip = (data.ip || data.clientIp || "N/A").toString().trim();
+    var userAgent = (data.userAgent || data.ua || "N/A").toString().trim();
+
+    var row = [
+      rejId, timestamp, reason, name, email, phone, userId, company, (flags || "FLAG_TRIGGERED"), ip, userAgent
+    ];
+    sheet.appendRow(row);
+  } catch (err) {
+    console.error("Error logging to Rejected_Registrations: " + err.toString());
+  }
+}
+
+/**
+ * Dispatches a 6-digit verification email with one-click activation link to the user.
+ */
+function sendVerificationCodeEmail(email, fullName, verificationCode, verificationToken) {
+  var verifyUrl = EMAIL_CONFIG.website + "/register?verify_token=" + encodeURIComponent(verificationToken) + "&email=" + encodeURIComponent(email);
+  var subject = "Verify Your Business Email — ProfitMachines Enterprise Access [Code: " + verificationCode + "]";
+
+  var plainBody = "ProfitMachines Enterprise Security Verification\n\n" +
+    "Dear " + fullName + ",\n\n" +
+    "Thank you for requesting access to the ProfitMachines Enterprise Platform.\n\n" +
+    "Your 6-Digit Email Verification Code: " + verificationCode + "\n\n" +
+    "This code will expire in 15 minutes. Enter this code on the registration page to activate your account.\n\n" +
+    "Or click the link below to verify instantly:\n" +
+    verifyUrl + "\n\n" +
+    "— ProfitMachines Identity & Access Management";
+
+  var htmlBody = "<!DOCTYPE html><html><body style='margin:0; padding:0; background:#f8fafc; font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif; color:#0f172a;'>" +
+    "<div style='max-width:580px; margin:32px auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:16px; overflow:hidden; box-shadow:0 10px 25px rgba(15,23,42,0.06);'>" +
+    "<div style='background:#0f172a; padding:24px 32px; border-bottom:3px solid #2563eb; text-align:center;'>" +
+    "<h1 style='margin:0; font-size:22px; font-weight:800; color:#ffffff; letter-spacing:-0.5px;'>Profit<span style='color:#3b82f6;'>Machines</span></h1>" +
+    "<p style='margin:6px 0 0 0; color:#94a3b8; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:1px;'>Identity & Access Verification</p>" +
+    "</div>" +
+    "<div style='padding:32px;'>" +
+    "<h2 style='margin:0 0 12px 0; font-size:20px; font-weight:700; color:#0f172a;'>Verify Your Corporate Email</h2>" +
+    "<p style='margin:0 0 20px 0; font-size:14px; line-height:1.6; color:#475569;'>Hello <strong>" + fullName + "</strong>, thank you for requesting access to ProfitMachines. Please verify your business email to provision your executive account and activate Sales Calculators access.</p>" +
+    "<div style='background:#eff6ff; border:2px dashed #3b82f6; border-radius:12px; padding:20px; text-align:center; margin:24px 0;'>" +
+    "<div style='font-size:12px; font-weight:700; color:#1e40af; text-transform:uppercase; letter-spacing:1px;'>Your 6-Digit Verification Code</div>" +
+    "<div style='font-size:36px; font-weight:900; letter-spacing:8px; color:#1d4ed8; margin:10px 0; font-family:monospace;'>" + verificationCode + "</div>" +
+    "<div style='font-size:11px; color:#64748b;'>Valid for 15 minutes &bull; Do not share this code</div>" +
+    "</div>" +
+    "<div style='text-align:center; margin:24px 0;'>" +
+    "<a href='" + verifyUrl + "' style='display:inline-block; background:linear-gradient(135deg,#2563eb,#4f46e5); color:#ffffff; font-size:14px; font-weight:700; text-decoration:none; padding:14px 28px; border-radius:10px; box-shadow:0 4px 12px rgba(37,99,235,0.25);'>Verify Email Address Instantly &rarr;</a>" +
+    "</div>" +
+    "<p style='margin:20px 0 0 0; font-size:12px; color:#64748b; line-height:1.5;'>If you did not initiate this registration request, please disregard this email. No account has been created.</p>" +
+    "</div>" +
+    "<div style='background:#f8fafc; border-top:1px solid #e2e8f0; padding:16px 32px; text-align:center; color:#94a3b8; font-size:11px;'>" +
+    "ProfitMachines Enterprise Revenue Architecture &bull; SOC-2 Compliant Gateway" +
+    "</div>" +
+    "</div></body></html>";
+
+  sendEmailDirect({
+    to: email,
+    subject: subject,
+    body: plainBody,
+    htmlBody: htmlBody,
+    name: EMAIL_CONFIG.name,
+    replyTo: EMAIL_CONFIG.replyTo
+  });
+}
+
+/**
+ * Strict Registration Initiation:
+ * Detects & rejects bots, validates business email domain, checks duplicates on email/userId/phone,
+ * generates a 6-digit verification code, logs to 'Pending_Verifications', and emails the user.
+ * STRICT RULE: Does NOT write to 'User_Registration' until verified!
+ */
+function handleInitiateRegistration(ss, data) {
+  try {
+    // 1. Bot Trap & Honeypot Detection
+    if (data.honeypot || data.fax_number || data.website_url_check || data.company_fax) {
+      logRejectedRegistration(ss, data, "BOT_TRAP_HONEYPOT: Hidden honeypot field filled by automated crawler", "BOT_HONEYPOT");
+      return { status: "error", code: "BOT_DETECTED", message: "Automated submission rejected." };
+    }
+
+    if (data.time_elapsed_ms && Number(data.time_elapsed_ms) < 3000) {
+      logRejectedRegistration(ss, data, "BOT_SPEED_ANOMALY: Form completed in under 3 seconds (" + data.time_elapsed_ms + "ms)", "BOT_SPEED");
+      return { status: "error", code: "BOT_DETECTED", message: "Submission speed anomalous. Real human interaction expected." };
+    }
+
+    var userAgent = (data.userAgent || "").toString();
+    if (userAgent && (userAgent.indexOf("HeadlessChrome") !== -1 || userAgent.indexOf("PhantomJS") !== -1 || userAgent.indexOf("Puppeteer") !== -1)) {
+      logRejectedRegistration(ss, data, "BOT_HEADLESS_BROWSER: Automated headless browser detected", "BOT_USERAGENT");
+      return { status: "error", code: "BOT_DETECTED", message: "Automated browser interaction blocked." };
+    }
+
+    // 2. Business Email Format & Corporate Policy Validation
+    var email = (data.email || data.businessEmail || "").toString().trim();
+    var emailCheck = validateBusinessEmailDomain(email);
+    if (!emailCheck.valid) {
+      logRejectedRegistration(ss, data, "POLICY_VIOLATION: " + emailCheck.reason, "EMAIL_POLICY");
+      return { status: "error", code: "EMAIL_POLICY_VIOLATION", field: "email", message: emailCheck.reason };
+    }
+
+    // 3. Required Fields Validation
+    var fullName = (data.fullName || data.name || "").toString().trim();
+    var mobile = (data.mobile || data.phone || "").toString().trim();
+    var userId = (data.userId || data.preferredUserId || "").toString().trim();
+    var company = (data.company || data.companyName || "").toString().trim();
+    var country = (data.country || "").toString().trim();
+    var industry = (data.industry || data.industrySector || "").toString().trim();
+    var headcount = (data.headcount || data.companyHeadcount || "").toString().trim();
+
+    if (!fullName || fullName.length < 2) {
+      logRejectedRegistration(ss, data, "VALIDATION_FAILED: Invalid or missing Full Name", "FIELD_REQUIRED");
+      return { status: "error", code: "MISSING_FIELD", field: "fullName", message: "Please enter your full legal name." };
+    }
+    if (!mobile || mobile.replace(/\D/g, "").length < 7) {
+      logRejectedRegistration(ss, data, "VALIDATION_FAILED: Invalid or missing Mobile Number", "FIELD_REQUIRED");
+      return { status: "error", code: "MISSING_FIELD", field: "mobile", message: "Please enter a valid mobile number with country code." };
+    }
+    if (!userId || userId.length < 3 || !/^[a-zA-Z0-9_-]+$/.test(userId)) {
+      logRejectedRegistration(ss, data, "VALIDATION_FAILED: Invalid User ID format", "FIELD_REQUIRED");
+      return { status: "error", code: "INVALID_USER_ID", field: "userId", message: "User ID must be 3-25 alphanumeric characters." };
+    }
+    if (!company || company.length < 2) {
+      logRejectedRegistration(ss, data, "VALIDATION_FAILED: Missing Company Name", "FIELD_REQUIRED");
+      return { status: "error", code: "MISSING_FIELD", field: "company", message: "Please provide your registered Company Name." };
+    }
+    if (!country) {
+      logRejectedRegistration(ss, data, "VALIDATION_FAILED: Missing Country", "FIELD_REQUIRED");
+      return { status: "error", code: "MISSING_FIELD", field: "country", message: "Please select your country of operation." };
+    }
+    if (!industry) {
+      logRejectedRegistration(ss, data, "VALIDATION_FAILED: Missing Industry Sector", "FIELD_REQUIRED");
+      return { status: "error", code: "MISSING_FIELD", field: "industry", message: "Please specify your industry sector." };
+    }
+
+    // 4. Strict Duplicate Check (Email, User ID, and Mobile)
+    var dupCheck = handleCheckUserExists(ss, data);
+    if (dupCheck.exists) {
+      logRejectedRegistration(ss, data, "DUPLICATE_REJECTED: " + dupCheck.message, "DUPLICATE_CHECK");
+      return { status: "error", code: "DUPLICATE_RECORD", field: dupCheck.field, message: dupCheck.message };
+    }
+
+    // 5. Generate 6-Digit Verification Code and Token
+    var verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+    var verificationToken = "PM-VERIFY-" + Utilities.formatDate(new Date(), "GMT+05:30", "yyyyMMddHHmmss") + "-" + Math.floor(1000 + Math.random() * 9000);
+    var now = new Date();
+    var createdTimestamp = Utilities.formatDate(now, "GMT+05:30", "yyyy-MM-dd HH:mm:ss");
+    var expiresTimestamp = Utilities.formatDate(new Date(now.getTime() + 15 * 60 * 1000), "GMT+05:30", "yyyy-MM-dd HH:mm:ss");
+
+    // 6. Save in 'Pending_Verifications' Tab
+    var pendingSheet = findSheetFlexible(ss, "Pending_Verifications");
+    var pendingHeaders = TAB_CONFIGS["Pending_Verifications"];
+    if (!pendingSheet) {
+      pendingSheet = ss.insertSheet("Pending_Verifications");
+      pendingSheet.getRange(1, 1, 1, pendingHeaders.length)
+                  .setValues([pendingHeaders])
+                  .setFontWeight("bold")
+                  .setBackground("#1e293b")
+                  .setFontColor("#ffffff");
+      pendingSheet.setFrozenRows(1);
+    } else if (pendingSheet.getLastRow() === 0) {
+      pendingSheet.getRange(1, 1, 1, pendingHeaders.length)
+                  .setValues([pendingHeaders])
+                  .setFontWeight("bold")
+                  .setBackground("#1e293b")
+                  .setFontColor("#ffffff");
+      pendingSheet.setFrozenRows(1);
+    }
+
+    var operations = Array.isArray(data.operations) ? data.operations.join(", ") : (data.operations || "").toString().trim();
+
+    var pendingRow = [
+      verificationToken, verificationCode, userId, email, fullName,
+      mobile, company, country, industry, headcount, operations,
+      createdTimestamp, expiresTimestamp, "Pending"
+    ];
+    pendingSheet.appendRow(pendingRow);
+
+    // 7. Dispatch Verification Email with Code & One-Click Link
+    sendVerificationCodeEmail(email, fullName, verificationCode, verificationToken);
+
+    return {
+      status: "pending_verification",
+      verificationToken: verificationToken,
+      email: email,
+      expiresAt: expiresTimestamp,
+      message: "Security verification code sent to " + email + ". Enter the code to activate your account."
+    };
+  } catch (err) {
+    console.error("Error in handleInitiateRegistration: " + err.toString());
+    return { status: "error", message: err.toString() };
+  }
+}
+
+/**
+ * Strict Step 2: Verifies the 6-digit code or link token.
+ * ONLY upon successful verification does it save the genuine user in 'User_Registration' tab
+ * and dispatch the welcome confirmation & admin notification emails!
+ */
+function handleVerifyEmailCode(ss, data) {
+  try {
+    var pendingSheet = findSheetFlexible(ss, "Pending_Verifications");
+    if (!pendingSheet || pendingSheet.getLastRow() <= 1) {
+      return { status: "error", code: "NO_PENDING_REGISTRATION", message: "No pending verification found. Please register again." };
+    }
+
+    var inputToken = (data.verificationToken || data.token || "").toString().trim();
+    var inputCode = (data.verificationCode || data.code || "").toString().trim();
+    var inputEmail = (data.email || "").toString().trim().toLowerCase();
+
+    var lastRow = pendingSheet.getLastRow();
+    var values = pendingSheet.getRange(2, 1, lastRow - 1, pendingSheet.getLastColumn()).getValues();
+    var matchIndex = -1;
+    var matchedRow = null;
+
+    for (var i = 0; i < values.length; i++) {
+      var rowToken = (values[i][0] || "").toString().trim();
+      var rowCode = (values[i][1] || "").toString().trim();
+      var rowEmail = (values[i][3] || "").toString().trim().toLowerCase();
+      var rowStatus = (values[i][13] || "").toString().trim();
+
+      var isTokenMatch = inputToken && rowToken === inputToken;
+      var isCodeMatch = inputCode && rowCode === inputCode && (!inputEmail || rowEmail === inputEmail);
+
+      if ((isTokenMatch || isCodeMatch) && rowStatus.toLowerCase() === "pending") {
+        matchIndex = i + 2;
+        matchedRow = values[i];
+        break;
+      }
+    }
+
+    if (!matchedRow) {
+      logRejectedRegistration(ss, data, "INVALID_VERIFICATION_CODE: Entered incorrect code or not found", "CODE_MISMATCH");
+      return { status: "error", code: "INVALID_CODE", message: "Invalid verification code. Please check your email or request a new code." };
+    }
+
+    // Check expiry
+    var expiryStr = matchedRow[12];
+    if (expiryStr) {
+      var expiryDate = new Date(expiryStr);
+      if (new Date() > expiryDate) {
+        pendingSheet.getRange(matchIndex, 14).setValue("Expired");
+        logRejectedRegistration(ss, data, "EXPIRED_VERIFICATION_CODE: Code expired before entry", "CODE_EXPIRED");
+        return { status: "error", code: "CODE_EXPIRED", message: "Verification code has expired (15-minute limit). Please request a new code." };
+      }
+    }
+
+    // Code is valid! Mark as Verified in Pending_Verifications
+    pendingSheet.getRange(matchIndex, 14).setValue("Verified");
+
+    // NOW, and ONLY NOW, create the genuine record in 'User_Registration' tab!
+    var userId = matchedRow[2];
+    var email = matchedRow[3];
+    var fullName = matchedRow[4];
+    var mobile = matchedRow[5];
+    var company = matchedRow[6];
+    var country = matchedRow[7];
+    var industry = matchedRow[8];
+    var headcount = matchedRow[9];
+    var operations = matchedRow[10];
+    var regDate = Utilities.formatDate(new Date(), "GMT+05:30", "yyyy-MM-dd HH:mm:ss");
+    var regId = "PM-REG-" + Utilities.formatDate(new Date(), "GMT+05:30", "yyyyMMdd") + "-" + Math.floor(1000 + Math.random() * 9000);
+
+    var userSheet = findSheetFlexible(ss, "User_Registration");
+    var userHeaders = TAB_CONFIGS["User_Registration"];
+    if (!userSheet) {
+      userSheet = ss.insertSheet("User_Registration");
+      userSheet.getRange(1, 1, 1, userHeaders.length)
+               .setValues([userHeaders])
+               .setFontWeight("bold")
+               .setBackground("#0f172a")
+               .setFontColor("#ffffff");
+      userSheet.setFrozenRows(1);
+    }
+
+    var genuineRow = [
+      regId, fullName, email, mobile, userId, company, "",
+      country, "", "", industry, "", headcount,
+      operations, "Accepted: Verified", regDate, "Active"
+    ];
+    userSheet.appendRow(genuineRow);
+
+    // Option B: Store credentials in User_Credentials if password provided
+    var password = (data.password || "").toString().trim();
+    if (password) {
+      try {
+        var credSheet = findSheetFlexible(ss, "User_Credentials");
+        if (credSheet) {
+          credSheet.appendRow([userId, email, fullName, password, regDate, "Active", ""]);
+        }
+      } catch (cErr) {
+        console.warn("User_Credentials write error:", cErr);
+      }
+    }
+
+    // 1. Send User Registration Confirmation Email ONLY AFTER verification!
+    sendUserRegistrationConfirmationEmail(email, fullName, userId);
+
+    // 2. Send Admin New Registration Alert ONLY AFTER verification!
+    sendAdminNewRegistrationNotification({
+      registrationId: regId,
+      fullName: fullName,
+      email: email,
+      mobile: mobile,
+      userId: userId,
+      company: company,
+      website: "",
+      country: country,
+      state: "",
+      city: "",
+      industry: industry,
+      subIndustry: "",
+      headcount: headcount,
+      operations: operations,
+      registrationDate: regDate
+    });
+
+    return {
+      status: "success",
+      registrationId: regId,
+      userId: userId,
+      email: email,
+      fullName: fullName,
+      company: company,
+      message: "Account verified and created successfully!"
+    };
+  } catch (err) {
+    console.error("Error in handleVerifyEmailCode: " + err.toString());
+    return { status: "error", message: err.toString() };
+  }
+}
+
+/**
+ * Resends a fresh 6-digit verification code to the candidate.
+ */
+function handleResendVerificationCode(ss, data) {
+  try {
+    var pendingSheet = findSheetFlexible(ss, "Pending_Verifications");
+    if (!pendingSheet || pendingSheet.getLastRow() <= 1) {
+      return { status: "error", message: "No pending verification found." };
+    }
+
+    var inputToken = (data.verificationToken || data.token || "").toString().trim();
+    var inputEmail = (data.email || "").toString().trim().toLowerCase();
+
+    var lastRow = pendingSheet.getLastRow();
+    var values = pendingSheet.getRange(2, 1, lastRow - 1, pendingSheet.getLastColumn()).getValues();
+
+    for (var i = values.length - 1; i >= 0; i--) {
+      var rowToken = (values[i][0] || "").toString().trim();
+      var rowEmail = (values[i][3] || "").toString().trim().toLowerCase();
+      var rowStatus = (values[i][13] || "").toString().trim();
+
+      if ((rowToken === inputToken || rowEmail === inputEmail) && rowStatus.toLowerCase() === "pending") {
+        var newCode = Math.floor(100000 + Math.random() * 900000).toString();
+        var now = new Date();
+        var expiresTimestamp = Utilities.formatDate(new Date(now.getTime() + 15 * 60 * 1000), "GMT+05:30", "yyyy-MM-dd HH:mm:ss");
+
+        pendingSheet.getRange(i + 2, 2).setValue(newCode); // Update code
+        pendingSheet.getRange(i + 2, 13).setValue(expiresTimestamp); // Extend expiry
+
+        var fullName = values[i][4];
+        var email = values[i][3];
+        sendVerificationCodeEmail(email, fullName, newCode, rowToken);
+
+        return { status: "success", message: "A new 6-digit verification code has been dispatched to " + email };
+      }
+    }
+
+    return { status: "error", message: "Pending registration not found. Please register again." };
+  } catch (err) {
+    return { status: "error", message: err.toString() };
+  }
+}
+
+/**
+ * Checks whether a User ID, Business Email, or Mobile Number is already registered.
  */
 function handleCheckUserExists(ss, data) {
   try {
     var checkEmail = (data.email || data.businessEmail || "").toString().trim().toLowerCase();
     var checkUserId = (data.userId || data.preferredUserId || "").toString().trim().toLowerCase();
+    var checkPhone = (data.mobile || data.phone || "").toString().replace(/[\s\-\(\)\.]/g, "");
 
-    if (!checkEmail && !checkUserId) {
+    if (!checkEmail && !checkUserId && !checkPhone) {
       return { status: "success", exists: false, field: null };
     }
 
-    // Check User_Credentials first
+    // Check User_Credentials
     var credSheet = findSheetFlexible(ss, "User_Credentials");
     if (credSheet && credSheet.getLastRow() > 1) {
       var credValues = credSheet.getRange(2, 1, credSheet.getLastRow() - 1, Math.min(2, credSheet.getLastColumn())).getValues();
@@ -3193,11 +3667,12 @@ function handleCheckUserExists(ss, data) {
     var sheet = findSheetFlexible(ss, "User_Registration");
     if (sheet && sheet.getLastRow() > 1) {
       var lastRow = sheet.getLastRow();
-      var values = sheet.getRange(2, 1, lastRow - 1, sheet.getLastColumn()).getValues();
+      var values = sheet.getRange(2, 1, lastRow - 1, Math.min(6, sheet.getLastColumn())).getValues();
 
-      // Col 3: Business Email (index 2), Col 5: Preferred User ID (index 4)
+      // Col 3: Business Email (index 2), Col 4: Mobile (index 3), Col 5: User ID (index 4)
       for (var i = 0; i < values.length; i++) {
         var rowEmail = (values[i][2] || "").toString().trim().toLowerCase();
+        var rowPhone = (values[i][3] || "").toString().replace(/[\s\-\(\)\.]/g, "");
         var rowUserId = (values[i][4] || "").toString().trim().toLowerCase();
 
         if (checkUserId && rowUserId === checkUserId) {
@@ -3205,6 +3680,9 @@ function handleCheckUserExists(ss, data) {
         }
         if (checkEmail && rowEmail === checkEmail) {
           return { status: "success", exists: true, field: "email", message: "Business Email '" + data.email + "' is already registered." };
+        }
+        if (checkPhone && rowPhone && rowPhone === checkPhone) {
+          return { status: "success", exists: true, field: "mobile", message: "Mobile number '" + data.mobile + "' is already registered." };
         }
       }
     }
@@ -3224,13 +3702,33 @@ function handleCheckUserExists(ss, data) {
  */
 function handleUserRegistration(ss, data) {
   try {
+    // 1. Honeypot & Bot Detection
+    if (data.honeypot || data.fax_number || data.website_url_check || data.company_fax) {
+      logRejectedRegistration(ss, data, "BOT_TRAP_HONEYPOT: Hidden honeypot field filled by bot", "BOT_HONEYPOT");
+      return { status: "error", code: "BOT_DETECTED", message: "Automated submission rejected." };
+    }
+
+    if (data.time_elapsed_ms && Number(data.time_elapsed_ms) < 3000) {
+      logRejectedRegistration(ss, data, "BOT_SPEED_ANOMALY: Completed in under 3 seconds", "BOT_SPEED");
+      return { status: "error", code: "BOT_DETECTED", message: "Submission speed anomalous. Real human interaction expected." };
+    }
+
+    // 2. Business Email Policy
+    var email = (data.email || data.businessEmail || "").toString().trim();
+    var emailCheck = validateBusinessEmailDomain(email);
+    if (!emailCheck.valid) {
+      logRejectedRegistration(ss, data, "POLICY_VIOLATION: " + emailCheck.reason, "EMAIL_POLICY");
+      return { status: "error", code: "EMAIL_POLICY_VIOLATION", field: "email", message: emailCheck.reason };
+    }
+
     var check = handleCheckUserExists(ss, data);
     if (check.exists) {
+      logRejectedRegistration(ss, data, "DUPLICATE_REJECTED: " + check.message, "DUPLICATE_CHECK");
       return {
         status: "error",
         code: "DUPLICATE_USER",
         field: check.field,
-        message: check.message || "User ID or Business Email is already registered."
+        message: check.message || "User ID, Business Email, or Mobile Phone is already registered."
       };
     }
 

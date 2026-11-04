@@ -34,6 +34,42 @@ export interface UserProfile {
   accountStatus: 'Active' | 'Pending';
 }
 
+export interface InitiateRegistrationResult {
+  status: 'pending_verification';
+  verificationToken: string;
+  email: string;
+  expiresAt?: string;
+  message: string;
+}
+
+export const PERSONAL_EMAIL_DOMAINS = [
+  'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'live.com',
+  'msn.com', 'aol.com', 'icloud.com', 'mail.com', 'zoho.com',
+  'proton.me', 'protonmail.com', 'yandex.com', 'gmx.com',
+  'tempmail.com', 'guerrillamail.com', '10minutemail.com', 'mailinator.com',
+  'trashmail.com', 'throwawaymail.com', 'getairmail.com'
+];
+
+export function validateBusinessEmail(email: string): { valid: boolean; reason?: string } {
+  if (!email) return { valid: false, reason: 'Business email is required.' };
+  const clean = email.trim().toLowerCase();
+  const parts = clean.split('@');
+  if (parts.length !== 2 || !parts[0] || !parts[1]) {
+    return { valid: false, reason: 'Invalid email address format.' };
+  }
+  const domain = parts[1];
+  if (PERSONAL_EMAIL_DOMAINS.includes(domain)) {
+    return {
+      valid: false,
+      reason: `Corporate policy requires a verified business email. Free/personal email provider (@${domain}) is not permitted.`
+    };
+  }
+  if (!domain.includes('.') || domain.split('.').pop()!.length < 2) {
+    return { valid: false, reason: `Invalid corporate domain extension (@${domain}).` };
+  }
+  return { valid: true };
+}
+
 export interface RegisterPayload {
   fullName: string;
   email: string;
@@ -158,11 +194,12 @@ async function dispatchWebhook(payload: Record<string, any>): Promise<any> {
 
 export const authService = {
   /**
-   * Checks whether a User ID or Business Email already exists.
+   * Checks whether a User ID, Business Email, or Mobile Phone already exists.
    */
-  async checkDuplicate(userId: string, email: string): Promise<{ exists: boolean; field: 'userId' | 'email' | null; message?: string }> {
+  async checkDuplicate(userId: string, email: string, mobile?: string): Promise<{ exists: boolean; field: 'userId' | 'email' | 'mobile' | null; message?: string }> {
     const cleanId = userId.trim().toLowerCase();
     const cleanEmail = email.trim().toLowerCase();
+    const cleanMobile = mobile ? mobile.replace(/[\s\-\(\)\.]/g, '') : '';
     const accounts = getStoredAccounts();
 
     // 1. Check local registry
@@ -176,27 +213,172 @@ export const authService = {
       return { exists: true, field: 'email', message: `Business Email "${email}" is already registered. Please sign in instead.` };
     }
 
+    if (cleanMobile) {
+      const mobileMatch = accounts.find(a => a.profile.mobile && a.profile.mobile.replace(/[\s\-\(\)\.]/g, '') === cleanMobile);
+      if (mobileMatch) {
+        return { exists: true, field: 'mobile', message: `Mobile number is already registered to an existing account.` };
+      }
+    }
+
     // 2. Query Google Sheets remote registry
     try {
       const res = await dispatchWebhook({
         action: 'check_user_exists',
         userId: userId.trim(),
-        email: email.trim()
+        email: email.trim(),
+        mobile: mobile ? mobile.trim() : ''
       });
 
       if (res && res.exists) {
         return {
           exists: true,
           field: res.field || 'userId',
-          message: res.message || 'User ID or Email already registered in enterprise directory.'
+          message: res.message || 'User ID, Email, or Mobile already registered in enterprise directory.'
         };
       }
     } catch (e) {
-      // Non-blocking fallback if network times out
       console.warn('Remote duplicate check fallback:', e);
     }
 
     return { exists: false, field: null };
+  },
+
+  /**
+   * Initiates registration with strict bot checking, corporate email validation, and email code verification.
+   * Does NOT save a genuine record to Google Sheets until verified!
+   */
+  async initiateRegistration(data: RegisterPayload & { honeypot?: string; timeElapsedMs?: number }): Promise<InitiateRegistrationResult> {
+    // 1. Honeypot Bot Detection
+    if (data.honeypot) {
+      throw new Error('Automated submission rejected.');
+    }
+
+    // 2. Speed Anomaly Bot Detection
+    if (data.timeElapsedMs && data.timeElapsedMs < 3000) {
+      throw new Error('Submission completed too quickly. Real human interaction expected.');
+    }
+
+    // 3. Business Email Policy Validation
+    const emailCheck = validateBusinessEmail(data.email);
+    if (!emailCheck.valid) {
+      throw new Error(emailCheck.reason || 'Please provide a valid corporate business email address.');
+    }
+
+    // 4. Strict Duplicate Check
+    const dupCheck = await this.checkDuplicate(data.userId, data.email, data.mobile);
+    if (dupCheck.exists) {
+      throw new Error(dupCheck.message || 'User ID, Business Email, or Mobile Phone already exists.');
+    }
+
+    // 5. Send initiate_registration to Google Apps Script
+    const res = await dispatchWebhook({
+      action: 'initiate_registration',
+      fullName: data.fullName.trim(),
+      email: data.email.trim(),
+      mobile: data.mobile.trim(),
+      userId: data.userId.trim(),
+      company: data.company.trim(),
+      website: data.website ? data.website.trim() : '',
+      country: data.country.trim(),
+      state: data.state ? data.state.trim() : '',
+      city: data.city ? data.city.trim() : '',
+      industry: data.industry.trim(),
+      subIndustry: data.subIndustry ? data.subIndustry.trim() : '',
+      headcount: data.headcount.trim(),
+      operations: data.operations || [],
+      consent: data.consent,
+      honeypot: data.honeypot || '',
+      time_elapsed_ms: data.timeElapsedMs,
+      userAgent: navigator.userAgent
+    });
+
+    if (res && res.status === 'error') {
+      throw new Error(res.message || 'Registration rejected by security policy.');
+    }
+
+    return {
+      status: 'pending_verification',
+      verificationToken: res.verificationToken || ('PM-VERIFY-' + Date.now()),
+      email: data.email.trim(),
+      expiresAt: res.expiresAt,
+      message: res.message || `A 6-digit verification code has been dispatched to ${data.email}.`
+    };
+  },
+
+  /**
+   * Verifies the 6-digit email code and saves genuine record to Google Sheets User_Registration tab.
+   */
+  async verifyEmailCode(params: {
+    verificationToken: string;
+    code: string;
+    email: string;
+    registrationData: RegisterPayload;
+  }): Promise<UserProfile> {
+    const res = await dispatchWebhook({
+      action: 'verify_email_code',
+      verificationToken: params.verificationToken,
+      code: params.code.trim(),
+      email: params.email.trim(),
+      password: params.registrationData.password
+    });
+
+    if (res && res.status === 'error') {
+      throw new Error(res.message || 'Invalid or expired verification code.');
+    }
+
+    // Create profile
+    const { saltHex, hashHex } = await hashPassword(params.registrationData.password);
+    const now = new Date();
+    const regId = res.registrationId || ('PM-REG-' + now.toISOString().slice(0, 10).replace(/-/g, '') + '-' + Math.floor(1000 + Math.random() * 9000));
+
+    const profile: UserProfile = {
+      registrationId: regId,
+      fullName: params.registrationData.fullName.trim(),
+      email: params.registrationData.email.trim(),
+      mobile: params.registrationData.mobile.trim(),
+      userId: params.registrationData.userId.trim(),
+      company: params.registrationData.company.trim(),
+      website: params.registrationData.website ? params.registrationData.website.trim() : undefined,
+      country: params.registrationData.country.trim(),
+      state: params.registrationData.state ? params.registrationData.state.trim() : undefined,
+      city: params.registrationData.city ? params.registrationData.city.trim() : undefined,
+      industry: params.registrationData.industry.trim(),
+      subIndustry: params.registrationData.subIndustry ? params.registrationData.subIndustry.trim() : undefined,
+      headcount: params.registrationData.headcount.trim(),
+      operations: params.registrationData.operations || [],
+      consentStatus: 'Accepted: Verified',
+      registrationDate: now.toISOString(),
+      accountStatus: 'Active'
+    };
+
+    const accounts = getStoredAccounts();
+    accounts.push({
+      profile,
+      saltHex,
+      hashHex,
+      createdAt: now.toISOString()
+    });
+    saveStoredAccounts(accounts);
+
+    this.createSession(profile);
+    return profile;
+  },
+
+  /**
+   * Resends verification code.
+   */
+  async resendVerificationCode(verificationToken: string, email: string): Promise<string> {
+    const res = await dispatchWebhook({
+      action: 'resend_verification_code',
+      verificationToken,
+      email: email.trim()
+    });
+
+    if (res && res.status === 'error') {
+      throw new Error(res.message || 'Unable to resend code.');
+    }
+
+    return res.message || `A new verification code has been dispatched to ${email}.`;
   },
 
   /**

@@ -3130,9 +3130,9 @@ export default function Navigation() {
                     {!isAuthenticated ? (
                         <Link
                             to="/sign-in"
-                            className="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 active:bg-black text-white font-semibold text-xs xl:text-sm px-3 xl:px-3.5 py-2.5 rounded-xl transition-all shadow-sm hover:shadow hover:-translate-y-px whitespace-nowrap shrink-0 min-h-[40px]"
+                            className="inline-flex items-center gap-1.5 bg-white hover:bg-blue-50 text-slate-800 hover:text-blue-600 border border-slate-300 hover:border-blue-500 font-bold text-xs xl:text-sm px-3.5 xl:px-4 py-2.5 rounded-xl transition-all shadow-xs hover:shadow-sm hover:-translate-y-px whitespace-nowrap shrink-0 min-h-[40px]"
                         >
-                            <LogIn className="w-4 h-4 shrink-0 text-blue-400" />
+                            <LogIn className="w-4 h-4 shrink-0 text-blue-600" />
                             <span>Sign In</span>
                         </Link>
                     ) : (
@@ -3522,9 +3522,9 @@ export default function Navigation() {
                                 <Link
                                     to="/sign-in"
                                     onClick={() => setMobileOpen(false)}
-                                    className="w-full min-h-[44px] flex items-center justify-center gap-2 bg-slate-900 hover:bg-black text-white font-bold text-xs sm:text-sm py-2.5 px-4 rounded-xl shadow-sm transition-all"
+                                    className="w-full min-h-[44px] flex items-center justify-center gap-2 bg-white hover:bg-blue-50 border border-slate-300 hover:border-blue-500 text-slate-800 hover:text-blue-600 font-bold text-xs sm:text-sm py-2.5 px-4 rounded-xl shadow-xs transition-all"
                                 >
-                                    <LogIn className="w-4 h-4 text-blue-400" />
+                                    <LogIn className="w-4 h-4 text-blue-600" />
                                     <span>Sign In to Account</span>
                                 </Link>
                             ) : (

@@ -1,85 +1,88 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
-  ShieldCheck,
-  CheckCircle2,
-  AlertCircle,
-  ArrowRight,
-  ArrowLeft,
-  Lock,
   User,
   Mail,
   Phone,
+  Lock,
   Building2,
   Globe,
   MapPin,
   Briefcase,
   Users,
+  CheckCircle2,
+  AlertCircle,
   Eye,
   EyeOff,
+  ArrowRight,
+  ArrowLeft,
+  ShieldCheck,
   Sparkles,
-  Layers,
   Plus,
-  X
+  HelpCircle
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { trackEvent } from '../../lib/analytics';
-import { validateBusinessEmail, validatePhone } from '../components/forms/FormFeedback';
 
-// Global Country List
+// ── Industry Sector Options ─────────────────────────────────────────────────
+const INDUSTRY_SECTORS = [
+  'Enterprise SaaS & Cloud Software',
+  'AI / Machine Learning & Intelligent Automation',
+  'Fintech, Banking & Digital Assets',
+  'HealthTech & Life Sciences',
+  'Advanced Manufacturing & Industrial IoT',
+  'Supply Chain & Autonomous Logistics',
+  'CleanTech, Renewable Energy & Climate',
+  'Professional Business Services & Consulting',
+  'E-Commerce & Omnichannel Retail',
+  'Telecommunications & Network Infrastructure',
+  'Media, Entertainment & Creative Tech',
+  'Other Specialized Sector'
+];
+
+// ── Headcount Options ───────────────────────────────────────────────────────
+const HEADCOUNT_OPTIONS = [
+  { value: 'Individual', label: 'Individual (1)' },
+  { value: 'Startup (1–10)', label: 'Startup (1–10 employees)' },
+  { value: 'Small (11–50)', label: 'Small Business (11–50 employees)' },
+  { value: 'Medium (51–250)', label: 'Mid-Market (51–250 employees)' },
+  { value: 'Large (251–1000)', label: 'Large Enterprise (251–1000 employees)' },
+  { value: 'Enterprise (1000+)', label: 'Global Enterprise (1000+ employees)' }
+];
+
+// ── Default Business Operations Options ─────────────────────────────────────
+const DEFAULT_OPERATIONS = [
+  'B2B Enterprise Direct Sales',
+  'Product-Led Growth (PLG)',
+  'Global Channel & Partner Distribution',
+  'Outbound Cold Pipeline Generation',
+  'Inbound Organic & Performance Demand',
+  'Account-Based Marketing (ABM)',
+  'Customer Expansion & Net Retention (NDR)',
+  'Cross-Border International Expansion',
+  'AI Sales Agent Automation'
+];
+
+// ── Country List ────────────────────────────────────────────────────────────
 const GLOBAL_COUNTRIES = [
   'United States', 'United Kingdom', 'Canada', 'Australia', 'Germany',
-  'France', 'Singapore', 'India', 'United Arab Emirates', 'Saudi Arabia',
-  'Netherlands', 'Switzerland', 'Ireland', 'Japan', 'Brazil', 'South Africa',
-  'Sweden', 'Norway', 'Denmark', 'Finland', 'Spain', 'Italy', 'New Zealand',
-  'Mexico', 'Hong Kong', 'Israel', 'South Korea', 'Other'
-];
-
-// Industry Sectors
-const INDUSTRY_SECTORS = [
-  'B2B Enterprise SaaS & Cloud',
-  'Financial Services & FinTech',
-  'Web3, Blockchain & Crypto Protocol',
-  'Healthcare, Life Sciences & HealthTech',
-  'Manufacturing, Industrial & Supply Chain',
-  'Professional Services & Management Consulting',
-  'E-Commerce & High-Growth Retail',
-  'Media, Telecom & Advertising Tech',
-  'Artificial Intelligence & Data Infrastructure',
-  'Energy, CleanTech & Sustainability',
-  'Other Commercial Sector'
-];
-
-// Company Headcount Options
-const HEADCOUNT_OPTIONS = [
-  { value: 'Individual', label: 'Individual (Solo Practitioner / Advisory)' },
-  { value: 'Startup (1–10)', label: 'Startup (1–10 Employees)' },
-  { value: 'Small (11–50)', label: 'Small (11–50 Employees)' },
-  { value: 'Medium (51–250)', label: 'Medium (51–250 Employees)' },
-  { value: 'Large (251–1000)', label: 'Large (251–1,000 Employees)' },
-  { value: 'Enterprise (1000+)', label: 'Enterprise (1,000+ Employees)' }
-];
-
-// Default Business Operations
-const DEFAULT_OPERATIONS = [
-  'Inbound Lead Capture & Diagnostics',
-  'Autonomous SDR Outbound Engine',
-  'Dark Funnel Demand Telemetry',
-  'Pricing & Margin Leakage Audit',
-  'Multi-Touch Revenue Attribution',
-  'Enterprise Account Expansion (NRR)',
-  'CRM & RevOps Data Synchronization',
-  'Deal Qualification & SPICED Scoring'
+  'France', 'Singapore', 'India', 'United Arab Emirates', 'Japan',
+  'Netherlands', 'Switzerland', 'Sweden', 'Ireland', 'Israel',
+  'Spain', 'Italy', 'Brazil', 'South Africa', 'Other'
 ];
 
 export default function Register() {
   const navigate = useNavigate();
-  const { register, isAuthenticated } = useAuth();
+  const { register, isAuthenticated, checkDuplicate } = useAuth();
 
   const [step, setStep] = useState<1 | 2>(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [registeredProfile, setRegisteredProfile] = useState<any>(null);
 
-  // Step 1: Basic Information
+  // Form State
   const [formData, setFormData] = useState({
+    // Step 1: Basic Information
     fullName: '',
     email: '',
     mobile: '',
@@ -93,34 +96,53 @@ export default function Register() {
     country: 'United States',
     state: '',
     city: '',
-    industry: 'B2B Enterprise SaaS & Cloud',
+    industry: 'Enterprise SaaS & Cloud Software',
     subIndustry: '',
     headcount: 'Medium (51–250)',
     operations: [
-      'Inbound Lead Capture & Diagnostics',
-      'Autonomous SDR Outbound Engine'
-    ] as string[],
+      'B2B Enterprise Direct Sales',
+      'Outbound Cold Pipeline Generation'
+    ],
     customOperation: '',
     consent: false
   });
 
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [registeredProfile, setRegisteredProfile] = useState<any>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Create an Account | ProfitMachines Enterprise Access';
+    document.title = 'Create Account | ProfitMachines Enterprise Access';
     trackEvent({ eventName: 'PAGE_VIEW_REGISTER', category: 'AUTH' });
-    if (isAuthenticated) {
+    if (isAuthenticated && !isSuccess) {
       navigate('/sales-calculators', { replace: true });
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, isSuccess, navigate]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  // Validation helpers
+  const validateBusinessEmail = (email: string): { valid: boolean; message?: string } => {
+    const trimmed = email.trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+      return { valid: false, message: 'Please enter a valid corporate email format.' };
+    }
+    const freeDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.com', 'icloud.com'];
+    const domain = trimmed.split('@')[1];
+    if (freeDomains.includes(domain)) {
+      // Allowed but advised
+    }
+    return { valid: true };
+  };
+
+  const validatePhone = (phone: string): { valid: boolean; message?: string } => {
+    const clean = phone.replace(/[\s\-\(\)\.]/g, '');
+    if (clean.length < 7 || clean.length > 16 || !/^\+?[0-9]+$/.test(clean)) {
+      return { valid: false, message: 'Please enter a valid mobile number with country code.' };
+    }
+    return { valid: true };
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     if (errors[name]) {
@@ -228,21 +250,36 @@ export default function Register() {
     }
 
     if (!formData.consent) {
-      newErrors.consent = 'You must agree to the Terms of Service & Privacy Policy to register.';
+      newErrors.consent = 'You must accept the Privacy Policy and Terms of Service to proceed.';
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleNext = () => {
-    if (validateStep1()) {
+  // Handle transition to Step 2
+  const handleNext = async () => {
+    if (!validateStep1()) return;
+
+    try {
+      const dup = await checkDuplicate(formData.userId, formData.email);
+      if (dup.exists) {
+        setErrors(prev => ({
+          ...prev,
+          [dup.field || 'form']: dup.message || 'User ID or Email is already registered.'
+        }));
+        return;
+      }
       setStep(2);
-      window.scrollTo(0, 0);
-      trackEvent({ eventName: 'REGISTER_STEP1_COMPLETE', category: 'AUTH' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (err: any) {
+      console.warn('Duplicate check warning:', err);
+      setStep(2);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
+  // Handle final registration
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateStep1()) {
@@ -254,7 +291,7 @@ export default function Register() {
     }
 
     setIsSubmitting(true);
-    trackEvent({ eventName: 'REGISTER_SUBMIT', category: 'AUTH' });
+    trackEvent({ eventName: 'REGISTER_ATTEMPT', category: 'AUTH' });
 
     try {
       const profile = await register({
@@ -264,12 +301,12 @@ export default function Register() {
         userId: formData.userId,
         password: formData.password,
         company: formData.company,
-        website: formData.website,
+        website: formData.website || undefined,
         country: formData.country,
-        state: formData.state,
-        city: formData.city,
+        state: formData.state || undefined,
+        city: formData.city || undefined,
         industry: formData.industry,
-        subIndustry: formData.subIndustry,
+        subIndustry: formData.subIndustry || undefined,
         headcount: formData.headcount,
         operations: formData.operations,
         consent: formData.consent
@@ -288,96 +325,96 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between pt-20 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-blue-50/30 text-slate-900 flex flex-col justify-between pt-24 pb-12 relative overflow-hidden">
       {/* Background Radiance */}
-      <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-0 left-10 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-0 left-10 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 flex items-center justify-center relative z-10">
-        <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 bg-slate-900/90 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden backdrop-blur-xl">
+      <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 flex items-center justify-center relative z-10">
+        <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 bg-white border border-slate-200/90 rounded-3xl shadow-2xl shadow-blue-900/5 overflow-hidden">
 
           {/* ── LEFT COLUMN: ONBOARDING VALUE & PROGRESS ── */}
-          <div className="lg:col-span-4 bg-gradient-to-br from-slate-900 via-blue-950/40 to-slate-950 p-8 sm:p-10 border-b lg:border-b-0 lg:border-r border-slate-800/80 flex flex-col justify-between">
+          <div className="lg:col-span-4 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 p-8 sm:p-10 border-b lg:border-b-0 lg:border-r border-slate-800 text-white flex flex-col justify-between">
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-mono text-[11px] font-bold tracking-widest uppercase">
-                <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 font-mono text-xs font-bold tracking-widest uppercase">
+                <ShieldCheck className="w-4 h-4 text-blue-400" />
                 Two-Step Registration
               </div>
 
               <div>
-                <h1 className="text-2xl font-extrabold text-white tracking-tight leading-tight">
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight font-heading">
                   Join the Enterprise Revenue Network
                 </h1>
-                <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                <p className="text-sm text-slate-300 mt-2 leading-relaxed">
                   Register your corporate credentials to unlock executive diagnostic models and sales calculators.
                 </p>
               </div>
 
               {/* Progress Indicator */}
-              <div className="space-y-4 pt-4">
+              <div className="space-y-3 pt-2">
                 {/* Step 1 Pill */}
                 <div
                   onClick={() => !isSuccess && setStep(1)}
-                  className={`p-3.5 rounded-xl border transition-all cursor-pointer flex items-center gap-3.5 ${
+                  className={`p-3.5 rounded-2xl border transition-all cursor-pointer flex items-center gap-3.5 ${
                     step === 1
-                      ? 'bg-blue-600/15 border-blue-500/50 shadow-sm'
-                      : 'bg-slate-800/40 border-slate-800 hover:border-slate-700'
+                      ? 'bg-blue-600/20 border-blue-400 text-white shadow-md'
+                      : 'bg-white/5 border-white/10 hover:border-white/20 text-slate-300'
                   }`}
                 >
                   <div
-                    className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-mono font-bold shrink-0 ${
+                    className={`w-9 h-9 rounded-xl flex items-center justify-center text-xs font-mono font-bold shrink-0 ${
                       step === 1 ? 'bg-blue-600 text-white' : 'bg-slate-800 text-slate-400'
                     }`}
                   >
                     01
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-slate-200">Basic Information</div>
-                    <div className="text-[10px] text-slate-400">Personal & Identity Credentials</div>
+                    <div className="text-sm font-bold text-white">Basic Information</div>
+                    <div className="text-xs text-slate-300">Personal & Identity Credentials</div>
                   </div>
                 </div>
 
                 {/* Step 2 Pill */}
                 <div
                   onClick={() => !isSuccess && validateStep1() && setStep(2)}
-                  className={`p-3.5 rounded-xl border transition-all cursor-pointer flex items-center gap-3.5 ${
+                  className={`p-3.5 rounded-2xl border transition-all cursor-pointer flex items-center gap-3.5 ${
                     step === 2
-                      ? 'bg-blue-600/15 border-blue-500/50 shadow-sm'
-                      : 'bg-slate-800/40 border-slate-800 hover:border-slate-700'
+                      ? 'bg-blue-600/20 border-blue-400 text-white shadow-md'
+                      : 'bg-white/5 border-white/10 hover:border-white/20 text-slate-300'
                   }`}
                 >
                   <div
-                    className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-mono font-bold shrink-0 ${
+                    className={`w-9 h-9 rounded-xl flex items-center justify-center text-xs font-mono font-bold shrink-0 ${
                       step === 2 ? 'bg-blue-600 text-white' : 'bg-slate-800 text-slate-400'
                     }`}
                   >
                     02
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-slate-200">Company Information</div>
-                    <div className="text-[10px] text-slate-400">Corporate & Operational Scope</div>
+                    <div className="text-sm font-bold text-white">Company Information</div>
+                    <div className="text-xs text-slate-300">Corporate & Operational Scope</div>
                   </div>
                 </div>
               </div>
 
-              {/* Security Standards */}
-              <div className="pt-4 space-y-2 text-[11px] text-slate-400 border-t border-slate-800/80">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                  <span>PBKDF2 Cryptographic Hashing</span>
+              {/* Feature Highlights */}
+              <div className="pt-4 space-y-2.5 text-xs text-slate-300 border-t border-slate-800">
+                <div className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
+                  <span>Executive Sales Calculators Suite</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                  <span>Zero passwords stored in spreadsheets</span>
+                <div className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
+                  <span>Pipeline Velocity & Dark Funnel Modeling</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                  <span>Immediate auto-responder verification</span>
+                <div className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
+                  <span>Authorized Enterprise Workspace Access</span>
                 </div>
               </div>
             </div>
 
-            <div className="pt-6 border-t border-slate-800/80 mt-6 text-xs text-slate-400">
+            <div className="pt-6 border-t border-slate-800 mt-6 text-sm text-slate-400">
               Already have an account?{' '}
               <Link to="/sign-in" className="text-blue-400 hover:text-blue-300 font-bold transition-colors">
                 Sign In &rarr;
@@ -386,54 +423,56 @@ export default function Register() {
           </div>
 
           {/* ── RIGHT COLUMN: FORM WORKFLOW / SUCCESS STATE ── */}
-          <div className="lg:col-span-8 p-8 sm:p-12 bg-slate-900/60 overflow-y-auto max-h-[85vh]">
+          <div className="lg:col-span-8 p-8 sm:p-12 bg-white overflow-y-auto max-h-[85vh]">
 
             {/* ── SUCCESS STATE ── */}
             {isSuccess ? (
               <div className="py-8 text-center space-y-6 animate-in fade-in zoom-in-95">
-                <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto shadow-inner">
-                  <CheckCircle2 className="w-8 h-8" />
+                <div className="w-16 h-16 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mx-auto shadow-xs">
+                  <CheckCircle2 className="w-9 h-9" />
                 </div>
 
                 <div className="space-y-2">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
                     Registration Successfully Logged
                   </span>
-                  <h2 className="text-2xl font-bold text-white tracking-tight">Account Created Successfully</h2>
-                  <p className="text-xs sm:text-sm text-slate-400 max-w-md mx-auto leading-relaxed">
-                    Welcome to ProfitMachines, <span className="font-semibold text-slate-200">{registeredProfile?.fullName}</span>. Your enterprise account has been registered and synced with our central directory.
+                  <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-heading">
+                    Account Created Successfully
+                  </h2>
+                  <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+                    Welcome to ProfitMachines, <span className="font-bold text-slate-900">{registeredProfile?.fullName}</span>. Your enterprise account has been registered and synced with our central directory.
                   </p>
                 </div>
 
                 {/* Account Details Box */}
-                <div className="p-5 rounded-2xl bg-slate-800/60 border border-slate-700/80 max-w-sm mx-auto text-left space-y-2 text-xs">
-                  <div className="flex justify-between border-b border-slate-700/60 pb-2">
-                    <span className="text-slate-400">Registration ID:</span>
-                    <span className="font-mono font-bold text-blue-400">{registeredProfile?.registrationId}</span>
+                <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 max-w-sm mx-auto text-left space-y-2.5 text-sm">
+                  <div className="flex justify-between border-b border-slate-200 pb-2">
+                    <span className="text-slate-500 font-medium">Registration ID:</span>
+                    <span className="font-mono font-bold text-blue-600">{registeredProfile?.registrationId}</span>
                   </div>
-                  <div className="flex justify-between border-b border-slate-700/60 pb-2">
-                    <span className="text-slate-400">Preferred User ID:</span>
-                    <span className="font-mono font-bold text-white">{registeredProfile?.userId}</span>
+                  <div className="flex justify-between border-b border-slate-200 pb-2">
+                    <span className="text-slate-500 font-medium">Preferred User ID:</span>
+                    <span className="font-mono font-bold text-slate-900">{registeredProfile?.userId}</span>
                   </div>
-                  <div className="flex justify-between border-b border-slate-700/60 pb-2">
-                    <span className="text-slate-400">Registered Email:</span>
-                    <span className="font-semibold text-white">{registeredProfile?.email}</span>
+                  <div className="flex justify-between border-b border-slate-200 pb-2">
+                    <span className="text-slate-500 font-medium">Registered Email:</span>
+                    <span className="font-semibold text-slate-900">{registeredProfile?.email}</span>
                   </div>
                   <div className="flex justify-between pt-1">
-                    <span className="text-slate-400">Unlocked Access:</span>
-                    <span className="font-bold text-emerald-400">Sales Calculators & Telemetry</span>
+                    <span className="text-slate-500 font-medium">Unlocked Access:</span>
+                    <span className="font-bold text-emerald-600">Sales Calculators & Telemetry</span>
                   </div>
                 </div>
 
-                <p className="text-[11px] text-slate-400 max-w-md mx-auto">
-                  A registration confirmation email has been dispatched to <strong className="text-slate-200">{registeredProfile?.email}</strong>. An alert has also been securely delivered to the ProfitMachines executive team.
+                <p className="text-xs text-slate-500 max-w-md mx-auto">
+                  A registration confirmation email has been dispatched to <strong className="text-slate-800">{registeredProfile?.email}</strong>.
                 </p>
 
                 <div className="pt-2 flex flex-col sm:flex-row gap-3 justify-center">
                   <button
                     type="button"
                     onClick={() => navigate('/sales-calculators')}
-                    className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs tracking-wide shadow-lg shadow-blue-600/30 transition-all cursor-pointer flex items-center justify-center gap-2"
+                    className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-sm tracking-wide shadow-md shadow-blue-600/25 transition-all cursor-pointer flex items-center justify-center gap-2"
                   >
                     <span>Access Sales Calculators Now</span>
                     <ArrowRight className="w-4 h-4" />
@@ -442,7 +481,7 @@ export default function Register() {
                   <button
                     type="button"
                     onClick={() => navigate('/sign-in')}
-                    className="px-6 py-3 rounded-xl border border-slate-700 hover:bg-slate-800 text-slate-300 font-bold text-xs transition-colors cursor-pointer"
+                    className="px-6 py-3 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-sm transition-colors cursor-pointer"
                   >
                     Go to Sign In Page
                   </button>
@@ -454,97 +493,99 @@ export default function Register() {
 
                 {/* Form Error Banner */}
                 {errors.form && (
-                  <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-xs flex items-start gap-2.5">
-                    <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
-                    <span className="leading-relaxed">{errors.form}</span>
+                  <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm flex items-start gap-3">
+                    <AlertCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                    <span className="leading-relaxed font-medium">{errors.form}</span>
                   </div>
                 )}
 
                 {/* STEP 1: BASIC INFORMATION */}
                 {step === 1 && (
                   <div className="space-y-5 animate-in fade-in">
-                    <div className="border-b border-slate-800 pb-3">
-                      <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-blue-400">Step 01 / 02</span>
-                      <h3 className="text-xl font-bold text-white mt-1">Basic & Security Information</h3>
-                      <p className="text-xs text-slate-400 mt-0.5">Please provide your primary corporate contact information.</p>
+                    <div className="border-b border-slate-200 pb-3">
+                      <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600">Step 01 / 02</span>
+                      <h3 className="text-2xl font-bold text-slate-900 mt-1 font-heading">Basic & Security Information</h3>
+                      <p className="text-sm text-slate-600 mt-0.5">Please provide your primary corporate contact information.</p>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* Full Name */}
                       <div>
-                        <label className="block text-xs font-bold text-slate-300 mb-1">Full Name *</label>
-                        <div className="relative">
-                          <input
-                            type="text"
-                            required
-                            name="fullName"
-                            value={formData.fullName}
-                            onChange={handleChange}
-                            placeholder="Sarah Jenkins"
-                            className="w-full h-11 px-3.5 rounded-xl bg-slate-800/70 border border-slate-700/80 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                          />
-                        </div>
-                        {errors.fullName && <p className="text-[11px] text-red-400 mt-1 font-semibold">{errors.fullName}</p>}
+                        <label className="block text-sm font-bold text-slate-900 mb-1.5">
+                          Full Name <span className="text-blue-600">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          name="fullName"
+                          value={formData.fullName}
+                          onChange={handleChange}
+                          placeholder="Sarah Jenkins"
+                          className="w-full h-12 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                        />
+                        {errors.fullName && <p className="text-xs text-red-600 mt-1 font-semibold">{errors.fullName}</p>}
                       </div>
 
                       {/* Business Email */}
                       <div>
-                        <label className="block text-xs font-bold text-slate-300 mb-1">Corporate Business Email *</label>
-                        <div className="relative">
-                          <input
-                            type="email"
-                            required
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            placeholder="sarah@enterprise.com"
-                            className="w-full h-11 px-3.5 rounded-xl bg-slate-800/70 border border-slate-700/80 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                          />
-                        </div>
-                        {errors.email && <p className="text-[11px] text-red-400 mt-1 font-semibold">{errors.email}</p>}
+                        <label className="block text-sm font-bold text-slate-900 mb-1.5">
+                          Corporate Business Email <span className="text-blue-600">*</span>
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="sarah@enterprise.com"
+                          className="w-full h-12 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                        />
+                        {errors.email && <p className="text-xs text-red-600 mt-1 font-semibold">{errors.email}</p>}
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* Mobile Number */}
                       <div>
-                        <label className="block text-xs font-bold text-slate-300 mb-1">Mobile Number (with country code) *</label>
-                        <div className="relative">
-                          <input
-                            type="tel"
-                            required
-                            name="mobile"
-                            value={formData.mobile}
-                            onChange={handleChange}
-                            placeholder="+1 (555) 000-0000"
-                            className="w-full h-11 px-3.5 rounded-xl bg-slate-800/70 border border-slate-700/80 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                          />
-                        </div>
-                        {errors.mobile && <p className="text-[11px] text-red-400 mt-1 font-semibold">{errors.mobile}</p>}
+                        <label className="block text-sm font-bold text-slate-900 mb-1.5">
+                          Mobile Number (with country code) <span className="text-blue-600">*</span>
+                        </label>
+                        <input
+                          type="tel"
+                          required
+                          name="mobile"
+                          value={formData.mobile}
+                          onChange={handleChange}
+                          placeholder="+1 (555) 000-0000"
+                          className="w-full h-12 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                        />
+                        {errors.mobile && <p className="text-xs text-red-600 mt-1 font-semibold">{errors.mobile}</p>}
                       </div>
 
                       {/* Preferred User ID */}
                       <div>
-                        <label className="block text-xs font-bold text-slate-300 mb-1">Preferred User ID *</label>
-                        <div className="relative">
-                          <input
-                            type="text"
-                            required
-                            name="userId"
-                            value={formData.userId}
-                            onChange={handleChange}
-                            placeholder="e.g. sarah_cro"
-                            className="w-full h-11 px-3.5 rounded-xl bg-slate-800/70 border border-slate-700/80 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
-                          />
-                        </div>
-                        {errors.userId && <p className="text-[11px] text-red-400 mt-1 font-semibold">{errors.userId}</p>}
+                        <label className="block text-sm font-bold text-slate-900 mb-1.5">
+                          Preferred User ID <span className="text-blue-600">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          name="userId"
+                          value={formData.userId}
+                          onChange={handleChange}
+                          placeholder="e.g. sarah_cro"
+                          className="w-full h-12 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-mono font-medium transition-all"
+                        />
+                        {errors.userId && <p className="text-xs text-red-600 mt-1 font-semibold">{errors.userId}</p>}
                       </div>
                     </div>
 
                     {/* Password & Confirm Password */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-bold text-slate-300 mb-1">Password *</label>
+                        <label className="block text-sm font-bold text-slate-900 mb-1.5">
+                          Password <span className="text-blue-600">*</span>
+                        </label>
                         <div className="relative">
                           <input
                             type={showPassword ? 'text' : 'password'}
@@ -552,22 +593,24 @@ export default function Register() {
                             name="password"
                             value={formData.password}
                             onChange={handleChange}
-                            placeholder="••••••••••••"
-                            className="w-full h-11 pl-3.5 pr-10 rounded-xl bg-slate-800/70 border border-slate-700/80 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Enter password (min 8 chars)"
+                            className="w-full h-12 pl-4 pr-11 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                           />
                           <button
                             type="button"
                             onClick={() => setShowPassword(!showPassword)}
-                            className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-200 cursor-pointer"
+                            className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-700 cursor-pointer"
                           >
-                            {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                            {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                           </button>
                         </div>
-                        {errors.password && <p className="text-[11px] text-red-400 mt-1 font-semibold">{errors.password}</p>}
+                        {errors.password && <p className="text-xs text-red-600 mt-1 font-semibold">{errors.password}</p>}
                       </div>
 
                       <div>
-                        <label className="block text-xs font-bold text-slate-300 mb-1">Confirm Password *</label>
+                        <label className="block text-sm font-bold text-slate-900 mb-1.5">
+                          Confirm Password <span className="text-blue-600">*</span>
+                        </label>
                         <div className="relative">
                           <input
                             type={showConfirmPassword ? 'text' : 'password'}
@@ -575,19 +618,19 @@ export default function Register() {
                             name="confirmPassword"
                             value={formData.confirmPassword}
                             onChange={handleChange}
-                            placeholder="••••••••••••"
-                            className="w-full h-11 pl-3.5 pr-10 rounded-xl bg-slate-800/70 border border-slate-700/80 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Re-enter password"
+                            className="w-full h-12 pl-4 pr-11 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                           />
                           <button
                             type="button"
                             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                            className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-200 cursor-pointer"
+                            className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-700 cursor-pointer"
                           >
-                            {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                            {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                           </button>
                         </div>
                         {errors.confirmPassword && (
-                          <p className="text-[11px] text-red-400 mt-1 font-semibold">{errors.confirmPassword}</p>
+                          <p className="text-xs text-red-600 mt-1 font-semibold">{errors.confirmPassword}</p>
                         )}
                       </div>
                     </div>
@@ -596,10 +639,10 @@ export default function Register() {
                       <button
                         type="button"
                         onClick={handleNext}
-                        className="w-full h-12 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                        className="w-full h-12 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:from-blue-800 active:to-indigo-800 text-white font-bold text-base shadow-md shadow-blue-600/25 transition-all flex items-center justify-center gap-2 cursor-pointer"
                       >
                         <span>Next: Company Details</span>
-                        <ArrowRight className="w-4 h-4" />
+                        <ArrowRight className="w-5 h-5" />
                       </button>
                     </div>
                   </div>
@@ -608,29 +651,31 @@ export default function Register() {
                 {/* STEP 2: COMPANY INFORMATION */}
                 {step === 2 && (
                   <div className="space-y-5 animate-in fade-in">
-                    <div className="border-b border-slate-800 pb-3 flex items-center justify-between">
+                    <div className="border-b border-slate-200 pb-3 flex items-center justify-between">
                       <div>
-                        <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-indigo-400">Step 02 / 02</span>
-                        <h3 className="text-xl font-bold text-white mt-1">Company & Operational Scope</h3>
-                        <p className="text-xs text-slate-400 mt-0.5">Tell us about your organization and commercial focus.</p>
+                        <span className="text-xs font-mono font-bold uppercase tracking-widest text-indigo-600">Step 02 / 02</span>
+                        <h3 className="text-2xl font-bold text-slate-900 mt-1 font-heading">Company & Operational Scope</h3>
+                        <p className="text-sm text-slate-600 mt-0.5">Tell us about your organization and commercial focus.</p>
                       </div>
                       <button
                         type="button"
                         onClick={() => setStep(1)}
-                        className="text-xs text-slate-400 hover:text-slate-200 flex items-center gap-1 cursor-pointer"
+                        className="text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 flex items-center gap-1 cursor-pointer px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-50"
                       >
-                        <ArrowLeft className="w-3.5 h-3.5" />
+                        <ArrowLeft className="w-4 h-4" />
                         <span>Back</span>
                       </button>
                     </div>
 
                     {/* Section A: Corporate Information */}
                     <div className="space-y-3">
-                      <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">A. Corporate Profile</div>
+                      <div className="text-xs font-bold uppercase tracking-wider text-slate-500">A. Corporate Profile</div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs font-bold text-slate-300 mb-1">Company Name *</label>
+                          <label className="block text-sm font-bold text-slate-900 mb-1.5">
+                            Company Name <span className="text-blue-600">*</span>
+                          </label>
                           <input
                             type="text"
                             required
@@ -638,60 +683,62 @@ export default function Register() {
                             value={formData.company}
                             onChange={handleChange}
                             placeholder="Acme Global Inc."
-                            className="w-full h-11 px-3.5 rounded-xl bg-slate-800/70 border border-slate-700/80 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full h-12 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                           />
-                          {errors.company && <p className="text-[11px] text-red-400 mt-1 font-semibold">{errors.company}</p>}
+                          {errors.company && <p className="text-xs text-red-600 mt-1 font-semibold">{errors.company}</p>}
                         </div>
 
                         <div>
-                          <label className="block text-xs font-bold text-slate-300 mb-1">Official Website (optional)</label>
+                          <label className="block text-sm font-bold text-slate-900 mb-1.5">Official Website (optional)</label>
                           <input
                             type="url"
                             name="website"
                             value={formData.website}
                             onChange={handleChange}
                             placeholder="https://company.com"
-                            className="w-full h-11 px-3.5 rounded-xl bg-slate-800/70 border border-slate-700/80 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full h-12 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                           />
                         </div>
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                         <div>
-                          <label className="block text-xs font-bold text-slate-300 mb-1">Country *</label>
+                          <label className="block text-sm font-bold text-slate-900 mb-1.5">
+                            Country <span className="text-blue-600">*</span>
+                          </label>
                           <select
                             name="country"
                             value={formData.country}
                             onChange={handleChange}
-                            className="w-full h-11 px-3 rounded-xl bg-slate-800/70 border border-slate-700/80 text-xs text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full h-12 px-3.5 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                           >
                             {GLOBAL_COUNTRIES.map(c => (
-                              <option key={c} value={c} className="bg-slate-900 text-white">{c}</option>
+                              <option key={c} value={c} className="bg-white text-slate-900">{c}</option>
                             ))}
                           </select>
                         </div>
 
                         <div>
-                          <label className="block text-xs font-bold text-slate-300 mb-1">State / Region</label>
+                          <label className="block text-sm font-bold text-slate-900 mb-1.5">State / Region</label>
                           <input
                             type="text"
                             name="state"
                             value={formData.state}
                             onChange={handleChange}
                             placeholder="California / Ontario"
-                            className="w-full h-11 px-3.5 rounded-xl bg-slate-800/70 border border-slate-700/80 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full h-12 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                           />
                         </div>
 
                         <div>
-                          <label className="block text-xs font-bold text-slate-300 mb-1">City</label>
+                          <label className="block text-sm font-bold text-slate-900 mb-1.5">City</label>
                           <input
                             type="text"
                             name="city"
                             value={formData.city}
                             onChange={handleChange}
                             placeholder="San Francisco"
-                            className="w-full h-11 px-3.5 rounded-xl bg-slate-800/70 border border-slate-700/80 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full h-12 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                           />
                         </div>
                       </div>
@@ -699,46 +746,50 @@ export default function Register() {
 
                     {/* Section B: Industry and Company Size */}
                     <div className="space-y-3 pt-2">
-                      <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">B. Industry & Headcount</div>
+                      <div className="text-xs font-bold uppercase tracking-wider text-slate-500">B. Industry & Headcount</div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs font-bold text-slate-300 mb-1">Industry Sector *</label>
+                          <label className="block text-sm font-bold text-slate-900 mb-1.5">
+                            Industry Sector <span className="text-blue-600">*</span>
+                          </label>
                           <select
                             name="industry"
                             value={formData.industry}
                             onChange={handleChange}
-                            className="w-full h-11 px-3 rounded-xl bg-slate-800/70 border border-slate-700/80 text-xs text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full h-12 px-3.5 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                           >
                             {INDUSTRY_SECTORS.map(ind => (
-                              <option key={ind} value={ind} className="bg-slate-900 text-white">{ind}</option>
+                              <option key={ind} value={ind} className="bg-white text-slate-900">{ind}</option>
                             ))}
                           </select>
                         </div>
 
                         <div>
-                          <label className="block text-xs font-bold text-slate-300 mb-1">Sub-industry / Vertical (optional)</label>
+                          <label className="block text-sm font-bold text-slate-900 mb-1.5">Sub-industry / Vertical (optional)</label>
                           <input
                             type="text"
                             name="subIndustry"
                             value={formData.subIndustry}
                             onChange={handleChange}
                             placeholder="e.g. Cybersecurity, PropTech, Supply Chain AI"
-                            className="w-full h-11 px-3.5 rounded-xl bg-slate-800/70 border border-slate-700/80 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full h-12 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                           />
                         </div>
                       </div>
 
                       <div>
-                        <label className="block text-xs font-bold text-slate-300 mb-1">Company Headcount *</label>
+                        <label className="block text-sm font-bold text-slate-900 mb-1.5">
+                          Company Headcount <span className="text-blue-600">*</span>
+                        </label>
                         <select
                           name="headcount"
                           value={formData.headcount}
                           onChange={handleChange}
-                          className="w-full h-11 px-3 rounded-xl bg-slate-800/70 border border-slate-700/80 text-xs text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full h-12 px-3.5 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                         >
                           {HEADCOUNT_OPTIONS.map(opt => (
-                            <option key={opt.value} value={opt.value} className="bg-slate-900 text-white">{opt.label}</option>
+                            <option key={opt.value} value={opt.value} className="bg-white text-slate-900">{opt.label}</option>
                           ))}
                         </select>
                       </div>
@@ -747,10 +798,10 @@ export default function Register() {
                     {/* Section C: Business Operations */}
                     <div className="space-y-3 pt-2">
                       <div className="flex items-center justify-between">
-                        <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                          C. Active Business Operations *
+                        <div className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                          C. Active Business Operations <span className="text-blue-600">*</span>
                         </div>
-                        <span className="text-[10px] text-slate-500">Select all that apply</span>
+                        <span className="text-xs text-slate-500">Select all that apply</span>
                       </div>
 
                       <div className="flex flex-wrap gap-2">
@@ -761,13 +812,13 @@ export default function Register() {
                               key={op}
                               type="button"
                               onClick={() => handleToggleOperation(op)}
-                              className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all cursor-pointer ${
+                              className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold border transition-all cursor-pointer ${
                                 active
-                                  ? 'bg-blue-600/20 border-blue-500 text-blue-300 shadow-xs'
-                                  : 'bg-slate-800/40 border-slate-700 text-slate-400 hover:text-slate-200 hover:border-slate-600'
+                                  ? 'bg-blue-50 border-blue-500 text-blue-700 shadow-2xs'
+                                  : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300'
                               }`}
                             >
-                              {active && <CheckCircle2 className="w-3 h-3 inline mr-1 text-blue-400" />}
+                              {active && <CheckCircle2 className="w-3.5 h-3.5 inline mr-1.5 text-blue-600" />}
                               {op}
                             </button>
                           );
@@ -787,43 +838,43 @@ export default function Register() {
                             }
                           }}
                           placeholder="Add custom operational focus..."
-                          className="flex-1 h-9 px-3 rounded-lg bg-slate-800/50 border border-slate-700/60 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                          className="flex-1 h-10 px-3.5 rounded-xl bg-slate-50 border border-slate-300 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
                         />
                         <button
                           type="button"
                           onClick={handleAddCustomOperation}
-                          className="h-9 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-600 text-xs font-semibold text-slate-200 transition-colors flex items-center gap-1 cursor-pointer"
+                          className="h-10 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-xs font-bold text-slate-800 transition-colors flex items-center gap-1.5 cursor-pointer"
                         >
-                          <Plus className="w-3.5 h-3.5" />
+                          <Plus className="w-4 h-4" />
                           <span>Add</span>
                         </button>
                       </div>
 
-                      {errors.operations && <p className="text-[11px] text-red-400 font-semibold">{errors.operations}</p>}
+                      {errors.operations && <p className="text-xs text-red-600 font-semibold">{errors.operations}</p>}
                     </div>
 
                     {/* Section D: Consent & Policies */}
-                    <div className="pt-3 space-y-2 border-t border-slate-800">
-                      <label className="flex items-start gap-2.5 cursor-pointer">
+                    <div className="pt-3 space-y-2 border-t border-slate-200">
+                      <label className="flex items-start gap-3 cursor-pointer">
                         <input
                           type="checkbox"
                           checked={formData.consent}
                           onChange={(e) => setFormData(prev => ({ ...prev, consent: e.target.checked }))}
-                          className="mt-0.5 rounded border-slate-700 bg-slate-800 text-blue-600 focus:ring-blue-500"
+                          className="mt-1 w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
                         />
-                        <span className="text-xs text-slate-400 leading-relaxed">
+                        <span className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                           I accept the{' '}
-                          <Link to="/privacy" target="_blank" className="text-blue-400 underline hover:text-blue-300">
+                          <Link to="/privacy" target="_blank" className="text-blue-600 underline hover:text-blue-700 font-semibold">
                             Privacy Policy
                           </Link>{' '}
                           and{' '}
-                          <Link to="/terms" target="_blank" className="text-blue-400 underline hover:text-blue-300">
+                          <Link to="/terms" target="_blank" className="text-blue-600 underline hover:text-blue-700 font-semibold">
                             Terms of Service
                           </Link>
-                          . I consent to ProfitMachines securely storing my corporate profile to provision enterprise platform tools and executive sales calculators. (Passwords are never shared or stored in Google Sheets.)
+                          . I consent to ProfitMachines securely storing my corporate profile to provision enterprise platform tools and executive sales calculators.
                         </span>
                       </label>
-                      {errors.consent && <p className="text-[11px] text-red-400 font-semibold">{errors.consent}</p>}
+                      {errors.consent && <p className="text-xs text-red-600 font-semibold">{errors.consent}</p>}
                     </div>
 
                     {/* Action Buttons */}
@@ -831,7 +882,7 @@ export default function Register() {
                       <button
                         type="button"
                         onClick={() => setStep(1)}
-                        className="px-5 h-12 rounded-xl border border-slate-700 text-slate-300 hover:bg-slate-800 text-xs font-bold transition-colors cursor-pointer"
+                        className="px-5 h-12 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 text-sm font-bold transition-colors cursor-pointer"
                       >
                         &larr; Back
                       </button>
@@ -839,17 +890,17 @@ export default function Register() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="flex-1 h-12 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                        className="flex-1 h-12 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:from-blue-800 active:to-indigo-800 text-white font-bold text-base shadow-md shadow-blue-600/25 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                       >
                         {isSubmitting ? (
                           <>
-                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                            <span>Creating Enterprise Account...</span>
+                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                            <span>Creating Account...</span>
                           </>
                         ) : (
                           <>
                             <span>Register / Create Account</span>
-                            <CheckCircle2 className="w-4 h-4" />
+                            <CheckCircle2 className="w-5 h-5" />
                           </>
                         )}
                       </button>

@@ -207,6 +207,11 @@ var TAB_CONFIGS = {
   "Calculator_Activity": [
     "Activity ID", "User ID", "Full Name", "Business Email",
     "Calculator Name", "Activity Date", "Activity Type"
+  ],
+
+  // 15. User Authentication Credentials Vault (Option B: Visible & Centralized Validation)
+  "User_Credentials": [
+    "User ID", "Business Email", "Full Name", "Password", "Created Date", "Account Status", "Last Login Date"
   ]
 };
 
@@ -218,6 +223,11 @@ var SHEET_NAME_ALIASES = {
   "livetrafficevents": "Live_Traffic_Events",
   "live_traffic_events": "Live_Traffic_Events",
   "mastertelemetry": "Live_Traffic_Events",
+  "usercredentials": "User_Credentials",
+  "user_credentials": "User_Credentials",
+  "credentials": "User_Credentials",
+  "users": "User_Credentials",
+  "auth": "User_Credentials",
 
   // Telemetry Routes
   "pageview": "Page_Views",
@@ -366,6 +376,19 @@ function findSheetFlexible(spreadsheet, requestedName) {
  * GET Endpoint: Health check & Webhook verification
  */
 function doGet(e) {
+  if (e && e.parameter && e.parameter.action) {
+    var getAction = e.parameter.action.toString().trim().toLowerCase();
+    var ss = SpreadsheetApp.openById(CONFIG.MAIN_SPREADSHEET_ID);
+    if (getAction === "verify_login" || getAction === "login") {
+      var verifyResult = handleVerifyLogin(ss, e.parameter);
+      return ContentService.createTextOutput(JSON.stringify(verifyResult)).setMimeType(ContentService.MimeType.JSON);
+    }
+    if (getAction === "check_user_exists") {
+      var checkResult = handleCheckUserExists(ss, e.parameter);
+      return ContentService.createTextOutput(JSON.stringify(checkResult)).setMimeType(ContentService.MimeType.JSON);
+    }
+  }
+
   var response = {
     status: "ok",
     service: "ProfitMachines Enterprise Webhook & Automation Engine",
@@ -421,6 +444,12 @@ function doPost(e) {
 
     // Special Handlers: User Registration, Login Activity & Calculator Activity
     var action = (data.action || data.event || "").toString().trim().toLowerCase();
+
+    if (action === "verify_login" || action === "login") {
+      var ssLogin = SpreadsheetApp.openById(CONFIG.MAIN_SPREADSHEET_ID);
+      var verifyResult = handleVerifyLogin(ssLogin, data);
+      return ContentService.createTextOutput(JSON.stringify(verifyResult)).setMimeType(ContentService.MimeType.JSON);
+    }
 
     if (action === "user_registration" || action === "register_user") {
       var ssReg = SpreadsheetApp.openById(CONFIG.MAIN_SPREADSHEET_ID);
@@ -3133,31 +3162,50 @@ function initializeAllDatabaseTables() {
 // =========================================================================================
 
 /**
- * Checks whether a User ID or Business Email is already registered in the 'User_Registration' tab.
+ * Checks whether a User ID or Business Email is already registered in 'User_Credentials' or 'User_Registration'.
  */
 function handleCheckUserExists(ss, data) {
   try {
-    var sheet = findSheetFlexible(ss, "User_Registration");
-    if (!sheet || sheet.getLastRow() <= 1) {
-      return { status: "success", exists: false, field: null };
-    }
-
     var checkEmail = (data.email || data.businessEmail || "").toString().trim().toLowerCase();
     var checkUserId = (data.userId || data.preferredUserId || "").toString().trim().toLowerCase();
 
-    var lastRow = sheet.getLastRow();
-    var values = sheet.getRange(2, 1, lastRow - 1, sheet.getLastColumn()).getValues();
+    if (!checkEmail && !checkUserId) {
+      return { status: "success", exists: false, field: null };
+    }
 
-    // Col 3: Business Email (index 2), Col 5: Preferred User ID (index 4)
-    for (var i = 0; i < values.length; i++) {
-      var rowEmail = (values[i][2] || "").toString().trim().toLowerCase();
-      var rowUserId = (values[i][4] || "").toString().trim().toLowerCase();
-
-      if (checkUserId && rowUserId === checkUserId) {
-        return { status: "success", exists: true, field: "userId", message: "User ID '" + data.userId + "' is already registered." };
+    // Check User_Credentials first
+    var credSheet = findSheetFlexible(ss, "User_Credentials");
+    if (credSheet && credSheet.getLastRow() > 1) {
+      var credValues = credSheet.getRange(2, 1, credSheet.getLastRow() - 1, Math.min(2, credSheet.getLastColumn())).getValues();
+      for (var c = 0; c < credValues.length; c++) {
+        var cUserId = (credValues[c][0] || "").toString().trim().toLowerCase();
+        var cEmail = (credValues[c][1] || "").toString().trim().toLowerCase();
+        if (checkUserId && cUserId === checkUserId) {
+          return { status: "success", exists: true, field: "userId", message: "User ID '" + data.userId + "' is already registered." };
+        }
+        if (checkEmail && cEmail === checkEmail) {
+          return { status: "success", exists: true, field: "email", message: "Business Email '" + data.email + "' is already registered." };
+        }
       }
-      if (checkEmail && rowEmail === checkEmail) {
-        return { status: "success", exists: true, field: "email", message: "Business Email '" + data.email + "' is already registered." };
+    }
+
+    // Check User_Registration
+    var sheet = findSheetFlexible(ss, "User_Registration");
+    if (sheet && sheet.getLastRow() > 1) {
+      var lastRow = sheet.getLastRow();
+      var values = sheet.getRange(2, 1, lastRow - 1, sheet.getLastColumn()).getValues();
+
+      // Col 3: Business Email (index 2), Col 5: Preferred User ID (index 4)
+      for (var i = 0; i < values.length; i++) {
+        var rowEmail = (values[i][2] || "").toString().trim().toLowerCase();
+        var rowUserId = (values[i][4] || "").toString().trim().toLowerCase();
+
+        if (checkUserId && rowUserId === checkUserId) {
+          return { status: "success", exists: true, field: "userId", message: "User ID '" + data.userId + "' is already registered." };
+        }
+        if (checkEmail && rowEmail === checkEmail) {
+          return { status: "success", exists: true, field: "email", message: "Business Email '" + data.email + "' is already registered." };
+        }
       }
     }
 
@@ -3169,7 +3217,10 @@ function handleCheckUserExists(ss, data) {
 }
 
 /**
- * Handles two-step enterprise user registration, logs to 'User_Registration', and dispatches emails.
+ * Handles two-step enterprise user registration:
+ * 1. Logs full company profile to 'User_Registration' tab.
+ * 2. Logs User ID & Password to 'User_Credentials' tab for cross-device authentication validation.
+ * 3. Dispatches confirmation emails to user and alerts admins.
  */
 function handleUserRegistration(ss, data) {
   try {
@@ -3229,10 +3280,40 @@ function handleUserRegistration(ss, data) {
 
     sheet.appendRow(newRow);
 
-    // 1. Dispatch Registration Confirmation Email to the Registered User
+    // 2. Write to 'User_Credentials' Tab (Option B: Visible & Centralized Validation)
+    try {
+      var credSheet = findSheetFlexible(ss, "User_Credentials");
+      var credHeaders = TAB_CONFIGS["User_Credentials"];
+      if (!credSheet) {
+        credSheet = ss.insertSheet("User_Credentials");
+        credSheet.getRange(1, 1, 1, credHeaders.length)
+                 .setValues([credHeaders])
+                 .setFontWeight("bold")
+                 .setBackground("#0f172a")
+                 .setFontColor("#ffffff");
+        credSheet.setFrozenRows(1);
+      } else if (credSheet.getLastRow() === 0) {
+        credSheet.getRange(1, 1, 1, credHeaders.length)
+                 .setValues([credHeaders])
+                 .setFontWeight("bold")
+                 .setBackground("#0f172a")
+                 .setFontColor("#ffffff");
+        credSheet.setFrozenRows(1);
+      }
+
+      var userPassword = (data.password || "").toString().trim();
+      var credRow = [
+        userId, email, fullName, userPassword, regDate, status, ""
+      ];
+      credSheet.appendRow(credRow);
+    } catch (credErr) {
+      console.warn("Could not write to User_Credentials: " + credErr.toString());
+    }
+
+    // 3. Dispatch Registration Confirmation Email to the Registered User
     sendUserRegistrationConfirmationEmail(email, fullName, userId);
 
-    // 2. Dispatch New Registration Alert to Admin Team (poojasri@trustgrid.ai & asmitha.int2027g3@gmail.com)
+    // 4. Dispatch New Registration Alert to Admin Team (poojasri@trustgrid.ai & asmitha.int2027g3@gmail.com)
     sendAdminNewRegistrationNotification({
       registrationId: regId,
       fullName: fullName,
@@ -3256,10 +3337,146 @@ function handleUserRegistration(ss, data) {
       registrationId: regId,
       userId: userId,
       email: email,
-      message: "Account created successfully. Confirmation email dispatched."
+      message: "Account created successfully. Credentials saved in User_Credentials tab."
     };
   } catch (err) {
     console.error("Error in handleUserRegistration: " + err.toString());
+    return { status: "error", message: err.toString() };
+  }
+}
+
+/**
+ * Validates user credentials against 'User_Credentials' tab in Google Sheets.
+ * If credentials match, records successful login in 'Login_Activity' and returns user profile.
+ */
+function handleVerifyLogin(ss, data) {
+  try {
+    var sheet = findSheetFlexible(ss, "User_Credentials");
+    var identifier = (data.identifier || data.userId || data.email || data.businessEmail || "").toString().trim();
+    var cleanId = identifier.toLowerCase();
+    var inputPassword = (data.password || "").toString().trim();
+
+    if (!identifier || !inputPassword) {
+      return {
+        status: "error",
+        code: "MISSING_FIELDS",
+        message: "Please enter both User ID / Business Email and Password."
+      };
+    }
+
+    if (!sheet || sheet.getLastRow() <= 1) {
+      handleLoginActivity(ss, {
+        userId: identifier,
+        fullName: "Unknown Visitor",
+        email: identifier.indexOf("@") !== -1 ? identifier : "",
+        loginStatus: "Failed: User_Credentials tab is empty"
+      });
+      return {
+        status: "error",
+        code: "USER_NOT_FOUND",
+        message: "No registered accounts found in credentials vault. Please create an account."
+      };
+    }
+
+    var lastRow = sheet.getLastRow();
+    var colCount = sheet.getLastColumn();
+    var values = sheet.getRange(2, 1, lastRow - 1, colCount).getValues();
+
+    for (var i = 0; i < values.length; i++) {
+      var rowUserId = (values[i][0] || "").toString().trim();
+      var rowEmail = (values[i][1] || "").toString().trim();
+      var rowFullName = (values[i][2] || "").toString().trim();
+      var rowPassword = (values[i][3] || "").toString().trim();
+      var rowStatus = (values[i][5] || "Active").toString().trim();
+
+      if (rowUserId.toLowerCase() === cleanId || rowEmail.toLowerCase() === cleanId) {
+        if (rowStatus.toLowerCase() === "suspended" || rowStatus.toLowerCase() === "blocked") {
+          return {
+            status: "error",
+            code: "ACCOUNT_SUSPENDED",
+            message: "Account is inactive or suspended. Please contact ProfitMachines support."
+          };
+        }
+
+        if (rowPassword === inputPassword) {
+          // Password is correct! Update Last Login Date in Column 7
+          var loginTimestamp = Utilities.formatDate(new Date(), "GMT+05:30", "yyyy-MM-dd HH:mm:ss");
+          sheet.getRange(i + 2, 7).setValue(loginTimestamp);
+
+          // Retrieve extra profile info from User_Registration if available
+          var company = "";
+          var country = "";
+          var industry = "";
+          var mobile = "";
+          var regSheet = findSheetFlexible(ss, "User_Registration");
+          if (regSheet && regSheet.getLastRow() > 1) {
+            var regVals = regSheet.getRange(2, 1, regSheet.getLastRow() - 1, regSheet.getLastColumn()).getValues();
+            for (var r = 0; r < regVals.length; r++) {
+              var rEmail = (regVals[r][2] || "").toString().trim().toLowerCase();
+              var rUserId = (regVals[r][4] || "").toString().trim().toLowerCase();
+              if (rUserId === rowUserId.toLowerCase() || rEmail === rowEmail.toLowerCase()) {
+                mobile = (regVals[r][3] || "").toString();
+                company = (regVals[r][5] || "").toString();
+                country = (regVals[r][7] || "").toString();
+                industry = (regVals[r][10] || "").toString();
+                break;
+              }
+            }
+          }
+
+          // Record successful login in Login_Activity
+          handleLoginActivity(ss, {
+            userId: rowUserId,
+            fullName: rowFullName,
+            email: rowEmail,
+            loginStatus: "Success"
+          });
+
+          return {
+            status: "success",
+            user: {
+              userId: rowUserId,
+              email: rowEmail,
+              fullName: rowFullName,
+              mobile: mobile,
+              company: company,
+              country: country,
+              industry: industry,
+              accountStatus: rowStatus
+            },
+            message: "Authentication successful."
+          };
+        } else {
+          // Password incorrect
+          handleLoginActivity(ss, {
+            userId: rowUserId,
+            fullName: rowFullName,
+            email: rowEmail,
+            loginStatus: "Failed: Invalid Password"
+          });
+          return {
+            status: "error",
+            code: "INVALID_PASSWORD",
+            message: "Incorrect password. Please verify your credentials and try again."
+          };
+        }
+      }
+    }
+
+    // User not found
+    handleLoginActivity(ss, {
+      userId: identifier,
+      fullName: "Unknown Visitor",
+      email: identifier.indexOf("@") !== -1 ? identifier : "",
+      loginStatus: "Failed: Account Not Found"
+    });
+    return {
+      status: "error",
+      code: "USER_NOT_FOUND",
+      message: "Account not found. Please check your User ID / Business Email or create an account."
+    };
+  } catch (err) {
+    console.error("Error in handleVerifyLogin: " + err.toString());
     return { status: "error", message: err.toString() };
   }
 }

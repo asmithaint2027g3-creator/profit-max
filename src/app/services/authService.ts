@@ -242,7 +242,7 @@ export const authService = {
     });
     saveStoredAccounts(accounts);
 
-    // Synchronize to Google Sheets User_Registration tab & trigger automated emails
+    // Synchronize to Google Sheets User_Registration & User_Credentials tabs & trigger automated emails
     try {
       await dispatchWebhook({
         action: 'user_registration',
@@ -251,6 +251,7 @@ export const authService = {
         email: profile.email,
         mobile: profile.mobile,
         userId: profile.userId,
+        password: data.password, // Option B: Stored in User_Credentials tab for central validation
         company: profile.company,
         website: profile.website || '',
         country: profile.country,
@@ -273,60 +274,91 @@ export const authService = {
 
   /**
    * Authenticates user using User ID or Business Email and Password.
+   * Validates against Google Sheets 'User_Credentials' vault first (cross-device/cross-browser),
+   * with local storage caching fallback.
    */
   async login(identifier: string, password: string): Promise<UserProfile> {
-    const cleanId = identifier.trim().toLowerCase();
-    const accounts = getStoredAccounts();
+    const cleanId = identifier.trim();
 
+    // 1. Validate directly with Google Sheets 'User_Credentials' vault
+    try {
+      const remoteRes = await dispatchWebhook({
+        action: 'verify_login',
+        identifier: cleanId,
+        password: password
+      });
+
+      if (remoteRes && remoteRes.status === 'success' && remoteRes.user) {
+        const u = remoteRes.user;
+        const now = new Date();
+        const profile: UserProfile = {
+          registrationId: u.registrationId || ('PM-REG-' + now.toISOString().slice(0, 10).replace(/-/g, '') + '-' + Math.floor(1000 + Math.random() * 9000)),
+          fullName: u.fullName || cleanId,
+          email: u.email || (cleanId.includes('@') ? cleanId : ''),
+          mobile: u.mobile || '',
+          userId: u.userId || cleanId,
+          company: u.company || '',
+          country: u.country || '',
+          industry: u.industry || '',
+          headcount: u.headcount || '1-10',
+          operations: u.operations || [],
+          consentStatus: 'Accepted',
+          registrationDate: u.registrationDate || now.toISOString(),
+          accountStatus: (u.accountStatus as any) || 'Active'
+        };
+
+        // Cache into local store
+        const accounts = getStoredAccounts();
+        const existingIdx = accounts.findIndex(
+          a => a.profile.userId.toLowerCase() === profile.userId.toLowerCase() || a.profile.email.toLowerCase() === profile.email.toLowerCase()
+        );
+        if (existingIdx >= 0) {
+          accounts[existingIdx].profile = profile;
+          accounts[existingIdx].lastLoginAt = now.toISOString();
+        } else {
+          const { saltHex, hashHex } = await hashPassword(password);
+          accounts.push({
+            profile,
+            saltHex,
+            hashHex,
+            createdAt: now.toISOString(),
+            lastLoginAt: now.toISOString()
+          });
+        }
+        saveStoredAccounts(accounts);
+
+        // Create session
+        this.createSession(profile);
+        return profile;
+      } else if (remoteRes && remoteRes.status === 'error') {
+        throw new Error(remoteRes.message || 'Authentication failed. Please verify your credentials.');
+      }
+    } catch (err: any) {
+      // If error came directly from backend validation (e.g. INVALID_PASSWORD or USER_NOT_FOUND), rethrow
+      if (err.message && (err.message.includes('password') || err.message.includes('Account not found') || err.message.includes('registered'))) {
+        throw err;
+      }
+      console.warn('Remote authentication query unreachable, checking local cache:', err);
+    }
+
+    // 2. Offline / Local fallback validation
+    const accounts = getStoredAccounts();
     const account = accounts.find(
-      a => a.profile.userId.toLowerCase() === cleanId || a.profile.email.toLowerCase() === cleanId
+      a => a.profile.userId.toLowerCase() === cleanId.toLowerCase() || a.profile.email.toLowerCase() === cleanId.toLowerCase()
     );
 
     if (!account) {
-      // Log failed login attempt
-      dispatchWebhook({
-        action: 'login_activity',
-        userId: identifier,
-        fullName: 'Unknown Visitor',
-        email: identifier.includes('@') ? identifier : '',
-        loginStatus: 'Failed - Account Not Found'
-      });
       throw new Error('Account not found. Please check your User ID / Business Email or create a new account.');
     }
 
     const isValid = await verifyPassword(password, account.saltHex, account.hashHex);
-
     if (!isValid) {
-      // Log failed attempt
-      dispatchWebhook({
-        action: 'login_activity',
-        userId: account.profile.userId,
-        fullName: account.profile.fullName,
-        email: account.profile.email,
-        loginStatus: 'Failed - Invalid Password'
-      });
-      throw new Error('Incorrect password. Please verify your credentials or reset your password.');
+      throw new Error('Incorrect password. Please verify your credentials and try again.');
     }
 
-    // Update last login
     account.lastLoginAt = new Date().toISOString();
     saveStoredAccounts(accounts);
-
-    // Create session
     this.createSession(account.profile);
-
-    // Log successful login to Google Sheets & trigger Admin Login Alert
-    try {
-      dispatchWebhook({
-        action: 'login_activity',
-        userId: account.profile.userId,
-        fullName: account.profile.fullName,
-        email: account.profile.email,
-        loginStatus: 'Success'
-      });
-    } catch (logErr) {
-      console.warn('Login telemetry log error:', logErr);
-    }
 
     return account.profile;
   },

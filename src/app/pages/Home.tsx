@@ -9,6 +9,7 @@ import HomeOfferingsGrid from '../components/home/HomeOfferingsGrid';
 import HomeGrowthJourney from '../components/home/HomeGrowthJourney';
 import HomeAiSalesSection from '../components/home/HomeAiSalesSection';
 import HomeGrowthScienceSection from '../components/home/HomeGrowthScienceSection';
+import RevenueLeakCalculator from '../components/home/RevenueLeakCalculator';
 import HomeIndustriesSection from '../components/home/HomeIndustriesSection';
 import HomeGlobalAccelerationSection from '../components/home/HomeGlobalAccelerationSection';
 import HomeCaseStudiesSection from '../components/home/HomeCaseStudiesSection';
@@ -44,6 +45,9 @@ export default function Home() {
 
             {/* Section 6 — Growth & Acceleration Science */}
             <HomeGrowthScienceSection />
+
+            {/* Section 6b — Revenue Leak Calculator (Top-of-Funnel Lead Magnet) */}
+            <RevenueLeakCalculator />
 
             {/* Section 7 — Industries and Business Models */}
             <HomeIndustriesSection />

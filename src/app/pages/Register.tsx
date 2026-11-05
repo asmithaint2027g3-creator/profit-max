@@ -402,10 +402,11 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-blue-50/30 text-slate-900 flex flex-col justify-between pt-24 pb-12 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-blue-950/80 to-slate-900 text-slate-900 flex flex-col justify-between pt-24 pb-12 relative overflow-hidden">
       {/* Background Radiance */}
-      <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-0 left-10 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-[700px] h-[700px] bg-blue-600/8 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute bottom-0 left-10 w-[500px] h-[500px] bg-indigo-600/8 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] bg-blue-900/20 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Invisible Anti-Bot Honeypot Field */}
       <div style={{ display: 'none', position: 'absolute', left: '-9999px', opacity: 0 }} aria-hidden="true">
@@ -422,7 +423,7 @@ export default function Register() {
       </div>
 
       <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 flex items-center justify-center relative z-10">
-        <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 bg-white border border-slate-200/90 rounded-3xl shadow-2xl shadow-blue-900/5 overflow-hidden">
+        <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 bg-slate-950/95 border border-slate-700/60 rounded-3xl shadow-2xl shadow-blue-900/30 overflow-hidden backdrop-blur-xl">
 
           {/* ── LEFT COLUMN: ONBOARDING VALUE & PROGRESS ── */}
           <div className="lg:col-span-4 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 p-8 sm:p-10 border-b lg:border-b-0 lg:border-r border-slate-800 text-white flex flex-col justify-between">
@@ -535,7 +536,7 @@ export default function Register() {
           </div>
 
           {/* ── RIGHT COLUMN: FORM WORKFLOW / SUCCESS STATE ── */}
-          <div className="lg:col-span-8 p-8 sm:p-12 bg-white overflow-y-auto max-h-[85vh]">
+          <div className="lg:col-span-8 p-8 sm:p-12 bg-slate-900/50 border-l border-slate-700/50 overflow-y-auto max-h-[85vh]">
 
             {/* ── SUCCESS STATE ── */}
             {isSuccess ? (
@@ -645,7 +646,7 @@ export default function Register() {
                   <button
                     type="submit"
                     disabled={isVerifying || verificationCode.length < 6}
-                    className="w-full h-12 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:from-blue-800 active:to-indigo-800 text-white font-bold text-base shadow-md shadow-blue-600/25 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                    className="w-full h-14 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 hover:from-blue-500 hover:via-blue-400 hover:to-indigo-500 active:from-blue-700 active:to-indigo-700 text-white font-extrabold text-base shadow-lg shadow-blue-600/40 hover:shadow-xl hover:shadow-blue-500/50 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 border border-blue-400/30"
                   >
                     {isVerifying ? (
                       <>
@@ -705,7 +706,7 @@ export default function Register() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* Full Name */}
                       <div>
-                        <label className="block text-sm font-bold text-slate-900 mb-1.5">
+                        <label className="block text-sm font-semibold text-slate-800 mb-2">
                           Full Name <span className="text-blue-600">*</span>
                         </label>
                         <input
@@ -715,7 +716,7 @@ export default function Register() {
                           value={formData.fullName}
                           onChange={handleChange}
                           placeholder="Sarah Jenkins"
-                          className="w-full h-12 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                          className="w-full h-14 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                         />
                         {errors.fullName && <p className="text-xs text-red-600 mt-1 font-semibold">{errors.fullName}</p>}
                       </div>
@@ -735,7 +736,7 @@ export default function Register() {
                           value={formData.email}
                           onChange={handleChange}
                           placeholder="sarah@enterprise.com"
-                          className="w-full h-12 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                          className="w-full h-14 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                         />
                         {errors.email && <p className="text-xs text-red-600 mt-1 font-semibold">{errors.email}</p>}
                       </div>
@@ -744,7 +745,7 @@ export default function Register() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* Mobile Number */}
                       <div>
-                        <label className="block text-sm font-bold text-slate-900 mb-1.5">
+                        <label className="block text-sm font-semibold text-slate-800 mb-2">
                           Mobile Number (with country code) <span className="text-blue-600">*</span>
                         </label>
                         <input
@@ -754,14 +755,14 @@ export default function Register() {
                           value={formData.mobile}
                           onChange={handleChange}
                           placeholder="+1 (555) 000-0000"
-                          className="w-full h-12 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                          className="w-full h-14 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                         />
                         {errors.mobile && <p className="text-xs text-red-600 mt-1 font-semibold">{errors.mobile}</p>}
                       </div>
 
                       {/* Preferred User ID */}
                       <div>
-                        <label className="block text-sm font-bold text-slate-900 mb-1.5">
+                        <label className="block text-sm font-semibold text-slate-800 mb-2">
                           Preferred User ID <span className="text-blue-600">*</span>
                         </label>
                         <input
@@ -771,7 +772,7 @@ export default function Register() {
                           value={formData.userId}
                           onChange={handleChange}
                           placeholder="e.g. sarah_cro"
-                          className="w-full h-12 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-mono font-medium transition-all"
+                          className="w-full h-14 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-mono font-medium transition-all"
                         />
                         {errors.userId && <p className="text-xs text-red-600 mt-1 font-semibold">{errors.userId}</p>}
                       </div>
@@ -780,7 +781,7 @@ export default function Register() {
                     {/* Password & Confirm Password */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-bold text-slate-900 mb-1.5">
+                        <label className="block text-sm font-semibold text-slate-800 mb-2">
                           Password <span className="text-blue-600">*</span>
                         </label>
                         <div className="relative">
@@ -791,7 +792,7 @@ export default function Register() {
                             value={formData.password}
                             onChange={handleChange}
                             placeholder="Enter password (min 8 chars)"
-                            className="w-full h-12 pl-4 pr-11 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                            className="w-full h-14 pl-4 pr-12 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                           />
                           <button
                             type="button"
@@ -805,7 +806,7 @@ export default function Register() {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-bold text-slate-900 mb-1.5">
+                        <label className="block text-sm font-semibold text-slate-800 mb-2">
                           Confirm Password <span className="text-blue-600">*</span>
                         </label>
                         <div className="relative">
@@ -816,7 +817,7 @@ export default function Register() {
                             value={formData.confirmPassword}
                             onChange={handleChange}
                             placeholder="Re-enter password"
-                            className="w-full h-12 pl-4 pr-11 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                            className="w-full h-14 pl-4 pr-12 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                           />
                           <button
                             type="button"
@@ -836,7 +837,7 @@ export default function Register() {
                       <button
                         type="button"
                         onClick={handleNext}
-                        className="w-full h-12 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:from-blue-800 active:to-indigo-800 text-white font-bold text-base shadow-md shadow-blue-600/25 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                      className="w-full h-14 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 hover:from-blue-500 hover:via-blue-400 hover:to-indigo-500 active:from-blue-700 active:to-indigo-700 text-white font-extrabold text-base shadow-lg shadow-blue-600/40 hover:shadow-xl hover:shadow-blue-500/50 transition-all flex items-center justify-center gap-2 cursor-pointer border border-blue-400/30"
                       >
                         <span>Next: Company Details</span>
                         <ArrowRight className="w-5 h-5" />
@@ -870,7 +871,7 @@ export default function Register() {
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm font-bold text-slate-900 mb-1.5">
+                          <label className="block text-sm font-semibold text-slate-800 mb-2">
                             Company Name <span className="text-blue-600">*</span>
                           </label>
                           <input
@@ -880,34 +881,34 @@ export default function Register() {
                             value={formData.company}
                             onChange={handleChange}
                             placeholder="Acme Global Inc."
-                            className="w-full h-12 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                            className="w-full h-14 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                           />
                           {errors.company && <p className="text-xs text-red-600 mt-1 font-semibold">{errors.company}</p>}
                         </div>
 
                         <div>
-                          <label className="block text-sm font-bold text-slate-900 mb-1.5">Official Website (optional)</label>
+                          <label className="block text-sm font-semibold text-slate-800 mb-2">Official Website (optional)</label>
                           <input
                             type="url"
                             name="website"
                             value={formData.website}
                             onChange={handleChange}
                             placeholder="https://company.com"
-                            className="w-full h-12 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                            className="w-full h-14 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                           />
                         </div>
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                         <div>
-                          <label className="block text-sm font-bold text-slate-900 mb-1.5">
+                          <label className="block text-sm font-semibold text-slate-800 mb-2">
                             Country <span className="text-blue-600">*</span>
                           </label>
                           <select
                             name="country"
                             value={formData.country}
                             onChange={handleChange}
-                            className="w-full h-12 px-3.5 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                            className="w-full h-14 px-3.5 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                           >
                             {GLOBAL_COUNTRIES.map(c => (
                               <option key={c} value={c} className="bg-white text-slate-900">{c}</option>
@@ -916,26 +917,26 @@ export default function Register() {
                         </div>
 
                         <div>
-                          <label className="block text-sm font-bold text-slate-900 mb-1.5">State / Region</label>
+                          <label className="block text-sm font-semibold text-slate-800 mb-2">State / Region</label>
                           <input
                             type="text"
                             name="state"
                             value={formData.state}
                             onChange={handleChange}
                             placeholder="California / Ontario"
-                            className="w-full h-12 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                            className="w-full h-14 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                           />
                         </div>
 
                         <div>
-                          <label className="block text-sm font-bold text-slate-900 mb-1.5">City</label>
+                          <label className="block text-sm font-semibold text-slate-800 mb-2">City</label>
                           <input
                             type="text"
                             name="city"
                             value={formData.city}
                             onChange={handleChange}
                             placeholder="San Francisco"
-                            className="w-full h-12 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                            className="w-full h-14 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                           />
                         </div>
                       </div>
@@ -947,14 +948,14 @@ export default function Register() {
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm font-bold text-slate-900 mb-1.5">
+                          <label className="block text-sm font-semibold text-slate-800 mb-2">
                             Industry Sector <span className="text-blue-600">*</span>
                           </label>
                           <select
                             name="industry"
                             value={formData.industry}
                             onChange={handleChange}
-                            className="w-full h-12 px-3.5 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                            className="w-full h-14 px-3.5 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                           >
                             {INDUSTRY_SECTORS.map(ind => (
                               <option key={ind} value={ind} className="bg-white text-slate-900">{ind}</option>
@@ -963,27 +964,27 @@ export default function Register() {
                         </div>
 
                         <div>
-                          <label className="block text-sm font-bold text-slate-900 mb-1.5">Sub-industry / Vertical (optional)</label>
+                          <label className="block text-sm font-semibold text-slate-800 mb-2">Sub-industry / Vertical (optional)</label>
                           <input
                             type="text"
                             name="subIndustry"
                             value={formData.subIndustry}
                             onChange={handleChange}
                             placeholder="e.g. Cybersecurity, PropTech, Supply Chain AI"
-                            className="w-full h-12 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                            className="w-full h-14 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                           />
                         </div>
                       </div>
 
                       <div>
-                        <label className="block text-sm font-bold text-slate-900 mb-1.5">
+                        <label className="block text-sm font-semibold text-slate-800 mb-2">
                           Company Headcount <span className="text-blue-600">*</span>
                         </label>
                         <select
                           name="headcount"
                           value={formData.headcount}
                           onChange={handleChange}
-                          className="w-full h-12 px-3.5 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                          className="w-full h-14 px-3.5 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
                         >
                           {HEADCOUNT_OPTIONS.map(opt => (
                             <option key={opt.value} value={opt.value} className="bg-white text-slate-900">{opt.label}</option>
@@ -1087,7 +1088,7 @@ export default function Register() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="flex-1 h-12 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:from-blue-800 active:to-indigo-800 text-white font-bold text-base shadow-md shadow-blue-600/25 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                        className="flex-1 h-14 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 hover:from-blue-500 hover:via-blue-400 hover:to-indigo-500 active:from-blue-700 active:to-indigo-700 text-white font-extrabold text-base shadow-lg shadow-blue-600/40 hover:shadow-xl hover:shadow-blue-500/50 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 border border-blue-400/30"
                       >
                         {isSubmitting ? (
                           <>
@@ -1096,11 +1097,18 @@ export default function Register() {
                           </>
                         ) : (
                           <>
-                            <span>Register & Verify Email</span>
-                            <Mail className="w-5 h-5" />
+                            <span>Unlock Sales Calculators &amp; Models →</span>
+                            <Mail className="w-5 h-5 ml-1" />
                           </>
                         )}
                       </button>
+                    </div>
+
+                    {/* Micro-Trust Anchors */}
+                    <div className="pt-2 text-center text-xs text-slate-500 font-medium flex items-center justify-center gap-4">
+                      <span>Mutual Enterprise NDA Signed Automatically</span>
+                      <span>•</span>
+                      <span>SOC-2 Type II Certified Architecture</span>
                     </div>
 
                   </div>

@@ -2,7 +2,8 @@
 
 import FeatureSection from '../components/demand-pulse/FeatureSection';
 import DemandPulseCarousel from '../components/demand-pulse/DemandPulseCarousel';
-import { Sparkles, ArrowRight, PlayCircle } from 'lucide-react';
+import { Sparkles, ArrowRight, PlayCircle, ShieldCheck, Lock, CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function DemandPulse() {
     return (
@@ -38,15 +39,39 @@ export default function DemandPulse() {
                         “Generate High-Intent, Revenue-Ready Demand 24/7—1000X Faster, Smarter, and Always On.”
                     </p>
 
-                    <div className="flex flex-col sm:flex-row justify-center items-center gap-6 justify-center mb-16">
-                        <button className="px-10 py-5 bg-blue-600 hover:bg-blue-500 text-white text-lg font-bold rounded-full shadow-[0_0_40px_-10px_rgba(37,99,235,0.5)] transition-all transform hover:scale-105 hover:shadow-[0_0_60px_-10px_rgba(37,99,235,0.6)] flex items-center gap-3 group">
-                            Deploy DemandPulse
+                    <div className="flex flex-col sm:flex-row justify-center items-center gap-5 justify-center mb-6">
+                        <Link 
+                            to="/book-consultation"
+                            className="w-full sm:w-auto px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-lg font-bold rounded-2xl shadow-xl shadow-blue-600/30 transition-all transform hover:scale-105 hover:shadow-2xl flex items-center justify-center gap-3 group cursor-pointer"
+                        >
+                            <span>Deploy DemandPulse Architecture →</span>
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </button>
-                        <button className="px-10 py-5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all flex items-center gap-3">
+                        </Link>
+                        <Link 
+                            to="/talk-to-expert"
+                            className="w-full sm:w-auto px-10 py-5 bg-white border border-slate-300 hover:border-blue-400 hover:bg-slate-50 text-slate-800 text-lg font-semibold rounded-2xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-3 cursor-pointer"
+                        >
                             <PlayCircle className="w-5 h-5 text-blue-600" />
-                            Watch Consulting Preview
-                        </button>
+                            <span>Request Strategic Consultation</span>
+                        </Link>
+                    </div>
+
+                    {/* Micro-Trust Anchors */}
+                    <div className="flex flex-wrap items-center justify-center gap-5 text-xs text-slate-500 mb-14 font-medium">
+                        <div className="flex items-center gap-1.5">
+                            <Lock className="w-3.5 h-3.5 text-emerald-600" />
+                            <span>Mutual Enterprise NDA Signed Automatically</span>
+                        </div>
+                        <span className="text-slate-300 hidden sm:inline">•</span>
+                        <div className="flex items-center gap-1.5">
+                            <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
+                            <span>SOC-2 Type II Certified Architecture</span>
+                        </div>
+                        <span className="text-slate-300 hidden sm:inline">•</span>
+                        <div className="flex items-center gap-1.5">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600" />
+                            <span>No Long-Term Lock-in • Connects to Salesforce &amp; HubSpot in Minutes</span>
+                        </div>
                     </div>
 
                     {/* Real-World Demand Pulse Intent Dashboard */}

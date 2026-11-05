@@ -462,31 +462,49 @@ export default function HomeFeatureSlider() {
                                     ))}
                                 </div>
 
-                                {/* CTA Buttons */}
-                                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
-                                    <Link 
-                                        to={activeSlide.primaryCta.link}
-                                        onClick={() => trackEvent({ eventName: 'SLIDER_PRIMARY_CTA_CLICK', label: activeSlide.primaryCta.text })}
-                                    >
-                                        <Button className="w-full sm:w-auto bg-slate-900 hover:bg-blue-600 text-white font-bold px-7 py-6 rounded-xl shadow-lg shadow-slate-900/10 text-sm transition-all hover:-translate-y-0.5 group cursor-pointer">
-                                            <span className="flex items-center justify-center">
-                                                {activeSlide.primaryCta.text}
-                                                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                            </span>
-                                        </Button>
-                                    </Link>
-                                    
-                                    <Link 
-                                        to={activeSlide.secondaryCta.link}
-                                        onClick={() => trackEvent({ eventName: 'SLIDER_SECONDARY_CTA_CLICK', label: activeSlide.secondaryCta.text })}
-                                    >
-                                        <Button variant="outline" className="w-full sm:w-auto border-slate-200 bg-white hover:bg-slate-50 text-slate-800 font-bold px-6 py-6 rounded-xl text-sm shadow-xs transition-all cursor-pointer">
-                                            <span className="flex items-center justify-center">
-                                                {activeSlide.secondaryCta.text}
-                                                <ArrowUpRight className="ml-1.5 w-3.5 h-3.5 text-slate-500" />
-                                            </span>
-                                        </Button>
-                                    </Link>
+                                {/* Direct Conversion & Diagnostic CTAs */}
+                                <div className="space-y-4">
+                                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                                        <Link 
+                                            to="/book-consultation"
+                                            onClick={() => trackEvent({ eventName: 'HERO_BOOK_CONSULTATION_CLICK', label: activeSlide.tag })}
+                                        >
+                                            <Button className="w-full sm:w-auto bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:from-blue-800 active:to-indigo-800 text-white font-bold px-7 py-6 rounded-xl shadow-lg shadow-blue-600/30 text-sm transition-all hover:-translate-y-0.5 group cursor-pointer">
+                                                <span className="flex items-center justify-center">
+                                                    <span>Book Strategy Consultation</span>
+                                                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                                </span>
+                                            </Button>
+                                        </Link>
+                                        
+                                        <Link 
+                                            to="/sales-calculators"
+                                            onClick={() => trackEvent({ eventName: 'HERO_CALCULATOR_CLICK', label: activeSlide.tag })}
+                                        >
+                                            <Button variant="outline" className="w-full sm:w-auto border-slate-300 bg-white hover:bg-slate-50 text-slate-800 font-bold px-6 py-6 rounded-xl text-sm shadow-xs transition-all cursor-pointer">
+                                                <span className="flex items-center justify-center">
+                                                    <span>Calculate Revenue Leakage</span>
+                                                    <span className="ml-1.5 px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-300">PRO</span>
+                                                    <ArrowUpRight className="ml-1.5 w-3.5 h-3.5 text-slate-500" />
+                                                </span>
+                                            </Button>
+                                        </Link>
+                                    </div>
+
+                                    {/* Contextual Subpage Route & Micro-Trust Indicators */}
+                                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-slate-500 pt-1">
+                                        <Link 
+                                            to={activeSlide.primaryCta.link}
+                                            className="font-semibold text-blue-600 hover:text-blue-800 inline-flex items-center gap-1 group"
+                                        >
+                                            <span>Explore {activeSlide.tag} Documentation</span>
+                                            <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                                        </Link>
+                                        <span className="text-slate-300 hidden sm:inline">•</span>
+                                        <span className="text-slate-500 font-medium">Mutual NDA Signed Automatically</span>
+                                        <span className="text-slate-300 hidden sm:inline">•</span>
+                                        <span className="text-slate-500 font-medium">SOC-2 Type II Certified</span>
+                                    </div>
                                 </div>
 
                             </div>

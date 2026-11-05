@@ -10,11 +10,11 @@ import {
 
 const POPUP_ID = 'marketing_exit_intent';
 
-// Intrusive exit-intent marketing modals are DISABLED by default across the site.
-// Can be opted into only with explicit programmatic configuration.
+// Exit-intent modal is ENABLED for desktop visitors.
+// Fires only after 30 seconds of engagement, respects 14/30-day suppression rules.
 export const EXIT_INTENT_CONFIG = {
-  enabledByDefault: false,
-  minTimeOnPageMs: 30000, // 30 seconds deliberate engagement if enabled
+  enabledByDefault: true,
+  minTimeOnPageMs: 30000, // 30 seconds deliberate engagement before triggering
   suppressionDaysDismissed: 14,
   suppressionDaysSubmitted: 30,
 };
@@ -127,14 +127,14 @@ export default function TabExitPopup({ enabled = EXIT_INTENT_CONFIG.enabledByDef
           </div>
 
           <h2 id="tab-exit-title" className="text-3xl sm:text-4xl font-black text-slate-900 leading-[1.15] mb-4 tracking-tight">
-            Accelerate Your <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-              Revenue Growth Engine
+            Before You Leave — <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+              Request a Free Pipeline Audit
             </span>
           </h2>
 
           <p className="text-slate-600 text-sm sm:text-base mb-6 leading-relaxed max-w-md">
-            Industry leaders use ProfitMachines to unblock hidden revenue friction and capture demand competitors can't see.
+            In 15 minutes, our revenue architects will pinpoint the exact stage where your pipeline loses momentum — with a custom diagnostic report at no cost.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
@@ -154,19 +154,19 @@ export default function TabExitPopup({ enabled = EXIT_INTENT_CONFIG.enabledByDef
 
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
-              to="/industries"
+              to="/book-consultation"
               onClick={handleClose}
-              className="flex-1 bg-slate-900 hover:bg-blue-600 text-white font-bold text-center py-3.5 px-5 rounded-xl shadow-md transition-all active:scale-95 flex items-center justify-center gap-2 group text-sm"
+              className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-center py-3.5 px-5 rounded-xl shadow-md shadow-blue-600/30 transition-all active:scale-95 flex items-center justify-center gap-2 group text-sm"
             >
-              Explore Growth
+              Request 15-Min Pipeline Audit
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               to="/book-consultation"
               onClick={handleClose}
-              className="flex-1 bg-white border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-center py-3.5 px-5 rounded-xl transition-all active:scale-95 flex items-center justify-center text-sm"
+              className="flex-1 bg-white border-2 border-slate-200 hover:border-blue-300 hover:bg-blue-50 text-slate-700 hover:text-blue-700 font-bold text-center py-3.5 px-5 rounded-xl transition-all active:scale-95 flex items-center justify-center text-sm"
             >
-              Book Consultation
+              Get Free Revenue Audit →
             </Link>
           </div>
 

@@ -176,7 +176,12 @@ export default function ChatBot() {
         };
 
         window.addEventListener('open_chat_with_context' as any, handleContextTrigger);
-        return () => window.removeEventListener('open_chat_with_context' as any, handleContextTrigger);
+        const handleOpenDirect = () => setIsOpen(true);
+        window.addEventListener('open-chatbot', handleOpenDirect);
+        return () => {
+            window.removeEventListener('open_chat_with_context' as any, handleContextTrigger);
+            window.removeEventListener('open-chatbot', handleOpenDirect);
+        };
     }, [agentName, agentRole, activeContext]);
 
     // ── 4. Chatbot Lead Telemetry Tracking ─────────────────────────────────
@@ -612,7 +617,7 @@ export default function ChatBot() {
                     whileHover={{ scale: 1.08 }}
                     whileTap={{ scale: 0.94 }}
                     onClick={() => setIsOpen(true)}
-                    className="fixed bottom-8 right-6 z-[999] w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-full shadow-xl shadow-blue-600/30 flex items-center justify-center text-white cursor-pointer hover:shadow-2xl hover:shadow-blue-600/50 transition-all ring-2 ring-white/30"
+                    className="fixed bottom-8 right-6 z-[999] hidden md:flex w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-full shadow-xl shadow-blue-600/30 items-center justify-center text-white cursor-pointer hover:shadow-2xl hover:shadow-blue-600/50 transition-all ring-2 ring-white/30"
                 >
                     <MessageSquare className="w-7 h-7" strokeWidth={2.4} />
                     <span className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full"></span>

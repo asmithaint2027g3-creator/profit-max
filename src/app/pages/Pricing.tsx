@@ -97,8 +97,8 @@ export default function Pricing() {
                                         </div>
                                     ))}
                                 </div>
-                                <Link to="/book-consultation" className={`w-full py-3 px-4 rounded-xl font-bold text-center transition-all ${tier.highlight ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-slate-100 text-slate-900 hover:bg-slate-200'}`}>
-                                    Get Started
+                                <Link to="/book-consultation" className={`w-full py-3.5 px-4 rounded-xl font-bold text-center transition-all ${tier.highlight ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md shadow-blue-600/30' : 'bg-slate-100 text-slate-900 hover:bg-slate-200'}`}>
+                                    {tier.highlight ? 'Select Enterprise Plan →' : 'Choose Plan →'}
                                 </Link>
                             </div>
                         </Reveal>
@@ -127,17 +127,25 @@ export default function Pricing() {
             <section className="py-20 lg:py-28 bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 text-white relative overflow-hidden">
                 <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 30% 50%, #3b82f6 0%, transparent 60%), radial-gradient(circle at 70% 50%, #6366f1 0%, transparent 60%)' }} />
                 <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-                    <div className="text-xs font-extrabold text-blue-400 uppercase tracking-widest mb-4">Get Started</div>
+                    <div className="text-xs font-extrabold text-blue-400 uppercase tracking-widest mb-4">Executive Architecture</div>
                     <h2 className="text-3xl md:text-4xl font-extrabold font-heading mb-6">Ready to Accelerate Revenue?</h2>
-                    <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">Let's discuss the right plan for your growth stage. No obligation, just clarity.</p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <p className="text-xl text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">Let's discuss the right plan for your growth stage. No obligation, just clarity.</p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                         <Link to="/book-consultation" className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-all duration-200 shadow-lg shadow-blue-900/50 hover:-translate-y-0.5 group">
-                            Book Consultation
+                            Get Free Revenue Audit →
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <Link to="/talk-to-expert" className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-white/10 text-white font-bold rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-200">
                             Talk to an Expert
                         </Link>
+                    </div>
+                    {/* Micro-Trust Anchors */}
+                    <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400 font-medium">
+                        <span>Mutual Enterprise NDA Signed Automatically</span>
+                        <span className="text-slate-600">•</span>
+                        <span>SOC-2 Type II Certified Architecture</span>
+                        <span className="text-slate-600">•</span>
+                        <span>No Long-Term Lock-in • Connects in Minutes</span>
                     </div>
                 </div>
             </section>

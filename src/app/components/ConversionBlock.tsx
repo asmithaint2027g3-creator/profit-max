@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import VerticalTabEngine from './VerticalTabEngine';
 import type { ConversionBlockData } from '../../data/homeContent';
 
@@ -116,13 +117,16 @@ export default function ConversionBlock({ data, index }: { data: ConversionBlock
                             transition={{ delay: 0.5 }}
                             className="flex justify-start md:justify-end"
                         >
-                            <button className="group relative px-8 py-4 bg-slate-900 text-white font-bold rounded-full overflow-hidden hover:shadow-xl transition-all duration-300">
+                            <Link 
+                                to={data.cta?.action || "/book-consultation"}
+                                className="group relative px-8 py-4 bg-slate-900 text-white font-bold rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 inline-flex items-center cursor-pointer"
+                            >
                                 <div className={`absolute inset-0 bg-gradient-to-r ${themeGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
                                 <span className="relative z-10 flex items-center space-x-2 transition-colors">
-                                    <span>{data.cta.text}</span>
+                                    <span>{data.cta?.text || "Deploy Architecture →"}</span>
                                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                 </span>
-                            </button>
+                            </Link>
                         </motion.div>
 
                     </div>

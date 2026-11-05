@@ -155,10 +155,10 @@ export default function Footer() {
                             to="/book-consultation" 
                             className="w-full sm:w-auto px-6 py-3.5 rounded-xl font-bold text-sm text-white bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-600/30 transition-all hover:scale-[1.02] active:scale-[0.98] text-center"
                         >
-                            Book Free Consultation
+                            Get Free Revenue Audit →
                         </Link>
                         <a 
-                            href="mailto:connect@trustgrid.ai" 
+                            href="mailto:consulting@profitmachines.ai" 
                             className="w-full sm:w-auto px-6 py-3.5 rounded-xl font-bold text-sm text-slate-200 border border-slate-700 hover:border-slate-500 hover:bg-white/5 transition-all text-center"
                         >
                             Email Us Directly
@@ -185,13 +185,13 @@ export default function Footer() {
                             {/* Circular Contact Badges */}
                             <div className="space-y-4 mb-8">
                                 <a 
-                                    href="mailto:connect@trustgrid.ai" 
+                                    href="mailto:consulting@profitmachines.ai" 
                                     className="group flex items-center gap-4 text-slate-400 hover:text-white transition-colors duration-300"
                                 >
                                     <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-blue-500 group-hover:bg-blue-600 transition-all shrink-0">
                                         <Mail className="w-4 h-4 text-slate-300 group-hover:text-white" />
                                     </div>
-                                    <span className="font-normal text-sm tracking-wide">connect@trustgrid.ai</span>
+                                    <span className="font-normal text-sm tracking-wide">consulting@profitmachines.ai</span>
                                 </a>
 
                                 <a 

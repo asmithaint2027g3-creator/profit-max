@@ -2982,7 +2982,7 @@ export default function Navigation() {
                                         </aside>
 
                                         {/* ── RIGHT CONTENT PANEL (FLEX-1 AUTO-FILL, ZERO BOTTOM GAP) ── */}
-                                        <main className="flex-1 bg-white p-3 sm:p-4 flex flex-col">
+                                        <main className="flex-1 bg-white p-3 sm:p-4 flex flex-col justify-between">
                                             {/* Top Section: Header + Cards Grid */}
                                             <div className="space-y-2">
                                                 {/* Top Header Area */}
@@ -3008,7 +3008,7 @@ export default function Navigation() {
                                                 </div>
 
                                                 {/* Main Content Grid: Cards fill space proportionally (flex-1) */}
-                                                <div className={`grid grid-cols-1 md:grid-cols-2 gap-2 content-start ${allLinks.length > 6 ? 'max-h-[240px] overflow-y-auto pr-1' : ''}`}>
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 content-start flex-1">
                                                     {allLinks.map((card, idx) => {
                                                         const CardIcon = card.icon || Target;
 

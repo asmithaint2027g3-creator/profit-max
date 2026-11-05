@@ -223,7 +223,7 @@ export default function SignIn() {
                       value={identifier}
                       onChange={(e) => setIdentifier(e.target.value)}
                       placeholder="e.g. sarah_cro or sarah@enterprise.com"
-                      className="w-full h-14 pl-12 pr-4 rounded-xl bg-slate-800/70 hover:bg-slate-800 focus:bg-slate-800 border border-slate-600/70 focus:border-blue-500 text-base text-white placeholder:text-slate-500 focus:outline-none focus:ring-4 focus:ring-blue-500/20 font-medium transition-all"
+                      className="w-full h-14 pl-12 pr-4 rounded-xl bg-slate-800/70 hover:bg-slate-800 focus:bg-slate-800 border border-slate-600/70 focus:border-blue-500 text-base text-white placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 font-medium transition-all"
                     />
                   </div>
                 </div>
@@ -252,7 +252,7 @@ export default function SignIn() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Enter your password"
-                      className="w-full h-14 pl-12 pr-12 rounded-xl bg-slate-800/70 hover:bg-slate-800 focus:bg-slate-800 border border-slate-600/70 focus:border-blue-500 text-base text-white placeholder:text-slate-500 focus:outline-none focus:ring-4 focus:ring-blue-500/20 font-medium transition-all"
+                      className="w-full h-14 pl-12 pr-12 rounded-xl bg-slate-800/70 hover:bg-slate-800 focus:bg-slate-800 border border-slate-600/70 focus:border-blue-500 text-base text-white placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 font-medium transition-all"
                     />
                     <button
                       type="button"
@@ -348,7 +348,7 @@ export default function SignIn() {
                   value={forgotIdentifier}
                   onChange={(e) => setForgotIdentifier(e.target.value)}
                   placeholder="e.g. sarah_cro or sarah@enterprise.com"
-                  className="w-full h-12 px-4 rounded-xl bg-slate-800/70 border border-slate-600/70 focus:border-blue-500 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-4 focus:ring-blue-500/20 transition-all"
+                  className="w-full h-12 px-4 rounded-xl bg-slate-800/70 border border-slate-600/70 focus:border-blue-500 text-sm text-white placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 transition-all"
                 />
               </div>
 
@@ -360,7 +360,7 @@ export default function SignIn() {
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                   placeholder="Enter new password"
-                  className="w-full h-12 px-4 rounded-xl bg-slate-800/70 border border-slate-600/70 focus:border-blue-500 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-4 focus:ring-blue-500/20 transition-all"
+                  className="w-full h-12 px-4 rounded-xl bg-slate-800/70 border border-slate-600/70 focus:border-blue-500 text-sm text-white placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 transition-all"
                 />
               </div>
 
@@ -372,7 +372,7 @@ export default function SignIn() {
                   value={confirmNewPassword}
                   onChange={(e) => setConfirmNewPassword(e.target.value)}
                   placeholder="Re-enter new password"
-                  className="w-full h-12 px-4 rounded-xl bg-slate-800/70 border border-slate-600/70 focus:border-blue-500 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-4 focus:ring-blue-500/20 transition-all"
+                  className="w-full h-12 px-4 rounded-xl bg-slate-800/70 border border-slate-600/70 focus:border-blue-500 text-sm text-white placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 transition-all"
                 />
               </div>
 

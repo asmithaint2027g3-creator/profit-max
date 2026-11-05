@@ -614,8 +614,8 @@ export default function Register() {
                 </div>
 
                 {verificationError && (
-                  <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm flex items-start gap-3">
-                    <AlertCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                  <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-sm flex items-start gap-3">
+                    <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
                     <span className="leading-relaxed font-medium">{verificationError}</span>
                   </div>
                 )}
@@ -688,8 +688,8 @@ export default function Register() {
 
                 {/* Form Error Banner */}
                 {errors.form && (
-                  <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm flex items-start gap-3">
-                    <AlertCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                  <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-sm flex items-start gap-3">
+                    <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
                     <span className="leading-relaxed font-medium">{errors.form}</span>
                   </div>
                 )}
@@ -697,17 +697,17 @@ export default function Register() {
                 {/* STEP 1: BASIC INFORMATION */}
                 {step === 1 && (
                   <div className="space-y-5 animate-in fade-in">
-                    <div className="border-b border-slate-200 pb-3">
-                      <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-600">Step 01 / 02</span>
-                      <h3 className="text-2xl font-bold text-slate-900 mt-1 font-heading">Basic & Security Information</h3>
-                      <p className="text-sm text-slate-600 mt-0.5">Please provide your primary corporate contact information.</p>
+                    <div className="border-b border-slate-700/60 pb-3">
+                      <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-400">Step 01 / 02</span>
+                      <h3 className="text-2xl font-bold text-white mt-1 font-heading">Basic & Security Information</h3>
+                      <p className="text-sm text-slate-400 mt-0.5">Please provide your primary corporate contact information.</p>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* Full Name */}
                       <div>
-                        <label className="block text-sm font-semibold text-slate-800 mb-2">
-                          Full Name <span className="text-blue-600">*</span>
+                        <label className="block text-sm font-semibold text-slate-300 mb-2">
+                          Full Name <span className="text-blue-400 font-bold">*</span>
                         </label>
                         <input
                           type="text"
@@ -716,16 +716,16 @@ export default function Register() {
                           value={formData.fullName}
                           onChange={handleChange}
                           placeholder="Sarah Jenkins"
-                          className="w-full h-14 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                          className="w-full h-14 px-4 rounded-xl bg-slate-800/70 hover:bg-slate-800 focus:bg-slate-800 border border-slate-600/60 focus:border-blue-500 text-base text-white placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 font-medium transition-all"
                         />
-                        {errors.fullName && <p className="text-xs text-red-600 mt-1 font-semibold">{errors.fullName}</p>}
+                        {errors.fullName && <p className="text-xs text-red-400 mt-1 font-semibold">{errors.fullName}</p>}
                       </div>
 
                       {/* Business Email */}
                       <div>
                         <div className="flex items-center justify-between mb-1.5">
-                          <label className="block text-sm font-bold text-slate-900">
-                            Corporate Business Email <span className="text-blue-600">*</span>
+                          <label className="block text-sm font-semibold text-slate-300">
+                            Corporate Business Email <span className="text-blue-400 font-bold">*</span>
                           </label>
                           <span className="text-[11px] font-semibold text-slate-400">Business domains only</span>
                         </div>
@@ -736,17 +736,17 @@ export default function Register() {
                           value={formData.email}
                           onChange={handleChange}
                           placeholder="sarah@enterprise.com"
-                          className="w-full h-14 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                          className="w-full h-14 px-4 rounded-xl bg-slate-800/70 hover:bg-slate-800 focus:bg-slate-800 border border-slate-600/60 focus:border-blue-500 text-base text-white placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 font-medium transition-all"
                         />
-                        {errors.email && <p className="text-xs text-red-600 mt-1 font-semibold">{errors.email}</p>}
+                        {errors.email && <p className="text-xs text-red-400 mt-1 font-semibold">{errors.email}</p>}
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* Mobile Number */}
                       <div>
-                        <label className="block text-sm font-semibold text-slate-800 mb-2">
-                          Mobile Number (with country code) <span className="text-blue-600">*</span>
+                        <label className="block text-sm font-semibold text-slate-300 mb-2">
+                          Mobile Number (with country code) <span className="text-blue-400 font-bold">*</span>
                         </label>
                         <input
                           type="tel"
@@ -755,15 +755,15 @@ export default function Register() {
                           value={formData.mobile}
                           onChange={handleChange}
                           placeholder="+1 (555) 000-0000"
-                          className="w-full h-14 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                          className="w-full h-14 px-4 rounded-xl bg-slate-800/70 hover:bg-slate-800 focus:bg-slate-800 border border-slate-600/60 focus:border-blue-500 text-base text-white placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 font-medium transition-all"
                         />
-                        {errors.mobile && <p className="text-xs text-red-600 mt-1 font-semibold">{errors.mobile}</p>}
+                        {errors.mobile && <p className="text-xs text-red-400 mt-1 font-semibold">{errors.mobile}</p>}
                       </div>
 
                       {/* Preferred User ID */}
                       <div>
-                        <label className="block text-sm font-semibold text-slate-800 mb-2">
-                          Preferred User ID <span className="text-blue-600">*</span>
+                        <label className="block text-sm font-semibold text-slate-300 mb-2">
+                          Preferred User ID <span className="text-blue-400 font-bold">*</span>
                         </label>
                         <input
                           type="text"
@@ -774,15 +774,15 @@ export default function Register() {
                           placeholder="e.g. sarah_cro"
                           className="w-full h-14 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-mono font-medium transition-all"
                         />
-                        {errors.userId && <p className="text-xs text-red-600 mt-1 font-semibold">{errors.userId}</p>}
+                        {errors.userId && <p className="text-xs text-red-400 mt-1 font-semibold">{errors.userId}</p>}
                       </div>
                     </div>
 
                     {/* Password & Confirm Password */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-semibold text-slate-800 mb-2">
-                          Password <span className="text-blue-600">*</span>
+                        <label className="block text-sm font-semibold text-slate-300 mb-2">
+                          Password <span className="text-blue-400 font-bold">*</span>
                         </label>
                         <div className="relative">
                           <input
@@ -792,22 +792,22 @@ export default function Register() {
                             value={formData.password}
                             onChange={handleChange}
                             placeholder="Enter password (min 8 chars)"
-                            className="w-full h-14 pl-4 pr-12 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                            className="w-full h-14 pl-4 pr-12 rounded-xl bg-slate-800/70 hover:bg-slate-800 focus:bg-slate-800 border border-slate-600/60 focus:border-blue-500 text-base text-white placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 font-medium transition-all"
                           />
                           <button
                             type="button"
                             onClick={() => setShowPassword(!showPassword)}
-                            className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-700 cursor-pointer"
+                            className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-200 cursor-pointer"
                           >
                             {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                           </button>
                         </div>
-                        {errors.password && <p className="text-xs text-red-600 mt-1 font-semibold">{errors.password}</p>}
+                        {errors.password && <p className="text-xs text-red-400 mt-1 font-semibold">{errors.password}</p>}
                       </div>
 
                       <div>
-                        <label className="block text-sm font-semibold text-slate-800 mb-2">
-                          Confirm Password <span className="text-blue-600">*</span>
+                        <label className="block text-sm font-semibold text-slate-300 mb-2">
+                          Confirm Password <span className="text-blue-400 font-bold">*</span>
                         </label>
                         <div className="relative">
                           <input
@@ -817,18 +817,18 @@ export default function Register() {
                             value={formData.confirmPassword}
                             onChange={handleChange}
                             placeholder="Re-enter password"
-                            className="w-full h-14 pl-4 pr-12 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                            className="w-full h-14 pl-4 pr-12 rounded-xl bg-slate-800/70 hover:bg-slate-800 focus:bg-slate-800 border border-slate-600/60 focus:border-blue-500 text-base text-white placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 font-medium transition-all"
                           />
                           <button
                             type="button"
                             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                            className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-700 cursor-pointer"
+                            className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-200 cursor-pointer"
                           >
                             {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                           </button>
                         </div>
                         {errors.confirmPassword && (
-                          <p className="text-xs text-red-600 mt-1 font-semibold">{errors.confirmPassword}</p>
+                          <p className="text-xs text-red-400 mt-1 font-semibold">{errors.confirmPassword}</p>
                         )}
                       </div>
                     </div>
@@ -849,16 +849,16 @@ export default function Register() {
                 {/* STEP 2: COMPANY INFORMATION */}
                 {step === 2 && (
                   <div className="space-y-5 animate-in fade-in">
-                    <div className="border-b border-slate-200 pb-3 flex items-center justify-between">
+                    <div className="border-b border-slate-700/60 pb-3 flex items-center justify-between">
                       <div>
-                        <span className="text-xs font-mono font-bold uppercase tracking-widest text-indigo-600">Step 02 / 02</span>
-                        <h3 className="text-2xl font-bold text-slate-900 mt-1 font-heading">Company & Operational Scope</h3>
-                        <p className="text-sm text-slate-600 mt-0.5">Tell us about your organization and commercial focus.</p>
+                        <span className="text-xs font-mono font-bold uppercase tracking-widest text-indigo-400">Step 02 / 02</span>
+                        <h3 className="text-2xl font-bold text-white mt-1 font-heading">Company & Operational Scope</h3>
+                        <p className="text-sm text-slate-400 mt-0.5">Tell us about your organization and commercial focus.</p>
                       </div>
                       <button
                         type="button"
                         onClick={() => setStep(1)}
-                        className="text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 flex items-center gap-1 cursor-pointer px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-50"
+                        className="text-xs sm:text-sm font-semibold text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer px-3 py-1.5 rounded-lg border border-slate-600/60 hover:bg-slate-800"
                       >
                         <ArrowLeft className="w-4 h-4" />
                         <span>Back</span>
@@ -867,12 +867,12 @@ export default function Register() {
 
                     {/* Section A: Corporate Information */}
                     <div className="space-y-3">
-                      <div className="text-xs font-bold uppercase tracking-wider text-slate-500">A. Corporate Profile</div>
+                      <div className="text-xs font-bold uppercase tracking-wider text-slate-400">A. Corporate Profile</div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm font-semibold text-slate-800 mb-2">
-                            Company Name <span className="text-blue-600">*</span>
+                          <label className="block text-sm font-semibold text-slate-300 mb-2">
+                            Company Name <span className="text-blue-400 font-bold">*</span>
                           </label>
                           <input
                             type="text"
@@ -881,62 +881,62 @@ export default function Register() {
                             value={formData.company}
                             onChange={handleChange}
                             placeholder="Acme Global Inc."
-                            className="w-full h-14 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                            className="w-full h-14 px-4 rounded-xl bg-slate-800/70 hover:bg-slate-800 focus:bg-slate-800 border border-slate-600/60 focus:border-blue-500 text-base text-white placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 font-medium transition-all"
                           />
-                          {errors.company && <p className="text-xs text-red-600 mt-1 font-semibold">{errors.company}</p>}
+                          {errors.company && <p className="text-xs text-red-400 mt-1 font-semibold">{errors.company}</p>}
                         </div>
 
                         <div>
-                          <label className="block text-sm font-semibold text-slate-800 mb-2">Official Website (optional)</label>
+                          <label className="block text-sm font-semibold text-slate-300 mb-2">Official Website (optional)</label>
                           <input
                             type="url"
                             name="website"
                             value={formData.website}
                             onChange={handleChange}
                             placeholder="https://company.com"
-                            className="w-full h-14 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                            className="w-full h-14 px-4 rounded-xl bg-slate-800/70 hover:bg-slate-800 focus:bg-slate-800 border border-slate-600/60 focus:border-blue-500 text-base text-white placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 font-medium transition-all"
                           />
                         </div>
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                         <div>
-                          <label className="block text-sm font-semibold text-slate-800 mb-2">
-                            Country <span className="text-blue-600">*</span>
+                          <label className="block text-sm font-semibold text-slate-300 mb-2">
+                            Country <span className="text-blue-400 font-bold">*</span>
                           </label>
                           <select
                             name="country"
                             value={formData.country}
                             onChange={handleChange}
-                            className="w-full h-14 px-3.5 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                            className="w-full h-14 px-3.5 rounded-xl bg-slate-800/70 hover:bg-slate-800 focus:bg-slate-800 border border-slate-600/60 focus:border-blue-500 text-base text-white focus:outline-none focus:ring-4 focus:ring-blue-500/20 font-medium transition-all"
                           >
                             {GLOBAL_COUNTRIES.map(c => (
-                              <option key={c} value={c} className="bg-white text-slate-900">{c}</option>
+                              <option key={c} value={c} className="bg-slate-900 text-white">{c}</option>
                             ))}
                           </select>
                         </div>
 
                         <div>
-                          <label className="block text-sm font-semibold text-slate-800 mb-2">State / Region</label>
+                          <label className="block text-sm font-semibold text-slate-300 mb-2">State / Region</label>
                           <input
                             type="text"
                             name="state"
                             value={formData.state}
                             onChange={handleChange}
                             placeholder="California / Ontario"
-                            className="w-full h-14 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                            className="w-full h-14 px-4 rounded-xl bg-slate-800/70 hover:bg-slate-800 focus:bg-slate-800 border border-slate-600/60 focus:border-blue-500 text-base text-white placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 font-medium transition-all"
                           />
                         </div>
 
                         <div>
-                          <label className="block text-sm font-semibold text-slate-800 mb-2">City</label>
+                          <label className="block text-sm font-semibold text-slate-300 mb-2">City</label>
                           <input
                             type="text"
                             name="city"
                             value={formData.city}
                             onChange={handleChange}
                             placeholder="San Francisco"
-                            className="w-full h-14 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                            className="w-full h-14 px-4 rounded-xl bg-slate-800/70 hover:bg-slate-800 focus:bg-slate-800 border border-slate-600/60 focus:border-blue-500 text-base text-white placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 font-medium transition-all"
                           />
                         </div>
                       </div>
@@ -944,50 +944,50 @@ export default function Register() {
 
                     {/* Section B: Industry and Company Size */}
                     <div className="space-y-3 pt-2">
-                      <div className="text-xs font-bold uppercase tracking-wider text-slate-500">B. Industry & Headcount</div>
+                      <div className="text-xs font-bold uppercase tracking-wider text-slate-400">B. Industry & Headcount</div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm font-semibold text-slate-800 mb-2">
-                            Industry Sector <span className="text-blue-600">*</span>
+                          <label className="block text-sm font-semibold text-slate-300 mb-2">
+                            Industry Sector <span className="text-blue-400 font-bold">*</span>
                           </label>
                           <select
                             name="industry"
                             value={formData.industry}
                             onChange={handleChange}
-                            className="w-full h-14 px-3.5 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                            className="w-full h-14 px-3.5 rounded-xl bg-slate-800/70 hover:bg-slate-800 focus:bg-slate-800 border border-slate-600/60 focus:border-blue-500 text-base text-white focus:outline-none focus:ring-4 focus:ring-blue-500/20 font-medium transition-all"
                           >
                             {INDUSTRY_SECTORS.map(ind => (
-                              <option key={ind} value={ind} className="bg-white text-slate-900">{ind}</option>
+                              <option key={ind} value={ind} className="bg-slate-900 text-white">{ind}</option>
                             ))}
                           </select>
                         </div>
 
                         <div>
-                          <label className="block text-sm font-semibold text-slate-800 mb-2">Sub-industry / Vertical (optional)</label>
+                          <label className="block text-sm font-semibold text-slate-300 mb-2">Sub-industry / Vertical (optional)</label>
                           <input
                             type="text"
                             name="subIndustry"
                             value={formData.subIndustry}
                             onChange={handleChange}
                             placeholder="e.g. Cybersecurity, PropTech, Supply Chain AI"
-                            className="w-full h-14 px-4 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                            className="w-full h-14 px-4 rounded-xl bg-slate-800/70 hover:bg-slate-800 focus:bg-slate-800 border border-slate-600/60 focus:border-blue-500 text-base text-white placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 font-medium transition-all"
                           />
                         </div>
                       </div>
 
                       <div>
-                        <label className="block text-sm font-semibold text-slate-800 mb-2">
-                          Company Headcount <span className="text-blue-600">*</span>
+                        <label className="block text-sm font-semibold text-slate-300 mb-2">
+                          Company Headcount <span className="text-blue-400 font-bold">*</span>
                         </label>
                         <select
                           name="headcount"
                           value={formData.headcount}
                           onChange={handleChange}
-                          className="w-full h-14 px-3.5 rounded-xl bg-slate-50/70 hover:bg-white focus:bg-white border border-slate-300 text-base text-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-600 font-medium transition-all"
+                          className="w-full h-14 px-3.5 rounded-xl bg-slate-800/70 hover:bg-slate-800 focus:bg-slate-800 border border-slate-600/60 focus:border-blue-500 text-base text-white focus:outline-none focus:ring-4 focus:ring-blue-500/20 font-medium transition-all"
                         >
                           {HEADCOUNT_OPTIONS.map(opt => (
-                            <option key={opt.value} value={opt.value} className="bg-white text-slate-900">{opt.label}</option>
+                            <option key={opt.value} value={opt.value} className="bg-slate-900 text-white">{opt.label}</option>
                           ))}
                         </select>
                       </div>
@@ -996,10 +996,10 @@ export default function Register() {
                     {/* Section C: Business Operations */}
                     <div className="space-y-3 pt-2">
                       <div className="flex items-center justify-between">
-                        <div className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                          C. Active Business Operations <span className="text-blue-600">*</span>
+                        <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                          C. Active Business Operations <span className="text-blue-400 font-bold">*</span>
                         </div>
-                        <span className="text-xs text-slate-500">Select all that apply</span>
+                        <span className="text-xs text-slate-400">Select all that apply</span>
                       </div>
 
                       <div className="flex flex-wrap gap-2">
@@ -1012,8 +1012,8 @@ export default function Register() {
                               onClick={() => handleToggleOperation(op)}
                               className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold border transition-all cursor-pointer ${
                                 active
-                                  ? 'bg-blue-50 border-blue-500 text-blue-700 shadow-2xs'
-                                  : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300'
+                                  ? 'bg-blue-600/20 border-blue-500 text-blue-300 shadow-sm'
+                                  : 'bg-slate-800/60 border-slate-600/60 text-slate-300 hover:bg-slate-700 hover:border-slate-500'
                               }`}
                             >
                               {active && <CheckCircle2 className="w-3.5 h-3.5 inline mr-1.5 text-blue-600" />}
@@ -1036,23 +1036,23 @@ export default function Register() {
                             }
                           }}
                           placeholder="Add custom operational focus..."
-                          className="flex-1 h-10 px-3.5 rounded-xl bg-slate-50 border border-slate-300 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
+                          className="flex-1 h-10 px-3.5 rounded-xl bg-slate-800/70 border border-slate-600/60 text-sm text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 font-medium"
                         />
                         <button
                           type="button"
                           onClick={handleAddCustomOperation}
-                          className="h-10 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-xs font-bold text-slate-800 transition-colors flex items-center gap-1.5 cursor-pointer"
+                          className="h-10 px-4 rounded-xl bg-slate-700 hover:bg-slate-600 border border-slate-600/60 text-xs font-bold text-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer"
                         >
                           <Plus className="w-4 h-4" />
                           <span>Add</span>
                         </button>
                       </div>
 
-                      {errors.operations && <p className="text-xs text-red-600 font-semibold">{errors.operations}</p>}
+                      {errors.operations && <p className="text-xs text-red-400 font-semibold">{errors.operations}</p>}
                     </div>
 
                     {/* Section D: Consent & Policies */}
-                    <div className="pt-3 space-y-2 border-t border-slate-200">
+                    <div className="pt-3 space-y-2 border-t border-slate-700/60">
                       <label className="flex items-start gap-3 cursor-pointer">
                         <input
                           type="checkbox"
@@ -1060,19 +1060,19 @@ export default function Register() {
                           onChange={(e) => setFormData(prev => ({ ...prev, consent: e.target.checked }))}
                           className="mt-1 w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
                         />
-                        <span className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        <span className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                           I accept the{' '}
-                          <Link to="/privacy" target="_blank" className="text-blue-600 underline hover:text-blue-700 font-semibold">
+                          <Link to="/privacy" target="_blank" className="text-blue-400 underline hover:text-blue-300 font-semibold">
                             Privacy Policy
                           </Link>{' '}
                           and{' '}
-                          <Link to="/terms" target="_blank" className="text-blue-600 underline hover:text-blue-700 font-semibold">
+                          <Link to="/terms" target="_blank" className="text-blue-400 underline hover:text-blue-300 font-semibold">
                             Terms of Service
                           </Link>
                           . I consent to ProfitMachines securely storing my corporate profile to provision enterprise platform tools and executive sales calculators.
                         </span>
                       </label>
-                      {errors.consent && <p className="text-xs text-red-600 font-semibold">{errors.consent}</p>}
+                      {errors.consent && <p className="text-xs text-red-400 font-semibold">{errors.consent}</p>}
                     </div>
 
                     {/* Action Buttons */}
@@ -1080,7 +1080,7 @@ export default function Register() {
                       <button
                         type="button"
                         onClick={() => setStep(1)}
-                        className="px-5 h-12 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 text-sm font-bold transition-colors cursor-pointer"
+                        className="px-5 h-12 rounded-xl border border-slate-600/60 text-slate-300 hover:bg-slate-800 text-sm font-bold transition-colors cursor-pointer"
                       >
                         &larr; Back
                       </button>

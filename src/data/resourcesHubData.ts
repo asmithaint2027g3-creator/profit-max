@@ -237,7 +237,7 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
     ]
   },
 
-  // 06. ANALYTICS & DECISION SCIENCE HUB
+  // 06. ANALYTICS & DECISION SCIENCE HUB (SIMPLIFIED TO 6 CONSOLIDATED CATEGORIES)
   {
     id: 'analytics-decision-science',
     number: '06',
@@ -247,50 +247,57 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
     purpose: 'Transform intuitive boardroom opinions into empirical, mathematical revenue physics.',
     icon: BarChart3,
     ctaText: 'Explore Analytics & Decision Science',
-    path: '/resources-hub#analytics-decision-science',
+    path: '/resources-hub/advanced-analytical-tools-sales-acceleration',
     previewLabels: [
-      'Foundational Analytics',
-      'Advanced Analytical Tools (25 Models)',
-      'Comparative Analytics'
+      'KPI & Executive Intelligence',
+      'Revenue & Pipeline Analytics',
+      'Predictive Revenue Intelligence',
+      'Marketing & Customer Economics',
+      'Advanced Analytical Tools',
+      'Industry Benchmarks & Performance'
     ],
-    subGroups: [
+    subItems: [
       {
-        groupName: 'Foundational Analytics',
-        badge: 'Core Metrics',
-        items: [
-          { title: 'KPI Libraries', description: 'Comprehensive catalog of leading and lagging enterprise revenue metrics.', path: '/resources-hub#kpi-libraries', icon: BookOpen, badge: 'KPIs' },
-          { title: 'Scorecards', description: 'Executive performance scorecards balanced across growth and retention.', path: '/resources-hub#scorecards', icon: CheckCircle2, badge: 'Scorecards' },
-          { title: 'Dashboards', description: 'Real-time telemetry dashboards for executive command centers.', path: '/resources-hub#dashboards', icon: Activity, badge: 'Telemetry' },
-          { title: 'Benchmarking', description: 'Cross-industry baseline benchmarks for gross margins and CAC payback.', path: '/resources-hub#benchmarking', icon: Sliders, badge: 'Baselines' }
-        ]
+        title: 'KPI & Executive Intelligence',
+        description: 'Comprehensive KPI libraries, balanced executive scorecards, and real-time command dashboards.',
+        path: '/resources-hub/advanced-analytical-tools-sales-acceleration#kpi-executive-intelligence',
+        icon: BarChart3,
+        badge: 'Executive Dashboards'
       },
       {
-        groupName: 'Advanced Analytical Tools',
-        badge: 'Approved 25-Model List',
-        items: [
-          { title: 'Revenue Velocity', description: 'Deterministic throughput equation: (Opportunities × Win Rate × ASP) / Cycle.', path: '/resources-hub#revenue-velocity', icon: Gauge, badge: 'Model 01' },
-          { title: 'Funnel Entropy', description: 'Quantification of pipeline disorder and deal stalling probability.', path: '/resources-hub#funnel-entropy', icon: Activity, badge: 'Model 02' },
-          { title: 'Markov Funnel Analysis', description: 'Stochastic state-transition modeling between pipeline stages.', path: '/resources-hub#markov-funnel', icon: GitMerge, badge: 'Model 03' },
-          { title: 'Bayesian Win Probability', description: 'Dynamic probability updates based on engagement signal evidence.', path: '/resources-hub#bayesian-win-probability', icon: Sliders, badge: 'Model 04' },
-          { title: 'Monte Carlo Forecasting', description: '10,000-run simulation curves providing probabilistic ARR ranges.', path: '/resources-hub#monte-carlo-forecasting', icon: BarChart3, badge: 'Model 05' },
-          { title: 'Churn Prediction', description: 'Early-warning telemetry identifying account health degradation.', path: '/resources-hub#churn-prediction', icon: ShieldAlert, badge: 'Model 06' },
-          { title: 'LTV Models', description: 'Cohort-based customer lifetime value projections with expansion curves.', path: '/resources-hub#ltv-models', icon: DollarSign, badge: 'Model 07' },
-          { title: 'Marketing Attribution', description: 'Shapley-value algorithmic multi-touch attribution models.', path: '/resources-hub#marketing-attribution', icon: Target, badge: 'Model 08' },
-          { title: 'Pipeline Leakage', description: 'Identification of covert revenue decay across qualification boundaries.', path: '/resources-hub#pipeline-leakage', icon: Sliders, badge: 'Model 09' },
-          { title: 'Opportunity Aging', description: 'Survival analysis modeling deal velocity drop-off over dwell time.', path: '/resources-hub#opportunity-aging', icon: Activity, badge: 'Model 10' },
-          { title: '25+ Analytical Cards', description: 'The complete enterprise mathematical suite (reference list for future development).', path: '/resources-hub#25-analytical-cards', icon: Boxes, badge: '25 Models' }
-        ]
+        title: 'Revenue & Pipeline Analytics',
+        description: 'Deterministic revenue velocity, funnel entropy, stage leakage diagnostics, and opportunity aging.',
+        path: '/resources-hub/advanced-analytical-tools-sales-acceleration#revenue-pipeline-analytics',
+        icon: Sliders,
+        badge: 'Velocity & Leakage'
       },
       {
-        groupName: 'Comparative Analytics',
-        badge: 'Competitive Intelligence',
-        items: [
-          { title: 'Industry Benchmarks', description: 'Quartile peer comparisons across ARR cohorts and verticals.', path: '/resources-hub#industry-benchmarks', icon: Landmark, badge: 'Quartiles' },
-          { title: 'Competitor Analysis', description: 'Win/loss telemetry and pricing power competitive matrices.', path: '/resources-hub#competitor-analysis', icon: Target, badge: 'Win/Loss' },
-          { title: 'Revenue Benchmarking', description: 'Contribution margin and Rule of 40 operational scorecards.', path: '/resources-hub#revenue-benchmarking', icon: TrendingUp, badge: 'Rule of 40' },
-          { title: 'GTM Benchmarking', description: 'SDR efficiency, AE attainment and pipeline coverage multipliers.', path: '/resources-hub#gtm-benchmarking', icon: Workflow, badge: 'Efficiency' },
-          { title: 'Maturity Assessments', description: '5-stage organizational maturity rubrics for enterprise revenue engines.', path: '/resources-hub#maturity-assessments', icon: Award, badge: 'Maturity' }
-        ]
+        title: 'Predictive Revenue Intelligence',
+        description: 'Bayesian deal win probability, Monte Carlo forecasting simulations, confidence intervals, and churn hazard.',
+        path: '/resources-hub/advanced-analytical-tools-sales-acceleration#predictive-revenue-intelligence',
+        icon: BrainCircuit,
+        badge: 'Probabilistic AI'
+      },
+      {
+        title: 'Marketing & Customer Economics',
+        description: 'Probabilistic CLV models, CAC acquisition efficiency, Shapley attribution, and marketing mix optimization.',
+        path: '/resources-hub/advanced-analytical-tools-sales-acceleration#marketing-customer-economics',
+        icon: DollarSign,
+        badge: 'Unit Economics'
+      },
+      {
+        title: 'Advanced Analytical Tools for Sales Acceleration',
+        description: 'Flagship Marketing Debt → Revenue Gap interactive engine, 25 mathematical models, GTM stack, and Revenue Physics.',
+        path: '/resources-hub/advanced-analytical-tools-sales-acceleration',
+        icon: Cpu,
+        badge: 'Flagship 25 Models'
+      },
+      {
+        title: 'Industry Benchmarks & Performance',
+        description: 'Cross-vertical quartile baselines, gross margin scorecards, and comparative sales efficiency analysis.',
+        path: '/resources-hub/advanced-analytical-tools-sales-acceleration#industry-benchmarks',
+        icon: TrendingUp,
+        badge: 'Quartile Baselines'
       }
     ]
   },

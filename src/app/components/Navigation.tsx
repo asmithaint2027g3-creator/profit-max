@@ -2140,8 +2140,10 @@ export default function Navigation() {
                     }))
                     : [
                         {
-                            header: `${cat.title} · Core Modules`,
-                            badge: 'Essential',
+                            header: cat.id === 'analytics-decision-science' 
+                                ? 'Executive & Pipeline Intelligence' 
+                                : `${cat.title} · Core Modules`,
+                            badge: cat.id === 'analytics-decision-science' ? 'Telemetry & Velocity' : 'Essential',
                             icon: cat.icon,
                             cards: (cat.subItems ? cat.subItems.slice(0, Math.ceil((cat.subItems.length || 0) / 2)) : []).map(it => ({
                                 title: it.title,
@@ -2153,8 +2155,10 @@ export default function Navigation() {
                             }))
                         },
                         {
-                            header: `${cat.title} · Advanced Modules`,
-                            badge: 'Operational',
+                            header: cat.id === 'analytics-decision-science' 
+                                ? 'Economics, Advanced Tools & Benchmarks' 
+                                : `${cat.title} · Advanced Modules`,
+                            badge: cat.id === 'analytics-decision-science' ? 'Flagship Analytical Stack' : 'Operational',
                             icon: cat.icon,
                             cards: (cat.subItems ? cat.subItems.slice(Math.ceil((cat.subItems.length || 0) / 2)) : []).map(it => ({
                                 title: it.title,

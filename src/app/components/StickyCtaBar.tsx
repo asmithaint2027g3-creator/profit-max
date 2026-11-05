@@ -64,7 +64,7 @@ export default function StickyCtaBar() {
                                 to="/book-consultation"
                                 className="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-blue-900/40 hover:-translate-y-0.5 group shrink-0"
                             >
-                                <span>Get Free Revenue Audit →</span>
+                                <span>Get Free Revenue Audit</span>
                                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                             </Link>
 

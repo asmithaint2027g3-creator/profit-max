@@ -44,7 +44,7 @@ export default function DemandPulse() {
                             to="/book-consultation"
                             className="w-full sm:w-auto px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-lg font-bold rounded-2xl shadow-xl shadow-blue-600/30 transition-all transform hover:scale-105 hover:shadow-2xl flex items-center justify-center gap-3 group cursor-pointer"
                         >
-                            <span>Deploy DemandPulse Architecture →</span>
+                            <span>Deploy DemandPulse Architecture</span>
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <Link 

@@ -132,7 +132,7 @@ export default function Pricing() {
                     <p className="text-xl text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">Let's discuss the right plan for your growth stage. No obligation, just clarity.</p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                         <Link to="/book-consultation" className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-all duration-200 shadow-lg shadow-blue-900/50 hover:-translate-y-0.5 group">
-                            Get Free Revenue Audit →
+                            Get Free Revenue Audit
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <Link to="/talk-to-expert" className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-white/10 text-white font-bold rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-200">

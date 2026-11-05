@@ -288,7 +288,7 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       {
         title: 'Advanced Analytical Tools for Sales Acceleration',
         description: 'Flagship Marketing Debt → Revenue Gap interactive engine, 25 mathematical models, GTM stack, and Revenue Physics.',
-        path: '/resources-hub/advanced-analytical-tools-sales-acceleration',
+        path: '/resources-hub/advanced-analytical-tools-sales-acceleration#advanced-analytical-tools',
         icon: Cpu,
         badge: 'Flagship 25 Models'
       },

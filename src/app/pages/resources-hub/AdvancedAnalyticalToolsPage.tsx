@@ -52,21 +52,19 @@ import {
 } from '../../../data/advancedAnalyticalToolsData';
 import { trackEvent } from '../../../lib/analytics';
 
-// Navigation Anchors
+// Navigation Anchors — 6 consolidated suites matching mega-menu submenu items exactly
 const NAV_ANCHORS = [
-  { id: 'hero', label: 'Overview' },
-  { id: 'revenue-gap-simulator', label: 'Marketing Debt Simulator' },
-  { id: 'mathematical-models', label: '25 Mathematical Models' },
-  { id: 'gtm-stack', label: 'GTM Math Stack' },
-  { id: 'revenue-physics', label: 'Revenue Physics' },
-  { id: 'model-selector', label: 'Model Selector' },
-  { id: 'business-applications', label: 'Applications' },
-  { id: 'implementation-roadmap', label: 'Roadmap' }
+  { id: 'kpi-executive-intelligence', label: '1. KPI & Intelligence' },
+  { id: 'revenue-pipeline-analytics', label: '2. Revenue & Pipeline' },
+  { id: 'predictive-revenue-intelligence', label: '3. Predictive AI' },
+  { id: 'marketing-customer-economics', label: '4. Customer Economics' },
+  { id: 'advanced-analytical-tools', label: '5. Advanced Tools' },
+  { id: 'industry-benchmarks', label: '6. Benchmarks' }
 ];
 
 export default function AdvancedAnalyticalToolsPage() {
   const location = useLocation();
-  const [activeAnchor, setActiveAnchor] = useState<string>('hero');
+  const [activeAnchor, setActiveAnchor] = useState<string>('kpi-executive-intelligence');
 
   // ── SECTION 02: MARKETING DEBT SIMULATOR STATE ──
   const [awarenessPct, setAwarenessPct] = useState<number>(65);
@@ -244,12 +242,15 @@ export default function AdvancedAnalyticalToolsPage() {
   // ── SECTION 06: BUSINESS APPLICATIONS TAB ──
   const [activeAppIdx, setActiveAppIdx] = useState<number>(0);
 
-  // Smooth scroll handler
+  // Smooth scroll handler — checks both id and data-section-id
   const scrollTo = (id: string) => {
     setActiveAnchor(id);
-    const el = document.getElementById(id);
+    const el = document.getElementById(id) || document.querySelector(`[data-section-id="${id}"]`);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const navOffset = 95;
+      const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = Math.max(0, elementPosition - navOffset);
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
   };
 
@@ -260,12 +261,14 @@ export default function AdvancedAnalyticalToolsPage() {
     if (location.hash) {
       const targetId = location.hash.replace('#', '');
       setActiveAnchor(targetId);
-      const el = document.getElementById(targetId);
-      if (el) {
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 150);
-      }
+      setTimeout(() => {
+        const el = document.getElementById(targetId) || document.querySelector(`[data-section-id="${targetId}"]`);
+        if (el) {
+          const navOffset = 95;
+          const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({ top: Math.max(0, elementPosition - navOffset), behavior: 'smooth' });
+        }
+      }, 150);
     } else {
       window.scrollTo(0, 0);
     }
@@ -304,7 +307,7 @@ export default function AdvancedAnalyticalToolsPage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            
+
             {/* Left Column: Hero Editorial */}
             <div className="lg:col-span-7 space-y-6 text-left">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 font-mono text-xs font-bold tracking-widest uppercase">
@@ -416,7 +419,7 @@ export default function AdvancedAnalyticalToolsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-3 py-2.5 overflow-x-auto no-scrollbar">
             <span className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-widest shrink-0 hidden lg:inline">
-              ANALYTICAL OS:
+              ANALYTICAL SUITES:
             </span>
             <div className="flex items-center gap-1.5 sm:gap-2">
               {NAV_ANCHORS.map((anchor) => {
@@ -425,11 +428,10 @@ export default function AdvancedAnalyticalToolsPage() {
                   <button
                     key={anchor.id}
                     onClick={() => scrollTo(anchor.id)}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold font-mono transition-all whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
-                      isActive
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold font-mono transition-all whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${isActive
                         ? 'bg-blue-600 text-white shadow-xs'
                         : 'bg-slate-50 hover:bg-slate-100 text-slate-700 hover:text-slate-900 border border-slate-200'
-                    }`}
+                      }`}
                   >
                     <span>{anchor.label}</span>
                   </button>
@@ -447,10 +449,263 @@ export default function AdvancedAnalyticalToolsPage() {
         </div>
       </nav>
 
+      {/* ── SECTION: KPI & EXECUTIVE INTELLIGENCE (Submenu anchor #1) ── */}
+      <section
+        id="kpi-executive-intelligence"
+        data-section-id="kpi-executive-intelligence"
+        className="py-14 sm:py-16 bg-white border-b border-slate-200 scroll-mt-24"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-slate-200">
+            <div className="space-y-3 max-w-3xl">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest">
+                <BarChart3 className="w-3.5 h-3.5 text-blue-600" />
+                <span>SUITE 01 / 06 — EXECUTIVE INTELLIGENCE</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
+                KPI & Executive Intelligence
+              </h2>
+              <p className="text-slate-600 text-base leading-relaxed">
+                Connect board-level financial objectives to frontline commercial execution through 120+ standardized KPIs, real-time command dashboards, and balanced executive scorecards tracking ARR run-rate, NRR, Rule of 40, and quota attainment.
+              </p>
+            </div>
+            <span className="text-xs font-mono px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 border border-slate-200 font-semibold self-start lg:self-auto">
+              KPI Libraries · Scorecards · Dashboards
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Card 1: KPI Libraries */}
+            <div className="p-6 rounded-3xl bg-slate-50/70 border border-slate-200/90 shadow-sm space-y-4 hover:border-blue-300 transition-all">
+              <div className="w-11 h-11 rounded-2xl bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center">
+                <Layers className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-[11px] font-mono text-blue-700 font-bold uppercase tracking-wider mb-1">Module 1.1</div>
+                <h3 className="text-base font-bold text-slate-900 font-heading">Enterprise KPI Libraries</h3>
+              </div>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                120+ standardized SaaS and enterprise revenue indicators distinguishing leading signals (pipeline velocity, stage migration SLAs) from lagging outcomes (ARR, cash collections). Full taxonomy aligned to ISO 9001 and SaaS benchmarks.
+              </p>
+              <div className="pt-2 border-t border-slate-200 space-y-1.5">
+                <div className="text-xs font-mono font-bold text-slate-700">Core Metrics:</div>
+                <ul className="text-xs text-slate-600 space-y-1 font-mono">
+                  <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-blue-600 shrink-0" /> Pipeline Coverage Multiple (3.2x–3.8x target)</li>
+                  <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-blue-600 shrink-0" /> Stage Migration Duration SLA tracking</li>
+                  <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-blue-600 shrink-0" /> Rep Quota Attainment Gini coefficient</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Card 2: Executive Scorecards */}
+            <div className="p-6 rounded-3xl bg-slate-50/70 border border-slate-200/90 shadow-sm space-y-4 hover:border-indigo-300 transition-all">
+              <div className="w-11 h-11 rounded-2xl bg-indigo-50 border border-indigo-200 text-indigo-600 flex items-center justify-center">
+                <Scale className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-[11px] font-mono text-indigo-700 font-bold uppercase tracking-wider mb-1">Module 1.2</div>
+                <h3 className="text-base font-bold text-slate-900 font-heading">Balanced Executive Scorecards</h3>
+              </div>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Four-quadrant scorecard architecture balancing outbound generation health, conversion efficiency, customer expansion economics, and capital payback. Engineered for quarterly board-room review presentations.
+              </p>
+              <div className="pt-2 border-t border-slate-200 space-y-1.5">
+                <div className="text-xs font-mono font-bold text-slate-700">Scorecard Dimensions:</div>
+                <ul className="text-xs text-slate-600 space-y-1 font-mono">
+                  <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-indigo-600 shrink-0" /> Financial: ARR run-rate & FCF margin</li>
+                  <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-indigo-600 shrink-0" /> Commercial: Win rates & cycle velocity</li>
+                  <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-indigo-600 shrink-0" /> Customer: NRR, logo retention & expansion</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Card 3: Executive Dashboards */}
+            <div className="p-6 rounded-3xl bg-slate-50/70 border border-slate-200/90 shadow-sm space-y-4 hover:border-purple-300 transition-all">
+              <div className="w-11 h-11 rounded-2xl bg-purple-50 border border-purple-200 text-purple-600 flex items-center justify-center">
+                <BrainCircuit className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-[11px] font-mono text-purple-700 font-bold uppercase tracking-wider mb-1">Module 1.3</div>
+                <h3 className="text-base font-bold text-slate-900 font-heading">Executive Command Dashboards</h3>
+              </div>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Real-time situational awareness telemetry streaming CRM mutations, conversation intelligence signals, and billing schedules into a unified boardroom command view with automated anomaly alerting.
+              </p>
+              <div className="pt-2 border-t border-slate-200 space-y-1.5">
+                <div className="text-xs font-mono font-bold text-slate-700">Dashboard Capabilities:</div>
+                <ul className="text-xs text-slate-600 space-y-1 font-mono">
+                  <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-purple-600 shrink-0" /> Automated pipeline degradation alerts</li>
+                  <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-purple-600 shrink-0" /> Quota gap breakdown by rep cohort</li>
+                  <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-purple-600 shrink-0" /> Rule of 40 & Magic Number live tiles</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION: REVENUE & PIPELINE ANALYTICS (Submenu anchor #2) ── */}
+      <section
+        id="revenue-pipeline-analytics"
+        data-section-id="revenue-pipeline-analytics"
+        className="py-14 sm:py-16 bg-slate-50/70 border-b border-slate-200 scroll-mt-24"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-slate-200">
+            <div className="space-y-3 max-w-3xl">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest">
+                <Sliders className="w-3.5 h-3.5 text-blue-600" />
+                <span>SUITE 02 / 06 — PIPELINE TELEMETRY</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
+                Revenue & Pipeline Analytics
+              </h2>
+              <p className="text-slate-600 text-base leading-relaxed">
+                Model commercial velocity with the Revenue Velocity Equation, measure conversion entropy via Markov funnel state transitions, pinpoint dark-funnel leakage, and eliminate opportunity aging before pipeline expires.
+              </p>
+            </div>
+            <span className="text-xs font-mono px-3 py-1.5 rounded-xl bg-white text-slate-700 border border-slate-200 font-bold shadow-xs self-start lg:self-auto">
+              Formula: V = (L × C × ASP) / T
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { num: '01', title: 'Revenue Velocity Equation', color: 'blue', desc: 'Empirical dollar-per-day throughput model diagnosing why quarterly revenue slows — identifying cycle time compression as the highest-leverage denominator.', lever: 'Cycle Time Compression' },
+              { num: '02', title: 'Funnel Entropy & Markov Funnels', color: 'indigo', desc: 'Stochastic transition probability matrix P(i,j) modeling stage-to-stage migrations and surfacing conversion bottleneck gates across the full enterprise funnel.', lever: 'Stage Transition Friction' },
+              { num: '03', title: 'Pipeline Leakage Detection', color: 'emerald', desc: 'Quantifies silent deal attrition between logged stages where no formal loss reason is recorded, recovering 15–28% of abandoned high-intent opportunities.', lever: 'Stalled Deal Interception' },
+              { num: '04', title: 'Opportunity Aging Decay', color: 'purple', desc: 'Exponential half-life decay function P(Win) ~ e^(−λt) calculating the exact day a deal\'s win likelihood falls below statistical breakeven requiring intervention.', lever: 'Automated Stage Purging' }
+            ].map(card => (
+              <div key={card.num} className={`p-6 rounded-3xl bg-white border border-slate-200/90 shadow-sm space-y-3 hover:border-${card.color}-400 transition-all`}>
+                <div className={`w-10 h-10 rounded-xl bg-${card.color}-50 border border-${card.color}-200 text-${card.color}-600 flex items-center justify-center font-mono font-bold text-sm`}>
+                  {card.num}
+                </div>
+                <h3 className="text-base font-bold text-slate-900 font-heading">{card.title}</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">{card.desc}</p>
+                <div className={`pt-2 text-[11px] font-mono text-${card.color}-700 font-semibold`}>
+                  Lever: {card.lever}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION: PREDICTIVE REVENUE INTELLIGENCE (Submenu anchor #3) ── */}
+      <section
+        id="predictive-revenue-intelligence"
+        data-section-id="predictive-revenue-intelligence"
+        className="py-14 sm:py-16 bg-white border-b border-slate-200 scroll-mt-24"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-slate-200">
+            <div className="space-y-3 max-w-3xl">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest">
+                <BrainCircuit className="w-3.5 h-3.5 text-blue-600" />
+                <span>SUITE 03 / 06 — PROBABILISTIC FORECASTING</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
+                Predictive Revenue Intelligence
+              </h2>
+              <p className="text-slate-600 text-base leading-relaxed">
+                Replace subjective rep sales forecasts with Bayesian win probabilities, 10,000-trial Monte Carlo simulations producing P10/P50/P90 bands, statistical confidence intervals, and survival-modeled customer churn hazard rates.
+              </p>
+            </div>
+            <span className="text-xs font-mono px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 border border-slate-200 font-bold self-start lg:self-auto">
+              Bayes · Monte Carlo · Survival Models
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { num: '13', title: 'Bayesian Win Probability', color: 'blue', desc: 'Continual posterior probability updating P(Win|E) as buyer signals, executive sponsor validation, and procurement milestones provide live deal telemetry evidence.' },
+              { num: '14', title: 'Monte Carlo Forecasting', color: 'indigo', desc: 'Simulating 10,000 synthetic quarterly outcomes sampling beta-distributed win rates and gamma-distributed close dates to generate empirical P10/P50/P90 revenue bands.' },
+              { num: '15', title: 'Forecast Confidence Intervals', color: 'emerald', desc: 'Statistical 95% CI tolerance intervals around ARR commitments that flag unmitigated pipeline risk whenever variance exceeds historical control limits.' },
+              { num: '16', title: 'Churn Hazard Prediction', color: 'purple', desc: 'Cox proportional hazard survival modeling detecting customer renewal risk 90–120 days prior to expiration using product telemetry drop-offs and support ticket sentiment.' }
+            ].map(card => (
+              <div key={card.num} className={`p-6 rounded-3xl bg-slate-50/70 border border-slate-200/90 shadow-sm space-y-3 hover:border-${card.color}-300 transition-all`}>
+                <div className={`w-10 h-10 rounded-xl bg-${card.color}-50 border border-${card.color}-200 text-${card.color}-600 flex items-center justify-center font-mono font-bold text-sm`}>
+                  {card.num}
+                </div>
+                <h3 className="text-base font-bold text-slate-900 font-heading">{card.title}</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">{card.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION: MARKETING & CUSTOMER ECONOMICS (Submenu anchor #4) ── */}
+      <section
+        id="marketing-customer-economics"
+        data-section-id="marketing-customer-economics"
+        className="py-14 sm:py-16 bg-slate-50/70 border-b border-slate-200 scroll-mt-24"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-slate-200">
+            <div className="space-y-3 max-w-3xl">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest">
+                <DollarSign className="w-3.5 h-3.5 text-blue-600" />
+                <span>SUITE 04 / 06 — UNIT ECONOMICS</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
+                Marketing & Customer Economics
+              </h2>
+              <p className="text-slate-600 text-base leading-relaxed">
+                Evaluate probabilistic customer lifetime value, optimize blended acquisition efficiency via LTV:CAC analysis, model cooperative Shapley attribution across multi-touch buyer paths, and optimize marketing mix budget allocation.
+              </p>
+            </div>
+            <span className="text-xs font-mono px-3 py-1.5 rounded-xl bg-white text-slate-700 border border-slate-200 font-bold shadow-xs self-start lg:self-auto">
+              CLV = (ACV × Margin) / Churn Rate
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { num: '20', title: 'Probabilistic CLV Models', color: 'blue', desc: 'Incorporates net revenue expansion vectors, discount hurdle rates, and tiered cost-to-serve to evaluate expected lifetime enterprise account margin with Monte Carlo variance.', formula: 'CLV = (ACV × GM%) / Churn' },
+              { num: '21', title: 'CAC & Acquisition Efficiency', color: 'indigo', desc: 'Disaggregates paid demand from organic inbound and models cash-flow breakeven curves to protect working capital, targeting <12-month CAC payback for sustainable growth.', formula: 'Payback = CAC / (ACV × GM%)' },
+              { num: '22', title: 'Shapley Value Attribution', color: 'emerald', desc: 'Cooperative game theory allocation φ_i = Σ[S! × (n-s-1)!/n!] × (v(S+i) - v(S)) calculating marginal touchpoint contributions, eliminating first/last-touch channel bias.', formula: 'φ_i = Σ Marginal Contribution' },
+              { num: '23', title: 'Marketing Mix Optimization', color: 'purple', desc: 'Logarithmic diminishing returns curve R(S) = α·ln(1 + β·S) solving constrained Lagrangian budget optimization across ABM, digital events, outbound SDR fleets.', formula: 'R(S) = α·ln(1 + β·S)' }
+            ].map(card => (
+              <div key={card.num} className={`p-6 rounded-3xl bg-white border border-slate-200/90 shadow-sm space-y-3 hover:border-${card.color}-300 transition-all`}>
+                <div className={`w-10 h-10 rounded-xl bg-${card.color}-50 border border-${card.color}-200 text-${card.color}-600 flex items-center justify-center font-mono font-bold text-sm`}>
+                  {card.num}
+                </div>
+                <h3 className="text-base font-bold text-slate-900 font-heading">{card.title}</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">{card.desc}</p>
+                <div className={`text-[10px] font-mono text-${card.color}-700 font-bold bg-${card.color}-50 px-2 py-1 rounded-lg border border-${card.color}-200`}>
+                  {card.formula}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION: ADVANCED ANALYTICAL TOOLS (Submenu anchor #5) ── */}
+      <section
+        id="advanced-analytical-tools"
+        data-section-id="advanced-analytical-tools"
+        className="py-6 bg-white scroll-mt-24"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-4 border-b border-slate-200">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest">
+            <Cpu className="w-3.5 h-3.5 text-blue-600" />
+            <span>SUITE 05 / 06 — FLAGSHIP ANALYTICAL STACK · 25 MODELS</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading mt-3">
+            Advanced Analytical Tools for Sales Acceleration
+          </h2>
+          <p className="text-slate-600 text-base leading-relaxed mt-2 max-w-3xl">
+            Interact with the flagship Marketing Debt → Revenue Gap Simulator, explore all 25 mathematical models by category, inspect the GTM mathematical discipline stack, and diagnose revenue friction using Revenue Physics architecture.
+          </p>
+        </div>
+      </section>
+
       {/* ── SECTION 02: FLAGSHIP INTERACTIVE MODEL (Marketing Debt → Revenue Gap) ── */}
       <section id="revenue-gap-simulator" className="py-16 sm:py-20 bg-slate-50/70 border-b border-slate-200 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          
+
           {/* Header */}
           <div className="max-w-3xl space-y-3">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest">
@@ -471,31 +726,28 @@ export default function AdvancedAnalyticalToolsPage() {
               <span className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider">Scenarios:</span>
               <button
                 onClick={() => applyPreset('conservative')}
-                className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${
-                  activePreset === 'conservative'
+                className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${activePreset === 'conservative'
                     ? 'bg-rose-600 text-white shadow-2xs'
                     : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200'
-                }`}
+                  }`}
               >
                 Conservative (High Debt)
               </button>
               <button
                 onClick={() => applyPreset('growth')}
-                className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${
-                  activePreset === 'growth'
+                className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${activePreset === 'growth'
                     ? 'bg-blue-600 text-white shadow-2xs'
                     : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200'
-                }`}
+                  }`}
               >
                 Growth (Base Case)
               </button>
               <button
                 onClick={() => applyPreset('high-performance')}
-                className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${
-                  activePreset === 'high-performance'
+                className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${activePreset === 'high-performance'
                     ? 'bg-emerald-600 text-white shadow-2xs'
                     : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200'
-                }`}
+                  }`}
               >
                 High-Performance (Low Debt)
               </button>
@@ -511,7 +763,7 @@ export default function AdvancedAnalyticalToolsPage() {
 
           {/* Interactive Controls & Live Metrics Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            
+
             {/* Left 5 Cols: Sliders & Parameter Controls */}
             <div className="lg:col-span-5 space-y-5 p-6 rounded-3xl bg-white border border-slate-200/90 shadow-sm">
               <div className="border-b border-slate-100 pb-3 flex items-center justify-between">
@@ -660,7 +912,7 @@ export default function AdvancedAnalyticalToolsPage() {
 
             {/* Right 7 Cols: Coordinated Analytical Outputs */}
             <div className="lg:col-span-7 space-y-6">
-              
+
               {/* Output Indicator Cards */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-left">
                 <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm">
@@ -779,7 +1031,7 @@ export default function AdvancedAnalyticalToolsPage() {
 
           {/* Coordinated Curves: Marginal Cost of Selling (MCOS) & Economic Price Curve */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
+
             {/* MCOS Panel */}
             <div className="p-6 sm:p-7 rounded-3xl bg-white border border-slate-200/90 shadow-sm space-y-4">
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
@@ -861,7 +1113,7 @@ export default function AdvancedAnalyticalToolsPage() {
       {/* ── SECTION 03: 25 ADVANCED MATHEMATICAL MODELS FOR SALES & MARKETING ── */}
       <section id="mathematical-models" className="py-16 sm:py-20 bg-white border-b border-slate-200 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          
+
           {/* Header */}
           <div className="max-w-3xl space-y-3">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest">
@@ -879,7 +1131,7 @@ export default function AdvancedAnalyticalToolsPage() {
           {/* Search & Category Filter Navigation */}
           <div className="space-y-4">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-              
+
               {/* Category Pills */}
               <div className="flex flex-wrap items-center gap-2">
                 {[
@@ -892,11 +1144,10 @@ export default function AdvancedAnalyticalToolsPage() {
                   <button
                     key={tab.id}
                     onClick={() => setSelectedCategoryTab(tab.id)}
-                    className={`px-3.5 py-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${
-                      selectedCategoryTab === tab.id
+                    className={`px-3.5 py-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${selectedCategoryTab === tab.id
                         ? 'bg-blue-600 text-white shadow-xs'
                         : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200'
-                    }`}
+                      }`}
                   >
                     {tab.label}
                   </button>
@@ -932,11 +1183,10 @@ export default function AdvancedAnalyticalToolsPage() {
               return (
                 <div
                   key={model.number}
-                  className={`rounded-2xl border transition-all overflow-hidden ${
-                    isExpanded
+                  className={`rounded-2xl border transition-all overflow-hidden ${isExpanded
                       ? 'bg-white border-blue-400 shadow-md ring-1 ring-blue-400/20'
                       : 'bg-white border-slate-200/90 hover:border-slate-300 shadow-xs'
-                  }`}
+                    }`}
                 >
                   {/* Summary Bar */}
                   <div
@@ -973,10 +1223,10 @@ export default function AdvancedAnalyticalToolsPage() {
                   {/* Expanded Model Dossier */}
                   {isExpanded && (
                     <div className="p-6 pt-2 border-t border-slate-100 space-y-6 text-slate-900 bg-slate-50/30">
-                      
+
                       {/* Grid: 2 Columns */}
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        
+
                         {/* Left: Mathematical Rigor & Variables */}
                         <div className="space-y-4">
                           <div>
@@ -1203,7 +1453,7 @@ export default function AdvancedAnalyticalToolsPage() {
       {/* ── SECTION 04: ADVANCED GTM MATHEMATICAL STACK & REVENUE PHYSICS ── */}
       <section id="gtm-stack" className="py-16 sm:py-20 bg-slate-50/70 border-b border-slate-200 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          
+
           {/* Header */}
           <div className="max-w-3xl space-y-3">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest">
@@ -1319,7 +1569,7 @@ export default function AdvancedAnalyticalToolsPage() {
       {/* ── SECTION 05: INTERACTIVE MODEL SELECTOR (10 CHALLENGES) ── */}
       <section id="model-selector" className="py-16 sm:py-20 bg-white border-b border-slate-200 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          
+
           {/* Header */}
           <div className="max-w-3xl space-y-3">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest">
@@ -1336,7 +1586,7 @@ export default function AdvancedAnalyticalToolsPage() {
 
           {/* Interactive Challenge Selector Tabs */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            
+
             {/* Left 5 Cols: Challenge Buttons */}
             <div className="lg:col-span-5 space-y-2">
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500 block mb-2">
@@ -1346,11 +1596,10 @@ export default function AdvancedAnalyticalToolsPage() {
                 <button
                   key={ch.id}
                   onClick={() => setSelectedChallengeId(ch.id)}
-                  className={`w-full text-left p-4 rounded-2xl border transition-all cursor-pointer ${
-                    selectedChallengeId === ch.id
+                  className={`w-full text-left p-4 rounded-2xl border transition-all cursor-pointer ${selectedChallengeId === ch.id
                       ? 'bg-blue-600 text-white border-blue-600 shadow-md'
                       : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200'
-                  }`}
+                    }`}
                 >
                   <div className="flex items-center justify-between mb-1">
                     <span className="font-bold text-sm font-heading">{ch.title}</span>
@@ -1437,7 +1686,7 @@ export default function AdvancedAnalyticalToolsPage() {
       {/* ── SECTION 06: BUSINESS APPLICATIONS (9 CAPABILITIES) ── */}
       <section id="business-applications" className="py-16 sm:py-20 bg-slate-50/70 border-b border-slate-200 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          
+
           {/* Header */}
           <div className="max-w-3xl space-y-3">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest">
@@ -1458,11 +1707,10 @@ export default function AdvancedAnalyticalToolsPage() {
               <button
                 key={app.id}
                 onClick={() => setActiveAppIdx(idx)}
-                className={`px-3.5 py-2 rounded-xl text-xs font-bold font-mono transition-all whitespace-nowrap cursor-pointer ${
-                  activeAppIdx === idx
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold font-mono transition-all whitespace-nowrap cursor-pointer ${activeAppIdx === idx
                     ? 'bg-blue-600 text-white shadow-xs'
                     : 'bg-white hover:bg-slate-100 text-slate-700 border border-slate-200'
-                }`}
+                  }`}
               >
                 0{idx + 1}. {app.capabilityName}
               </button>
@@ -1572,7 +1820,7 @@ export default function AdvancedAnalyticalToolsPage() {
       {/* ── SECTION 07: ENTERPRISE IMPLEMENTATION ROADMAP ── */}
       <section id="implementation-roadmap" className="py-16 sm:py-20 bg-white border-b border-slate-200 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          
+
           {/* Header */}
           <div className="max-w-3xl space-y-3">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest">
@@ -1640,6 +1888,104 @@ export default function AdvancedAnalyticalToolsPage() {
         </div>
       </section>
 
+      {/* ── SECTION: INDUSTRY BENCHMARKS & PERFORMANCE (Submenu anchor #6) ── */}
+      <section
+        id="industry-benchmarks"
+        data-section-id="industry-benchmarks"
+        className="py-14 sm:py-16 bg-slate-50/70 border-b border-slate-200 scroll-mt-24"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-slate-200">
+            <div className="space-y-3 max-w-3xl">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase tracking-widest">
+                <TrendingUp className="w-3.5 h-3.5 text-blue-600" />
+                <span>SUITE 06 / 06 — EMPIRICAL BENCHMARKS</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
+                Industry Benchmarks & Performance
+              </h2>
+              <p className="text-slate-600 text-base leading-relaxed">
+                Compare your revenue engine against verified cross-vertical quartiles. Benchmark ACV, cycle velocity, win rates, net retention, and capital payback periods against top-decile performers across SaaS, Healthcare, FinTech, and Manufacturing.
+              </p>
+            </div>
+            <span className="text-xs font-mono px-3 py-1.5 rounded-xl bg-white text-slate-700 border border-slate-200 font-bold shadow-xs self-start lg:self-auto">
+              Cross-Vertical Quartile Intelligence
+            </span>
+          </div>
+
+          {/* Cross-Vertical Benchmark Table */}
+          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200/90 shadow-sm relative overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600" />
+            <div className="text-sm font-bold text-slate-900 font-heading mb-5">
+              Cross-Vertical Quartile Performance Baselines (350+ Enterprise B2B Organizations)
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="border-b border-slate-200 text-[11px] font-mono text-slate-500 uppercase">
+                    <th className="py-2.5 px-4 font-bold">KPI / Vertical</th>
+                    <th className="py-2.5 px-4 font-bold">SaaS / Cloud</th>
+                    <th className="py-2.5 px-4 font-bold">Healthcare</th>
+                    <th className="py-2.5 px-4 font-bold">FinTech</th>
+                    <th className="py-2.5 px-4 font-bold">Manufacturing</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100 text-xs font-mono text-slate-700">
+                  {[
+                    { kpi: 'Median ACV', saas: '$85,000', health: '$185,000', fintech: '$140,000', mfg: '$240,000' },
+                    { kpi: 'Sales Cycle (Median)', saas: '68 Days', health: '145 Days', fintech: '92 Days', mfg: '165 Days' },
+                    { kpi: 'Win Rate (Top Decile)', saas: '34.8%', health: '31.2%', fintech: '38.5%', mfg: '29.5%' },
+                    { kpi: 'Net Revenue Retention', saas: '114–132%', health: '108–122%', fintech: '122–142%', mfg: '105–118%' },
+                    { kpi: 'CAC Payback (Top 10%)', saas: '8 Months', health: '11 Months', fintech: '6 Months', mfg: '12 Months' },
+                    { kpi: 'Pipeline Coverage Required', saas: '3.4x Median', health: '4.1x Median', fintech: '3.2x Median', mfg: '4.4x Median' },
+                    { kpi: 'Magic Number (Median)', saas: '0.92x', health: '0.78x', fintech: '1.15x', mfg: '0.70x' },
+                  ].map((row, i) => (
+                    <tr key={i} className="hover:bg-slate-50/80 transition-colors">
+                      <td className="py-3 px-4 font-bold text-slate-900">{row.kpi}</td>
+                      <td className="py-3 px-4 text-blue-700">{row.saas}</td>
+                      <td className="py-3 px-4 text-indigo-700">{row.health}</td>
+                      <td className="py-3 px-4 text-emerald-700">{row.fintech}</td>
+                      <td className="py-3 px-4 text-purple-700">{row.mfg}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* 3 Core Editorial Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-sm space-y-4 hover:border-blue-300 transition-all">
+              <div className="w-11 h-11 rounded-2xl bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center">
+                <BarChart3 className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-slate-900 font-heading">Cross-Vertical Quartile Baselines</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Aggregated quartile telemetry across 350+ enterprise B2B revenue organizations establishing empirical norms for pipeline coverage, stage conversion, and commercial cycle durations.
+              </p>
+            </div>
+            <div className="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-sm space-y-4 hover:border-indigo-300 transition-all">
+              <div className="w-11 h-11 rounded-2xl bg-indigo-50 border border-indigo-200 text-indigo-600 flex items-center justify-center">
+                <Scale className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-slate-900 font-heading">Revenue Performance Comparisons</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Diagnose why companies with identical lead volumes achieve vastly different ARR results — analyzing velocity multiples, discounting discipline, Rule of 40 positioning, and expansion NRR vectors.
+              </p>
+            </div>
+            <div className="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-sm space-y-4 hover:border-purple-300 transition-all">
+              <div className="w-11 h-11 rounded-2xl bg-purple-50 border border-purple-200 text-purple-600 flex items-center justify-center">
+                <TrendingUp className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-slate-900 font-heading">Sales & Marketing Performance Analysis</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Empirical audit blueprints uncovering where marketing debt, SDR ramp lag, or executive discount rogue behavior dilute contribution margins and compress enterprise exit valuations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── SECTION 08: FINAL CONVERSION (OFFERINGS-MATCHED FOOTER) ── */}
       <section className="py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-t border-slate-800 text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
@@ -1686,3 +2032,4 @@ export default function AdvancedAnalyticalToolsPage() {
     </div>
   );
 }
+

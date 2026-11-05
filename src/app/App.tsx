@@ -48,6 +48,7 @@ const EngagementKpiLibrary = lazy(() => import('./pages/engagement/EngagementKpi
 const EngagementOnboarding = lazy(() => import('./pages/engagement/EngagementOnboarding'));
 const EngagementGlossaryFaq = lazy(() => import('./pages/engagement/EngagementGlossaryFaq'));
 const Resources = lazy(() => import('./pages/Resources'));
+const ResourcesHubLandingPage = lazy(() => import('./pages/resources-hub/ResourcesHubLandingPage'));
 const Company = lazy(() => import('./pages/Company'));
 const AboutProfitMachinesPage = lazy(() => import('./pages/AboutProfitMachinesPage'));
 const LeadershipTeamsPage = lazy(() => import('./pages/LeadershipTeamsPage'));
@@ -285,6 +286,7 @@ export default function App() {
 
               <Route path="/demand-pulse" element={<DemandPulse />} />
               <Route path="/outcomes" element={<Outcomes />} />
+              <Route path="/resources-hub" element={<ResourcesHubLandingPage />} />
               <Route path="/case-studies" element={<CaseStudiesHub />} />
               <Route path="/case-studies/featured" element={<FeaturedTransformationsPage />} />
               <Route path="/case-studies/ai-native" element={<AiNativeTransformationsPage />} />

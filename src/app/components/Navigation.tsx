@@ -20,6 +20,7 @@ import {
     IndustryCategoryDetail,
     IndustryCapabilityItem
 } from '../../data/navigationArchitecture';
+import { RESOURCES_HUB_CATEGORIES } from '../../data/resourcesHubData';
 
 export { offeringsArchitecture, industriesArchitecture };
 export type { OfferingCategoryDetail, OfferingCapabilityItem, IndustryCategoryDetail, IndustryCapabilityItem };
@@ -142,17 +143,17 @@ const spotlightConfigs: Record<string, SpotlightConfig> = {
         icon: Globe,
         accentGlow: 'from-blue-700/30 to-emerald-600/30'
     },
-    'case-studies': {
-        badge: 'Verified Proof Points',
-        tagline: 'Audited Client Results',
-        title: 'Enterprise Transformations',
-        description: 'Review audited case studies across B2B SaaS, manufacturing, and healthtech generating verified ARR lift.',
-        kpi: '$140M+',
-        kpiLabel: 'Generated Net-New ARR',
-        path: '/outcomes',
-        ctaText: 'View Case Studies',
-        icon: Award,
-        accentGlow: 'from-amber-600/30 to-blue-700/30'
+    'resources-hub': {
+        badge: 'Enterprise Knowledge Hub',
+        tagline: '12 Curated Resource Hubs',
+        title: 'Complete Resources Hub',
+        description: 'Explore business intelligence, analytical models, practical frameworks, and interactive calculators engineered for scalable growth.',
+        kpi: '12 Hubs',
+        kpiLabel: 'Curated Categories',
+        path: '/resources-hub',
+        ctaText: 'Explore Resources Hub',
+        icon: BookOpen,
+        accentGlow: 'from-blue-600/30 to-indigo-700/30'
     },
     'about-us': {
         badge: 'The Executive Advisory',
@@ -240,17 +241,17 @@ const menuPresentationConfigs: Record<string, MenuPresentationConfig> = {
         ],
         ctaText: 'Launch Global Corridors'
     },
-    'case-studies': {
-        sectionTag: 'VERIFIED IMPACT ARCHIVE',
-        capabilitiesLabel: 'TRANSFORMATION DOSSIERS',
-        outcomeBadge: '$140M+ Net-New ARR',
-        recommendedFor: ['Due Diligence Teams', 'Enterprise Buyers', 'Founders'],
+    'resources-hub': {
+        sectionTag: 'KNOWLEDGE & INTELLIGENCE ARCHITECTURE',
+        capabilitiesLabel: 'CURATED RESOURCE CLUSTERS',
+        outcomeBadge: '12 Complete Categories',
+        recommendedFor: ['Enterprise Executives', 'Revenue Leaders', 'Operational Teams'],
         businessImpacts: [
-            'Audited Client Case Studies',
-            'Measurable Pipeline Lift',
-            'Rapid Time-to-ROI'
+            '12 Dedicated Category Hubs',
+            'Approved 25 Mathematical Models',
+            'Interactive Diagnostics & Tools'
         ],
-        ctaText: 'Explore Client Outcomes'
+        ctaText: 'Explore Resources Hub'
     },
     'about-us': {
         sectionTag: 'THE EXECUTIVE ADVISORY',
@@ -2107,380 +2108,66 @@ export default function Navigation() {
             ]
         },
 
-        // 6. CASE STUDIES
+        // 6. RESOURCES HUB (COMPLETE 12-CATEGORY APPROVED HIERARCHY)
         {
-            id: 'case-studies',
-            name: 'Case Studies',
-            shortName: 'Case Studies',
-            path: '/case-studies',
-            icon: ShieldCheck,
-            badge: 'Verified Outcomes',
-            summary: 'Verified boardroom revenue metrics, empirical ROI case studies, and enterprise customer transformation outcomes.',
-            categories: [
-
-                {
-                    id: 'by-business-challenge',
-                    title: 'By Business Challenge',
-                    desc: 'Filter verified enterprise case studies by specific strategic friction points and commercial challenges.',
-                    path: '/case-studies#challenge',
-                    badge: 'Strategic Challenges',
-                    icon: Target,
-                    columns: [
+            id: 'resources-hub',
+            name: 'Resources Hub',
+            shortName: 'Resources Hub',
+            path: '/resources-hub',
+            icon: BookOpen,
+            badge: 'Knowledge Architecture',
+            summary: 'Explore industry intelligence, functional playbooks, empirical models, AI frameworks, and interactive calculators.',
+            categories: RESOURCES_HUB_CATEGORIES.map(cat => ({
+                id: cat.id,
+                title: `${cat.number}. ${cat.title}`,
+                desc: cat.shortIntro,
+                path: cat.path,
+                badge: cat.previewLabels.slice(0, 2).join(' • '),
+                icon: cat.icon,
+                columns: cat.subGroups
+                    ? cat.subGroups.map(grp => ({
+                        header: grp.groupName,
+                        badge: grp.badge || 'Suite',
+                        icon: grp.items[0]?.icon || cat.icon,
+                        cards: grp.items.map(it => ({
+                            title: it.title,
+                            description: it.description || '',
+                            path: it.path,
+                            badge: it.badge || grp.groupName,
+                            icon: it.icon || cat.icon,
+                            tags: [grp.groupName]
+                        }))
+                    }))
+                    : [
                         {
-                            header: 'Pipeline & Growth Scale',
-                            badge: 'Top-Line',
-                            icon: TrendingUp,
-                            cards: [
-                                {
-                                    title: 'Pipeline Acceleration: SaaS',
-                                    description: 'Systematic enterprise pipeline expansion through autonomous multi-threading.',
-                                    path: '/case-studies/enterprise-saas-pipeline-growth',
-                                    badge: 'Pipeline Growth',
-                                    icon: Target,
-                                    tags: ['Demand Gen', 'TAM Penetration']
-                                },
-                                {
-                                    title: 'Global Expansion: Manufacturing',
-                                    description: 'Rapid international market entry and distributor network orchestration.',
-                                    path: '/case-studies/global-manufacturing-expansion',
-                                    badge: 'Market Expansion',
-                                    icon: Globe,
-                                    tags: ['Cross-Border', 'Distributor Mesh']
-                                },
-                                {
-                                    title: 'Customer Expansion: Enterprise Tech',
-                                    description: 'Transforming account retention into a 140% Net Retention Rate engine.',
-                                    path: '/case-studies/technology-customer-expansion',
-                                    badge: 'Customer Retention',
-                                    icon: Users,
-                                    tags: ['140% NRR', '+25% Expansion ARR']
-                                }
-                            ]
+                            header: `${cat.title} · Core Modules`,
+                            badge: 'Essential',
+                            icon: cat.icon,
+                            cards: (cat.subItems ? cat.subItems.slice(0, Math.ceil((cat.subItems.length || 0) / 2)) : []).map(it => ({
+                                title: it.title,
+                                description: it.description || '',
+                                path: it.path,
+                                badge: it.badge,
+                                icon: it.icon || cat.icon,
+                                tags: [cat.title]
+                            }))
                         },
                         {
-                            header: 'Margin & Operations Control',
-                            badge: 'EBITDA & Certainty',
-                            icon: DollarSign,
-                            cards: [
-                                {
-                                    title: 'Margin Recovery: Manufacturing',
-                                    description: '15 points gross margin recovery via CPQ floors and inflation indexing.',
-                                    path: '/case-studies/manufacturing-margin-improvement',
-                                    badge: 'Margin Improvement',
-                                    icon: Percent,
-                                    tags: ['+15 Pts Margin', '$54.6M Profit']
-                                },
-                                {
-                                    title: 'Forecast Accuracy: Healthcare',
-                                    description: 'Eliminating revenue volatility in high-compliance hospital sales.',
-                                    path: '/case-studies/healthcare-forecast-accuracy',
-                                    badge: 'Forecast Accuracy',
-                                    icon: LineChart,
-                                    tags: ['98% Precision', 'Board Certainty']
-                                },
-                                {
-                                    title: 'RevOps Overhaul: SaaS Scaleup',
-                                    description: 'Reclaiming 40+ hours per rep monthly and doubling quota velocity.',
-                                    path: '/case-studies/saas-revenue-operations',
-                                    badge: 'Revenue Operations',
-                                    icon: Sliders,
-                                    tags: ['80% Selling Time', 'Instant Comp']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'by-offering',
-                    title: 'By Offering',
-                    desc: 'Explore proven client outcomes mapped to ProfitMachines core architectural offerings.',
-                    path: '/case-studies#offering',
-                    badge: 'Offering Blueprints',
-                    icon: Compass,
-                    columns: [
-                        {
-                            header: 'Discovery & Demand Engines',
-                            badge: 'Front-End',
-                            icon: Compass,
-                            cards: [
-                                {
-                                    title: 'Profit Pool Discovery',
-                                    description: 'Uncovering uncaptured pricing elasticity and SKU profit pools.',
-                                    path: '/case-studies/manufacturing-margin-improvement',
-                                    badge: 'Discovery Offering',
-                                    icon: Target,
-                                    tags: ['Profit Pools', 'BOM Indexing']
-                                },
-                                {
-                                    title: 'Demand Engineering',
-                                    description: 'Autonomous multi-threaded pipeline generation for enterprise sales.',
-                                    path: '/case-studies/enterprise-saas-pipeline-growth',
-                                    badge: 'Demand Offering',
-                                    icon: Zap,
-                                    tags: ['Autonomous Outbound', 'Intent Mesh']
-                                },
-                                {
-                                    title: 'Growth Intelligence',
-                                    description: 'Deep market diagnostics and territory prioritization telemetry.',
-                                    path: '/case-studies/global-manufacturing-expansion',
-                                    badge: 'Intelligence Offering',
-                                    icon: BrainCircuit,
-                                    tags: ['Market Intel', 'Tier-1 Partners']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Execution & Governance Engines',
+                            header: `${cat.title} · Advanced Modules`,
                             badge: 'Operational',
-                            icon: Sliders,
-                            cards: [
-                                {
-                                    title: 'Revenue Operations',
-                                    description: 'Autonomous CRM data hygiene and real-time compensation engines.',
-                                    path: '/case-studies/saas-revenue-operations',
-                                    badge: 'RevOps Offering',
-                                    icon: Sliders,
-                                    tags: ['Autonomous CRM', 'Instant Comp']
-                                },
-                                {
-                                    title: 'GTM Transformation',
-                                    description: 'Consolidating acquired business units under a unified commercial mesh.',
-                                    path: '/case-studies/healthcare-gtm-transformation',
-                                    badge: 'GTM Offering',
-                                    icon: GitMerge,
-                                    tags: ['Account Unification', 'Umbrella MSAs']
-                                },
-                                {
-                                    title: 'AI Trust & Governance',
-                                    description: 'Institutional-grade security and governance for PE portfolio scale.',
-                                    path: '/case-studies/financial-services-ai-transformation',
-                                    badge: 'Trust & Governance',
-                                    icon: ShieldCheck,
-                                    tags: ['Algorithmic Compliance', '5X Deployment']
-                                }
-                            ]
+                            icon: cat.icon,
+                            cards: (cat.subItems ? cat.subItems.slice(Math.ceil((cat.subItems.length || 0) / 2)) : []).map(it => ({
+                                title: it.title,
+                                description: it.description || '',
+                                path: it.path,
+                                badge: it.badge,
+                                icon: it.icon || cat.icon,
+                                tags: [cat.title]
+                            }))
                         }
                     ]
-                },
-                {
-                    id: 'by-industry',
-                    title: 'By Industry',
-                    desc: 'Deep sector blueprints addressing industry-specific regulatory constraints, sales cycles, and buyer committees.',
-                    path: '/case-studies#industry',
-                    badge: 'Sector Specialization',
-                    icon: Building2,
-                    columns: [
-                        {
-                            header: 'Software, Tech & Capital',
-                            badge: 'Digital & Financial',
-                            icon: Cpu,
-                            cards: [
-                                {
-                                    title: 'Enterprise SaaS & Cloud',
-                                    description: 'Pipeline acceleration and RevOps automation for B2B cloud platforms.',
-                                    path: '/case-studies/enterprise-saas-pipeline-growth',
-                                    badge: 'SaaS Sector',
-                                    icon: Cpu,
-                                    tags: ['Enterprise ARR', 'Multi-Threading']
-                                },
-                                {
-                                    title: 'Enterprise Technology & Platforms',
-                                    description: 'Engineering net revenue retention and expansion ARR across key accounts.',
-                                    path: '/case-studies/technology-customer-expansion',
-                                    badge: 'Tech Sector',
-                                    icon: Server,
-                                    tags: ['140% NRR', 'CS Telemetry']
-                                },
-                                {
-                                    title: 'Financial Services & Private Equity',
-                                    description: 'AI value creation and multi-entity EBITDA acceleration across portfolio assets.',
-                                    path: '/case-studies/financial-services-ai-transformation',
-                                    badge: 'FinServ & PE',
-                                    icon: Landmark,
-                                    tags: ['Portfolio Scale', '2.3X Valuation']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Industrial & Healthcare',
-                            badge: 'Regulated & Physical',
-                            icon: Factory,
-                            cards: [
-                                {
-                                    title: 'Specialized Manufacturing',
-                                    description: 'Global expansion and distributor network scale across 4 operating hubs.',
-                                    path: '/case-studies/global-manufacturing-expansion',
-                                    badge: 'Manufacturing',
-                                    icon: Factory,
-                                    tags: ['4 Global Hubs', '$400M Scale']
-                                },
-                                {
-                                    title: 'Industrial Margin Optimization',
-                                    description: 'Eliminating sales discount leakage and recovering 15 points gross margin.',
-                                    path: '/case-studies/manufacturing-margin-improvement',
-                                    badge: 'Pricing & Margin',
-                                    icon: Percent,
-                                    tags: ['+15 Pts Recovery', 'Hard CPQ Floors']
-                                },
-                                {
-                                    title: 'Healthcare Systems & MedTech',
-                                    description: 'Navigating hospital buying committees with 98% forecast precision.',
-                                    path: '/case-studies/healthcare-forecast-accuracy',
-                                    badge: 'Healthcare Sector',
-                                    icon: HeartPulse,
-                                    tags: ['Zero-PHI HIPAA', 'Hospital Networks']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'by-company-stage',
-                    title: 'By Company Stage',
-                    desc: 'Transformations tailored to capitalization profile, maturity scale, and governance expectations.',
-                    path: '/case-studies#stage',
-                    badge: 'Stage Adaptation',
-                    icon: Layers,
-                    columns: [
-                        {
-                            header: 'Venture & Growth Scale',
-                            badge: 'Venture-Backed',
-                            icon: Rocket,
-                            cards: [
-                                {
-                                    title: 'Series B SaaS Startups ($15M ARR)',
-                                    description: 'Autonomous RevOps control plane doubling rep selling capacity.',
-                                    path: '/case-studies/saas-revenue-operations',
-                                    badge: 'Startup Scale',
-                                    icon: Sliders,
-                                    tags: ['Admin Relief', 'Forecast Engine']
-                                },
-                                {
-                                    title: 'Growth-Stage Scaleups ($50M+ ARR)',
-                                    description: 'Engineering predictable enterprise pipeline and multi-channel scale.',
-                                    path: '/case-studies/enterprise-saas-pipeline-growth',
-                                    badge: 'Growth Stage',
-                                    icon: TrendingUp,
-                                    tags: ['Enterprise Playbook', 'Market Leadership']
-                                },
-                                {
-                                    title: 'Mid-Market Champions ($350M Rev)',
-                                    description: 'Dynamic pricing power and margin recovery across complex portfolios.',
-                                    path: '/case-studies/manufacturing-margin-improvement',
-                                    badge: 'Mid-Market',
-                                    icon: Factory,
-                                    tags: ['Margin Protection', 'EBITDA Lift']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Enterprise & Sponsor-Backed',
-                            badge: 'Institutional',
-                            icon: Landmark,
-                            cards: [
-                                {
-                                    title: 'Large Global Enterprises ($900M Rev)',
-                                    description: 'Unifying acquired divisions under a synchronized commercial architecture.',
-                                    path: '/case-studies/healthcare-gtm-transformation',
-                                    badge: 'Enterprise Conglomerate',
-                                    icon: Building2,
-                                    tags: ['M&A Unification', 'Multi-BU Scale']
-                                },
-                                {
-                                    title: 'PE Sponsor Portfolio Companies',
-                                    description: 'Rapid commercial modernization and enterprise valuation expansion.',
-                                    path: '/case-studies/financial-services-ai-transformation',
-                                    badge: 'Private Equity',
-                                    icon: Award,
-                                    tags: ['100-Day Acceleration', 'Exit Multiple']
-                                },
-                                {
-                                    title: 'Explore All Stages & Metrics',
-                                    description: 'Access the complete transformation matrix across all company tiers.',
-                                    path: '/case-studies',
-                                    badge: 'Transformation Wall',
-                                    icon: ShieldCheck,
-                                    tags: ['Interactive Matrix', '8 Case Studies']
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'ai-native-transformations',
-                    title: 'AI-Native Transformations',
-                    desc: 'Autonomous agent mesh deployments delivering human-in-the-loop sales execution, deal intelligence, and real-time ROI.',
-                    path: '/case-studies/ai-native',
-                    badge: 'Next-Gen Mesh',
-                    icon: BrainCircuit,
-                    columns: [
-                        {
-                            header: 'Autonomous Agent Fleet',
-                            badge: 'Agent Swarms',
-                            icon: Bot,
-                            cards: [
-                                {
-                                    title: 'Autonomous Inbound & Outbound SDR',
-                                    description: '24/7 hyper-personalized multi-threaded enterprise prospecting.',
-                                    path: '/case-studies/ai-native#sdr-fleet',
-                                    badge: 'SDR Agent',
-                                    icon: Bot,
-                                    tags: ['24/7 Outbound', 'Zero Hallucination']
-                                },
-                                {
-                                    title: 'Live Revenue Intelligence Mesh',
-                                    description: 'Continuous buyer engagement telemetry and deal ghosting detection.',
-                                    path: '/case-studies/ai-native#revenue-mesh',
-                                    badge: 'Deal Intelligence',
-                                    icon: Activity,
-                                    tags: ['Buyer Sentiment', 'Ghosting Alarms']
-                                },
-                                {
-                                    title: 'Autonomous RevOps Control Plane',
-                                    description: 'Self-healing CRM records and algorithmic forecast precision.',
-                                    path: '/case-studies/ai-native#revops-control',
-                                    badge: 'RevOps Control',
-                                    icon: Sliders,
-                                    tags: ['Self-Healing Data', 'Predictive Quota']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Telemetry & ROI Modeling',
-                            badge: 'Interactive',
-                            icon: LineChart,
-                            cards: [
-                                {
-                                    title: 'Interactive AI Agent ROI Calculator',
-                                    description: 'Simulate rep hours reclaimed, pipeline lift, and cost savings in real time.',
-                                    path: '/case-studies/ai-native#calculator',
-                                    badge: 'Live Simulator',
-                                    icon: DollarSign,
-                                    tags: ['SDR Sizing', 'Hours Reclaimed']
-                                },
-                                {
-                                    title: '4-Agent Ecosystem Architecture',
-                                    description: 'Inter-agent communication protocol with human-in-the-loop validation gates.',
-                                    path: '/case-studies/ai-native',
-                                    badge: 'Mesh Blueprint',
-                                    icon: BrainCircuit,
-                                    tags: ['Autonomous Routing', 'SOC2 Compliant']
-                                },
-                                {
-                                    title: 'All AI-Native Transformations',
-                                    description: 'Full gallery of autonomous agent workflows and live technical telemetry.',
-                                    path: '/case-studies/ai-native',
-                                    badge: 'Agent Gallery',
-                                    icon: Sparkles,
-                                    tags: ['Live Blueprints', 'Technical Demos']
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
+            }))
         },
-
         // 7. ABOUT US
         {
             id: 'about-us',
@@ -3252,7 +2939,7 @@ export default function Navigation() {
                                                 </div>
 
                                                 {/* Category List (Tight Vertical Rhythm) */}
-                                                <nav className={ `pt-0.5 ${currentMenu.categories.length > 7 ? "space-y-px" : "space-y-1"}` }>
+                                                <nav className={`pt-0.5 ${currentMenu.categories.length > 7 ? "space-y-px max-h-[300px] overflow-y-auto pr-1" : "space-y-1"}` }>
                                                     {currentMenu.categories.map((cat) => {
                                                         const isCatActive = currentCategory?.id === cat.id;
 
@@ -3395,17 +3082,19 @@ export default function Navigation() {
                                         </main>
                                     </div>
 
-                                    {/* Bottom Executive Consultation Banner (Blue Palette, Flush to Bottom with Zero Void) */}
+                                    {/* Bottom Executive Consultation Banner / Resources Strip */}
                                     <div className="px-4 py-2 bg-slate-50 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
                                         <span className="font-semibold text-slate-700 text-xs">
-                                            Want to understand how we would approach your business challenge?
+                                            {currentMenu.id === 'resources-hub'
+                                                ? 'Explore business resources, analytical tools and practical frameworks to understand challenges and identify opportunities for growth.'
+                                                : 'Want to understand how we would approach your business challenge?'}
                                         </span>
                                         <Link
-                                            to="/book-consultation"
+                                            to={currentMenu.id === 'resources-hub' ? '/resources-hub' : '/book-consultation'}
                                             onClick={() => setActiveMenuId(null)}
                                             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs transition-colors shadow-xs shrink-0 cursor-pointer"
                                         >
-                                            <span>Schedule an Introductory Call</span>
+                                            <span>{currentMenu.id === 'resources-hub' ? 'Explore Resources Hub' : 'Schedule an Introductory Call'}</span>
                                             <ArrowRight className="w-3.5 h-3.5" />
                                         </Link>
                                     </div>

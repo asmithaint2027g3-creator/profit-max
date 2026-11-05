@@ -89,18 +89,22 @@ export default function Footer() {
             ]
         },
         {
-            title: 'Case Studies',
-            path: '/case-studies',
+            title: 'Resources Hub',
+            path: '/resources-hub',
             links: [
+                { name: 'All Resources Hub', path: '/resources-hub' },
+                { name: 'Industry Resource Hubs', path: '/resources-hub#industry-resource-hubs' },
+                { name: 'Functional Resource Hubs', path: '/resources-hub#functional-resource-hubs' },
                 { name: 'Case Studies Archive', path: '/case-studies' },
-                { name: 'Client Outcomes', path: '/outcomes' },
-                { name: 'AI-Native Transformations', path: '/case-studies/ai-native' },
-                { name: 'Enterprise SaaS Case', path: '/case-studies/enterprise-saas-pipeline-growth' },
-                { name: 'Manufacturing Margin', path: '/case-studies/manufacturing-margin-improvement' },
-                { name: 'Healthcare Forecast Case', path: '/case-studies/healthcare-forecast-accuracy' },
-                { name: 'Global Expansion Case', path: '/case-studies/global-manufacturing-expansion' },
-                { name: 'By Business Challenge', path: '/case-studies#challenge' },
-                { name: 'By Industry Solution', path: '/case-studies#industry' },
+                { name: 'Sales Acceleration', path: '/resources-hub#sales-acceleration' },
+                { name: 'GTM & RevOps Hub', path: '/resources-hub#gtm-revenue-operations' },
+                { name: 'Analytics & Decision Science', path: '/resources-hub#analytics-decision-science' },
+                { name: 'AI & Agentic Automation', path: '/resources-hub#ai-agentic-automation' },
+                { name: 'Automation Excellence', path: '/resources-hub#automation-excellence' },
+                { name: 'Continuous Improvement', path: '/resources-hub#continuous-sales-improvement' },
+                { name: 'Strategy & Transformation', path: '/resources-hub#strategy-transformation' },
+                { name: 'Frameworks & Templates', path: '/resources-hub#frameworks-templates' },
+                { name: 'Tools & Calculators', path: '/resources-hub#tools-calculators' },
             ]
         },
         {

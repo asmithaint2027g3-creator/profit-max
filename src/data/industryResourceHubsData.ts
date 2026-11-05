@@ -1718,3 +1718,4 @@ export const INDUSTRY_RESOURCE_HUBS_DATA: IndustryHubItem[] = [
     ]
   }
 ];
+

@@ -36,7 +36,8 @@ import {
   Calculator,
   Activity,
   Boxes,
-  ShieldCheck
+  ShieldCheck,
+  Scale
 } from 'lucide-react';
 
 export interface ResourceSubItem {
@@ -112,34 +113,34 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
     number: '02',
     title: 'Functional Resource Hubs',
     slug: 'functional-resource-hubs',
-    shortIntro: 'Discover resources organised around key business functions, departments and professional responsibilities.',
-    purpose: 'Empower departmental leaders with tactical playbooks and operational execution standards.',
+    shortIntro: 'Discover resources organised around key commercial revenue functions, executive departments and GTM responsibilities.',
+    purpose: 'Empower commercial leaders with tactical playbooks, mathematical models, and operational execution standards.',
     icon: Briefcase,
-    ctaText: 'Explore Functional Resources',
-    path: '/resources-hub#functional-resource-hubs',
+    ctaText: 'Explore Functional Hubs',
+    path: '/resources-hub/functional-resource-hubs',
     previewLabels: [
-      'Sales',
-      'Marketing',
-      'Customer Success',
-      'Finance',
-      'Procurement',
-      'Supply Chain',
-      'Manufacturing Operations',
-      'HR & Talent',
-      'IT Operations',
-      'Cybersecurity'
+      'Direct Sales & Enterprise Deal Execution',
+      'Marketing & Demand Engineering',
+      'Customer Success & Net Revenue Retention',
+      'Revenue Operations & Pipeline Intelligence',
+      'Pricing, Packaging & Monetization Strategy',
+      'Strategic Partnerships & Ecosystem GTM',
+      'Sales Enablement, Coaching & Deal Readiness',
+      'CFO Office, Unit Economics & Profitability',
+      'GTM Systems, CRM & RevTech Architecture',
+      'AI Trust, Governance & Commercial Compliance'
     ],
     subItems: [
-      { title: 'Sales', description: 'Enterprise deal qualification, territory pacing and commission models.', path: '/resources-hub#sales', icon: Target, badge: 'Direct Sales' },
-      { title: 'Marketing', description: 'Multi-touch demand generation and dark-funnel buyer intent.', path: '/resources-hub#marketing', icon: TrendingUp, badge: 'Demand Gen' },
-      { title: 'Customer Success', description: 'Account telemetry, churn mitigation and systematic NRR expansion.', path: '/resources-hub#customer-success', icon: Users, badge: 'Retention' },
-      { title: 'Finance', description: 'Contribution margin governance and cash-flow payback acceleration.', path: '/resources-hub#finance', icon: DollarSign, badge: 'CFO Office' },
-      { title: 'Procurement', description: 'Vendor consolidation matrices and automated sourcing workflows.', path: '/resources-hub#procurement', icon: Layers, badge: 'Sourcing' },
-      { title: 'Supply Chain', description: 'Inventory buffer models and distribution velocity orchestration.', path: '/resources-hub#supply-chain', icon: Truck, badge: 'Operations' },
-      { title: 'Manufacturing Operations', description: 'Overall equipment effectiveness and plant-floor lean execution.', path: '/resources-hub#manufacturing-operations', icon: Factory, badge: 'OEE' },
-      { title: 'HR & Talent', description: 'Revenue enablement hiring and executive performance rubrics.', path: '/resources-hub#hr-talent', icon: UserCheck, badge: 'Enablement' },
-      { title: 'IT Operations', description: 'Enterprise cloud infrastructure and CRM data architecture.', path: '/resources-hub#it-operations', icon: Server, badge: 'IT Ops' },
-      { title: 'Cybersecurity', description: 'Zero-trust authentication and AI security compliance guardrails.', path: '/resources-hub#cybersecurity', icon: ShieldAlert, badge: 'Zero Trust' }
+      { title: 'Direct Sales & Enterprise Deal Execution', description: 'Enterprise deal qualification, committee multi-threading, and deal acceleration.', path: '/resources-hub/functional-resource-hubs#direct-sales-enterprise-deal-execution', icon: Target, badge: 'Enterprise Sales' },
+      { title: 'Marketing & Demand Engineering', description: 'Multi-touch demand generation, buyer intent telemetry, and dark-funnel capture.', path: '/resources-hub/functional-resource-hubs#marketing-demand-engineering', icon: TrendingUp, badge: 'Demand Gen' },
+      { title: 'Customer Success & Net Revenue Retention', description: 'Account telemetry, churn mitigation, and systematic NRR expansion models.', path: '/resources-hub/functional-resource-hubs#customer-success-net-revenue-retention', icon: Users, badge: 'NRR / Retention' },
+      { title: 'Revenue Operations & Pipeline Intelligence', description: 'Unified revenue data, predictive forecasting, quota pacing, and pipeline health.', path: '/resources-hub/functional-resource-hubs#revenue-operations-pipeline-intelligence', icon: Activity, badge: 'RevOps' },
+      { title: 'Pricing, Packaging & Monetization Strategy', description: 'Value-based pricing frameworks, usage-tier monetization, and discount governance.', path: '/resources-hub/functional-resource-hubs#pricing-packaging-monetization', icon: DollarSign, badge: 'Monetization' },
+      { title: 'Strategic Partnerships & Ecosystem GTM', description: 'Co-selling networks, distributor mesh, reseller growth, and alliance revenue.', path: '/resources-hub/functional-resource-hubs#strategic-partnerships-ecosystem-gtm', icon: Layers, badge: 'Channels / Co-Sell' },
+      { title: 'Sales Enablement, Coaching & Deal Readiness', description: 'Commercial readiness, competitive battlecards, and conversation coaching.', path: '/resources-hub/functional-resource-hubs#sales-enablement-deal-readiness', icon: Compass, badge: 'Enablement' },
+      { title: 'CFO Office, Unit Economics & Profitability', description: 'Contribution margin governance, CAC payback acceleration, and profit pools.', path: '/resources-hub/functional-resource-hubs#cfo-office-unit-economics-profitability', icon: Scale, badge: 'CFO Office' },
+      { title: 'GTM Systems, CRM & RevTech Architecture', description: 'CRM data hygiene, automated workflow routing, and multi-cloud GTM integration.', path: '/resources-hub/functional-resource-hubs#gtm-systems-crm-revtech-architecture', icon: Server, badge: 'RevTech' },
+      { title: 'AI Trust, Governance & Commercial Compliance', description: 'Deterministic compliance guardrails, zero model drift, and audit transparency.', path: '/resources-hub/functional-resource-hubs#ai-trust-governance-commercial-compliance', icon: ShieldCheck, badge: 'Governance' }
     ]
   },
 

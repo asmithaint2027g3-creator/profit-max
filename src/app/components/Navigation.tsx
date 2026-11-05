@@ -3078,6 +3078,8 @@ export default function Navigation() {
                                                     <span>
                                                         {currentCategory.id === 'industry-resource-hubs'
                                                             ? 'Explore Industry Hubs'
+                                                            : currentCategory.id === 'functional-resource-hubs'
+                                                            ? 'Explore Functional Hubs'
                                                             : activeConfig.ctaText}
                                                     </span>
                                                     <ArrowRight className="w-3 h-3" />

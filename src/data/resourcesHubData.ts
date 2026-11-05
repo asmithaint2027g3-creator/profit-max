@@ -35,7 +35,8 @@ import {
   CheckCircle2,
   Calculator,
   Activity,
-  Boxes
+  Boxes,
+  ShieldCheck
 } from 'lucide-react';
 
 export interface ResourceSubItem {

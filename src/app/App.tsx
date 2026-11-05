@@ -8,6 +8,7 @@ import { ProtectedRoute } from './components/auth/ProtectedRoute';
 
 import Home from './pages/Home';
 import ScrollToTopAndHash from './components/ScrollToTopAndHash';
+import ResourcesHubLandingPage from './pages/resources-hub/ResourcesHubLandingPage';
 
 const SignIn = lazy(() => import('./pages/SignIn'));
 const Register = lazy(() => import('./pages/Register'));
@@ -48,7 +49,6 @@ const EngagementKpiLibrary = lazy(() => import('./pages/engagement/EngagementKpi
 const EngagementOnboarding = lazy(() => import('./pages/engagement/EngagementOnboarding'));
 const EngagementGlossaryFaq = lazy(() => import('./pages/engagement/EngagementGlossaryFaq'));
 const Resources = lazy(() => import('./pages/Resources'));
-const ResourcesHubLandingPage = lazy(() => import('./pages/resources-hub/ResourcesHubLandingPage'));
 const Company = lazy(() => import('./pages/Company'));
 const AboutProfitMachinesPage = lazy(() => import('./pages/AboutProfitMachinesPage'));
 const LeadershipTeamsPage = lazy(() => import('./pages/LeadershipTeamsPage'));

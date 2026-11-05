@@ -31,19 +31,23 @@ export default function ResourcesHubLandingPage() {
   const [selectedTag, setSelectedTag] = useState<string>('All');
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    document.title = 'Resources Hub | ProfitMachines Business Intelligence & Frameworks';
-    trackEvent({ eventName: 'PAGE_VIEW_RESOURCES_HUB', category: 'NAVIGATION' });
+    try {
+      window.scrollTo(0, 0);
+      document.title = 'Resources Hub | ProfitMachines Business Intelligence & Frameworks';
+      trackEvent({ eventName: 'PAGE_VIEW_RESOURCES_HUB', category: 'NAVIGATION' });
 
-    // Handle hash scroll if arriving with #anchor
-    if (location.hash) {
-      const id = location.hash.replace('#', '');
-      const el = document.getElementById(id);
-      if (el) {
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 150);
+      // Handle hash scroll if arriving with #anchor
+      if (location.hash) {
+        const id = location.hash.replace('#', '');
+        const el = document.getElementById(id);
+        if (el) {
+          setTimeout(() => {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 150);
+        }
       }
+    } catch (e) {
+      console.warn('ResourcesHubLandingPage init warning:', e);
     }
   }, [location]);
 

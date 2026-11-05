@@ -20,7 +20,8 @@ import {
   Zap,
   ArrowUpRight,
   ChevronRight,
-  Search
+  Search,
+  Briefcase
 } from 'lucide-react';
 import { RESOURCES_HUB_CATEGORIES, ResourceCategory } from '../../../data/resourcesHubData';
 import { trackEvent } from '../../../lib/analytics';

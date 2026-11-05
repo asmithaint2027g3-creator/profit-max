@@ -154,7 +154,7 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
     purpose: 'Examine boardroom-verified metrics, empirical ROI dossiers and real enterprise transformations.',
     icon: FileText,
     ctaText: 'Explore Case Studies',
-    path: '/case-studies',
+    path: '/resources-hub/case-studies',
     previewLabels: [
       'By Industry',
       'By Function',
@@ -163,11 +163,11 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       'Customer Success Stories'
     ],
     subItems: [
-      { title: 'By Industry', description: 'Review enterprise SaaS, manufacturing, fintech, and healthcare dossiers.', path: '/case-studies#industry', icon: Factory, badge: 'Sectors' },
-      { title: 'By Function', description: 'Filter by sales velocity, revops overhaul, and customer expansion.', path: '/case-studies#function', icon: Target, badge: 'Functions' },
-      { title: 'By Technology', description: 'Inspect live deployments of AI SDRs, intent meshes and control planes.', path: '/case-studies/ai-native', icon: BrainCircuit, badge: 'AI Native' },
-      { title: 'By Business Outcome', description: 'Empirical proof of margin expansion, pipeline lift and cycle reduction.', path: '/case-studies/featured', icon: TrendingUp, badge: 'ROI Outcomes' },
-      { title: 'Customer Success Stories', description: 'Direct customer interview archives and multi-year transformation retrospectives.', path: '/case-studies', icon: Users, badge: 'Client Voices' }
+      { title: 'By Industry', description: 'Review enterprise SaaS, manufacturing, fintech, and healthcare dossiers.', path: '/resources-hub/case-studies/by-industry', icon: Factory, badge: 'Sectors' },
+      { title: 'By Function', description: 'Filter by sales velocity, revops overhaul, and customer expansion.', path: '/resources-hub/case-studies/by-function', icon: Target, badge: 'Functions' },
+      { title: 'By Technology', description: 'Inspect live deployments of AI SDRs, intent meshes and control planes.', path: '/resources-hub/case-studies/by-technology', icon: BrainCircuit, badge: 'AI Native' },
+      { title: 'By Business Outcome', description: 'Empirical proof of margin expansion, pipeline lift and cycle reduction.', path: '/resources-hub/case-studies/by-business-outcome', icon: TrendingUp, badge: 'ROI Outcomes' },
+      { title: 'Customer Success Stories', description: 'Direct customer interview archives and multi-year transformation retrospectives.', path: '/resources-hub/case-studies/customer-success-stories', icon: Users, badge: 'Client Voices' }
     ]
   },
 
@@ -181,7 +181,7 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
     purpose: 'Compress enterprise sales cycle duration and scale multi-threaded quota achievement.',
     icon: Rocket,
     ctaText: 'Explore Sales Acceleration',
-    path: '/resources-hub#sales-acceleration',
+    path: '/resources-hub/sales-acceleration-hub',
     previewLabels: [
       'Sales Methodologies',
       'Sales Playbooks',
@@ -193,14 +193,14 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       'Sales Productivity Frameworks'
     ],
     subItems: [
-      { title: 'Sales Methodologies', description: 'MEDDPICC, Command of the Message and value-engineering frameworks.', path: '/resources-hub#sales-methodologies', icon: Compass, badge: 'Core Method' },
-      { title: 'Sales Playbooks', description: 'Step-by-step objection handling, executive mutual close plans and scripts.', path: '/resources-hub#sales-playbooks', icon: BookOpen, badge: 'Execution' },
-      { title: 'Sales Velocity Models', description: 'Mathematical simulation of deal volume, win rates, ASP and cycle days.', path: '/resources-hub#sales-velocity-models', icon: Gauge, badge: 'Velocity' },
-      { title: 'Pipeline Optimization', description: 'Stage-gate hygiene audits and dark-funnel leakage remediation.', path: '/resources-hub#pipeline-optimization', icon: Sliders, badge: 'Hygiene' },
-      { title: 'Revenue Operations', description: 'Unified CRM pipeline telemetry and automated data integrity controls.', path: '/resources-hub#revenue-operations', icon: Workflow, badge: 'RevOps' },
-      { title: 'Account-Based Selling', description: 'Tier-1 target account mapping and multi-stakeholder orchestration.', path: '/resources-hub#account-based-selling', icon: Target, badge: 'ABS' },
-      { title: 'Territory Planning', description: 'Market capacity modeling and deterministic quota allocation.', path: '/resources-hub#territory-planning', icon: Layers, badge: 'Planning' },
-      { title: 'Sales Productivity Frameworks', description: 'Rep time-allocation rebalancing and administrative overhead removal.', path: '/resources-hub#sales-productivity', icon: TrendingUp, badge: 'Productivity' }
+      { title: 'Sales Methodologies', description: 'MEDDPICC, Command of the Message and value-engineering frameworks.', path: '/resources-hub/sales-acceleration-hub#sales-methodologies', icon: Compass, badge: 'Core Method' },
+      { title: 'Sales Playbooks', description: 'Step-by-step objection handling, executive mutual close plans and scripts.', path: '/resources-hub/sales-acceleration-hub#sales-playbooks', icon: BookOpen, badge: 'Execution' },
+      { title: 'Sales Velocity Models', description: 'Mathematical simulation of deal volume, win rates, ASP and cycle days.', path: '/resources-hub/sales-acceleration-hub#sales-velocity-models', icon: Gauge, badge: 'Velocity' },
+      { title: 'Pipeline Optimization', description: 'Stage-gate hygiene audits and dark-funnel leakage remediation.', path: '/resources-hub/sales-acceleration-hub#pipeline-optimization', icon: Sliders, badge: 'Hygiene' },
+      { title: 'Revenue Operations', description: 'Unified CRM pipeline telemetry and automated data integrity controls.', path: '/resources-hub/sales-acceleration-hub#revenue-operations', icon: Workflow, badge: 'RevOps' },
+      { title: 'Account-Based Selling', description: 'Tier-1 target account mapping and multi-stakeholder orchestration.', path: '/resources-hub/sales-acceleration-hub#account-based-selling', icon: Target, badge: 'ABS' },
+      { title: 'Territory Planning', description: 'Market capacity modeling and deterministic quota allocation.', path: '/resources-hub/sales-acceleration-hub#territory-planning', icon: Layers, badge: 'Planning' },
+      { title: 'Sales Productivity Frameworks', description: 'Rep time-allocation rebalancing and administrative overhead removal.', path: '/resources-hub/sales-acceleration-hub#sales-productivity-frameworks', icon: TrendingUp, badge: 'Productivity' }
     ]
   },
 
@@ -214,7 +214,7 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
     purpose: 'Bridge strategy and operational execution with deterministic go-to-market architecture.',
     icon: Workflow,
     ctaText: 'Explore GTM & RevOps',
-    path: '/resources-hub#gtm-revenue-operations',
+    path: '/resources-hub/gtm-revenue-operations-hub',
     previewLabels: [
       'ICP Frameworks',
       'Buyer Journey Models',
@@ -226,14 +226,14 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       'Revenue Growth Frameworks'
     ],
     subItems: [
-      { title: 'ICP Frameworks', description: 'Firmographic, technographic and behavioral ideal customer definitions.', path: '/resources-hub#icp-frameworks', icon: Target, badge: 'Targeting' },
-      { title: 'Buyer Journey Models', description: 'Multi-touch decision journey maps from latent trigger to renewal.', path: '/resources-hub#buyer-journey-models', icon: GitMerge, badge: 'Journey' },
-      { title: 'Funnel Optimization', description: 'Conversion rate diagnostics and bottleneck elimination across stages.', path: '/resources-hub#funnel-optimization', icon: Sliders, badge: 'Conversion' },
-      { title: 'RevOps Frameworks', description: 'End-to-end data models connecting marketing, sales and retention.', path: '/resources-hub#revops-frameworks', icon: Workflow, badge: 'Alignment' },
-      { title: 'Revenue Intelligence', description: 'Real-time pipeline intent signals and conversational diagnostic traces.', path: '/resources-hub#revenue-intelligence', icon: BrainCircuit, badge: 'Telemetry' },
-      { title: 'Forecasting Models', description: 'Triangulated statistical forecasts mitigating subjective rep bias.', path: '/resources-hub#forecasting-models', icon: BarChart3, badge: 'Accuracy' },
-      { title: 'Capacity Planning', description: 'Headcount ramp dynamics and quota attainment elasticity models.', path: '/resources-hub#capacity-planning', icon: Users, badge: 'Capacity' },
-      { title: 'Revenue Growth Frameworks', description: 'Multi-vector growth blueprints for scalable enterprise expansion.', path: '/resources-hub#revenue-growth-frameworks', icon: TrendingUp, badge: 'Growth' }
+      { title: 'ICP Frameworks', description: 'Firmographic, technographic and behavioral ideal customer definitions.', path: '/resources-hub/gtm-revenue-operations-hub#icp-frameworks', icon: Target, badge: 'Targeting' },
+      { title: 'Buyer Journey Models', description: 'Multi-touch decision journey maps from latent trigger to renewal.', path: '/resources-hub/gtm-revenue-operations-hub#buyer-journey-models', icon: GitMerge, badge: 'Journey' },
+      { title: 'Funnel Optimization', description: 'Conversion rate diagnostics and bottleneck elimination across stages.', path: '/resources-hub/gtm-revenue-operations-hub#funnel-optimization', icon: Sliders, badge: 'Conversion' },
+      { title: 'RevOps Frameworks', description: 'End-to-end data models connecting marketing, sales and retention.', path: '/resources-hub/gtm-revenue-operations-hub#revops-frameworks', icon: Workflow, badge: 'Alignment' },
+      { title: 'Revenue Intelligence', description: 'Real-time pipeline intent signals and conversational diagnostic traces.', path: '/resources-hub/gtm-revenue-operations-hub#revenue-intelligence', icon: BrainCircuit, badge: 'Telemetry' },
+      { title: 'Forecasting Models', description: 'Triangulated statistical forecasts mitigating subjective rep bias.', path: '/resources-hub/gtm-revenue-operations-hub#forecasting-models', icon: BarChart3, badge: 'Accuracy' },
+      { title: 'Capacity Planning', description: 'Headcount ramp dynamics and quota attainment elasticity models.', path: '/resources-hub/gtm-revenue-operations-hub#capacity-planning', icon: Users, badge: 'Capacity' },
+      { title: 'Revenue Growth Frameworks', description: 'Multi-vector growth blueprints for scalable enterprise expansion.', path: '/resources-hub/gtm-revenue-operations-hub#revenue-growth-frameworks', icon: TrendingUp, badge: 'Growth' }
     ]
   },
 

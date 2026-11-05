@@ -11,6 +11,8 @@ import ScrollToTopAndHash from './components/ScrollToTopAndHash';
 import ResourcesHubLandingPage from './pages/resources-hub/ResourcesHubLandingPage';
 import IndustryResourceHubsPage from './pages/resources-hub/IndustryResourceHubsPage';
 import FunctionalResourceHubsPage from './pages/resources-hub/FunctionalResourceHubsPage';
+import SalesAccelerationHubPage from './pages/resources-hub/SalesAccelerationHubPage';
+import GtmRevenueOperationsHubPage from './pages/resources-hub/GtmRevenueOperationsHubPage';
 
 const SignIn = lazy(() => import('./pages/SignIn'));
 const Register = lazy(() => import('./pages/Register'));
@@ -138,6 +140,12 @@ const GlobalRevenueEnginesPage = lazy(() => import('./pages/global-acceleration/
 const GlobalCapitalFinancePage = lazy(() => import('./pages/global-acceleration/GlobalCapitalFinancePage'));
 const AiPoweredExpansionPage = lazy(() => import('./pages/global-acceleration/AiPoweredExpansionPage'));
 const CaseStudiesHub = lazy(() => import('./pages/case-studies/CaseStudiesHub'));
+const ByIndustryCaseStudiesPage = lazy(() => import('./pages/case-studies/ByIndustryCaseStudiesPage'));
+const ByFunctionCaseStudiesPage = lazy(() => import('./pages/case-studies/ByFunctionCaseStudiesPage'));
+const ByTechnologyCaseStudiesPage = lazy(() => import('./pages/case-studies/ByTechnologyCaseStudiesPage'));
+const ByBusinessOutcomeCaseStudiesPage = lazy(() => import('./pages/case-studies/ByBusinessOutcomeCaseStudiesPage'));
+const CustomerSuccessStoriesPage = lazy(() => import('./pages/case-studies/CustomerSuccessStoriesPage'));
+const CaseStudyDetailPage = lazy(() => import('./pages/case-studies/CaseStudyDetailPage'));
 const FeaturedTransformationsPage = lazy(() => import('./pages/case-studies/FeaturedTransformationsPage'));
 const AiNativeTransformationsPage = lazy(() => import('./pages/case-studies/AiNativeTransformationsPage'));
 const EnterpriseSaasPipelineGrowthPage = lazy(() => import('./pages/case-studies/EnterpriseSaasPipelineGrowthPage'));
@@ -291,7 +299,24 @@ export default function App() {
               <Route path="/resources-hub" element={<ResourcesHubLandingPage />} />
               <Route path="/resources-hub/industry-resource-hubs" element={<IndustryResourceHubsPage />} />
               <Route path="/resources-hub/functional-resource-hubs" element={<FunctionalResourceHubsPage />} />
+              <Route path="/resources-hub/sales-acceleration-hub" element={<SalesAccelerationHubPage />} />
+              <Route path="/resources-hub/gtm-revenue-operations-hub" element={<GtmRevenueOperationsHubPage />} />
+              <Route path="/resources-hub/case-studies" element={<CaseStudiesHub />} />
+              <Route path="/resources-hub/case-studies/by-industry" element={<ByIndustryCaseStudiesPage />} />
+              <Route path="/resources-hub/case-studies/by-function" element={<ByFunctionCaseStudiesPage />} />
+              <Route path="/resources-hub/case-studies/by-technology" element={<ByTechnologyCaseStudiesPage />} />
+              <Route path="/resources-hub/case-studies/by-business-outcome" element={<ByBusinessOutcomeCaseStudiesPage />} />
+              <Route path="/resources-hub/case-studies/customer-success-stories" element={<CustomerSuccessStoriesPage />} />
+              <Route path="/resources-hub/case-studies/stories/:slug" element={<CaseStudyDetailPage />} />
+
+              {/* Direct / legacy case-studies routes */}
               <Route path="/case-studies" element={<CaseStudiesHub />} />
+              <Route path="/case-studies/by-industry" element={<ByIndustryCaseStudiesPage />} />
+              <Route path="/case-studies/by-function" element={<ByFunctionCaseStudiesPage />} />
+              <Route path="/case-studies/by-technology" element={<ByTechnologyCaseStudiesPage />} />
+              <Route path="/case-studies/by-business-outcome" element={<ByBusinessOutcomeCaseStudiesPage />} />
+              <Route path="/case-studies/customer-success-stories" element={<CustomerSuccessStoriesPage />} />
+              <Route path="/case-studies/stories/:slug" element={<CaseStudyDetailPage />} />
               <Route path="/case-studies/featured" element={<FeaturedTransformationsPage />} />
               <Route path="/case-studies/ai-native" element={<AiNativeTransformationsPage />} />
               <Route path="/case-studies/enterprise-saas-pipeline-growth" element={<EnterpriseSaasPipelineGrowthPage />} />

@@ -9,6 +9,7 @@ import { ProtectedRoute } from './components/auth/ProtectedRoute';
 import Home from './pages/Home';
 import ScrollToTopAndHash from './components/ScrollToTopAndHash';
 import ResourcesHubLandingPage from './pages/resources-hub/ResourcesHubLandingPage';
+import IndustryResourceHubsPage from './pages/resources-hub/IndustryResourceHubsPage';
 
 const SignIn = lazy(() => import('./pages/SignIn'));
 const Register = lazy(() => import('./pages/Register'));
@@ -287,6 +288,7 @@ export default function App() {
               <Route path="/demand-pulse" element={<DemandPulse />} />
               <Route path="/outcomes" element={<Outcomes />} />
               <Route path="/resources-hub" element={<ResourcesHubLandingPage />} />
+              <Route path="/resources-hub/industry-resource-hubs" element={<IndustryResourceHubsPage />} />
               <Route path="/case-studies" element={<CaseStudiesHub />} />
               <Route path="/case-studies/featured" element={<FeaturedTransformationsPage />} />
               <Route path="/case-studies/ai-native" element={<AiNativeTransformationsPage />} />

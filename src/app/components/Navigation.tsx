@@ -2938,8 +2938,8 @@ export default function Navigation() {
                                                     </p>
                                                 </div>
 
-                                                {/* Category List (Tight Vertical Rhythm) */}
-                                                <nav className={`pt-0.5 ${currentMenu.categories.length > 7 ? "space-y-px max-h-[300px] overflow-y-auto pr-1" : "space-y-1"}` }>
+                                                {/* Category List (Tight Vertical Rhythm - No Unnecessary Scrollbars) */}
+                                                <nav className={`pt-0.5 ${currentMenu.categories.length > 7 ? "space-y-0.5" : "space-y-1"}`}>
                                                     {currentMenu.categories.map((cat) => {
                                                         const isCatActive = currentCategory?.id === cat.id;
 
@@ -3075,26 +3075,28 @@ export default function Navigation() {
                                                     onClick={() => setActiveMenuId(null)}
                                                     className="shrink-0 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-xs font-bold transition-all shadow-xs cursor-pointer"
                                                 >
-                                                    <span>{activeConfig.ctaText}</span>
+                                                    <span>
+                                                        {currentCategory.id === 'industry-resource-hubs'
+                                                            ? 'Explore Industry Hubs'
+                                                            : activeConfig.ctaText}
+                                                    </span>
                                                     <ArrowRight className="w-3 h-3" />
                                                 </Link>
                                             </div>
                                         </main>
                                     </div>
 
-                                    {/* Bottom Executive Consultation Banner / Resources Strip */}
+                                    {/* Bottom Executive Consultation Banner (Consistent across all mega menus) */}
                                     <div className="px-4 py-2 bg-slate-50 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
                                         <span className="font-semibold text-slate-700 text-xs">
-                                            {currentMenu.id === 'resources-hub'
-                                                ? 'Explore business resources, analytical tools and practical frameworks to understand challenges and identify opportunities for growth.'
-                                                : 'Want to understand how we would approach your business challenge?'}
+                                            Want to understand how we would approach your business challenge?
                                         </span>
                                         <Link
-                                            to={currentMenu.id === 'resources-hub' ? '/resources-hub' : '/book-consultation'}
+                                            to="/book-consultation"
                                             onClick={() => setActiveMenuId(null)}
                                             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs transition-colors shadow-xs shrink-0 cursor-pointer"
                                         >
-                                            <span>{currentMenu.id === 'resources-hub' ? 'Explore Resources Hub' : 'Schedule an Introductory Call'}</span>
+                                            <span>Schedule an Introductory Call</span>
                                             <ArrowRight className="w-3.5 h-3.5" />
                                         </Link>
                                     </div>

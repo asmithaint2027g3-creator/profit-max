@@ -2924,7 +2924,7 @@ export default function Navigation() {
                                 <div className="flex flex-col lg:flex-row items-stretch">
                                     {/* ── LEFT SIDEBAR (COMPACT, BOTTOM ANCHORED LINK, ZERO DEAD SPACE) ── */}
                                     <aside className="w-full lg:w-[260px] xl:w-[275px] bg-slate-50/95 text-slate-900 p-3 sm:p-3.5 flex flex-col justify-between shrink-0 border-r border-slate-200/80">
-                                            <div className="space-y-2">
+                                            <div className={`${currentMenu.categories.length > 7 ? 'space-y-1' : 'space-y-2'}`}>
                                                 {/* Section Label */}
                                                 <div>
                                                     <span className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-blue-600 block">
@@ -2939,7 +2939,7 @@ export default function Navigation() {
                                                 </div>
 
                                                 {/* Category List (Tight Vertical Rhythm) */}
-                                                <nav className="pt-0.5 space-y-1">
+                                                <nav className={`pt-0.5 ${currentMenu.categories.length > 7 ? "space-y-px max-h-[300px] overflow-y-auto pr-1" : "space-y-1"}` }>
                                                     {currentMenu.categories.map((cat) => {
                                                         const isCatActive = currentCategory?.id === cat.id;
 
@@ -2948,7 +2948,7 @@ export default function Navigation() {
                                                                 key={cat.id}
                                                                 onMouseEnter={() => setActiveCategoryId(cat.id)}
                                                                 onClick={() => setActiveCategoryId(cat.id)}
-                                                                className={`w-full group px-3 rounded-lg text-xs font-bold transition-all duration-150 flex items-center justify-between cursor-pointer border py-1.5 ${
+                                                                className={`w-full group px-2.5 rounded-lg text-xs font-bold transition-all duration-150 flex items-center justify-between cursor-pointer border ${currentMenu.categories.length > 7 ? "py-1" : "py-1.5"} ${
                                                                     isCatActive
                                                                         ? 'bg-blue-600 text-white border-blue-600 shadow-sm shadow-blue-600/25'
                                                                         : 'text-slate-700 hover:text-blue-600 hover:bg-slate-100/90 border-transparent'
@@ -2984,7 +2984,7 @@ export default function Navigation() {
                                         {/* ── RIGHT CONTENT PANEL (FLEX-1 AUTO-FILL, ZERO BOTTOM GAP) ── */}
                                         <main className="flex-1 bg-white p-3 sm:p-4 flex flex-col justify-between">
                                             {/* Top Section: Header + Cards Grid */}
-                                            <div className="space-y-3 flex-1 flex flex-col justify-between mb-3">
+                                            <div className="space-y-2">
                                                 {/* Top Header Area */}
                                                 <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-slate-100 gap-1.5 shrink-0">
                                                     <div>
@@ -3008,7 +3008,7 @@ export default function Navigation() {
                                                 </div>
 
                                                 {/* Main Content Grid: Cards fill space proportionally (flex-1) */}
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 content-stretch flex-1">
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 content-start flex-1">
                                                     {allLinks.map((card, idx) => {
                                                         const CardIcon = card.icon || Target;
 
@@ -3017,7 +3017,7 @@ export default function Navigation() {
                                                                 key={idx}
                                                                 to={card.path}
                                                                 onClick={() => handleSubMenuCardClick(card.path)}
-                                                                className="group p-3.5 rounded-xl bg-slate-50/70 hover:bg-white border border-slate-200/80 hover:border-blue-400 hover:shadow-xs transition-all duration-150 flex items-start gap-3 cursor-pointer flex-1"
+                                                                className="group p-3 rounded-xl bg-slate-50/60 hover:bg-white border border-slate-200/80 hover:border-blue-400 hover:shadow-xs transition-all duration-150 flex items-start gap-2.5 cursor-pointer"
                                                             >
                                                                 <div className="w-7 h-7 rounded-lg bg-white border border-slate-200/80 text-blue-600 group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-2xs mt-0.5">
                                                                     <CardIcon className="w-3.5 h-3.5" />

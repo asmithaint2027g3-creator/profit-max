@@ -312,7 +312,7 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
     purpose: 'Deploy autonomous cognitive workforces that research, engage and execute commercial motions 24/7.',
     icon: BrainCircuit,
     ctaText: 'Explore AI & Agentic Automation',
-    path: '/resources-hub#ai-agentic-automation',
+    path: '/resources-hub/ai-agentic-automation-hub',
     previewLabels: [
       'AI Use Cases',
       'AI Agents',
@@ -324,14 +324,14 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       'Agentic Operating Models'
     ],
     subItems: [
-      { title: 'AI Use Cases', description: 'Proven commercial enterprise use cases delivering measurable bottom-line ROI.', path: '/resources-hub#ai-use-cases', icon: Zap, badge: 'Enterprise' },
-      { title: 'AI Agents', description: 'Task-oriented intelligence engines accelerating manual sales workflows.', path: '/resources-hub#ai-agents', icon: Bot, badge: 'Agents' },
-      { title: 'Autonomous Agents', description: 'Fully self-directed cognitive systems operating without human-in-the-loop bottlenecks.', path: '/resources-hub#autonomous-agents', icon: BrainCircuit, badge: 'Autonomous' },
-      { title: 'Agent Architectures', description: 'Memory mesh, tool invocation protocols and state-machine design patterns.', path: '/resources-hub#agent-architectures', icon: Workflow, badge: 'Architecture' },
-      { title: 'Multi-Agent Systems', description: 'Coordinated agent swarms executing synchronized research, messaging and CRM updates.', path: '/resources-hub#multi-agent-systems', icon: Layers, badge: 'Swarms' },
-      { title: 'AI Governance', description: 'Audit logging, prompt guardrails and deterministic compliance monitoring.', path: '/resources-hub#ai-governance', icon: ShieldCheck, badge: 'Governance' },
-      { title: 'AI Security', description: 'Private VPC inference, zero-data-leakage architecture and cryptographic isolation.', path: '/resources-hub#ai-security', icon: Shield, badge: 'Security' },
-      { title: 'Agentic Operating Models', description: 'Organizational structures orchestrating human teams and autonomous agentic workforces.', path: '/resources-hub#agentic-operating-models', icon: Sliders, badge: 'Operations' }
+      { title: 'AI Use Cases', description: 'Enterprise AI applications connected to measurable commercial revenue outcomes.', path: '/resources-hub/ai-agentic-automation-hub#ai-use-cases', icon: Zap, badge: 'Enterprise' },
+      { title: 'AI Agents', description: 'Task-oriented intelligent agents that execute defined business workflows.', path: '/resources-hub/ai-agentic-automation-hub#ai-agents', icon: Bot, badge: 'Agents' },
+      { title: 'Autonomous Agents', description: 'Goal-driven agents capable of planning, executing, and adapting tasks within defined boundaries.', path: '/resources-hub/ai-agentic-automation-hub#autonomous-agents', icon: BrainCircuit, badge: 'Autonomous' },
+      { title: 'Agent Architectures', description: 'Technical patterns for agent orchestration, memory, tools, and decision execution.', path: '/resources-hub/ai-agentic-automation-hub#agent-architectures', icon: Workflow, badge: 'Architecture' },
+      { title: 'Multi-Agent Systems', description: 'Coordinated agent networks working together across complex, multi-functional enterprise workflows.', path: '/resources-hub/ai-agentic-automation-hub#multi-agent-systems', icon: Layers, badge: 'Swarms' },
+      { title: 'AI Governance', description: 'Enterprise oversight, accountability, auditability, and responsible AI operational controls.', path: '/resources-hub/ai-agentic-automation-hub#ai-governance', icon: ShieldCheck, badge: 'Governance' },
+      { title: 'AI Security', description: 'Enterprise security, identity, data protection, and proactive risk management for AI systems.', path: '/resources-hub/ai-agentic-automation-hub#ai-security', icon: Shield, badge: 'Security' },
+      { title: 'Agentic Operating Models', description: 'Organizational architectures for orchestrating hybrid human and AI-agent workforces together.', path: '/resources-hub/ai-agentic-automation-hub#agentic-operating-models', icon: Sliders, badge: 'Operations' }
     ]
   },
 

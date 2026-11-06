@@ -148,7 +148,7 @@ export default function AutomationExcellenceHubPage() {
   const [demoPlaying, setDemoPlaying] = useState<boolean>(false);
 
   // Section 06: Industry Tab State
-  const [activeIndustryTab, setActiveIndustryTab] = useState<string>('B2B SaaS Enterprises');
+  const [activeIndustryTab, setActiveIndustryTab] = useState<string>('b2b-saas');
 
   // Section 08: Calculator States
   // Calculator 1: Time Savings
@@ -686,7 +686,7 @@ export default function AutomationExcellenceHubPage() {
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {cap.businessProblems.map((prob, pIdx) => (
+                    {cap.businessProblems?.map((prob, pIdx) => (
                       <div
                         key={pIdx}
                         className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-2xs hover:border-slate-300 space-y-1.5"
@@ -712,7 +712,7 @@ export default function AutomationExcellenceHubPage() {
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {cap.capabilities.map((cItem, cIdx) => (
+                    {cap.capabilities?.map((cItem, cIdx) => (
                       <div
                         key={cIdx}
                         className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-300 shadow-2xs transition-all space-y-2 relative overflow-hidden group"
@@ -751,7 +751,7 @@ export default function AutomationExcellenceHubPage() {
 
                   {/* Step Selector Pills */}
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
-                    {cap.workflowSteps.map((ws, sIdx) => {
+                    {cap.workflowSteps?.map((ws, sIdx) => {
                       const isSelected = activeStepIdx === sIdx;
                       return (
                         <button
@@ -866,7 +866,7 @@ export default function AutomationExcellenceHubPage() {
                   <div className="space-y-2">
                     <span className="text-xs font-mono font-bold text-slate-400 uppercase block">Model Variables &amp; Parameters:</span>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                      {cap.analyticalModel.variables.map((v, vIdx) => (
+                      {cap.analyticalModel?.variables?.map((v, vIdx) => (
                         <div key={vIdx} className="p-3 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
                           <span className="text-xs font-mono font-bold text-indigo-400">{v.symbol}</span>
                           <p className="text-[11px] text-slate-300">{v.meaning}</p>
@@ -877,7 +877,7 @@ export default function AutomationExcellenceHubPage() {
 
                   <div className="pt-2 text-xs text-slate-400 font-mono flex items-center gap-2">
                     <span className="font-bold text-indigo-400">Practical Application:</span>
-                    <span>{cap.analyticalModel.application}</span>
+                    <span>{cap.analyticalModel?.application}</span>
                   </div>
                 </div>
 
@@ -887,7 +887,7 @@ export default function AutomationExcellenceHubPage() {
                     Verified Commercial Outcomes
                   </span>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    {cap.businessOutcomes.map((out, oIdx) => (
+                    {cap.businessOutcomes?.map((out, oIdx) => (
                       <div
                         key={oIdx}
                         className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2"
@@ -1167,18 +1167,18 @@ export default function AutomationExcellenceHubPage() {
           {/* Industry Tabs */}
           <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
             {INDUSTRY_USE_CASES.map((ind) => {
-              const isActive = activeIndustryTab === ind.industry;
+              const isActive = activeIndustryTab === ind.id;
               return (
                 <button
-                  key={ind.industry}
-                  onClick={() => setActiveIndustryTab(ind.industry)}
+                  key={ind.id}
+                  onClick={() => setActiveIndustryTab(ind.id)}
                   className={`px-4 py-2.5 rounded-xl text-xs font-bold font-mono transition-all shrink-0 cursor-pointer ${
                     isActive
                       ? 'bg-blue-600 text-white shadow-sm'
                       : 'bg-white hover:bg-slate-100 text-slate-700 border border-slate-200'
                   }`}
                 >
-                  {ind.industry}
+                  {ind.name}
                 </button>
               );
             })}
@@ -1186,39 +1186,61 @@ export default function AutomationExcellenceHubPage() {
 
           {/* Selected Industry Detail */}
           {(() => {
-            const activeData = INDUSTRY_USE_CASES.find((i) => i.industry === activeIndustryTab) || INDUSTRY_USE_CASES[0];
+            const activeData = INDUSTRY_USE_CASES.find((i) => i.id === activeIndustryTab) || INDUSTRY_USE_CASES[0];
             return (
               <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-8">
-                <div className="space-y-2 border-b border-slate-100 pb-4">
-                  <span className="text-xs font-mono font-bold text-blue-600 uppercase">Sector Architecture Overview</span>
-                  <h3 className="text-2xl font-bold font-heading text-slate-900">{activeData.industry}</h3>
-                  <p className="text-sm text-slate-600 max-w-3xl">{activeData.context}</p>
-                </div>
-
-                <div className="space-y-4">
-                  <span className="text-xs font-mono font-bold text-slate-400 uppercase block">
-                    3 Core Workflows Automated in this Sector:
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                  <div className="space-y-1">
+                    <span className="text-xs font-mono font-bold text-blue-600 uppercase">Sector Architecture Overview</span>
+                    <h3 className="text-2xl font-bold font-heading text-slate-900">{activeData.name}</h3>
+                  </div>
+                  <span className="text-xs font-mono font-bold px-3 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
+                    {activeData.badge}
                   </span>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {activeData.workflows.map((wf, wIdx) => (
-                      <div key={wIdx} className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-                        <span className="text-xs font-mono font-bold text-blue-600">WORKFLOW 0{wIdx + 1}</span>
-                        <h4 className="text-sm font-bold text-slate-900 font-heading">{wf.name}</h4>
-                        <p className="text-xs text-slate-600 leading-relaxed">{wf.description}</p>
-                      </div>
-                    ))}
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Industry Challenges */}
+                  <div className="p-6 rounded-2xl bg-rose-50/50 border border-rose-100 space-y-3">
+                    <span className="text-xs font-mono font-bold text-rose-700 uppercase tracking-wider block">
+                      Sector Operational Bottlenecks:
+                    </span>
+                    <ul className="space-y-2 text-xs text-slate-700">
+                      {activeData.challenges?.map((c, cIdx) => (
+                        <li key={cIdx} className="flex items-start gap-2">
+                          <span className="text-rose-500 font-bold mt-0.5">✕</span>
+                          <span>{c}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Industry Automation Opportunities */}
+                  <div className="p-6 rounded-2xl bg-blue-50/50 border border-blue-100 space-y-3">
+                    <span className="text-xs font-mono font-bold text-blue-700 uppercase tracking-wider block">
+                      Automation Transformation Opportunities:
+                    </span>
+                    <ul className="space-y-2 text-xs text-slate-700">
+                      {activeData.opportunities?.map((o, oIdx) => (
+                        <li key={oIdx} className="flex items-start gap-2">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                          <span>{o}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
 
+                {/* Workflow Summary & KPIs */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-                  <div className="p-5 rounded-2xl bg-indigo-50/50 border border-indigo-100 space-y-2">
-                    <span className="text-xs font-mono font-bold text-indigo-700 uppercase block">Technical Architecture Stack</span>
-                    <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">{activeData.architecture}</p>
+                  <div className="p-5 rounded-2xl bg-slate-900 text-white space-y-2">
+                    <span className="text-xs font-mono font-bold text-blue-400 uppercase block">End-to-End Workflow Pipeline</span>
+                    <p className="text-xs sm:text-sm font-mono text-slate-200 leading-relaxed">{activeData.workflowSummary}</p>
                   </div>
 
-                  <div className="p-5 rounded-2xl bg-emerald-50/50 border border-emerald-100 space-y-2">
-                    <span className="text-xs font-mono font-bold text-emerald-700 uppercase block">Verified Business Impact</span>
-                    <p className="text-xs sm:text-sm font-bold text-slate-900 leading-relaxed">{activeData.impact}</p>
+                  <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-2">
+                    <span className="text-xs font-mono font-bold text-emerald-800 uppercase block">Verified Performance Telemetry</span>
+                    <p className="text-xs sm:text-sm font-bold text-emerald-950 leading-relaxed font-mono">{activeData.kpis}</p>
                   </div>
                 </div>
               </div>
@@ -1264,15 +1286,15 @@ export default function AutomationExcellenceHubPage() {
                   </h3>
 
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    {fw.description}
+                    {fw.purpose}
                   </p>
 
                   <div className="space-y-1 pt-2">
                     <span className="text-[10px] font-mono font-bold text-slate-400 uppercase block">Execution Steps:</span>
                     <ul className="space-y-1 text-xs text-slate-700 font-mono">
-                      {fw.steps.map((st, sIdx) => (
+                      {fw.steps?.map((st, sIdx) => (
                         <li key={sIdx} className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
                           <span>{st}</span>
                         </li>
                       ))}
@@ -1281,8 +1303,8 @@ export default function AutomationExcellenceHubPage() {
                 </div>
 
                 <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono">
-                  <span className="text-slate-400">Deliverable:</span>
-                  <span className="font-bold text-slate-800 bg-slate-50 px-2 py-0.5 rounded border border-slate-200">{fw.deliverable}</span>
+                  <span className="text-slate-400">Output:</span>
+                  <span className="font-bold text-slate-800 bg-slate-50 px-2 py-0.5 rounded border border-slate-200 text-[11px]">{fw.output}</span>
                 </div>
               </div>
             ))}
@@ -1605,7 +1627,7 @@ export default function AutomationExcellenceHubPage() {
                     <p className="text-xs text-slate-600 leading-relaxed">{mod.description}</p>
                   </div>
                   <div className="pt-2 border-t border-slate-100 text-[11px] font-mono text-emerald-700">
-                    <span className="font-bold">Metric: </span>{mod.target}
+                    <span className="font-bold">Interpretation: </span>{mod.interpretation}
                   </div>
                 </div>
               ))}

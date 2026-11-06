@@ -602,7 +602,7 @@ export default function AutomationExcellenceHubPage() {
                   </h3>
 
                   <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
-                    {cap.subtitle}
+                    {cap.subheading || (cap as any).subtitle}
                   </p>
                 </div>
 
@@ -621,8 +621,10 @@ export default function AutomationExcellenceHubPage() {
       <main className="divide-y divide-slate-200">
         {AUTOMATION_CAPABILITIES.map((cap, capIdx) => {
           const isEven = capIdx % 2 === 0;
+          const steps = cap.workflowSteps || [];
           const activeStepIdx = selectedWorkflowStep[cap.id] || 0;
-          const currentStep = cap.workflowSteps[activeStepIdx] || cap.workflowSteps[0];
+          const currentStep = steps[activeStepIdx] || steps[0] || { step: '1', description: '', input: '', logic: '', output: '', value: '' };
+          const capabilitiesList = cap.coreCapabilities || (cap as any).capabilities || [];
 
           return (
             <section
@@ -650,11 +652,11 @@ export default function AutomationExcellenceHubPage() {
                     </h2>
 
                     <p className="text-base sm:text-lg font-bold text-slate-700 font-heading">
-                      {cap.subtitle}
+                      {cap.subheading || (cap as any).subtitle}
                     </p>
 
                     <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-2xl">
-                      {cap.description}
+                      {cap.introduction || (cap as any).description}
                     </p>
                   </div>
 
@@ -686,19 +688,23 @@ export default function AutomationExcellenceHubPage() {
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {cap.businessProblems?.map((prob, pIdx) => (
-                      <div
-                        key={pIdx}
-                        className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-2xs hover:border-slate-300 space-y-1.5"
-                      >
-                        <div className="flex items-center gap-2 text-rose-600 text-xs font-mono font-bold">
-                          <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
-                          <span>Friction 0{pIdx + 1}</span>
+                    {cap.businessProblems?.map((prob: any, pIdx: number) => {
+                      const isString = typeof prob === 'string';
+                      const title = isString ? `Friction Factor 0${pIdx + 1}` : prob.title;
+                      const desc = isString ? prob : prob.description;
+                      return (
+                        <div
+                          key={pIdx}
+                          className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-2xs hover:border-slate-300 space-y-1.5"
+                        >
+                          <div className="flex items-center gap-2 text-rose-600 text-xs font-mono font-bold">
+                            <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
+                            <span>{title}</span>
+                          </div>
+                          <p className="text-[11px] sm:text-xs text-slate-700 leading-relaxed font-medium">{desc}</p>
                         </div>
-                        <h4 className="text-xs sm:text-sm font-bold text-slate-900 font-heading">{prob.title}</h4>
-                        <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed">{prob.description}</p>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -712,22 +718,31 @@ export default function AutomationExcellenceHubPage() {
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {cap.capabilities?.map((cItem, cIdx) => (
+                    {capabilitiesList.map((cItem: any, cIdx: number) => (
                       <div
                         key={cIdx}
                         className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-300 shadow-2xs transition-all space-y-2 relative overflow-hidden group"
                       >
-                        <div className="flex items-center justify-between">
+                        <div className="flex items-center justify-between gap-2">
                           <h4 className="text-sm font-extrabold text-slate-900 font-heading group-hover:text-blue-600 transition-colors">
                             {cItem.title}
                           </h4>
                           <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200 shrink-0">
-                            {cItem.tag}
+                            {Array.isArray(cItem.tags) ? cItem.tags[0] : (cItem.tag || 'Module')}
                           </span>
                         </div>
                         <p className="text-xs text-slate-600 leading-relaxed">
                           {cItem.description}
                         </p>
+                        {Array.isArray(cItem.tags) && cItem.tags.length > 1 && (
+                          <div className="flex flex-wrap gap-1 pt-1">
+                            {cItem.tags.slice(1).map((tag: string, tIdx: number) => (
+                              <span key={tIdx} className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-50 text-slate-500 border border-slate-200">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>
@@ -751,7 +766,7 @@ export default function AutomationExcellenceHubPage() {
 
                   {/* Step Selector Pills */}
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
-                    {cap.workflowSteps?.map((ws, sIdx) => {
+                    {steps.map((ws: any, sIdx: number) => {
                       const isSelected = activeStepIdx === sIdx;
                       return (
                         <button
@@ -765,8 +780,8 @@ export default function AutomationExcellenceHubPage() {
                               : 'bg-slate-800/80 border-slate-700/80 text-slate-300 hover:bg-slate-800 hover:text-white'
                           }`}
                         >
-                          <span className="text-[10px] font-mono font-bold block opacity-75">STEP 0{ws.step}</span>
-                          <span className="text-xs font-bold leading-tight line-clamp-1">{ws.name}</span>
+                          <span className="text-[10px] font-mono font-bold block opacity-75">STAGE 0{sIdx + 1}</span>
+                          <span className="text-xs font-bold leading-tight line-clamp-1">{ws.step || ws.name}</span>
                         </button>
                       );
                     })}
@@ -777,7 +792,7 @@ export default function AutomationExcellenceHubPage() {
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
                       <div className="flex items-center gap-2">
                         <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-400/30">
-                          STAGE 0{currentStep.step}: {currentStep.name}
+                          STAGE 0{activeStepIdx + 1}: {currentStep.step || (currentStep as any).name}
                         </span>
                       </div>
                       <span className="text-xs font-mono text-slate-400">Status: Automated Trigger Verified</span>
@@ -790,7 +805,7 @@ export default function AutomationExcellenceHubPage() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
                       <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
                         <span className="text-[10px] font-mono font-bold text-slate-400 uppercase block">Data Inputs:</span>
-                        <p className="text-xs font-mono text-slate-200">{currentStep.inputs}</p>
+                        <p className="text-xs font-mono text-slate-200">{currentStep.input || (currentStep as any).inputs}</p>
                       </div>
 
                       <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
@@ -800,7 +815,7 @@ export default function AutomationExcellenceHubPage() {
 
                       <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
                         <span className="text-[10px] font-mono font-bold text-emerald-400 uppercase block">Output &amp; Value:</span>
-                        <p className="text-xs font-mono text-slate-200">{currentStep.outputs}</p>
+                        <p className="text-xs font-mono text-slate-200">{currentStep.output || (currentStep as any).outputs || currentStep.value}</p>
                       </div>
                     </div>
                   </div>
@@ -814,7 +829,7 @@ export default function AutomationExcellenceHubPage() {
                         Real-World Practical Application
                       </span>
                       <h4 className="text-lg font-bold text-slate-900 font-heading">
-                        {cap.practicalExample.scenario}
+                        {cap.practicalExample?.scenario}
                       </h4>
                     </div>
                     <span className="text-xs font-mono font-bold px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">

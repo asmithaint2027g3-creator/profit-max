@@ -374,30 +374,30 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
     number: '09',
     title: 'Continuous Sales Improvement Hub',
     slug: 'continuous-sales-improvement',
-    shortIntro: 'Explore structured improvement methodologies and operational excellence frameworks.',
-    purpose: 'Apply battle-tested manufacturing quality rigor to commercial revenue engines.',
+    shortIntro: 'Discover practical improvement methodologies that help organizations identify sales inefficiencies, eliminate pipeline friction, and create measurable revenue gains.',
+    purpose: 'Apply battle-tested Lean, Six Sigma, and operational excellence rigor to modern revenue engines.',
     icon: Award,
     ctaText: 'Explore Continuous Improvement',
-    path: '/resources-hub#continuous-sales-improvement',
+    path: '/resources-hub/continuous-sales-improvement-hub',
     previewLabels: [
-      'Lean',
+      'Lean Sales',
       'Six Sigma',
       'Kaizen',
       'Theory of Constraints',
-      'TQM',
+      'Total Quality Management',
       'Operational Excellence',
       'Baldrige Framework',
-      'EFQM'
+      'EFQM Excellence Model'
     ],
     subItems: [
-      { title: 'Lean', description: 'Waste elimination in the sales pipeline: removing deal drag and over-qualification.', path: '/resources-hub#lean', icon: Sliders, badge: 'Lean' },
-      { title: 'Six Sigma', description: 'DMAIC methodologies minimizing variance in enterprise forecasting accuracy.', path: '/resources-hub#six-sigma', icon: BarChart3, badge: 'Six Sigma' },
-      { title: 'Kaizen', description: 'Continuous micro-optimizations across weekly sales cadence and outreach.', path: '/resources-hub#kaizen', icon: TrendingUp, badge: 'Kaizen' },
-      { title: 'Theory of Constraints', description: 'Goldratt drum-buffer-rope applied to sales pipeline bottleneck stages.', path: '/resources-hub#theory-of-constraints', icon: Target, badge: 'TOC' },
-      { title: 'TQM', description: 'Total Quality Management principles applied to enterprise client onboarding.', path: '/resources-hub#tqm', icon: CheckCircle2, badge: 'Quality' },
-      { title: 'Operational Excellence', description: 'Cross-functional cadences aligning product, marketing and customer success.', path: '/resources-hub#operational-excellence', icon: Award, badge: 'OpEx' },
-      { title: 'Baldrige Framework', description: 'Performance excellence criteria for organizational competitiveness and leadership.', path: '/resources-hub#baldrige-framework', icon: Landmark, badge: 'Baldrige' },
-      { title: 'EFQM', description: 'European Foundation for Quality Management business model assessment tools.', path: '/resources-hub#efqm', icon: Shield, badge: 'EFQM' }
+      { title: 'Lean Sales', description: 'Waste elimination in the sales pipeline: removing deal drag and over-qualification.', path: '/resources-hub/continuous-sales-improvement-hub#lean-sales', icon: Sliders, badge: 'Waste Elimination' },
+      { title: 'Six Sigma', description: 'DMAIC methodologies minimizing variance in enterprise forecasting accuracy.', path: '/resources-hub/continuous-sales-improvement-hub#six-sigma', icon: BarChart3, badge: 'Variance Reduction' },
+      { title: 'Kaizen', description: 'Continuous micro-optimizations across weekly sales cadence and outreach.', path: '/resources-hub/continuous-sales-improvement-hub#kaizen', icon: TrendingUp, badge: 'Continuous Learning' },
+      { title: 'Theory of Constraints', description: 'Goldratt drum-buffer-rope applied to sales pipeline bottleneck stages.', path: '/resources-hub/continuous-sales-improvement-hub#theory-of-constraints', icon: Target, badge: 'Bottleneck Throughput' },
+      { title: 'Total Quality Management', description: 'Total Quality Management principles applied to enterprise client onboarding.', path: '/resources-hub/continuous-sales-improvement-hub#total-quality-management', icon: CheckCircle2, badge: 'Customer Quality' },
+      { title: 'Operational Excellence', description: 'Cross-functional cadences aligning product, marketing and customer success.', path: '/resources-hub/continuous-sales-improvement-hub#operational-excellence', icon: Award, badge: 'RevOps Scale' },
+      { title: 'Baldrige Framework', description: 'Performance excellence criteria for organizational competitiveness and leadership.', path: '/resources-hub/continuous-sales-improvement-hub#baldrige-framework', icon: Landmark, badge: 'Organizational Maturity' },
+      { title: 'EFQM Excellence Model', description: 'Direction, execution and results management framework for sustainable transformation.', path: '/resources-hub/continuous-sales-improvement-hub#efqm-excellence-model', icon: Shield, badge: 'Sustainable Value' }
     ]
   },
 

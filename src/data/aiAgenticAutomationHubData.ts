@@ -938,3 +938,4 @@ export const ENTERPRISE_CHALLENGES = [
     solutionApproach: 'Enterprise Zero-Trust AI Architecture featuring PII redaction, private VPC inference, and immutable audit logging.'
   }
 ];
+

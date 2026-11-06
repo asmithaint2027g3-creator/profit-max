@@ -15,6 +15,7 @@ import SalesAccelerationHubPage from './pages/resources-hub/SalesAccelerationHub
 import GtmRevenueOperationsHubPage from './pages/resources-hub/GtmRevenueOperationsHubPage';
 import AdvancedAnalyticalToolsPage from './pages/resources-hub/AdvancedAnalyticalToolsPage';
 import AiAgenticAutomationHubPage from './pages/resources-hub/AiAgenticAutomationHubPage';
+import AutomationExcellenceHubPage from './pages/resources-hub/AutomationExcellenceHubPage';
 
 const SignIn = lazy(() => import('./pages/SignIn'));
 const Register = lazy(() => import('./pages/Register'));
@@ -305,6 +306,7 @@ export default function App() {
               <Route path="/resources-hub/gtm-revenue-operations-hub" element={<GtmRevenueOperationsHubPage />} />
               <Route path="/resources-hub/advanced-analytical-tools-sales-acceleration" element={<AdvancedAnalyticalToolsPage />} />
               <Route path="/resources-hub/ai-agentic-automation-hub" element={<AiAgenticAutomationHubPage />} />
+              <Route path="/resources-hub/automation-excellence" element={<AutomationExcellenceHubPage />} />
               <Route path="/resources-hub/case-studies" element={<CaseStudiesHub />} />
               <Route path="/resources-hub/case-studies/by-industry" element={<ByIndustryCaseStudiesPage />} />
               <Route path="/resources-hub/case-studies/by-function" element={<ByFunctionCaseStudiesPage />} />

@@ -825,22 +825,22 @@ export default function AutomationExcellenceHubPage() {
                   <div className="p-6 sm:p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div className="space-y-2 p-4 rounded-2xl bg-rose-50/50 border border-rose-100">
                       <span className="text-xs font-mono font-bold text-rose-700 uppercase block">Before (Traditional Manual)</span>
-                      <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">{cap.practicalExample.manualApproach}</p>
+                      <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">{cap.practicalExample?.traditionalApproach || cap.practicalExample?.manualApproach}</p>
                     </div>
 
                     <div className="space-y-2 p-4 rounded-2xl bg-blue-50/50 border border-blue-100">
                       <span className="text-xs font-mono font-bold text-blue-700 uppercase block">After (Automated Orchestration)</span>
-                      <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">{cap.practicalExample.automatedApproach}</p>
+                      <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">{cap.practicalExample?.automatedApproach}</p>
                     </div>
 
                     <div className="space-y-2 p-4 rounded-2xl bg-emerald-50/50 border border-emerald-100">
                       <span className="text-xs font-mono font-bold text-emerald-700 uppercase block">Measurable Business Impact</span>
-                      <p className="text-xs sm:text-sm font-semibold text-slate-800 leading-relaxed">{cap.practicalExample.measuredImpact}</p>
+                      <p className="text-xs sm:text-sm font-semibold text-slate-800 leading-relaxed">{cap.practicalExample?.measurableImpact || cap.practicalExample?.measuredImpact}</p>
                     </div>
                   </div>
                 </div>
 
-                {/* 6. Analytical Model & Formula */}
+                {/* 6. Analytical Models & Formulas */}
                 <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-950 text-white border border-slate-800 shadow-xl space-y-6">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
                     <div>
@@ -848,36 +848,48 @@ export default function AutomationExcellenceHubPage() {
                         Underlying Mathematical Rigor
                       </span>
                       <h4 className="text-xl font-bold font-heading text-white">
-                        {cap.analyticalModel.modelName}
+                        Standardized Mathematical &amp; Predictive Models
                       </h4>
                     </div>
                     <span className="text-xs font-mono text-slate-400 font-bold">Algorithmic Formulation</span>
                   </div>
 
-                  {/* Formula Box */}
-                  <div className="p-5 rounded-2xl bg-slate-950/80 border border-indigo-500/30 text-center space-y-2">
-                    <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider block">Standardized Calculation Model</span>
-                    <div className="text-lg sm:text-2xl font-mono font-bold text-indigo-300 py-2">
-                      {cap.analyticalModel.formula}
-                    </div>
-                  </div>
-
-                  {/* Variables Grid */}
-                  <div className="space-y-2">
-                    <span className="text-xs font-mono font-bold text-slate-400 uppercase block">Model Variables &amp; Parameters:</span>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                      {cap.analyticalModel?.variables?.map((v, vIdx) => (
-                        <div key={vIdx} className="p-3 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
-                          <span className="text-xs font-mono font-bold text-indigo-400">{v.symbol}</span>
-                          <p className="text-[11px] text-slate-300">{v.meaning}</p>
+                  <div className="space-y-6">
+                    {cap.analyticalModels?.map((model, mIdx) => (
+                      <div key={mIdx} className="p-5 rounded-2xl bg-slate-950/80 border border-indigo-500/30 space-y-4">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-2">
+                          <h5 className="text-base font-bold text-indigo-300 font-heading">
+                            {model.name}
+                          </h5>
+                          <span className="text-xs font-mono text-slate-400">Model 0{mIdx + 1}</span>
                         </div>
-                      ))}
-                    </div>
-                  </div>
 
-                  <div className="pt-2 text-xs text-slate-400 font-mono flex items-center gap-2">
-                    <span className="font-bold text-indigo-400">Practical Application:</span>
-                    <span>{cap.analyticalModel?.application}</span>
+                        {/* Formula Box */}
+                        <div className="p-3.5 rounded-xl bg-slate-900 text-center font-mono text-sm sm:text-lg font-bold text-indigo-300">
+                          {model.formula}
+                        </div>
+
+                        {/* Variables Grid */}
+                        {model.variables && model.variables.length > 0 && (
+                          <div className="space-y-1.5">
+                            <span className="text-[10px] font-mono font-bold text-slate-400 uppercase block">Model Variables &amp; Parameters:</span>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                              {model.variables.map((v, vIdx) => (
+                                <div key={vIdx} className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-mono">
+                                  <span className="text-indigo-400 font-bold">{v.symbol}: </span>
+                                  <span className="text-slate-300">{v.meaning}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+
+                        <div className="pt-2 text-xs text-slate-400 font-mono flex items-start gap-2 border-t border-slate-800">
+                          <span className="font-bold text-indigo-400 shrink-0">Business Impact:</span>
+                          <span className="text-slate-300 font-sans">{model.businessInterpretation}</span>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
@@ -887,21 +899,26 @@ export default function AutomationExcellenceHubPage() {
                     Verified Commercial Outcomes
                   </span>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    {cap.businessOutcomes?.map((out, oIdx) => (
-                      <div
-                        key={oIdx}
-                        className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2"
-                      >
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs font-mono font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">
-                            {out.metric}
-                          </span>
-                          <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                    {cap.businessOutcomes?.map((out, oIdx) => {
+                      const isString = typeof out === 'string';
+                      const outcomeText = isString ? out : (out as any).outcome || (out as any).impact || '';
+                      return (
+                        <div
+                          key={oIdx}
+                          className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2 flex flex-col justify-between"
+                        >
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs font-mono font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">
+                              Outcome 0{oIdx + 1}
+                            </span>
+                            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                          </div>
+                          <p className="text-xs sm:text-sm text-slate-800 font-semibold leading-relaxed">
+                            {outcomeText}
+                          </p>
                         </div>
-                        <h5 className="text-sm font-bold text-slate-900 font-heading">{out.outcome}</h5>
-                        <p className="text-xs text-slate-600 leading-relaxed">{out.impact}</p>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
 

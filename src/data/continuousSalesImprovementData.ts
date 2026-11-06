@@ -962,3 +962,4 @@ export const GOVERNANCE_CADENCE = [
     purpose: 'Comprehensive diagnostic review of organizational maturity, Balanced Scorecard health, annual improvement roadmap progress, and strategic resource allocation.'
   }
 ];
+

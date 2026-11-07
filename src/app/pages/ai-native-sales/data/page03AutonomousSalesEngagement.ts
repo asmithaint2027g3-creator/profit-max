@@ -488,4 +488,27 @@ export const page03AutonomousSalesEngagement: AiSalesCapabilityPageData = {
       "auditTrail": "Individual user authentication and time-stamped authorization records stored for every sent message."
     }
   ]
+,
+  "relatedCapabilities": [
+  {
+    "title": "Autonomous Pipeline Generation",
+    "path": "/ai-native-sales/autonomous-pipeline-generation",
+    "summary": "Feed high-intent, qualified accounts directly into personalized multi-threaded engagement workflows.",
+    "badge": "Pipeline Ingestion"
+  },
+  {
+    "title": "Intelligent Sales Agents",
+    "path": "/ai-native-sales/intelligent-sales-agents",
+    "summary": "Power engagement with AI SDR and Account Executive agents that adapt conversations in real time.",
+    "badge": "AI Agents"
+  },
+  {
+    "title": "Revenue Acceleration",
+    "path": "/ai-native-sales/revenue-acceleration",
+    "summary": "Optimize deal progression, eliminate stalls, and prescribe next-best-actions to close deals faster.",
+    "badge": "Acceleration Engine"
+  }
+],
+  "closingCtaHeadline": "Drive Buying Committee Consensus and Accelerate Deal Momentum",
+  "closingCtaDescription": "Replace generic email spam with contextual, multi-threaded buyer enablement that builds stakeholder alignment and shortens sales cycles."
 };

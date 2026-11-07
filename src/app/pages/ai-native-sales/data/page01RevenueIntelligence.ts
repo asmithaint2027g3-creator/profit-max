@@ -488,4 +488,27 @@ export const page01RevenueIntelligence: AiSalesCapabilityPageData = {
       "auditTrail": "Immutable forecast adjustment logs maintaining time-stamped rep and manager override notes."
     }
   ]
+,
+  "relatedCapabilities": [
+  {
+    "title": "Autonomous Pipeline Generation",
+    "path": "/ai-native-sales/autonomous-pipeline-generation",
+    "summary": "Translate verified account and buyer intent signals into qualified sales pipeline opportunities automatically.",
+    "badge": "Pipeline Engine"
+  },
+  {
+    "title": "Autonomous Sales Engagement",
+    "path": "/ai-native-sales/autonomous-sales-engagement",
+    "summary": "Orchestrate hyper-personalized multi-threaded outreach across buying committee stakeholders.",
+    "badge": "Engagement Engine"
+  },
+  {
+    "title": "Autonomous GTM Command Center",
+    "path": "/ai-native-sales/autonomous-gtm-command-center",
+    "summary": "Unify real-time commercial telemetry and board forecast precision across the entire revenue engine.",
+    "badge": "Command Center"
+  }
+],
+  "closingCtaHeadline": "Turn Latent Market Signals into Boardroom Revenue Precision",
+  "closingCtaDescription": "Deploy Revenue Intelligence to decode buying committee dynamics, capture intent signals before competitors, and forecast revenue with mathematical certainty."
 };

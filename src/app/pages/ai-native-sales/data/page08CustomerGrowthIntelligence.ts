@@ -488,4 +488,27 @@ export const page08CustomerGrowthIntelligence: AiSalesCapabilityPageData = {
       "auditTrail": "Ticket status verification logs checked before every expansion proposal generation."
     }
   ]
+,
+  "relatedCapabilities": [
+  {
+    "title": "Revenue Intelligence",
+    "path": "/ai-native-sales/revenue-intelligence",
+    "summary": "Track ongoing intent telemetry and executive stakeholder movement inside active customer accounts.",
+    "badge": "Account Telemetry"
+  },
+  {
+    "title": "Pricing Intelligence",
+    "path": "/ai-native-sales/pricing-intelligence",
+    "summary": "Audit contractual auto-renewals, usage overages, and expansion pricing tiers to eliminate revenue leakage.",
+    "badge": "Margin Engine"
+  },
+  {
+    "title": "Autonomous GTM Command Center",
+    "path": "/ai-native-sales/autonomous-gtm-command-center",
+    "summary": "Unify net retention rate (NRR) compounding with new logo pipeline telemetry in executive scorecards.",
+    "badge": "Command Center"
+  }
+],
+  "closingCtaHeadline": "Compound Enterprise NRR and Maximize Customer Lifetime Value",
+  "closingCtaDescription": "Turn existing customer accounts into predictable expansion engines. Detect churn risk months in advance, automate renewals, and capture cross-sell equity systematically."
 };

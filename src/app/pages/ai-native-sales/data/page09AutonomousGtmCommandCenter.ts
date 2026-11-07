@@ -488,4 +488,27 @@ export const page09AutonomousGtmCommandCenter: AiSalesCapabilityPageData = {
       "auditTrail": "Cryptographically hashed immutable audit trails recorded for all automated data transformations and transactions."
     }
   ]
+,
+  "relatedCapabilities": [
+  {
+    "title": "Revenue Intelligence",
+    "path": "/ai-native-sales/revenue-intelligence",
+    "summary": "Stream account signals, buying committee maps, and market intelligence into board forecast simulations.",
+    "badge": "Signal OS"
+  },
+  {
+    "title": "Intelligent Sales Agents",
+    "path": "/ai-native-sales/intelligent-sales-agents",
+    "summary": "Coordinate multi-agent workflows, task delegation, and human oversight checkpoints across the GTM mesh.",
+    "badge": "Agentic Fleet"
+  },
+  {
+    "title": "Revenue Acceleration",
+    "path": "/ai-native-sales/revenue-acceleration",
+    "summary": "Execute prescribed revenue interventions directly into active pipeline stages to prevent forecast slippage.",
+    "badge": "Intervention Engine"
+  }
+],
+  "closingCtaHeadline": "Orchestrate Connected Commercial Execution from a Single Command Center",
+  "closingCtaDescription": "Unify strategy, frontline execution, and board forecast precision. Eliminate functional silos and steer enterprise revenue growth with empirical mathematical clarity."
 };

@@ -488,4 +488,27 @@ export const page02AutonomousPipelineGeneration: AiSalesCapabilityPageData = {
       "auditTrail": "Rep review timestamps and edit diff logs stored permanently inside the CRM activity ledger."
     }
   ]
+,
+  "relatedCapabilities": [
+  {
+    "title": "Revenue Intelligence",
+    "path": "/ai-native-sales/revenue-intelligence",
+    "summary": "Understand buyers, accounts, and market signals before initiating outbound prospecting.",
+    "badge": "Signal OS"
+  },
+  {
+    "title": "Autonomous Sales Engagement",
+    "path": "/ai-native-sales/autonomous-sales-engagement",
+    "summary": "Engage generated pipeline with personalized multi-channel cadences and buyer enablement tools.",
+    "badge": "Engagement Engine"
+  },
+  {
+    "title": "Intelligent Sales Agents",
+    "path": "/ai-native-sales/intelligent-sales-agents",
+    "summary": "Deploy AI SDR and BDR agents to research and qualify outbound pipeline 24/7 without headcount drag.",
+    "badge": "Agentic Workforce"
+  }
+],
+  "closingCtaHeadline": "Scale Pipeline Generation with Autonomous Precision",
+  "closingCtaDescription": "Eliminate cold outreach guesswork. Build predictable, high-converting enterprise pipeline continuously using autonomous discovery and prospecting swarms."
 };

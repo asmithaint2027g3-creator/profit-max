@@ -488,4 +488,27 @@ export const page07EcosystemRevenueGrowth: AiSalesCapabilityPageData = {
       "auditTrail": "Formal dispute findings, evidence submissions, and commission split determinations recorded in audit ledger."
     }
   ]
+,
+  "relatedCapabilities": [
+  {
+    "title": "Autonomous Pipeline Generation",
+    "path": "/ai-native-sales/autonomous-pipeline-generation",
+    "summary": "Co-generate enterprise pipeline through joint partner motions and ecosystem account mapping.",
+    "badge": "Co-Sell Engine"
+  },
+  {
+    "title": "Revenue Acceleration",
+    "path": "/ai-native-sales/revenue-acceleration",
+    "summary": "Accelerate co-sold enterprise deals through shared stakeholder engagement and partner trust.",
+    "badge": "Acceleration OS"
+  },
+  {
+    "title": "Autonomous GTM Command Center",
+    "path": "/ai-native-sales/autonomous-gtm-command-center",
+    "summary": "Track channel contribution, partner attribution, and multi-tier revenue velocity in a single console.",
+    "badge": "Command Center"
+  }
+],
+  "closingCtaHeadline": "Unlock Scalable Multi-Tier Revenue Through Ecosystem Co-Selling",
+  "closingCtaDescription": "Transform channel relationships into high-velocity revenue engines. Discover partners, automate joint pipeline generation, and optimize ecosystem margin realization."
 };

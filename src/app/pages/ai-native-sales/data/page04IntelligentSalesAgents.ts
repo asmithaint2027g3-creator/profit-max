@@ -488,4 +488,27 @@ export const page04IntelligentSalesAgents: AiSalesCapabilityPageData = {
       "auditTrail": "User ID, approval timestamp, and any manual edits are recorded permanently in the opportunity audit ledger."
     }
   ]
+,
+  "relatedCapabilities": [
+  {
+    "title": "Autonomous Pipeline Generation",
+    "path": "/ai-native-sales/autonomous-pipeline-generation",
+    "summary": "Equip autonomous agents with real-time target account intelligence and verified prospect research.",
+    "badge": "Pipeline Engine"
+  },
+  {
+    "title": "Autonomous Sales Engagement",
+    "path": "/ai-native-sales/autonomous-sales-engagement",
+    "summary": "Execute multi-channel, multi-threaded conversations guided by contextual buyer enablement.",
+    "badge": "Engagement Engine"
+  },
+  {
+    "title": "Autonomous GTM Command Center",
+    "path": "/ai-native-sales/autonomous-gtm-command-center",
+    "summary": "Monitor, orchestrate, and audit human-in-the-loop autonomous agent workforces across the enterprise.",
+    "badge": "Command Center"
+  }
+],
+  "closingCtaHeadline": "Deploy Autonomous Sales Agents to Multiply Rep Quota Capacity",
+  "closingCtaDescription": "Empower your commercial organization with 24/7 cognitive agents that research accounts, initiate conversations, navigate deal desks, and protect revenue operations."
 };

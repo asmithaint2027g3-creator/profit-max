@@ -488,4 +488,27 @@ export const page06PricingIntelligence: AiSalesCapabilityPageData = {
       "auditTrail": "Historical customer pricing dispersion graphs maintained and reported quarterly to the Board Audit Committee."
     }
   ]
+,
+  "relatedCapabilities": [
+  {
+    "title": "Revenue Acceleration",
+    "path": "/ai-native-sales/revenue-acceleration",
+    "summary": "Integrate automated deal desk approvals into active opportunity progression to prevent pipeline stalls.",
+    "badge": "Velocity OS"
+  },
+  {
+    "title": "Customer Growth Intelligence",
+    "path": "/ai-native-sales/customer-growth-intelligence",
+    "summary": "Leverage customer health and expansion telemetry to guide contract renewals and pricing uplifts.",
+    "badge": "Expansion Engine"
+  },
+  {
+    "title": "Autonomous GTM Command Center",
+    "path": "/ai-native-sales/autonomous-gtm-command-center",
+    "summary": "Monitor gross margin realization and discount compliance across all product and regional tiers.",
+    "badge": "Command Center"
+  }
+],
+  "closingCtaHeadline": "Protect Gross Margin and Maximize Contract Value with Pricing Intelligence",
+  "closingCtaDescription": "Stop end-of-quarter margin erosion. Implement value-based willingness-to-pay modeling, automated deal desks, and proactive revenue leakage recovery today."
 };

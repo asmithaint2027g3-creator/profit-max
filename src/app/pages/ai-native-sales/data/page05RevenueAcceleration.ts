@@ -488,4 +488,27 @@ export const page05RevenueAcceleration: AiSalesCapabilityPageData = {
       "auditTrail": "War room action items, assigned owners, and resolution deadlines recorded in central deal repository."
     }
   ]
+,
+  "relatedCapabilities": [
+  {
+    "title": "Pricing Intelligence",
+    "path": "/ai-native-sales/pricing-intelligence",
+    "summary": "Protect gross margin, govern discounts, and automate deal desk turnarounds to close contracts cleanly.",
+    "badge": "Margin Protection"
+  },
+  {
+    "title": "Revenue Intelligence",
+    "path": "/ai-native-sales/revenue-intelligence",
+    "summary": "Feed live buyer signals and stakeholder consensus telemetry directly into opportunity risk models.",
+    "badge": "Signal Telemetry"
+  },
+  {
+    "title": "Autonomous GTM Command Center",
+    "path": "/ai-native-sales/autonomous-gtm-command-center",
+    "summary": "Synthesize pipeline velocity, rep attainment, and forecast variance into executive decision models.",
+    "badge": "Command Center"
+  }
+],
+  "closingCtaHeadline": "Eliminate Deal Stalls and Compress Enterprise Sales Cycles",
+  "closingCtaDescription": "Uncover dark-funnel pipeline friction, prescribe high-probability deal interventions, and maximize quarterly quota realization with Revenue Acceleration."
 };

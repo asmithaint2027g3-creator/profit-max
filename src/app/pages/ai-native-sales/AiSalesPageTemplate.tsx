@@ -12,9 +12,80 @@ interface AiSalesPageTemplateProps {
   data: AiSalesCapabilityPageData;
 }
 
+const ALL_CAPABILITIES = [
+  {
+    title: 'Revenue Intelligence',
+    path: '/ai-native-sales/revenue-intelligence',
+    summary: 'Deep account, buyer committee, intent telemetry, and revenue forecasting intelligence.',
+    badge: 'Intelligence Engine'
+  },
+  {
+    title: 'Autonomous Pipeline Generation',
+    path: '/ai-native-sales/autonomous-pipeline-generation',
+    summary: 'Autonomous discovery, dynamic account qualification, and ICP prospect research swarms.',
+    badge: 'Pipeline Engine'
+  },
+  {
+    title: 'Autonomous Sales Engagement',
+    path: '/ai-native-sales/autonomous-sales-engagement',
+    summary: 'Multi-threaded buyer journeys, consensus acceleration, and hyper-personalized engagement.',
+    badge: 'Engagement Engine'
+  },
+  {
+    title: 'Intelligent Sales Agents',
+    path: '/ai-native-sales/intelligent-sales-agents',
+    summary: 'Autonomous SDR, BDR, AE, and deal strategist agents executing commercial motions 24/7.',
+    badge: 'Agentic Workforce'
+  },
+  {
+    title: 'Revenue Acceleration',
+    path: '/ai-native-sales/revenue-acceleration',
+    summary: 'Opportunity risk detection, next-best-action guidance, and pipeline velocity optimization.',
+    badge: 'Acceleration OS'
+  },
+  {
+    title: 'Pricing Intelligence',
+    path: '/ai-native-sales/pricing-intelligence',
+    summary: 'Willingness-to-pay modeling, discount governance, CPQ automation, and leakage audits.',
+    badge: 'Margin Engine'
+  },
+  {
+    title: 'Ecosystem Revenue Growth',
+    path: '/ai-native-sales/ecosystem-revenue-growth',
+    summary: 'Hyperscaler co-selling, partner discovery, and multi-tier channel distribution intelligence.',
+    badge: 'Partner Network'
+  },
+  {
+    title: 'Customer Growth Intelligence',
+    path: '/ai-native-sales/customer-growth-intelligence',
+    summary: '360° health telemetry, predictive churn scoring, and programmatic cross-sell/upsell engines.',
+    badge: 'Retention Engine'
+  },
+  {
+    title: 'Autonomous GTM Command Center',
+    path: '/ai-native-sales/autonomous-gtm-command-center',
+    summary: 'Real-time revenue orchestration, board forecast modeling, and automated executive decisioning.',
+    badge: 'Command Center'
+  }
+];
+
 export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) {
   const location = useLocation();
-  const [activeSubId, setActiveSubId] = useState<string>(data.subSubmenus[0]?.id || '');
+
+  const subSubmenus = data.subSubmenus || [];
+  const businessProblems = data.businessProblems || [];
+  const workflowSteps = data.workflowSteps || [];
+  const useCases = data.useCases || [];
+  const dashboardMetrics = data.dashboardMetrics || [];
+  const kpis = data.kpis || [];
+  const governanceItems = data.governanceItems || [];
+  const relatedCapabilities = (data.relatedCapabilities && data.relatedCapabilities.length > 0)
+    ? data.relatedCapabilities
+    : ALL_CAPABILITIES.filter(c => c.path !== data.canonicalPath).slice(0, 3);
+  const closingHeadline = data.closingCtaHeadline || `Accelerate Enterprise Growth with ${data.title}`;
+  const closingDescription = data.closingCtaDescription || `Deploy ${data.title} within your commercial architecture to drive predictable pipeline, protected margins, and measurable ARR expansion.`;
+
+  const [activeSubId, setActiveSubId] = useState<string>(subSubmenus[0]?.id || '');
 
   // Update title & scroll to hash anchor on mount/change
   useEffect(() => {
@@ -24,7 +95,7 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
       const targetId = rawHash.replace(/^#/, '');
       if (!targetId) return;
 
-      const match = data.subSubmenus.find(
+      const match = subSubmenus.find(
         (s) => s.id.toLowerCase() === targetId.toLowerCase()
       );
       if (match) {
@@ -194,7 +265,7 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {data.businessProblems.map((prob) => (
+            {businessProblems.map((prob) => (
               <div
                 key={prob.id}
                 className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-xs flex flex-col justify-between hover:border-blue-400 hover:shadow-sm transition-all"
@@ -252,7 +323,7 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
 
             {/* Quick jump anchor pill bar */}
             <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-slate-100 border border-slate-200 self-start md:self-auto">
-              {data.subSubmenus.map((sub, sIdx) => (
+              {subSubmenus.map((sub, sIdx) => (
                 <a
                   key={sub.id}
                   href={`#${sub.id}`}
@@ -272,7 +343,7 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
 
           {/* Deep Capability Cards Stack */}
           <div className="space-y-12">
-            {data.subSubmenus.map((sub, sIdx) => (
+            {subSubmenus.map((sub, sIdx) => (
               <div
                 key={sub.id}
                 id={sub.id} // Anchor for direct sub-sub menu scroll
@@ -351,7 +422,7 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
                           Permitted Data & Inputs Used:
                         </h5>
                         <ul className="space-y-1.5">
-                          {sub.informationUsed.map((info, iIdx) => (
+                          {(sub.informationUsed || []).map((info, iIdx) => (
                             <li key={iIdx} className="text-xs text-slate-600 flex items-start gap-2">
                               <span className="text-blue-500 mt-0.5">•</span>
                               <span>{info}</span>
@@ -400,7 +471,7 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
                       Sub-Module Measurable Performance Indicators:
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                      {sub.kpis.map((k, kIdx) => (
+                      {(sub.kpis || []).map((k, kIdx) => (
                         <div key={kIdx} className="p-3 rounded-xl bg-slate-950/80 border border-slate-800">
                           <div className="text-xs font-mono font-bold text-emerald-400 mb-0.5">{k.target}</div>
                           <div className="text-xs font-bold text-white mb-0.5">{k.metric}</div>
@@ -432,7 +503,7 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {data.workflowSteps.map((step) => (
+            {workflowSteps.map((step) => (
               <div
                 key={step.step}
                 className="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs flex flex-col justify-between hover:border-blue-400 transition-colors"
@@ -497,7 +568,7 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {data.useCases.map((uc, uIdx) => (
+            {useCases.map((uc, uIdx) => (
               <div
                 key={uIdx}
                 className="bg-slate-50 rounded-2xl p-6 border border-slate-200 flex flex-col justify-between hover:border-slate-300 transition-all"
@@ -535,7 +606,7 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
                 <div className="pt-3 border-t border-slate-200">
                   <div className="text-[10px] font-mono text-slate-400 uppercase font-bold mb-2">Measured Impact:</div>
                   <div className="grid grid-cols-2 gap-2">
-                    {uc.metrics.map((m, mIdx) => (
+                    {(uc.metrics || []).map((m, mIdx) => (
                       <div key={mIdx} className="p-2 rounded-lg bg-white border border-slate-200 text-center">
                         <div className="text-xs font-mono font-bold text-blue-600">{m.value}</div>
                         <div className="text-[9px] text-slate-500 truncate">{m.label}</div>
@@ -579,7 +650,7 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
 
             {/* Metrics Ribbon */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {data.dashboardMetrics.map((dm, dIdx) => (
+              {dashboardMetrics.map((dm, dIdx) => (
                 <div key={dIdx} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-[11px] font-mono text-slate-400 uppercase">{dm.label}</span>
@@ -629,7 +700,7 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 text-slate-700">
-                  {data.kpis.map((kpi, kIdx) => (
+                  {kpis.map((kpi, kIdx) => (
                     <tr key={kIdx} className="hover:bg-slate-50/80 transition-colors">
                       <td className="p-3.5 sm:p-4 font-bold text-slate-900 whitespace-nowrap">
                         {kpi.name}
@@ -668,7 +739,7 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {data.governanceItems.map((gov, gIdx) => (
+            {governanceItems.map((gov, gIdx) => (
               <div key={gIdx} className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
                 <div className="flex items-center gap-2 pb-2 border-b border-slate-200">
                   <ShieldCheck className="w-4 h-4 text-blue-600" />
@@ -723,7 +794,7 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {data.relatedCapabilities.map((rel, rIdx) => (
+            {relatedCapabilities.map((rel, rIdx) => (
               <Link
                 key={rIdx}
                 to={rel.path}
@@ -762,11 +833,11 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4 font-heading">
-            {data.closingCtaHeadline}
+            {closingHeadline}
           </h2>
 
           <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
-            {data.closingCtaDescription}
+            {closingDescription}
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3">

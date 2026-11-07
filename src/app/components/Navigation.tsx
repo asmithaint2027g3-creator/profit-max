@@ -2985,10 +2985,10 @@ export default function Navigation() {
                                             </div>
                                         </aside>
 
-                                        {/* ── RIGHT CONTENT PANEL (MATCHING DESIGN REFERENCE: 3-COL SLEEK CARDS, ZERO DESCRIPTIONS, PM PALETTE) ── */}
+                                        {/* ── RIGHT CONTENT PANEL (2-COLUMN CARDS, ZERO DESCRIPTIONS, ZERO WHITE SPACE) ── */}
                                         <main className="flex-1 bg-white p-4 sm:p-5 flex flex-col justify-between">
-                                            {/* Top Section: Header + 3-Column Cards Grid */}
-                                            <div className="space-y-3.5">
+                                            {/* Top Section: Header + 2-Column Cards Grid */}
+                                            <div className="space-y-3">
                                                 {/* Top Header Area */}
                                                 <div className="flex items-center justify-between pb-2.5 border-b border-slate-100 shrink-0">
                                                     <span className="text-[11px] font-mono font-extrabold uppercase tracking-[0.18em] text-slate-500">
@@ -3001,41 +3001,38 @@ export default function Navigation() {
                                                     </span>
                                                 </div>
 
-                                                {/* Main Content Grid: 3 Columns, Clean Horizontal Cards, No Descriptions */}
-                                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 content-start">
+                                                {/* Main Content Grid: Exactly 2 Columns Across All Menus, No Descriptions */}
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-2.5 content-start">
                                                     {allLinks.map((card, idx) => {
                                                         const CardIcon = card.icon || Target;
-                                                        const subTag = card.badge || (card.tags && card.tags[0]) || activeConfig.sectionTag || 'CAPABILITY';
 
                                                         return (
                                                             <Link
                                                                 key={idx}
                                                                 to={card.path}
                                                                 onClick={() => handleSubMenuCardClick(card.path)}
-                                                                className="group p-2.5 sm:p-3 rounded-xl bg-white hover:bg-slate-50/80 border border-slate-200/90 hover:border-blue-400 hover:shadow-xs transition-all duration-150 flex items-center gap-2.5 cursor-pointer"
+                                                                className="group p-2.5 sm:p-3 rounded-xl bg-white hover:bg-slate-50/90 border border-slate-200/90 hover:border-blue-400 hover:shadow-xs transition-all duration-150 flex items-center gap-2.5 cursor-pointer"
                                                             >
-                                                                {/* Icon Container */}
+                                                                {/* Clean Icon Container */}
                                                                 <div className="w-8 h-8 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-600 group-hover:bg-blue-50 group-hover:border-blue-200 group-hover:text-blue-600 flex items-center justify-center shrink-0 transition-colors shadow-2xs">
                                                                     <CardIcon className="w-4 h-4" />
                                                                 </div>
 
-                                                                {/* Title & Uppercase Tag (NO DESCRIPTION) */}
-                                                                <div className="min-w-0 flex-1">
-                                                                    <h4 className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors truncate">
-                                                                        {card.title}
-                                                                    </h4>
-                                                                    <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-slate-400 group-hover:text-blue-500 transition-colors block truncate mt-0.5">
-                                                                        {subTag}
-                                                                    </span>
-                                                                </div>
+                                                                {/* Title Alone - Zero Description Clutter */}
+                                                                <span className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors truncate flex-1 min-w-0">
+                                                                    {card.title}
+                                                                </span>
+
+                                                                {/* Subtle Arrow Indicator on Hover */}
+                                                                <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all shrink-0 ml-1" />
                                                             </Link>
                                                         );
                                                     })}
                                                 </div>
                                             </div>
 
-                                            {/* Footer Row inside Right Panel: "Direct practice access" & "Browse all Solutions →" */}
-                                            <div className="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between text-xs shrink-0">
+                                            {/* Footer Row inside Right Panel: "Direct practice access" & "Browse all [Category] →" */}
+                                            <div className="pt-2.5 mt-2.5 border-t border-slate-100 flex items-center justify-between text-xs shrink-0">
                                                 <span className="text-[11px] font-mono text-slate-400">
                                                     Direct practice access
                                                 </span>

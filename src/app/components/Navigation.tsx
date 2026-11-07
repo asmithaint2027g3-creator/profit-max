@@ -2923,24 +2923,27 @@ export default function Navigation() {
                         />
 
                         {/* Unified Compact Mega-Menu Container (ProfitMachines Slate/Blue Palette - ZERO EXCESS WHITESPACE) */}
-                        <div className="max-w-[1040px] mx-auto px-4 sm:px-6 lg:px-8 pt-1">
+                        <div className="max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8 pt-1">
                             <div className="bg-white rounded-2xl shadow-xl border border-slate-200/90 ring-1 ring-slate-900/5 overflow-hidden flex flex-col">
                                 <div className="flex flex-col lg:flex-row items-stretch">
-                                    {/* ── LEFT SIDEBAR (COMPACT, UNIFORM RHYTHM, ZERO DEAD SPACE) ── */}
-                                    <aside className="w-full lg:w-[240px] xl:w-[250px] bg-slate-50/95 text-slate-900 p-3 sm:p-3.5 flex flex-col justify-between shrink-0 border-r border-slate-200/80">
-                                            <div>
-                                                {/* Section Label Alone - Zero Description Clutter */}
-                                                <div className="pb-1.5 border-b border-slate-200/60 mb-1.5">
+                                    {/* ── LEFT SIDEBAR (COMPACT, BOTTOM ANCHORED LINK, ZERO DEAD SPACE) ── */}
+                                    <aside className="w-full lg:w-[260px] xl:w-[275px] bg-slate-50/95 text-slate-900 p-3 sm:p-3.5 flex flex-col justify-between shrink-0 border-r border-slate-200/80">
+                                            <div className={`${currentMenu.categories.length > 7 ? 'space-y-1' : 'space-y-2'}`}>
+                                                {/* Section Label */}
+                                                <div>
                                                     <span className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-blue-600 block">
                                                         {activeConfig.sectionTag}
                                                     </span>
-                                                    <h2 className="text-sm sm:text-base font-extrabold text-slate-900 font-heading tracking-tight mt-0.5">
+                                                    <h2 className="text-base sm:text-lg font-extrabold text-slate-900 font-heading tracking-tight mt-0.5">
                                                         {currentMenu.name}
                                                     </h2>
+                                                    <p className="text-[11px] text-slate-500 mt-0.5 leading-snug line-clamp-2">
+                                                        {currentMenu.summary}
+                                                    </p>
                                                 </div>
 
                                                 {/* Category List (Tight Vertical Rhythm - No Unnecessary Scrollbars) */}
-                                                <nav className={`flex flex-col ${currentMenu.categories.length > 8 ? "gap-0.5" : "gap-1"}`}>
+                                                <nav className={`pt-0.5 ${currentMenu.categories.length > 7 ? "space-y-0.5" : "space-y-1"}`}>
                                                     {currentMenu.categories.map((cat) => {
                                                         const isCatActive = currentCategory?.id === cat.id;
 
@@ -2949,7 +2952,7 @@ export default function Navigation() {
                                                                 key={cat.id}
                                                                 onMouseEnter={() => setActiveCategoryId(cat.id)}
                                                                 onClick={() => setActiveCategoryId(cat.id)}
-                                                                className={`w-full group px-2.5 rounded-lg text-xs font-bold transition-all duration-150 flex items-center justify-between cursor-pointer border ${currentMenu.categories.length > 8 ? "py-1" : "py-1.5"} ${
+                                                                className={`w-full group px-2.5 rounded-lg text-xs font-bold transition-all duration-150 flex items-center justify-between cursor-pointer border ${currentMenu.categories.length > 7 ? "py-1" : "py-1.5"} ${
                                                                     isCatActive
                                                                         ? 'bg-blue-600 text-white border-blue-600 shadow-sm shadow-blue-600/25'
                                                                         : 'text-slate-700 hover:text-blue-600 hover:bg-slate-100/90 border-transparent'
@@ -2969,8 +2972,8 @@ export default function Navigation() {
                                                 </nav>
                                             </div>
 
-                                            {/* Bottom Link - Anchored neatly at the baseline with zero floating dead gap */}
-                                            <div className="pt-2 border-t border-slate-200/70 mt-2.5 shrink-0">
+                                            {/* Bottom Link - Anchored neatly at the baseline */}
+                                            <div className="pt-2 border-t border-slate-200/70 mt-3">
                                                 <Link
                                                     to={currentMenu.path}
                                                     onClick={() => setActiveMenuId(null)}
@@ -2982,23 +2985,36 @@ export default function Navigation() {
                                             </div>
                                         </aside>
 
-                                        {/* ── RIGHT CONTENT PANEL (UNIFORM CARD SIZES, ZERO BOTTOM VOID, EXACTLY LIKE OFFERINGS & INDUSTRIES) ── */}
-                                        <main className="flex-1 bg-white p-3 sm:p-3.5 flex flex-col justify-between">
-                                            <div>
+                                        {/* ── RIGHT CONTENT PANEL (CLEAN ARCHITECTURAL GRID, ZERO CLUTTER) ── */}
+                                        <main className="flex-1 bg-white p-4 sm:p-5 flex flex-col justify-between">
+                                            {/* Top Section: Header + Cards Grid */}
+                                            <div className="space-y-3">
                                                 {/* Top Header Area */}
-                                                <div className="flex items-center justify-between pb-1.5 mb-2 border-b border-slate-100 shrink-0">
-                                                    <span className="text-[11px] font-mono font-extrabold uppercase tracking-[0.18em] text-slate-500">
-                                                        {currentCategory.title}
-                                                    </span>
+                                                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-100 gap-2 shrink-0">
+                                                    <div>
+                                                        <span className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-blue-600 block">
+                                                            {activeConfig.capabilitiesLabel || 'ARCHITECTURAL CAPABILITIES'}
+                                                        </span>
+                                                        <h3 className="text-base sm:text-lg font-extrabold text-slate-900 font-heading tracking-tight mt-0.5">
+                                                            {currentCategory.title}
+                                                        </h3>
+                                                    </div>
 
-                                                    {/* Metadata Count Badge */}
-                                                    <span className="text-[11px] font-mono font-bold text-slate-400">
-                                                        {allLinks.length} items
-                                                    </span>
+                                                    {/* Metadata Badges */}
+                                                    <div className="flex items-center gap-2">
+                                                        <span className="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[10px] font-bold font-mono border border-slate-200/70">
+                                                            {allLinks.length} Capabilities
+                                                        </span>
+                                                        {displayOutcomeBadge && (
+                                                            <span className="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[10px] font-bold border border-blue-200/70">
+                                                                {displayOutcomeBadge}
+                                                            </span>
+                                                        )}
+                                                    </div>
                                                 </div>
 
-                                                {/* Main Content Grid: Exactly 2 Columns with Identical Uniform Card Sizes across all menus */}
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5 sm:gap-2">
+                                                {/* Main Content Grid: Sleek, compact sub-menu items without descriptions */}
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 content-start flex-1">
                                                     {allLinks.map((card, idx) => {
                                                         const CardIcon = card.icon || Target;
 
@@ -3007,86 +3023,69 @@ export default function Navigation() {
                                                                 key={idx}
                                                                 to={card.path}
                                                                 onClick={() => handleSubMenuCardClick(card.path)}
-                                                                className="group p-2.5 px-3 min-h-[44px] rounded-xl bg-white hover:bg-blue-50/40 border border-slate-200/90 hover:border-blue-400 hover:shadow-2xs transition-all duration-150 flex items-center justify-between gap-2.5 cursor-pointer"
+                                                                className="group flex items-center justify-between px-3 py-2.5 rounded-xl bg-slate-50/60 hover:bg-white border border-slate-200/80 hover:border-blue-400 hover:shadow-xs transition-all duration-150 cursor-pointer"
                                                             >
                                                                 <div className="flex items-center gap-2.5 min-w-0 flex-1">
-                                                                    {/* Clean Compact Icon Container */}
-                                                                    <div className="w-7 h-7 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-600 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 flex items-center justify-center shrink-0 transition-colors shadow-2xs">
-                                                                        <CardIcon className="w-3.5 h-3.5" />
+                                                                    <div className="w-7 h-7 rounded-lg bg-white border border-slate-200/80 text-blue-600 group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-2xs">
+                                                                        <CardIcon className="w-3.5 h-3.5 transition-transform group-hover:scale-110" />
                                                                     </div>
-
-                                                                    {/* Title Alone - Zero Description Clutter */}
-                                                                    <span className="text-xs font-semibold text-slate-900 group-hover:text-blue-600 transition-colors truncate">
+                                                                    <span className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors truncate font-sans">
                                                                         {card.title}
                                                                     </span>
                                                                 </div>
 
-                                                                {/* Subtle Arrow Indicator on Hover */}
-                                                                <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all shrink-0 ml-1" />
+                                                                <div className="flex items-center gap-1.5 shrink-0 ml-2">
+                                                                    {(card.badge || (card.tags && card.tags[0])) && (
+                                                                        <span className="text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 text-slate-600 group-hover:bg-blue-50 group-hover:text-blue-700 border border-slate-200/60 group-hover:border-blue-200 transition-colors shrink-0">
+                                                                            {card.badge || card.tags[0]}
+                                                                        </span>
+                                                                    )}
+                                                                    <ArrowRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all shrink-0 opacity-0 group-hover:opacity-100" />
+                                                                </div>
                                                             </Link>
                                                         );
                                                     })}
                                                 </div>
-
-                                                {/* Architectural Context & Commercial Impact Strip (Eliminates bottom white space in 4-item menus) */}
-                                                {allLinks.length <= 6 && (
-                                                    <div className="mt-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200/80 flex flex-col gap-1.5">
-                                                        <div className="flex items-center justify-between gap-2">
-                                                            <div className="flex items-center gap-1.5 min-w-0">
-                                                                <Sparkles className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-                                                                <span className="text-[11px] font-mono font-bold text-slate-700 truncate">
-                                                                    {currentCategory.desc || 'Architectural Revenue Intelligence'}
-                                                                </span>
-                                                            </div>
-                                                            {displayOutcomeBadge && (
-                                                                <span className="text-[10px] font-mono font-extrabold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 border border-blue-200/80 shrink-0">
-                                                                    {displayOutcomeBadge}
-                                                                </span>
-                                                            )}
-                                                        </div>
-                                                        {displayBusinessImpacts && displayBusinessImpacts.length > 0 && (
-                                                            <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
-                                                                {displayBusinessImpacts.map((impact: string, i: number) => (
-                                                                    <span key={i} className="inline-flex items-center gap-1 text-[11px] font-medium text-slate-600 bg-white px-2 py-0.5 rounded-md border border-slate-200/70 shadow-2xs">
-                                                                        <CheckCircle2 className="w-3 h-3 text-emerald-500 shrink-0" />
-                                                                        <span>{impact}</span>
-                                                                    </span>
-                                                                ))}
-                                                            </div>
-                                                        )}
-                                                    </div>
-                                                )}
                                             </div>
 
-                                            {/* Footer Row inside Right Panel: "Direct practice access" & "Browse all [Category] →" (Anchored cleanly at bottom) */}
-                                            <div className="pt-2 mt-2.5 border-t border-slate-100 flex items-center justify-between text-xs shrink-0">
-                                                <span className="text-[11px] font-mono text-slate-400">
-                                                    Direct practice access
-                                                </span>
+                                            {/* Sleek Action Footer Bar matching ProfitMachines design system */}
+                                            <div className="mt-4 pt-3 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs shrink-0">
+                                                <div className="flex items-center gap-2 text-slate-600 text-[11px]">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                                                    <span className="font-medium text-slate-600">
+                                                        Architecture: <strong className="text-slate-900 font-bold">{currentCategory.title}</strong>
+                                                    </span>
+                                                </div>
 
                                                 <Link
                                                     to={currentCategory.path || currentMenu.path}
                                                     onClick={() => setActiveMenuId(null)}
-                                                    className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer"
+                                                    className="shrink-0 inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-xs font-bold transition-all shadow-xs cursor-pointer hover:shadow-sm"
                                                 >
-                                                    <span>Browse all {currentCategory.title || currentMenu.name}</span>
-                                                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                                                    <span>
+                                                        {currentCategory.id === 'industry-resource-hubs'
+                                                            ? 'Explore Industry Hubs'
+                                                            : currentCategory.id === 'functional-resource-hubs'
+                                                            ? 'Explore Functional Hubs'
+                                                            : activeConfig.ctaText}
+                                                    </span>
+                                                    <ArrowRight className="w-3.5 h-3.5" />
                                                 </Link>
                                             </div>
                                         </main>
                                     </div>
 
-                                    {/* Bottom Executive Consultation Banner (Tight, docked directly) */}
-                                    <div className="px-4 py-2 bg-slate-50/90 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
+                                    {/* Bottom Executive Consultation Banner (Consistent across all mega menus) */}
+                                    <div className="px-4 py-2 bg-slate-50 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
                                         <span className="font-semibold text-slate-700 text-xs">
-                                            Need help identifying the right AI opportunity for your business?
+                                            Want to understand how we would approach your business challenge?
                                         </span>
                                         <Link
                                             to="/book-consultation"
                                             onClick={() => setActiveMenuId(null)}
-                                            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs transition-colors shadow-xs shrink-0 cursor-pointer"
+                                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs transition-colors shadow-xs shrink-0 cursor-pointer"
                                         >
-                                            <span>Talk to an Expert</span>
+                                            <span>Schedule an Introductory Call</span>
                                             <ArrowRight className="w-3.5 h-3.5" />
                                         </Link>
                                     </div>

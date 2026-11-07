@@ -2985,8 +2985,8 @@ export default function Navigation() {
                                             </div>
                                         </aside>
 
-                                        {/* ── RIGHT CONTENT PANEL (FLEX-1 AUTO-FILL, ZERO BOTTOM GAP) ── */}
-                                        <main className="flex-1 bg-white p-3 sm:p-4 flex flex-col justify-start space-y-3">
+                                        {/* ── RIGHT CONTENT PANEL (FLEX-1 AUTO-FILL, DOCKED TO BOTTOM) ── */}
+                                        <main className="flex-1 bg-white p-3 sm:p-4 flex flex-col justify-between">
                                             {/* Top Section: Header + Cards Grid */}
                                             <div className="space-y-2.5">
                                                 {/* Top Header Area */}
@@ -3042,45 +3042,47 @@ export default function Navigation() {
                                                 </div>
                                             </div>
 
-                                            {/* Bottom Summary Section (Hugs directly below the cards with zero gap) */}
-                                            <div className="p-2.5 px-3 rounded-xl bg-blue-50/40 border border-blue-100/80 flex flex-col md:flex-row md:items-center justify-between gap-2 text-xs shrink-0">
-                                                <div className="space-y-0.5 text-[11px] text-slate-600">
-                                                    <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
-                                                        <span className="font-bold text-slate-800">Recommended For:</span>
-                                                        {displayRecommendedFor.map((item, iIdx) => (
-                                                            <span key={iIdx} className="inline-flex items-center gap-1 font-medium text-slate-700">
-                                                                <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                                                                <span>{item}</span>
-                                                                {iIdx < displayRecommendedFor.length - 1 && <span className="text-slate-300">•</span>}
-                                                            </span>
-                                                        ))}
+                                            {/* Bottom Summary Section (Firmly docked at the bottom of the panel) */}
+                                            <div className="mt-auto pt-3">
+                                                <div className="p-2.5 px-3 rounded-xl bg-blue-50/40 border border-blue-100/80 flex flex-col md:flex-row md:items-center justify-between gap-2 text-xs shrink-0">
+                                                    <div className="space-y-0.5 text-[11px] text-slate-600">
+                                                        <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                                                            <span className="font-bold text-slate-800">Recommended For:</span>
+                                                            {displayRecommendedFor.map((item, iIdx) => (
+                                                                <span key={iIdx} className="inline-flex items-center gap-1 font-medium text-slate-700">
+                                                                    <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                                                                    <span>{item}</span>
+                                                                    {iIdx < displayRecommendedFor.length - 1 && <span className="text-slate-300">•</span>}
+                                                                </span>
+                                                            ))}
+                                                        </div>
+                                                        <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                                                            <span className="font-bold text-slate-800">Business Impact:</span>
+                                                            {displayBusinessImpacts.map((imp, mIdx) => (
+                                                                <span key={mIdx} className="inline-flex items-center gap-1 font-medium text-slate-700">
+                                                                    <CheckCircle2 className="w-3 h-3 text-blue-600" />
+                                                                    <span>{imp}</span>
+                                                                    {mIdx < displayBusinessImpacts.length - 1 && <span className="text-slate-300">•</span>}
+                                                                </span>
+                                                            ))}
+                                                        </div>
                                                     </div>
-                                                    <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
-                                                        <span className="font-bold text-slate-800">Business Impact:</span>
-                                                        {displayBusinessImpacts.map((imp, mIdx) => (
-                                                            <span key={mIdx} className="inline-flex items-center gap-1 font-medium text-slate-700">
-                                                                <CheckCircle2 className="w-3 h-3 text-blue-600" />
-                                                                <span>{imp}</span>
-                                                                {mIdx < displayBusinessImpacts.length - 1 && <span className="text-slate-300">•</span>}
-                                                            </span>
-                                                        ))}
-                                                    </div>
-                                                </div>
 
-                                                <Link
-                                                    to={currentCategory.path || currentMenu.path}
-                                                    onClick={() => setActiveMenuId(null)}
-                                                    className="shrink-0 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-xs font-bold transition-all shadow-xs cursor-pointer"
-                                                >
-                                                    <span>
-                                                        {currentCategory.id === 'industry-resource-hubs'
-                                                            ? 'Explore Industry Hubs'
-                                                            : currentCategory.id === 'functional-resource-hubs'
-                                                            ? 'Explore Functional Hubs'
-                                                            : activeConfig.ctaText}
-                                                    </span>
-                                                    <ArrowRight className="w-3 h-3" />
-                                                </Link>
+                                                    <Link
+                                                        to={currentCategory.path || currentMenu.path}
+                                                        onClick={() => setActiveMenuId(null)}
+                                                        className="shrink-0 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-xs font-bold transition-all shadow-xs cursor-pointer"
+                                                    >
+                                                        <span>
+                                                            {currentCategory.id === 'industry-resource-hubs'
+                                                                ? 'Explore Industry Hubs'
+                                                                : currentCategory.id === 'functional-resource-hubs'
+                                                                ? 'Explore Functional Hubs'
+                                                                : activeConfig.ctaText}
+                                                        </span>
+                                                        <ArrowRight className="w-3 h-3" />
+                                                    </Link>
+                                                </div>
                                             </div>
                                         </main>
                                     </div>

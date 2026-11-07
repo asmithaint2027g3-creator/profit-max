@@ -2986,9 +2986,9 @@ export default function Navigation() {
                                         </aside>
 
                                         {/* ── RIGHT CONTENT PANEL (FLEX-1 AUTO-FILL, ZERO BOTTOM GAP) ── */}
-                                        <main className="flex-1 bg-white p-3 sm:p-4 flex flex-col justify-between">
+                                        <main className="flex-1 bg-white p-3 sm:p-4 flex flex-col justify-start space-y-3">
                                             {/* Top Section: Header + Cards Grid */}
-                                            <div className="space-y-2">
+                                            <div className="space-y-2.5">
                                                 {/* Top Header Area */}
                                                 <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-slate-100 gap-1.5 shrink-0">
                                                     <div>
@@ -3011,8 +3011,8 @@ export default function Navigation() {
                                                     </div>
                                                 </div>
 
-                                                {/* Main Content Grid: Cards fill space proportionally (flex-1) */}
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 content-start flex-1">
+                                                {/* Main Content Grid: Cards hug content tightly */}
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 content-start">
                                                     {allLinks.map((card, idx) => {
                                                         const CardIcon = card.icon || Target;
 
@@ -3042,8 +3042,8 @@ export default function Navigation() {
                                                 </div>
                                             </div>
 
-                                            {/* Bottom Summary Section (Anchored flush to bottom baseline, NO whitespace gap) */}
-                                            <div className="mt-2.5 p-2.5 px-3 rounded-xl bg-blue-50/40 border border-blue-100/80 flex flex-col md:flex-row md:items-center justify-between gap-2 text-xs shrink-0">
+                                            {/* Bottom Summary Section (Hugs directly below the cards with zero gap) */}
+                                            <div className="p-2.5 px-3 rounded-xl bg-blue-50/40 border border-blue-100/80 flex flex-col md:flex-row md:items-center justify-between gap-2 text-xs shrink-0">
                                                 <div className="space-y-0.5 text-[11px] text-slate-600">
                                                     <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
                                                         <span className="font-bold text-slate-800">Recommended For:</span>

@@ -3800,7 +3800,7 @@ export default function Navigation() {
                                                                         : 'text-slate-700 hover:text-blue-600 hover:bg-slate-100/90 border-transparent'
                                                                 }`}
                                                             >
-                                                                <span className="truncate block text-xs font-bold tracking-tight">
+                                                                <span className="block text-xs font-bold tracking-tight leading-snug">
                                                                     {cat.title}
                                                                 </span>
                                                                 <ChevronRight
@@ -3863,17 +3863,17 @@ export default function Navigation() {
                                                                 key={idx}
                                                                 to={card.path}
                                                                 onClick={() => handleSubMenuCardClick(card.path)}
-                                                                className="group p-2.5 sm:py-2.5 sm:px-3 rounded-xl bg-slate-50/60 hover:bg-white border border-slate-200/80 hover:border-blue-400 hover:shadow-xs transition-all duration-150 flex items-center gap-2.5 cursor-pointer"
+                                                                className="group p-2.5 sm:py-2.5 sm:px-3 rounded-xl bg-slate-50/60 hover:bg-white border border-slate-200/80 hover:border-blue-400 hover:shadow-xs transition-all duration-150 flex items-start gap-2.5 cursor-pointer"
                                                             >
-                                                                <div className="w-7 h-7 rounded-lg bg-white border border-slate-200/80 text-blue-600 group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-2xs">
+                                                                <div className="w-7 h-7 rounded-lg bg-white border border-slate-200/80 text-blue-600 group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-2xs mt-0.5">
                                                                     <CardIcon className="w-3.5 h-3.5" />
                                                                 </div>
-                                                                <div className="min-w-0 flex-1 flex items-center justify-between gap-1.5">
-                                                                    <span className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors truncate">
+                                                                <div className="min-w-0 flex-1 flex flex-col justify-center">
+                                                                    <span className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
                                                                         {card.title}
                                                                     </span>
                                                                     {(card.badge || (card.tags && card.tags[0])) && (
-                                                                        <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-slate-400 group-hover:text-blue-600 transition-colors shrink-0">
+                                                                        <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-slate-400 group-hover:text-blue-600 transition-colors mt-0.5">
                                                                             {card.badge || card.tags[0]}
                                                                         </span>
                                                                     )}
@@ -4135,7 +4135,7 @@ export default function Navigation() {
                                 >
                                     <div className="flex items-center gap-2.5 min-w-0">
                                         <Calculator className="w-4 h-4 text-blue-600 shrink-0" />
-                                        <span className="text-xs sm:text-sm font-bold truncate block font-heading">
+                                        <span className="text-xs sm:text-sm font-bold block font-heading">
                                             Sales Calculators
                                         </span>
                                         <span className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-700 border border-amber-300/60">
@@ -4166,7 +4166,7 @@ export default function Navigation() {
                                         >
                                             <div className="flex items-center gap-2.5 min-w-0">
                                                 <MenuIcon className="w-4 h-4 text-blue-600 shrink-0" />
-                                                <span className="text-xs sm:text-sm font-bold truncate block font-heading">
+                                                <span className="text-xs sm:text-sm font-bold block font-heading">
                                                     {menu.name}
                                                 </span>
                                             </div>
@@ -4207,7 +4207,7 @@ export default function Navigation() {
                                         >
                                             <div className="flex items-center gap-2.5 min-w-0">
                                                 <MenuIcon className={`w-4 h-4 shrink-0 ${isExpanded || isCurrentActive ? 'text-blue-600' : 'text-slate-500'}`} />
-                                                <span className="text-xs sm:text-sm font-bold truncate block font-heading">
+                                                <span className="text-xs sm:text-sm font-bold block font-heading">
                                                     {menu.name}
                                                 </span>
                                             </div>
@@ -4271,7 +4271,7 @@ export default function Navigation() {
                                                                                 }
                                                                             }}
                                                                         >
-                                                                            <span className="text-xs font-semibold truncate leading-tight font-heading">
+                                                                            <span className="text-xs font-semibold leading-tight font-heading">
                                                                                 {cat.title}
                                                                             </span>
 
@@ -4318,7 +4318,7 @@ export default function Navigation() {
                                                                                             onClick={() => handleSubMenuCardClick(card.path)}
                                                                                             className="group flex items-center justify-between p-2.5 rounded-lg bg-slate-50/80 hover:bg-white border border-slate-200/70 hover:border-blue-300 text-xs font-bold text-slate-800 hover:text-blue-600 transition-all shadow-2xs"
                                                                                         >
-                                                                                            <span className="truncate">{card.title}</span>
+                                                                                            <span className="leading-snug">{card.title}</span>
                                                                                             <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-0.5 shrink-0 ml-2 transition-transform" />
                                                                                         </Link>
                                                                                     ))}

@@ -885,14 +885,14 @@ export default function AutomationExcellenceHubPage() {
                         </div>
 
                         {/* Variables Grid */}
-                        {model.variables && model.variables.length > 0 && (
+                        {Array.isArray(model?.variables) && model.variables.length > 0 && (
                           <div className="space-y-1.5">
                             <span className="text-[10px] font-mono font-bold text-slate-400 uppercase block">Model Variables &amp; Parameters:</span>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                               {model.variables.map((v, vIdx) => (
                                 <div key={vIdx} className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-mono">
-                                  <span className="text-indigo-400 font-bold">{v.symbol}: </span>
-                                  <span className="text-slate-300">{v.meaning}</span>
+                                  <span className="text-indigo-400 font-bold">{v?.symbol}: </span>
+                                  <span className="text-slate-300">{v?.meaning}</span>
                                 </div>
                               ))}
                             </div>
@@ -1119,7 +1119,14 @@ export default function AutomationExcellenceHubPage() {
 
           {/* Active Step Real-time Inspection Card */}
           {(() => {
-            const stepData = DEMO_WORKFLOW_STEPS[demoActiveStep];
+            const stepData = DEMO_WORKFLOW_STEPS[demoActiveStep] || DEMO_WORKFLOW_STEPS[0] || {
+              step: 1,
+              title: 'Workflow Step',
+              category: 'Pipeline',
+              system: 'Orchestrator',
+              description: '',
+              payload: {}
+            };
             return (
               <div className="p-6 sm:p-8 rounded-3xl bg-slate-950 border border-slate-800 space-y-6">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
@@ -1218,7 +1225,13 @@ export default function AutomationExcellenceHubPage() {
 
           {/* Selected Industry Detail */}
           {(() => {
-            const activeData = INDUSTRY_USE_CASES.find((i) => i.id === activeIndustryTab) || INDUSTRY_USE_CASES[0];
+            const activeData = INDUSTRY_USE_CASES.find((i) => i.id === activeIndustryTab) || INDUSTRY_USE_CASES[0] || {
+              name: 'Enterprise Sector',
+              badge: 'Architecture',
+              challenges: [],
+              opportunities: [],
+              workflowSummary: ''
+            };
             return (
               <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-8">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">

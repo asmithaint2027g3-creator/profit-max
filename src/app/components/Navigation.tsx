@@ -2985,35 +2985,33 @@ export default function Navigation() {
                                             </div>
                                         </aside>
 
-                                        {/* ── RIGHT CONTENT PANEL (CLEAN ARCHITECTURAL GRID, ZERO CLUTTER) ── */}
-                                        <main className="flex-1 bg-white p-4 sm:p-5 flex flex-col justify-between">
+                                        {/* ── RIGHT CONTENT PANEL (FLEX-1 AUTO-FILL, ZERO BOTTOM GAP) ── */}
+                                        <main className="flex-1 bg-white p-3 sm:p-4 flex flex-col justify-between">
                                             {/* Top Section: Header + Cards Grid */}
-                                            <div className="space-y-3">
+                                            <div className="space-y-2">
                                                 {/* Top Header Area */}
-                                                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-100 gap-2 shrink-0">
+                                                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-slate-100 gap-1.5 shrink-0">
                                                     <div>
-                                                        <span className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-blue-600 block">
-                                                            {activeConfig.capabilitiesLabel || 'ARCHITECTURAL CAPABILITIES'}
+                                                        <span className="text-[9px] font-extrabold uppercase tracking-[0.16em] text-slate-400">
+                                                            {activeConfig.capabilitiesLabel}
                                                         </span>
-                                                        <h3 className="text-base sm:text-lg font-extrabold text-slate-900 font-heading tracking-tight mt-0.5">
+                                                        <h3 className="text-sm sm:text-base font-extrabold text-slate-900 font-heading tracking-tight">
                                                             {currentCategory.title}
                                                         </h3>
                                                     </div>
 
                                                     {/* Metadata Badges */}
-                                                    <div className="flex items-center gap-2">
-                                                        <span className="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[10px] font-bold font-mono border border-slate-200/70">
-                                                            {allLinks.length} Capabilities
+                                                    <div className="flex flex-wrap items-center gap-1.5">
+                                                        <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[10px] font-bold font-mono">
+                                                            {allLinks.length} Items
                                                         </span>
-                                                        {displayOutcomeBadge && (
-                                                            <span className="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[10px] font-bold border border-blue-200/70">
-                                                                {displayOutcomeBadge}
-                                                            </span>
-                                                        )}
+                                                        <span className="px-2 py-0.5 rounded bg-blue-50 text-blue-700 text-[10px] font-bold border border-blue-200/60">
+                                                            {displayOutcomeBadge}
+                                                        </span>
                                                     </div>
                                                 </div>
 
-                                                {/* Main Content Grid: Sleek, compact sub-menu items without descriptions */}
+                                                {/* Main Content Grid: Cards fill space proportionally (flex-1) */}
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2 content-start flex-1">
                                                     {allLinks.map((card, idx) => {
                                                         const CardIcon = card.icon || Target;
@@ -3023,24 +3021,20 @@ export default function Navigation() {
                                                                 key={idx}
                                                                 to={card.path}
                                                                 onClick={() => handleSubMenuCardClick(card.path)}
-                                                                className="group flex items-center justify-between px-3 py-2.5 rounded-xl bg-slate-50/60 hover:bg-white border border-slate-200/80 hover:border-blue-400 hover:shadow-xs transition-all duration-150 cursor-pointer"
+                                                                className="group p-2.5 rounded-xl bg-slate-50/60 hover:bg-white border border-slate-200/80 hover:border-blue-400 hover:shadow-xs transition-all duration-150 flex items-center gap-2.5 cursor-pointer"
                                                             >
-                                                                <div className="flex items-center gap-2.5 min-w-0 flex-1">
-                                                                    <div className="w-7 h-7 rounded-lg bg-white border border-slate-200/80 text-blue-600 group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-2xs">
-                                                                        <CardIcon className="w-3.5 h-3.5 transition-transform group-hover:scale-110" />
-                                                                    </div>
-                                                                    <span className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors truncate font-sans">
+                                                                <div className="w-7 h-7 rounded-lg bg-white border border-slate-200/80 text-blue-600 group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-2xs">
+                                                                    <CardIcon className="w-3.5 h-3.5" />
+                                                                </div>
+                                                                <div className="min-w-0 flex-1 flex items-center justify-between gap-1.5">
+                                                                    <span className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors truncate">
                                                                         {card.title}
                                                                     </span>
-                                                                </div>
-
-                                                                <div className="flex items-center gap-1.5 shrink-0 ml-2">
                                                                     {(card.badge || (card.tags && card.tags[0])) && (
-                                                                        <span className="text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 text-slate-600 group-hover:bg-blue-50 group-hover:text-blue-700 border border-slate-200/60 group-hover:border-blue-200 transition-colors shrink-0">
+                                                                        <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-slate-400 group-hover:text-blue-600 transition-colors shrink-0">
                                                                             {card.badge || card.tags[0]}
                                                                         </span>
                                                                     )}
-                                                                    <ArrowRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all shrink-0 opacity-0 group-hover:opacity-100" />
                                                                 </div>
                                                             </Link>
                                                         );
@@ -3048,19 +3042,35 @@ export default function Navigation() {
                                                 </div>
                                             </div>
 
-                                            {/* Sleek Action Footer Bar matching ProfitMachines design system */}
-                                            <div className="mt-4 pt-3 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs shrink-0">
-                                                <div className="flex items-center gap-2 text-slate-600 text-[11px]">
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-                                                    <span className="font-medium text-slate-600">
-                                                        Architecture: <strong className="text-slate-900 font-bold">{currentCategory.title}</strong>
-                                                    </span>
+                                            {/* Bottom Summary Section (Anchored flush to bottom baseline, NO whitespace gap) */}
+                                            <div className="mt-2.5 p-2.5 px-3 rounded-xl bg-blue-50/40 border border-blue-100/80 flex flex-col md:flex-row md:items-center justify-between gap-2 text-xs shrink-0">
+                                                <div className="space-y-0.5 text-[11px] text-slate-600">
+                                                    <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                                                        <span className="font-bold text-slate-800">Recommended For:</span>
+                                                        {displayRecommendedFor.map((item, iIdx) => (
+                                                            <span key={iIdx} className="inline-flex items-center gap-1 font-medium text-slate-700">
+                                                                <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                                                                <span>{item}</span>
+                                                                {iIdx < displayRecommendedFor.length - 1 && <span className="text-slate-300">•</span>}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                    <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                                                        <span className="font-bold text-slate-800">Business Impact:</span>
+                                                        {displayBusinessImpacts.map((imp, mIdx) => (
+                                                            <span key={mIdx} className="inline-flex items-center gap-1 font-medium text-slate-700">
+                                                                <CheckCircle2 className="w-3 h-3 text-blue-600" />
+                                                                <span>{imp}</span>
+                                                                {mIdx < displayBusinessImpacts.length - 1 && <span className="text-slate-300">•</span>}
+                                                            </span>
+                                                        ))}
+                                                    </div>
                                                 </div>
 
                                                 <Link
                                                     to={currentCategory.path || currentMenu.path}
                                                     onClick={() => setActiveMenuId(null)}
-                                                    className="shrink-0 inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-xs font-bold transition-all shadow-xs cursor-pointer hover:shadow-sm"
+                                                    className="shrink-0 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-xs font-bold transition-all shadow-xs cursor-pointer"
                                                 >
                                                     <span>
                                                         {currentCategory.id === 'industry-resource-hubs'
@@ -3069,7 +3079,7 @@ export default function Navigation() {
                                                             ? 'Explore Functional Hubs'
                                                             : activeConfig.ctaText}
                                                     </span>
-                                                    <ArrowRight className="w-3.5 h-3.5" />
+                                                    <ArrowRight className="w-3 h-3" />
                                                 </Link>
                                             </div>
                                         </main>

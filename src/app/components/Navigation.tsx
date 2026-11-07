@@ -2985,63 +2985,48 @@ export default function Navigation() {
                                             </div>
                                         </aside>
 
-                                        {/* ── RIGHT CONTENT PANEL (FLEX-1 AUTO-FILL, ZERO BOTTOM GAP) ── */}
-                                        <main className="flex-1 bg-white p-3 sm:p-4 flex flex-col justify-between">
-                                            {/* Top Section: Header + Cards Grid */}
-                                            <div className="space-y-2">
+                                        {/* ── RIGHT CONTENT PANEL (MATCHING DESIGN REFERENCE: 3-COL SLEEK CARDS, ZERO DESCRIPTIONS, PM PALETTE) ── */}
+                                        <main className="flex-1 bg-white p-4 sm:p-5 flex flex-col justify-between">
+                                            {/* Top Section: Header + 3-Column Cards Grid */}
+                                            <div className="space-y-3.5">
                                                 {/* Top Header Area */}
-                                                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-slate-100 gap-1.5 shrink-0">
-                                                    <div>
-                                                        <span className="text-[9px] font-extrabold uppercase tracking-[0.16em] text-slate-400">
-                                                            {activeConfig.capabilitiesLabel}
-                                                        </span>
-                                                        <h3 className="text-sm sm:text-base font-extrabold text-slate-900 font-heading tracking-tight">
-                                                            {currentCategory.title}
-                                                        </h3>
-                                                    </div>
+                                                <div className="flex items-center justify-between pb-2.5 border-b border-slate-100 shrink-0">
+                                                    <span className="text-[11px] font-mono font-extrabold uppercase tracking-[0.18em] text-slate-500">
+                                                        {currentCategory.title}
+                                                    </span>
 
-                                                    {/* Metadata Badges */}
-                                                    <div className="flex flex-wrap items-center gap-1.5">
-                                                        <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[10px] font-bold font-mono">
-                                                            {allLinks.length} Items
-                                                        </span>
-                                                        <span className="px-2 py-0.5 rounded bg-blue-50 text-blue-700 text-[10px] font-bold border border-blue-200/60">
-                                                            {displayOutcomeBadge}
-                                                        </span>
-                                                    </div>
+                                                    {/* Metadata Count Badge */}
+                                                    <span className="text-[11px] font-mono font-bold text-slate-400">
+                                                        {allLinks.length} items
+                                                    </span>
                                                 </div>
 
-                                                {/* Main Content Grid: Cards fill space proportionally (flex-1) */}
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 content-start flex-1">
+                                                {/* Main Content Grid: 3 Columns, Clean Horizontal Cards, No Descriptions */}
+                                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 content-start">
                                                     {allLinks.map((card, idx) => {
                                                         const CardIcon = card.icon || Target;
+                                                        const subTag = card.badge || (card.tags && card.tags[0]) || activeConfig.sectionTag || 'CAPABILITY';
 
                                                         return (
                                                             <Link
                                                                 key={idx}
                                                                 to={card.path}
                                                                 onClick={() => handleSubMenuCardClick(card.path)}
-                                                                className="group p-3 rounded-xl bg-slate-50/60 hover:bg-white border border-slate-200/80 hover:border-blue-400 hover:shadow-xs transition-all duration-150 flex items-start gap-2.5 cursor-pointer"
+                                                                className="group p-2.5 sm:p-3 rounded-xl bg-white hover:bg-slate-50/80 border border-slate-200/90 hover:border-blue-400 hover:shadow-xs transition-all duration-150 flex items-center gap-2.5 cursor-pointer"
                                                             >
-                                                                <div className="w-7 h-7 rounded-lg bg-white border border-slate-200/80 text-blue-600 group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-2xs mt-0.5">
-                                                                    <CardIcon className="w-3.5 h-3.5" />
+                                                                {/* Icon Container */}
+                                                                <div className="w-8 h-8 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-600 group-hover:bg-blue-50 group-hover:border-blue-200 group-hover:text-blue-600 flex items-center justify-center shrink-0 transition-colors shadow-2xs">
+                                                                    <CardIcon className="w-4 h-4" />
                                                                 </div>
+
+                                                                {/* Title & Uppercase Tag (NO DESCRIPTION) */}
                                                                 <div className="min-w-0 flex-1">
-                                                                    <div>
-                                                                        <div className="flex items-center justify-between gap-1">
-                                                                            <span className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors truncate">
-                                                                                {card.title}
-                                                                            </span>
-                                                                            {(card.badge || (card.tags && card.tags[0])) && (
-                                                                                <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-slate-400 group-hover:text-blue-600 transition-colors shrink-0">
-                                                                                    {card.badge || card.tags[0]}
-                                                                                </span>
-                                                                            )}
-                                                                        </div>
-                                                                        <p className="text-[11px] text-slate-500 mt-1 leading-snug line-clamp-2 group-hover:text-slate-600">
-                                                                            {card.description}
-                                                                        </p>
-                                                                    </div>
+                                                                    <h4 className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors truncate">
+                                                                        {card.title}
+                                                                    </h4>
+                                                                    <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-slate-400 group-hover:text-blue-500 transition-colors block truncate mt-0.5">
+                                                                        {subTag}
+                                                                    </span>
                                                                 </div>
                                                             </Link>
                                                         );
@@ -3049,60 +3034,35 @@ export default function Navigation() {
                                                 </div>
                                             </div>
 
-                                            {/* Bottom Summary Section (Anchored flush to bottom baseline, NO whitespace gap) */}
-                                            <div className="mt-2.5 p-2.5 px-3 rounded-xl bg-blue-50/40 border border-blue-100/80 flex flex-col md:flex-row md:items-center justify-between gap-2 text-xs shrink-0">
-                                                <div className="space-y-0.5 text-[11px] text-slate-600">
-                                                    <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
-                                                        <span className="font-bold text-slate-800">Recommended For:</span>
-                                                        {displayRecommendedFor.map((item, iIdx) => (
-                                                            <span key={iIdx} className="inline-flex items-center gap-1 font-medium text-slate-700">
-                                                                <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                                                                <span>{item}</span>
-                                                                {iIdx < displayRecommendedFor.length - 1 && <span className="text-slate-300">•</span>}
-                                                            </span>
-                                                        ))}
-                                                    </div>
-                                                    <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
-                                                        <span className="font-bold text-slate-800">Business Impact:</span>
-                                                        {displayBusinessImpacts.map((imp, mIdx) => (
-                                                            <span key={mIdx} className="inline-flex items-center gap-1 font-medium text-slate-700">
-                                                                <CheckCircle2 className="w-3 h-3 text-blue-600" />
-                                                                <span>{imp}</span>
-                                                                {mIdx < displayBusinessImpacts.length - 1 && <span className="text-slate-300">•</span>}
-                                                            </span>
-                                                        ))}
-                                                    </div>
-                                                </div>
+                                            {/* Footer Row inside Right Panel: "Direct practice access" & "Browse all Solutions →" */}
+                                            <div className="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between text-xs shrink-0">
+                                                <span className="text-[11px] font-mono text-slate-400">
+                                                    Direct practice access
+                                                </span>
 
                                                 <Link
                                                     to={currentCategory.path || currentMenu.path}
                                                     onClick={() => setActiveMenuId(null)}
-                                                    className="shrink-0 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-xs font-bold transition-all shadow-xs cursor-pointer"
+                                                    className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer"
                                                 >
-                                                    <span>
-                                                        {currentCategory.id === 'industry-resource-hubs'
-                                                            ? 'Explore Industry Hubs'
-                                                            : currentCategory.id === 'functional-resource-hubs'
-                                                            ? 'Explore Functional Hubs'
-                                                            : activeConfig.ctaText}
-                                                    </span>
-                                                    <ArrowRight className="w-3 h-3" />
+                                                    <span>Browse all {currentCategory.title || currentMenu.name}</span>
+                                                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                                                 </Link>
                                             </div>
                                         </main>
                                     </div>
 
                                     {/* Bottom Executive Consultation Banner (Consistent across all mega menus) */}
-                                    <div className="px-4 py-2 bg-slate-50 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
+                                    <div className="px-5 py-2.5 bg-slate-50 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
                                         <span className="font-semibold text-slate-700 text-xs">
-                                            Want to understand how we would approach your business challenge?
+                                            Need help identifying the right AI opportunity for your business?
                                         </span>
                                         <Link
                                             to="/book-consultation"
                                             onClick={() => setActiveMenuId(null)}
-                                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs transition-colors shadow-xs shrink-0 cursor-pointer"
+                                            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs transition-colors shadow-xs shrink-0 cursor-pointer"
                                         >
-                                            <span>Schedule an Introductory Call</span>
+                                            <span>Talk to an Expert</span>
                                             <ArrowRight className="w-3.5 h-3.5" />
                                         </Link>
                                     </div>

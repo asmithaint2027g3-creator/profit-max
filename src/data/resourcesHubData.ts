@@ -473,32 +473,32 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
     number: '12',
     title: 'Tools & Calculators Hub',
     slug: 'tools-calculators',
-    shortIntro: 'Explore practical calculators and assessments designed to help businesses measure performance, evaluate opportunities and understand improvement areas.',
-    purpose: 'Quantify operational leakage, assess capability readiness and calculate payback dynamics with precision.',
+    shortIntro: 'Explore practical calculators, diagnostic assessments, and decision-support models designed to help businesses evaluate revenue performance and unit economics.',
+    purpose: 'Quantify pipeline velocity, evaluate customer acquisition costs (CAC/LTV), model investment ROI, and assess AI readiness.',
     icon: Calculator,
     ctaText: 'Explore Tools & Calculators',
-    path: '/resources-hub#tools-calculators',
+    path: '/resources-hub/tools-calculators-hub',
     previewLabels: [
-      'Revenue Calculators',
+      'Revenue Calculator',
       'Sales Velocity Calculator',
       'CAC / LTV Calculator',
       'ROI Calculator',
       'AI Readiness Assessment',
       'Automation Readiness Assessment',
       'Lean Waste Assessment',
-      'Robotics Suitability Assessment',
+      'Sales Process Automation Assessment',
       'GTM Maturity Assessment'
     ],
     subItems: [
-      { title: 'Revenue Calculators', description: 'Interactive suite modeling mid-funnel pipeline stall and annual leakage.', path: '/sales-calculators', icon: Calculator, badge: 'Live Tool' },
-      { title: 'Sales Velocity Calculator', description: 'Simulate throughput acceleration by adjusting win rate and cycle days.', path: '/sales-calculators', icon: Gauge, badge: 'Live Tool' },
-      { title: 'CAC / LTV Calculator', description: 'Unit economics calculator quantifying payback period and customer margin.', path: '/sales-calculators', icon: DollarSign, badge: 'Live Tool' },
-      { title: 'ROI Calculator', description: 'Empirical ROI calculator demonstrating financial impact of AI sales agents.', path: '/sales-calculators', icon: TrendingUp, badge: 'Live Tool' },
-      { title: 'AI Readiness Assessment', description: 'Diagnostic evaluation of enterprise data hygiene and infrastructure readiness.', path: '/resources-hub#ai-readiness', icon: BrainCircuit, badge: 'Assessment' },
-      { title: 'Automation Readiness Assessment', description: 'Process candidate scoring rubric for hyperautomation prioritization.', path: '/resources-hub#automation-readiness', icon: Zap, badge: 'Assessment' },
-      { title: 'Lean Waste Assessment', description: 'Diagnostic audit quantifying commercial pipeline non-value-added time.', path: '/resources-hub#lean-waste', icon: Sliders, badge: 'Assessment' },
-      { title: 'Robotics Suitability Assessment', description: 'Feasibility evaluation for physical robotics deployment in manufacturing.', path: '/resources-hub#robotics-suitability', icon: Factory, badge: 'Assessment' },
-      { title: 'GTM Maturity Assessment', description: 'Benchmark organizational alignment against Fortune 1000 best practices.', path: '/resources-hub#gtm-maturity', icon: Award, badge: 'Assessment' }
+      { title: 'Revenue Calculator', description: 'Interactive suite modeling top-line revenue from acquisition and account expansion.', path: '/resources-hub/tools-calculators-hub#revenue-performance', icon: Calculator, badge: 'Live Calculator' },
+      { title: 'Sales Velocity Calculator', description: 'Simulate throughput acceleration by adjusting win rate, deal value, and cycle days.', path: '/resources-hub/tools-calculators-hub#revenue-performance', icon: Gauge, badge: 'Live Calculator' },
+      { title: 'CAC / LTV Calculator', description: 'Unit economics calculator quantifying customer lifetime value and capital payback period.', path: '/resources-hub/tools-calculators-hub#customer-economics', icon: DollarSign, badge: 'Live Calculator' },
+      { title: 'ROI Calculator', description: 'Empirical ROI calculator demonstrating net financial impact of AI sales technology.', path: '/resources-hub/tools-calculators-hub#business-roi', icon: TrendingUp, badge: 'Live Calculator' },
+      { title: 'AI Readiness Assessment', description: 'Diagnostic evaluation across data hygiene, technical infrastructure, and governance.', path: '/resources-hub/tools-calculators-hub#ai-readiness', icon: BrainCircuit, badge: 'Assessment' },
+      { title: 'Automation Readiness Assessment', description: 'Process candidate scoring rubric for hyperautomation and agent prioritization.', path: '/resources-hub/tools-calculators-hub#ai-readiness', icon: Zap, badge: 'Assessment' },
+      { title: 'Lean Waste Assessment', description: 'Diagnostic audit quantifying commercial pipeline non-value-added time and annual drag.', path: '/resources-hub/tools-calculators-hub#sales-optimization', icon: Sliders, badge: 'Assessment' },
+      { title: 'Sales Process Automation Assessment', description: 'Milestone coverage evaluation across 8 core stages from lead capture to forecasting.', path: '/resources-hub/tools-calculators-hub#gtm-maturity', icon: Workflow, badge: 'Assessment' },
+      { title: 'GTM Maturity Assessment', description: 'Benchmark organizational alignment across 10 strategic commercial dimensions.', path: '/resources-hub/tools-calculators-hub#gtm-maturity', icon: Award, badge: 'Assessment' }
     ]
   }
 ];

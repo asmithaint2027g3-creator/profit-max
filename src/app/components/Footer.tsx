@@ -104,7 +104,7 @@ export default function Footer() {
                 { name: 'Continuous Improvement', path: '/resources-hub#continuous-sales-improvement' },
                 { name: 'Strategy & Transformation', path: '/resources-hub#strategy-transformation' },
                 { name: 'Frameworks & Templates', path: '/resources-hub/frameworks-templates-hub' },
-                { name: 'Tools & Calculators', path: '/resources-hub#tools-calculators' },
+                { name: 'Tools & Calculators', path: '/resources-hub/tools-calculators-hub' },
             ]
         },
         {

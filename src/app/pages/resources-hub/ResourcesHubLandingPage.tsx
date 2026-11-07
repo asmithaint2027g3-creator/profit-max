@@ -106,13 +106,13 @@ export default function ResourcesHubLandingPage() {
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
 
-                <a
-                  href="#tools-calculators"
+                <Link
+                  to="/resources-hub/tools-calculators-hub"
                   className="px-7 py-4 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 hover:border-slate-500 text-slate-200 font-bold text-sm sm:text-base transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Calculator className="w-4 h-4 text-blue-400" />
                   <span>Explore Tools &amp; Calculators</span>
-                </a>
+                </Link>
               </div>
 
               {/* Trust Reassurance Anchors */}
@@ -449,7 +449,7 @@ export default function ResourcesHubLandingPage() {
                 title: 'Explore by Tools & Analytics',
                 desc: 'Interactive calculators, Bayesian probability models, and capability maturity rubrics for empirical audits.',
                 icon: Calculator,
-                link: '#tools-calculators',
+                link: '/resources-hub/tools-calculators-hub',
                 cta: 'Launch Tools & Calculators'
               }
             ].map((pathway, idx) => {

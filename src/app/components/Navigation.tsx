@@ -1222,482 +1222,1016 @@ export default function Navigation() {
             badge: 'Scientific Revenue OS',
             summary: 'The empirical architecture of profitable scale: 9 connected capabilities across revenue physics, signal intelligence, latent discovery, forensic leakage recovery, offer engineering, and executive telemetry.',
             categories: [
-                // SUB-MENU 1: Revenue Physics
-                {
-                    id: 'revenue-physics',
-                    title: 'Revenue Physics',
-                    desc: 'Revenue mechanics, parametric equations, cohort dynamics, and unit economics.',
-                    path: '/growth-science/revenue-physics',
-                    badge: 'Pillar 01',
+          {
+                    "id": "revenue-physics",
+                    "title": "Revenue Physics",
+                    "desc": "Understand the structural mechanics, constraints and dynamics that determine revenue performance and profitable business growth.",
+                    "path": "/growth-science/revenue-physics",
+                    "badge": "8 Capabilities",
                     icon: Activity,
-                    columns: [
-                        {
-                            header: 'Mathematical Models',
-                            badge: 'Empirical',
-                            icon: Activity,
-                            cards: [
-                                {
-                                    title: 'Revenue Architecture',
-                                    description: 'Deconstruct revenue into deterministic flow equations, driver mapping, and velocity modeling.',
-                                    path: '/growth-science/revenue-physics#revenue-architecture',
-                                    badge: 'Velocity Index',
-                                    icon: Activity,
-                                    tags: ['Driver Mapping', 'Parametric Equation']
-                                },
-                                {
-                                    title: 'Customer Economics',
-                                    description: 'Audit multi-year cohort compounding, expansion mechanics, and retention survival curves.',
-                                    path: '/growth-science/revenue-physics#customer-economics',
-                                    badge: 'LTV:CAC 4.2x',
-                                    icon: LineChart,
-                                    tags: ['Cohort Compounding', 'NRR Dynamics']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Unit Economics & Whitespace',
-                            badge: 'Defensibility',
-                            icon: DollarSign,
-                            cards: [
-                                {
-                                    title: 'Unit Economics',
-                                    description: 'Audit fully loaded CAC, cost-to-serve allocations, and margin stacks across customer deciles.',
-                                    path: '/growth-science/revenue-physics#unit-economics',
-                                    badge: 'Margin Stack',
-                                    icon: Scale,
-                                    tags: ['Cost-to-Serve', 'Profit Pools']
-                                },
-                                {
-                                    title: 'White Space Intelligence',
-                                    description: 'Dissect TAM into defensible, unit-economic micro-segments and uncontested profit pools.',
-                                    path: '/growth-science/revenue-physics#white-space-intelligence',
-                                    badge: 'Micro-TAM',
-                                    icon: Globe,
-                                    tags: ['Market Gaps', 'Growth Vectors']
-                                }
-                            ]
-                        }
+                    "columns": [
+                              {
+                                        "header": "Mechanics & Dynamics",
+                                        "badge": "Structural",
+                                        icon: Activity,
+                                        "cards": [
+                                                  {
+                                                            "title": "Revenue Architecture",
+                                                            "description": "Deconstruct revenue into deterministic flow equations, driver mapping, and causal levers.",
+                                                            "path": "/growth-science/revenue-physics#revenue-architecture",
+                                                            "badge": "Driver Mapping",
+                                                            icon: Activity,
+                                                            "tags": [
+                                                                      "Driver Mapping",
+                                                                      "Parametric Equations"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Revenue Velocity Modeling",
+                                                            "description": "Model and accelerate the four parametric components of the revenue velocity equation.",
+                                                            "path": "/growth-science/revenue-physics#revenue-velocity-modeling",
+                                                            "badge": "Velocity Formula",
+                                                            icon: TrendingUp,
+                                                            "tags": [
+                                                                      "Cash Compounding",
+                                                                      "Cycle Compression"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Revenue Friction Diagnostics",
+                                                            "description": "Isolate hidden pipeline friction, lead qualification decay, and stage latency points.",
+                                                            "path": "/growth-science/revenue-physics#revenue-friction-diagnostics",
+                                                            "badge": "Friction Audit",
+                                                            icon: AlertTriangle,
+                                                            "tags": [
+                                                                      "Stage Latency",
+                                                                      "Drop-off Points"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Growth Constraint Analysis",
+                                                            "description": "Identify binding operational bottlenecks capping company growth using the Theory of Constraints.",
+                                                            "path": "/growth-science/revenue-physics#growth-constraint-analysis",
+                                                            "badge": "Bottleneck Theory",
+                                                            icon: Target,
+                                                            "tags": [
+                                                                      "Throughput Caps",
+                                                                      "Growth Ceiling"
+                                                            ]
+                                                  }
+                                        ]
+                              },
+                              {
+                                        "header": "Flow & Predictability",
+                                        "badge": "Deterministic",
+                                        icon: LineChart,
+                                        "cards": [
+                                                  {
+                                                            "title": "Revenue Flow Optimization",
+                                                            "description": "Synchronize marketing demand generation, sales execution, and customer success delivery.",
+                                                            "path": "/growth-science/revenue-physics#revenue-flow-optimization",
+                                                            "badge": "Flow Efficiency",
+                                                            icon: Workflow,
+                                                            "tags": [
+                                                                      "Inter-stage Sync",
+                                                                      "Capacity Balance"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Profit Pool Dynamics",
+                                                            "description": "Locate defensible profit pools across customer segments and eliminate negative contribution margin.",
+                                                            "path": "/growth-science/revenue-physics#profit-pool-dynamics",
+                                                            "badge": "Margin Stack",
+                                                            icon: DollarSign,
+                                                            "tags": [
+                                                                      "Customer Deciles",
+                                                                      "Contribution Margin"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Revenue Predictability Modeling",
+                                                            "description": "Stochastic pipeline modeling and Bayesian probabilities delivering <5% quarterly forecast variance.",
+                                                            "path": "/growth-science/revenue-physics#revenue-predictability-modeling",
+                                                            "badge": "<4.5% Variance",
+                                                            icon: LineChart,
+                                                            "tags": [
+                                                                      "Monte Carlo",
+                                                                      "Objective Gating"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Revenue System Design",
+                                                            "description": "Architect self-compounding commercial flywheels with unified data models and governance.",
+                                                            "path": "/growth-science/revenue-physics#revenue-system-design",
+                                                            "badge": "Operating OS",
+                                                            icon: Cpu,
+                                                            "tags": [
+                                                                      "Revenue Flywheel",
+                                                                      "Unified Architecture"
+                                                            ]
+                                                  }
+                                        ]
+                              }
                     ]
-                },
-                // SUB-MENU 2: Revenue Intelligence
-                {
-                    id: 'revenue-intelligence',
-                    title: 'Revenue Intelligence',
-                    desc: 'Buyer intent signals, competitive tracking, customer health, and stochastic forecasting.',
-                    path: '/growth-science/revenue-intelligence',
-                    badge: 'Pillar 02',
+          },
+          {
+                    "id": "revenue-intelligence",
+                    "title": "Revenue Intelligence",
+                    "desc": "Transform business, customer, market and performance data into actionable revenue intelligence.",
+                    "path": "/growth-science/revenue-intelligence",
+                    "badge": "8 Capabilities",
                     icon: LineChart,
-                    columns: [
-                        {
-                            header: 'Signal & Market Sensing',
-                            badge: 'Real-Time',
-                            icon: Radar,
-                            cards: [
-                                {
-                                    title: 'Revenue Signal Intelligence',
-                                    description: 'Capture active buyer intent signals, account triggers, and AI prospect discovery.',
-                                    path: '/growth-science/revenue-intelligence#revenue-signal-intelligence',
-                                    badge: 'Intent Signals',
-                                    icon: Radar,
-                                    tags: ['Buying Intent', 'Account Signals']
-                                },
-                                {
-                                    title: 'Market Intelligence',
-                                    description: 'Benchmark competitor win rates, price concessions, and category displacement trends.',
-                                    path: '/growth-science/revenue-intelligence#market-intelligence',
-                                    badge: 'Win Rate 55%',
-                                    icon: Globe,
-                                    tags: ['Competitive Pricing', 'Share of Market']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Customer & Forecast Models',
-                            badge: 'Predictive',
-                            icon: LineChart,
-                            cards: [
-                                {
-                                    title: 'Customer Intelligence',
-                                    description: 'Predictive churn probability modeling, growth potential scoring, and health analytics.',
-                                    path: '/growth-science/revenue-intelligence#customer-intelligence',
-                                    badge: '88% Churn Predict',
-                                    icon: Users,
-                                    tags: ['Customer Health', 'Renewal Equity']
-                                },
-                                {
-                                    title: 'Revenue Forecast Intelligence',
-                                    description: 'Stochastic Monte Carlo pipeline modeling delivering board forecast precision with <5% variance.',
-                                    path: '/growth-science/revenue-intelligence#revenue-forecast-intelligence',
-                                    badge: '<4.5% Variance',
-                                    icon: LineChart,
-                                    tags: ['Stochastic Forecast', 'Zero Bias']
-                                }
-                            ]
-                        }
+                    "columns": [
+                              {
+                                        "header": "Data & Market Sensing",
+                                        "badge": "Signals",
+                                        icon: Radar,
+                                        "cards": [
+                                                  {
+                                                            "title": "Revenue Data Intelligence",
+                                                            "description": "Consolidate and normalize multi-source transaction, CRM, and usage data into verified truth.",
+                                                            "path": "/growth-science/revenue-intelligence#revenue-data-intelligence",
+                                                            "badge": "Data Hygiene",
+                                                            icon: Database,
+                                                            "tags": [
+                                                                      "Data Harmonization",
+                                                                      "Identity Resolution"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Customer Economics Intelligence",
+                                                            "description": "Measure fully loaded CAC, LTV:CAC ratios, and cohort retention decay curves.",
+                                                            "path": "/growth-science/revenue-intelligence#customer-economics-intelligence",
+                                                            "badge": "LTV:CAC 4.5x",
+                                                            icon: Scale,
+                                                            "tags": [
+                                                                      "Cohort Compounding",
+                                                                      "Cost-to-Serve"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Market Intelligence",
+                                                            "description": "Track macroeconomic shifts, regulatory compliance mandates, and segment growth rates.",
+                                                            "path": "/growth-science/revenue-intelligence#market-intelligence",
+                                                            "badge": "TAM Sensing",
+                                                            icon: Globe,
+                                                            "tags": [
+                                                                      "Macro Trends",
+                                                                      "Sector Growth"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Demand Intelligence",
+                                                            "description": "Capture first-party intent surges, dark-funnel buying signals, and content research activity.",
+                                                            "path": "/growth-science/revenue-intelligence#demand-intelligence",
+                                                            "badge": "Intent Velocity",
+                                                            icon: Radar,
+                                                            "tags": [
+                                                                      "Dark Funnel",
+                                                                      "Intent Scoring"
+                                                            ]
+                                                  }
+                                        ]
+                              },
+                              {
+                                        "header": "Performance & Insights",
+                                        "badge": "Analytics",
+                                        icon: BarChart3,
+                                        "cards": [
+                                                  {
+                                                            "title": "Pipeline Intelligence",
+                                                            "description": "Inspect deal progression health, stage stagnation hazards, and opportunity decay velocity.",
+                                                            "path": "/growth-science/revenue-intelligence#pipeline-intelligence",
+                                                            "badge": "Pipeline Health",
+                                                            icon: Activity,
+                                                            "tags": [
+                                                                      "Deal Stagnation",
+                                                                      "Hazard Rates"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Revenue Performance Intelligence",
+                                                            "description": "Benchmark rep quota attainment, conversion efficiency, and territory pacing curves.",
+                                                            "path": "/growth-science/revenue-intelligence#revenue-performance-intelligence",
+                                                            "badge": "Quota Pacing",
+                                                            icon: TrendingUp,
+                                                            "tags": [
+                                                                      "Rep Attainment",
+                                                                      "Conversion Benchmarks"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Competitive Revenue Intelligence",
+                                                            "description": "Monitor competitor pricing changes, displacement patterns, and win-loss drivers.",
+                                                            "path": "/growth-science/revenue-intelligence#competitive-revenue-intelligence",
+                                                            "badge": "Battlecards AI",
+                                                            icon: AlertTriangle,
+                                                            "tags": [
+                                                                      "Displacement",
+                                                                      "Pricing Vulnerability"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Executive Revenue Insights",
+                                                            "description": "Deliver board-grade revenue briefings, forecast variance telemetry, and strategic early warnings.",
+                                                            "path": "/growth-science/revenue-intelligence#executive-revenue-insights",
+                                                            "badge": "Board Briefings",
+                                                            icon: Sparkles,
+                                                            "tags": [
+                                                                      "C-Suite Briefs",
+                                                                      "Predictive Alerting"
+                                                            ]
+                                                  }
+                                        ]
+                              }
                     ]
-                },
-                // SUB-MENU 3: Revenue Potential Discovery
-                {
-                    id: 'revenue-potential-discovery',
-                    title: 'Revenue Potential Discovery',
-                    desc: 'Installed base monetization, latent product features, adjacent verticals, and AI models.',
-                    path: '/growth-science/revenue-potential-discovery',
-                    badge: 'Pillar 03',
+          },
+          {
+                    "id": "revenue-potential-discovery",
+                    "title": "Revenue Potential Discovery",
+                    "desc": "Discover and quantify latent revenue opportunities across markets, customers, offerings and channels.",
+                    "path": "/growth-science/revenue-potential-discovery",
+                    "badge": "8 Capabilities",
                     icon: Compass,
-                    columns: [
-                        {
-                            header: 'Account & Product Headroom',
-                            badge: 'Expansion',
-                            icon: Compass,
-                            cards: [
-                                {
-                                    title: 'Existing Customer Growth',
-                                    description: 'Discover unharvested cross-sell equity, installed-base monetization, and multi-product adoption.',
-                                    path: '/growth-science/revenue-potential-discovery#existing-customer-growth',
-                                    badge: '+38% Expansion',
-                                    icon: Users,
-                                    tags: ['Cross-Sell', 'Installed Base']
-                                },
-                                {
-                                    title: 'Product Revenue Potential',
-                                    description: 'Monetize compute-intensive features, optimize packaging tiers, and rationalize low-margin SKUs.',
-                                    path: '/growth-science/revenue-potential-discovery#product-revenue-potential',
-                                    badge: 'ASP +54%',
-                                    icon: Layers,
-                                    tags: ['Feature Gating', 'Premiumization']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Market & AI Monetization',
-                            badge: 'Greenfield',
-                            icon: Sparkles,
-                            cards: [
-                                {
-                                    title: 'Market Revenue Potential',
-                                    description: 'Assess adjacent vertical industries, international corridors, and hyperscaler co-sell channels.',
-                                    path: '/growth-science/revenue-potential-discovery#market-revenue-potential',
-                                    badge: '28% Adjacency',
-                                    icon: Globe,
-                                    tags: ['New Verticals', 'Channel Growth']
-                                },
-                                {
-                                    title: 'AI Revenue Potential',
-                                    description: 'Package autonomous AI capabilities into value-based subscription and consumption tiers.',
-                                    path: '/growth-science/revenue-potential-discovery#ai-revenue-potential',
-                                    badge: '76% AI Margin',
-                                    icon: Cpu,
-                                    tags: ['AI Subscriptions', 'Outcome Pricing']
-                                }
-                            ]
-                        }
+                    "columns": [
+                              {
+                                        "header": "Market Discovery",
+                                        "badge": "Addressability",
+                                        icon: Compass,
+                                        "cards": [
+                                                  {
+                                                            "title": "Total Addressable Market Discovery",
+                                                            "description": "Bottom-up mathematical TAM reconstruction based on verified customer willingness-to-pay.",
+                                                            "path": "/growth-science/revenue-potential-discovery#total-addressable-market-discovery",
+                                                            "badge": "Bottom-Up TAM",
+                                                            icon: Globe,
+                                                            "tags": [
+                                                                      "Verified Headroom",
+                                                                      "Micro-Segments"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Serviceable Market Analysis",
+                                                            "description": "Isolate SAM and SOM segments based on operational delivery and regulatory fit.",
+                                                            "path": "/growth-science/revenue-potential-discovery#serviceable-market-analysis",
+                                                            "badge": "Realistic SAM",
+                                                            icon: Target,
+                                                            "tags": [
+                                                                      "Capacity Gating",
+                                                                      "Realistic Headroom"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "White Space Intelligence",
+                                                            "description": "Identify unserved buyer personas, adjacent verticals, and uncontested market niches.",
+                                                            "path": "/growth-science/revenue-potential-discovery#white-space-intelligence",
+                                                            "badge": "Profit Pools",
+                                                            icon: Sparkles,
+                                                            "tags": [
+                                                                      "Uncontested Niches",
+                                                                      "Niche Monopolies"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Untapped Demand Discovery",
+                                                            "description": "Detect latent buyer search interest, unfulfilled RFP categories, and dark-funnel demand.",
+                                                            "path": "/growth-science/revenue-potential-discovery#untapped-demand-discovery",
+                                                            "badge": "Latent Demand",
+                                                            icon: Radar,
+                                                            "tags": [
+                                                                      "Unmet Need",
+                                                                      "Organic Influx"
+                                                            ]
+                                                  }
+                                        ]
+                              },
+                              {
+                                        "header": "Account & Opportunity Modeling",
+                                        "badge": "Forecasting",
+                                        icon: LineChart,
+                                        "cards": [
+                                                  {
+                                                            "title": "Customer Potential Mapping",
+                                                            "description": "Calculate expansion headroom, multi-division sprawl, and latent ARR across installed accounts.",
+                                                            "path": "/growth-science/revenue-potential-discovery#customer-potential-mapping",
+                                                            "badge": "Expansion Map",
+                                                            icon: Users,
+                                                            "tags": [
+                                                                      "Wallet Share",
+                                                                      "Division Sprawl"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Market Opportunity Prioritization",
+                                                            "description": "Rank emerging market wedges using RICE frameworks and risk-adjusted capital return models.",
+                                                            "path": "/growth-science/revenue-potential-discovery#market-opportunity-prioritization",
+                                                            "badge": "RICE Matrix",
+                                                            icon: Scale,
+                                                            "tags": [
+                                                                      "Capital Prioritization",
+                                                                      "Time-to-Value"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Revenue Opportunity Modeling",
+                                                            "description": "Construct Monte Carlo simulations evaluating revenue capture potential under execution variants.",
+                                                            "path": "/growth-science/revenue-potential-discovery#revenue-opportunity-modeling",
+                                                            "badge": "Monte Carlo",
+                                                            icon: Calculator,
+                                                            "tags": [
+                                                                      "Stochastic Modeling",
+                                                                      "Sensitivity"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Growth Potential Forecasting",
+                                                            "description": "Multi-year forward ARR trajectory modeling combining TAM capture, cohort decay, and expansion.",
+                                                            "path": "/growth-science/revenue-potential-discovery#growth-potential-forecasting",
+                                                            "badge": "3-Year Runway",
+                                                            icon: TrendingUp,
+                                                            "tags": [
+                                                                      "Forward ARR",
+                                                                      "Valuation Multiples"
+                                                            ]
+                                                  }
+                                        ]
+                              }
                     ]
-                },
-                // SUB-MENU 4: Revenue Leakage & Recovery
-                {
-                    id: 'revenue-leakage-recovery',
-                    title: 'Revenue Leakage & Recovery',
-                    desc: 'Forensic clawback across funnel stalls, rogue discounting, unbilled usage, and churn.',
-                    path: '/growth-science/revenue-leakage-recovery',
-                    badge: 'Pillar 04',
+          },
+          {
+                    "id": "revenue-leakage-recovery",
+                    "title": "Revenue Leakage & Recovery",
+                    "desc": "Identify where revenue slips away across sales, pricing, contracts, operations and customer lifecycle, and implement recovery mechanisms.",
+                    "path": "/growth-science/revenue-leakage-recovery",
+                    "badge": "8 Capabilities",
                     icon: Radar,
-                    columns: [
-                        {
-                            header: 'Forensic Diagnostics',
-                            badge: 'Clawback',
-                            icon: Radar,
-                            cards: [
-                                {
-                                    title: 'Funnel Leakage Analysis',
-                                    description: 'Pinpoint lead decay latency, discovery drop-offs, and late-stage velocity bottlenecks.',
-                                    path: '/growth-science/revenue-leakage-recovery#funnel-leakage-analysis',
-                                    badge: '<22% Loss',
-                                    icon: Radar,
-                                    tags: ['Funnel Decay', 'SDR Latency']
-                                },
-                                {
-                                    title: 'Commercial Leakage',
-                                    description: 'Audit rogue sales discounting, unbilled engineering hours, and waived CPI escalations.',
-                                    path: '/growth-science/revenue-leakage-recovery#commercial-leakage',
-                                    badge: 'Price Realization',
-                                    icon: DollarSign,
-                                    tags: ['Discount Control', 'CPI Protection']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Retention & Recovery',
-                            badge: 'Cash Recovery',
-                            icon: ShieldCheck,
-                            cards: [
-                                {
-                                    title: 'Customer Leakage',
-                                    description: 'Isolate root-cause churn triggers, dormant account risks, and champion departure turnover.',
-                                    path: '/growth-science/revenue-leakage-recovery#customer-leakage',
-                                    badge: 'GRR 95%',
-                                    icon: Users,
-                                    tags: ['Churn Autopsy', 'Dormancy Recovery']
-                                },
-                                {
-                                    title: 'Revenue Recovery Programs',
-                                    description: 'Deploy targeted win-back campaigns and deal resurrection models that recover lost cash.',
-                                    path: '/growth-science/revenue-leakage-recovery#revenue-recovery-programs',
-                                    badge: '$4.8M Recovered',
-                                    icon: RefreshCw,
-                                    tags: ['Win-Back Engines', 'Pipeline Blitz']
-                                }
-                            ]
-                        }
+                    "columns": [
+                              {
+                                        "header": "Forensic Detection",
+                                        "badge": "Diagnostics",
+                                        icon: Radar,
+                                        "cards": [
+                                                  {
+                                                            "title": "Revenue Leakage Diagnostics",
+                                                            "description": "Conduct automated full-lifecycle audits from lead capture to invoice reconciliation.",
+                                                            "path": "/growth-science/revenue-leakage-recovery#revenue-leakage-diagnostics",
+                                                            "badge": "Full Lifecycle",
+                                                            icon: Radar,
+                                                            "tags": [
+                                                                      "Audit Trails",
+                                                                      "Cash Reconciliation"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Pricing Leakage Detection",
+                                                            "description": "Uncover rogue sales discounting, unapproved rebate stacking, and pocket price erosion.",
+                                                            "path": "/growth-science/revenue-leakage-recovery#pricing-leakage-detection",
+                                                            "badge": "Pocket Margin",
+                                                            icon: DollarSign,
+                                                            "tags": [
+                                                                      "Waterfall Audit",
+                                                                      "Rogue Discounting"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Customer Churn Leakage",
+                                                            "description": "Predict silent account disengagement and license contraction 120 days before cancellation.",
+                                                            "path": "/growth-science/revenue-leakage-recovery#customer-churn-leakage",
+                                                            "badge": "GRR 93%+",
+                                                            icon: Users,
+                                                            "tags": [
+                                                                      "Leading Indicators",
+                                                                      "Retention Defense"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Pipeline Leakage Analysis",
+                                                            "description": "Audit deal stage stagnation, multi-quarter slippage, and phantom pipeline bloat.",
+                                                            "path": "/growth-science/revenue-leakage-recovery#pipeline-leakage-analysis",
+                                                            "badge": "Funnel Audit",
+                                                            icon: Activity,
+                                                            "tags": [
+                                                                      "Stale Deals",
+                                                                      "Pipeline Velocity"
+                                                            ]
+                                                  }
+                                        ]
+                              },
+                              {
+                                        "header": "Margin & Prevention",
+                                        "badge": "Rectification",
+                                        icon: ShieldCheck,
+                                        "cards": [
+                                                  {
+                                                            "title": "Conversion Loss Diagnostics",
+                                                            "description": "Isolate legal redline friction, procurement stalls, and technical evaluation drop-offs.",
+                                                            "path": "/growth-science/revenue-leakage-recovery#conversion-loss-diagnostics",
+                                                            "badge": "Late-Stage Win",
+                                                            icon: AlertTriangle,
+                                                            "tags": [
+                                                                      "Legal Fast-Track",
+                                                                      "POC Gating"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Margin Erosion Analysis",
+                                                            "description": "Calculate activity-based cost-to-serve per account to eliminate margin-negative contracts.",
+                                                            "path": "/growth-science/revenue-leakage-recovery#margin-erosion-analysis",
+                                                            "badge": "Cost-to-Serve",
+                                                            icon: Scale,
+                                                            "tags": [
+                                                                      "Profit Deciles",
+                                                                      "Bespoke Debt"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Revenue Recovery Engineering",
+                                                            "description": "Deploy retroactive entitlement billing audits, modern contracts, and smart dunning.",
+                                                            "path": "/growth-science/revenue-leakage-recovery#revenue-recovery-engineering",
+                                                            "badge": "Cash Recovery",
+                                                            icon: RefreshCw,
+                                                            "tags": [
+                                                                      "Usage Invoicing",
+                                                                      "Smart Dunning"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Leakage Prevention Intelligence",
+                                                            "description": "Embed real-time CPQ discount guardrails and telemetry anomaly alerts to prevent future loss.",
+                                                            "path": "/growth-science/revenue-leakage-recovery#leakage-prevention-intelligence",
+                                                            "badge": "Zero Leakage",
+                                                            icon: ShieldCheck,
+                                                            "tags": [
+                                                                      "CPQ Guardrails",
+                                                                      "Automated Meters"
+                                                            ]
+                                                  }
+                                        ]
+                              }
                     ]
-                },
-                // SUB-MENU 5: Revenue Bundling & Offer Engineering
-                {
-                    id: 'revenue-bundling-offer-engineering',
-                    title: 'Revenue Bundling & Offer Engineering',
-                    desc: 'Commercial packaging, solution bundles, tier gating, and multi-product attach rates.',
-                    path: '/growth-science/revenue-bundling-offer-engineering',
-                    badge: 'Pillar 05',
+          },
+          {
+                    "id": "revenue-bundling-offer-engineering",
+                    "title": "Revenue Bundling & Offer Engineering",
+                    "desc": "Design high-converting product and service bundles that expand deal size, improve margins and enhance competitive differentiation.",
+                    "path": "/growth-science/revenue-bundling-offer-engineering",
+                    "badge": "8 Capabilities",
                     icon: Layers,
-                    columns: [
-                        {
-                            header: 'Packaging Architecture',
-                            badge: 'AOV Lift',
-                            icon: Layers,
-                            cards: [
-                                {
-                                    title: 'Product Bundling Science',
-                                    description: 'Structure high-converting solution bundles that elevate AOV while protecting 75%+ margins.',
-                                    path: '/growth-science/revenue-bundling-offer-engineering#product-bundling-science',
-                                    badge: 'Attach 74%',
-                                    icon: Layers,
-                                    tags: ['Solution Bundles', 'Blended Margins']
-                                },
-                                {
-                                    title: 'Commercial Packaging',
-                                    description: 'Design rigid tier fences and enterprise feature gating to prevent customer downselling.',
-                                    path: '/growth-science/revenue-bundling-offer-engineering#commercial-packaging',
-                                    badge: 'ARPA $56K',
-                                    icon: Target,
-                                    tags: ['Tier Fences', 'Value Packaging']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Expansion Mechanics',
-                            badge: 'Compounding',
-                            icon: TrendingUp,
-                            cards: [
-                                {
-                                    title: 'Revenue Expansion Models',
-                                    description: 'Automate post-sale add-on attach rates and in-app self-service cross-sell workflows.',
-                                    path: '/growth-science/revenue-bundling-offer-engineering#revenue-expansion-models',
-                                    badge: '58% Multi-Prod',
-                                    icon: TrendingUp,
-                                    tags: ['In-App Triggers', 'Upsell Engines']
-                                }
-                            ]
-                        }
+                    "columns": [
+                              {
+                                        "header": "Bundling & Packaging",
+                                        "badge": "Architecture",
+                                        icon: Layers,
+                                        "cards": [
+                                                  {
+                                                            "title": "Product Bundling Strategy",
+                                                            "description": "Structure pure and mixed bundles that elevate average contract value by 40%+ without cannibalization.",
+                                                            "path": "/growth-science/revenue-bundling-offer-engineering#product-bundling-strategy",
+                                                            "badge": "+41% ACV",
+                                                            icon: Layers,
+                                                            "tags": [
+                                                                      "WTP Correlation",
+                                                                      "Anti-Cannibalization"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Service Bundling Architecture",
+                                                            "description": "Wrap rapid onboarding accelerators and premium SLAs around software to turn services into profit.",
+                                                            "path": "/growth-science/revenue-bundling-offer-engineering#service-bundling-architecture",
+                                                            "badge": "Services 45% GM",
+                                                            icon: Sparkles,
+                                                            "tags": [
+                                                                      "Onboarding Sprints",
+                                                                      "Premium SLAs"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Offer Design Intelligence",
+                                                            "description": "Synthesize commercial risk reversal, structured payment terms, and 3-tier proposals.",
+                                                            "path": "/growth-science/revenue-bundling-offer-engineering#offer-design-intelligence",
+                                                            "badge": "Offer Win 52%",
+                                                            icon: FileText,
+                                                            "tags": [
+                                                                      "Risk Reversal",
+                                                                      "Anchor Pricing"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Value Proposition Engineering",
+                                                            "description": "Translate technical platform features into quantified CFO business cases and Cost of Inaction models.",
+                                                            "path": "/growth-science/revenue-bundling-offer-engineering#value-proposition-engineering",
+                                                            "badge": "CFO Business Case",
+                                                            icon: Target,
+                                                            "tags": [
+                                                                      "EVE Quantification",
+                                                                      "Cost of Inaction"
+                                                            ]
+                                                  }
+                                        ]
+                              },
+                              {
+                                        "header": "Expansion & Optimization",
+                                        "badge": "Monetization",
+                                        icon: DollarSign,
+                                        "cards": [
+                                                  {
+                                                            "title": "Cross-Sell Offer Design",
+                                                            "description": "Mine product affinity patterns and deploy co-termed bridge pricing to expand wallet share.",
+                                                            "path": "/growth-science/revenue-bundling-offer-engineering#cross-sell-offer-design",
+                                                            "badge": "Cross-Sell 44%",
+                                                            icon: GitMerge,
+                                                            "tags": [
+                                                                      "Affinity Mining",
+                                                                      "Bridge Pricing"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Upsell Offer Architecture",
+                                                            "description": "Align value metrics with customer business growth to achieve automated 30%+ annual contract expansion.",
+                                                            "path": "/growth-science/revenue-bundling-offer-engineering#upsell-offer-architecture",
+                                                            "badge": "+34% Expansion",
+                                                            icon: TrendingUp,
+                                                            "tags": [
+                                                                      "Value Metrics",
+                                                                      "Consumption Tiers"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Packaging Optimization",
+                                                            "description": "Group capabilities into clean Good/Better/Best editions with distinct target buyer personas.",
+                                                            "path": "/growth-science/revenue-bundling-offer-engineering#packaging-optimization",
+                                                            "badge": "Tier Alignment",
+                                                            icon: Sliders,
+                                                            "tags": [
+                                                                      "Edition Design",
+                                                                      "Feature Gating"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Commercial Offer Optimization",
+                                                            "description": "Deploy algorithmic discount guidance and automated deal desk workflows to protect margins.",
+                                                            "path": "/growth-science/revenue-bundling-offer-engineering#commercial-offer-optimization",
+                                                            "badge": "Deal Desk <4h",
+                                                            icon: ShieldCheck,
+                                                            "tags": [
+                                                                      "Dynamic Floors",
+                                                                      "Margin Discipline"
+                                                            ]
+                                                  }
+                                        ]
+                              }
                     ]
-                },
-                // SUB-MENU 6: Value Capture Engineering
-                {
-                    id: 'value-capture-engineering',
-                    title: 'Value Capture Engineering',
-                    desc: 'Value-based pricing, negotiation governance, concession matrices, and profit pool capture.',
-                    path: '/growth-science/value-capture-engineering',
-                    badge: 'Pillar 06',
+          },
+          {
+                    "id": "value-capture-engineering",
+                    "title": "Value Capture Engineering",
+                    "desc": "Capture maximum economic value through scientific pricing, value realization, contract structure and monetization engineering.",
+                    "path": "/growth-science/value-capture-engineering",
+                    "badge": "8 Capabilities",
                     icon: DollarSign,
-                    columns: [
-                        {
-                            header: 'Pricing & Negotiation',
-                            badge: 'Defensibility',
-                            icon: DollarSign,
-                            cards: [
-                                {
-                                    title: 'Pricing Science',
-                                    description: 'Anchor software fees directly to verified economic surplus created for customer organizations.',
-                                    path: '/growth-science/value-capture-engineering#pricing-science',
-                                    badge: 'Price Realization 91%',
-                                    icon: DollarSign,
-                                    tags: ['EVC Pricing', 'Elasticity Curves']
-                                },
-                                {
-                                    title: 'Commercial Optimization',
-                                    description: 'Equip sales teams with structured 3-option proposals and mandatory concession trade-off rules.',
-                                    path: '/growth-science/value-capture-engineering#commercial-optimization',
-                                    badge: 'Win Rate 46%',
-                                    icon: Scale,
-                                    tags: ['Concession Governance', 'CFO Proposals']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Profit Pool Extraction',
-                            badge: 'EBITDA Lift',
-                            icon: Award,
-                            cards: [
-                                {
-                                    title: 'Profit Pool Capture',
-                                    description: 'Isolate high-margin enterprise segments and systematically reprice legacy underpaying accounts.',
-                                    path: '/growth-science/value-capture-engineering#profit-pool-capture',
-                                    badge: '84% Segment Margin',
-                                    icon: Award,
-                                    tags: ['Legacy Repricing', 'Strategic Accounts']
-                                }
-                            ]
-                        }
+                    "columns": [
+                              {
+                                        "header": "Pricing & Quantification",
+                                        "badge": "Economics",
+                                        icon: DollarSign,
+                                        "cards": [
+                                                  {
+                                                            "title": "Value-Based Pricing Architecture",
+                                                            "description": "Price based on quantified customer economic value rather than cost-plus or competitor benchmarks.",
+                                                            "path": "/growth-science/value-capture-engineering#value-based-pricing-architecture",
+                                                            "badge": "WTP Science",
+                                                            icon: DollarSign,
+                                                            "tags": [
+                                                                      "Value Ceilings",
+                                                                      "Elasticity Curves"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Customer Value Quantification",
+                                                            "description": "Track customer production telemetry to prove verified 5x+ ROI in dollars before renewal.",
+                                                            "path": "/growth-science/value-capture-engineering#customer-value-quantification",
+                                                            "badge": "6.4x ROI Proven",
+                                                            icon: Calculator,
+                                                            "tags": [
+                                                                      "Telemetry Auditing",
+                                                                      "CFO Models"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Value Realization Intelligence",
+                                                            "description": "Monitor post-sale onboarding milestones and feature adoption depth to eliminate year-1 churn.",
+                                                            "path": "/growth-science/value-capture-engineering#value-realization-intelligence",
+                                                            "badge": "Adoption Depth",
+                                                            icon: CheckCircle2,
+                                                            "tags": [
+                                                                      "Milestone Sprints",
+                                                                      "Feature Depth"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Margin Optimization",
+                                                            "description": "Deconstruct unit economics and attribute cloud hosting costs per account to protect EBITDA.",
+                                                            "path": "/growth-science/value-capture-engineering#margin-optimization",
+                                                            "badge": "77%+ Gross Margin",
+                                                            icon: Scale,
+                                                            "tags": [
+                                                                      "COGS Allocation",
+                                                                      "EBITDA Flow"
+                                                            ]
+                                                  }
+                                        ]
+                              },
+                              {
+                                        "header": "Contracts & Analytics",
+                                        "badge": "Realization",
+                                        icon: BarChart3,
+                                        "cards": [
+                                                  {
+                                                            "title": "Price Realization Engineering",
+                                                            "description": "Plug price waterfall leaks, govern deal exceptions, and compress Days Sales Outstanding (DSO).",
+                                                            "path": "/growth-science/value-capture-engineering#price-realization-engineering",
+                                                            "badge": "Pocket Price 84%",
+                                                            icon: TrendingUp,
+                                                            "tags": [
+                                                                      "Waterfall Defense",
+                                                                      "DSO <40d"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Contract Value Optimization",
+                                                            "description": "Structure 3-year contract ramps with mandatory CPI indexation clauses to lock in expansion ARR.",
+                                                            "path": "/growth-science/value-capture-engineering#contract-value-optimization",
+                                                            "badge": "3-Year Ramps",
+                                                            icon: FileText,
+                                                            "tags": [
+                                                                      "CPI Clauses",
+                                                                      "Multi-Year TCV"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Monetization Strategy",
+                                                            "description": "Deploy hybrid subscription + usage consumption architectures to drive 128%+ Net Retention.",
+                                                            "path": "/growth-science/value-capture-engineering#monetization-strategy",
+                                                            "badge": "Hybrid NRR 128%",
+                                                            icon: Workflow,
+                                                            "tags": [
+                                                                      "Consumption Hybrid",
+                                                                      "Platform Take-Rate"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Value Capture Analytics",
+                                                            "description": "Provide executive leadership with real-time deal desk BI dashboards and predictive margin forecasts.",
+                                                            "path": "/growth-science/value-capture-engineering#value-capture-analytics",
+                                                            "badge": "Live Pricing BI",
+                                                            icon: LineChart,
+                                                            "tags": [
+                                                                      "Forecast Precision",
+                                                                      "Concession Auditing"
+                                                            ]
+                                                  }
+                                        ]
+                              }
                     ]
-                },
-                // SUB-MENU 7: Product Innovation & Revenue Expansion
-                {
-                    id: 'product-innovation-revenue-expansion',
-                    title: 'Product Innovation & Revenue Expansion',
-                    desc: 'Convert customer research into scalable software. Productize bespoke services into SaaS.',
-                    path: '/growth-science/product-innovation-revenue-expansion',
-                    badge: 'Pillar 07',
+          },
+          {
+                    "id": "product-innovation-revenue-expansion",
+                    "title": "Product Innovation & Revenue Expansion",
+                    "desc": "Align product innovation with commercial opportunity, discovering untapped customer needs and building high-revenue products.",
+                    "path": "/growth-science/product-innovation-revenue-expansion",
+                    "badge": "8 Capabilities",
                     icon: Sparkles,
-                    columns: [
-                        {
-                            header: 'Intelligence & Models',
-                            badge: 'Monetization',
-                            icon: Sparkles,
-                            cards: [
-                                {
-                                    title: 'Product Innovation Intelligence',
-                                    description: 'Mine voice-of-customer transcripts and RFP loss gaps to identify high-conviction product opportunities.',
-                                    path: '/growth-science/product-innovation-revenue-expansion#product-innovation-intelligence',
-                                    badge: '21-Day Prototyping',
-                                    icon: Sparkles,
-                                    tags: ['VoC Mining', 'RFP Gaps']
-                                },
-                                {
-                                    title: 'New Revenue Models',
-                                    description: 'Deploy usage-based metering, marketplace take rates, and outcome-based pricing frameworks.',
-                                    path: '/growth-science/product-innovation-revenue-expansion#new-revenue-models',
-                                    badge: '92% Recurring',
-                                    icon: LineChart,
-                                    tags: ['Consumption Meters', 'Outcome Tiers']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Productization Journey',
-                            badge: 'SaaS Lift',
-                            icon: Layers,
-                            cards: [
-                                {
-                                    title: 'Growth Productization',
-                                    description: 'Transform manual consulting deliverables and internal IP into scalable recurring software subscriptions.',
-                                    path: '/growth-science/product-innovation-revenue-expansion#growth-productization',
-                                    badge: 'Gross Margin 84%',
-                                    icon: Layers,
-                                    tags: ['Service-to-Product', 'IP Monetization']
-                                }
-                            ]
-                        }
+                    "columns": [
+                              {
+                                        "header": "Opportunity & PMF",
+                                        "badge": "Discovery",
+                                        icon: Sparkles,
+                                        "cards": [
+                                                  {
+                                                            "title": "Product Opportunity Intelligence",
+                                                            "description": "Prioritize engineering sprints based on committed pipeline revenue rather than squeaky wheels.",
+                                                            "path": "/growth-science/product-innovation-revenue-expansion#product-opportunity-intelligence",
+                                                            "badge": "Revenue Weighted",
+                                                            icon: Sparkles,
+                                                            "tags": [
+                                                                      "Pipeline Unblocked",
+                                                                      "Feature Value"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Customer Need Discovery",
+                                                            "description": "Uncover deep workflow friction using behavioral telemetry, rage click analysis, and pre-code LOIs.",
+                                                            "path": "/growth-science/product-innovation-revenue-expansion#customer-need-discovery",
+                                                            "badge": "Pre-Code LOIs",
+                                                            icon: Compass,
+                                                            "tags": [
+                                                                      "JTBD Workflows",
+                                                                      "Drop-Off Telemetry"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Product-Market Fit Intelligence",
+                                                            "description": "Segment quantitative PMF scores and cohort retention curves to isolate high-affinity customer tiers.",
+                                                            "path": "/growth-science/product-innovation-revenue-expansion#product-market-fit-intelligence",
+                                                            "badge": "PMF Score 68%",
+                                                            icon: CheckCircle2,
+                                                            "tags": [
+                                                                      "Cohort Asymptotes",
+                                                                      "Negative PMF Filters"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Innovation Portfolio Strategy",
+                                                            "description": "Manage R&D investments using 70/20/10 capital allocation and rigorous stage-gate governance.",
+                                                            "path": "/growth-science/product-innovation-revenue-expansion#innovation-portfolio-strategy",
+                                                            "badge": "70/20/10 R&D",
+                                                            icon: Layers,
+                                                            "tags": [
+                                                                      "Stage-Gate Funding",
+                                                                      "Risk-Adjusted NPV"
+                                                            ]
+                                                  }
+                                        ]
+                              },
+                              {
+                                        "header": "Streams & Scaling",
+                                        "badge": "Expansion",
+                                        icon: TrendingUp,
+                                        "cards": [
+                                                  {
+                                                            "title": "New Revenue Stream Discovery",
+                                                            "description": "Unlock high-margin adjacent revenue streams: embedded payments, benchmark data, and API ecosystems.",
+                                                            "path": "/growth-science/product-innovation-revenue-expansion#new-revenue-stream-discovery",
+                                                            "badge": "Embedded Finance",
+                                                            icon: DollarSign,
+                                                            "tags": [
+                                                                      "Payments 85bps",
+                                                                      "Data Monetization"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Product-Led Growth Engineering",
+                                                            "description": "Engineer frictionless onboarding, viral loops, and automated Product-Qualified Lead (PQL) handoffs.",
+                                                            "path": "/growth-science/product-innovation-revenue-expansion#product-led-growth-engineering",
+                                                            "badge": "PQL Win 48%",
+                                                            icon: Zap,
+                                                            "tags": [
+                                                                      "Viral Loop K>0.5",
+                                                                      "PQL Algorithmic Alert"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Market Expansion Strategy",
+                                                            "description": "Conquer international geographies and specialized vertical sectors with localized compliance and SI channels.",
+                                                            "path": "/growth-science/product-innovation-revenue-expansion#market-expansion-strategy",
+                                                            "badge": "Global Scale",
+                                                            icon: Globe,
+                                                            "tags": [
+                                                                      "Territory Ramping",
+                                                                      "Partner Co-Selling"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Product Revenue Optimization",
+                                                            "description": "Deploy dynamic contextual in-app paywalls and deprecate technical bloatware to maximize yield.",
+                                                            "path": "/growth-science/product-innovation-revenue-expansion#product-revenue-optimization",
+                                                            "badge": "Paywall Lift",
+                                                            icon: TrendingUp,
+                                                            "tags": [
+                                                                      "Dynamic Paywalls",
+                                                                      "Feature Sunsetting"
+                                                            ]
+                                                  }
+                                        ]
+                              }
                     ]
-                },
-                // SUB-MENU 8: Revenue Acceleration
-                {
-                    id: 'revenue-acceleration',
-                    title: 'Revenue Acceleration',
-                    desc: 'AI sales engines, autonomous growth orchestration, and real-time deal risk coaching.',
-                    path: '/growth-science/revenue-acceleration',
-                    badge: 'Pillar 08',
+          },
+          {
+                    "id": "revenue-acceleration",
+                    "title": "Revenue Acceleration",
+                    "desc": "Accelerate sales cycle velocity, conversion rates and revenue execution across every go-to-market touchpoint.",
+                    "path": "/growth-science/revenue-acceleration",
+                    "badge": "8 Capabilities",
                     icon: Zap,
-                    columns: [
-                        {
-                            header: 'Autonomous Engines',
-                            badge: 'AI SDR',
-                            icon: Zap,
-                            cards: [
-                                {
-                                    title: 'AI Sales Engines',
-                                    description: 'Deploy AI agents that autonomously research buying committees and book pre-qualified meetings.',
-                                    path: '/growth-science/revenue-acceleration#ai-sales-engines',
-                                    badge: '142 Meetings/Mo',
-                                    icon: Bot,
-                                    tags: ['Autonomous Prospecting', 'Buying Committee']
-                                },
-                                {
-                                    title: 'Growth Automation',
-                                    description: 'Orchestrate multi-channel trigger workflows that respond to inbound intent in under 5 minutes.',
-                                    path: '/growth-science/revenue-acceleration#growth-automation',
-                                    badge: '<5 Min Response',
-                                    icon: Workflow,
-                                    tags: ['Trigger Workflows', 'Omni-Channel']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Deal Execution & Coaching',
-                            badge: 'Cycle Speed',
-                            icon: Gauge,
-                            cards: [
-                                {
-                                    title: 'Opportunity Acceleration',
-                                    description: 'In-call deal coaching, predictive deal slip alerts, and automated follow-up proposal copilots.',
-                                    path: '/growth-science/revenue-acceleration#opportunity-acceleration',
-                                    badge: 'Cycle -32%',
-                                    icon: Gauge,
-                                    tags: ['Deal Coaching', 'Risk Telemetry']
-                                }
-                            ]
-                        }
+                    "columns": [
+                              {
+                                        "header": "Velocity & Conversion",
+                                        "badge": "Speed",
+                                        icon: Zap,
+                                        "cards": [
+                                                  {
+                                                            "title": "Revenue Velocity Optimization",
+                                                            "description": "Optimize parametric revenue velocity to dramatically accelerate cash conversion cycles.",
+                                                            "path": "/growth-science/revenue-acceleration#revenue-velocity-optimization",
+                                                            "badge": "Velocity OS",
+                                                            icon: Zap,
+                                                            "tags": [
+                                                                      "Parametric Velocity",
+                                                                      "Throughput Math"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Sales Cycle Acceleration",
+                                                            "description": "Compress enterprise deal duration by 50% using Mutual Action Plans and pre-approved legal terms.",
+                                                            "path": "/growth-science/revenue-acceleration#sales-cycle-acceleration",
+                                                            "badge": "Cycle 68 Days",
+                                                            icon: Clock,
+                                                            "tags": [
+                                                                      "Mutual Action Plans",
+                                                                      "Legal Fast-Tracks"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Conversion Rate Engineering",
+                                                            "description": "Enforce strict MEDDPICC objective gating and multi-threading to elevate enterprise win rates.",
+                                                            "path": "/growth-science/revenue-acceleration#conversion-rate-engineering",
+                                                            "badge": "Win Rate 37%+",
+                                                            icon: TrendingUp,
+                                                            "tags": [
+                                                                      "MEDDPICC Gating",
+                                                                      "Multi-Threading"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Pipeline Acceleration",
+                                                            "description": "Un-stick stalled opportunities using executive peer-to-peer interventions and time-bound incentives.",
+                                                            "path": "/growth-science/revenue-acceleration#pipeline-acceleration",
+                                                            "badge": "Stalled Deal Triage",
+                                                            icon: Activity,
+                                                            "tags": [
+                                                                      "E2E Interventions",
+                                                                      "POC Charters"
+                                                            ]
+                                                  }
+                                        ]
+                              },
+                              {
+                                        "header": "Efficiency & Testing",
+                                        "badge": "Scale",
+                                        icon: Scale,
+                                        "cards": [
+                                                  {
+                                                            "title": "Demand-to-Revenue Optimization",
+                                                            "description": "Align marketing attribution with closed cash and compress inbound lead response latency under 5 minutes.",
+                                                            "path": "/growth-science/revenue-acceleration#demand-to-revenue-optimization",
+                                                            "badge": "Instant Routing",
+                                                            icon: Radar,
+                                                            "tags": [
+                                                                      "Closed-Loop ROAS",
+                                                                      "Sub-5min SLA"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Customer Acquisition Optimization",
+                                                            "description": "Compress CAC payback under 12 months and automate administrative tasks to boost AE selling capacity.",
+                                                            "path": "/growth-science/revenue-acceleration#customer-acquisition-optimization",
+                                                            "badge": "Payback <12mo",
+                                                            icon: DollarSign,
+                                                            "tags": [
+                                                                      "CAC Payback",
+                                                                      "Magic Number 1.2x"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Expansion Revenue Acceleration",
+                                                            "description": "Map account whitespace and forecast usage exhaustion to achieve 127%+ Net Revenue Retention.",
+                                                            "path": "/growth-science/revenue-acceleration#expansion-revenue-acceleration",
+                                                            "badge": "NRR 127%+",
+                                                            icon: Users,
+                                                            "tags": [
+                                                                      "Whitespace Mapping",
+                                                                      "Division Bridges"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Growth Experimentation",
+                                                            "description": "Run weekly statistical A/B tests across outbound messaging, sales pitch decks, and pricing tiers.",
+                                                            "path": "/growth-science/revenue-acceleration#growth-experimentation",
+                                                            "badge": "Weekly Sprints",
+                                                            icon: Sliders,
+                                                            "tags": [
+                                                                      "ICE Framework",
+                                                                      "Rapid A/B Testing"
+                                                            ]
+                                                  }
+                                        ]
+                              }
                     ]
-                },
-                // SUB-MENU 9: Executive Revenue Command Center
-                {
-                    id: 'executive-revenue-command-center',
-                    title: 'Executive Revenue Command Center',
-                    desc: 'C-suite diagnostic indices, stochastic board forecast scenarios, and real-time leakage telemetry.',
-                    path: '/growth-science/executive-revenue-command-center',
-                    badge: 'Pillar 09',
+          },
+          {
+                    "id": "executive-revenue-command-center",
+                    "title": "Executive Revenue Command Center",
+                    "desc": "Unified executive intelligence, real-time revenue performance visibility and strategic growth governance for enterprise leadership.",
+                    "path": "/growth-science/executive-revenue-command-center",
+                    "badge": "8 Capabilities",
                     icon: Cpu,
-                    columns: [
-                        {
-                            header: 'C-Suite Cockpit',
-                            badge: 'Executive HUD',
-                            icon: Cpu,
-                            cards: [
-                                {
-                                    title: 'Growth Command Center',
-                                    description: 'Consolidated executive HUD tracking Revenue Health, Growth Velocity, and Rule of 40 performance.',
-                                    path: '/growth-science/executive-revenue-command-center#growth-command-center',
-                                    badge: 'Health 88/100',
-                                    icon: Cpu,
-                                    tags: ['Executive HUD', '5 Diagnostic Indices']
-                                },
-                                {
-                                    title: 'Board Intelligence',
-                                    description: 'Stochastic Monte Carlo scenario modeling delivering board forecast precision with <4% variance.',
-                                    path: '/growth-science/executive-revenue-command-center#board-intelligence',
-                                    badge: '<4% Variance',
-                                    icon: LineChart,
-                                    tags: ['Stochastic Forecast', 'VaR Analytics']
-                                }
-                            ]
-                        },
-                        {
-                            header: 'Real-Time Telemetry',
-                            badge: '24/7 Alarms',
-                            icon: ShieldCheck,
-                            cards: [
-                                {
-                                    title: 'Growth Telemetry',
-                                    description: 'Automated executive alarms on contract discounting anomalies, churn threats, and deal stalls.',
-                                    path: '/growth-science/executive-revenue-command-center#growth-telemetry',
-                                    badge: '<24h Resolution',
-                                    icon: ShieldCheck,
-                                    tags: ['Proactive Alarms', 'Intervention SLA']
-                                }
-                            ]
-                        }
+                    "columns": [
+                              {
+                                        "header": "Command & Planning",
+                                        "badge": "Executive",
+                                        icon: Cpu,
+                                        "cards": [
+                                                  {
+                                                            "title": "Executive Revenue Dashboard",
+                                                            "description": "Harmonize sales, finance, and marketing data into a single real-time verified source of truth.",
+                                                            "path": "/growth-science/executive-revenue-command-center#executive-revenue-dashboard",
+                                                            "badge": "Real-Time BI",
+                                                            icon: Cpu,
+                                                            "tags": [
+                                                                      "Single Truth",
+                                                                      "Board Prep <2h"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Revenue Performance Command",
+                                                            "description": "Track real-time pacing curves, quota attainment, and cross-functional revenue scorecards.",
+                                                            "path": "/growth-science/executive-revenue-command-center#revenue-performance-command",
+                                                            "badge": "Pacing Curves",
+                                                            icon: Gauge,
+                                                            "tags": [
+                                                                      "Quota Pacing",
+                                                                      "Remediation Sprints"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Strategic Growth Planning",
+                                                            "description": "Build bottoms-up sales capacity ramp models and balanced territories for predictable annual scaling.",
+                                                            "path": "/growth-science/executive-revenue-command-center#strategic-growth-planning",
+                                                            "badge": "Bottoms-Up Ramp",
+                                                            icon: Target,
+                                                            "tags": [
+                                                                      "Capacity Models",
+                                                                      "Territory Balance"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Revenue Forecast Intelligence",
+                                                            "description": "Run Monte Carlo stochastic simulations to deliver board-ready quarterly forecasts with <3% variance.",
+                                                            "path": "/growth-science/executive-revenue-command-center#revenue-forecast-intelligence",
+                                                            "badge": "<3% Variance",
+                                                            icon: LineChart,
+                                                            "tags": [
+                                                                      "P50/P90 Forecasts",
+                                                                      "Zero Bias"
+                                                            ]
+                                                  }
+                                        ]
+                              },
+                              {
+                                        "header": "Profitability & Governance",
+                                        "badge": "Governance",
+                                        icon: ShieldCheck,
+                                        "cards": [
+                                                  {
+                                                            "title": "Profitability Intelligence",
+                                                            "description": "Execute activity-based margin decomposition to identify negative-margin accounts and expand EBITDA.",
+                                                            "path": "/growth-science/executive-revenue-command-center#profitability-intelligence",
+                                                            "badge": "EBITDA +18%",
+                                                            icon: Scale,
+                                                            "tags": [
+                                                                      "Profit Deciles",
+                                                                      "Contribution Margin"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Growth Scenario Modeling",
+                                                            "description": "Stress-test corporate runway and capital allocation under aggressive, expected, and recessionary conditions.",
+                                                            "path": "/growth-science/executive-revenue-command-center#growth-scenario-modeling",
+                                                            "badge": "Stress-Testing",
+                                                            icon: Sliders,
+                                                            "tags": [
+                                                                      "Runway Defense",
+                                                                      "Capital Allocation"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Strategic Decision Intelligence",
+                                                            "description": "Apply expected monetary value decision trees, pre-mortem analysis, and game theory to high-stakes choices.",
+                                                            "path": "/growth-science/executive-revenue-command-center#strategic-decision-intelligence",
+                                                            "badge": "Decision Trees",
+                                                            icon: Sparkles,
+                                                            "tags": [
+                                                                      "Pre-Mortems",
+                                                                      "Expected Value"
+                                                            ]
+                                                  },
+                                                  {
+                                                            "title": "Enterprise Growth Governance",
+                                                            "description": "Automate global deal desk approval matrices and enforce ASC 606 revenue recognition auditability.",
+                                                            "path": "/growth-science/executive-revenue-command-center#enterprise-growth-governance",
+                                                            "badge": "Audit Clean",
+                                                            icon: ShieldCheck,
+                                                            "tags": [
+                                                                      "Deal Desk Rules",
+                                                                      "ASC 606 Compliance"
+                                                            ]
+                                                  }
+                                        ]
+                              }
                     ]
-                }
-            ]
+          }
+]
         },
-// 5. GLOBAL BUSINESS ACCELERATION
         {
             id: 'global-business-accelerations',
             name: 'Global Scaling',

@@ -1,450 +1,863 @@
 import { GrowthCapabilityPageData } from '../types';
 
 export const page03IntelligenceData: GrowthCapabilityPageData = {
-  pageNumber: '03',
-  title: 'Revenue Intelligence',
-  slug: 'revenue-intelligence',
-  heroHeadline: 'Turn Revenue Signals into Better Commercial Decisions',
-  heroSupporting: 'Synthesize buyer intent signals, account telemetry, competitive pricing movements, and predictive forecast models into an empirical decision intelligence engine.',
-  businessProblemSummary: 'Revenue teams drown in disparate alerts and uncalibrated CRM data while remaining blind to decisive buying signals, emerging competitive displacement risks, and forecast slippage.',
-  targetDecisionMakers: ['Chief Revenue Officers', 'VPs of Sales', 'Chief Marketing Officers', 'Revenue Operations Directors'],
-  contextWhoExperiences: 'Enterprise sales organizations with long deal cycles, multi-stakeholder buying committees, and complex competitive displacement environments.',
-  contextSituation: 'Reps spend hours manually logging notes while quarterly forecasts rely on subjective optimism rather than deterministic pipeline signals.',
-  contextWhyDifficult: 'Commercial signals are fragmented across email exchanges, calendar patterns, website telemetry, third-party intent data, and public regulatory filings.',
-  contextContributingFactors: [
-    'Subjective opportunity stage progression assigned by individual sales reps',
-    'Unmonitored competitor pricing discounting in key enterprise renewals',
-    'Lack of multi-stakeholder engagement tracking across buyer committees',
-    'Static quarterly forecasting disconnected from live pipeline velocity'
+  "pageNumber": "03",
+  "title": "Revenue Intelligence",
+  "slug": "revenue-intelligence",
+  "heroHeadline": "Transform Disparate Data into Deterministic Revenue Decisions",
+  "heroSupporting": "Synthesize commercial telemetry, buyer intent signals, customer unit economics, and competitive dynamics into real-time executive decision intelligence.",
+  "businessProblemSummary": "Enterprise commercial teams drown in fragmented data across CRMs, marketing platforms, customer success tools, and billing systems. Without unified intelligence, sales leaders rely on gut intuition, missing pipeline hazards and leaving profitable expansion on the table.",
+  "targetDecisionMakers": [
+    "Chief Executive Officers",
+    "Chief Revenue Officers",
+    "Chief Financial Officers",
+    "Chief Marketing Officers",
+    "VPs of Strategy"
   ],
-  symptomsAndConsequences: [
+  "contextWhoExperiences": "Mid-market and enterprise B2B organizations managing complex multi-touch customer journeys across distributed commercial teams.",
+  "contextSituation": "Executive teams review dozens of conflicting dashboard reports but lack a single source of truth regarding true pipeline velocity and customer economics.",
+  "contextWhyDifficult": "Revenue data resides in disconnected functional silos: marketing tracks leads, sales tracks opportunities, CS tracks health, and finance tracks invoices with no unified schema.",
+  "contextContributingFactors": [
+    "Conflicting operational definitions of qualified opportunities and revenue stages",
+    "Subjective rep optimism distorting pipeline forecasts and stage progression",
+    "Untracked dark-funnel buying signals resulting in late pipeline entry",
+    "Lack of granular cost-to-serve attribution masking unprofitable accounts"
+  ],
+  "symptomsAndConsequences": [
     {
-      category: 'Forecast Volatility',
-      symptom: 'Quarterly revenue forecasts fluctuating by >25% in the final two weeks of the quarter.',
-      consequence: 'Missed board commitments, emergency discount approvals, and damaged investor credibility.'
+      "category": "Forecast Volatility",
+      "symptom": "Quarterly sales forecasts fluctuating by 30%+ in the final weeks of the operating quarter.",
+      "consequence": "Board-level credibility loss, delayed hiring plans, and reactive budget cuts."
     },
     {
-      category: 'Competitive Displacement',
-      symptom: 'Losing key enterprise renewal deals to emergent low-cost challengers with zero advance warning.',
-      consequence: 'Gross churn spikes, contract value erosion, and sudden loss of market share.'
+      "category": "Customer Economics",
+      "symptom": "Acquiring high-ARR enterprise accounts that fail to achieve profitability after 24 months.",
+      "consequence": "EBITDA margin erosion and capital burn subsidized by investor cash."
     },
     {
-      category: 'Account Stagnation',
-      symptom: 'High-potential accounts remaining at tier-1 spend for multiple consecutive years.',
-      consequence: 'Depressed Net Revenue Retention (NRR) and missed multi-million-dollar expansion potential.'
+      "category": "Pipeline Blindspots",
+      "symptom": "Reps single-threading enterprise deals with junior evaluators without economic buyer involvement.",
+      "consequence": "Late-stage procurement stalls, legal vetoes, and devastating competitive losses."
     },
     {
-      category: 'Pipeline Quality',
-      symptom: 'Pipeline coverage appears adequate at 4.0x, but 50% of deals are stalled with zero buyer engagement.',
-      consequence: 'Wasted sales rep capacity, inflated pipeline assumptions, and end-of-quarter panic.'
+      "category": "Competitive Displacement",
+      "symptom": "Competitors undercutting enterprise proposals through aggressive packaging models.",
+      "consequence": "Erosion of win rates and reactive price discounting."
     }
   ],
-  subSubmenus: [
+  "subSubmenus": [
     {
-      id: 'sec-sig-intel',
-      slug: 'revenue-signal-intelligence',
-      title: 'Revenue Signal Intelligence',
-      businessQuestion: 'Which external and internal commercial signals indicate high-probability buying readiness right now?',
-      explanation: 'Signal intelligence aggregates first-party engagement data and third-party commercial intent into prioritized, actionable opportunity triggers.',
-      topics: [
+      "id": "revenue-data-intelligence",
+      "slug": "revenue-data-intelligence",
+      "title": "Revenue Data Intelligence",
+      "businessQuestion": "How do you synthesize disparate GTM data into a verified, single source of commercial truth?",
+      "explanation": "Consolidates, cleanses, and unifies commercial transaction data, marketing attribution signals, and product usage metrics into an auditable intelligence foundation.",
+      "topics": [
         {
-          title: 'Buying Intent Signals',
-          description: 'Capture research activity, review site comparisons, and surge consumption indicators across account domains.',
-          businessEvidence: 'B2B intent telemetry, IP reverse-lookup records, content consumption frequency, and RFP downloads.',
-          analysisProcess: 'Bayesian intent scoring weighting topic relevance, frequency spikes, and stakeholder seniority.',
-          decisionsEnabled: 'Deploy proactive outbound outreach precisely when an account enters an active evaluation window.'
+          "title": "Multi-Source Data Ingestion & Normalization",
+          "description": "Ingest raw signals from Salesforce, HubSpot, Stripe, Snowflake, and live product event streams.",
+          "businessEvidence": "API webhook logs, CRM field history audits, and ERP billing reconciliation files.",
+          "analysisProcess": "Schema harmonization and automated identity resolution across contact and account domains.",
+          "decisionsEnabled": "Eliminate duplicate accounts and establish verified account hierarchies."
         },
         {
-          title: 'Account Intelligence',
-          description: 'Compile structural firmographic, technographic, hiring trend, and financial liquidity profiles of target enterprises.',
-          businessEvidence: 'Corporate filings (10-K/10-Q), tech stack fingerprinting, executive job postings, and earnings calls.',
-          analysisProcess: 'Automated entity enrichment linking budget allocation indicators to strategic corporate priorities.',
-          decisionsEnabled: 'Tailor executive value propositions to the active board-level mandates of target accounts.'
+          "title": "Data Hygiene & Drift Detection",
+          "description": "Continuous monitoring of CRM field completeness, stale opportunity stages, and contact decay.",
+          "businessEvidence": "Opportunity last-activity timestamps, email bounce rates, and missing champion records.",
+          "analysisProcess": "Algorithmic data quality scoring with automated enrichment from verified commercial registries.",
+          "decisionsEnabled": "Prevent sales reps from forecasting on phantom pipeline records."
         },
         {
-          title: 'Opportunity Detection',
-          description: 'Identify commercial inflection points: leadership changes, merger integrations, and regulatory compliance deadlines.',
-          businessEvidence: 'Executive leadership appointment announcements, M&A filings, and statutory compliance schedules.',
-          analysisProcess: 'Event-driven graph matching correlating corporate events with commercial solution demand.',
-          decisionsEnabled: 'Contact incoming C-level executives during their first 90-day strategy and vendor review period.'
+          "title": "Unified Attribution Modeling",
+          "description": "Trace commercial revenue to original multi-touch marketing campaigns and outbound sales touches.",
+          "businessEvidence": "First-party cookie logs, calendar invite acceptances, and content engagement telemetry.",
+          "analysisProcess": "Shapley value cooperative game-theory attribution across sequential buyer touchpoints.",
+          "decisionsEnabled": "Reallocate paid acquisition budgets toward campaigns generating verified closed ARR."
         },
         {
-          title: 'Revenue Trigger Monitoring',
-          description: 'Track key account contract expiration dates, vendor renewal cycles, and public RFP issuance milestones.',
-          businessEvidence: 'Public procurement portals, partner intelligence feeds, and historical vendor contract cycles.',
-          analysisProcess: 'Predictive timeline modeling anticipating vendor replacement windows 6 months prior to expiry.',
-          decisionsEnabled: 'Position competitive displacements months ahead of formal RFP publication.'
-        },
-        {
-          title: 'AI Prospect Discovery',
-          description: 'Leverage machine learning algorithms to uncover lookalike enterprises matching the DNA of your highest-LTV accounts.',
-          businessEvidence: 'Closed-won cohort characteristics, customer lifetime value distributions, and churn-resistant profiles.',
-          analysisProcess: 'Vector similarity clustering across multi-dimensional technographic and firmographic datasets.',
-          decisionsEnabled: 'Direct GTM pipeline generation exclusively toward accounts with >85% predicted close rates.'
+          "title": "Semantic Commercial Querying",
+          "description": "Enable natural-language executive queries against complex enterprise revenue data architectures.",
+          "businessEvidence": "Executive analytical query logs, BI dashboard request queues, and board deck preparation times.",
+          "analysisProcess": "Deterministic semantic query parsing mapped directly to sanitized SQL data marts.",
+          "decisionsEnabled": "Deliver instant, verified answers to executive board questions in real time."
         }
       ],
-      useCase: {
-        situation: 'A cloud infrastructure provider was burning SDR capacity cold-calling 5,000 generic enterprise accounts.',
-        action: 'Deployed Revenue Signal Intelligence to filter targets by cloud migration hiring spikes and compliance triggers.',
-        outcome: 'Outbound meeting booking rates increased from 2.1% to 8.4%, generating $14.2M in qualified pipeline in one quarter.'
+      "useCase": {
+        "situation": "A growth-stage SaaS company suffered from an 8-week delay in compiling monthly board revenue reports.",
+        "action": "Deployed Revenue Data Intelligence with automated schema harmonization and real-time data cleansing.",
+        "outcome": "Compressed board reporting from 8 weeks to instantaneous real-time reporting with 100% data auditability."
       },
-      kpis: [
-        { name: 'Signal-to-Opportunity Rate', definition: 'Percentage of high-intent signals converted into qualified sales meetings', target: '18.5%' },
-        { name: 'Intent Surge Accuracy', definition: 'Correlation between intent spikes and verified commercial evaluations', target: '82%' },
-        { name: 'Trigger Response Latency', definition: 'Hours elapsed between signal detection and first personalized outreach', target: '< 4 Hours' }
+      "kpis": [
+        {
+          "name": "Data Hygiene Score",
+          "definition": "Percentage of CRM records meeting complete enterprise validation standards",
+          "target": "> 98.0%"
+        },
+        {
+          "name": "Data Ingestion Latency",
+          "definition": "Time from transactional event in ERP/Stripe to availability in revenue dashboard",
+          "target": "< 5 Mins"
+        },
+        {
+          "name": "Attribution Fidelity",
+          "definition": "Percentage of closed-won revenue mapped to verified upstream touchpoints",
+          "target": "96.5%"
+        }
       ],
-      visualModel: {
-        type: 'funnel',
-        caption: 'Revenue Signal Intelligence: Multi-Source Signal Ingestion to Qualified Opportunity Flow',
-        metrics: [
-          { label: 'Ingested Intent Signals', value: '4,280/mo', delta: '+24%' },
-          { label: 'Validated Buying Triggers', value: '312/mo', delta: '+18%' },
-          { label: 'Qualified Opportunities', value: '64/mo', delta: '+34%' }
+      "visualModel": {
+        "type": "architecture",
+        "caption": "Unified Revenue Data Fabric & Identity Resolution Architecture",
+        "metrics": [
+          {
+            "label": "Ingested Event Sources",
+            "value": "18 Systems",
+            "delta": "Unified"
+          },
+          {
+            "label": "Data Cleanliness Score",
+            "value": "98.6%",
+            "delta": "+24 pts"
+          },
+          {
+            "label": "Attributed ARR",
+            "value": "$84.2M",
+            "delta": "100% Audited"
+          },
+          {
+            "label": "Query Latency",
+            "value": "140ms",
+            "delta": "Real-Time"
+          }
         ]
       }
     },
     {
-      id: 'sec-mkt-intel',
-      slug: 'market-intelligence',
-      title: 'Market Intelligence',
-      businessQuestion: 'How are competitive positioning, market share, and pricing structures shifting across your sector?',
-      explanation: 'Market intelligence provides empirical benchmarks on competitor win rates, pricing concessions, feature parity, and emerging market dynamics.',
-      topics: [
+      "id": "customer-economics-intelligence",
+      "slug": "customer-economics-intelligence",
+      "title": "Customer Economics Intelligence",
+      "businessQuestion": "Which specific accounts build enterprise equity versus draining capital through hidden cost-to-serve?",
+      "explanation": "Analyzes unit economics across customer acquisition costs, multi-year retention compounding, net revenue retention (NRR), and account-level gross margins.",
+      "topics": [
         {
-          title: 'Share-of-Market Analysis',
-          description: 'Measure relative win/loss ratios against specific primary and secondary competitors within defined micro-segments.',
-          businessEvidence: 'CRM competitor tagging, win/loss interview debriefs, and independent industry analyst surveys.',
-          analysisProcess: 'Head-to-head competitive win rate indexing segmented by deal size, buyer persona, and industry.',
-          decisionsEnabled: 'Identify competitor vulnerabilities where win rates exceed 60% and double-down on competitive displacement campaigns.'
+          "title": "Granular CAC Allocation",
+          "description": "Attribute fully loaded marketing spend, SDR comp, AE travel, and legal costs per closed account.",
+          "businessEvidence": "Payroll ledger allocations, paid media invoices, and expense report audit trails.",
+          "analysisProcess": "Cohort-level customer acquisition cost modeling divided by target contract tier.",
+          "decisionsEnabled": "Set empirical CAC thresholds per customer segment to prevent value-destroying acquisition."
         },
         {
-          title: 'Competitor Revenue Tracking',
-          description: 'Analyze competitor commercial momentum, product release cadence, pricing changes, and hiring expansion.',
-          businessEvidence: 'Public financial disclosures, job board volume by role, patent publications, and customer sentiment.',
-          analysisProcess: 'Commercial velocity benchmarking tracking rival GTM investments and strategic expansion moves.',
-          decisionsEnabled: 'Preempt rival market entry into key verticals before they establish channel dominance.'
+          "title": "Cohort LTV Decay Curves",
+          "description": "Track multi-year cash flow compounding across historical customer vintage cohorts.",
+          "businessEvidence": "36-month subscription billing ledgers, expansion invoices, and contract amendments.",
+          "analysisProcess": "Non-parametric Kaplan-Meier survival curves adjusted for net negative churn and expansion.",
+          "decisionsEnabled": "Identify the exact product adoption milestones that double customer lifetime value."
         },
         {
-          title: 'Pricing Intelligence',
-          description: 'Benchmark realized market pricing, discount depths, packaging tiers, and commercial concession patterns.',
-          businessEvidence: 'De-identified customer procurement benchmark databases, RFP bid logs, and deal negotiation notes.',
-          analysisProcess: 'Pricing dispersion analysis comparing list price versus final realized price across deal sizes.',
-          decisionsEnabled: 'Defend contract value against competitor discount pressure without unnecessary price concessions.'
+          "title": "Cost-to-Serve Ledger Auditing",
+          "description": "Measure engineering, customer support, and cloud computing expenditures incurred per account.",
+          "businessEvidence": "Kubernetes cluster namespaces, Zendesk ticket volumes, and CSM activity logs.",
+          "analysisProcess": "Activity-based cost accounting applied directly against customer ARR billing.",
+          "decisionsEnabled": "Eliminate negative-margin accounts and enforce billable custom support packages."
         },
         {
-          title: 'Category Evolution',
-          description: 'Track how buyer perception of the product category is evolving, from point solutions to unified platforms.',
-          businessEvidence: 'Gartner/Forrester report category taxonomy shifts, buyer RFP requirement lists, and peer reviews.',
-          analysisProcess: 'Semantic topic analysis of enterprise RFPs to map changing buyer must-have criteria.',
-          decisionsEnabled: 'Re-align product messaging with the highest-priority enterprise evaluation criteria.'
-        },
-        {
-          title: 'Emerging Market Signals',
-          description: 'Detect early-stage macroeconomic shifts, regional demand surges, and regulatory compliance mandates.',
-          businessEvidence: 'Trade policy announcements, regional GDP growth indicators, and cross-border commercial trade flows.',
-          analysisProcess: 'Correlation modeling between macro compliance mandates and commercial software adoption curves.',
-          decisionsEnabled: 'Allocate expansion capital into high-growth regional corridors ahead of market saturation.'
+          "title": "Net Retention Rate (NRR) Optimization",
+          "description": "Isolate expansion, contraction, and gross churn components across account deciles.",
+          "businessEvidence": "Quarterly recurring revenue walk summaries and license renewal reports.",
+          "analysisProcess": "Longitudinal cohort expansion modeling identifying high-propensity expansion signals.",
+          "decisionsEnabled": "Focus customer success teams on accounts with 140%+ expansion potential."
         }
       ],
-      useCase: {
-        situation: 'A fintech compliance software provider noticed a sudden 15% drop in win rates against a newly funded challenger.',
-        action: 'Executed Pricing Intelligence and Win/Loss debriefs, discovering the competitor was bundling free implementation services.',
-        outcome: 'Repackaged onboarding into value-based guarantees rather than dropping software price, recovering win rates to 52%.'
+      "useCase": {
+        "situation": "A fintech vendor grew revenue 30% YoY but witnessed operating losses widen by $4.2M.",
+        "action": "Conducted Customer Economics Intelligence to reveal that enterprise tier accounts were consuming 3x their contract value in free custom engineering.",
+        "outcome": "Instituted strict cost-to-serve boundaries and billable change orders, lifting net margins by 18 points."
       },
-      kpis: [
-        { name: 'Competitive Win Rate', definition: 'Percentage of contested competitive deals won by your commercial team', target: '55.0%' },
-        { name: 'Discount Defense Ratio', definition: 'Average realized discount versus competitor discount depth', target: '< 12%' },
-        { name: 'Category Share of Voice', definition: 'Enterprise buyer consideration rate across contested RFPs', target: '42%' }
+      "kpis": [
+        {
+          "name": "LTV:CAC Ratio",
+          "definition": "Ratio of customer lifetime economic value to fully loaded acquisition cost",
+          "target": "> 4.0x"
+        },
+        {
+          "name": "CAC Payback Period",
+          "definition": "Months of gross profit required to recover fully loaded customer acquisition cost",
+          "target": "< 12 Mos"
+        },
+        {
+          "name": "Net Revenue Retention",
+          "definition": "Compounded ARR retained and expanded from existing customer cohorts annually",
+          "target": "> 120.0%"
+        }
       ],
-      visualModel: {
-        type: 'matrix',
-        caption: 'Market Intelligence Matrix: Competitive Positioning vs. Price Realization',
-        metrics: [
-          { label: 'Contested Win Rate', value: '54.2%', delta: '+6.1%' },
-          { label: 'Realized Margin Premium', value: '18.4%', delta: '+2.8%' },
-          { label: 'Displacement Success', value: '41 Deals', delta: '+$3.2M' }
+      "visualModel": {
+        "type": "waterfall",
+        "caption": "Customer Unit Economics & Cohort Compounding Waterfall",
+        "metrics": [
+          {
+            "label": "Realized LTV:CAC",
+            "value": "4.4x",
+            "delta": "+1.6x"
+          },
+          {
+            "label": "Median CAC Payback",
+            "value": "9.8 Mos",
+            "delta": "-4.2 Mos"
+          },
+          {
+            "label": "Annualized NRR",
+            "value": "124.5%",
+            "delta": "+14.2 pts"
+          },
+          {
+            "label": "Cost-to-Serve Efficiency",
+            "value": "88.2%",
+            "delta": "+19 pts"
+          }
         ]
       }
     },
     {
-      id: 'sec-cust-intel',
-      slug: 'customer-intelligence',
-      title: 'Customer Intelligence',
-      businessQuestion: 'Which accounts are primed for multi-product expansion and which are quietly decaying toward churn?',
-      explanation: 'Customer intelligence decodes telemetry, usage trends, executive relationship depth, and support health into predictive account scores.',
-      topics: [
+      "id": "market-intelligence",
+      "slug": "market-intelligence",
+      "title": "Market Intelligence",
+      "businessQuestion": "How are industry shifts, buyer budgets, and macro trends impacting your market opportunity?",
+      "explanation": "Monitors addressable industry dynamics, regulatory shifts, budget cycles, and macroeconomic factors to anticipate market expansion opportunities.",
+      "topics": [
         {
-          title: 'Growth Potential Scoring',
-          description: 'Quantify the maximum ARR capacity of each existing customer account relative to their current spend.',
-          businessEvidence: 'Total employee headcount, subsidiary count, tech stack volume, and organizational org charts.',
-          analysisProcess: 'Account white-space modeling comparing existing licenses against total addressable seats in the enterprise.',
-          decisionsEnabled: 'Assign dedicated strategic account executives to enterprise accounts with >$500K in unharvested expansion headroom.'
+          "title": "Industry Sector Macro Sensing",
+          "description": "Track capital expenditure trends, regulatory mandates, and IT budget allocations across key verticals.",
+          "businessEvidence": "Public SEC 10-K filings, industry benchmark reports, and corporate procurement indices.",
+          "analysisProcess": "Macroeconomic econometric modeling correlating industry capex with software purchase cycles.",
+          "decisionsEnabled": "Rotate sales capacity into vertical sectors exhibiting counter-cyclical budget expansion."
         },
         {
-          title: 'Expansion Opportunity Mapping',
-          description: 'Identify cross-sell and upsell readiness based on product utilization saturation and business unit adoption.',
-          businessEvidence: 'Daily active user depth, license utilization percentages, and feature adoption logs.',
-          analysisProcess: 'Usage inflection scoring detecting when an account reaches 85%+ license capacity.',
-          decisionsEnabled: 'Trigger automated expansion proposals before the account experiences operational bottlenecks.'
+          "title": "Regulatory & Compliance Catalyst Tracking",
+          "description": "Identify upcoming regulatory deadlines that compel enterprise buyers to purchase new software.",
+          "businessEvidence": "Federal register notices, EU compliance directives, and privacy regulation timelines.",
+          "analysisProcess": "Regulatory impact mapping linking legislative compliance mandates to software capabilities.",
+          "decisionsEnabled": "Launch targeted commercial campaigns 9 months before compliance enforcement deadlines."
         },
         {
-          title: 'Renewal Intelligence',
-          description: 'Establish objective renewal health scorecards 180, 120, and 60 days prior to contract termination.',
-          businessEvidence: 'Executive sponsor engagement logs, contract terms, open support ticket severity, and NPS feedback.',
-          analysisProcess: 'Multi-factor renewal risk modeling evaluating relationship depth, product ROI realization, and pricing satisfaction.',
-          decisionsEnabled: 'Intervene on at-risk renewal contracts 6 months before formal negotiation commences.'
+          "title": "Vendor Consolidation Intelligence",
+          "description": "Analyze enterprise buyer intent toward platform consolidation versus best-of-breed point solutions.",
+          "businessEvidence": "CIO survey data, RFQ requirements, and vendor displacement win/loss interviews.",
+          "analysisProcess": "Market consolidation trend indexing identifying vulnerable point-solution competitors.",
+          "decisionsEnabled": "Package platform bundles that displace 3-4 incumbent point solutions at lower total cost."
         },
         {
-          title: 'Churn Probability Modeling',
-          description: 'Predict early-stage account churn risk using behavioral telemetry and communication cadence decay.',
-          businessEvidence: 'Login frequency drops, executive contact turnover, declining query volumes, and delayed invoice payments.',
-          analysisProcess: 'Survival regression and anomaly detection identifying accounts exhibiting pre-churn behavioral markers.',
-          decisionsEnabled: 'Deploy executive rescue playbooks to stabilize accounts before formal termination notices are issued.'
-        },
-        {
-          title: 'Customer Health Analytics',
-          description: 'Synthesize product telemetry, support ticket resolution velocity, and commercial relationship strength into a unified score.',
-          businessEvidence: 'Zendesk ticket escalation logs, SLA compliance records, CS meeting notes, and quarterly business review scores.',
-          analysisProcess: 'Weighted algorithmic scoring combining operational, behavioral, and commercial relationship dimensions.',
-          decisionsEnabled: 'Direct CSM and executive sponsor time toward accounts where intervention reverses dissatisfaction.'
+          "title": "Geographic Expansion Modeling",
+          "description": "Evaluate cross-border market readiness across North America, EMEA, APAC, and Latin America.",
+          "businessEvidence": "Local sovereign cloud regulations, localized competitor pricing, and currency risk indexes.",
+          "analysisProcess": "Geographic market feasibility matrices scoring regulatory, language, and economic readiness.",
+          "decisionsEnabled": "Sequence international market entry where unit economics deliver immediate profitability."
         }
       ],
-      useCase: {
-        situation: 'A B2B enterprise SaaS company lost two $400K ARR accounts without prior warning from customer success reps.',
-        action: 'Deployed Customer Intelligence churn modeling, which revealed that executive sponsor logins had dropped 70% 90 days before churn.',
-        outcome: 'Institutionalized executive sponsor tracking, preventing $2.8M in prospective renewals from slipping over two quarters.'
+      "useCase": {
+        "situation": "A security software provider saw North American deal sizes compress due to corporate budget freezes.",
+        "action": "Market Intelligence identified urgent compliance spending driven by the EU DORA directive in Europe.",
+        "outcome": "Mobilized European commercial teams, generating $8.6M in net new pipeline in 90 days."
       },
-      kpis: [
-        { name: 'Churn Prediction Accuracy', definition: 'Percentage of at-risk accounts correctly identified 90+ days in advance', target: '88%' },
-        { name: 'Expansion Opportunity Velocity', definition: 'Average days to close expansion deals on high-health accounts', target: '38 Days' },
-        { name: 'Customer Health Index', definition: 'Median portfolio composite health score across enterprise accounts', target: '84/100' }
+      "kpis": [
+        {
+          "name": "Market Opportunity Index",
+          "definition": "Composite score of addressable industry budget expansion and regulatory demand",
+          "target": "> 85.0"
+        },
+        {
+          "name": "Consolidation Win Rate",
+          "definition": "Win rate in competitive bids where buyer goal is multi-vendor consolidation",
+          "target": "> 48.0%"
+        },
+        {
+          "name": "Geographic Market Yield",
+          "definition": "Revenue generated per dollar invested in regional expansion corridors",
+          "target": "> $3.50"
+        }
       ],
-      visualModel: {
-        type: 'scorecard',
-        caption: 'Customer Health & Expansion Opportunity Quadrant',
-        metrics: [
-          { label: 'High Health / High Expansion', value: '38% Accounts', delta: '$18.4M Value' },
-          { label: 'At-Risk Renewal Equity', value: '$2.1M', delta: '-42% YoY' },
-          { label: 'Expansion Close Rate', value: '48.6%', delta: '+12.4%' }
+      "visualModel": {
+        "type": "matrix",
+        "caption": "Market Vertical Opportunity & Regulatory Catalyst Matrix",
+        "metrics": [
+          {
+            "label": "Tracked Verticals",
+            "value": "12 Sectors",
+            "delta": "Active"
+          },
+          {
+            "label": "Regulatory Catalysts",
+            "value": "8 Mandates",
+            "delta": "Mapped"
+          },
+          {
+            "label": "Consolidation Win Rate",
+            "value": "52.4%",
+            "delta": "+12 pts"
+          },
+          {
+            "label": "International Yield",
+            "value": "3.8x",
+            "delta": "+28%"
+          }
         ]
       }
     },
     {
-      id: 'sec-fcst-intel',
-      slug: 'revenue-forecast-intelligence',
-      title: 'Revenue Forecast Intelligence',
-      businessQuestion: 'What will your actual closed-won revenue be this quarter with mathematical certainty and zero hope-based bias?',
-      explanation: 'Forecast intelligence replaces subjective sales rep pipeline commitments with empirical, machine-learning pipeline predictability models.',
-      topics: [
+      "id": "demand-intelligence",
+      "slug": "demand-intelligence",
+      "title": "Demand Intelligence",
+      "businessQuestion": "Which prospective accounts exhibit genuine in-market buying signals versus casual passive interest?",
+      "explanation": "Consolidates first-party telemetry, commercial research spikes, hiring trends, and dark-funnel buying signals to identify active buying committee intent.",
+      "topics": [
         {
-          title: 'Pipeline Predictability',
-          description: 'Score every active deal in the pipeline based on historical stage velocity, buyer committee engagement, and deal momentum.',
-          businessEvidence: 'Opportunity historical stage durations, email exchange volume, executive attendance at demos, and security review completion.',
-          analysisProcess: 'Machine learning scoring comparing live deal attributes against 10,000+ historical won and lost deals.',
-          decisionsEnabled: 'Eliminate subjective "commit" status and forecast solely on empirical deal probability.'
+          "title": "Multi-Modal Intent Mesh Sensing",
+          "description": "Consolidate Bombora, 6sense, peer review site visits, and code repository activity into unified account intent.",
+          "businessEvidence": "IP-resolved web telemetry, G2/Capterra research logs, and technographic query volumes.",
+          "analysisProcess": "Bayesian intent scoring calculating the probability of an active RFP within 45 days.",
+          "decisionsEnabled": "Prioritize outbound sales outreach strictly to accounts exhibiting high-conviction intent."
         },
         {
-          title: 'Opportunity Quality Analytics',
-          description: 'Audit whether pipeline opportunities meet rigorous economic ICP qualification criteria or are merely vanity entries.',
-          businessEvidence: 'Budget verification logs, economic buyer identification, and defined compelling event documentation.',
-          analysisProcess: 'MEDDPICC compliance scoring and objective evidence validation across all open pipeline opportunities.',
-          decisionsEnabled: 'Purge low-probability zombie deals from the active pipeline to focus rep bandwidth.'
+          "title": "Executive Hiring Signal Detection",
+          "description": "Detect C-suite appointments, reorganization announcements, and tech recruitment surges.",
+          "businessEvidence": "Job posting archives, executive LinkedIn updates, and corporate press releases.",
+          "analysisProcess": "Organizational change event correlation linking new executive hires to new vendor evaluations.",
+          "decisionsEnabled": "Trigger personalized executive outreach within 30 days of a new CIO or CRO appointment."
         },
         {
-          title: 'Forecast Precision Models',
-          description: 'Generate conservative, base, and optimistic revenue forecasts with defined confidence intervals.',
-          businessEvidence: 'Quarter-to-date closed ARR, weighted pipeline values, historical slip rates, and seasonal seasonality coefficients.',
-          analysisProcess: 'Stochastic Monte Carlo simulation executing 5,000 iterations to determine P(50), P(80), and P(95) revenue outcomes.',
-          decisionsEnabled: 'Commit revenue projections to the Board of Directors with <5% variance.'
+          "title": "Technology Stack Technographic Triggers",
+          "description": "Monitor competitor contract expiration dates and legacy software end-of-life announcements.",
+          "businessEvidence": "Public DNS records, JavaScript library fingerprints, and job specification requirements.",
+          "analysisProcess": "Contract duration estimation algorithms predicting renewal renegotiation windows.",
+          "decisionsEnabled": "Engage enterprise accounts 90 days prior to incumbent contract renewal dates."
         },
         {
-          title: 'Revenue Risk Assessment',
-          description: 'Identify single points of failure in the pipeline: mega-deal concentration, single-threaded champions, and procurement delays.',
-          businessEvidence: 'Deal value distribution, executive sponsor count per account, and legal contract negotiation duration.',
-          analysisProcess: 'Portfolio risk weighting assessing the revenue impact if the top 3 deals in the quarter slip.',
-          decisionsEnabled: 'Develop multi-threaded stakeholder coverage and parallel closing tracks for high-stakes enterprise contracts.'
-        },
-        {
-          title: 'Growth Scenario Planning',
-          description: 'Model the impact of hiring freezes, budget cuts, conversion fluctuations, or pricing modifications on future quarters.',
-          businessEvidence: 'Sales rep ramp curves, quota capacity models, lead generation pipeline projections, and CAC assumptions.',
-          analysisProcess: 'Dynamic financial sensitivity modeling testing commercial resilience against macroeconomic shocks.',
-          decisionsEnabled: 'Make confident capital allocation, hiring, and expansion decisions months before performance shows in lagging P&L statements.'
+          "title": "Dark-Funnel Journey De-Anonymization",
+          "description": "Identify accounts consuming technical documentation, pricing calculators, and API guides anonymously.",
+          "businessEvidence": "Reverse-IP network telemetry, CDN traffic patterns, and session duration statistics.",
+          "analysisProcess": "Account de-anonymization algorithms mapping network addresses to corporate entity hierarchies.",
+          "decisionsEnabled": "Alert Account Executives when an uncontacted Fortune 500 account spends 2+ hours on technical docs."
         }
       ],
-      useCase: {
-        situation: 'A public enterprise company had missed Wall Street consensus revenue estimates in two out of four quarters.',
-        action: 'Replaced manual rep rollups with Stochastic Forecast Precision Modeling and objective MEDDPICC validation.',
-        outcome: 'Achieved 96.8% forecast precision over the subsequent four quarters, eliminating end-of-quarter revenue surprises.'
+      "useCase": {
+        "situation": "Sales reps wasted 70% of cold outbound capacity emailing uninterested accounts from static databases.",
+        "action": "Deployed Demand Intelligence to stream live multi-modal intent signals directly to SDR prospecting cadences.",
+        "outcome": "Tripled outbound meeting book rate from 2.1% to 6.8% while cutting rep outbound hours in half."
       },
-      kpis: [
-        { name: 'Forecast Precision Variance', definition: 'Absolute percentage variance between Day 1 forecast and actual closed ARR', target: '< 4.5%' },
-        { name: 'Forecast Bias Ratio', definition: 'Measure of over-optimism or under-optimism in pipeline projections', target: '1.02' },
-        { name: 'Pipeline Coverage Quality', definition: 'Ratio of objectively verified qualified pipeline to remaining quota target', target: '3.2x' }
+      "kpis": [
+        {
+          "name": "Intent Conversion Precision",
+          "definition": "Percentage of accounts flagged as high-intent that initiate active sales evaluations",
+          "target": "> 35.0%"
+        },
+        {
+          "name": "Signal-to-Engagement Lead Time",
+          "definition": "Hours elapsed from initial dark-funnel surge to automated or rep engagement",
+          "target": "< 4.0 Hrs"
+        },
+        {
+          "name": "Outbound Meeting Rate",
+          "definition": "Percentage of engaged intent-verified accounts that book an executive discovery call",
+          "target": "> 6.0%"
+        }
       ],
-      visualModel: {
-        type: 'orchestration',
-        caption: 'Stochastic Revenue Forecast: Monte Carlo Simulation vs. Actual Deal Realization',
-        metrics: [
-          { label: 'Forecast P(80) Commitment', value: '$12.4M', delta: 'High Confidence' },
-          { label: 'Actual Realized Closed ARR', value: '$12.65M', delta: '98.0% Accuracy' },
-          { label: 'Pipeline Slip Variance', value: '3.2%', delta: '-8.4%' }
+      "visualModel": {
+        "type": "funnel",
+        "caption": "Demand Signal Capture & Pipeline Ingestion Telemetry",
+        "metrics": [
+          {
+            "label": "Active Intent Accounts",
+            "value": "1,420",
+            "delta": "+34%"
+          },
+          {
+            "label": "De-anonymized Accounts",
+            "value": "78.4%",
+            "delta": "+18 pts"
+          },
+          {
+            "label": "Outbound Meeting Rate",
+            "value": "7.2%",
+            "delta": "+3.4x"
+          },
+          {
+            "label": "Signal Lead Time",
+            "value": "2.4 Hrs",
+            "delta": "Instant"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pipeline-intelligence",
+      "slug": "pipeline-intelligence",
+      "title": "Pipeline Intelligence",
+      "businessQuestion": "Where is real revenue probability concentrated in your active sales pipeline?",
+      "explanation": "Analyzes opportunity progression, stage transition velocity, stakeholder multi-threading, and deal risk factors to separate genuine deals from phantom pipeline.",
+      "topics": [
+        {
+          "title": "Multi-Threaded Stakeholder Scoring",
+          "description": "Verify whether opportunities engage economic buyers, technical evaluators, legal counsel, and champions.",
+          "businessEvidence": "Meeting calendar participant lists, email domain participant counts, and mutual plan sign-offs.",
+          "analysisProcess": "Stakeholder coverage matrix scoring calculating deal vulnerability based on single-threaded risk.",
+          "decisionsEnabled": "Flag single-threaded deals over $50K ARR for mandatory executive multi-threading intervention."
+        },
+        {
+          "title": "Opportunity Momentum & Aging Telemetry",
+          "description": "Track engagement frequency, response latency, and mutual close plan milestone execution.",
+          "businessEvidence": "Email reply response times, document view durations, and scheduled follow-up presence.",
+          "analysisProcess": "Deal velocity indexing comparing active deal cadence against historical closed-won benchmarks.",
+          "decisionsEnabled": "Intervene on deals exhibiting a 48-hour lapse in communication to preserve close probability."
+        },
+        {
+          "title": "Competitive Risk Detection in Flight",
+          "description": "Detect competitor mentions, feature bake-offs, and pricing concessions during active evaluations.",
+          "businessEvidence": "Call transcript keywords, proposal redlines, and third-party consultant inclusion.",
+          "analysisProcess": "Natural-language competitor inference and win/loss historical pattern matching.",
+          "decisionsEnabled": "Equip Account Executives with tailored battle cards and counter-positioning assets in real time."
+        },
+        {
+          "title": "Pipeline Hygiene & Phantom Purge",
+          "description": "Identify and disqualify stale opportunities artificially inflating pipeline coverage metrics.",
+          "businessEvidence": "Pushed close date counts, lack of scheduled next steps, and unresponsive buyer contacts.",
+          "analysisProcess": "Objective deal triage algorithms automatically moving stagnant records out of active forecast.",
+          "decisionsEnabled": "Maintain a pristine, audit-ready pipeline with accurate 3x pipeline coverage ratios."
+        }
+      ],
+      "useCase": {
+        "situation": "Sales leadership carried $24M in pipeline into Q4, but only closed $8M, causing an embarrassing board miss.",
+        "action": "Instituted Pipeline Intelligence with multi-threading verification and automated stagnant deal disqualification.",
+        "outcome": "Purged $11M in phantom pipeline, restored true pipeline visibility, and achieved 96% forecast accuracy in Q1."
+      },
+      "kpis": [
+        {
+          "name": "Multi-Threaded Ratio",
+          "definition": "Percentage of enterprise opportunities with 3+ verified committee stakeholders",
+          "target": "> 80.0%"
+        },
+        {
+          "name": "Pipeline Slip Rate",
+          "definition": "Percentage of committed deals pushed into subsequent operating quarters",
+          "target": "< 12.0%"
+        },
+        {
+          "name": "Close Rate on Committed Pipeline",
+          "definition": "Percentage of opportunities designated Commit that successfully close-won",
+          "target": "> 85.0%"
+        }
+      ],
+      "visualModel": {
+        "type": "scorecard",
+        "caption": "Pipeline Health Telemetry & Committee Engagement Scorecard",
+        "metrics": [
+          {
+            "label": "Multi-Threaded Deals",
+            "value": "84.2%",
+            "delta": "+28 pts"
+          },
+          {
+            "label": "Pipeline Slip Rate",
+            "value": "9.4%",
+            "delta": "-18 pts"
+          },
+          {
+            "label": "Commit Close Accuracy",
+            "value": "88.6%",
+            "delta": "+22 pts"
+          },
+          {
+            "label": "Phantom Deals Purged",
+            "value": "$12.4M",
+            "delta": "Audited"
+          }
+        ]
+      }
+    },
+    {
+      "id": "revenue-performance-intelligence",
+      "slug": "revenue-performance-intelligence",
+      "title": "Revenue Performance Intelligence",
+      "businessQuestion": "How do individual reps, regional territories, and solution lines perform against empirical benchmarks?",
+      "explanation": "Evaluates commercial productivity, quota attainment dispersion, conversion variance, and coaching opportunities across sales teams and territories.",
+      "topics": [
+        {
+          "title": "Quota Attainment Dispersion Analysis",
+          "description": "Analyze whether revenue targets are met by a narrow top 10% of reps or broadly across the sales team.",
+          "businessEvidence": "Individual rep bookings ledgers, pipeline generation stats, and commission payouts.",
+          "analysisProcess": "Gini coefficient calculations applied to sales team quota attainment distributions.",
+          "decisionsEnabled": "Shift enablement and territory assignments to lift median rep attainment toward top-quartile performance."
+        },
+        {
+          "title": "Rep Competency Diagnostic Profiling",
+          "description": "Deconstruct rep performance across discovery depth, objection handling, pricing defense, and closing.",
+          "businessEvidence": "Conversation intelligence logs, stage-to-stage conversion rates, and discount concession averages.",
+          "analysisProcess": "Empirical skill matrix benchmarking isolating individual rep coaching needs.",
+          "decisionsEnabled": "Deliver tailored micro-coaching interventions on specific deal stages where individual reps struggle."
+        },
+        {
+          "title": "Territory Equity & Capacity Balancing",
+          "description": "Audit TAM potential and account quality distributions across geographic and industry territories.",
+          "businessEvidence": "Territory account databases, firmographic TAM estimates, and historical win rates.",
+          "analysisProcess": "Territory capacity optimization algorithms balancing high-value target accounts fairly.",
+          "decisionsEnabled": "Eliminate over-saturated and starving territories to maximize aggregate sales productivity."
+        },
+        {
+          "title": "Ramp Time Compression",
+          "description": "Measure the elapsed days required for newly hired Account Executives to reach full quota productivity.",
+          "businessEvidence": "First closed deal milestones, pipeline generation pacing, and onboarding completion records.",
+          "analysisProcess": "Survival analysis modeling new-hire progression against seasoned benchmark milestones.",
+          "decisionsEnabled": "Compress sales rep ramp time from 6 months to 75 days through structured AI deal assist."
+        }
+      ],
+      "useCase": {
+        "situation": "Top 3 reps generated 72% of company bookings, leaving the remaining 15 reps consistently below 40% quota.",
+        "action": "Implemented Revenue Performance Intelligence to isolate discovery and objection handling skill gaps.",
+        "outcome": "Lifted median rep quota attainment from 38% to 74%, generating $9.2M in incremental team revenue."
+      },
+      "kpis": [
+        {
+          "name": "Median Quota Attainment",
+          "definition": "Percentage of assigned quota achieved by the median sales representative",
+          "target": "> 75.0%"
+        },
+        {
+          "name": "Rep Ramp Duration",
+          "definition": "Calendar days from start date to first quarterly quota achievement",
+          "target": "< 90 Days"
+        },
+        {
+          "name": "Attainment Equity Gini",
+          "definition": "Gini index measuring concentration of bookings among sales reps",
+          "target": "< 0.28"
+        }
+      ],
+      "visualModel": {
+        "type": "matrix",
+        "caption": "Commercial Quota Attainment & Skill Proficiency Matrix",
+        "metrics": [
+          {
+            "label": "Median Attainment",
+            "value": "78.4%",
+            "delta": "+36 pts"
+          },
+          {
+            "label": "Rep Ramp Speed",
+            "value": "74 Days",
+            "delta": "-42 Days"
+          },
+          {
+            "label": "Team Quota Coverage",
+            "value": "84.2%",
+            "delta": "+22 pts"
+          },
+          {
+            "label": "Attainment Gini",
+            "value": "0.24",
+            "delta": "Balanced"
+          }
+        ]
+      }
+    },
+    {
+      "id": "competitive-revenue-intelligence",
+      "slug": "competitive-revenue-intelligence",
+      "title": "Competitive Revenue Intelligence",
+      "businessQuestion": "Why are you winning or losing against specific competitors, and at what price concessions?",
+      "explanation": "Tracks competitor positioning, pricing moves, win/loss telemetry, and displacement vulnerabilities to dominate head-to-head enterprise evaluations.",
+      "topics": [
+        {
+          "title": "Empirical Win/Loss Deconstruction",
+          "description": "Conduct structured quantitative interviews and CRM disposition audits on competitive deal outcomes.",
+          "businessEvidence": "Third-party win/loss transcripts, buyer feedback surveys, and competitor proposal pricing.",
+          "analysisProcess": "Regression analysis identifying primary decision drivers: product capability, pricing, or trust.",
+          "decisionsEnabled": "Eliminate false assumptions regarding why enterprise buyers select or reject your offerings."
+        },
+        {
+          "title": "Competitor Pricing & Discount Tracking",
+          "description": "Monitor competitor list prices, typical discounting thresholds, and packaging concessions.",
+          "businessEvidence": "Shared competitor quotes, procurement price disclosure, and industry analyst benchmarks.",
+          "analysisProcess": "Competitor price realization curve estimation across enterprise tier ranges.",
+          "decisionsEnabled": "Equip sales reps with precise counter-pricing strategies without unnecessary margin concession."
+        },
+        {
+          "title": "Competitor Displacement Playbooks",
+          "description": "Isolate technical limitations, support failures, and price hike vulnerabilities in incumbent vendors.",
+          "businessEvidence": "Competitor customer review forums, outage logs, and customer service complaint archives.",
+          "analysisProcess": "Vulnerability indexing identifying customer cohorts most frustrated with incumbent solutions.",
+          "decisionsEnabled": "Execute targeted displacement campaigns aimed at competitor customers experiencing price hikes."
+        },
+        {
+          "title": "Feature Parity & Defensibility Mapping",
+          "description": "Separate table-stakes commodity features from proprietary differentiators that drive win rates.",
+          "businessEvidence": "RFP capability grids, product release notes, and technical analyst comparative evaluations.",
+          "analysisProcess": "Differentiator leverage modeling measuring win rate correlation per technical capability.",
+          "decisionsEnabled": "Guide product roadmap investments directly into features with the highest competitive win correlation."
+        }
+      ],
+      "useCase": {
+        "situation": "Win rates against a primary competitor plunged from 55% to 32% over 6 months due to heavy competitor discounting.",
+        "action": "Deployed Competitive Revenue Intelligence to reveal competitor contracts suffered from high hidden implementation fees.",
+        "outcome": "Built transparent Total Cost of Ownership (TCO) comparison models, restoring win rates to 61%."
+      },
+      "kpis": [
+        {
+          "name": "Head-to-Head Win Rate",
+          "definition": "Percentage of contested enterprise opportunities won against primary competitor",
+          "target": "> 58.0%"
+        },
+        {
+          "name": "Discount Defense Ratio",
+          "definition": "Average discount concession in won competitive deals versus solo deals",
+          "target": "< 5.0 pts delta"
+        },
+        {
+          "name": "Displacement Success Rate",
+          "definition": "Percentage of incumbent migration evaluations won and deployed",
+          "target": "> 50.0%"
+        }
+      ],
+      "visualModel": {
+        "type": "scorecard",
+        "caption": "Competitive Win/Loss Telemetry & Displacement Scorecard",
+        "metrics": [
+          {
+            "label": "Competitive Win Rate",
+            "value": "62.4%",
+            "delta": "+18 pts"
+          },
+          {
+            "label": "Displacement Wins",
+            "value": "48 Accounts",
+            "delta": "+34%"
+          },
+          {
+            "label": "Price Concession Delta",
+            "value": "3.2 pts",
+            "delta": "Protected"
+          },
+          {
+            "label": "TCO Advantage",
+            "value": "38.5%",
+            "delta": "Proven"
+          }
+        ]
+      }
+    },
+    {
+      "id": "executive-revenue-insights",
+      "slug": "executive-revenue-insights",
+      "title": "Executive Revenue Insights",
+      "businessQuestion": "How do you distill millions of commercial data points into high-conviction C-suite decisions?",
+      "explanation": "Synthesizes complex commercial telemetry into actionable executive briefings, board-level narratives, risk radars, and strategic capital allocation guidance.",
+      "topics": [
+        {
+          "title": "Board-Level Revenue Telemetry",
+          "description": "Provide CEO, CFO, and Board with real-time visibility into ARR, NRR, CAC payback, and burn multiple.",
+          "businessEvidence": "Consolidated ERP balance sheets, CRM booking ledgers, and cash flow reconciliations.",
+          "analysisProcess": "Executive dashboard modeling summarizing macro revenue health with zero subjective bias.",
+          "decisionsEnabled": "Lead executive board meetings with auditable, objective commercial data."
+        },
+        {
+          "title": "Revenue Risk Radar",
+          "description": "Surface impending commercial hazards across key accounts, product lines, and regional markets.",
+          "businessEvidence": "Customer health score drops, executive champion turnover, and billing disputes.",
+          "analysisProcess": "Bayesian risk aggregation flagging systemic threats before they trigger financial impairment.",
+          "decisionsEnabled": "Dispatch executive sponsor intervention to safeguard threatened multi-million-dollar accounts."
+        },
+        {
+          "title": "Capital Allocation Guidance",
+          "description": "Model expected revenue yield per dollar invested across sales hiring, marketing, and product R&D.",
+          "businessEvidence": "Historical departmental ROI ledgers, headcount ramp productivity, and customer acquisition costs.",
+          "analysisProcess": "Marginal return on invested capital (ROIC) modeling across GTM growth vectors.",
+          "decisionsEnabled": "Allocate annual corporate budgets where each dollar generates maximum long-term ARR compounding."
+        },
+        {
+          "title": "Strategic Scenario Planning",
+          "description": "Simulate revenue outcomes under variable pricing changes, M&A integrations, and macroeconomic shifts.",
+          "businessEvidence": "Historical elasticity models, market inflation indicators, and customer cohort retention.",
+          "analysisProcess": "Dynamic financial sensitivity modeling testing upside, base, and downside scenarios.",
+          "decisionsEnabled": "Navigate market downturns and competitive disruptions with pre-modeled contingency playbooks."
+        }
+      ],
+      "useCase": {
+        "situation": "Board meetings were bogged down in conflicting revenue reports between sales and finance leadership.",
+        "action": "Architected Executive Revenue Insights establishing a single consolidated telemetry console.",
+        "outcome": "Aligned executive leadership around audited metrics, compressing board reporting cycles and improving strategic execution."
+      },
+      "kpis": [
+        {
+          "name": "Executive Decision Velocity",
+          "definition": "Average business days required to evaluate and approve major commercial investments",
+          "target": "< 5 Days"
+        },
+        {
+          "name": "Board Reporting Concordance",
+          "definition": "Percentage agreement on key commercial metrics across C-suite executives",
+          "target": "100.0%"
+        },
+        {
+          "name": "Strategic Capital ROI",
+          "definition": "Annualized ARR expansion generated per dollar of allocated growth capital",
+          "target": "> $3.20"
+        }
+      ],
+      "visualModel": {
+        "type": "orchestration",
+        "caption": "Executive Revenue Insights & Capital Allocation Dashboard",
+        "metrics": [
+          {
+            "label": "Decision Latency",
+            "value": "3.5 Days",
+            "delta": "-12 Days"
+          },
+          {
+            "label": "Reporting Concordance",
+            "value": "100.0%",
+            "delta": "Audited"
+          },
+          {
+            "label": "Capital Return Yield",
+            "value": "3.6x",
+            "delta": "+0.8x"
+          },
+          {
+            "label": "Executive Radar Coverage",
+            "value": "100%",
+            "delta": "Active"
+          }
         ]
       }
     }
   ],
-  methodologyWorkflow: [
+  "methodologyWorkflow": [
     {
-      stepNumber: '01',
-      title: 'Signal Ingestion & Unification',
-      input: 'CRM data, email metadata, calendar logs, website IP traffic, intent telemetry, and financial filings.',
-      activity: 'Ingest and harmonize real-time commercial signals into a centralized revenue graph.',
-      output: 'Unified, entity-resolved account and pipeline data model.'
+      "stepNumber": "01",
+      "title": "Data Ingestion",
+      "input": "CRM, ERP, billing & product event feeds",
+      "activity": "Harmonize schemas and establish verified data hygiene",
+      "output": "Unified Commercial Schema"
     },
     {
-      stepNumber: '02',
-      title: 'Intent & Opportunity Scoring',
-      input: 'Harmonized signals, historical deal disposition histories, and ICP profile definitions.',
-      activity: 'Execute Bayesian intent algorithms to score accounts by commercial readiness and churn risk.',
-      output: 'Ranked list of high-intent enterprise accounts and at-risk renewal cohorts.'
+      "stepNumber": "02",
+      "title": "Intent Sensing",
+      "input": "Dark-funnel & technographic queries",
+      "activity": "Detect active buying committee intent signals",
+      "output": "Prioritized Intent Accounts"
     },
     {
-      stepNumber: '03',
-      title: 'Competitive & Market Benchmarking',
-      input: 'Win/loss interview records, pricing concession data, and competitor displacement trends.',
-      activity: 'Map competitor positioning and calibrate price realization benchmarks across target micro-segments.',
-      output: 'Dynamic competitive battlecards and price defense parameters.'
+      "stepNumber": "03",
+      "title": "Pipeline Triage",
+      "input": "Stage latency & stakeholder participation",
+      "activity": "Score opportunity velocity and purge phantom pipeline",
+      "output": "Audited Pipeline Registry"
     },
     {
-      stepNumber: '04',
-      title: 'Stochastic Forecast Calibration',
-      input: 'Active pipeline opportunities, stage conversion histories, and deal engagement velocity.',
-      activity: 'Run Monte Carlo simulation models to establish objective revenue ranges and risk exposure.',
-      output: 'Board-level forecast scenario models with verified confidence intervals.'
+      "stepNumber": "04",
+      "title": "Economics Audit",
+      "input": "Granular cost-to-serve & invoice records",
+      "activity": "Deconstruct account-level unit economics and NRR",
+      "output": "Customer Decile Profit Model"
     },
     {
-      stepNumber: '05',
-      title: 'Actionable Commercial Orchestration',
-      input: 'Prioritized signals, forecast risk alerts, and expansion opportunity maps.',
-      activity: 'Route prioritized commercial tasks directly to sales reps, CSMs, and executive sponsors.',
-      output: 'Closed-loop execution telemetry tracking intervention effectiveness and conversion lift.'
+      "stepNumber": "05",
+      "title": "Executive Synthesis",
+      "input": "Consolidated commercial telemetry",
+      "activity": "Generate board scorecards and capital allocation guidance",
+      "output": "Executive Revenue Console"
     }
   ],
-  primaryKpis: [
+  "primaryKpis": [
     {
-      name: 'Forecast Accuracy Precision',
-      definition: 'Absolute percentage accuracy of executive revenue projections relative to actual closed ARR.',
-      formula: '[ 1 − (|Actual Closed ARR − Forecasted ARR| ÷ Actual Closed ARR) ] × 100',
-      unit: '%',
-      reportingPeriod: 'Quarterly',
-      baseline: '74.2%',
-      target: '95.0%',
-      illustrativeValue: '96.4%',
-      interpretation: 'Achieving >95% accuracy proves that revenue projection is driven by deterministic pipeline mechanics rather than subjective rep sentiment.',
-      category: 'Executive'
+      "name": "Forecast Precision",
+      "definition": "Percentage accuracy of baseline quarterly ARR projection against actual closed cash.",
+      "formula": "1 - (abs(Projected ARR - Realized ARR) / Projected ARR)",
+      "unit": "% Accuracy",
+      "reportingPeriod": "Quarterly",
+      "baseline": "74.0%",
+      "target": "95.0%",
+      "illustrativeValue": "96.4%",
+      "interpretation": "High forecast precision proves commercial discipline and eliminates end-of-quarter revenue volatility.",
+      "category": "Executive"
     },
     {
-      name: 'Forecast Bias Ratio',
-      definition: 'Measures directional skew toward chronic over-optimism (>1.0) or under-optimism (<1.0).',
-      formula: 'Sum of Forecast Commitments across Quarters ÷ Sum of Actual Closed ARR across Quarters',
-      unit: 'Ratio',
-      reportingPeriod: 'Annualized',
-      baseline: '1.28 (Over-optimistic)',
-      target: '1.00 - 1.05',
-      illustrativeValue: '1.02',
-      interpretation: 'Eliminating positive forecast bias protects corporate budget planning and executive credibility with board stakeholders.',
-      category: 'Executive'
+      "name": "Net Revenue Retention (NRR)",
+      "definition": "Compounded recurring revenue retained and expanded across existing customer cohorts.",
+      "formula": "(Starting ARR + Expansion - Contraction - Churn) / Starting ARR",
+      "unit": "% NRR",
+      "reportingPeriod": "Annualized",
+      "baseline": "102.0%",
+      "target": "125.0%",
+      "illustrativeValue": "124.5%",
+      "interpretation": "NRR above 120% drives self-compounding organic growth with minimal dependency on top-of-funnel acquisition.",
+      "category": "Unit Economics"
     },
     {
-      name: 'Signal-to-Opportunity Conversion Rate',
-      definition: 'Percentage of high-intent buying signals that convert into verified, qualified pipeline opportunities.',
-      formula: '(Qualified Opportunities Created from Signals ÷ Total Validated Buying Signals Ingested) × 100',
-      unit: '%',
-      reportingPeriod: 'Monthly',
-      baseline: '4.8%',
-      target: '18.0%',
-      illustrativeValue: '16.8%',
-      interpretation: 'A 3.5x improvement in signal conversion validates that sales outreach is engaging prospects precisely during active procurement windows.',
-      category: 'Commercial'
-    },
-    {
-      name: 'Objective Pipeline Coverage',
-      definition: 'Ratio of verified, objectively scored pipeline value to remaining quarterly sales quota.',
-      formula: 'Sum of (Opportunity Value × Objective Predictive Probability Score) ÷ Remaining Quota Target',
-      unit: 'Ratio (x)',
-      reportingPeriod: 'Monthly / Quarterly',
-      baseline: '1.4x (Unadjusted 4.2x)',
-      target: '2.8x (Objective)',
-      illustrativeValue: '3.1x',
-      interpretation: 'Tracking objective probability-weighted pipeline prevents false confidence caused by bloated, unverified CRM pipeline numbers.',
-      category: 'Commercial'
-    },
-    {
-      name: 'Predictive Churn Identification Rate',
-      definition: 'Percentage of churned or downgraded revenue correctly flagged by intelligence models 90+ days prior.',
-      formula: '(Identified At-Risk ARR Successfully Flagged ≥90 Days ÷ Total Annualized Gross Churned ARR) × 100',
-      unit: '%',
-      reportingPeriod: 'Quarterly / Annual',
-      baseline: '32.0%',
-      target: '85.0%',
-      illustrativeValue: '86.4%',
-      interpretation: 'High predictive churn identification provides Customer Success teams sufficient runway to deploy rescue playbooks and preserve recurring ARR.',
-      category: 'Operational'
+      "name": "Intent Conversion Lift",
+      "definition": "Increase in meeting book rate when sales outreach is guided by multi-modal intent telemetry.",
+      "formula": "Intent-Guided Meeting Rate % / Cold Baseline Meeting Rate %",
+      "unit": "Multiplier",
+      "reportingPeriod": "Monthly",
+      "baseline": "1.0x",
+      "target": "3.0x",
+      "illustrativeValue": "3.4x",
+      "interpretation": "Multipliers above 3x reflect successful elimination of wasted outbound prospecting effort.",
+      "category": "Commercial"
     }
   ],
-  scenarios: [
+  "scenarios": [
     {
-      title: 'Global Cybersecurity Vendor Forecast & Churn Stabilization',
-      industry: 'Enterprise Security Software',
-      baselineSituation: '$85M ARR vendor experiencing chronic end-of-quarter forecast misses of $3-5M and unexpected gross churn in enterprise renewals.',
-      observedProblem: 'Sales management relied on subjective deal commits, while CSMs were unaware that key enterprise clients had stopped updating their software agents.',
-      analysis: 'Deployed Revenue Intelligence combining telemetry usage tracking with stochastic forecasting, revealing that 42% of "commit" deals lacked economic buyer access.',
-      decisionEvaluated: 'Mandated MEDDPICC evidence verification for forecast inclusion and automated alerts when product usage declined >25% in a 30-day window.',
-      expectedImprovement: 'Improve forecast accuracy to >95% and reduce gross revenue churn by 35%.',
-      validatingMetrics: ['Forecast Precision (from 78% to 96.5%)', 'Gross Revenue Retention (from 88% to 94.2%)', 'At-Risk ARR Saved ($4.1M)'],
-      assumptions: 'Assumed customer accounts with declining telemetry would respond positively to proactive executive interventions in 60% of cases.'
+      "title": "Global B2B SaaS Enterprise Revenue Intelligence Transformation",
+      "industry": "Enterprise Software & Cloud Platforms",
+      "baselineSituation": "$72M ARR multi-product company struggling with 28% forecast variance and high customer acquisition costs.",
+      "observedProblem": "Sales leadership relied on manual rep updates in Salesforce; 40% of pipeline had not been updated in over 45 days.",
+      "analysis": "Pipeline Intelligence revealed that single-threaded deals had an 8% close rate, whereas deals with 3+ stakeholders closed at 54%.",
+      "decisionEvaluated": "Mandate automated multi-threading verification and real-time intent telemetry for all opportunities over $50K ARR.",
+      "expectedImprovement": "Compress forecast variance to < 5% and lift enterprise win rates by 15 points.",
+      "validatingMetrics": [
+        "Forecast Variance (from 28% to 3.6%)",
+        "Enterprise Win Rate (from 32% to 49%)",
+        "Sales Cycle Days (-26 Days)"
+      ],
+      "assumptions": "Assumed sales reps adopt automated call recording and mutual action plans within 60 days."
     }
   ],
-  dataConsiderations: [
+  "dataConsiderations": [
     {
-      title: 'Activity Telemetry & CRM Signal Freshness',
-      description: 'Predictive forecast models require real-time synchronization of calendar, email, and deal progression activities with zero manual latency.',
-      impactLevel: 'Critical'
+      "title": "Real-Time Webhook Integrity",
+      "description": "Billing, CRM, and marketing webhook pipelines must maintain 99.9% uptime with automated dead-letter queue retry logic.",
+      "impactLevel": "Critical"
     },
     {
-      title: 'Entity Resolution Across Corporate Subsidiaries',
-      description: 'Accurate account intelligence depends on resolving parent-child corporate structures across multi-national enterprise entities.',
-      impactLevel: 'High'
+      "title": "GDPR/CCPA Compliant Intent Ingestion",
+      "description": "Third-party intent and dark-funnel telemetry must strictly adhere to sovereign privacy frameworks and corporate consent registries.",
+      "impactLevel": "High"
     },
     {
-      title: 'Data Privacy & Compliance Governance',
-      description: 'Signal ingestion must respect GDPR, CCPA, and enterprise confidentiality requirements regarding executive communications.',
-      impactLevel: 'High'
+      "title": "Entity Resolution Precision",
+      "description": "Parent-subsidiary enterprise hierarchies must be mapped accurately to avoid fragmenting multi-national account intelligence.",
+      "impactLevel": "High"
     }
   ],
-  decisionSupport: [
+  "decisionSupport": [
     {
-      priority: 'Immediate (Weeks 1-3)',
-      focusArea: 'Objective Pipeline Qualification',
-      keyMetrics: 'MEDDPICC Verification Score, Deal Velocity Decay',
-      tradeOffs: 'Purging unverified deals reduces apparent pipeline value in exchange for mathematical forecast reliability.',
-      recommendedAction: 'Institute objective evidence criteria for pipeline stages and remove unengaged zombie opportunities.'
+      "priority": "Immediate (Weeks 1-3)",
+      "focusArea": "Data Hygiene & Pipeline Triage",
+      "keyMetrics": "Stagnant Deal Volume, Multi-Threading Ratio",
+      "tradeOffs": "Purging unverified pipeline may cause temporary paper drop in pipeline coverage.",
+      "recommendedAction": "Automate stale deal removal and enforce multi-threading criteria on all pipeline commits."
     },
     {
-      priority: 'Secondary (Weeks 4-8)',
-      focusArea: 'Telemetry-Driven Churn Alerts',
-      keyMetrics: 'Usage Telemetry Inflection, Executive Engagement Cadence',
-      tradeOffs: 'Requiring CSMs to manage automated churn alerts adds operational discipline but stops silent account degradation.',
-      recommendedAction: 'Wire telemetry usage decline thresholds to automated executive review playbooks.'
+      "priority": "Secondary (Weeks 4-8)",
+      "focusArea": "Intent Telemetry Integration",
+      "keyMetrics": "Intent Meeting Rate, Dark-Funnel De-anonymization",
+      "tradeOffs": "Reps must learn to prioritize signal-based triggers over legacy cold lists.",
+      "recommendedAction": "Route verified intent accounts directly into automated SDR sequences and tier-1 AE queues."
     },
     {
-      priority: 'Strategic (Weeks 9-12)',
-      focusArea: 'Stochastic Forecasting Integration',
-      keyMetrics: 'Forecast Precision Variance, Confidence Interval P(80)',
-      tradeOffs: 'Replacing subjective rep rollups with algorithmic models requires executive cultural buy-in across sales leadership.',
-      recommendedAction: 'Present board revenue commitments solely based on stochastic P(80) simulation models.'
+      "priority": "Strategic (Weeks 9-12)",
+      "focusArea": "Executive Telemetry & Board Alignment",
+      "keyMetrics": "Forecast Precision, Customer Unit Economics",
+      "tradeOffs": "Eliminating subjective sales narrative in favor of transparent empirical metrics.",
+      "recommendedAction": "Deploy the unified executive revenue console for all C-suite and board reporting."
     }
   ],
-  visualTheme: 'intelligence'
+  "visualTheme": "intelligence"
 };
-

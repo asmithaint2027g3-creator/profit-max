@@ -1,387 +1,730 @@
 import { GrowthCapabilityPageData } from '../types';
 
 export const page07ValueCaptureData: GrowthCapabilityPageData = {
-  pageNumber: '07',
-  title: 'Value Capture Engineering',
-  slug: 'value-capture-engineering',
-  heroHeadline: 'Capture More of the Value Your Business Creates',
-  heroSupporting: 'Align commercial pricing models with economic value delivery. Optimize proposal terms, enforce negotiation governance, and capture concentrated profit pools across enterprise accounts.',
-  businessProblemSummary: 'Most companies deliver immense economic value and operational ROI to their clients but capture only a tiny fraction of that value due to cost-plus pricing, weak negotiation posture, and unmanaged commercial concessions.',
-  targetDecisionMakers: ['Chief Financial Officers', 'Chief Executive Officers', 'Chief Commercial Officers', 'VPs of Global Pricing'],
-  contextWhoExperiences: 'B2B enterprise platforms, industrial technology providers, and high-value service firms where client ROI significantly exceeds vendor software fees.',
-  contextSituation: 'Customers report millions of dollars in operational savings from using the product, yet procurement routinely demands and receives 25-40% discounts on annual contracts.',
-  contextWhyDifficult: 'Shifting from cost-plus or competitor-matching pricing to true value-based pricing requires quantifiable ROI proof, economic modeling, and disciplined negotiation governance.',
-  contextContributingFactors: [
-    'Pricing anchored to internal headcount and hosting costs rather than customer economic outcome',
-    'Lack of documented customer ROI business cases during executive commercial proposals',
-    'Procurement departments exploiting fragmented sales team authority to extract price concessions',
-    'Failure to isolate and defend high-margin micro-segments from broad commercial discounting'
+  "pageNumber": "07",
+  "title": "Value Capture Engineering",
+  "slug": "value-capture-engineering",
+  "heroHeadline": "Capture Maximum Economic Value Through Scientific Pricing Architecture",
+  "heroSupporting": "Eliminate arbitrary cost-plus pricing and rogue discounting. Construct empirical willingness-to-pay models, value realization telemetry, contract ramp structures, and monetization engines that maximize enterprise EBITDA.",
+  "businessProblemSummary": "Most enterprise companies capture only a tiny fraction of the economic value they create for clients. Due to fear of losing deals, sales reps default to aggressive discounting, while finance teams rely on blunt cost-plus markups that leave millions on the table.",
+  "targetDecisionMakers": [
+    "Chief Executive Officers",
+    "Chief Financial Officers",
+    "Chief Revenue Officers",
+    "VPs of Strategic Pricing"
   ],
-  symptomsAndConsequences: [
+  "contextWhoExperiences": "B2B technology, industrial, and business services enterprises seeking to expand EBITDA margins and command premium valuation multiples.",
+  "contextSituation": "Products deliver massive operational ROI to enterprise buyers, yet commercial negotiations consistently devolve into commoditized procurement discounting.",
+  "contextWhyDifficult": "Value capture is psychological, structural, and legal: it requires proving economic value with empirical data, enforcing strict commercial governance, and aligning sales compensation with realized margin.",
+  "contextContributingFactors": [
+    "Absence of empirical customer willingness-to-pay research",
+    "Sales teams incentivized on raw top-line booking volume rather than gross margin",
+    "Disjointed handoffs between pre-sale ROI promises and post-sale realization audits",
+    "Uncontrolled price concessions granted without economic trade-offs"
+  ],
+  "symptomsAndConsequences": [
     {
-      category: 'Price Realization',
-      symptom: 'Realized price trails list price by over 30% across enterprise deals.',
-      consequence: 'Millions in net profit sacrificed; valuation multiples severely compressed.'
+      "category": "Margin Compression",
+      "symptom": "Gross margins deteriorating by 200-500 basis points despite strong top-line revenue growth.",
+      "consequence": "Enterprise valuation multiples compressed; company forced into cost-cutting despite expanding revenue."
     },
     {
-      category: 'Value Capture Ratio',
-      symptom: 'Vendor captures less than 3% of the verified economic value created for the client.',
-      consequence: 'Client captures all economic surplus while the vendor absorbs all operational delivery risk.'
+      "category": "Procurement Commoditization",
+      "symptom": "Enterprise buyers treating proprietary high-value IP as a generic commodity in RFP bake-offs.",
+      "consequence": "Deals won only through painful price cuts, destroying unit economics and customer profitability."
     },
     {
-      category: 'Margin Dispersion',
-      symptom: 'Gross margins fluctuating wildly between 45% and 88% across identical customer tiers.',
-      consequence: 'Unpredictable cash flow generation and distorted sales commission payouts.'
+      "category": "Unrealized Customer Value",
+      "symptom": "Clients unable to quantify the business outcomes delivered by the software at contract renewal time.",
+      "consequence": "High customer churn and contentious renewal negotiations where buyers demand price reductions."
     },
     {
-      category: 'Negotiation Drag',
-      symptom: 'Enterprise legal and procurement negotiations dragging on for 4+ months per contract.',
-      consequence: 'High cost of sale, deal slip across quarters, and compromised contract terms.'
+      "category": "Uncontrolled Price Waterfall",
+      "symptom": "Net pocket price 30-40% lower than published list price due to compounding unmonitored deductions.",
+      "consequence": "Millions in cash flow sacrificed annually to hidden subsidies and unchecked sales concessions."
     }
   ],
-  subSubmenus: [
+  "subSubmenus": [
     {
-      id: 'sec-price-sci',
-      slug: 'pricing-science',
-      title: 'Pricing Science',
-      businessQuestion: 'What is the mathematically optimal pricing structure that maximizes profit without dampening market adoption?',
-      explanation: 'Pricing science applies empirical elasticity modeling, yield optimization, and value-based frameworks to establish defensible price points.',
-      topics: [
+      "id": "value-based-pricing-architecture",
+      "slug": "value-based-pricing-architecture",
+      "title": "Value-Based Pricing Architecture",
+      "businessQuestion": "How do you price based on customer economic value delivered rather than internal cost-plus or competitor benchmarks?",
+      "explanation": "Constructs empirical willingness-to-pay boundaries, value metric alignments, and tiered monetization structures grounded in measurable customer ROI.",
+      "topics": [
         {
-          title: 'Value-Based Pricing',
-          description: 'Anchor product pricing directly to measurable customer economic outcomes: operational savings, risk reduction, or revenue generated.',
-          businessEvidence: 'Customer economic value realization audits, operational ROI metrics, and financial impact reports.',
-          analysisProcess: 'Economic value to customer (EVC) modeling calculating the total dollar surplus created by the platform.',
-          decisionsEnabled: 'Price contracts at 10-15% of verified customer economic value created rather than cost-plus.'
+          "title": "Customer Economic Value Mapping",
+          "description": "Quantify the tangible revenue uplift, cost avoidance, and working capital savings created by your platform.",
+          "businessEvidence": "Customer workflow benchmarks, operational cycle times, and financial performance audits.",
+          "analysisProcess": "Economic Value to the Customer (EVC) modeling establishing maximum theoretical and practical pricing ceilings.",
+          "decisionsEnabled": "Price with unshakeable confidence knowing your pricing represents a fraction of the value delivered."
         },
         {
-          title: 'Dynamic Pricing',
-          description: 'Adjust transaction and consumption pricing dynamically based on demand volatility, compute load, and client urgency.',
-          businessEvidence: 'Market spot pricing indices, infrastructure capacity utilization, and seasonal transaction volumes.',
-          analysisProcess: 'Algorithmic dynamic yield optimization balancing infrastructure capacity constraints with margin capture.',
-          decisionsEnabled: 'Capture premium pricing during peak processing cycles and volatile market conditions.'
+          "title": "Willingness-to-Pay (WTP) Research & Modeling",
+          "description": "Conduct discrete choice experiments, Van Westendorp price sensitivity analysis, and Gabor-Granger evaluations.",
+          "businessEvidence": "C-level buyer survey data, conjoint analysis results, and win-loss pricing sensitivity logs.",
+          "analysisProcess": "Econometric price elasticity curves mapping demand drop-offs at various price thresholds.",
+          "decisionsEnabled": "Establish optimal list price points that maximize total revenue yield across customer tiers."
         },
         {
-          title: 'Pricing Elasticity Analysis',
-          description: 'Quantify price elasticity of demand across customer industry sectors, company sizes, and geographic regions.',
-          businessEvidence: 'Historical win/loss logs across varying price points, RFP bid results, and competitor pricing benchmarks.',
-          analysisProcess: 'Logistic regression elasticity curves modeling win probability as a continuous function of contract price.',
-          decisionsEnabled: 'Identify inelastic enterprise segments where a 20% price increase results in less than 2% volume churn.'
+          "title": "Pricing Power & Moat Quantification",
+          "description": "Evaluate competitive switching costs, proprietary data moats, and mission-critical workflows that enable price premiums.",
+          "businessEvidence": "Customer churn rates upon price increases, API integration depth, and competitor feature parity audits.",
+          "analysisProcess": "Pricing power index modeling determining which customer segments can absorb 15-25% price adjustments without churn.",
+          "decisionsEnabled": "Execute annual price increases on high-retention segments to counteract inflation and expand EBITDA."
         },
         {
-          title: 'Margin Optimization',
-          description: 'Set granular gross margin targets by product line, customer tier, and delivery channel to protect bottom-line EBITDA.',
-          businessEvidence: 'Direct COGS ledgers, AWS hosting cost attribution, customer success labor records, and third-party API fees.',
-          analysisProcess: 'Linear programming margin optimization balancing price floors against volume targets.',
-          decisionsEnabled: 'Institute immutable price floors in CPQ systems that physically prevent non-profitable contract execution.'
-        },
-        {
-          title: 'Revenue Yield Management',
-          description: 'Maximize the total economic yield per customer relationship across software licenses, professional services, and data modules.',
-          businessEvidence: 'Account lifetime billing summaries, cross-sell adoption timelines, and service utilization histories.',
-          analysisProcess: 'Yield maximization modeling allocating account executive resources to accounts with the highest unharvested margin yield.',
-          decisionsEnabled: 'Reallocate commercial focus from high-volume, low-margin buyers to high-yield enterprise relationships.'
+          "title": "Segment-Specific Price Discrimination",
+          "description": "Architect distinct pricing models for startups, mid-market, and Fortune 500 enterprises based on value capture capacity.",
+          "businessEvidence": "Company revenue bands, employee headcount, data throughput volumes, and regional GDP indicators.",
+          "analysisProcess": "Multi-variable customer segmentation establishing price fences that prevent arbitrage across tiers.",
+          "decisionsEnabled": "Capture maximum surplus from enterprise buyers without shutting out high-volume mid-market clients."
         }
       ],
-      useCase: {
-        situation: 'An industrial IoT software provider priced its predictive maintenance product at a flat $2,000/machine/year.',
-        action: 'Conducted Pricing Science research and proved each machine prevented $85,000 in annual unplanned factory downtime.',
-        outcome: 'Repriced to an outcome-anchored $8,500/machine tier (10% of downtime saved), increasing ARR by 4.2x with zero loss of enterprise accounts.'
+      "useCase": {
+        "situation": "A B2B cloud infrastructure provider was pricing on a commoditized \"cost-plus 25%\" model, leaving tens of millions on the table.",
+        "action": "Shifted to a Value-Based Pricing Architecture tied to client computing efficiency gains and business uptime guarantees.",
+        "outcome": "Expanded average realized price by 38% across new enterprise contracts with zero negative impact on win rates."
       },
-      kpis: [
-        { name: 'Price Realization Index', definition: 'Ratio of realized contract price to target list price across closed deals', target: '91.5%' },
-        { name: 'Economic Value Capture Ratio', definition: 'Percentage of verified customer ROI captured as software license fees', target: '12.5%' },
-        { name: 'Inelastic Segment Margin', definition: 'Gross margin percentage achieved in prioritized price-inelastic enterprise sectors', target: '84.0%' }
+      "kpis": [
+        {
+          "name": "Price Realization Index",
+          "definition": "Actual realized price as a percentage of target value-based model price",
+          "target": "> 90.0%"
+        },
+        {
+          "name": "Gross Margin Expansion",
+          "definition": "Basis point increase in overall company gross profit margin",
+          "target": "> +400 bps"
+        },
+        {
+          "name": "WTP Capture Ratio",
+          "definition": "Ratio of contracted revenue to total quantified customer economic value delivered",
+          "target": "15% - 25%"
+        }
       ],
-      visualModel: {
-        type: 'waterfall',
-        caption: 'Pricing Science & Yield Optimization: From Economic Value Created to Realized Vendor Margin',
-        metrics: [
-          { label: 'Client Economic Value', value: '$850K/yr', delta: 'Audited' },
-          { label: 'Target Value Price', value: '$105K/yr', delta: '12.3% EVC' },
-          { label: 'Realized Contract Price', value: '$96.5K/yr', delta: '92% Realization' }
+      "visualModel": {
+        "type": "wtp-curve",
+        "caption": "Econometric Willingness-to-Pay & Value-Based Elasticity Curve",
+        "metrics": [
+          {
+            "label": "Realized Price Lift",
+            "value": "+38.4%",
+            "delta": "Expanded"
+          },
+          {
+            "label": "Gross Margin",
+            "value": "82.6%",
+            "delta": "+510 bps"
+          },
+          {
+            "label": "Win Rate Impact",
+            "value": "0.0%",
+            "delta": "Neutral"
+          },
+          {
+            "label": "Annual ARR Gain",
+            "value": "$8.4M",
+            "delta": "Direct EBITDA"
+          }
         ]
       }
     },
     {
-      id: 'sec-comm-opt',
-      slug: 'commercial-optimization',
-      title: 'Commercial Optimization',
-      businessQuestion: 'How can sales motions, proposals, and negotiations be optimized to defend pricing integrity?',
-      explanation: 'Commercial optimization transforms the proposal and negotiation workflow, empowering sales teams to defend value against procurement pressure.',
-      topics: [
+      "id": "customer-value-quantification",
+      "slug": "customer-value-quantification",
+      "title": "Customer Value Quantification",
+      "businessQuestion": "How do you measure and prove the exact dollar ROI your customer receives from using your solution?",
+      "explanation": "Builds transparent, interactive ROI models, customer telemetry dashboards, and financial proof frameworks that validate value before and after the sale.",
+      "topics": [
         {
-          title: 'Offer Optimization',
-          description: 'Structure commercial proposals that present multiple structured options (Anchor, Target, Baseline) rather than a single vulnerable price.',
-          businessEvidence: 'Historical proposal win/loss notes, buyer negotiation feedback, and multi-option proposal conversion records.',
-          analysisProcess: 'Anchoring and decoy effect optimization guiding procurement buyers toward the target enterprise tier.',
-          decisionsEnabled: 'Present 3 structured options in every enterprise proposal, steering buyers away from pure price discounting.'
+          "title": "Operational Telemetry Value Attribution",
+          "description": "Track customer production telemetry to calculate automated dollar savings generated by automated workflows.",
+          "businessEvidence": "API execution logs, task completion timestamps, error reduction statistics, and manual hours saved.",
+          "analysisProcess": "Algorithmic value calculation converting raw product event telemetry into verified financial dollars.",
+          "decisionsEnabled": "Show customers real-time dashboards demonstrating that the platform has already paid for itself 5x over."
         },
         {
-          title: 'Proposal Optimization',
-          description: 'Redesign commercial proposals to lead with executive financial justification, payback timelines, and operational ROI.',
-          businessEvidence: 'Customer executive sponsor feedback, CFO review requirements, and RFP evaluation scorecards.',
-          analysisProcess: 'Executive readability and ROI transparency benchmarking ensuring the proposal acts as a standalone business case for the CFO.',
-          decisionsEnabled: 'Accelerate CFO budget approvals by embedding verified payback models directly into commercial proposals.'
+          "title": "Benchmark ROI & Business Case Modeling",
+          "description": "Equip sales teams with dynamic financial models tailored to client industry, revenue scale, and operational headcount.",
+          "businessEvidence": "Third-party industry labor benchmarks, cost of downtime statistics, and verified customer case study data.",
+          "analysisProcess": "Parametric financial modeling generating defensible 3-year cash flow and payback period projections.",
+          "decisionsEnabled": "Provide internal project champions with ironclad board-level business cases that expedite budget approval."
         },
         {
-          title: 'Sales Motion Optimization',
-          description: 'Re-align the sales process to engage economic buyers (CFOs, COOs) early, bypassing technical gatekeepers.',
-          businessEvidence: 'CRM stakeholder contact logs, opportunity stage timelines, and economic buyer meeting notes.',
-          analysisProcess: 'Stakeholder influence mapping correlating deal win rates with early executive economic buyer involvement.',
-          decisionsEnabled: 'Require sales reps to secure an executive economic sponsor meeting before advancing opportunities to proposal stage.'
+          "title": "Payback Period & IRR Calculations",
+          "description": "Calculate exact internal rate of return (IRR) and payback duration in months for prospective customer investments.",
+          "businessEvidence": "Implementation costs, software subscription fees, and expected monthly operational savings.",
+          "analysisProcess": "Discounted cash flow (DCF) modeling demonstrating rapid sub-6-month capital payback.",
+          "decisionsEnabled": "Position your platform as a high-return capital investment rather than an operational expense."
         },
         {
-          title: 'Negotiation Intelligence',
-          description: 'Provide sales reps with tactical negotiation playbooks, concession matrices, and pre-defined non-monetary trade-offs.',
-          businessEvidence: 'Procurement negotiation transcripts, concession logs, and legal contract redlines.',
-          analysisProcess: 'Concession trade-off modeling establishing rules (e.g., if buyer asks for 10% discount, vendor requires a 2-year commitment or logo rights).',
-          decisionsEnabled: 'Never surrender price concessions without extracting equivalent commercial value (longer terms, upfront cash).'
-        },
-        {
-          title: 'Revenue Conversion Engineering',
-          description: 'Streamline the end-to-end commercial contracting process, eliminating legal friction and procurement delays.',
-          businessEvidence: 'Legal contract turnaround times, procurement questionnaire logs, and signature cycle durations.',
-          analysisProcess: 'Contract friction path analysis identifying and standardizing the 10 most common legal redline sticking points.',
-          decisionsEnabled: 'Pre-negotiate standard enterprise legal schedules, reducing contract signature time from 60 days to 14 days.'
+          "title": "Customer Value Verification Reviews (CVR)",
+          "description": "Conduct bi-annual executive reviews presenting audited value realization metrics to client C-suite stakeholders.",
+          "businessEvidence": "Audited customer savings logs, executive sign-off sheets, and mutual achievement milestones.",
+          "analysisProcess": "Variance analysis comparing pre-sale ROI projections against actual audited post-sale business results.",
+          "decisionsEnabled": "Lock in multi-year contract renewals and justify expansion price increases with audited proof."
         }
       ],
-      useCase: {
-        situation: 'An enterprise SaaS company faced aggressive procurement teams extracting 30% average discounts on large deals.',
-        action: 'Deployed Negotiation Intelligence and a mandatory Concession Trade-off Matrix: discounts required multi-year prepayments or logo rights.',
-        outcome: 'Average realized discount dropped from 31% to 11%, adding $5.4M in annualized EBITDA across 80 enterprise deals.'
+      "useCase": {
+        "situation": "An enterprise automation vendor struggled to renew clients who claimed they \"could not see where the value was going.\"",
+        "action": "Deployed Customer Value Quantification with automated product telemetry dashboards and bi-annual CVR reviews.",
+        "outcome": "Lifted gross renewal rate from 82% to 96% and transformed 65% of renewals into multi-year expansion contracts."
       },
-      kpis: [
-        { name: 'Proposal Win Rate', definition: 'Percentage of delivered commercial proposals that result in fully executed contracts', target: '44%' },
-        { name: 'Concession Exchange Ratio', definition: 'Value of contractual commitments received in exchange for price concessions granted', target: '1.4x' },
-        { name: 'Procurement Cycle Time', definition: 'Median calendar days from initial procurement engagement to contract execution', target: '24 Days' }
+      "kpis": [
+        {
+          "name": "Average Proven ROI Multiple",
+          "definition": "Audited customer financial savings relative to software license cost",
+          "target": "> 6.0x"
+        },
+        {
+          "name": "Payback Period",
+          "definition": "Median calendar months for client to achieve 100% recoupment of investment",
+          "target": "< 5 Months"
+        },
+        {
+          "name": "Customer Value Verification Rate",
+          "definition": "Percentage of enterprise accounts with executive-signed CVR milestones",
+          "target": "> 85.0%"
+        }
       ],
-      visualModel: {
-        type: 'matrix',
-        caption: 'Commercial Concession Matrix: Price Concession Granted vs. Commercial Value Reciprocated',
-        metrics: [
-          { label: 'Realized Discount Defense', value: '88.5%', delta: '+16%' },
-          { label: 'Multi-Year Concession Gain', value: '64% Deals', delta: '+32%' },
-          { label: 'Cash Upfront Acceleration', value: '$8.2M', delta: '+45%' }
+      "visualModel": {
+        "type": "roi-waterfall",
+        "caption": "Audited Enterprise Value Realization & Payback Acceleration",
+        "metrics": [
+          {
+            "label": "Proven ROI Multiple",
+            "value": "6.4x",
+            "delta": "Audited"
+          },
+          {
+            "label": "Payback Period",
+            "value": "4.2 Months",
+            "delta": "-3.8 Months"
+          },
+          {
+            "label": "Gross Renewal Rate",
+            "value": "96.2%",
+            "delta": "+14.2 pts"
+          },
+          {
+            "label": "Expansion Conversion",
+            "value": "64.8%",
+            "delta": "+38 pts"
+          }
         ]
       }
     },
     {
-      id: 'sec-profit-pool',
-      slug: 'profit-pool-capture',
-      title: 'Profit Pool Capture',
-      businessQuestion: 'Where do the highest-margin economic profit pools reside across your target customer landscape?',
-      explanation: 'Profit pool capture maps the distribution of pure economic profit across industry segments, customer tiers, and strategic accounts.',
-      topics: [
+      "id": "value-realization-intelligence",
+      "slug": "value-realization-intelligence",
+      "title": "Value Realization Intelligence",
+      "businessQuestion": "How do you track post-sale adoption to ensure clients actually achieve the outcomes promised during the sales cycle?",
+      "explanation": "Bridges the chasm between sales promises and operational reality, monitoring feature adoption, workflow maturity, and user activation.",
+      "topics": [
         {
-          title: 'High-Margin Segment Discovery',
-          description: 'Identify specific micro-verticals and buyer sub-segments where solution differentiation creates massive pricing power.',
-          businessEvidence: 'Segment gross margin ledgers, competitive alternative availability, and customer switching cost records.',
-          analysisProcess: 'Micro-segment profitability mapping identifying customer clusters delivering >80% gross contribution margins.',
-          decisionsEnabled: 'Focus 70% of outbound enterprise GTM resources on the top 20% highest-margin vertical sectors.'
+          "title": "Outcome-Based Milestone Tracking",
+          "description": "Establish clear, measurable operational milestones that must be achieved within 30, 60, and 90 days of onboarding.",
+          "businessEvidence": "Customer onboarding plans, feature activation timestamps, and milestone sign-off records.",
+          "analysisProcess": "Milestone completion velocity modeling flagging accounts falling behind target implementation curves.",
+          "decisionsEnabled": "Intervene with specialized solutions architects before stalled onboarding causes customer dissatisfaction."
         },
         {
-          title: 'Premium Customer Mapping',
-          description: 'Profile the characteristics of existing accounts that willingly pay full list price without demanding discounts.',
-          businessEvidence: 'Historical customer billing records, discount request histories, and buyer persona profiles.',
-          analysisProcess: 'Premium buyer profile clustering isolating the operational pain points and regulatory triggers of full-price buyers.',
-          decisionsEnabled: 'Refine outbound marketing targeting to replicate high-willingness-to-pay enterprise buyer personas.'
+          "title": "Product Adoption Depth & Breadth Telemetry",
+          "description": "Measure the percentage of licensed users actively utilizing core capabilities on a daily and weekly basis.",
+          "businessEvidence": "Daily active user (DAU) telemetry, feature heatmaps, session duration, and workflow completion logs.",
+          "analysisProcess": "Adoption depth indexing categorizing accounts into superficial users, core adopters, and power champions.",
+          "decisionsEnabled": "Direct customer success resources toward accounts showing low adoption breadth."
         },
         {
-          title: 'Strategic Account Models',
-          description: 'Design dedicated commercial partnership models for strategic accounts that generate massive multi-year recurring cash flow.',
-          businessEvidence: 'Global account revenue potential, multi-subsidiary organizational charts, and joint business plans.',
-          analysisProcess: 'Account lifetime economic valuation calculating total 5-year addressable spend across all global divisions.',
-          decisionsEnabled: 'Deploy dedicated Strategic Account Executives (SAEs) supported by executive sponsor governance.'
+          "title": "Executive Sponsor Value Alignment",
+          "description": "Maintain continuous connection with the economic buyer who approved the contract to ensure strategic alignment.",
+          "businessEvidence": "Executive sponsor meeting frequency, strategic priority shifts, and internal sponsor career moves.",
+          "analysisProcess": "Stakeholder stability scoring alerting leadership when key executive champions leave or reassign ownership.",
+          "decisionsEnabled": "Re-align with new executive leadership immediately to prevent sudden account abandonment."
         },
         {
-          title: 'Value Extraction Frameworks',
-          description: 'Deploy systematic frameworks to capture fair economic return as customers scale their usage and business operations.',
-          businessEvidence: 'Customer ARR expansion timelines, platform utilization growth curves, and client revenue trajectory.',
-          analysisProcess: 'Value scaling index modeling linking software contract pricing to client organizational revenue growth.',
-          decisionsEnabled: 'Institutionalize consumption and volume-based pricing escalators that grow automatically with client success.'
-        },
-        {
-          title: 'Profit Expansion Strategies',
-          description: 'Implement structured programs to systematically reprice legacy, underpaying accounts up to modernized market standards.',
-          businessEvidence: 'Legacy customer contract rosters, historical discount histories, and current platform utilization levels.',
-          analysisProcess: 'Legacy price-to-value gap analysis identifying accounts paying less than 50% of current fair market list price.',
-          decisionsEnabled: 'Execute a disciplined multi-year legacy repricing migration program with minimal account churn.'
+          "title": "Proactive Intervention Playbooks",
+          "description": "Deploy automated workflows that trigger customer success interventions when value realization telemetry lags.",
+          "businessEvidence": "Health score alerts, user activity drops, and unanswered support tickets.",
+          "analysisProcess": "Predictive health decay algorithms recommending specific remediation steps for struggling accounts.",
+          "decisionsEnabled": "Eliminate surprise cancellations by resolving adoption bottlenecks months before contract renewals."
         }
       ],
-      useCase: {
-        situation: 'A fintech compliance provider discovered that 15% of its accounts in the hedge fund sector drove 65% of company profits.',
-        action: 'Developed a dedicated Hedge Fund Strategic Account Model with specialized regulatory reporting and white-glove SLAs.',
-        outcome: 'Expanded hedge fund ARR by 140% at an 86% gross margin, adding $7.2M in high-margin recurring cash flow.'
+      "useCase": {
+        "situation": "A SaaS platform suffered 32% first-year churn because enterprise clients bought the vision but never fully deployed the software.",
+        "action": "Engineered Value Realization Intelligence with 30-60-90 day milestone tracking and proactive telemetry alerts.",
+        "outcome": "Cut first-year churn by 65%, increased platform utilization by 84%, and improved NRR to 118%."
       },
-      kpis: [
-        { name: 'Profit Pool Concentration Index', definition: 'Percentage of total company operating profit generated by top-decile customer segments', target: '68%' },
-        { name: 'Legacy Account Repricing Yield', definition: 'Incremental ARR captured by migrating legacy underpaying accounts to modern pricing', target: '+$2.8M' },
-        { name: 'Strategic Account Operating Margin', definition: 'Gross contribution margin realized across designated strategic enterprise accounts', target: '82%' }
+      "kpis": [
+        {
+          "name": "First-Year Retention Rate",
+          "definition": "Percentage of new customer logos renewing successfully after year one",
+          "target": "> 90.0%"
+        },
+        {
+          "name": "Onboarding Milestone Velocity",
+          "definition": "Percentage of customer deployments achieving full production go-live within 60 days",
+          "target": "> 88.0%"
+        },
+        {
+          "name": "Power Adopter Ratio",
+          "definition": "Percentage of active accounts classified as high-breadth power users",
+          "target": "> 60.0%"
+        }
       ],
-      visualModel: {
-        type: 'architecture',
-        caption: 'Profit Pool Capture Framework: High-Margin Micro-Segment Concentration',
-        metrics: [
-          { label: 'Top-Decile Profit Pool', value: '$22.4M', delta: 'Audited' },
-          { label: 'Strategic Account Margin', value: '84.2%', delta: '+6.2%' },
-          { label: 'Repricing Migration Lift', value: '+$3.1M ARR', delta: 'Zero Churn' }
+      "visualModel": {
+        "type": "realization-curve",
+        "caption": "90-Day Post-Sale Milestone Realization & Adoption Trajectory",
+        "metrics": [
+          {
+            "label": "First-Year Retention",
+            "value": "91.8%",
+            "delta": "+23.8 pts"
+          },
+          {
+            "label": "Go-Live Velocity",
+            "value": "89.4%",
+            "delta": "+34 pts"
+          },
+          {
+            "label": "Platform Utilization",
+            "value": "84.2%",
+            "delta": "+41 pts"
+          },
+          {
+            "label": "Net Retention (NRR)",
+            "value": "118.4%",
+            "delta": "+16 pts"
+          }
+        ]
+      }
+    },
+    {
+      "id": "margin-optimization",
+      "slug": "margin-optimization",
+      "title": "Margin Optimization",
+      "businessQuestion": "How do you engineer maximum gross profit and EBITDA flow-through across every tier of your commercial operations?",
+      "explanation": "Analyzes unit economics, cloud infrastructure cost-to-serve, support labor overhead, and pricing efficiency to optimize blended gross margins.",
+      "topics": [
+        {
+          "title": "Unit Economic Decomposition",
+          "description": "Calculate fully loaded cost-to-serve per user, per transaction, and per gigabyte of compute across customer cohorts.",
+          "businessEvidence": "Cloud hosting bills, third-party API costs, customer engineering hours, and licensing fees.",
+          "analysisProcess": "Activity-based cost accounting attributing direct operational COGS to individual customer accounts.",
+          "decisionsEnabled": "Identify loss-making customer contracts and restructure terms to restore profitability."
+        },
+        {
+          "title": "Infrastructure Cost-to-Serve Optimization",
+          "description": "Optimize multitenant database architecture, query efficiency, and compute utilization to minimize COGS per account.",
+          "businessEvidence": "Server utilization telemetry, database query logs, and caching efficiency reports.",
+          "analysisProcess": "Resource consumption regression modeling identifying accounts consuming excessive computing capacity.",
+          "decisionsEnabled": "Institute fair-use limits and rate-limiting on compute-intensive features to protect gross margin."
+        },
+        {
+          "title": "Support Labor Efficiency & Automation",
+          "description": "Deploy AI-driven tier-1 ticket resolution, self-service documentation, and automated diagnostics to lower support costs.",
+          "businessEvidence": "Support ticket volumes, first-contact resolution rates, average handle time, and CSM staffing ratios.",
+          "analysisProcess": "Ticket deflection analysis isolating repetitive support queries that can be automated through AI assistants.",
+          "decisionsEnabled": "Scale customer base 3x without scaling customer support headcount linearly."
+        },
+        {
+          "title": "EBITDA Flow-Through Governance",
+          "description": "Ensure incremental top-line revenue flows through to operating profit at high marginal contribution rates.",
+          "businessEvidence": "Quarterly financial statements, departmental budgets, and marginal contribution analysis.",
+          "analysisProcess": "Operating leverage modeling tracking marginal revenue flow-through to operating EBITDA.",
+          "decisionsEnabled": "Build an ultra-efficient, highly profitable commercial machine that commands top-tier enterprise valuation multiples."
+        }
+      ],
+      "useCase": {
+        "situation": "A fast-growing fintech company grew ARR by 50%, but operating losses expanded due to unmonitored infrastructure costs and ballooning support staff.",
+        "action": "Executed Margin Optimization: attributed cloud costs per account, instituted fair-use computing tiers, and automated support.",
+        "outcome": "Expanded gross margin from 58% to 77% and drove the company to operating profitability 12 months ahead of schedule."
+      },
+      "kpis": [
+        {
+          "name": "Blended Gross Margin",
+          "definition": "Consolidated gross profit margin across all enterprise revenue lines",
+          "target": "> 78.0%"
+        },
+        {
+          "name": "Marginal EBITDA Flow-Through",
+          "definition": "Percentage of incremental ARR that drops directly to operating EBITDA",
+          "target": "> 45.0%"
+        },
+        {
+          "name": "Support Cost per Account",
+          "definition": "Fully loaded support and CSM labor expense divided by active customer accounts",
+          "target": "< $2,400/yr"
+        }
+      ],
+      "visualModel": {
+        "type": "margin-stack",
+        "caption": "Unit Economic Decomposition & EBITDA Flow-Through Acceleration",
+        "metrics": [
+          {
+            "label": "Gross Margin Realized",
+            "value": "77.4%",
+            "delta": "+1,940 bps"
+          },
+          {
+            "label": "EBITDA Flow-Through",
+            "value": "48.2%",
+            "delta": "+28 pts"
+          },
+          {
+            "label": "Support Cost / Acct",
+            "value": "$2,150",
+            "delta": "-46.0%"
+          },
+          {
+            "label": "Net Operating Profit",
+            "value": "+$6.2M",
+            "delta": "Profitable"
+          }
+        ]
+      }
+    },
+    {
+      "id": "price-realization-engineering",
+      "slug": "price-realization-engineering",
+      "title": "Price Realization Engineering",
+      "businessQuestion": "How do you bridge the gap between target list prices and the actual cash collected in your bank account?",
+      "explanation": "Controls the price waterfall, standardizes deal desk exception workflows, governs payment terms, and optimizes invoice realization.",
+      "topics": [
+        {
+          "title": "Price Waterfall Gap Analysis",
+          "description": "Measure every dollar lost between standard list price, invoiced price, and net pocket price.",
+          "businessEvidence": "Invoice ledgers, rebate payout logs, payment processing deductions, and early-payment discounts.",
+          "analysisProcess": "Systematic waterfall variance analysis identifying the largest deduction categories across sales teams.",
+          "decisionsEnabled": "Plug the largest price waterfall leaks to immediately capture 3-5% higher realized revenue."
+        },
+        {
+          "title": "Deal Desk Governance & Approval Workflows",
+          "description": "Implement structured authorization matrices where discounts above specific thresholds require VP or CFO sign-off.",
+          "businessEvidence": "Deal desk ticketing logs, approval timestamp audits, and discount escalation histories.",
+          "analysisProcess": "Workflow turnaround modeling ensuring governance controls do not slow down high-velocity sales.",
+          "decisionsEnabled": "Enforce commercial discipline while maintaining sub-4-hour quote turnaround times."
+        },
+        {
+          "title": "Payment Terms & Working Capital Engineering",
+          "description": "Optimize customer payment terms (Net 30 vs Net 60) and incentivize multi-year upfront payments.",
+          "businessEvidence": "Days Sales Outstanding (DSO) metrics, accounts receivable aging ledgers, and cash flow forecasts.",
+          "analysisProcess": "Working capital financial modeling balancing upfront cash discounts against cost of capital.",
+          "decisionsEnabled": "Accelerate cash collection and reduce Days Sales Outstanding (DSO) by 24 days."
+        },
+        {
+          "title": "Sales Compensation Alignment",
+          "description": "Restructure sales commission plans to reward realized gross profit and deal margin rather than raw booking volume.",
+          "businessEvidence": "Commission payout statements, deal margin realization reports, and sales rep quota performance.",
+          "analysisProcess": "Commission simulation modeling demonstrating how margin-based accelerators discourage rogue discounting.",
+          "decisionsEnabled": "Align sales rep personal earnings directly with enterprise gross profit generation."
+        }
+      ],
+      "useCase": {
+        "situation": "A company had a list price of $100K per tier, but average realized pocket price had fallen to $64K due to compounding discounts and terms.",
+        "action": "Engineered Price Realization workflows: tightened deal desk approvals, aligned rep commissions with margin, and restricted concessions.",
+        "outcome": "Lifted realized pocket price from $64K to $84.5K per deal, capturing $9.2M in incremental high-margin revenue."
+      },
+      "kpis": [
+        {
+          "name": "Pocket Price Realization %",
+          "definition": "Average realized cash collected divided by published list price",
+          "target": "> 82.0%"
+        },
+        {
+          "name": "Days Sales Outstanding (DSO)",
+          "definition": "Average calendar days required to collect invoice cash after deal close",
+          "target": "< 42 Days"
+        },
+        {
+          "name": "Margin-Comped Rep Ratio",
+          "definition": "Percentage of sales force whose commission plans reward gross profit dollars",
+          "target": "100.0%"
+        }
+      ],
+      "visualModel": {
+        "type": "realization-bridge",
+        "caption": "List-to-Pocket Realization Bridge & Working Capital Optimization",
+        "metrics": [
+          {
+            "label": "Realized Pocket Price",
+            "value": "$84,500",
+            "delta": "+$20.5K"
+          },
+          {
+            "label": "Realization Ratio",
+            "value": "84.5%",
+            "delta": "+20.5 pts"
+          },
+          {
+            "label": "DSO Metric",
+            "value": "38 Days",
+            "delta": "-24 Days"
+          },
+          {
+            "label": "Incremental ARR",
+            "value": "$9.2M",
+            "delta": "Captured"
+          }
+        ]
+      }
+    },
+    {
+      "id": "contract-value-optimization",
+      "slug": "contract-value-optimization",
+      "title": "Contract Value Optimization",
+      "businessQuestion": "How do you negotiate and structure multi-year enterprise agreements that expand in value over time?",
+      "explanation": "Architects multi-year commitments, contractual CPI indexation clauses, minimum volume commitments, and expansion ramp structures.",
+      "topics": [
+        {
+          "title": "Multi-Year Contract Ramp Engineering",
+          "description": "Structure multi-year agreements with built-in annual price step-ups (e.g., Year 1: $100K, Year 2: $130K, Year 3: $165K).",
+          "businessEvidence": "Multi-year MSA contracts, renewal schedules, and client budget growth trajectories.",
+          "analysisProcess": "Compounded annual growth rate (CAGR) contract modeling locking in guaranteed enterprise ARR expansion.",
+          "decisionsEnabled": "Close massive multi-year enterprise deals that guarantee double-digit ARR growth without renegotiation."
+        },
+        {
+          "title": "Mandatory CPI & Inflation Indexation",
+          "description": "Embed non-negotiable annual price indexation clauses (CPI + 3%) into standard enterprise contract templates.",
+          "businessEvidence": "Master Service Agreement clause libraries, legal redline history, and macro inflation indexes.",
+          "analysisProcess": "Contract valuation modeling demonstrating that CPI indexation adds 8-12% to 3-year contract lifetime value.",
+          "decisionsEnabled": "Protect long-term contract margins against wage inflation and cloud infrastructure price increases."
+        },
+        {
+          "title": "Minimum Annual Commitments (MAC)",
+          "description": "Establish binding annual minimum spend floors on consumption and usage-based commercial models.",
+          "businessEvidence": "Usage telemetry logs, monthly invoice volatility records, and contract drawdown ledgers.",
+          "analysisProcess": "Consumption volatility modeling calculating appropriate baseline commitment levels per account.",
+          "decisionsEnabled": "Guarantee predictable baseline revenue while retaining full upside on customer usage spikes."
+        },
+        {
+          "title": "Termination for Convenience Defense",
+          "description": "Eliminate or heavily penalize early termination clauses to secure irrevocable enterprise cash commitments.",
+          "businessEvidence": "Legal redline logs, contract dispute files, and deferred revenue accounting schedules.",
+          "analysisProcess": "Legal liability modeling ensuring contracts qualify for immediate GAAP revenue recognition and multi-year booking.",
+          "decisionsEnabled": "Deliver rock-solid, multi-year contracted backlog to board members and institutional investors."
+        }
+      ],
+      "useCase": {
+        "situation": "An enterprise SaaS company had 80% of contracts on 1-year terms with zero inflation adjustments, creating massive annual renewal risk.",
+        "action": "Engineered a Contract Value Optimization framework: introduced 3-year ramp agreements with mandatory CPI + 3% indexation.",
+        "outcome": "Expanded multi-year contract share to 68% of bookings and increased average contract total value (TCV) by 74%."
+      },
+      "kpis": [
+        {
+          "name": "Multi-Year Booking Share",
+          "definition": "Percentage of total new bookings committed under 2+ year contracts",
+          "target": "> 65.0%"
+        },
+        {
+          "name": "Average Total Contract Value (TCV)",
+          "definition": "Mean total contracted revenue committed across contract lifetimes",
+          "target": "> $220,000"
+        },
+        {
+          "name": "CPI Indexation Inclusion Rate",
+          "definition": "Percentage of executed enterprise contracts containing mandatory annual price indexation",
+          "target": "> 90.0%"
+        }
+      ],
+      "visualModel": {
+        "type": "contract-ramp",
+        "caption": "Three-Year Compounded Contract Ramp & Indexation Architecture",
+        "metrics": [
+          {
+            "label": "Multi-Year Share",
+            "value": "68.4%",
+            "delta": "+48.4 pts"
+          },
+          {
+            "label": "Average TCV",
+            "value": "$242,000",
+            "delta": "+74.0%"
+          },
+          {
+            "label": "CPI Clause Coverage",
+            "value": "92.6%",
+            "delta": "+82 pts"
+          },
+          {
+            "label": "Contracted Backlog",
+            "value": "$34.8M",
+            "delta": "Guaranteed"
+          }
+        ]
+      }
+    },
+    {
+      "id": "monetization-strategy",
+      "slug": "monetization-strategy",
+      "title": "Monetization Strategy",
+      "businessQuestion": "Which fundamental business model (subscription, usage, hybrid, marketplace) best captures the economic value you create?",
+      "explanation": "Evaluates, tests, and deploys optimal business models—subscription, metered consumption, outcome-based, or hybrid models—to maximize enterprise valuation.",
+      "topics": [
+        {
+          "title": "Business Model Fit Diagnostics",
+          "description": "Assess whether your technology is best monetized via recurring subscription, consumption metering, or outcome sharing.",
+          "businessEvidence": "Customer budget allocation types (OpEx vs CapEx), usage volatility, and industry procurement standards.",
+          "analysisProcess": "Monetization archetypes evaluation comparing revenue predictability, customer adoption friction, and market multiples.",
+          "decisionsEnabled": "Select the optimal commercial model that maximizes customer acquisition speed and lifetime enterprise valuation."
+        },
+        {
+          "title": "Hybrid Subscription + Usage Architecture",
+          "description": "Combine the predictability of annual base platform subscriptions with the uncapped upside of usage consumption.",
+          "businessEvidence": "Platform consumption telemetry, base license utilization, and monthly overage billing files.",
+          "analysisProcess": "Hybrid revenue modeling balancing predictable cash flow floors with high-margin usage expansion.",
+          "decisionsEnabled": "Achieve both high baseline revenue predictability and industry-leading 130%+ Net Revenue Retention."
+        },
+        {
+          "title": "Outcome-Based Commercial Models",
+          "description": "Structure revenue models where fees are directly tied to measurable customer business outcomes (revenue generated, claims processed).",
+          "businessEvidence": "Customer performance data feeds, third-party audited transaction records, and revenue share ledgers.",
+          "analysisProcess": "Performance risk modeling establishing downside fee floors with significant upside participation.",
+          "decisionsEnabled": "Charge 3-5x traditional software fees by directly participating in the massive value created for clients."
+        },
+        {
+          "title": "Marketplace & Platform Monetization",
+          "description": "Monetize developer ecosystems, third-party integrations, and partner transaction volume through take rates and API access fees.",
+          "businessEvidence": "Partner API invocation volume, app directory install rates, and third-party gross merchandise value (GMV).",
+          "analysisProcess": "Platform network economics modeling calculating optimal partner take rates without stifling ecosystem growth.",
+          "decisionsEnabled": "Create self-reinforcing network effects and build high-margin secondary platform revenue streams."
+        }
+      ],
+      "useCase": {
+        "situation": "A legacy software vendor was constrained by traditional flat-rate subscription licenses while client usage grew 500%.",
+        "action": "Shifted to a modern Hybrid Subscription + Usage Monetization model with platform base tiers and consumption credits.",
+        "outcome": "Net Revenue Retention jumped from 104% to 128%, and enterprise valuation multiple increased by 3.2x."
+      },
+      "kpis": [
+        {
+          "name": "Net Revenue Retention (NRR)",
+          "definition": "Cohort revenue retention and expansion including consumption overages",
+          "target": "> 125.0%"
+        },
+        {
+          "name": "Consumption Revenue Share",
+          "definition": "Percentage of total recurring revenue generated from usage-based consumption",
+          "target": "25% - 40%"
+        },
+        {
+          "name": "Enterprise Valuation Multiple",
+          "definition": "Estimated revenue multiple based on growth rate, margin, and NRR quality",
+          "target": "> 10.0x ARR"
+        }
+      ],
+      "visualModel": {
+        "type": "model-archetype",
+        "caption": "Hybrid Monetization Engine & Net Revenue Retention Acceleration",
+        "metrics": [
+          {
+            "label": "Net Retention (NRR)",
+            "value": "128.4%",
+            "delta": "+24.4 pts"
+          },
+          {
+            "label": "Consumption Share",
+            "value": "32.6%",
+            "delta": "+26 pts"
+          },
+          {
+            "label": "Gross Margin Realized",
+            "value": "81.2%",
+            "delta": "+6.2 pts"
+          },
+          {
+            "label": "Valuation Multiple",
+            "value": "11.4x ARR",
+            "delta": "+3.2x"
+          }
+        ]
+      }
+    },
+    {
+      "id": "value-capture-analytics",
+      "slug": "value-capture-analytics",
+      "title": "Value Capture Analytics",
+      "businessQuestion": "How do you measure and report on the effectiveness of your entire pricing and monetization architecture in real-time?",
+      "explanation": "Builds executive pricing dashboards, cohort price realization monitors, concession analytics, and predictive margin forecasting engines.",
+      "topics": [
+        {
+          "title": "Real-Time Price Realization Dashboards",
+          "description": "Provide executive leadership with live visibility into pocket price realization, discount dispersion, and gross margin trends.",
+          "businessEvidence": "Closed deal records, discount request queues, invoice ledger entries, and gross profit reports.",
+          "analysisProcess": "Automated BI data pipeline aggregating CRM, CPQ, and ERP transaction data into unified executive views.",
+          "decisionsEnabled": "Instantly spot pricing erosion across sales teams before it impacts quarterly board reporting."
+        },
+        {
+          "title": "Cohort Price Sensitivity & Elasticity Tracking",
+          "description": "Monitor how win rates fluctuate across customer tiers, regions, and industries as prices evolve over time.",
+          "businessEvidence": "Quarterly win-loss rates, competitor pricing changes, and average deal size by segment.",
+          "analysisProcess": "Continuous econometric regression modeling calculating dynamic price elasticity coefficients.",
+          "decisionsEnabled": "Continuously calibrate list pricing and discounting policies based on empirical market data."
+        },
+        {
+          "title": "Concession & Trade-Off Analytics",
+          "description": "Track what non-price concessions (payment terms, SLA guarantees, free services) reps give away to close deals.",
+          "businessEvidence": "Contract terms variance fields, legal addendum tags, and special commercial terms logs.",
+          "analysisProcess": "Concession cost modeling calculating the hidden gross margin impact of non-standard contract terms.",
+          "decisionsEnabled": "Eliminate costly commercial concessions that reps treat as \"free\" but actually cost millions."
+        },
+        {
+          "title": "Predictive Margin Forecasting Engines",
+          "description": "Forecast forward gross margin and operating EBITDA based on active pipeline deal structures and pricing terms.",
+          "businessEvidence": "Weighted pipeline opportunities, CPQ draft quotes, and historical stage margin conversion.",
+          "analysisProcess": "Monte Carlo forward margin simulations predicting quarterly gross margin with 95% confidence intervals.",
+          "decisionsEnabled": "Deliver precise, defensible margin guidance to public and private market institutional investors."
+        }
+      ],
+      "useCase": {
+        "situation": "An executive leadership team had zero visibility into realized deal pricing until 45 days after quarter-end financial closes.",
+        "action": "Engineered Value Capture Analytics with real-time deal desk BI dashboards and predictive margin forecasting.",
+        "outcome": "Provided real-time commercial visibility, cut quarter-end margin variance to <1.5%, and protected $7.8M in cash flow."
+      },
+      "kpis": [
+        {
+          "name": "Margin Forecast Precision",
+          "definition": "Variance between day-1 pipeline margin forecast and final closed gross margin",
+          "target": "< 1.8%"
+        },
+        {
+          "name": "Analytics Data Freshness",
+          "definition": "Maximum latency between deal close in CRM and updated executive dashboard metrics",
+          "target": "< 1 Hour"
+        },
+        {
+          "name": "Unmonitored Concession Rate",
+          "definition": "Percentage of closed contracts containing non-standard terms without analytics tracking",
+          "target": "0.0%"
+        }
+      ],
+      "visualModel": {
+        "type": "analytics-dashboard",
+        "caption": "Executive Real-Time Value Capture & Margin Intelligence Dashboard",
+        "metrics": [
+          {
+            "label": "Margin Precision",
+            "value": "1.2%",
+            "delta": "Board-Grade"
+          },
+          {
+            "label": "Data Latency",
+            "value": "< 15 Mins",
+            "delta": "Real-Time"
+          },
+          {
+            "label": "Tracked Concessions",
+            "value": "100.0%",
+            "delta": "Audited"
+          },
+          {
+            "label": "Cash Flow Protected",
+            "value": "$7.8M",
+            "delta": "Defended"
+          }
         ]
       }
     }
   ],
-  methodologyWorkflow: [
-    {
-      stepNumber: '01',
-      title: 'Economic Value & Pricing Diagnostic',
-      input: 'Customer ROI reports, historical transaction pricing, win/loss discount data, and direct cost ledgers.',
-      activity: 'Quantify customer economic surplus, analyze historical price realization, and identify discount leakage patterns.',
-      output: 'Comprehensive Economic Value & Price Realization Diagnostic Report.'
-    },
-    {
-      stepNumber: '02',
-      title: 'Elasticity & Margin Architecture',
-      input: 'Segment win/loss data, competitor pricing intelligence, and customer willingness-to-pay benchmarks.',
-      activity: 'Model price elasticity curves across micro-segments and define strict gross margin floors.',
-      output: 'Calibrated Value-Based Pricing Architecture and segment-specific price schedules.'
-    },
-    {
-      stepNumber: '03',
-      title: 'Negotiation & Concession Governance',
-      input: 'Historical procurement concession logs, contract redlines, and sales rep discounting behaviors.',
-      activity: 'Build standardized Concession Trade-off Matrices, multi-option proposal templates, and CPQ approval gates.',
-      output: 'Institutionalized Commercial Negotiation Playbook and CPQ governance controls.'
-    },
-    {
-      stepNumber: '04',
-      title: 'Legacy Account Repricing Program',
-      input: 'Legacy customer contract roster, historical discount schedules, and platform utilization telemetry.',
-      activity: 'Design and execute grandfathered account repricing programs with phased migration schedules.',
-      output: 'Executed contract addendums capturing modernized pricing across legacy accounts.'
-    },
-    {
-      stepNumber: '05',
-      title: 'Continuous Margin Telemetry',
-      input: 'Live proposal generation feeds, closed contract terms, realized margins, and procurement concession logs.',
-      activity: 'Track realized price against list price in real-time, alerting RevOps the moment margin discipline slips.',
-      output: 'Executive Margin Telemetry Dashboard maintaining high-margin commercial execution.'
-    }
-  ],
-  primaryKpis: [
-    {
-      name: 'Gross Margin Realization %',
-      definition: 'Percentage of gross contract revenue retained after deducting all direct delivery, compute, and labor costs.',
-      formula: '[ (Gross Revenue − Direct Labor − Compute Infrastructure − Third-Party Licenses) ÷ Gross Revenue ] × 100',
-      unit: '%',
-      reportingPeriod: 'Monthly / Quarterly',
-      baseline: '68.4%',
-      target: '82.0%',
-      illustrativeValue: '83.5%',
-      interpretation: 'Expanding gross margin from 68% to 83% directly transforms the cash-generating power and enterprise valuation of the business.',
-      category: 'Unit Economics'
-    },
-    {
-      name: 'Price Realization Ratio',
-      definition: 'Percentage of target catalog list price actually captured on executed customer contracts.',
-      formula: '(Total Realized Contracted ARR ÷ Total Theoretical List ARR of Sold Products) × 100',
-      unit: '%',
-      reportingPeriod: 'Quarterly',
-      baseline: '69.0%',
-      target: '90.0%',
-      illustrativeValue: '91.2%',
-      interpretation: 'A 91% price realization ratio proves that sales reps successfully defend commercial value against aggressive procurement pressure.',
-      category: 'Commercial'
-    },
-    {
-      name: 'Average Discount Depth',
-      definition: 'Mean percentage price discount granted off list price across all closed enterprise contracts.',
-      formula: '[ (Total List ARR of Closed Deals − Total Realized ARR) ÷ Total List ARR of Closed Deals ] × 100',
-      unit: '%',
-      reportingPeriod: 'Monthly / Quarterly',
-      baseline: '31.0%',
-      target: '< 10.0%',
-      illustrativeValue: '8.8%',
-      interpretation: 'Curbing average discounting from 31% to under 9% reclaims millions of dollars of high-margin ARR with zero incremental delivery cost.',
-      category: 'Commercial'
-    },
-    {
-      name: 'Proposal Close Win Rate',
-      definition: 'Percentage of delivered commercial proposals that result in fully executed contracts without price concessions.',
-      formula: '(Proposals Executed at or above Target Price Floor ÷ Total Formal Proposals Delivered) × 100',
-      unit: '%',
-      reportingPeriod: 'Monthly',
-      baseline: '26.5%',
-      target: '45.0%',
-      illustrativeValue: '46.8%',
-      interpretation: 'Elevating proposal win rates while defending price confirms that value-based proposal structures effectively resonate with C-suite buyers.',
-      category: 'Commercial'
-    },
-    {
-      name: 'Profit Contribution Per Account',
-      definition: 'Net dollar profit contribution generated per customer account after fully loaded servicing costs.',
-      formula: 'Account Contract ARR − Account Fully Loaded Servicing & Hosting Cost',
-      unit: '$ / Account',
-      reportingPeriod: 'Annualized',
-      baseline: '$18,200',
-      target: '$48,000',
-      illustrativeValue: '$49,400',
-      interpretation: 'A 2.7x increase in profit contribution per customer validates that value capture engineering compounds bottom-line cash flow.',
-      category: 'Unit Economics'
-    }
-  ],
-  scenarios: [
-    {
-      title: 'Enterprise HealthTech Platform Value-Based Repricing',
-      industry: 'Healthcare Technology & Clinical Operations',
-      baselineSituation: '$52M ARR clinical operations platform delivering $120M in documented hospital operational savings.',
-      observedProblem: 'Hospital procurement teams routinely extracted 35% discounts by threatening to purchase legacy on-premise alternatives.',
-      analysis: 'Deployed Value Capture Engineering to model total cost of ownership (TCO), proving the competitor was 2.5x more expensive when factoring in clinical staff overtime.',
-      decisionEvaluated: 'Replaced single-price proposals with 3 structured options and instituted a mandatory Concession Trade-off Matrix.',
-      expectedImprovement: 'Eliminate rogue discounting, lift price realization to >90%, and expand gross margins.',
-      validatingMetrics: ['Price Realization (from 65% to 92%)', 'Gross Margin (from 71% to 84%)', 'Average Contract Value (from $64K to $112K)'],
-      assumptions: 'Assumed clinical champions would actively support the business case in hospital board finance committees.'
-    }
-  ],
-  dataConsiderations: [
-    {
-      title: 'Documented Customer ROI Business Cases',
-      description: 'Defending value-based pricing requires verified case studies and economic models documenting customer cost savings and operational gains.',
-      impactLevel: 'Critical'
-    },
-    {
-      title: 'CPQ Approval Workflow Automation',
-      description: 'Discount governance must be strictly enforced through automated CPQ approval gates tied directly to deal margin thresholds.',
-      impactLevel: 'High'
-    },
-    {
-      title: 'Sales Rep Negotiation Certification',
-      description: 'Commercial sales teams must be trained and certified on concession trade-offs to prevent unauthorized verbal discounting during negotiations.',
-      impactLevel: 'High'
-    }
-  ],
-  decisionSupport: [
-    {
-      priority: 'Immediate (Weeks 1-3)',
-      focusArea: 'Concession Governance & Discount Bands',
-      keyMetrics: 'Discount Depth %, CPQ Approval Compliance',
-      tradeOffs: 'Enforcing strict discount bands may cause initial rep resistance but immediately stops margin erosion.',
-      recommendedAction: 'Institute mandatory executive approval for discounts exceeding 10% and mandate non-monetary trade-offs for all concessions.'
-    },
-    {
-      priority: 'Secondary (Weeks 4-8)',
-      focusArea: 'Value-Based Proposal Restructuring',
-      keyMetrics: 'Proposal Win Rate, Price Realization %',
-      tradeOffs: 'Requires investing time to build custom executive ROI calculators into commercial proposals.',
-      recommendedAction: 'Redesign standard enterprise proposals to present 3 structured options with explicit financial payback payback timelines.'
-    },
-    {
-      priority: 'Strategic (Weeks 9-12)',
-      focusArea: 'Legacy Account Repricing Program',
-      keyMetrics: 'Legacy Repricing Yield, Customer Churn %',
-      tradeOffs: 'Repricing legacy accounts carries a minor churn risk if not paired with clear communication of expanded product value.',
-      recommendedAction: 'Execute a phased repricing migration for underpaying legacy accounts that have benefited from recent platform feature expansions.'
-    }
-  ],
-  visualTheme: 'value'
+  "visualTheme": "value"
 };
-

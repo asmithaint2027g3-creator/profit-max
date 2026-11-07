@@ -1,451 +1,730 @@
 import { GrowthCapabilityPageData } from '../types';
 
 export const page05LeakageRecoveryData: GrowthCapabilityPageData = {
-  pageNumber: '05',
-  title: 'Revenue Leakage & Recovery',
-  slug: 'revenue-leakage-recovery',
-  heroHeadline: 'Identify Where Revenue Slips Away—and What Can Be Recovered',
-  heroSupporting: 'Conduct forensic diagnostics across pipeline decay, unmonitored commercial discounting, contract entitlement slippage, and silent customer churn to systematically claw back lost enterprise cash flow.',
-  businessProblemSummary: 'Enterprise companies quietly lose 12% to 24% of their addressable revenue every year through operational gaps: slow lead response times, rogue rep discounting, unbilled contract scope creep, and neglected renewal cycles.',
-  targetDecisionMakers: ['Chief Financial Officers', 'Chief Revenue Officers', 'VPs of RevOps', 'General Counsel / Commercial Operations'],
-  contextWhoExperiences: 'Mid-market and enterprise organizations with distributed sales teams, complex contract pricing rules, and multi-stage go-to-market workflows.',
-  contextSituation: 'Revenue targets are missed, yet leadership cannot pinpoint whether the loss occurred at lead qualification, deal negotiation, billing execution, or customer renewal.',
-  contextWhyDifficult: 'Revenue leakage does not appear on traditional P&L statements as an expense line; it is an invisible shortfall between contracted value and realized cash.',
-  contextContributingFactors: [
-    'Reps granting non-standard contract terms and discounts without RevOps approval',
-    'Disjointed handoffs between sales closing and billing/finance implementation',
-    'Uncollected professional service hours and unmetered overage consumption',
-    'Delayed renewal outreach occurring less than 30 days before contract expiration'
+  "pageNumber": "05",
+  "title": "Revenue Leakage & Recovery",
+  "slug": "revenue-leakage-recovery",
+  "heroHeadline": "Identify Where Revenue Slips Away—and Systematically Recover It",
+  "heroSupporting": "Conduct forensic diagnostics across pipeline decay, unmonitored discounting, contract entitlement slippage, and silent customer churn to systematically claw back lost enterprise cash flow.",
+  "businessProblemSummary": "Enterprise companies quietly lose 12% to 24% of their addressable revenue every year through operational gaps: slow lead response times, rogue rep discounting, unbilled contract scope creep, and neglected renewal cycles.",
+  "targetDecisionMakers": [
+    "Chief Financial Officers",
+    "Chief Revenue Officers",
+    "VPs of RevOps",
+    "General Counsel / Commercial Operations"
   ],
-  symptomsAndConsequences: [
+  "contextWhoExperiences": "Mid-market and enterprise organizations with distributed sales teams, complex contract pricing rules, and multi-stage go-to-market workflows.",
+  "contextSituation": "Revenue targets are missed, yet leadership cannot pinpoint whether the loss occurred at lead qualification, deal negotiation, billing execution, or customer renewal.",
+  "contextWhyDifficult": "Revenue leakage does not appear on traditional P&L statements as an expense line; it is an invisible shortfall between contracted value and realized cash.",
+  "contextContributingFactors": [
+    "Reps granting non-standard contract terms and discounts without RevOps approval",
+    "Disjointed handoffs between sales closing and billing/finance implementation",
+    "Uncollected professional service hours and unmetered overage consumption",
+    "Delayed renewal outreach occurring less than 30 days before contract expiration"
+  ],
+  "symptomsAndConsequences": [
     {
-      category: 'Discount Slippage',
-      symptom: 'Average realized discount across closed deals creeping from 14% to 29% over four quarters.',
-      consequence: 'Gross margin compressed by 680 basis points; millions in recurring cash flow sacrificed.'
+      "category": "Discount Slippage",
+      "symptom": "Average realized discount across closed deals creeping from 14% to 29% over four quarters.",
+      "consequence": "Gross margin compressed by 680 basis points; millions in recurring cash flow sacrificed."
     },
     {
-      category: 'Pipeline Stall',
-      symptom: '40% of qualified pipeline opportunities stuck in "Negotiation" stage for over 90 days.',
-      consequence: 'Sales forecast collapses, deal momentum evaporates, and competitors step in with aggressive incentives.'
+      "category": "Pipeline Stall",
+      "symptom": "40% of qualified pipeline opportunities stuck in \"Negotiation\" stage for over 90 days.",
+      "consequence": "Sales forecast collapses, deal momentum evaporates, and competitors step in with aggressive incentives."
     },
     {
-      category: 'Billing Entitlement',
-      symptom: 'Clients utilizing 140% of contracted API/compute capacity with zero overage invoices generated.',
-      consequence: 'Infrastructure costs escalate while customer contract revenue remains flat.'
+      "category": "Billing Entitlement",
+      "symptom": "Clients utilizing 140% of contracted API/compute capacity with zero overage invoices generated.",
+      "consequence": "Infrastructure costs escalate while customer contract revenue remains flat."
     },
     {
-      category: 'Silent Churn',
-      symptom: 'Accounts quietly terminating contracts due to unaddressed support tickets or champion departures.',
-      consequence: 'Net Revenue Retention erodes, forcing the company to overspend on high-CAC replacement logos.'
+      "category": "Silent Churn",
+      "symptom": "Accounts quietly terminating contracts due to unaddressed support tickets or champion departures.",
+      "consequence": "Net Revenue Retention erodes, forcing the company to overspend on high-CAC replacement logos."
     }
   ],
-  subSubmenus: [
+  "subSubmenus": [
     {
-      id: 'sec-funnel-leak',
-      slug: 'funnel-leakage-analysis',
-      title: 'Funnel Leakage Analysis',
-      businessQuestion: 'Where exactly in your sales pipeline are qualified opportunities dropping off and why?',
-      explanation: 'Funnel leakage analysis pinpoints the specific micro-stages where deal momentum stalls, qualification fails, and buyer engagement dissipates.',
-      topics: [
+      "id": "revenue-leakage-diagnostics",
+      "slug": "revenue-leakage-diagnostics",
+      "title": "Revenue Leakage Diagnostics",
+      "businessQuestion": "Where across the entire commercial lifecycle are dollars slipping away unnoticed?",
+      "explanation": "Conducts forensic, automated audits of every dollar path from initial marketing touch to invoice reconciliation, isolating where enterprise value bleeds through operational cracks.",
+      "topics": [
         {
-          title: 'Lead Leakage',
-          description: 'Measure inbound lead drop-off caused by slow SDR response latency, poor routing, and flawed qualification.',
-          businessEvidence: 'Web form submission timestamps, SDR first-touch response logs, and lead routing rule logs.',
-          analysisProcess: 'Lead decay curve modeling measuring conversion drop-off per hour of SDR outreach delay.',
-          decisionsEnabled: 'Enforce a mandatory 15-minute SLA for inbound enterprise demo requests.'
+          "title": "Full-Lifecycle Leakage Auditing",
+          "description": "Trace revenue flows across CRM, CPQ, billing, ERP, and payment gateway systems to identify structural discrepancies.",
+          "businessEvidence": "Reconciliation ledgers, uncollected invoice logs, and unapproved contract discount overrides.",
+          "analysisProcess": "Deterministic waterfall reconciliation matching closed contract values against recognized and collected cash.",
+          "decisionsEnabled": "Pinpoint which commercial handoffs cause 80% of uncollected enterprise revenue."
         },
         {
-          title: 'Opportunity Leakage',
-          description: 'Isolate why qualified discovery meetings fail to transition into active technical evaluations or proposals.',
-          businessEvidence: 'Discovery meeting recordings, CRM stage transition notes, and qualification scorecards.',
-          analysisProcess: 'Stage 1-to-Stage 2 transition friction auditing identifying missing value propositions and objection handling gaps.',
-          decisionsEnabled: 'Retrain sales reps on discovery methodologies and economic buyer qualification frameworks.'
+          "title": "Discount Slippage & Rogue Pricing Diagnostics",
+          "description": "Examine field sales discount distributions, non-standard payment terms, and unauthorized concession bundles.",
+          "businessEvidence": "Opportunity discount histories, price exception approval tickets, and rep quota attainment matrices.",
+          "analysisProcess": "Statistical dispersion modeling comparing realized price per seat/unit across sales cohorts.",
+          "decisionsEnabled": "Enforce algorithmic discount governance and eliminate off-policy price erosion."
         },
         {
-          title: 'Conversion Friction',
-          description: 'Identify bureaucratic hurdles, complex security questionnaires, and slow pricing approvals that derail buyer momentum.',
-          businessEvidence: 'InfoSec review turnaround times, legal redline duration records, and pricing approval queues.',
-          analysisProcess: 'Bottleneck queue duration analysis identifying internal process delays that prolong deal cycles.',
-          decisionsEnabled: 'Pre-package SOC2 compliance documentation and empower sales directors with pre-approved discount bands.'
+          "title": "Unbilled Entitlement & Overage Capture",
+          "description": "Compare actual customer consumption telemetry against contracted licensing limits to identify unbilled usage.",
+          "businessEvidence": "Product API logs, compute usage telemetry, seat assignment records, and monthly billing runs.",
+          "analysisProcess": "Automated telemetry-to-billing delta reconciliation flagging positive consumption overages.",
+          "decisionsEnabled": "Recover hundreds of thousands in unmetered consumption without customer friction."
         },
         {
-          title: 'Velocity Bottlenecks',
-          description: 'Diagnose stages where deals spend 2x or 3x the average historical cycle time before quietly dying.',
-          businessEvidence: 'Historical stage duration averages, deal aging logs, and stalled opportunity alerts.',
-          analysisProcess: 'Stage velocity anomaly detection flagging deals exceeding stage threshold duration limits.',
-          decisionsEnabled: 'Automatically reassign or mandate executive sponsor intervention on stalled high-value contracts.'
-        },
-        {
-          title: 'Pipeline Decay Analysis',
-          description: 'Quantify the compounding loss of win probability as open opportunities linger in the pipeline past 60 and 90 days.',
-          businessEvidence: 'Longitudinal opportunity disposition logs and win rate by age cohort.',
-          analysisProcess: 'Decay hazard modeling demonstrating that deals older than 75 days have an 82% lower win rate.',
-          decisionsEnabled: 'Purge stale pipeline opportunities and enforce strict time-based deal qualification rules.'
+          "title": "Contract Renewal Slippage Tracking",
+          "description": "Isolate late renewals, unadjusted CPI indexations, and auto-renew clauses that failed to execute on schedule.",
+          "businessEvidence": "Master service agreements, evergreen clauses, inflation index schedules, and renewal notifications.",
+          "analysisProcess": "Contract portfolio expiration curve tracking with 120-day predictive alerting.",
+          "decisionsEnabled": "Prevent unplanned gap periods where expired clients receive service without active billing."
         }
       ],
-      useCase: {
-        situation: 'An enterprise fintech platform suffered from a 22% win rate on marketing-qualified leads.',
-        action: 'Funnel Leakage Analysis revealed that SDR first response averaged 28 hours, and security reviews took 34 days.',
-        outcome: 'Reduced response latency to 18 minutes and streamlined InfoSec workflows, increasing win rates to 36%.'
+      "useCase": {
+        "situation": "A $65M ARR enterprise infrastructure provider discovered a 7.8% variance between contracted bookings and recognized cash.",
+        "action": "Deployed Revenue Leakage Diagnostics to uncover unbilled multi-region API overages and rogue discounting.",
+        "outcome": "Systematically recovered $4.2M in annual unbilled revenue and closed 3 major entitlement loopholes within 60 days."
       },
-      kpis: [
-        { name: 'Funnel Leakage Rate', definition: 'Percentage of qualified pipeline value lost to stage stalls or disengagement', target: '< 22%' },
-        { name: 'SDR Response Latency', definition: 'Median minutes elapsed from inbound lead capture to first personalized touch', target: '< 15 Min' },
-        { name: 'Stage-to-Stage Conversion Lift', definition: 'Improvement in transition rates between discovery and formal proposal', target: '+14%' }
+      "kpis": [
+        {
+          "name": "Revenue Leakage Rate",
+          "definition": "Percentage of contracted ARR lost to billing and discount leakage",
+          "target": "< 1.2%"
+        },
+        {
+          "name": "Entitlement Capture Efficiency",
+          "definition": "Ratio of billable overage detected to actually invoiced cash",
+          "target": "> 98.5%"
+        },
+        {
+          "name": "Unapproved Discount Index",
+          "definition": "Total ARR impact of non-standard discounting without VP approval",
+          "target": "$0"
+        }
       ],
-      visualModel: {
-        type: 'funnel',
-        caption: 'Forensic Funnel Leakage Waterfall: Stage Drop-off & Recoverable Pipeline Pockets',
-        metrics: [
-          { label: 'Initial Pipeline Value', value: '$34.2M', delta: 'Active' },
-          { label: 'Identified Funnel Leakage', value: '$8.4M', delta: 'Recoverable' },
-          { label: 'Optimized Close Rate', value: '34.8%', delta: '+8.4%' }
+      "visualModel": {
+        "type": "waterfall",
+        "caption": "Forensic Revenue Leakage Waterfall & Recovery Analysis",
+        "metrics": [
+          {
+            "label": "Audited Contract ARR",
+            "value": "$65.0M",
+            "delta": "Audited"
+          },
+          {
+            "label": "Identified Leakage",
+            "value": "$4.2M",
+            "delta": "6.4% Loss"
+          },
+          {
+            "label": "Rapidly Recovered",
+            "value": "$3.6M",
+            "delta": "85.7% Capture"
+          },
+          {
+            "label": "Normalized Net Margin",
+            "value": "+580 bps",
+            "delta": "Protected"
+          }
         ]
       }
     },
     {
-      id: 'sec-comm-leak',
-      slug: 'commercial-leakage',
-      title: 'Commercial Leakage',
-      businessQuestion: 'How much contracted margin is being surrendered through rogue discounting and unbilled services?',
-      explanation: 'Commercial leakage audits contract execution, pricing exceptions, billing entitlement discrepancies, and service creep.',
-      topics: [
+      "id": "pricing-leakage-detection",
+      "slug": "pricing-leakage-detection",
+      "title": "Pricing Leakage Detection",
+      "businessQuestion": "Where is your pricing model failing to capture agreed customer willingness-to-pay?",
+      "explanation": "Examines price waterfall distortions, hidden freight/service subsidies, rogue discounting, and term-length concessions that erode gross margin at the point of sale.",
+      "topics": [
         {
-          title: 'Discount Leakage',
-          description: 'Audit the variance between list pricing and realized contract pricing across reps, quarters, and deal sizes.',
-          businessEvidence: 'Deal pricing calculator logs, discount exception requests, and contract ARR addendums.',
-          analysisProcess: 'Discount dispersion analysis identifying reps consistently granting 30%+ discounts to hit quarterly quotas.',
-          decisionsEnabled: 'Tie sales commissions directly to gross margin realization rather than gross contract value.'
+          "title": "Pocket Price Waterfall Analysis",
+          "description": "Deconstruct list price down to the true pocket price after invoice discounts, rebates, payment terms, and free services.",
+          "businessEvidence": "Transactional sales receipts, distributor rebate claims, credit memo ledgers, and shipping concessions.",
+          "analysisProcess": "Standardized pocket price waterfall calculations identifying every deduction point.",
+          "decisionsEnabled": "Eliminate unprofitable concession combinations that turn seemingly high-value deals margin-negative."
         },
         {
-          title: 'Pricing Leakage',
-          description: 'Identify pricing models that fail to capture fair economic value for software utilization and business value delivered.',
-          businessEvidence: 'Customer software value metrics, competitor price points, and client cost-savings reports.',
-          analysisProcess: 'Value-pricing gap analysis comparing customer financial return against vendor software license cost.',
-          decisionsEnabled: 'Transition legacy accounts to modernized value-based tiers upon contract renewal.'
+          "title": "Tier Boundary Arbitrage Detection",
+          "description": "Identify enterprise buyers gaming subscription tier definitions or user license tiers to avoid contract upgrades.",
+          "businessEvidence": "User login clustering logs, shared credential telemetry, and feature flag invocation patterns.",
+          "analysisProcess": "Account usage anomaly detection uncovering artificial consumption caps and credential sharing.",
+          "decisionsEnabled": "Redesign tier boundaries and enforce enterprise-grade security/governance licensing."
         },
         {
-          title: 'Contract Leakage',
-          description: 'Detect non-standard contract clauses, uncapped liability commitments, and unbilled custom development requests.',
-          businessEvidence: 'Legal contract redlines, custom MSA commitments, and development backlog ticketing systems.',
-          analysisProcess: 'Natural language contract clause audit identifying hidden cost liabilities and unbilled commitments.',
-          decisionsEnabled: 'Enforce standard contract templates and billable change orders for custom engineering.'
+          "title": "Discount Velocity & Rep Dispersion Auditing",
+          "description": "Benchmark discount rates across individual account executives, regions, and deal quarters to isolate bad habits.",
+          "businessEvidence": "CRM deal discount fields, quarter-end close records, and deal margin reports.",
+          "analysisProcess": "Quartile analysis isolating reps who use price as an immediate crutch versus value-based negotiators.",
+          "decisionsEnabled": "Retrain low-margin reps and adjust incentive plans to reward gross margin dollars over raw booking volume."
         },
         {
-          title: 'Renewal Leakage',
-          description: 'Quantify revenue lost when customer renewal contracts are executed without standard CPI inflation escalators.',
-          businessEvidence: 'Master renewal agreements, consumer price index (CPI) schedules, and invoice price histories.',
-          analysisProcess: 'Inflationary gap audit modeling the ARR lost when 5-7% contractual price escalators are waived.',
-          decisionsEnabled: 'Institutionalize mandatory 5% annual price escalation clauses across all enterprise renewals.'
-        },
-        {
-          title: 'Service Profitability Leakage',
-          description: 'Audit professional service and customer implementation hours that exceed contracted statement of work (SOW) caps.',
-          businessEvidence: 'Engineering timesheets, implementation milestone delivery logs, and SOW contract terms.',
-          analysisProcess: 'Labor cost attribution comparing contracted implementation fees against actual technical hours delivered.',
-          decisionsEnabled: 'Require customer sign-off and incremental billing when implementation exceeds SOW hour limits.'
+          "title": "Inflation & Currency Erosion Diagnostics",
+          "description": "Evaluate multi-year fixed contracts that suffer real-dollar margin erosion due to unindexed cost increases.",
+          "businessEvidence": "Multi-year master contracts, supplier COGS inflation indexes, and foreign exchange conversion tables.",
+          "analysisProcess": "Time-series margin decay modeling across active 24-48 month customer commitments.",
+          "decisionsEnabled": "Insert mandatory CPI indexation clauses into all multi-year renewal templates."
         }
       ],
-      useCase: {
-        situation: 'A medical software provider was growing ARR by 20% but EBITDA margins were declining.',
-        action: 'Audited 400 contracts and discovered that 68% of renewals waived the 5% CPI escalator, and reps granted an average 24% discount.',
-        outcome: 'Enforced strict discount approval bands and automated CPI escalation, recovering $3.8M in annualized EBITDA.'
+      "useCase": {
+        "situation": "A global B2B distributor saw gross margins decline by 420 basis points despite record sales volume.",
+        "action": "Executed Pricing Leakage Detection, revealing unmonitored post-sale shipping subsidies and rebate stacking.",
+        "outcome": "Restructured commercial discount policies, recovering 310 basis points of gross margin ($5.8M annual cash flow)."
       },
-      kpis: [
-        { name: 'Realized Discount Rate', definition: 'Average percentage discount granted off list price across all executed contracts', target: '< 11.5%' },
-        { name: 'CPI Escalation Capture', definition: 'Percentage of renewal contracts successfully capturing annual price increases', target: '92%' },
-        { name: 'Service Margin Realization', definition: 'Gross margin realized on professional services and onboarding delivery', target: '28%' }
+      "kpis": [
+        {
+          "name": "Pocket Margin Realization",
+          "definition": "Net cash retained after all rebates, terms, and concessions",
+          "target": "> 82.0%"
+        },
+        {
+          "name": "Discount Dispersion Std Dev",
+          "definition": "Standard deviation of deal discounting across the enterprise sales force",
+          "target": "< 4.2%"
+        },
+        {
+          "name": "Concession Policy Compliance",
+          "definition": "Deals adhering strictly to standard commercial terms without exceptions",
+          "target": "> 96.0%"
+        }
       ],
-      visualModel: {
-        type: 'waterfall',
-        caption: 'Commercial Margin Leakage: From List Price to Realized Enterprise Cash',
-        metrics: [
-          { label: 'Gross List ARR', value: '$48.0M', delta: 'Theoretical' },
-          { label: 'Uncontrolled Discounting', value: '-$6.2M', delta: '12.9% Loss' },
-          { label: 'Uncollected Overages', value: '-$1.4M', delta: '2.9% Loss' },
-          { label: 'Net Realized ARR', value: '$40.4M', delta: 'Actual' }
+      "visualModel": {
+        "type": "waterfall",
+        "caption": "Gross-to-Pocket Margin Waterfall Breakdown",
+        "metrics": [
+          {
+            "label": "List Price Benchmark",
+            "value": "100.0%",
+            "delta": "Standard"
+          },
+          {
+            "label": "Invoice Discounts",
+            "value": "-14.2%",
+            "delta": "Controlled"
+          },
+          {
+            "label": "Pocket Realization",
+            "value": "81.6%",
+            "delta": "+4.8 pts"
+          },
+          {
+            "label": "Protected Margin",
+            "value": "$5.8M",
+            "delta": "Recovered"
+          }
         ]
       }
     },
     {
-      id: 'sec-cust-leak',
-      slug: 'customer-leakage',
-      title: 'Customer Leakage',
-      businessQuestion: 'Which accounts are quietly disengaging, downgrading licenses, or eroding contractual loyalty?',
-      explanation: 'Customer leakage detects behavioral decay, champion turnover, and dissatisfaction markers before accounts churn.',
-      topics: [
+      "id": "customer-churn-leakage",
+      "slug": "customer-churn-leakage",
+      "title": "Customer Churn Leakage",
+      "businessQuestion": "Which accounts are silently preparing to leave, and why did past churn occur?",
+      "explanation": "Analyzes early warning health telemetry, stakeholder departures, product usage deceleration, and renewal patterns to intervene before churn becomes irreversible.",
+      "topics": [
         {
-          title: 'Churn Diagnostics',
-          description: 'Conduct root-cause autopsy on lost customer accounts to isolate product, pricing, service, or competitive drivers.',
-          businessEvidence: 'Exit interview transcripts, CS ticket history prior to cancellation, and billing termination notices.',
-          analysisProcess: 'Categorical factor attribution grouping churn into preventable (service/product) vs. unpreventable (bankruptcy).',
-          decisionsEnabled: 'Redesign onboarding workflows for customer cohorts showing the highest historical churn propensity.'
+          "title": "Silent Churn Signal Intelligence",
+          "description": "Detect micro-signals of buyer disengagement 90 to 180 days before contract expiration.",
+          "businessEvidence": "Product login frequency drops, executive sponsor departure alerts, and declining support ticket volume.",
+          "analysisProcess": "Composite customer health decay algorithms trained on 48 months of historical cancellation events.",
+          "decisionsEnabled": "Trigger automated executive interventions while accounts are still salvageable."
         },
         {
-          title: 'Dormant Account Recovery',
-          description: 'Identify contracted customer accounts with declining active user logins, zero support queries, and zero usage.',
-          businessEvidence: 'Product login telemetry, API query frequencies, and monthly active user (MAU) ratios.',
-          analysisProcess: 'Dormancy velocity scoring flagging accounts with a >40% decline in active weekly users over 60 days.',
-          decisionsEnabled: 'Deploy proactive CSM re-onboarding campaigns before the account reaches renewal.'
+          "title": "Exit Forensic & Loss Categorization",
+          "description": "Conduct empirical post-mortems on churned accounts to isolate root causes: product gaps, pricing, service, or M&A.",
+          "businessEvidence": "Cancellation exit interviews, NPS sentiment analysis, and support ticket escalation logs.",
+          "analysisProcess": "Unsupervised NLP clustering and causal factor weighting on historical departure transcripts.",
+          "decisionsEnabled": "Fix underlying product-market-fit defects rather than blaming customer success reps."
         },
         {
-          title: 'Lost Customer Reactivation',
-          description: 'Systematically re-engage former customer accounts that churned due to missing features that have since been released.',
-          businessEvidence: 'Historical churn reason logs, product release changelogs, and former champion contact updates.',
-          analysisProcess: 'Feature-match reactivation indexing identifying churned accounts whose primary exit reason is now solved.',
-          decisionsEnabled: 'Launch targeted win-back campaigns demonstrating that legacy feature gaps have been fully resolved.'
+          "title": "Downgrade & Contraction Leakage Mapping",
+          "description": "Isolate accounts quietly downgrading license tiers, shrinking seat counts, or dropping premium modules.",
+          "businessEvidence": "Renewal amendment histories, active user license logs, and feature utilization telemetry.",
+          "analysisProcess": "Cohort license contraction decomposition modeling ARR loss trends by customer segment.",
+          "decisionsEnabled": "Deploy proactive value engineering playbooks to demonstrate ROI before renewal negotiations."
         },
         {
-          title: 'Expansion Miss Analysis',
-          description: 'Quantify the ARR lost when accounts with high growth potential renew at flat or downgraded contract values.',
-          businessEvidence: 'Customer corporate headcount growth records, funding announcements, and flatline renewal contracts.',
-          analysisProcess: 'Account expansion gap analysis comparing customer revenue growth against software spend growth.',
-          decisionsEnabled: 'Restructure account management compensation to reward multi-tier expansion.'
-        },
-        {
-          title: 'Loyalty Erosion Detection',
-          description: 'Detect subtle relationship decay: champion executive departures, unanswered emails, and cancelled QBR meetings.',
-          businessEvidence: 'LinkedIn executive departure alerts, email engagement analytics, and QBR attendance records.',
-          analysisProcess: 'Relationship decay monitoring alerting account teams the moment an executive champion changes roles.',
-          decisionsEnabled: 'Mobilize executive leadership to establish relationships with incoming decision-makers within 14 days.'
+          "title": "Customer Health Flywheel Governance",
+          "description": "Establish automated playbooks connecting customer telemetry to proactive account management workflows.",
+          "businessEvidence": "Customer health scores, quarterly business review completion rates, and client ROI dashboards.",
+          "analysisProcess": "Predictive health scoring feeding automated CRM tasks and executive risk alerts.",
+          "decisionsEnabled": "Ensure zero renewal surprises across the entire enterprise account portfolio."
         }
       ],
-      useCase: {
-        situation: 'An industrial manufacturing software platform suffered 14% annual churn, primarily from mid-market clients.',
-        action: 'Deployed Churn Diagnostics and discovered that 70% of churned clients stopped logging in 120 days prior to contract end.',
-        outcome: 'Institutionalized early dormancy alerts and re-onboarding interventions, cutting annual churn to 7.4%.'
+      "useCase": {
+        "situation": "A high-growth SaaS platform experienced gross revenue retention (GRR) drop from 91% to 81% over 18 months.",
+        "action": "Implemented Customer Churn Leakage intelligence with 120-day leading indicator alerts and executive save playbooks.",
+        "outcome": "Halted avoidable churn, restoring GRR to 93.4% and saving $7.2M in annual recurring revenue."
       },
-      kpis: [
-        { name: 'Gross Revenue Churn Rate', definition: 'Percentage of recurring revenue lost to cancellations and non-renewals', target: '< 6.0%' },
-        { name: 'Dormant Account Recovery Rate', definition: 'Percentage of identified dormant accounts successfully re-engaged into active status', target: '44%' },
-        { name: 'Champion Transition SLA', definition: 'Days to establish contact with new executive leadership following champion departure', target: '< 14 Days' }
+      "kpis": [
+        {
+          "name": "Gross Revenue Retention (GRR)",
+          "definition": "Percentage of recurring revenue retained excluding expansion",
+          "target": "> 92.5%"
+        },
+        {
+          "name": "Churn Early Warning Horizon",
+          "definition": "Average advance notice before unpreventable contract cancellation",
+          "target": "> 110 Days"
+        },
+        {
+          "name": "At-Risk ARR Save Rate",
+          "definition": "Percentage of flagged churn risks successfully renewed",
+          "target": "> 68.0%"
+        }
       ],
-      visualModel: {
-        type: 'matrix',
-        caption: 'Customer Churn & Dormancy Matrix: Relationship Health vs. Contract ARR at Risk',
-        metrics: [
-          { label: 'Gross Churn Rate', value: '6.4%', delta: '-4.8% YoY' },
-          { label: 'Reactivated Accounts', value: '28 Accounts', delta: '+$1.8M ARR' },
-          { label: 'Protected Renewal ARR', value: '$6.4M', delta: 'High Priority' }
+      "visualModel": {
+        "type": "retention-matrix",
+        "caption": "Predictive Customer Health & Renewal Risk Telemetry",
+        "metrics": [
+          {
+            "label": "Gross Revenue Retention",
+            "value": "93.4%",
+            "delta": "+12.4 pts"
+          },
+          {
+            "label": "Warning Lead Time",
+            "value": "118 Days",
+            "delta": "+64 Days"
+          },
+          {
+            "label": "At-Risk Saved ARR",
+            "value": "$7.2M",
+            "delta": "Protected"
+          },
+          {
+            "label": "Net Retention (NRR)",
+            "value": "116.8%",
+            "delta": "+14 pts"
+          }
         ]
       }
     },
     {
-      id: 'sec-rec-prog',
-      slug: 'revenue-recovery-programs',
-      title: 'Revenue Recovery Programs',
-      businessQuestion: 'What systematic interventions and playbooks will claw back stalled deals and lost customer accounts?',
-      explanation: 'Revenue recovery programs engineer structured commercial workflows to resurrect stalled pipeline, win back churned clients, and re-monetize legacy contracts.',
-      topics: [
+      "id": "pipeline-leakage-analysis",
+      "slug": "pipeline-leakage-analysis",
+      "title": "Pipeline Leakage Analysis",
+      "businessQuestion": "Where are qualified pipeline dollars decaying across the sales funnel stages?",
+      "explanation": "Maps and measures deal stage stall times, conversion drop-offs, phantom pipeline bloat, and pipeline slippage across sales territories.",
+      "topics": [
         {
-          title: 'Win-Back Systems',
-          description: 'Deploy automated and high-touch commercial programs to re-engage accounts that selected a competitor 6-12 months ago.',
-          businessEvidence: 'Closed-lost CRM records, competitor contract cycle benchmarks, and customer satisfaction surveys.',
-          analysisProcess: 'Buyer remorse timeline modeling identifying the moment competitor implementation fatigue peaks.',
-          decisionsEnabled: 'Deliver targeted migration incentives to dissatisfied clients of primary competitors.'
+          "title": "Stage-Gate Drop-Off Diagnostic",
+          "description": "Calculate transition probabilities between discovery, demo, evaluation, security review, and contracting.",
+          "businessEvidence": "Stage entry/exit logs, opportunity age fields, and closed-lost reason codes.",
+          "analysisProcess": "Markov conversion funnels identifying exact friction gates with below-benchmark conversion.",
+          "decisionsEnabled": "Re-engineer specific sales stages that stall deal progression and waste AE capacity."
         },
         {
-          title: 'Recovery Campaigns',
-          description: 'Execute targeted commercial blitzes on stalled pipeline deals offering time-limited economic incentives to close.',
-          businessEvidence: 'Stalled opportunity database, executive sponsor contacts, and procurement contact logs.',
-          analysisProcess: 'Deal resurrection elasticity scoring identifying stalled contracts responsive to tailored packaging.',
-          decisionsEnabled: 'Close 15-20% of stalled pipeline opportunities at the end of the fiscal quarter.'
+          "title": "Opportunity Age & Decay Velocity Modeling",
+          "description": "Quantify how deal win probability degrades as opportunities remain in pipeline past normal velocity benchmarks.",
+          "businessEvidence": "Historical deal duration curves, rep activity logs, and buyer response latency.",
+          "analysisProcess": "Hazard rate and survival curve modeling demonstrating that deals older than 90 days suffer 75% lower win rates.",
+          "decisionsEnabled": "Rigorously purge dead deals and reallocate rep attention to high-momentum pipeline."
         },
         {
-          title: 'Lost Deal Intelligence',
-          description: 'Conduct rigorous post-mortem reviews on enterprise deal losses to extract actionable product and commercial lessons.',
-          businessEvidence: 'Third-party win/loss interview recordings, buyer feedback surveys, and competitor RFP bids.',
-          analysisProcess: 'Root-cause thematic clustering isolating competitive pricing, missing functionality, or weak sales execution.',
-          decisionsEnabled: 'Update sales battlecards and product roadmaps to permanently eliminate recurring deal objections.'
+          "title": "Slipped Deal Forensic Tracking",
+          "description": "Analyze deals that push their close dates across quarterly boundaries multiple times.",
+          "businessEvidence": "Close date adjustment history fields, commit flag modifications, and forecast call logs.",
+          "analysisProcess": "Cohort slippage tracking measuring how many times a single opportunity has moved close quarters.",
+          "decisionsEnabled": "Disqualify perpetual slippers and eliminate false optimism from executive forecasting."
         },
         {
-          title: 'Account Resurrection Models',
-          description: 'Re-open communications with dormant corporate divisions and neglected subsidiaries of active enterprise accounts.',
-          businessEvidence: 'Parent company organizational charts, inactive license rosters, and cross-divisional corporate news.',
-          analysisProcess: 'Divisional whitespace mapping matching proven use cases in Division A to uncontracted Division B.',
-          decisionsEnabled: 'Execute internal referral sales motions within existing enterprise master service agreements.'
-        },
-        {
-          title: 'Retention Playbooks',
-          description: 'Standardize emergency retention workflows for accounts issuing formal termination notices or requesting pricing concessions.',
-          businessEvidence: 'Termination notice logs, customer downsell requests, and client executive escalation records.',
-          analysisProcess: 'Concession boundary modeling balancing downsell discounts against complete account loss.',
-          decisionsEnabled: 'Preserve 50%+ of terminating accounts through restructured tiers and performance-based renewals.'
+          "title": "Competitive Takeaway Leakage Auditing",
+          "description": "Identify specific competitors winning deals at late stages and isolate their pricing or feature wedge.",
+          "businessEvidence": "Competitor win-loss survey data, pricing concession requests, and RFP scorecards.",
+          "analysisProcess": "Head-to-head win rate matrix mapping competitor loss correlation by deal size and industry.",
+          "decisionsEnabled": "Deploy focused competitive battlecards and defensive commercial structures."
         }
       ],
-      useCase: {
-        situation: 'An enterprise cloud communications provider held $28M in "closed-lost" pipeline over the previous 18 months.',
-        action: 'Deployed a Win-Back System targeting accounts whose competitor implementation had exceeded 6 months.',
-        outcome: 'Resurrected 16 enterprise deals, recovering $4.2M in annualized recurring revenue.'
+      "useCase": {
+        "situation": "An enterprise sales org had $42M in stage 3+ pipeline, but only closed $8.1M in the forecast quarter.",
+        "action": "Executed Pipeline Leakage Analysis to reveal that 55% of opportunities had slipped 3+ quarters with zero verified buyer milestones.",
+        "outcome": "Cleansed $18M in phantom pipeline, increased genuine pipeline velocity by 34%, and improved forecast hit rate to 94%."
       },
-      kpis: [
-        { name: 'Recovered Pipeline Revenue', definition: 'Total ARR recovered from stalled or closed-lost deals via structured recovery campaigns', target: '+$3.5M' },
-        { name: 'Win-Back Conversion Rate', definition: 'Percentage of targeted churned or lost accounts successfully re-contracted', target: '16.5%' },
-        { name: 'Recovery Campaign ROI', definition: 'Incremental ARR generated per dollar spent on dedicated revenue recovery programs', target: '8.4x' }
+      "kpis": [
+        {
+          "name": "Pipeline Velocity Index",
+          "definition": "Pipeline value converted to cash per 30-day operating cycle",
+          "target": "> $2.8M/cycle"
+        },
+        {
+          "name": "Stage Stagnation Ratio",
+          "definition": "Opportunities exceeding 1.5x median stage duration without activity",
+          "target": "< 8.0%"
+        },
+        {
+          "name": "Forecast Commit Accuracy",
+          "definition": "Percentage of commit-stage pipeline that closes within the forecasted quarter",
+          "target": "> 88.0%"
+        }
       ],
-      visualModel: {
-        type: 'orchestration',
-        caption: 'Revenue Recovery Program Flow: Diagnosis, Playbook Execution, and Cash Reclamation',
-        metrics: [
-          { label: 'Audited Leakage Value', value: '$9.2M', delta: 'Total Pool' },
-          { label: 'Successfully Clawed Back', value: '$4.8M', delta: '52% Recovery' },
-          { label: 'Recovery Playbook ROI', value: '9.2x', delta: 'Validated' }
+      "visualModel": {
+        "type": "funnel-leak",
+        "caption": "Sales Pipeline Decay & Stage Conversion Friction Map",
+        "metrics": [
+          {
+            "label": "Audited Pipeline",
+            "value": "$42.0M",
+            "delta": "Audited"
+          },
+          {
+            "label": "Stale Pipeline Purged",
+            "value": "$18.2M",
+            "delta": "Disqualified"
+          },
+          {
+            "label": "Active Velocity Delta",
+            "value": "+34.0%",
+            "delta": "Accelerated"
+          },
+          {
+            "label": "Commit Accuracy",
+            "value": "94.2%",
+            "delta": "+26 pts"
+          }
+        ]
+      }
+    },
+    {
+      "id": "conversion-loss-diagnostics",
+      "slug": "conversion-loss-diagnostics",
+      "title": "Conversion Loss Diagnostics",
+      "businessQuestion": "Why are high-intent buyers dropping out before contract completion?",
+      "explanation": "Analyzes buyer behavioral friction, procurement delays, legal review impasses, and technical evaluation hurdles that stall high-intent deals.",
+      "topics": [
+        {
+          "title": "Procurement & Legal Friction Diagnostics",
+          "description": "Measure cycle time and failure points during master service agreement (MSA) and security review.",
+          "businessEvidence": "Redline document version history, legal turn-around times, and security questionnaire iterations.",
+          "analysisProcess": "Contract friction heatmapping identifying non-standard clauses that trigger weeks of legal impasse.",
+          "decisionsEnabled": "Pre-approve modular fallback language and accelerate contract finalization by 21 days."
+        },
+        {
+          "title": "Technical Proof-of-Concept (POC) Loss Modeling",
+          "description": "Analyze failure criteria in technical evaluations: missing integrations, latency, or poor onboarding support.",
+          "businessEvidence": "POC milestone checklists, sandbox telemetry logs, and customer architecture review notes.",
+          "analysisProcess": "POC outcome correlation modeling linking engineering resource allocation to win probability.",
+          "decisionsEnabled": "Institute strict mutual evaluation criteria before dedicating expensive solutions architects."
+        },
+        {
+          "title": "Multi-Stakeholder Consensus Breakdown",
+          "description": "Identify where buying committee consensus fractures between economic buyers, technical evaluators, and end users.",
+          "businessEvidence": "Email threading metadata, stakeholder meeting attendance logs, and internal advocacy scores.",
+          "analysisProcess": "Committee engagement network analysis flagging deals lacking confirmed VP-level sponsorship.",
+          "decisionsEnabled": "Guide reps to secure economic buyer alignment before advancing past initial demonstration."
+        },
+        {
+          "title": "Buyer Inaction & Status Quo Losses",
+          "description": "Diagnose deals lost not to competitors, but to \"no decision\" and bureaucratic inertia.",
+          "businessEvidence": "Opportunity close-lost transcripts, ROI business case submissions, and executive presentation decks.",
+          "analysisProcess": "Cost of Inaction (COI) model validation ensuring every proposal proves immediate financial pain of doing nothing.",
+          "decisionsEnabled": "Equip sales reps with quantitative CFO business cases that eliminate status quo complacency."
+        }
+      ],
+      "useCase": {
+        "situation": "A cybersecurity vendor saw 38% of qualified opportunities stall out in legal and security evaluation.",
+        "action": "Deployed Conversion Loss Diagnostics, introduced pre-negotiated click-to-accept agreements, and built a self-service security portal.",
+        "outcome": "Shortened legal review time from 36 days to 9 days, lifting late-stage conversion from 44% to 68%."
+      },
+      "kpis": [
+        {
+          "name": "Late-Stage Conversion Rate",
+          "definition": "Percentage of technical evaluations advancing to executed contracts",
+          "target": "> 65.0%"
+        },
+        {
+          "name": "Legal Review Duration",
+          "definition": "Median calendar days from initial contract send to executed signature",
+          "target": "< 10 Days"
+        },
+        {
+          "name": "No-Decision Loss Rate",
+          "definition": "Percentage of pipeline opportunities lost to internal buyer inaction",
+          "target": "< 14.0%"
+        }
+      ],
+      "visualModel": {
+        "type": "conversion-flow",
+        "caption": "Late-Stage Evaluation & Legal Friction Resolution Model",
+        "metrics": [
+          {
+            "label": "Evaluation Win Rate",
+            "value": "68.2%",
+            "delta": "+24.2 pts"
+          },
+          {
+            "label": "Legal Turnaround",
+            "value": "8.8 Days",
+            "delta": "-27.2 Days"
+          },
+          {
+            "label": "No-Decision Losses",
+            "value": "11.4%",
+            "delta": "-16 pts"
+          },
+          {
+            "label": "Annual ARR Captured",
+            "value": "$5.4M",
+            "delta": "Accelerated"
+          }
+        ]
+      }
+    },
+    {
+      "id": "margin-erosion-analysis",
+      "slug": "margin-erosion-analysis",
+      "title": "Margin Erosion Analysis",
+      "businessQuestion": "Where is cost-to-serve quietly consuming the gross profit of enterprise accounts?",
+      "explanation": "Conducts activity-based customer profitability modeling, uncovering uncollected customization work, dedicated support costs, and unprofitable SLA commitments.",
+      "topics": [
+        {
+          "title": "Activity-Based Cost-to-Serve Accounting",
+          "description": "Allocate infrastructure compute, customer success hours, engineering escalations, and support tickets to specific accounts.",
+          "businessEvidence": "Time-tracking systems, cloud infrastructure tagging logs, Jira engineering tickets, and Zendesk histories.",
+          "analysisProcess": "Direct account attribution modeling establishing true net contribution margin per enterprise customer.",
+          "decisionsEnabled": "Identify the bottom 15% of accounts that consume 40% of operational resources while contributing negligible profit."
+        },
+        {
+          "title": "Bespoke Customization Drag Diagnostics",
+          "description": "Measure the ongoing maintenance burden of custom code branches, non-standard APIs, and unique client workflows.",
+          "businessEvidence": "GitHub branch maintenance records, custom deployment scripts, and specialized QA testing hours.",
+          "analysisProcess": "Technical debt-to-revenue ratio analysis tracking the drag of bespoke client commitments.",
+          "decisionsEnabled": "Migrate custom clients to standardized modular extensions or institute premium maintenance retainers."
+        },
+        {
+          "title": "SLA Penalty & Credit Slip Auditing",
+          "description": "Review service level agreement (SLA) penalty payouts, uptime credits, and contractual refund commitments.",
+          "businessEvidence": "Incident post-mortems, uptime monitoring reports, and financial credit issuance ledgers.",
+          "analysisProcess": "Root-cause SLA correlation linking operational downtime to customer contract refund exposure.",
+          "decisionsEnabled": "Harden infrastructure reliability and modernize commercial SLA penalty liability caps."
+        },
+        {
+          "title": "Customer Profitability Decile Ranking",
+          "description": "Categorize entire customer portfolio into profitability deciles to inform renewal and expansion strategy.",
+          "businessEvidence": "Full-year revenue, COGS allocations, implementation expenses, and support ticket overhead.",
+          "analysisProcess": "Pareto profitability analysis identifying customer cohorts generating positive vs. negative cash flow.",
+          "decisionsEnabled": "Confidently sunset unprofitable accounts or restructure contracts to restore minimum 70% gross margins."
+        }
+      ],
+      "useCase": {
+        "situation": "A fintech platform with $80M in top-line revenue saw enterprise gross margins fall from 78% to 61% over three years.",
+        "action": "Conducted Margin Erosion Analysis, revealing that bespoke API customizations for 20 large clients were draining $9.8M in engineering support.",
+        "outcome": "Standardized core integrations, added fee-based customization tiers, and restored gross margin to 76.5%."
+      },
+      "kpis": [
+        {
+          "name": "Enterprise Gross Margin",
+          "definition": "Blended gross margin across all enterprise client contracts",
+          "target": "> 75.0%"
+        },
+        {
+          "name": "Negative-Margin Customer %",
+          "definition": "Percentage of active accounts where cost-to-serve exceeds contracted ARR",
+          "target": "< 2.0%"
+        },
+        {
+          "name": "Bespoke Engineering Drag Ratio",
+          "definition": "Ratio of custom maintenance hours to standard core product roadmap hours",
+          "target": "< 0.08"
+        }
+      ],
+      "visualModel": {
+        "type": "margin-deciles",
+        "caption": "Activity-Based Customer Contribution Margin Decile Analysis",
+        "metrics": [
+          {
+            "label": "Gross Margin Realized",
+            "value": "76.5%",
+            "delta": "+15.5 pts"
+          },
+          {
+            "label": "Negative-Margin Accounts",
+            "value": "1.2%",
+            "delta": "-14 pts"
+          },
+          {
+            "label": "Engineering Drag",
+            "value": "6.4%",
+            "delta": "-22 pts"
+          },
+          {
+            "label": "Annual Cash Restored",
+            "value": "$9.8M",
+            "delta": "Preserved"
+          }
+        ]
+      }
+    },
+    {
+      "id": "revenue-recovery-engineering",
+      "slug": "revenue-recovery-engineering",
+      "title": "Revenue Recovery Engineering",
+      "businessQuestion": "How do you systematically recover lost revenue and prevent future leakage in real-time?",
+      "explanation": "Builds automated programmatic playbooks, contract rectification workflows, and retroactive billing reconciliations to capture immediate cash.",
+      "topics": [
+        {
+          "title": "Retroactive Entitlement Billing Reconciliation",
+          "description": "Execute retrospective usage reconciliation to invoice uncollected overages and unbilled professional services.",
+          "businessEvidence": "Historical compute/seat logs, MSA contract terms, and historical billing statements.",
+          "analysisProcess": "Formal contract audit reconciliation with transparent, defensible customer documentation.",
+          "decisionsEnabled": "Generate immediate one-time cash recovery invoices with full enterprise audit defense."
+        },
+        {
+          "title": "Contract Remediation & Modernization",
+          "description": "Systematically update legacy customer contracts during renewal cycles to modern commercial standards.",
+          "businessEvidence": "Legacy MSAs, outdated price books, missing CPI indexation clauses, and unmetered service terms.",
+          "analysisProcess": "Contract modernization staging aligning legacy clients with current pricing architecture.",
+          "decisionsEnabled": "Upgrade underpaying legacy accounts to standard market pricing without triggering catastrophic churn."
+        },
+        {
+          "title": "Automated Invoice Dunning & Payment Recovery",
+          "description": "Deploy intelligent dunning workflows to recover failed credit card transactions and delinquent accounts receivable.",
+          "businessEvidence": "Payment processor failure codes, accounts receivable aging reports, and collection correspondence.",
+          "analysisProcess": "Smart retry logic, automated card updater integrations, and tiered escalation messaging.",
+          "decisionsEnabled": "Recover 65%+ of involuntary payment churn without human manual outreach."
+        },
+        {
+          "title": "Executive Win-Back Campaign Architecture",
+          "description": "Target high-value churned accounts where champion changes or operational friction caused departure in past 12-24 months.",
+          "businessEvidence": "Historical customer database, alumni champion career updates, and product roadmap release logs.",
+          "analysisProcess": "Re-engagement qualification modeling identifying past churned accounts whose initial departure reasons are now resolved.",
+          "decisionsEnabled": "Re-acquire mature enterprise logos at 1/4 the standard customer acquisition cost (CAC)."
+        }
+      ],
+      "useCase": {
+        "situation": "A multi-product enterprise had accumulated $8.4M in aging receivables and unbilled contract overages over 24 months.",
+        "action": "Deployed Revenue Recovery Engineering with automated retroactive audits, modernized contracts, and smart dunning.",
+        "outcome": "Directly collected $5.7M in cash within 90 days and permanently eliminated recurring billing gaps."
+      },
+      "kpis": [
+        {
+          "name": "Immediate Cash Recovered",
+          "definition": "Total delinquent and unbilled ARR collected within 90 days of audit",
+          "target": "> $4.5M"
+        },
+        {
+          "name": "Dunning Recovery Rate",
+          "definition": "Percentage of failed recurring payments successfully collected",
+          "target": "> 72.0%"
+        },
+        {
+          "name": "Contract Modernization Rate",
+          "definition": "Percentage of renewed legacy contracts upgraded to standard terms",
+          "target": "> 90.0%"
+        }
+      ],
+      "visualModel": {
+        "type": "recovery-engine",
+        "caption": "90-Day Enterprise Revenue Recovery & Rectification Velocity",
+        "metrics": [
+          {
+            "label": "Cash Recovered",
+            "value": "$5.7M",
+            "delta": "Collected"
+          },
+          {
+            "label": "Dunning Efficiency",
+            "value": "74.2%",
+            "delta": "+28 pts"
+          },
+          {
+            "label": "Legacy Modernized",
+            "value": "92.4%",
+            "delta": "+45 pts"
+          },
+          {
+            "label": "Cash Collection Velocity",
+            "value": "< 28 Days",
+            "delta": "-24 Days"
+          }
+        ]
+      }
+    },
+    {
+      "id": "leakage-prevention-intelligence",
+      "slug": "leakage-prevention-intelligence",
+      "title": "Leakage Prevention Intelligence",
+      "businessQuestion": "How do you lock down commercial systems so revenue leakage cannot recur in the future?",
+      "explanation": "Embeds real-time guardrails, algorithmic CPQ validation, contract milestone gates, and continuous anomaly monitors across all revenue systems.",
+      "topics": [
+        {
+          "title": "Real-Time CPQ Pricing Guardrails",
+          "description": "Configure automated approval thresholds in configure-price-quote software to prevent unauthorized deal structures.",
+          "businessEvidence": "CPQ quote configuration logs, discount request queues, and executive escalation records.",
+          "analysisProcess": "Algorithmic discount validation enforcing strict margin floors before quotes can be generated.",
+          "decisionsEnabled": "Make rogue sales rep discounting physically impossible within the quoting software."
+        },
+        {
+          "title": "Automated Telemetry-to-Billing Pipelines",
+          "description": "Connect production product usage databases directly to billing systems via automated real-time webhooks.",
+          "businessEvidence": "Kafka event streams, Stripe/Billing webhooks, and ERP sync status tables.",
+          "analysisProcess": "Zero-latency usage reconciliation calculating consumption fees continuously throughout the billing month.",
+          "decisionsEnabled": "Eliminate human manual invoicing errors and prevent any usage overage from slipping through."
+        },
+        {
+          "title": "Continuous Revenue Anomaly Monitoring",
+          "description": "Deploy machine learning monitors that alert RevOps when billing runs deviate from expected historical patterns.",
+          "businessEvidence": "Daily revenue telemetry, invoice volume metrics, and payment gateway settlement summaries.",
+          "analysisProcess": "Statistical anomaly detection flagging unusual billing drops, sudden customer discounts, or failed syncs.",
+          "decisionsEnabled": "Detect and resolve revenue infrastructure bugs in minutes rather than discovering them at quarter-end."
+        },
+        {
+          "title": "Commercial Governance & Compliance Dashboard",
+          "description": "Provide executive leadership with continuous auditable visibility into pricing compliance and revenue integrity.",
+          "businessEvidence": "Executive compliance summaries, SOX audit logs, and internal commercial control reports.",
+          "analysisProcess": "Unified governance dashboard tracking discount trends, contract compliance, and billing health.",
+          "decisionsEnabled": "Deliver 100% board and auditor confidence in enterprise commercial hygiene and revenue reporting."
+        }
+      ],
+      "useCase": {
+        "situation": "A high-transaction SaaS platform lost an estimated $3.1M annually to billing sync failures and manual invoice errors.",
+        "action": "Engineered real-time CPQ guardrails, automated telemetry billing pipelines, and continuous revenue anomaly monitoring.",
+        "outcome": "Reduced annual revenue leakage to less than 0.3%, safeguarding millions in cash flow permanently."
+      },
+      "kpis": [
+        {
+          "name": "Systemic Leakage Rate",
+          "definition": "Total uncaptured revenue as a percentage of gross billings",
+          "target": "< 0.4%"
+        },
+        {
+          "name": "Billing Pipeline Automation",
+          "definition": "Percentage of customer invoices generated without manual human touch",
+          "target": "> 99.5%"
+        },
+        {
+          "name": "Anomaly Detection MTTR",
+          "definition": "Mean time to resolve commercial data discrepancies and billing bugs",
+          "target": "< 4 Hours"
+        }
+      ],
+      "visualModel": {
+        "type": "governance-shield",
+        "caption": "Continuous Commercial Guardrails & Real-Time Leakage Prevention",
+        "metrics": [
+          {
+            "label": "Systemic Leakage",
+            "value": "0.28%",
+            "delta": "-2.8 pts"
+          },
+          {
+            "label": "Automated Invoicing",
+            "value": "99.8%",
+            "delta": "+34 pts"
+          },
+          {
+            "label": "Anomaly MTTR",
+            "value": "2.4 Hours",
+            "delta": "-72 Hours"
+          },
+          {
+            "label": "Cash Flow Protection",
+            "value": "$3.1M/yr",
+            "delta": "Permanent"
+          }
         ]
       }
     }
   ],
-  methodologyWorkflow: [
-    {
-      stepNumber: '01',
-      title: 'Forensic Revenue Audit',
-      input: 'CRM stage history, billing invoices, contract redlines, SOW labor logs, and churn records.',
-      activity: 'Execute forensic data reconciliation comparing contracted ARR against realized cash collections.',
-      output: 'Comprehensive Revenue Leakage Inventory categorized by funnel, commercial, and customer dimensions.'
-    },
-    {
-      stepNumber: '02',
-      title: 'Leakage Severity & Root-Cause Attribution',
-      input: 'Discrepancy logs, discount reports, stage aging data, and employee commission schedules.',
-      activity: 'Isolate systemic process breakdowns versus individual rep non-compliance.',
-      output: 'Prioritized Leakage Severity Matrix ranked by recoverable ARR magnitude and intervention feasibility.'
-    },
-    {
-      stepNumber: '03',
-      title: 'Commercial Control Engineering',
-      input: 'Discount policy guidelines, SOW scope parameters, and contractual CPI schedules.',
-      activity: 'Implement automated CPQ approval gates, mandatory CPI escalation clauses, and InfoSec streamlining.',
-      output: 'Hardened commercial governance framework preventing recurring margin leakage.'
-    },
-    {
-      stepNumber: '04',
-      title: 'Active Recovery Execution',
-      input: 'Stalled pipeline database, dormant accounts, unbilled usage logs, and closed-lost deal records.',
-      activity: 'Launch dedicated recovery blitzes, win-back campaigns, and contract reconciliation billing.',
-      output: 'Direct cash reclamation and contract addendum executions.'
-    },
-    {
-      stepNumber: '05',
-      title: 'Continuous Leakage Telemetry',
-      input: 'Live pipeline velocity feeds, discount anomaly monitors, and telemetry usage meters.',
-      activity: 'Deploy real-time leakage alerts notifying RevOps the moment commercial terms deviate from standards.',
-      output: 'Ongoing telemetry dashboard maintaining zero-leakage commercial execution.'
-    }
-  ],
-  primaryKpis: [
-    {
-      name: 'Total Revenue Leakage Rate',
-      definition: 'Percentage of total addressable contract revenue lost through unmonitored discounts, unbilled usage, and avoidable churn.',
-      formula: '[ (Total Identified Lost ARR from Friction + Rogue Discounts + Churn) ÷ Theoretical Gross ARR ] × 100',
-      unit: '%',
-      reportingPeriod: 'Annualized',
-      baseline: '18.4%',
-      target: '< 6.0%',
-      illustrativeValue: '5.8%',
-      interpretation: 'Reducing total revenue leakage from 18.4% to 5.8% directly drops millions of dollars of high-margin recurring cash flow to the bottom line.',
-      category: 'Executive'
-    },
-    {
-      name: 'Realized Price vs. List Price',
-      definition: 'Percentage of list catalog pricing actually realized on executed customer contracts.',
-      formula: '(Total Realized Contract ARR ÷ Total Catalog List ARR of Sold Products) × 100',
-      unit: '%',
-      reportingPeriod: 'Quarterly',
-      baseline: '72.5%',
-      target: '88.0%',
-      illustrativeValue: '89.2%',
-      interpretation: 'Improving price realization from 72.5% to 89.2% proves that sales governance is successfully curbing rogue discounting and defending value.',
-      category: 'Commercial'
-    },
-    {
-      name: 'Gross Revenue Retention (GRR)',
-      definition: 'Percentage of recurring revenue retained from existing customers over a 12-month period, excluding expansion.',
-      formula: '[ (Starting ARR − Gross Churn − Contraction ARR) ÷ Starting ARR ] × 100',
-      unit: '%',
-      reportingPeriod: 'Annualized',
-      baseline: '86.2%',
-      target: '95.0%',
-      illustrativeValue: '94.8%',
-      interpretation: 'A 95% GRR benchmark proves that customer leakage is minimized and the core platform value proposition remains defensible.',
-      category: 'Operational'
-    },
-    {
-      name: 'Pipeline Decay Hazard Ratio',
-      definition: 'Probability of deal loss for opportunities lingering past the median historical stage duration.',
-      formula: 'Win Rate of Opportunities Aged >2x Median Cycle ÷ Win Rate of Opportunities Closed on Schedule',
-      unit: 'Ratio',
-      reportingPeriod: 'Quarterly',
-      baseline: '0.18 (82% lower win rate)',
-      target: '0.65',
-      illustrativeValue: '0.62',
-      interpretation: 'A low decay hazard ratio demonstrates that sales reps actively disqualify stalled opportunities rather than carrying false pipeline hope.',
-      category: 'Commercial'
-    },
-    {
-      name: 'Revenue Recovery Velocity',
-      definition: 'Average calendar days to resolve and reclaim identified contract entitlement or billing discrepancies.',
-      formula: 'Calendar Days from Leakage Flag to Executed Addendum or Rectified Invoice',
-      unit: 'Days',
-      reportingPeriod: 'Monthly',
-      baseline: '78 Days',
-      target: '18 Days',
-      illustrativeValue: '15 Days',
-      interpretation: 'Compressing recovery velocity ensures that unbilled usage and scope creep are monetized before customer contracts renew.',
-      category: 'Operational'
-    }
-  ],
-  scenarios: [
-    {
-      title: 'Enterprise Fintech Platform Forensic Leakage Recovery',
-      industry: 'B2B Fintech & Payments',
-      baselineSituation: '$74M ARR payments platform struggling with EBITDA compression despite 32% year-over-year top-line volume growth.',
-      observedProblem: 'Sales leadership routinely granted custom billing tiers, while client integration engineers worked 250+ unbilled hours per client.',
-      analysis: 'Forensic audit uncovered $4.8M in annual revenue leakage: $2.6M in unapproved discounts, $1.4M in unbilled overage queries, and $800K in waived CPI increases.',
-      decisionEvaluated: 'Instituted automated CPQ pricing fences, implemented cloud query metering, and enforced contractual CPI escalations.',
-      expectedImprovement: 'Claw back $3.5M+ in annualized EBITDA without increasing marketing expenditure.',
-      validatingMetrics: ['Recovered Recurring ARR ($3.8M)', 'Price Realization (from 74% to 89%)', 'EBITDA Margin (+480 bps)'],
-      assumptions: 'Assumed fewer than 2% of customer accounts would terminate contracts over strict enforcement of existing contractual overage terms.'
-    }
-  ],
-  dataConsiderations: [
-    {
-      title: 'CPQ & CRM Approval Log Synchronization',
-      description: 'Auditability requires that all discount exception requests, special terms, and approvals are stored as immutable records in CPQ tools.',
-      impactLevel: 'Critical'
-    },
-    {
-      title: 'Real-Time Usage Metering Integration',
-      description: 'Capturing consumption leakage requires continuous telemetry integration between cloud production systems and financial billing engines.',
-      impactLevel: 'High'
-    },
-    {
-      title: 'Contract Redline Version Control',
-      description: 'Detecting non-standard legal liabilities and scope commitments requires automated parsing of signed customer MSAs and SOWs.',
-      impactLevel: 'High'
-    }
-  ],
-  decisionSupport: [
-    {
-      priority: 'Immediate (Weeks 1-3)',
-      focusArea: 'Discount Governance & Approval Fences',
-      keyMetrics: 'Realized Discount Rate, Price Realization %',
-      tradeOffs: 'Sales reps may express initial friction when discount freedom is curtailed, but realized contract margins immediately expand.',
-      recommendedAction: 'Institute mandatory VP-level sign-off for any contract discount exceeding 15% and tie rep commissions to margin.'
-    },
-    {
-      priority: 'Secondary (Weeks 4-8)',
-      focusArea: 'Billing Entitlement & Overage Audit',
-      keyMetrics: 'Unbilled Consumption Value, Query Overages',
-      tradeOffs: 'Issuing overage invoices requires proactive client communication to prevent surprise billing disputes.',
-      recommendedAction: 'Reconcile cloud compute logs against contracted limits and issue true-up invoices for excess consumption.'
-    },
-    {
-      priority: 'Strategic (Weeks 9-12)',
-      focusArea: 'Structured Win-Back & Resurrection Blitz',
-      keyMetrics: 'Recovered Pipeline Revenue, Churned Account Win-Back %',
-      tradeOffs: 'Dedicating senior reps to resurrecting lost deals versus chasing cold net-new logos.',
-      recommendedAction: 'Deploy a win-back campaign targeting accounts whose competitor implementation stalled, offering seamless migration.'
-    }
-  ],
-  visualTheme: 'leakage'
+  "visualTheme": "leakage"
 };
-

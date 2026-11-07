@@ -8,9 +8,21 @@ import {
   ShieldCheck, Compass, Users, Check
 } from 'lucide-react';
 import { AiSalesIntakeForm } from '../../components/forms/AiSalesIntakeForm';
-import { allGrowthCapabilities } from './data';
 
-const capabilityList = [
+interface HubCapability {
+  num: string;
+  title: string;
+  slug: string;
+  path: string;
+  headline: string;
+  desc: string;
+  icon: any;
+  kpi: string;
+  kpiLabel: string;
+  submenus: { title: string; anchor: string }[];
+}
+
+const capabilityList: HubCapability[] = [
   {
     num: '01',
     title: 'Revenue Physics',
@@ -21,7 +33,16 @@ const capabilityList = [
     icon: Activity,
     kpi: '$14.2K/Day',
     kpiLabel: 'Sales Velocity Index',
-    submenus: ['Revenue Architecture', 'Customer Economics', 'Unit Economics', 'White Space Intelligence']
+    submenus: [
+      { title: 'Revenue Architecture', anchor: 'revenue-architecture' },
+      { title: 'Revenue Velocity Modeling', anchor: 'revenue-velocity-modeling' },
+      { title: 'Revenue Friction Diagnostics', anchor: 'revenue-friction-diagnostics' },
+      { title: 'Growth Constraint Analysis', anchor: 'growth-constraint-analysis' },
+      { title: 'Revenue Flow Optimization', anchor: 'revenue-flow-optimization' },
+      { title: 'Profit Pool Dynamics', anchor: 'profit-pool-dynamics' },
+      { title: 'Revenue Predictability Modeling', anchor: 'revenue-predictability-modeling' },
+      { title: 'Revenue System Design', anchor: 'revenue-system-design' }
+    ]
   },
   {
     num: '02',
@@ -33,7 +54,16 @@ const capabilityList = [
     icon: LineChart,
     kpi: '96.4%',
     kpiLabel: 'Forecast Precision',
-    submenus: ['Revenue Signal Intelligence', 'Market Intelligence', 'Customer Intelligence', 'Revenue Forecast Intelligence']
+    submenus: [
+      { title: 'Revenue Data Intelligence', anchor: 'revenue-data-intelligence' },
+      { title: 'Customer Economics Intelligence', anchor: 'customer-economics-intelligence' },
+      { title: 'Market Intelligence', anchor: 'market-intelligence' },
+      { title: 'Demand Intelligence', anchor: 'demand-intelligence' },
+      { title: 'Pipeline Intelligence', anchor: 'pipeline-intelligence' },
+      { title: 'Revenue Performance Intelligence', anchor: 'revenue-performance-intelligence' },
+      { title: 'Competitive Revenue Intelligence', anchor: 'competitive-revenue-intelligence' },
+      { title: 'Executive Revenue Insights', anchor: 'executive-revenue-insights' }
+    ]
   },
   {
     num: '03',
@@ -45,7 +75,16 @@ const capabilityList = [
     icon: Compass,
     kpi: '+38.2%',
     kpiLabel: 'Expansion ARR Growth',
-    submenus: ['Existing Customer Growth', 'Product Revenue Potential', 'Market Revenue Potential', 'AI Revenue Potential']
+    submenus: [
+      { title: 'Total Addressable Market Discovery', anchor: 'total-addressable-market-discovery' },
+      { title: 'Serviceable Market Analysis', anchor: 'serviceable-market-analysis' },
+      { title: 'White Space Intelligence', anchor: 'white-space-intelligence' },
+      { title: 'Untapped Demand Discovery', anchor: 'untapped-demand-discovery' },
+      { title: 'Customer Potential Mapping', anchor: 'customer-potential-mapping' },
+      { title: 'Market Opportunity Prioritization', anchor: 'market-opportunity-prioritization' },
+      { title: 'Revenue Opportunity Modeling', anchor: 'revenue-opportunity-modeling' },
+      { title: 'Growth Potential Forecasting', anchor: 'growth-potential-forecasting' }
+    ]
   },
   {
     num: '04',
@@ -55,9 +94,18 @@ const capabilityList = [
     headline: 'Forensic Loss Diagnosis',
     desc: 'Diagnose and claw back invisible revenue loss across funnel bottlenecks, rogue discounting, contract entitlement slippage, and silent customer churn.',
     icon: Radar,
-    kpi: '< 6.0%',
-    kpiLabel: 'Leakage Rate Ceiling',
-    submenus: ['Funnel Leakage Analysis', 'Commercial Leakage', 'Customer Leakage', 'Revenue Recovery Programs']
+    kpi: '< 1.2%',
+    kpiLabel: 'Leakage Rate Floor',
+    submenus: [
+      { title: 'Revenue Leakage Diagnostics', anchor: 'revenue-leakage-diagnostics' },
+      { title: 'Pricing Leakage Detection', anchor: 'pricing-leakage-detection' },
+      { title: 'Customer Churn Leakage', anchor: 'customer-churn-leakage' },
+      { title: 'Pipeline Leakage Analysis', anchor: 'pipeline-leakage-analysis' },
+      { title: 'Conversion Loss Diagnostics', anchor: 'conversion-loss-diagnostics' },
+      { title: 'Margin Erosion Analysis', anchor: 'margin-erosion-analysis' },
+      { title: 'Revenue Recovery Engineering', anchor: 'revenue-recovery-engineering' },
+      { title: 'Leakage Prevention Intelligence', anchor: 'leakage-prevention-intelligence' }
+    ]
   },
   {
     num: '05',
@@ -67,9 +115,18 @@ const capabilityList = [
     headline: 'Offer Architecture & Packaging',
     desc: 'Engineer high-converting commercial solution bundles, subscription tiers, and value-based packaging that increase contract magnitude and protect gross margins.',
     icon: Layers,
-    kpi: '$56.2K',
-    kpiLabel: 'Average Revenue / Account',
-    submenus: ['Product Bundling Science', 'Commercial Packaging', 'Revenue Expansion Models']
+    kpi: '+41.0%',
+    kpiLabel: 'Average Contract Lift',
+    submenus: [
+      { title: 'Product Bundling Strategy', anchor: 'product-bundling-strategy' },
+      { title: 'Service Bundling Architecture', anchor: 'service-bundling-architecture' },
+      { title: 'Offer Design Intelligence', anchor: 'offer-design-intelligence' },
+      { title: 'Value Proposition Engineering', anchor: 'value-proposition-engineering' },
+      { title: 'Cross-Sell Offer Design', anchor: 'cross-sell-offer-design' },
+      { title: 'Upsell Offer Architecture', anchor: 'upsell-offer-architecture' },
+      { title: 'Packaging Optimization', anchor: 'packaging-optimization' },
+      { title: 'Commercial Offer Optimization', anchor: 'commercial-offer-optimization' }
+    ]
   },
   {
     num: '06',
@@ -79,9 +136,18 @@ const capabilityList = [
     headline: 'Pricing & Profitability',
     desc: 'Capture fair economic return for the value your business creates. Enforce concession trade-offs, optimize proposals, and dominate high-margin profit pools.',
     icon: DollarSign,
-    kpi: '83.5%',
+    kpi: '82.6%',
     kpiLabel: 'Gross Margin Realization',
-    submenus: ['Pricing Science', 'Commercial Optimization', 'Profit Pool Capture']
+    submenus: [
+      { title: 'Value-Based Pricing Architecture', anchor: 'value-based-pricing-architecture' },
+      { title: 'Customer Value Quantification', anchor: 'customer-value-quantification' },
+      { title: 'Value Realization Intelligence', anchor: 'value-realization-intelligence' },
+      { title: 'Margin Optimization', anchor: 'margin-optimization' },
+      { title: 'Price Realization Engineering', anchor: 'price-realization-engineering' },
+      { title: 'Contract Value Optimization', anchor: 'contract-value-optimization' },
+      { title: 'Monetization Strategy', anchor: 'monetization-strategy' },
+      { title: 'Value Capture Analytics', anchor: 'value-capture-analytics' }
+    ]
   },
   {
     num: '07',
@@ -91,9 +157,18 @@ const capabilityList = [
     headline: 'Innovation to Monetization',
     desc: 'Convert customer research and R&D engineering into scalable software revenue. Transform bespoke consulting services into high-margin recurring SaaS.',
     icon: Sparkles,
-    kpi: '68 Days',
-    kpiLabel: 'Time to First Revenue',
-    submenus: ['Product Innovation Intelligence', 'New Revenue Models', 'Growth Productization']
+    kpi: '78.4%',
+    kpiLabel: 'Attributed Roadmap ARR',
+    submenus: [
+      { title: 'Product Opportunity Intelligence', anchor: 'product-opportunity-intelligence' },
+      { title: 'Customer Need Discovery', anchor: 'customer-need-discovery' },
+      { title: 'Product-Market Fit Intelligence', anchor: 'product-market-fit-intelligence' },
+      { title: 'Innovation Portfolio Strategy', anchor: 'innovation-portfolio-strategy' },
+      { title: 'New Revenue Stream Discovery', anchor: 'new-revenue-stream-discovery' },
+      { title: 'Product-Led Growth Engineering', anchor: 'product-led-growth-engineering' },
+      { title: 'Market Expansion Strategy', anchor: 'market-expansion-strategy' },
+      { title: 'Product Revenue Optimization', anchor: 'product-revenue-optimization' }
+    ]
   },
   {
     num: '08',
@@ -105,7 +180,16 @@ const capabilityList = [
     icon: Zap,
     kpi: '62 Days',
     kpiLabel: 'Median Sales Cycle',
-    submenus: ['AI Sales Engines', 'Growth Automation', 'Opportunity Acceleration']
+    submenus: [
+      { title: 'Revenue Velocity Optimization', anchor: 'revenue-velocity-optimization' },
+      { title: 'Sales Cycle Acceleration', anchor: 'sales-cycle-acceleration' },
+      { title: 'Conversion Rate Engineering', anchor: 'conversion-rate-engineering' },
+      { title: 'Pipeline Acceleration', anchor: 'pipeline-acceleration' },
+      { title: 'Demand-to-Revenue Optimization', anchor: 'demand-to-revenue-optimization' },
+      { title: 'Customer Acquisition Optimization', anchor: 'customer-acquisition-optimization' },
+      { title: 'Expansion Revenue Acceleration', anchor: 'expansion-revenue-acceleration' },
+      { title: 'Growth Experimentation', anchor: 'growth-experimentation' }
+    ]
   },
   {
     num: '09',
@@ -115,72 +199,79 @@ const capabilityList = [
     headline: 'Executive Decision Cockpit',
     desc: 'Unify commercial telemetry, stochastic board forecast scenarios, margin health indexes, and proactive leakage alarms into an executive command HUD.',
     icon: Cpu,
-    kpi: '97.4%',
-    kpiLabel: 'Boardroom Precision',
-    submenus: ['Growth Command Center', 'Board Intelligence', 'Growth Telemetry']
+    kpi: '100.0%',
+    kpiLabel: 'Data Concordance',
+    submenus: [
+      { title: 'Executive Revenue Dashboard', anchor: 'executive-revenue-dashboard' },
+      { title: 'Revenue Performance Command', anchor: 'revenue-performance-command' },
+      { title: 'Strategic Growth Planning', anchor: 'strategic-growth-planning' },
+      { title: 'Revenue Forecast Intelligence', anchor: 'revenue-forecast-intelligence' },
+      { title: 'Profitability Intelligence', anchor: 'profitability-intelligence' },
+      { title: 'Growth Scenario Modeling', anchor: 'growth-scenario-modeling' },
+      { title: 'Strategic Decision Intelligence', anchor: 'strategic-decision-intelligence' },
+      { title: 'Enterprise Growth Governance', anchor: 'enterprise-growth-governance' }
+    ]
   }
 ];
 
 const diagnosticChallenges = [
   {
     id: 'velocity',
-    label: 'Slow Sales Velocity & Lengthening Cycles',
-    symptom: 'Deals taking 120+ days to close; rep capacity is consumed by administrative CRM tasks.',
+    label: 'Sales Cycles Lengthening & Pipeline Drag',
+    icon: Clock,
+    symptom: 'Qualified opportunities are stalling in negotiation stages, median sales cycles have expanded by 40+ days, and quarterly forecasts suffer high variance.',
     recommendedPage: 'Revenue Acceleration',
-    recommendedPath: '/growth-science/revenue-acceleration',
-    icon: Zap
-  },
-  {
-    id: 'forecast',
-    label: 'Forecast Volatility & End-of-Quarter Slip',
-    symptom: 'Subjective rep rollups miss quarterly revenue projections by >15%; no deterministic signals.',
-    recommendedPage: 'Revenue Intelligence',
-    recommendedPath: '/growth-science/revenue-intelligence',
-    icon: LineChart
-  },
-  {
-    id: 'margin',
-    label: 'Margin Erosion & Rogue Discounting',
-    symptom: 'Sales reps granting 25-40% discounts to close deals; gross margin compressed below 65%.',
-    recommendedPage: 'Value Capture Engineering',
-    recommendedPath: '/growth-science/value-capture-engineering',
-    icon: DollarSign
+    recommendedPath: '/growth-science/revenue-acceleration'
   },
   {
     id: 'leakage',
-    label: 'Silent Funnel & Churn Leakage',
-    symptom: 'Qualified leads stall without follow-up, and legacy clients quietly churn at contract renewal.',
+    label: 'Rogue Discounting & Margin Compression',
+    icon: DollarSign,
+    symptom: 'Reps offer aggressive unapproved discounts to close quarter-end deals, eroding gross margins by hundreds of basis points with no contractual give-get.',
     recommendedPage: 'Revenue Leakage & Recovery',
-    recommendedPath: '/growth-science/revenue-leakage-recovery',
-    icon: Radar
+    recommendedPath: '/growth-science/revenue-leakage-recovery'
   },
   {
-    id: 'stagnation',
-    label: 'Installed Base & Expansion Stagnation',
-    symptom: 'Existing clients remain on single point-solutions; secondary modules have <10% attach rates.',
-    recommendedPage: 'Revenue Potential Discovery',
-    recommendedPath: '/growth-science/revenue-potential-discovery',
-    icon: Compass
+    id: 'churn',
+    label: 'Silent Customer Churn & Flat Net Retention',
+    icon: Users,
+    symptom: 'Accounts quietly disengage without raising support tickets, leading to unexpected renewal cancellations and net revenue retention (NRR) dropping below 105%.',
+    recommendedPage: 'Revenue Leakage & Recovery',
+    recommendedPath: '/growth-science/revenue-leakage-recovery#customer-churn-leakage'
+  },
+  {
+    id: 'pricing',
+    label: 'Unmonetized Product Innovation',
+    icon: Layers,
+    symptom: 'R&D delivers massive engineering improvements, but sales reps continue selling legacy packages at flat prices, unable to monetize new capability value.',
+    recommendedPage: 'Revenue Bundling & Offer Engineering',
+    recommendedPath: '/growth-science/revenue-bundling-offer-engineering'
+  },
+  {
+    id: 'forecasting',
+    label: 'Board Forecast Misses & Subjective Commits',
+    icon: LineChart,
+    symptom: 'Sales leaders rely on subjective rep optimism rather than empirical buyer milestones, resulting in unpredictable board-level forecast variances above 15%.',
+    recommendedPage: 'Executive Revenue Command Center',
+    recommendedPath: '/growth-science/executive-revenue-command-center'
   }
 ];
 
-export default function GrowthScienceHub() {
-  const [selectedChallenge, setSelectedChallenge] = useState<string>(diagnosticChallenges[0].id);
+export function GrowthScienceHub() {
+  const [selectedChallenge, setSelectedChallenge] = useState<string>('velocity');
+  const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   useEffect(() => {
-    document.title = 'Growth Science: AI-Native Revenue Transformation Platform | ProfitMachines';
-    window.scrollTo(0, 0);
+    document.title = 'Growth Science OS | Enterprise Revenue Optimization | ProfitMachines';
   }, []);
 
   const activeChallengeData = diagnosticChallenges.find(c => c.id === selectedChallenge) || diagnosticChallenges[0];
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900">
-
       
-
-      {/* ── HERO SECTION: SPLIT EXECUTIVE LAYOUT ── */}
-      <section id="overview" className="relative pt-12 pb-16 sm:pt-20 sm:pb-24 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden border-b border-slate-800">
+      {/* ── SECTION 01: HERO ARCHITECTURE ── */}
+      <section className="relative pt-12 pb-16 sm:pt-20 sm:pb-24 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden border-b border-slate-800">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute inset-0 opacity-[0.20]" style={{ backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.07) 1px, transparent 1px)', backgroundSize: '4rem 4rem' }} />
           <div className="absolute -top-40 right-1/4 w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[140px]" />
@@ -189,61 +280,45 @@ export default function GrowthScienceHub() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
-            {/* Hero Content */}
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-bold tracking-widest uppercase font-mono mb-4">
-                <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-                <span>AI-NATIVE REVENUE TRANSFORMATION PLATFORM</span>
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-300 text-xs font-mono font-bold tracking-wider uppercase">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span>GROWTH SCIENCE OPERATING SYSTEM</span>
+                <span className="text-slate-600">|</span>
+                <span className="text-slate-400">9 CAPABILITIES · 72 SUBMENUS</span>
               </div>
 
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] mb-6 font-heading">
-                Growth Science:{' '}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.12] font-heading">
+                The Empirical Science of{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-300">
-                  The Empirical Architecture of Profitable Scale
+                  Predictable, Profitable Enterprise Revenue
                 </span>
               </h1>
 
-              <p className="text-base sm:text-lg text-slate-300 leading-relaxed mb-8">
-                Move past subjective sales forecasting and fragmented GTM silos. ProfitMachines Growth Science deconstructs enterprise revenue into deterministic mathematical equations, connects buyer signals to commercial execution, and captures high-margin economic value.
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-3xl">
+                Replace commercial guesswork with mathematical precision. Deconstruct revenue physics, isolate latent market demand, eliminate margin leakage, and govern forward growth through 9 integrated scientific capabilities.
               </p>
 
-              {/* Crisp Core Focus Badge (matching Reference Design) */}
-              <div className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-slate-900/90 border border-slate-800 text-xs text-slate-300 mb-6 shadow-sm">
-                <Zap className="w-4 h-4 text-blue-400 shrink-0" />
-                <span>
-                  <strong className="text-blue-400 font-semibold font-mono">Core Focus:</strong> Deterministic Gates • Lossless RoCEv2 Delivery • Continuous FinOps Optimization
-                </span>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-3 mb-6">
-                <Link
-                  to="/book-consultation"
-                  className="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30 inline-flex items-center gap-2 group cursor-pointer"
-                >
-                  <span>Book Revenue Diagnostic</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </Link>
-
+              <div className="flex flex-wrap items-center gap-4 pt-2">
                 <a
                   href="#capabilities"
-                  className="px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold text-sm transition-all inline-flex items-center gap-2 cursor-pointer"
+                  className="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/25 inline-flex items-center gap-2 cursor-pointer"
                 >
                   <span>Explore 9 Capabilities</span>
-                  <ArrowRight className="w-4 h-4 text-slate-400 group-hover:translate-x-0.5 transition-transform" />
+                  <ArrowRight className="w-4 h-4" />
                 </a>
 
-                <Link
-                  to="/talk-to-expert"
-                  className="text-xs text-blue-400 hover:text-blue-300 font-semibold px-2 py-1 transition-colors"
+                <a
+                  href="#diagnostic"
+                  className="px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold text-sm transition-all inline-flex items-center gap-2 cursor-pointer"
                 >
-                  Talk to a Revenue Architect &rarr;
-                </Link>
+                  <Radar className="w-4 h-4 text-blue-400" />
+                  <span>Run Friction Diagnostic</span>
+                </a>
               </div>
 
-              {/* Numbered Milestone Stage Pills */}
-              <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
-                {['1. Full-Spectrum', '2. Diagnostic', '3. Architecture', '4. Deployment', '5. Compounding'].map((step, idx) => (
+              <div className="flex flex-wrap items-center gap-2 pt-2 text-xs font-mono">
+                {['1. Physics', '2. Intelligence', '3. Discovery', '4. Leakage Recovery', '5. Bundling', '6. Value Capture', '7. Innovation', '8. Acceleration', '9. Command Center'].map((step, idx) => (
                   <span key={idx} className="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800/90 text-slate-400 text-[11px]">
                     {step}
                   </span>
@@ -255,7 +330,7 @@ export default function GrowthScienceHub() {
       </section>
 
       {/* ── SECTION 02: CENTRAL GROWTH SYSTEM ARCHITECTURE ── */}
-      <section id="architecture" className="py-10 sm:py-14 bg-slate-50 border-b border-slate-200">
+      <section id="architecture" className="py-12 sm:py-16 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <div className="text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-2">
@@ -276,7 +351,7 @@ export default function GrowthScienceHub() {
               <p className="text-xs text-slate-600 leading-relaxed">
                 Deconstruct parametric revenue equations, audit cohort survival curves, and quantify the true cost to serve across all customer segments.
               </p>
-              <div className="text-[11px] font-mono text-slate-400">Capabilities: 01, 04</div>
+              <div className="text-[11px] font-mono text-slate-400">Pillars: 01, 04</div>
             </div>
 
             <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
@@ -285,7 +360,7 @@ export default function GrowthScienceHub() {
               <p className="text-xs text-slate-600 leading-relaxed">
                 Capture live buying intent signals, competitor discount patterns, customer usage inflections, and predictive churn indicators.
               </p>
-              <div className="text-[11px] font-mono text-slate-400">Capabilities: 02, 03</div>
+              <div className="text-[11px] font-mono text-slate-400">Pillars: 02, 03</div>
             </div>
 
             <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
@@ -294,7 +369,7 @@ export default function GrowthScienceHub() {
               <p className="text-xs text-slate-600 leading-relaxed">
                 Package high-converting solution bundles, enforce value-based price realization, and eliminate rogue discounting.
               </p>
-              <div className="text-[11px] font-mono text-slate-400">Capabilities: 05, 06</div>
+              <div className="text-[11px] font-mono text-slate-400">Pillars: 05, 06</div>
             </div>
 
             <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
@@ -303,7 +378,7 @@ export default function GrowthScienceHub() {
               <p className="text-xs text-slate-600 leading-relaxed">
                 Deploy AI sales engines, multi-threaded committee mapping, and trigger-driven growth workflows to compress sales cycles.
               </p>
-              <div className="text-[11px] font-mono text-slate-400">Capabilities: 07, 08</div>
+              <div className="text-[11px] font-mono text-slate-400">Pillars: 07, 08</div>
             </div>
 
             <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
@@ -312,14 +387,14 @@ export default function GrowthScienceHub() {
               <p className="text-xs text-slate-600 leading-relaxed">
                 Unify real-time telemetry, automated leakage alarms, and stochastic board scenario models into a single executive command HUD.
               </p>
-              <div className="text-[11px] font-mono text-slate-400">Capabilities: 09</div>
+              <div className="text-[11px] font-mono text-slate-400">Pillars: 09</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── SECTION 03: BUSINESS CHALLENGE SELECTOR & DIAGNOSTIC ENTRY POINT ── */}
-      <section id="diagnostic" className="py-16 sm:py-20 bg-white border-b border-slate-200">
+      <section id="diagnostic" className="py-14 sm:py-20 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <div className="text-xs font-mono font-bold text-rose-600 uppercase tracking-widest mb-2">
@@ -343,7 +418,7 @@ export default function GrowthScienceHub() {
                   <button
                     key={ch.id}
                     onClick={() => setSelectedChallenge(ch.id)}
-                    className={`w-full text-left p-4 rounded-2xl border transition-all flex items-center justify-between gap-3 ${
+                    className={`w-full text-left p-4 rounded-2xl border transition-all flex items-center justify-between gap-3 cursor-pointer ${
                       isSelected
                         ? 'bg-blue-600 text-white border-blue-600 shadow-lg shadow-blue-600/20'
                         : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
@@ -404,8 +479,8 @@ export default function GrowthScienceHub() {
         </div>
       </section>
 
-      {/* ── SECTION 04: ALL 9 CAPABILITY CARDS ── */}
-      <section id="capabilities" className="py-10 sm:py-14 bg-slate-50 border-b border-slate-200">
+      {/* ── SECTION 04: ALL 9 CAPABILITY CARDS (WITH CLICKABLE SUBMENU ANCHORS) ── */}
+      <section id="capabilities" className="py-12 sm:py-16 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <div className="text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-2">
@@ -415,7 +490,7 @@ export default function GrowthScienceHub() {
               Nine Core Growth Science Capabilities
             </h2>
             <p className="mt-3 text-base text-slate-600 leading-relaxed">
-              Each capability contains dedicated sub-submenu sections, empirical evidence requirements, and mathematical KPI scorecards.
+              Each capability contains exactly 8 dedicated sub-submenu sections (72 total), empirical evidence requirements, and mathematical KPI scorecards. Click any capability or submenu to navigate directly.
             </p>
           </div>
 
@@ -447,16 +522,20 @@ export default function GrowthScienceHub() {
                       </p>
                     </div>
 
-                    {/* Sub-Submenu Sections Preview */}
-                    <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-600 space-y-1.5">
+                    {/* Sub-Submenu Sections Preview with Direct Hash Links */}
+                    <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 text-xs text-slate-600 space-y-2">
                       <span className="font-mono text-[10px] uppercase font-bold text-slate-400 block">
-                        Sub-Submenu Sections ({cap.submenus.length}):
+                        Submenu Sections ({cap.submenus.length}):
                       </span>
                       <div className="flex flex-wrap gap-1.5">
                         {cap.submenus.map((sub, sIdx) => (
-                          <span key={sIdx} className="px-2 py-0.5 rounded bg-white border border-slate-200 text-[11px] text-slate-700">
-                            {sub}
-                          </span>
+                          <Link
+                            key={sIdx}
+                            to={`${cap.path}#${sub.anchor}`}
+                            className="px-2 py-0.5 rounded-md bg-white hover:bg-blue-50 border border-slate-200 hover:border-blue-300 text-[11px] text-slate-700 hover:text-blue-600 transition-colors"
+                          >
+                            {sub.title}
+                          </Link>
                         ))}
                       </div>
                     </div>
@@ -470,9 +549,9 @@ export default function GrowthScienceHub() {
 
                     <Link
                       to={cap.path}
-                      className="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-blue-600 text-white font-bold text-xs inline-flex items-center gap-1.5 transition-colors"
+                      className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-blue-600 text-white font-bold text-xs inline-flex items-center gap-1.5 transition-colors"
                     >
-                      <span>Explore</span>
+                      <span>Explore Pillar</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
@@ -483,50 +562,8 @@ export default function GrowthScienceHub() {
         </div>
       </section>
 
-      {/* ── SECTION 05: COMPACT KPI OVERVIEW & INTEGRATION ── */}
-      <section id="kpis" className="py-16 sm:py-20 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
-            <div className="max-w-2xl">
-              <div className="text-xs font-mono font-bold text-blue-600 uppercase tracking-widest mb-2">
-                Executive Metric Library
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-heading">
-                Connected Growth Science KPI Index
-              </h2>
-              <p className="mt-3 text-base text-slate-600 leading-relaxed">
-                Sample core metrics configured across all 9 capabilities. Every metric follows a strict mathematical formula with verifiable reporting windows.
-              </p>
-            </div>
-
-            <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono text-slate-600 flex items-center gap-2">
-              <Scale className="w-4 h-4 text-blue-600 shrink-0" />
-              <span>Illustrative Benchmarks — Governed by Customer Baseline Ledger</span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-            {[
-              { label: 'Sales Velocity', value: '$14.2K/Day', unit: 'Throughput', desc: 'Revenue per active pipeline day' },
-              { label: 'LTV:CAC Ratio', value: '4.2x', unit: 'Compounding', desc: 'Discounted lifetime equity' },
-              { label: 'Forecast Accuracy', value: '96.4%', unit: 'Precision', desc: 'Absolute variance <5%' },
-              { label: 'Gross Margin', value: '83.5%', unit: 'Realization', desc: 'Protected pricing floors' },
-              { label: 'Leakage Ceiling', value: '< 6.0%', unit: 'Retention', desc: 'Clawed back cash flow' },
-              { label: 'Rule of 40 Score', value: '54.2%', unit: 'Efficiency', desc: 'Growth % + FCF Margin %' }
-            ].map((kpi, idx) => (
-              <div key={idx} className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-1">
-                <div className="text-[10px] font-mono text-slate-400 uppercase truncate">{kpi.label}</div>
-                <div className="text-lg font-extrabold text-slate-900 font-mono mt-0.5">{kpi.value}</div>
-                <div className="text-[10px] font-mono text-blue-600 font-bold">{kpi.unit}</div>
-                <p className="text-[11px] text-slate-500 pt-1 leading-tight">{kpi.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION 06: FINAL CONVERSION SECTION & CONSULTATION FORM ── */}
-      <section id="consultation" className="py-10 sm:py-14 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white relative overflow-hidden">
+      {/* ── SECTION 05: CONVERSION & INTAKE FORM ── */}
+      <section id="consultation" className="py-12 sm:py-16 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[140px]" />
           <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-indigo-600/10 rounded-full blur-[120px]" />
@@ -534,57 +571,55 @@ export default function GrowthScienceHub() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
             <div className="lg:col-span-5">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-bold tracking-widest uppercase font-mono mb-4">
                 <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
-                <span>EXECUTIVE DIAGNOSTIC CONSULTATION</span>
+                <span>EXECUTIVE DIAGNOSTIC ENGAGEMENT</span>
               </div>
 
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4 font-heading">
-                Audit Your Commercial Revenue Architecture
+                Lock Your Growth Baselines
               </h2>
 
               <p className="text-slate-300 leading-relaxed text-sm sm:text-base mb-6">
-                Connect with our Growth Science team to lock your baseline metrics, identify hidden pipeline friction, and model your deterministic expansion path.
+                Request a confidential diagnostic brief on your commercial operations. Our revenue architects will evaluate your sales telemetry, identify margin leakage, and model your deterministic expansion path.
               </p>
 
               <div className="space-y-3 mb-8 text-xs text-slate-300">
                 <div className="flex items-center gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Comprehensive 36-month revenue equation calibration</span>
+                  <span>36-month empirical transaction & conversion rate audit</span>
                 </div>
                 <div className="flex items-center gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Forensic pipeline leakage & pricing concession audit</span>
+                  <span>Granular unit economics, cost-to-serve, and margin stack deconstruction</span>
                 </div>
                 <div className="flex items-center gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Stochastic C-suite forecast scenario modeling</span>
+                  <span>Stochastic board forecast scenario calibration with confidence intervals</span>
                 </div>
               </div>
 
               <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-400 font-mono">
                 <span className="text-blue-400 font-bold block mb-1">Confidentiality Guarantee:</span>
-                All commercial and financial data is handled under mutual enterprise non-disclosure agreements.
+                Enterprise commercial data is safeguarded under mutual non-disclosure and SOC2 Type II compliance standards.
               </div>
             </div>
 
-            {/* Live Form Integration */}
+            {/* Live Integrated Form */}
             <div className="lg:col-span-7">
               <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl">
                 <div className="mb-6 border-b border-slate-800 pb-4">
                   <div className="text-xs font-mono font-bold text-blue-400 uppercase tracking-wider">
-                    Revenue Architecture Brief
+                    Executive Intake Brief
                   </div>
                   <h3 className="text-xl font-bold text-white mt-1">
-                    Request Growth Science Assessment
+                    Initialize Growth Science Assessment
                   </h3>
                 </div>
                 <AiSalesIntakeForm />
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -592,3 +627,5 @@ export default function GrowthScienceHub() {
     </div>
   );
 }
+
+export default GrowthScienceHub;

@@ -242,7 +242,7 @@ const menuPresentationConfigs: Record<string, MenuPresentationConfig> = {
         ctaText: 'Launch Global Corridors'
     },
     'resources-hub': {
-        sectionTag: 'KNOWLEDGE & INTELLIGENCE ARCHITECTURE',
+        sectionTag: 'RESOURCES',
         capabilitiesLabel: 'CURATED RESOURCE CLUSTERS',
         outcomeBadge: '12 Complete Categories',
         recommendedFor: ['Enterprise Executives', 'Revenue Leaders', 'Operational Teams'],
@@ -2927,7 +2927,7 @@ export default function Navigation() {
                             <div className="bg-white rounded-2xl shadow-xl border border-slate-200/90 ring-1 ring-slate-900/5 overflow-hidden flex flex-col">
                                 <div className="flex flex-col lg:flex-row items-stretch">
                                     {/* ── LEFT SIDEBAR (COMPACT, BOTTOM ANCHORED LINK, ZERO DEAD SPACE) ── */}
-                                    <aside className="w-full lg:w-[260px] xl:w-[275px] bg-slate-50/95 text-slate-900 p-3 sm:p-3.5 flex flex-col justify-between shrink-0 border-r border-slate-200/80">
+                                    <aside className={`w-full lg:w-[260px] xl:w-[275px] bg-slate-50/95 text-slate-900 ${currentMenu.id === 'resources-hub' ? 'p-2.5 sm:p-3' : 'p-3 sm:p-3.5'} flex flex-col justify-between shrink-0 border-r border-slate-200/80`}>
                                             <div className={`${currentMenu.categories.length > 7 ? 'space-y-1' : 'space-y-2'}`}>
                                                 {/* Section Label */}
                                                 <div>
@@ -2937,9 +2937,11 @@ export default function Navigation() {
                                                     <h2 className="text-base sm:text-lg font-extrabold text-slate-900 font-heading tracking-tight mt-0.5">
                                                         {currentMenu.name}
                                                     </h2>
-                                                    <p className="text-[11px] text-slate-500 mt-0.5 leading-snug line-clamp-2">
-                                                        {currentMenu.summary}
-                                                    </p>
+                                                    {currentMenu.id !== 'resources-hub' && currentMenu.summary && (
+                                                        <p className="text-[11px] text-slate-500 mt-0.5 leading-snug line-clamp-2">
+                                                            {currentMenu.summary}
+                                                        </p>
+                                                    )}
                                                 </div>
 
                                                 {/* Category List (Tight Vertical Rhythm - No Unnecessary Scrollbars) */}
@@ -2973,7 +2975,7 @@ export default function Navigation() {
                                             </div>
 
                                             {/* Bottom Link - Anchored neatly at the baseline */}
-                                            <div className="pt-2 border-t border-slate-200/70 mt-3">
+                                            <div className={`pt-1.5 border-t border-slate-200/70 ${currentMenu.id === 'resources-hub' ? 'mt-2' : 'mt-3'}`}>
                                                 <Link
                                                     to={currentMenu.path}
                                                     onClick={() => setActiveMenuId(null)}
@@ -3021,7 +3023,7 @@ export default function Navigation() {
                                                                 key={idx}
                                                                 to={card.path}
                                                                 onClick={() => handleSubMenuCardClick(card.path)}
-                                                                className="group p-2.5 rounded-xl bg-slate-50/60 hover:bg-white border border-slate-200/80 hover:border-blue-400 hover:shadow-xs transition-all duration-150 flex items-center gap-2.5 cursor-pointer"
+                                                                className="group p-2.5 sm:py-2.5 sm:px-3 rounded-xl bg-slate-50/60 hover:bg-white border border-slate-200/80 hover:border-blue-400 hover:shadow-xs transition-all duration-150 flex items-center gap-2.5 cursor-pointer"
                                                             >
                                                                 <div className="w-7 h-7 rounded-lg bg-white border border-slate-200/80 text-blue-600 group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-2xs">
                                                                     <CardIcon className="w-3.5 h-3.5" />
@@ -3043,7 +3045,7 @@ export default function Navigation() {
                                             </div>
 
                                             {/* Bottom Summary Section (Firmly docked at the bottom of the panel) */}
-                                            <div className="mt-auto pt-3">
+                                            <div className="mt-auto pt-2.5">
                                                 <div className="p-2.5 px-3 rounded-xl bg-blue-50/40 border border-blue-100/80 flex flex-col md:flex-row md:items-center justify-between gap-2 text-xs shrink-0">
                                                     <div className="space-y-0.5 text-[11px] text-slate-600">
                                                         <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">

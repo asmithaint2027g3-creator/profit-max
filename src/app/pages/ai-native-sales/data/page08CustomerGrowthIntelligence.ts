@@ -1,343 +1,491 @@
 import { AiSalesCapabilityPageData } from '../types';
 
 export const page08CustomerGrowthIntelligence: AiSalesCapabilityPageData = {
-  pageNumber: '08',
-  title: 'Customer Growth Intelligence',
-  slug: 'customer-growth-intelligence',
-  canonicalPath: '/ai-native-sales/customer-growth-intelligence',
-  eyebrow: 'AI NATIVE SALES / CUSTOMER GROWTH',
-  heroHeadline: 'Find the Next Growth Opportunity Inside Your Existing Customer Base',
-  heroSupporting: 'Existing customers represent the largest, most profitable opportunities for expansion, cross-sell, upsell, and long-term enterprise value. However, organizations frequently miss these opportunities when customer health, product adoption, business changes, stakeholder turnover, and renewal timing remain spread across disconnected systems. Customer Growth Intelligence helps teams understand customer needs, recognize expansion signals, identify retention risks, and coordinate timely action.',
-  primaryCTA: 'Drive Customer Expansion',
-  secondaryCTA: 'Book a Consultation',
-  targetDecisionMakers: [
-    'Chief Revenue Officers (CROs)',
-    'Chief Customer Officers (CCOs)',
-    'VP Customer Success & Account Management',
-    'Heads of Retention & Renewal Operations',
-    'Chief Financial Officers (CFOs)'
+  "pageNumber": "08",
+  "title": "Customer Growth Intelligence",
+  "slug": "customer-growth-intelligence",
+  "canonicalPath": "/ai-native-sales/customer-growth-intelligence",
+  "eyebrow": "AI NATIVE SALES / CUSTOMER GROWTH",
+  "heroHeadline": "Maximize Net Revenue Retention and Expand Customer Value",
+  "heroSupporting": "The most profitable enterprise revenue is generated through existing account retention, cross-sell expansion, and contract upgrades. Customer Growth Intelligence continuously monitors product telemetry, executive sentiment, and organizational changes to predict churn risks 180 days in advance, uncover white-space expansion opportunities, and optimize customer lifetime value.",
+  "primaryCTA": "Expand Accounts",
+  "secondaryCTA": "Book a Consultation",
+  "targetDecisionMakers": [
+    "Chief Revenue Officers (CROs)",
+    "Chief Customer Officers (CCOs)",
+    "VP Customer Success & Account Management",
+    "Heads of Retention & Expansion",
+    "Customer Operations Directors"
   ],
-  visualTheme: 'customer',
-
-  businessProblemTitle: 'The Hidden Leaks and Overlooked Upsells in Existing Accounts',
-  businessProblemSubtitle: 'While organizations invest heavily in acquiring new logos, they ignore whitespace inside existing enterprise accounts and discover renewal risks too late to prevent churn.',
-  businessProblems: [
+  "visualTheme": "customer",
+  "businessProblemTitle": "Why B2B Companies Fail to Capture Account Expansion Whitespace",
+  "businessProblemSubtitle": "Siloed customer data, reactive account management, surprise renewals, and disconnected expansion sales cause Net Revenue Retention to stagnate.",
+  "businessProblems": [
     {
-      id: 'churn-surprise',
-      title: 'Late-Stage Churn Notice Blindness',
-      symptom: 'Account managers discover an enterprise client is not renewing only 30 days before contract expiration, leaving zero time for remediation.',
-      rootCause: 'Customer health is evaluated through subjective rep sentiment rather than automated product telemetry and stakeholder engagement signals.',
-      impact: 'Gross Revenue Retention (GRR) collapses below 84%, forcing new sales teams to fill a leaky bucket.'
+      "id": "surprise-churn",
+      "title": "Blind-Spot Customer Churn",
+      "symptom": "Major enterprise customers announce non-renewal 30 days before contract expiration with zero prior warning.",
+      "rootCause": "Customer health is assessed via subjective CSM sentiment rather than continuous behavioral telemetry.",
+      "impact": "Damaged ARR growth, depressed company valuation multiples, and permanent customer loss."
     },
     {
-      id: 'unmapped-whitespace',
-      title: 'Invisible Enterprise Account Whitespace',
-      symptom: 'Vendors hold a $50k contract in one subsidiary while sister business units and regional divisions buy competing software.',
-      rootCause: 'Account teams lack automated cross-subsidiary mapping to track unpenetrated departments, licenses, and use-cases.',
-      impact: 'Net Revenue Retention (NRR) stagnates near 100%, trailing elite SaaS benchmarks of 120-135%.'
+      "id": "untapped-whitespace",
+      "title": "Unidentified Expansion Whitespace",
+      "symptom": "Account managers spend time pitching arbitrary add-ons that clients do not need, while massive departmental expansion opportunities go untouched.",
+      "rootCause": "Lack of automated customer telemetry analysis correlating product utilization with complementary platform modules.",
+      "impact": "Net Revenue Retention stagnates at 100-105% while top-performing SaaS benchmarks exceed 125%."
     },
     {
-      id: 'champion-turnover',
-      title: 'Silent Champion Turnover & Relationship Decay',
-      symptom: 'The key executive who championed your software departs, and the incoming leader replaces your platform with their familiar vendor.',
-      rootCause: 'Lack of automated monitoring for executive movements and failure to multi-thread across multiple layers of operational champions.',
-      impact: 'Unexpected churn of tier-1 accounts accounting for hundreds of thousands of dollars in annual recurring revenue.'
+      "id": "cs-sales-disconnect",
+      "title": "Friction Between CS and Expansion Sales",
+      "symptom": "Customer success managers guard accounts defensively, fearing that aggressive expansion sales reps will damage relationships.",
+      "rootCause": "Conflicting departmental quotas, misaligned compensation models, and lack of shared account health metrics.",
+      "impact": "Delayed expansion discussions, missed renewal uplifts, and customer frustration over disjointed communication."
     }
   ],
-
-  subSubmenus: [
+  "subSubmenus": [
     {
-      id: 'expansion-intelligence',
-      title: 'Expansion Intelligence',
-      badge: 'Whitespace Discovery',
-      businessQuestion: 'Which divisions, subsidiaries, and departments within our current customer accounts have high propensity to purchase?',
-      description: 'Maps the organizational chart and technology whitespace across enterprise customer divisions to identify expansion opportunities.',
-      businessProblem: 'Account managers focus only on maintaining the existing contract, leaving sister divisions and new regional business units untouched.',
-      howItWorks: 'Correlates corporate subsidiary ownership structures with internal product usage telemetry and executive hiring to detect new department needs.',
-      informationUsed: [
-        'Corporate parent-subsidiary structures and global business unit hierarchies',
-        'Current license utilization rates, seat capacity limits, and API usage surges',
-        'Executive job postings in non-contracted customer departments',
-        'Cross-department collaboration signals and internal user invitation graphs'
+      "id": "customer-360-intelligence",
+      "title": "Customer 360 Intelligence",
+      "badge": "Unified Account Truth",
+      "businessQuestion": "What is the complete historical, operational, and commercial status of this customer across all departments?",
+      "description": "Synthesizes billing history, active feature adoption, support escalations, and executive sponsor relationships into a single real-time truth.",
+      "businessProblem": "Account teams prepare for renewal meetings using fragmented tools, missing open support tickets or unresolved billing disputes.",
+      "howItWorks": "Constructs an automated customer knowledge graph syncing CRM records, Zendesk tickets, Jira bugs, Stripe billing, and product analytics.",
+      "informationUsed": [
+        "Contractual terms: original ARR, renewal dates, price indexation caps, SLAs",
+        "Real-time product feature telemetry, active daily users, and API consumption logs",
+        "Support ticket histories, open escalation tickets, and CSAT ratings",
+        "Executive relationship notes, QBR slide decks, and strategic goals"
       ],
-      workflowSupport: 'Generates account expansion dossiers with pre-mapped decision-makers in adjacent divisions and pre-calculated business cases.',
-      outcomesSupported: 'Unlocks 2.8x more expansion pipeline per enterprise account and increases multi-division penetration by 45%.',
-      humanOversight: 'Strategic Account Manager evaluates organizational politics before initiating outreach to sister business units.',
-      kpis: [
-        { metric: 'Account Expansion Pipeline', definition: 'Qualified pipeline generated from existing enterprise accounts', target: '$5.2M/Qtr' },
-        { metric: 'Multi-Division Penetration', definition: 'Enterprise customers deployed across 2+ distinct business units', target: '48.2%' },
-        { metric: 'Time-to-Second-Contract', definition: 'Months elapsed between initial customer contract and first division expansion', target: '6.4 Mos' }
+      "workflowSupport": "Supplies account managers with an interactive 360-degree dashboard before every executive check-in or renewal negotiation.",
+      "outcomesSupported": "Eliminates departmental blind spots and establishes institutional trust during strategic enterprise customer reviews.",
+      "humanOversight": "Customer Success Managers and Account Directors verify relationship sentiment notes during quarterly portfolio reviews.",
+      "kpis": [
+        {
+          "metric": "Customer Data Unification",
+          "definition": "Percentage of customer accounts unified across all 5 operational systems",
+          "target": "99.4%"
+        },
+        {
+          "metric": "Account Prep Time Saved",
+          "definition": "Hours saved per CSM weekly preparing executive briefing dossiers",
+          "target": "8.5 hrs/wk"
+        },
+        {
+          "metric": "Blind-Spot Error Reduction",
+          "definition": "Decrease in customer escalations caused by internal communication disconnects",
+          "target": "-88.0%"
+        }
       ]
     },
     {
-      id: 'cross-sell',
-      title: 'Cross-Sell',
-      badge: 'Product Affinity Modeling',
-      businessQuestion: 'Which complementary platform modules or service tiers will deliver immediate value to this specific customer use-case?',
-      description: 'Product affinity models that recommend complementary platform modules based on current feature usage, industry vertical, and workflow maturity.',
-      businessProblem: 'Reps pitch random product add-ons during quarterly business reviews without understanding the customer’s immediate technical bottlenecks.',
-      howItWorks: 'Evaluates feature telemetry against successful product adoption trajectories of similar customer cohorts, pinpointing the optimal moment to propose new modules.',
-      informationUsed: [
-        'Granular product telemetry: feature frequency, workflow completion, and custom integrations',
-        'Customer support ticket themes highlighting unmet functional needs or manual workarounds',
-        'Historical cross-sell adoption sequences that yielded highest customer retention',
-        'Quarterly business review action items and stated executive operational priorities'
+      "id": "customer-health-intelligence",
+      "title": "Customer Health Intelligence",
+      "badge": "Predictive Health",
+      "businessQuestion": "Which accounts are truly healthy, referenceable, and expanding, versus merely logging in out of habit?",
+      "description": "Calculates dynamic, telemetry-driven Customer Health Scores combining license utilization, feature breadth, and executive engagement.",
+      "businessProblem": "Traditional health scores rely on arbitrary CSM checkboxes, resulting in \"Green\" accounts that suddenly churn at renewal.",
+      "howItWorks": "Applies neural regression models across 40+ objective telemetry signals (login frequency, core workflow completions, API error rates) to score health.",
+      "informationUsed": [
+        "License seat utilization ratios and daily/monthly active user trends",
+        "Adoption breadth across core, advanced, and recently launched platform features",
+        "Executive sponsor meeting attendance, QBR participation, and response speed",
+        "Product error rates, latency spikes, and customer-reported defect tickets"
       ],
-      workflowSupport: 'Presents account executives with verified Cross-Sell Opportunity Cards highlighting specific customer telemetry justifying the recommendation.',
-      outcomesSupported: 'Increases cross-sell proposal acceptance from 16% to 42% and elevates multi-product customer ARR by 38%.',
-      humanOversight: 'Customer Success Manager and Account Executive confirm operational readiness before pitching new modules.',
-      kpis: [
-        { metric: 'Cross-Sell Conversion Rate', definition: 'Cross-sell proposals accepted and contracted by existing clients', target: '42.4%' },
-        { metric: 'Multi-Product Customer Share', definition: 'Percentage of customer base utilizing 2+ distinct platform products', target: '56.0%' },
-        { metric: 'Cross-Sell ARR Contribution', definition: 'Net new recurring revenue generated from module expansion', target: '$3.4M/Qtr' }
+      "workflowSupport": "Ranks customer portfolios by verified health scores, automatically alerting teams to deteriorating health 180 days before renewal.",
+      "outcomesSupported": "Replaces subjective opinions with objective telemetry, enabling proactive interventions that preserve enterprise accounts.",
+      "humanOversight": "CSMs review algorithmic health score deductions and formulate structured recovery action plans for at-risk accounts.",
+      "kpis": [
+        {
+          "metric": "Health Score Accuracy",
+          "definition": "Correlation between high Customer Health Scores and successful contract renewals",
+          "target": "94.8%"
+        },
+        {
+          "metric": "Deterioration Detection Lead Time",
+          "definition": "Days in advance of renewal that account health degradation is surfaced",
+          "target": "180 Days"
+        },
+        {
+          "metric": "At-Risk Recovery Rate",
+          "definition": "Percentage of health-flagged accounts restored to healthy status within 60 days",
+          "target": "76.4%"
+        }
       ]
     },
     {
-      id: 'upsell',
-      title: 'Upsell',
-      badge: 'Usage & Tier Progression',
-      businessQuestion: 'When is a customer approaching usage thresholds, and how do we guide them to a higher-capacity enterprise tier?',
-      description: 'Monitors license consumption, transaction volume, and feature limits to automate proactive, value-grounded tier upgrade pathways.',
-      businessProblem: 'Customers hit hard usage limits unexpectedly, causing system lockouts and angry executive escalations rather than smooth upgrades.',
-      howItWorks: 'Tracks consumption velocity toward 80% and 90% capacity thresholds, modeling projected growth and proposing customized enterprise tier upgrades.',
-      informationUsed: [
-        'Real-time seat utilization, active monthly users, and license allocation logs',
-        'Consumption metrics: API calls, data storage volume, compute hours, or transaction counts',
-        'Contractual overage terms and historical seasonal volume spikes',
-        'Value realization metrics and cost-benefit analysis of higher-tier commitments'
+      "id": "customer-retention-intelligence",
+      "title": "Customer Retention Intelligence",
+      "badge": "Renewal Safeguards",
+      "businessQuestion": "How can we guarantee 95%+ gross revenue retention through structured, automated renewal workflows?",
+      "description": "Orchestrates the complete renewal lifecycle: tracks notice windows, coordinates executive alignment, and generates renewal order forms.",
+      "businessProblem": "Renewals are handled reactively in the final 30 days of the contract, leaving no time to resolve objections or defend against budget cuts.",
+      "howItWorks": "Initiates a 180-day automated renewal journey: triggers health audits at Day 180, executive alignment at Day 120, and commercial terms at Day 90.",
+      "informationUsed": [
+        "Contractual renewal dates, auto-renewal clauses, and cancellation notice windows",
+        "Customer budget fiscal year calendars and capital expenditure planning cycles",
+        "Historical renewal price uplift benchmarks and multi-year commitment incentives",
+        "Customer stakeholder organizational changes and incoming replacement executives"
       ],
-      workflowSupport: 'Alerts account managers 60 days before anticipated limit breaches with customized tier transition proposals and volume discounts.',
-      outcomesSupported: 'Eliminates friction-laden overage billing disputes and drives seamless tier progression, lifting average ARR per customer by 28%.',
-      humanOversight: 'Account Director leads tier transition discussions and structures long-term contractual volume commitments.',
-      kpis: [
-        { metric: 'Proactive Tier Upgrade Rate', definition: 'Customers upgrading tiers prior to encountering hard usage limits', target: '88.5%' },
-        { metric: 'Average Revenue Per Account (ARPA)', definition: 'Year-over-year expansion in average annual recurring revenue per account', target: '+28.2%' },
-        { metric: 'Overage Dispute Elimination', definition: 'Reduction in billing disputes related to unexpected usage charges', target: '-92.0%' }
+      "workflowSupport": "Pushes automated renewal milestone tasks to account managers, generating pre-approved renewal order forms with contractual uplifts.",
+      "outcomesSupported": "Lifts Gross Revenue Retention (GRR) from 86% to 96% and eliminates end-of-year renewal panic.",
+      "humanOversight": "Account Directors review and approve commercial terms and customized concessions for enterprise renewal contracts.",
+      "kpis": [
+        {
+          "metric": "Gross Revenue Retention (GRR)",
+          "definition": "Percentage of recurring revenue retained from existing customer cohort",
+          "target": "96.4%"
+        },
+        {
+          "metric": "Early Renewal Execution Rate",
+          "definition": "Percentage of enterprise renewals executed >30 days before contract expiration",
+          "target": "78.2%"
+        },
+        {
+          "metric": "Renewal Cycle Duration",
+          "definition": "Average days required to complete enterprise contract renewal negotiations",
+          "target": "< 24 Days"
+        }
       ]
     },
     {
-      id: 'renewal-intelligence',
-      title: 'Renewal Intelligence',
-      badge: 'Retention Predictor',
-      businessQuestion: 'What is the true empirical renewal probability for contracts expiring over the next 180 days, and what actions are required?',
-      description: 'Predicts renewal outcomes 6 to 9 months in advance by aggregating telemetry, executive alignment, support sentiment, and commercial contract terms.',
-      businessProblem: 'Renewal forecasts are based on optimistic rep assumptions, masking deep-seated customer dissatisfaction until non-renewal notices arrive.',
-      howItWorks: 'Applies neural classification models trained on historical churn and renewal patterns, scoring renewal risk across 16 objective operational dimensions.',
-      informationUsed: [
-        'Contract expiration dates, renewal terms (auto-renew vs manual), and price escalator clauses',
-        'Product adoption depth, executive login frequency, and license activation percentages',
-        'Customer support escalation frequency, resolution satisfaction scores, and open P1 tickets',
-        'Executive sponsor departure alerts and recent corporate restructuring telemetry'
+      "id": "churn-prediction-intelligence",
+      "title": "Churn Prediction Intelligence",
+      "badge": "Churn Radar",
+      "businessQuestion": "Which specific enterprise accounts will churn in the next 6-12 months if immediate corrective action is not taken?",
+      "description": "Identifies subtle, early-stage churn risk signatures: executive departures, declining usage depth, support ticket sentiment, and budget cuts.",
+      "businessProblem": "By the time a customer mentions cancelling their contract, the decision was made 6 months earlier and cannot be reversed.",
+      "howItWorks": "Machine learning classifiers analyze 12 months of multi-system telemetry, detecting behavioral shifts that mirror historical churned accounts.",
+      "informationUsed": [
+        "Executive champion departure telemetry from LinkedIn and email bounce alerts",
+        "Gradual decline in high-value feature usage by senior practitioner personas",
+        "Inbound support ticket sentiment reflecting frustration with platform stability",
+        "Customer industry headwinds, corporate restructuring news, and M&A filings"
       ],
-      workflowSupport: 'Categorizes expiring accounts into Green (Auto-Advance), Yellow (Action Required), and Red (Executive Intervention Needed) with prescribed playbooks.',
-      outcomesSupported: 'Drives Gross Revenue Retention (GRR) from 86% to 96.2% and provides a full 180 days of early warning for at-risk accounts.',
-      humanOversight: 'VP Customer Success and Account Executives conduct monthly reviews of all accounts in Yellow and Red renewal categories.',
-      kpis: [
-        { metric: 'Gross Revenue Retention (GRR)', definition: 'Contract value retained from existing customer base excluding expansion', target: '96.2%' },
-        { metric: 'Renewal Early Warning Horizon', definition: 'Average advance warning days provided on accounts with elevated churn risk', target: '180 Days' },
-        { metric: 'On-Time Renewal Rate', definition: 'Contracts successfully executed on or before scheduled expiration date', target: '94.8%' }
+      "workflowSupport": "Triggers automated \"Retention Swarm\" workflows, assembling executive sponsors, product leaders, and CSMs to execute rescue plans.",
+      "outcomesSupported": "Reduces enterprise logo churn by 42% and successfully recovers 60%+ of accounts flagged by the early warning churn radar.",
+      "humanOversight": "Chief Customer Officer reviews weekly churn prediction lists and assigns executive sponsors to top-tier accounts.",
+      "kpis": [
+        {
+          "metric": "Churn Prediction Horizon",
+          "definition": "Average months in advance of contract expiration that churn risk is identified",
+          "target": "6.2 Months"
+        },
+        {
+          "metric": "Churn Radar Precision",
+          "definition": "Percentage of flagged accounts confirmed to have active retention risks",
+          "target": "91.2%"
+        },
+        {
+          "metric": "Rescued Account ARR",
+          "definition": "Total annualized recurring revenue retained through automated retention swarms",
+          "target": "$4.6M/Yr"
+        }
       ]
     },
     {
-      id: 'customer-retention',
-      title: 'Customer Retention',
-      badge: 'Churn Mitigation',
-      businessQuestion: 'How do we systematically detect and remediate customer friction before relationship decay becomes irreversible?',
-      description: 'Automated intervention workflows that mobilize customer success, technical support, and executive sponsors whenever relationship health dips.',
-      businessProblem: 'Customer health alerts trigger isolated emails that fail to address the underlying product adoption or organizational issues driving dissatisfaction.',
-      howItWorks: 'Detects leading indicators of churn (e.g. key user departure, declining weekly logins) and launches coordinated cross-functional recovery workflows.',
-      informationUsed: [
-        'Telemetry on login frequency drop-offs (>30% decline over 30 days)',
-        'Unresolved customer technical feedback and product feature requests',
-        'Executive leadership turnover and champion career transitions',
-        'Competitor displacement signals and external contract review activity'
+      "id": "cross-sell-intelligence",
+      "title": "Cross-Sell Intelligence",
+      "badge": "Product Affinity",
+      "businessQuestion": "Which complementary platform modules or business units represent the highest natural expansion fit for this customer?",
+      "description": "Analyzes customer operational pain points, tech stack configurations, and peer adoption patterns to recommend targeted cross-sell modules.",
+      "businessProblem": "Reps spam existing customers with generic brochures for new products, failing to connect the offering to the client’s actual operating challenges.",
+      "howItWorks": "Applies collaborative filtering and product affinity graphs to identify modules successfully adopted by identical customer cohorts.",
+      "informationUsed": [
+        "Currently deployed software modules, seat tiers, and platform integration configs",
+        "Customer business growth initiatives (new regional offices, new product launches)",
+        "Historical cross-sell conversion rates and expansion velocity across customer cohorts",
+        "Peer customer reference stories demonstrating multi-module business ROI"
       ],
-      workflowSupport: 'Assigns targeted retention plays: technical architecture health checks, executive sponsor check-ins, or customized training workshops.',
-      outcomesSupported: 'Rescues 42% of flagged at-risk customer accounts, protecting millions of dollars in recurring enterprise software revenue.',
-      humanOversight: 'Customer Success Manager leads customer recovery initiatives and validates sentiment recovery with customer leadership.',
-      kpis: [
-        { metric: 'At-Risk Customer Recovery Rate', definition: 'Accounts flagged with critical churn indicators successfully retained', target: '42.8%' },
-        { metric: 'Net Revenue Retention (NRR)', definition: 'Total revenue retained and expanded across customer cohorts over 12 months', target: '124.5%' },
-        { metric: 'Customer Health Stability', definition: 'Percentage of customer portfolio maintaining Green health classification', target: '89.4%' }
-      ]
-    }
-  ],
-
-  workflowTitle: 'Customer Growth & Retention Operating Lifecycle',
-  workflowSubtitle: 'From continuous health telemetry to whitespace discovery, proactive upsells, and predictable renewals.',
-  workflowSteps: [
-    {
-      step: '01',
-      name: 'Continuous Health & Adoption Telemetry',
-      description: 'Monitors product consumption, executive engagement, and support ticket sentiment across accounts.',
-      inputs: 'Application telemetry, support ticketing systems, executive login logs',
-      aiAction: 'Calculates dynamic Customer Health Score and flags leading churn indicators.',
-      humanGate: 'CSM reviews automated health score updates during weekly cohort reviews.',
-      output: 'Live Customer Health Dashboard & Risk Stratification'
-    },
-    {
-      step: '02',
-      name: 'Whitespace & Expansion Opportunity Mapping',
-      description: 'Analyzes corporate hierarchy to locate unpenetrated divisions and high-affinity modules.',
-      inputs: 'Customer subsidiary tree, product usage patterns, hiring trends',
-      aiAction: 'Identifies expansion target departments and models cross-sell propensity.',
-      humanGate: 'Account Director confirms corporate relationship politics.',
-      output: 'Prioritized Account Whitespace Map & Cross-Sell Opportunity Brief'
-    },
-    {
-      step: '03',
-      name: 'Proactive Tier Progression & Upsell',
-      description: 'Engages customers reaching 80%+ usage capacity with tailored upgrade proposals.',
-      inputs: 'License utilization telemetry, transaction velocity, contract terms',
-      aiAction: 'Drafts customized enterprise tier upgrade proposal with volume economics.',
-      humanGate: 'Account Executive presents upgrade proposal to customer sponsor.',
-      output: 'Contract Amendment Executing Expanded Platform Capacity'
-    },
-    {
-      step: '04',
-      name: '180-Day Predictable Renewal Execution',
-      description: 'Initiates structured renewal milestones 6 months ahead of contract expiration.',
-      inputs: 'Contract expiration dates, value realization scorecards, price escalators',
-      aiAction: 'Prepares renewal agreement, flags outstanding risks, and coordinates signature.',
-      humanGate: 'VP Customer Success signs off on renewal terms and concessions.',
-      output: 'Executed Multi-Year Enterprise Contract Renewal'
-    }
-  ],
-
-  useCases: [
-    {
-      title: 'Global Enterprise Whitespace Expansion',
-      segment: 'Supply Chain & Logistics Software',
-      situation: 'A global food conglomerate had a $120k contract in its North American beverage division, while 8 other international divisions operated on fragmented tools.',
-      approach: 'Deployed Expansion Intelligence to map all 8 subsidiaries, identifying common supply chain compliance challenges and crafting tailored division proposals.',
-      result: 'Expanded the customer relationship from a single division to 6 global business units within 14 months, driving total account ARR from $120k to $1.85M.',
-      metrics: [
-        { label: 'Account ARR Lift', value: '15.4x ($1.85M)' },
-        { label: 'Divisions Onboarded', value: '6 Divisions' }
+      "workflowSupport": "Provides account managers with tailored cross-sell business cases and technical synergy briefs for upcoming account reviews.",
+      "outcomesSupported": "Increases cross-sell opportunity conversion by 3.4x and drives multi-product adoption across 65% of enterprise accounts.",
+      "humanOversight": "Account Executives review cross-sell recommendations to ensure proposed modules align with customer technical readiness.",
+      "kpis": [
+        {
+          "metric": "Cross-Sell Opportunity Rate",
+          "definition": "Percentage of existing enterprise accounts with active qualified cross-sell pipeline",
+          "target": "44.8%"
+        },
+        {
+          "metric": "Multi-Product Adoption Depth",
+          "definition": "Average number of distinct software modules deployed per enterprise customer",
+          "target": "3.4 Modules"
+        },
+        {
+          "metric": "Cross-Sell Win Rate",
+          "definition": "Win rate on cross-sell expansion opportunities presented to existing clients",
+          "target": "52.6%"
+        }
       ]
     },
     {
-      title: '180-Day Renewal Rescue & Churn Elimination',
-      segment: 'Healthcare Enterprise EHR Integration Platform',
-      situation: 'An enterprise hospital network with $650k ARR was secretly preparing an RFP to replace the platform following an unresolved C-suite champion departure.',
-      approach: 'Renewal Intelligence detected the lack of executive engagement 190 days ahead of expiration, triggering an immediate clinical leadership outreach workshop.',
-      result: 'Re-engaged the new Chief Medical Officer, resolved outstanding workflow grievances, and secured an early 3-year contract renewal with an 18% expansion.',
-      metrics: [
-        { label: 'Rescued ARR', value: '$650k' },
-        { label: 'Contract Extension', value: '3-Year Lock' }
+      "id": "upsell-opportunity-intelligence",
+      "title": "Upsell Opportunity Intelligence",
+      "badge": "Capacity Expansion",
+      "businessQuestion": "Which accounts are approaching their license limits, storage caps, or API quotas and require capacity expansion?",
+      "description": "Monitors real-time capacity consumption, forecasting when accounts will exceed provisioned limits and staging proactive expansion quotes.",
+      "businessProblem": "Customers hit hard license limits unexpectedly, causing system lockouts, emergency IT escalations, and executive frustration.",
+      "howItWorks": "Telemetry listeners track usage curves, projecting the exact date each account will reach 80%, 90%, and 100% of provisioned capacity.",
+      "informationUsed": [
+        "Contracted user seat allocations vs real-time active user credentials",
+        "API call volumes, storage utilization, and compute consumption telemetry",
+        "Customer seasonal hiring cycles and planned corporate expansion events",
+        "Pre-approved tiered volume expansion pricing schedules and order forms"
+      ],
+      "workflowSupport": "Automatically notifies account managers 60 days before capacity breaches, generating pre-filled tiered upgrade proposals.",
+      "outcomesSupported": "Converts technical capacity growth into frictionless expansion ARR, eliminating 95% of customer billing lockouts.",
+      "humanOversight": "Account managers review upgrade proposals with client IT directors to align on planned headcount expansion.",
+      "kpis": [
+        {
+          "metric": "Proactive Upsell Rate",
+          "definition": "Percentage of capacity upgrades executed prior to contract limit breach",
+          "target": "92.4%"
+        },
+        {
+          "metric": "Expansion ARR Velocity",
+          "definition": "Days from capacity alert to executed upgrade order form signature",
+          "target": "< 14 Days"
+        },
+        {
+          "metric": "Lockout Prevention Rate",
+          "definition": "Percentage of customer accounts protected from operational usage lockouts",
+          "target": "99.8%"
+        }
       ]
     },
     {
-      title: 'Automated Consumption Upsell Progression',
-      segment: 'Developer Platform & Cloud Storage API',
-      situation: 'High-growth tech customers routinely hit API rate limits unexpectedly, leading to service throttling and frustrated engineering leadership.',
-      approach: 'Implemented automated Consumption Upsell workflows that detected accounts exceeding 80% capacity, offering proactive volume discounts for higher tiers.',
-      result: 'Eliminated overage billing disputes completely, and 88% of expanding customers smoothly upgraded to annual enterprise commitments before hitting limits.',
-      metrics: [
-        { label: 'Tier Upgrade Rate', value: '88.5%' },
-        { label: 'NRR Surge', value: '138.2%' }
+      "id": "customer-expansion-engine",
+      "title": "Customer Expansion Engine",
+      "badge": "Land & Expand",
+      "businessQuestion": "How can we systematically replicate initial department wins into enterprise-wide global agreements across other divisions?",
+      "description": "Maps global parent and subsidiary corporate hierarchies, uncovering sister divisions, foreign offices, and acquired business units for expansion.",
+      "businessProblem": "Software remains trapped inside a single department for years because sales teams fail to map other business units that have identical needs.",
+      "howItWorks": "Ingests global corporate family trees, internal customer advocacy quotes, and cross-division project references to launch expansion campaigns.",
+      "informationUsed": [
+        "Global corporate parent, subsidiary, and regional entity structures",
+        "Internal customer champion reference video clips, quotes, and verified ROI audits",
+        "Corporate intranet presentations and internal technology steering committee decks",
+        "Standardized enterprise master services agreements (MSAs) eligible for divisional piggybacking"
+      ],
+      "workflowSupport": "Equips account executives with internal champion referral playbooks and division-specific ROI business cases.",
+      "outcomesSupported": "Expands average customer account value by 4.2x over a 36-month period through systematic divisional replication.",
+      "humanOversight": "Strategic Account Directors coordinate all divisional expansion outreach with primary enterprise champions to preserve alignment.",
+      "kpis": [
+        {
+          "metric": "Divisional Expansion Depth",
+          "definition": "Average separate business units deploying platform per enterprise account",
+          "target": "4.2 Units"
+        },
+        {
+          "metric": "Land-to-Expand Multiplier",
+          "definition": "Ratio of Year 3 Account ARR compared to Year 1 initial landing ARR",
+          "target": "3.8x"
+        },
+        {
+          "metric": "Expansion Opportunity Yield",
+          "definition": "Total new expansion pipeline generated from internal customer references",
+          "target": "$8.4M/Qtr"
+        }
+      ]
+    },
+    {
+      "id": "customer-lifetime-value-optimization",
+      "title": "Customer Lifetime Value Optimization",
+      "badge": "LTV Maximization",
+      "businessQuestion": "What account management investment, customer success tier, and executive engagement model will maximize 5-year customer LTV?",
+      "description": "Models customer lifetime value across segments, optimizing customer success resource allocation, executive sponsor programs, and QBR cadences.",
+      "businessProblem": "Companies allocate identical high-touch CSM resources to small, low-growth accounts while starving multi-million dollar expansion accounts.",
+      "howItWorks": "Applies lifetime value predictive models to segment accounts by long-term ARR potential rather than current contract size.",
+      "informationUsed": [
+        "Current ARR, expansion whitespace potential, and gross margin contribution",
+        "Customer success staffing hours, executive sponsor involvement, and support costs",
+        "Historical 5-year retention and expansion trajectories across account cohorts",
+        "Net Revenue Retention (NRR) and customer acquisition cost payback velocity"
+      ],
+      "workflowSupport": "Aligns customer success tiers dynamically, matching high-growth enterprise accounts with dedicated advisory architects and CRO sponsors.",
+      "outcomesSupported": "Elevates Net Revenue Retention from 104% to 128% across enterprise tiers, adding tens of millions of dollars to enterprise valuation.",
+      "humanOversight": "Chief Customer Officer and CRO review annual LTV segment allocations and resource tier assignments.",
+      "kpis": [
+        {
+          "metric": "Net Revenue Retention (NRR)",
+          "definition": "Annualized recurring revenue retained and expanded across existing customer cohort",
+          "target": "128.4%"
+        },
+        {
+          "metric": "LTV to CAC Ratio",
+          "definition": "Ratio of customer lifetime value to fully-loaded customer acquisition and retention cost",
+          "target": "6.8x"
+        },
+        {
+          "metric": "High-LTV Account Retention",
+          "definition": "Gross retention rate among accounts classified in top LTV potential tier",
+          "target": "98.6%"
+        }
       ]
     }
   ],
-
-  dashboardTitle: 'Customer Growth, Health & Net Retention Telemetry',
-  dashboardSubtitle: 'Real-time visibility into customer health score distributions, whitespace expansion pipeline, and renewal predictability.',
-  dashboardBadge: 'Customer Retention Engine v2.4',
-  dashboardMetrics: [
-    { label: 'Net Revenue Retention (NRR)', value: '124.5%', change: '+14.2 pts YoY', note: 'Top-quartile enterprise benchmark' },
-    { label: 'Gross Revenue Retention (GRR)', value: '96.2%', change: '+8.4 pts vs baseline', note: 'Low churn portfolio' },
-    { label: 'Account Expansion Pipeline', value: '$18.4M', change: '+48% YoY', note: 'Sourced from existing accounts' },
-    { label: 'At-Risk Churn Recovery', value: '42.8%', change: '34 accounts saved', note: 'Proactive intervention outcome' }
-  ],
-  dashboardVisualType: 'matrix',
-
-  kpiFrameworkTitle: 'Customer Growth & Retention KPI Measurement Framework',
-  kpis: [
+  "workflowTitle": "The Customer Retention & Expansion Operating Model",
+  "workflowSubtitle": "How continuous telemetry, automated health scoring, and predictive expansion algorithms drive industry-leading Net Revenue Retention.",
+  "workflowSteps": [
     {
-      name: 'Net Revenue Retention (NRR)',
-      formula: '(Starting ARR + Expansion - Contraction - Churn) ÷ Starting ARR',
-      definition: 'Percentage of recurring revenue retained from existing customers over a 12-month window, including upsell and cross-sell expansion.',
-      reportingWindow: 'Annual Cohort',
-      illustrativeValue: '124.5%',
-      interpretation: 'The definitive indicator of product value and compound enterprise growth; elite benchmarks exceed 120%.'
+      "step": "01",
+      "name": "Continuous Telemetry & Health Audit",
+      "description": "Ingests product feature adoption, active user ratios, and support ticket sentiment.",
+      "inputs": "Product analytics, CRM records, Zendesk tickets, ERP billing logs",
+      "aiAction": "Calculates dynamic Customer Health Score and scans for early churn signatures.",
+      "humanGate": "CSM reviews health deductions during monthly account reviews.",
+      "output": "Objective Customer Health Score & risk indicators"
     },
     {
-      name: 'Gross Revenue Retention (GRR)',
-      formula: '(Starting ARR - Contraction - Churn) ÷ Starting ARR',
-      definition: 'Percentage of recurring revenue retained from existing customers over 12 months, strictly excluding expansion revenue.',
-      reportingWindow: 'Annual Cohort',
-      illustrativeValue: '96.2%',
-      interpretation: 'Measures baseline product retention and customer stickiness; top enterprise software companies target >95%.'
+      "step": "02",
+      "name": "Automated 180-Day Renewal Journey",
+      "description": "Initiates proactive milestone workflows 6 months prior to contract expiration.",
+      "inputs": "Contract renewal dates, price uplift terms, customer budget timelines",
+      "aiAction": "Stages renewal order form, calculates contractual uplifts, and schedules QBR.",
+      "humanGate": "Account Director confirms renewal strategy and concession limits.",
+      "output": "Executed renewal agreement & protected GRR"
     },
     {
-      name: 'Account Expansion Velocity',
-      formula: 'Expansion ARR Sourced ÷ Total Active Enterprise Customer Accounts',
-      definition: 'Average annual dollar expansion generated per existing customer account through upsell and cross-sell.',
-      reportingWindow: 'Quarterly Audit',
-      illustrativeValue: '$42,800 / Acct',
-      interpretation: 'Quantifies account management efficiency and multi-division land-and-expand execution.'
+      "step": "03",
+      "name": "Expansion Whitespace Discovery",
+      "description": "Identifies unadopted platform modules, approaching capacity limits, and sister divisions.",
+      "inputs": "Usage capacity curves, corporate family trees, peer adoption benchmarks",
+      "aiAction": "Generates tailored cross-sell business case and pre-filled capacity upgrade order form.",
+      "humanGate": "Account Executive reviews expansion proposal with internal champion.",
+      "output": "Qualified expansion pipeline & upgrade proposal"
     },
     {
-      name: 'Renewal Early-Warning Precision',
-      formula: 'Accounts Correctly Flagged as Yellow/Red ÷ Total Churned Accounts',
-      definition: 'Accuracy of neural retention models in predicting customer non-renewal at least 120 days prior to contract expiration.',
-      reportingWindow: 'Quarterly',
-      illustrativeValue: '94.2%',
-      interpretation: 'High precision ensures customer success teams never get blindsided by unexpected churn notices.'
+      "step": "04",
+      "name": "Enterprise Divisional Rollout",
+      "description": "Replicates proven departmental success across adjacent business units and global regions.",
+      "inputs": "Internal customer ROI audits, executive champion quotes, enterprise MSA terms",
+      "aiAction": "Equips champions with internal referral playbooks and division-specific ROI decks.",
+      "humanGate": "Strategic Account Director leads divisional expansion pursuit.",
+      "output": "Enterprise-wide agreement & maximized LTV"
     }
   ],
-
-  governanceTitle: 'Customer Data Ethics, Communication Frequency & Account Governance',
-  governanceSubtitle: 'Strict enterprise guardrails governing customer data privacy, representative handoffs, and ethical upsell communication.',
-  governanceItems: [
+  "useCases": [
     {
-      area: 'Customer Telemetry Privacy & Security',
-      policy: 'Product usage telemetry is ingested strictly for operational performance and account health; zero customer data is used to train public LLMs.',
-      humanCheckpoint: 'CISO conducts semi-annual data governance audits to verify encryption at rest and in transit.',
-      auditTrail: 'Customer telemetry access logs preserved in compliance repository.'
+      "title": "Global Enterprise Collaboration Platform",
+      "segment": "Public B2B SaaS ($920M ARR)",
+      "situation": "Net Revenue Retention was flat at 102% with high enterprise churn caused by lack of visibility into executive champion departures.",
+      "approach": "Deployed Churn Prediction Intelligence and Customer Health Radar to monitor executive engagement and product utilization curves.",
+      "result": "Lowered enterprise logo churn by 44% while increasing Net Revenue Retention to 126%, unlocking $38M in incremental expansion ARR.",
+      "metrics": [
+        {
+          "label": "Net Revenue Retention",
+          "value": "126.4%"
+        },
+        {
+          "label": "Logo Churn Reduction",
+          "value": "-44.0%"
+        },
+        {
+          "label": "Expansion ARR Lift",
+          "value": "+$38.2M"
+        }
+      ]
     },
     {
-      area: 'Communication Fatigue & Frequency Caps',
-      policy: 'Automated algorithms enforce strict communication caps: maximum 2 automated touchpoints per month per customer stakeholder persona.',
-      humanCheckpoint: 'CSM reviews communication history before launching automated satisfaction or expansion campaigns.',
-      auditTrail: 'Outreach frequency and delivery timestamps recorded in customer CRM records.'
-    },
-    {
-      area: 'Account Ownership & Representative Routing',
-      policy: 'Customer Success Managers and Account Executives operate under strict territorial and account assignment rules with joint quota incentives.',
-      humanCheckpoint: 'VP Customer Success resolves any expansion commission or account coverage questions.',
-      auditTrail: 'Account ownership assignment history permanently preserved in CRM.'
-    },
-    {
-      area: 'Fair Renewal Terms & Price Transparency',
-      policy: 'Renewal proposals must disclose all contractual price indexation formulas and volume tiers clearly without deceptive billing fees.',
-      humanCheckpoint: 'Commercial Legal and Deal Desk audit all customer renewal proposals prior to transmission.',
-      auditTrail: 'Executed contract amendments and pricing escalation terms archived in ERP.'
+      "title": "Industrial Automation Software",
+      "segment": "Smart Manufacturing Technology ($140M ARR)",
+      "situation": "Customers frequently experienced disruptive software lockouts when hitting capacity limits, causing executive friction at renewal.",
+      "approach": "Activated Upsell Opportunity Intelligence to track usage curves and stage proactive tiered capacity upgrades 60 days before limit breaches.",
+      "result": "Eliminated 98% of customer usage lockouts while accelerating expansion sales cycle duration from 45 days to 11 days.",
+      "metrics": [
+        {
+          "label": "Lockout Prevention",
+          "value": "98.5%"
+        },
+        {
+          "label": "Expansion Cycle Duration",
+          "value": "< 11 Days"
+        },
+        {
+          "label": "Proactive Upgrade Rate",
+          "value": "92.0%"
+        }
+      ]
     }
   ],
-
-  relatedCapabilities: [
+  "dashboardTitle": "Customer Growth & Retention Telemetry",
+  "dashboardSubtitle": "Live Net Revenue Retention trajectories, customer health distributions, churn risk radar, and expansion pipeline yield.",
+  "dashboardBadge": "Operational Telemetry",
+  "dashboardMetrics": [
     {
-      title: 'Pricing Intelligence',
-      path: '/ai-native-sales/pricing-intelligence',
-      summary: 'Ensure customer expansion proposals optimize margin and willingness-to-pay economics.',
-      badge: 'Pillar 06'
+      "label": "Net Revenue Retention",
+      "value": "128.2%",
+      "change": "+14.2 pts YoY",
+      "note": "Top-decile SaaS benchmark"
     },
     {
-      title: 'Revenue Acceleration',
-      path: '/ai-native-sales/revenue-acceleration',
-      summary: 'Advance complex multi-million dollar enterprise expansion deals through dedicated war rooms.',
-      badge: 'Pillar 05'
+      "label": "Gross Revenue Retention",
+      "value": "96.8%",
+      "change": "+4.8 pts",
+      "note": "Exceeding enterprise targets"
     },
     {
-      title: 'Autonomous GTM Command Center',
-      path: '/ai-native-sales/autonomous-gtm-command-center',
-      summary: 'Monitor portfolio NRR, GRR, and customer health telemetry across all revenue segments.',
-      badge: 'Pillar 09'
+      "label": "Rescued Churn ARR",
+      "value": "$4.2M Flagged",
+      "change": "74% Recovered",
+      "note": "Proactive retention swarms"
+    },
+    {
+      "label": "Expansion Pipeline",
+      "value": "$16.4M Active",
+      "change": "+38% QoQ",
+      "note": "Cross-sell and capacity upgrades"
     }
   ],
-
-  closingCtaHeadline: 'Turn Your Existing Customer Base Into Your Primary Growth Engine',
-  closingCtaDescription: 'Stop letting churn erode your hard-won revenue. Schedule an executive consultation to evaluate Customer Growth Intelligence.'
+  "dashboardVisualType": "timeline",
+  "kpiFrameworkTitle": "Customer Growth Operational Performance Metrics",
+  "kpis": [
+    {
+      "name": "Net Revenue Retention (NRR)",
+      "formula": "(Beginning ARR + Expansion ARR - Contraction ARR - Churn ARR) / Beginning ARR",
+      "definition": "The percentage of recurring revenue retained from existing customers over a 12-month period including expansions.",
+      "reportingWindow": "Monthly / Quarterly",
+      "illustrativeValue": "128.4%",
+      "interpretation": "NRR exceeding 120% proves product-market fit, enterprise expansion viability, and drives premium valuation multiples."
+    },
+    {
+      "name": "Gross Revenue Retention (GRR)",
+      "formula": "(Beginning ARR - Contraction ARR - Churn ARR) / Beginning ARR",
+      "definition": "The percentage of recurring revenue retained from existing customers excluding all expansion ARR.",
+      "reportingWindow": "Monthly / Quarterly",
+      "illustrativeValue": "96.4%",
+      "interpretation": "GRR above 95% indicates mission-critical software utility and deep institutional customer reliance."
+    },
+    {
+      "name": "Expansion Sourced Velocity",
+      "formula": "Expansion ARR Closed / Full-Time Customer Success / Account Manager",
+      "definition": "Measures account management productivity in converting customer usage growth into contracted expansion ARR.",
+      "reportingWindow": "Quarterly",
+      "illustrativeValue": "$480,000 / AM / Qtr",
+      "interpretation": "High expansion velocity indicates that customer health intelligence is surfacing verified expansion whitespace."
+    }
+  ],
+  "governanceTitle": "Customer Growth Governance & Account Protection",
+  "governanceSubtitle": "Strict customer privacy boundaries, transparent health scoring rules, contractual renewal guardrails, and customer trust controls.",
+  "governanceItems": [
+    {
+      "area": "Customer Telemetry Privacy Standards",
+      "policy": "Product usage telemetry is ingested strictly in aggregated, anonymized formats conforming to enterprise confidentiality agreements.",
+      "humanCheckpoint": "Chief Privacy Officer audits all usage tracking schemas against GDPR and customer master service agreements.",
+      "auditTrail": "Zero personal customer data or intellectual property is accessible to predictive expansion algorithms."
+    },
+    {
+      "area": "Retention Swarm Escalation Thresholds",
+      "policy": "Any Tier-1 enterprise account exhibiting a Customer Health Score below 50 automatically triggers executive notification within 24 hours.",
+      "humanCheckpoint": "Chief Customer Officer reviews and signs off on the custom account recovery plan within 48 hours.",
+      "auditTrail": "Time-stamped retention intervention notes, executive sponsor assignments, and resolution milestones recorded in CRM."
+    },
+    {
+      "area": "Expansion Communication Etiquette",
+      "policy": "Account managers cannot initiate expansion sales discussions with accounts with active open critical severity-1 support tickets.",
+      "humanCheckpoint": "System automatically blocks automated expansion campaigns until open engineering escalations are marked resolved.",
+      "auditTrail": "Ticket status verification logs checked before every expansion proposal generation."
+    }
+  ]
 };
-

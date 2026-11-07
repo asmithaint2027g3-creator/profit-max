@@ -1,320 +1,491 @@
 import { AiSalesCapabilityPageData } from '../types';
 
 export const page06PricingIntelligence: AiSalesCapabilityPageData = {
-  pageNumber: '06',
-  title: 'Pricing Intelligence',
-  slug: 'pricing-intelligence',
-  canonicalPath: '/ai-native-sales/pricing-intelligence',
-  eyebrow: 'AI NATIVE SALES / PRICING INTELLIGENCE',
-  heroHeadline: 'Make Commercial Decisions With Greater Visibility Into Value and Margin',
-  heroSupporting: 'Revenue growth does not always translate into profitable growth. Inconsistent discounting, poorly structured offers, incomplete deal economics, and limited visibility into cost-to-serve can weaken commercial performance. Pricing Intelligence helps teams evaluate pricing choices, compare offer structures, and understand the potential financial implications of commercial decisions.',
-  primaryCTA: 'Optimize Pricing & Margin',
-  secondaryCTA: 'Book a Consultation',
-  targetDecisionMakers: [
-    'Chief Financial Officers (CFOs)',
-    'Chief Revenue Officers (CROs)',
-    'VP Commercial Operations & Pricing',
-    'Enterprise Deal Desk Directors',
-    'Commercial Legal Counsel'
+  "pageNumber": "06",
+  "title": "Pricing Intelligence",
+  "slug": "pricing-intelligence",
+  "canonicalPath": "/ai-native-sales/pricing-intelligence",
+  "eyebrow": "AI NATIVE SALES / PRICING INTELLIGENCE",
+  "heroHeadline": "Protect Gross Margin and Maximize Commercial Contract Value",
+  "heroSupporting": "Discounting, inconsistent contract packaging, and slow deal desk approvals erode enterprise software profitability. Pricing Intelligence models customer willingness-to-pay, enforces discount governance, detects margin leakage, and automates deal desk approvals without slowing down commercial velocity.",
+  "primaryCTA": "Optimize Pricing",
+  "secondaryCTA": "Book a Consultation",
+  "targetDecisionMakers": [
+    "Chief Revenue Officers (CROs)",
+    "Chief Financial Officers (CFOs)",
+    "VP Commercial Operations",
+    "Heads of Deal Desk & Pricing",
+    "Enterprise Sales Leaders"
   ],
-  visualTheme: 'pricing',
-
-  businessProblemTitle: 'The Silent Erosion of Gross Margin in Enterprise Sales',
-  businessProblemSubtitle: 'When reps lack empirical pricing guidance, end-of-quarter panic leads to unnecessary discounting, margin leakage, and unprofitable contract obligations.',
-  businessProblems: [
+  "visualTheme": "pricing",
+  "businessProblemTitle": "Why Unstructured Discounting Destroys Enterprise Valuation",
+  "businessProblemSubtitle": "End-of-quarter pressure, arbitrary discounting, and opaque cost-to-serve models lead to margin erosion, revenue leakage, and customer pricing inequity.",
+  "businessProblems": [
     {
-      id: 'discount-leakage',
-      title: 'Unchecked End-of-Quarter Discounting Panic',
-      symptom: 'Reps offer 30-45% price concessions at quarter-end to force deal closure without testing customer willingness to pay.',
-      rootCause: 'Lack of real-time price sensitivity modeling and empirical willingness-to-pay benchmarks.',
-      impact: 'Erodes enterprise valuation and destroys 15-22% of potential software gross margin.'
+      "id": "margin-leakage",
+      "title": "End-of-Quarter Discount Panic",
+      "symptom": "Sales reps concede 30%+ discounts in the final 72 hours of the quarter to hit arbitrary quota targets.",
+      "rootCause": "Lack of value-based pricing models and objective data on customer willingness to pay.",
+      "impact": "Permanent gross margin compression, lower net revenue retention, and customer perception of overpricing."
     },
     {
-      id: 'cost-to-serve-blindness',
-      title: 'Cost-to-Serve Blindness & Margin Inversion',
-      symptom: 'Large enterprise deals celebrated at contract signing turn out to be net-negative margin after custom implementation and high-touch support.',
-      rootCause: 'Pricing models evaluate only top-line ARR, ignoring customer-specific cloud infrastructure, API, and engineering delivery costs.',
-      impact: 'Creates unprofitable customer cohorts that consume 60%+ of customer engineering capacity while yielding zero net margin.'
+      "id": "deal-desk-bottleneck",
+      "title": "Glacial Deal Desk Approval Cycles",
+      "symptom": "Complex non-standard proposals take 7-10 business days to navigate finance, legal, and executive approvals.",
+      "rootCause": "Manual spreadsheet review processes and rigid approval hierarchies with zero algorithmic delegation.",
+      "impact": "Deal momentum stalls, giving competitor sales teams time to undercut proposals and steal market share."
     },
     {
-      id: 'rigid-packaging',
-      title: 'Rigid, One-Size-Fits-All Offer Structures',
-      symptom: 'Deals stall because buyers reject bundled pricing for features they do not need, while reps lack approved modular packaging options.',
-      rootCause: 'Static pricing sheets offer no algorithmic packaging optimization matched to customer maturity.',
-      impact: 'Extends contract negotiation cycles by 45+ days and pushes price-sensitive buyers toward modular niche competitors.'
+      "id": "pricing-inequity",
+      "title": "Customer Inequity & Contract Leakage",
+      "symptom": "Identical enterprise customers in the same industry pay wildly disparate rates with zero economic rationale.",
+      "rootCause": "Disparate pricing decisions made by individual reps without centralized packaging intelligence.",
+      "impact": "Customer friction during renewals, difficult contract renegotiations, and reputational damage."
     }
   ],
-
-  subSubmenus: [
+  "subSubmenus": [
     {
-      id: 'dynamic-pricing',
-      title: 'Dynamic Pricing',
-      badge: 'Willingness-to-Pay Index',
-      businessQuestion: 'What is the optimal price point for this specific customer tier, deal size, and competitive situation?',
-      description: 'Calculates deal-specific price recommendations using customer firmographics, competitive alternatives, contract duration, and historical win rates.',
-      businessProblem: 'Sales reps guess pricing based on gut instinct or past deals, underpricing high-value enterprise buyers and overpricing price-sensitive accounts.',
-      howItWorks: 'Analyzes closed-won deal histories, customer revenue tier, geographic purchasing power, and active competitive bids to suggest target, floor, and stretch pricing.',
-      informationUsed: [
-        'Customer annual revenue, employee count, and technology budget estimates',
-        'Historical win/loss pricing distribution for identical deal scopes and industries',
-        'Competitor alternative pricing benchmarks and displacement precedents',
-        'Contract duration, payment terms (upfront vs annual), and committed volume tiers'
+      "id": "pricing-strategy-intelligence",
+      "title": "Pricing Strategy Intelligence",
+      "badge": "Packaging & Tiers",
+      "businessQuestion": "What pricing architecture, packaging tiers, and metric drivers will maximize long-term enterprise contract value?",
+      "description": "Evaluates customer usage telemetry, feature value attribution, and willingness-to-pay benchmarks to structure optimized pricing tiers.",
+      "businessProblem": "Software companies adopt generic per-user pricing that fails to capture value as customer utilization and ROI scale.",
+      "howItWorks": "Applies conjoint analysis and behavioral usage modeling to identify which platform features drive the highest customer economic value.",
+      "informationUsed": [
+        "Historical feature usage telemetry correlated with customer ARR expansion",
+        "Customer willingness-to-pay survey data and competitive pricing architectures",
+        "Gross margin contribution and direct cloud infrastructure cost-to-serve",
+        "Contract renewal and churn rates across different packaging tiers"
       ],
-      workflowSupport: 'Provides the rep and deal desk with a calibrated Price Guidance Corridor directly inside CPQ / CRM proposal generators.',
-      outcomesSupported: 'Reduces unnecessary discounting by 8.4 percentage points while maintaining or improving overall competitive win rates.',
-      humanOversight: 'Deal Desk Director must approve any custom proposal configured below the algorithmic price floor.',
-      kpis: [
-        { metric: 'Average Discount Reduction', definition: 'Decrease in percentage discount granted off list price', target: '-8.4 pts' },
-        { metric: 'Price Realization Index', definition: 'Contracted ARR vs optimal predicted target price', target: '94.8%' },
-        { metric: 'Win Rate at Target Price', definition: 'Competitive win rate when proposed at recommended price corridor', target: '52.6%' }
+      "workflowSupport": "Guides product marketing and pricing teams in designing value-metric packaging that scales automatically with customer growth.",
+      "outcomesSupported": "Increases average contract value (ACV) by 32% and aligns customer expenditure directly with realized operational value.",
+      "humanOversight": "CFO and CRO review and sign off on all foundational pricing tier changes and metric definitions.",
+      "kpis": [
+        {
+          "metric": "Average Contract Value (ACV)",
+          "definition": "Mean annualized contract value across new enterprise software agreements",
+          "target": "+32.4%"
+        },
+        {
+          "metric": "Value Metric Adoption",
+          "definition": "Percentage of contracts utilizing scalable value metrics vs flat seats",
+          "target": "78.5%"
+        },
+        {
+          "metric": "Net Margin Contribution",
+          "definition": "Gross margin percentage after deducting dedicated cloud cost-to-serve",
+          "target": "82.0%"
+        }
       ]
     },
     {
-      id: 'margin-intelligence',
-      title: 'Margin Intelligence',
-      badge: 'Contribution Economics',
-      businessQuestion: 'What is the true net contribution margin of this deal after factoring in fully loaded delivery, cloud, and support costs?',
-      description: 'Models comprehensive deal-level profitability including hosting consumption, implementation hours, dedicated support, and payment terms.',
-      businessProblem: 'Sales teams celebrate $500k deals that end up losing money because custom SLA and onboarding requirements were severely underpriced.',
-      howItWorks: 'Connects finance and engineering telemetry to calculate customer-specific gross margin, cost-to-serve allocations, and multi-year payback.',
-      informationUsed: [
-        'Cloud infrastructure compute, storage, and API egress consumption models',
-        'Professional services implementation hours and third-party integration costs',
-        'Dedicated customer success management and premium SLA staffing allocations',
-        'Contract payment schedules, financing costs, and working capital impact'
+      "id": "dynamic-pricing-intelligence",
+      "title": "Dynamic Pricing Intelligence",
+      "badge": "Contextual Pricing",
+      "businessQuestion": "What is the optimal, profit-maximizing price point for this specific customer based on their industry, size, and urgency?",
+      "description": "Recommends deal-specific pricing parameters and package options based on real-time account firmographics, competitive pressure, and ROI potential.",
+      "businessProblem": "Reps rely on guesswork when quoting deals, either overpricing and losing the bid or underpricing and leaving substantial margin on the table.",
+      "howItWorks": "Machine learning algorithms analyze 30+ deal variables (account revenue, tech stack complexity, competitor involvement) to recommend price bands.",
+      "informationUsed": [
+        "Target account revenue, headcount, industry sector, and technical complexity",
+        "Identified competitor alternatives and current market displacement benchmarks",
+        "Customer purchase urgency, fiscal year-end deadlines, and buying window signals",
+        "Historical closed-won pricing data for identical customer peer cohorts"
       ],
-      workflowSupport: 'Displays a live Gross Margin Waterfall to the deal desk before proposals are sent to enterprise prospects.',
-      outcomesSupported: 'Prevents unprofitable contract commitments and lifts portfolio gross margin by 6.8 percentage points.',
-      humanOversight: 'CFO approval is mandatory for any enterprise transaction with projected contribution margin below corporate thresholds.',
-      kpis: [
-        { metric: 'Gross Margin Realization', definition: 'Contracted gross margin percentage across all new bookings', target: '78.2%' },
-        { metric: 'Negative Margin Deal Elimination', definition: 'Zero contracts signed with negative net contribution margin', target: '100%' },
-        { metric: 'Payback Velocity Compression', definition: 'Months required to fully recoup onboarding and delivery costs', target: '< 6.5 Mos' }
+      "workflowSupport": "Presents account executives with recommended target, stretch, and floor pricing bands inside their proposal generator.",
+      "outcomesSupported": "Eliminates arbitrary pricing variation and captures 18% higher contract ARR without reducing deal closing conversion rates.",
+      "humanOversight": "Sales managers review and approve any quote structured below the algorithmic target pricing recommendation.",
+      "kpis": [
+        {
+          "metric": "Realized Price vs Target",
+          "definition": "Percentage of finalized contracts executed at or above recommended target price",
+          "target": "91.2%"
+        },
+        {
+          "metric": "Margin Capture Rate",
+          "definition": "Percentage of available customer willingness-to-pay captured in final contract",
+          "target": "86.4%"
+        },
+        {
+          "metric": "Win Rate at Target Price",
+          "definition": "Conversion rate of enterprise proposals presented within target price band",
+          "target": "54.2%"
+        }
       ]
     },
     {
-      id: 'offer-optimization',
-      title: 'Offer Optimization',
-      badge: 'Modular Packaging',
-      businessQuestion: 'How can we structure the commercial bundle to maximize customer value and minimize negotiation friction?',
-      description: 'Algorithmic packaging that tailors modular feature tiers, service levels, and usage caps to specific buyer maturity levels.',
-      businessProblem: 'Monolithic packaging forces customers to pay for unused modules, creating deal-breaking procurement friction.',
-      howItWorks: 'Evaluates customer use-case requirements against feature adoption telemetry, proposing high-value core bundles with optional expansion add-ons.',
-      informationUsed: [
-        'Customer stated operational priorities and identified technical bottlenecks',
-        'Telemetry on feature utilization across similar enterprise customer cohorts',
-        'Historical cross-sell expansion trajectories for specific module combinations',
-        'Tiered platform usage limits (seats, transactions, bandwidth, compute units)'
+      "id": "price-optimization-engine",
+      "title": "Price Optimization Engine",
+      "badge": "Elasticity Modeling",
+      "businessQuestion": "How sensitive is our target market to price adjustments, and where can we increase rates without damaging win rates?",
+      "description": "Continuously measures market price elasticity across industries, product modules, and regions, identifying opportunities for rate optimization.",
+      "businessProblem": "Enterprises maintain identical pricing for years, failing to capture inflation upside or higher value delivered through product enhancements.",
+      "howItWorks": "Applies econometric elasticity models across historical win/loss data to identify modules with low price sensitivity.",
+      "informationUsed": [
+        "Historical win/loss ratios at varying price points across distinct market segments",
+        "Competitor price index changes, inflation adjustments, and labor cost shifts",
+        "Product feature enhancement velocity and customer value delivery benchmarks",
+        "Renewal expansion rates following mid-contract price adjustments"
       ],
-      workflowSupport: 'Generates 3 customized proposal options (Good, Better, Best) optimized for buyer choice architecture and executive budget clearance.',
-      outcomesSupported: 'Increases proposal acceptance rates by 26% and creates built-in expansion pathways for year-two net revenue retention.',
-      humanOversight: 'Account Executive selects which of the 3 optimized proposal options aligns best with champion politics.',
-      kpis: [
-        { metric: 'Proposal Acceptance Velocity', definition: 'Days from initial proposal delivery to formal customer selection', target: '12 Days' },
-        { metric: 'Multi-Product Adoption Rate', definition: 'New enterprise customers purchasing 2+ platform modules upfront', target: '64.5%' },
-        { metric: 'Expansion Option Uptake', definition: 'Customers opting for pre-structured expansion tiers within 12 months', target: '38.0%' }
+      "workflowSupport": "Recommends targeted price schedule adjustments across specific product SKUs and customer segments with minimal churn risk.",
+      "outcomesSupported": "Drives a 14% lift in annualized recurring revenue (ARR) with zero measurable increase in customer churn.",
+      "humanOversight": "Executive pricing committees review elasticity models and authorize annual price schedule revisions.",
+      "kpis": [
+        {
+          "metric": "Elasticity Confidence Index",
+          "definition": "Statistical confidence of price elasticity models across core software modules",
+          "target": "96.2%"
+        },
+        {
+          "metric": "Annual ARR Expansion",
+          "definition": "Incremental ARR generated through optimized pricing schedule revisions",
+          "target": "+$5.8M"
+        },
+        {
+          "metric": "Price-Induced Churn Rate",
+          "definition": "Percentage of customer churn directly attributable to pricing adjustments",
+          "target": "< 0.5%"
+        }
       ]
     },
     {
-      id: 'commercial-optimization',
-      title: 'Commercial Optimization',
-      badge: 'Deal Desk Governance',
-      businessQuestion: 'How do we streamline discount approvals, non-standard contract terms, and legal concessions without slowing deal momentum?',
-      description: 'Automated deal desk governance that coordinates discount thresholds, payment term trade-offs, and commercial concessions in real-time.',
-      businessProblem: 'Discount approval requests languish in executive email inboxes for days at quarter-end, delaying deal closings and frustrating buyers.',
-      howItWorks: 'Evaluates concession trade-offs algorithmically: e.g. approves a 5% discount if the customer agrees to multi-year commitment or upfront payment.',
-      informationUsed: [
-        'Corporate discount matrix, delegation of authority (DOA), and governance rules',
-        'Contract duration, payment frequency (monthly, annual, multi-year upfront)',
-        'Customer co-marketing commitments, case study rights, and reference agreements',
-        'Quarterly revenue gap telemetry and sales representative quota standing'
+      "id": "value-based-pricing",
+      "title": "Value-Based Pricing",
+      "badge": "ROI Architecture",
+      "businessQuestion": "How can we quantify and prove the exact financial ROI our platform delivers to justify premium enterprise pricing?",
+      "description": "Constructs bespoke, customer-specific economic business cases translating operational improvements into verified dollar savings.",
+      "businessProblem": "Reps fail to defend premium pricing because they pitch software features rather than demonstrating millions of dollars in bottom-line value.",
+      "howItWorks": "Ingests customer operational metrics, applies verified industry cost benchmarks, and generates interactive financial ROI models for the CFO.",
+      "informationUsed": [
+        "Customer operational baseline data: current labor hours, scrap rates, CAC, software spend",
+        "Verified case study proof points and third-party operational audit benchmarks",
+        "Executive hurdle rate requirements, internal cost of capital, and payback targets",
+        "Conservative, moderate, and aggressive financial realization scenarios"
       ],
-      workflowSupport: 'Provides instant, rules-based approval for balanced concession trade-offs, routing only true exceptions to senior leadership.',
-      outcomesSupported: 'Accelerates deal desk turnaround from 4 days to under 4 hours while enforcing strict financial and legal guardrails.',
-      humanOversight: 'Commercial VP and Finance Controller review exception queues with full visibility into commercial trade-off analytics.',
-      kpis: [
-        { metric: 'Deal Desk Turnaround Velocity', definition: 'Hours from discount request submission to verified approval', target: '< 4 Hours' },
-        { metric: 'Value-Exchange Concession Rate', definition: 'Discounts tied to multi-year commitments or co-marketing rights', target: '88.4%' },
-        { metric: 'Commercial Governance Compliance', definition: 'Contracts adhering strictly to approved delegation of authority', target: '99.8%' }
-      ]
-    }
-  ],
-
-  workflowTitle: 'End-to-End Pricing Intelligence & Commercial Governance Pipeline',
-  workflowSubtitle: 'From willingness-to-pay modeling to margin waterfall validation and rapid deal desk approval.',
-  workflowSteps: [
-    {
-      step: '01',
-      name: 'Willingness-to-Pay Calibration',
-      description: 'Scores customer tier, deal scope, and competitive dynamics to output optimal pricing corridor.',
-      inputs: 'Account firmographics, deal scope, competitor bids, historical cohort wins',
-      aiAction: 'Applies neural pricing model to compute floor, target, and premium price recommendations.',
-      humanGate: 'AE reviews price corridor before generating formal customer proposal.',
-      output: 'Calibrated Price Recommendation & Target Discount Bounds'
-    },
-    {
-      step: '02',
-      name: 'Gross Margin Waterfall Validation',
-      description: 'Models fully loaded delivery, cloud infrastructure, and SLA staffing costs.',
-      inputs: 'Custom hosting specs, implementation hours, dedicated support tier',
-      aiAction: 'Calculates projected gross margin percentage and payback period in months.',
-      humanGate: 'Finance Analyst approves deals with custom infrastructure requirements.',
-      output: 'Deal Economics Model & Contribution Margin Scorecard'
-    },
-    {
-      step: '03',
-      name: 'Modular Offer Packaging',
-      description: 'Generates three-tier proposal options optimized for buyer choice architecture.',
-      inputs: 'Customer use cases, core vs optional modules, volume tier commitments',
-      aiAction: 'Assembles Good/Better/Best proposal package with built-in expansion triggers.',
-      humanGate: 'AE and Sales Engineering Lead customize package details.',
-      output: 'Interactive 3-Option Proposal in Digital Sales Room'
-    },
-    {
-      step: '04',
-      name: 'Automated Commercial Clearance',
-      description: 'Evaluates concession trade-offs against corporate governance policies.',
-      inputs: 'Customer discount request, payment terms, multi-year commitment, case study rights',
-      aiAction: 'Approves balanced trade-offs automatically or routes exceptions with impact analysis.',
-      humanGate: 'Deal Desk Director / CFO countersigns non-standard commercial terms.',
-      output: 'Authorized Commercial Contract Ready for Electronic Signature'
-    }
-  ],
-
-  useCases: [
-    {
-      title: 'Discount Elimination in Enterprise Cloud SaaS',
-      segment: 'Data Analytics & Business Intelligence Tech',
-      situation: 'Sales reps routinely offered 35% discounts on $300k deals to close before quarter-end, citing unverified competitor price pressure.',
-      approach: 'Implemented Dynamic Pricing corridor and value-exchange concession rules, requiring multi-year upfront commitment for discounts above 10%.',
-      result: 'Average discount dropped from 34.2% to 14.8%, recovering $4.2M in annual recurring revenue with zero negative impact on win rates.',
-      metrics: [
-        { label: 'Discount Drop', value: '-19.4 pts' },
-        { label: 'ARR Recovered', value: '$4.2M' }
+      "workflowSupport": "Equips account executives with interactive, board-ready ROI calculators and business case slide decks for executive presentations.",
+      "outcomesSupported": "Enables sales teams to defend 25-40% premium pricing against lower-cost commodity alternatives by proving 5x-10x ROI.",
+      "humanOversight": "Client champions review and co-author the financial assumptions to ensure complete internal buy-in before presenting to the CFO.",
+      "kpis": [
+        {
+          "metric": "ROI Business Case Adoption",
+          "definition": "Percentage of enterprise proposals accompanied by tailored economic business case",
+          "target": "92.0%"
+        },
+        {
+          "metric": "Premium Price Realization",
+          "definition": "Price premium maintained over primary commodity competitor alternatives",
+          "target": "+34.5%"
+        },
+        {
+          "metric": "CFO Approval Rate",
+          "definition": "Percentage of proposals approved by client finance committee on first submission",
+          "target": "84.8%"
+        }
       ]
     },
     {
-      title: 'Cost-to-Serve Margin Protection',
-      segment: 'High-Volume Financial Transaction API',
-      situation: 'Tier-1 fintech clients negotiated heavy volume discounts on API calls, but complex custom compliance auditing turned deals into net-margin losses.',
-      approach: 'Deployed Margin Intelligence to incorporate cloud infrastructure and audit engineering costs into real-time CPQ pricing calculations.',
-      result: 'Restructured enterprise pricing to include dedicated infrastructure surcharges, boosting portfolio gross margin from 61% to 78%.',
-      metrics: [
-        { label: 'Margin Expansion', value: '+17.0 pts' },
-        { label: 'Payback Velocity', value: '4.8 Mos' }
+      "id": "deal-desk-intelligence",
+      "title": "Deal Desk Intelligence",
+      "badge": "Automated Approvals",
+      "businessQuestion": "How can we streamline non-standard contract reviews and accelerate approvals from weeks to minutes?",
+      "description": "Automates deal desk review workflows: evaluates custom terms, checks margin thresholds, and grants algorithmic approvals within governance guardrails.",
+      "businessProblem": "Non-standard deals sit in finance and legal email inboxes for 10+ days, frustrating buyers and stalling quarter-end momentum.",
+      "howItWorks": "An intelligent deal desk engine parses custom terms against pre-approved concession matrices, routing only genuine exceptions to executives.",
+      "informationUsed": [
+        "Proposed contract terms: payment schedules, SLA commitments, indemnification caps",
+        "Customer creditworthiness scores, historical payment behavior, and ARR size",
+        "Pre-approved legal and finance concession matrices and delegation of authority rules",
+        "Deal velocity urgency signals and competitive displacement strategic value"
+      ],
+      "workflowSupport": "Grants instant algorithmic approvals for 70%+ of custom deal structures, routing complex exceptions with pre-compiled risk briefs.",
+      "outcomesSupported": "Reduces deal desk turnaround from 7 days to under 4 hours, accelerating end-of-quarter deal closing velocity by 40%.",
+      "humanOversight": "Finance and Legal Directors retain sole authority over out-of-bounds contractual exceptions and strategic liability concessions.",
+      "kpis": [
+        {
+          "metric": "Deal Desk Turnaround Time",
+          "definition": "Average hours from rep proposal submission to finalized commercial approval",
+          "target": "< 3.5 Hours"
+        },
+        {
+          "metric": "Automated Approval Rate",
+          "definition": "Percentage of custom proposals approved algorithmically within guardrails",
+          "target": "72.4%"
+        },
+        {
+          "metric": "Contract Concession Compliance",
+          "definition": "Audit compliance score verifying all executed contracts meet legal standards",
+          "target": "100.0%"
+        }
       ]
     },
     {
-      title: 'Instant Commercial Deal Desk Acceleration',
-      segment: 'Healthcare Enterprise Workflow SaaS',
-      situation: 'Custom payment terms and discount requests took 5.2 days on average to receive CFO approval, causing 28% of deals to slip past fiscal quarter-end.',
-      approach: 'Integrated Commercial Optimization rules engine, enabling instant algorithmic sign-off for balanced concessions (e.g. discount in exchange for 3-year term).',
-      result: 'Deal desk approval turnaround fell from 5 days to 90 minutes, eliminating quarter-end deal slippage and unlocking $2.8M in accelerated bookings.',
-      metrics: [
-        { label: 'Approval Speed', value: '90 Mins' },
-        { label: 'Slippage Reduction', value: '-74.0%' }
+      "id": "discount-governance",
+      "title": "Discount Governance",
+      "badge": "Margin Protection",
+      "businessQuestion": "How can we eliminate unauthorized discounting and ensure concessions are granted only in exchange for high-value customer give-gets?",
+      "description": "Enforces algorithmic discount governance requiring quid-pro-quo concessions (longer contract terms, upfront cash, case study rights) for any price cut.",
+      "businessProblem": "Reps give away 20% discounts for nothing in return, training buyers to negotiate aggressively and destroying software unit economics.",
+      "howItWorks": "Implements a mandatory \"Give-Get\" negotiation engine: any discount request dynamically requires specific customer commitments.",
+      "informationUsed": [
+        "Proposed discount percentage, contract length, and payment term options",
+        "Customer commitments: multi-year terms, annual upfront billing, public case study rights",
+        "Representative historical discounting patterns and margin preservation scores",
+        "Segment-specific discount authorization limits and executive escalation matrices"
+      ],
+      "workflowSupport": "Guides reps through structured commercial negotiations, ensuring every price concession preserves or enhances overall contract value.",
+      "outcomesSupported": "Reduces average enterprise discount concessions from 28% to 11%, adding $4.6M directly to annual gross profit.",
+      "humanOversight": "VP Sales and CFO must explicitly sign off on any discount exceeding Tier-2 governance limits.",
+      "kpis": [
+        {
+          "metric": "Average Discount Concession",
+          "definition": "Mean percentage discount off list price across all executed contracts",
+          "target": "< 11.2%"
+        },
+        {
+          "metric": "Give-Get Realization Rate",
+          "definition": "Percentage of discounted contracts securing verified multi-year or upfront cash terms",
+          "target": "94.6%"
+        },
+        {
+          "metric": "Gross Margin Expansion",
+          "definition": "Direct gross margin percentage expansion achieved through discount governance",
+          "target": "+6.4 pts"
+        }
+      ]
+    },
+    {
+      "id": "commercial-proposal-intelligence",
+      "title": "Commercial Proposal Intelligence",
+      "badge": "CPQ Automation",
+      "businessQuestion": "How can reps generate flawless, legally compliant enterprise quotes and proposals in minutes without error?",
+      "description": "Automates configure-price-quote (CPQ) workflows: generates bespoke, error-free commercial proposals, order forms, and statements of work.",
+      "businessProblem": "Reps build proposals manually in Word or Excel, introducing pricing calculation errors, outdated SKU terms, and unapproved legal clauses.",
+      "howItWorks": "Directly connects product catalogs, pricing rules, and legal clause libraries to compile verified commercial documents automatically.",
+      "informationUsed": [
+        "Configured product modules, user seat counts, usage tiers, and implementation SKUs",
+        "Approved legal clause libraries, master services agreements, and data privacy addenda",
+        "Client legal entity details, billing contacts, and corporate purchase order numbers",
+        "Electronic signature integration metadata and contract execution timestamps"
+      ],
+      "workflowSupport": "Allows reps to generate, review, and dispatch fully compliant enterprise proposals and order forms in under 10 minutes.",
+      "outcomesSupported": "Eliminates 100% of pricing calculation errors and shortens proposal-to-signature turnaround by 5 days.",
+      "humanOversight": "Account Executives and Sales Managers review and sign off on all proposal terms before client transmission.",
+      "kpis": [
+        {
+          "metric": "Proposal Generation Speed",
+          "definition": "Minutes required to configure and generate complete enterprise proposal",
+          "target": "< 8 Mins"
+        },
+        {
+          "metric": "Contract Error Rate",
+          "definition": "Percentage of generated proposals returned due to pricing or SKU discrepancies",
+          "target": "0.0%"
+        },
+        {
+          "metric": "Time-to-Signature Velocity",
+          "definition": "Days from proposal dispatch to verified electronic signature execution",
+          "target": "< 6 Days"
+        }
+      ]
+    },
+    {
+      "id": "revenue-leakage-detection",
+      "title": "Revenue Leakage Detection",
+      "badge": "Leakage Audit",
+      "businessQuestion": "Where are unbilled usage, missed price uplifts, and unenforced contract renewals quietly draining ARR from our business?",
+      "description": "Audits billing records, product usage telemetry, and contract addenda to detect uncollected revenue, expired discounts, and billing errors.",
+      "businessProblem": "Software companies lose 3-5% of annual revenue because custom pricing terms, auto-renewals, and usage overages are tracked in spreadsheets and never billed.",
+      "howItWorks": "Reconciles ERP billing logs, contract management systems, and live product usage meters to identify discrepancies in real time.",
+      "informationUsed": [
+        "Executed contract terms: annual price indexation clauses, usage overage rates",
+        "Real-time product feature usage, API call volumes, and active user seat counts",
+        "ERP billing records, issued invoices, and accounts receivable reconciliation states",
+        "Discount expiration dates and contractual renewal notification windows"
+      ],
+      "workflowSupport": "Alerts finance and revenue operations teams to unbilled overages and automatically generates renewal uplift invoices.",
+      "outcomesSupported": "Recovers an average of 3.8% in previously uncollected ARR, dropping directly to bottom-line net profit.",
+      "humanOversight": "Finance controllers review leakage audit alerts before issuing retroactive or adjusted customer invoices.",
+      "kpis": [
+        {
+          "metric": "Recovered Leakage ARR",
+          "definition": "Total annualized recurring revenue captured through automated leakage audits",
+          "target": "$2.4M/Yr"
+        },
+        {
+          "metric": "Billing Reconciliation Rate",
+          "definition": "Percentage of active accounts with verified zero discrepancy between usage and billing",
+          "target": "99.6%"
+        },
+        {
+          "metric": "Auto-Renewal Uplift Rate",
+          "definition": "Percentage of eligible contracts successfully executing contractual price uplifts",
+          "target": "96.2%"
+        }
       ]
     }
   ],
-
-  dashboardTitle: 'Pricing Intelligence & Margin Economics Telemetry',
-  dashboardSubtitle: 'Real-time visibility into contracted gross margin, discount distribution, and price realization across enterprise deals.',
-  dashboardBadge: 'Commercial Pricing Engine v2.4',
-  dashboardMetrics: [
-    { label: 'Portfolio Gross Margin', value: '78.2%', change: '+6.8 pts YoY', note: 'Contracted contribution margin' },
-    { label: 'Average Contract Discount', value: '14.8%', change: '-8.4 pts vs baseline', note: 'Rigorous concession governance' },
-    { label: 'Deal Desk Turnaround', value: '2.4 Hours', change: '-94% reduction', note: 'Fast commercial clearance' },
-    { label: 'Price Realization Index', value: '94.8%', change: '+12.4% lift', note: 'ARR vs predicted target price' }
-  ],
-  dashboardVisualType: 'waterfall',
-
-  kpiFrameworkTitle: 'Pricing Intelligence KPI & Commercial Measurement Framework',
-  kpis: [
+  "workflowTitle": "The Pricing & Commercial Execution Operating Model",
+  "workflowSubtitle": "How dynamic pricing intelligence, automated deal desk reviews, and discount governance protect gross margins while accelerating contract closing.",
+  "workflowSteps": [
     {
-      name: 'Gross Margin Realization %',
-      formula: '(Contracted Revenue - Fully Loaded Delivery Costs) ÷ Contracted Revenue',
-      definition: 'Net profitability of enterprise software bookings accounting for hosting, custom delivery, and dedicated support allocations.',
-      reportingWindow: 'Quarterly Audit',
-      illustrativeValue: '78.2%',
-      interpretation: 'Measures true commercial quality of revenue; SaaS benchmark for top-quartile companies is >75%.'
+      "step": "01",
+      "name": "Willingness-to-Pay Analysis",
+      "description": "Evaluates customer firmographics, tech stack complexity, and business ROI drivers.",
+      "inputs": "Account data, competitor presence, ROI metrics, historical cohort pricing",
+      "aiAction": "Recommends target, stretch, and floor pricing bands with 95% win confidence.",
+      "humanGate": "AE selects pricing strategy aligned with client executive priorities.",
+      "output": "Optimized commercial pricing parameters"
     },
     {
-      name: 'Average Discount Percentage',
-      formula: '(Total List Price Value - Total Contracted Price Value) ÷ Total List Price Value',
-      definition: 'Mean percentage concession granted off standard list price across closed-won enterprise transactions.',
-      reportingWindow: 'Monthly Rolling',
-      illustrativeValue: '14.8%',
-      interpretation: 'Reductions indicate improved willingness-to-pay capture and stronger rep negotiation discipline.'
+      "step": "02",
+      "name": "Value-Based Proposal Generation",
+      "description": "Generates bespoke financial business cases and CPQ-compliant order forms.",
+      "inputs": "Configured SKUs, client financial baselines, approved clause libraries",
+      "aiAction": "Compiles customized proposal deck, financial model, and legal order form.",
+      "humanGate": "Rep personalizes executive summary and confirms commercial terms.",
+      "output": "Flawless enterprise proposal & business case"
     },
     {
-      name: 'Value-Exchange Concession Ratio',
-      formula: 'Discounts Granted with Offsetting Terms ÷ Total Discounts Granted',
-      definition: 'Percentage of price concessions that secured compensating customer commitments (e.g. multi-year term, upfront payment, case study).',
-      reportingWindow: 'Monthly',
-      illustrativeValue: '88.4%',
-      interpretation: 'Ensures discounts are never given away freely but traded strategically for corporate financial value.'
+      "step": "03",
+      "name": "Deal Desk & Discount Governance",
+      "description": "Evaluates custom concessions against give-get matrices and automates approvals.",
+      "inputs": "Proposed discount percentage, payment terms, customer contractual commitments",
+      "aiAction": "Grants instant algorithmic approvals within guardrails or escalates risk exceptions.",
+      "humanGate": "Finance/Legal Directors approve out-of-bounds commercial concessions.",
+      "output": "Authorized enterprise commercial contract"
     },
     {
-      name: 'Deal Desk Cycle Time',
-      formula: 'Elapsed Hours from Discount Request Submission to Final Commercial Approval',
-      definition: 'Average turnaround duration for commercial governance review and executive countersignature.',
-      reportingWindow: 'Weekly Aggregate',
-      illustrativeValue: '2.4 Hours',
-      interpretation: 'Fast turnaround maintains deal momentum while preserving rigorous financial governance.'
+      "step": "04",
+      "name": "Continuous Leakage & Audit Monitoring",
+      "description": "Audits executed contracts, usage meters, and billing records to ensure full value capture.",
+      "inputs": "Product usage telemetry, billing invoices, contractual price indexation clauses",
+      "aiAction": "Detects unbilled usage, flags expired discounts, and schedules renewal uplifts.",
+      "humanGate": "Finance controller approves adjusted invoice generation.",
+      "output": "100% reconciled billing & protected ARR"
     }
   ],
-
-  governanceTitle: 'Financial Governance, Delegation of Authority & Anti-Bribery Compliance',
-  governanceSubtitle: 'Strict enterprise controls ensuring zero unauthorized pricing concessions, complete SOX compliance, and transparent deal desk records.',
-  governanceItems: [
+  "useCases": [
     {
-      area: 'Delegation of Authority (DOA) Matrix',
-      policy: 'Tiered discount authority limits: Reps (0-10%), Sales Director (11-20%), VP Sales (21-30%), CFO/CRO (31%+).',
-      humanCheckpoint: 'System enforces mandatory digital sign-off matching authorized executive seniority before contract release.',
-      auditTrail: 'Full cryptographic signature chain recorded in corporate ERP audit ledger.'
+      "title": "Global Enterprise B2B SaaS",
+      "segment": "Cloud Security Platform ($320M ARR)",
+      "situation": "Reps were discounting contracts by an average of 29% to hit end-of-quarter targets, eroding software gross margins and creating customer pricing friction.",
+      "approach": "Implemented Value-Based Pricing and Give-Get Discount Governance, requiring annual upfront cash or multi-year terms for any price concession.",
+      "result": "Reduced average discount concessions from 29% to 11.4%, adding $7.2M directly to annual gross profit while increasing average deal size by 24%.",
+      "metrics": [
+        {
+          "label": "Discount Reduction",
+          "value": "-17.6 pts"
+        },
+        {
+          "label": "Gross Profit Lift",
+          "value": "+$7.2M/Yr"
+        },
+        {
+          "label": "Average Contract Size",
+          "value": "+24.0%"
+        }
+      ]
     },
     {
-      area: 'Price Discrimination & Fair Competition Compliance',
-      policy: 'Pricing models operate on transparent commercial criteria (volume, commitment duration, scope) ensuring complete Robinson-Patman compliance.',
-      humanCheckpoint: 'General Counsel reviews pricing algorithms quarterly to verify fair commercial practice.',
-      auditTrail: 'Deterministic pricing model parameter versions archived in compliance database.'
-    },
-    {
-      area: 'Cost-to-Serve Underwriting Standards',
-      policy: 'No contract may be executed with a projected gross margin under 60% without written executive committee authorization.',
-      humanCheckpoint: 'Finance Controller audits cost-to-serve models for all deals exceeding $500k ARR prior to proposal delivery.',
-      auditTrail: 'Full margin waterfall calculations preserved alongside contract archives.'
-    },
-    {
-      area: 'Contractual Modification Auditability',
-      policy: 'All legal and payment term deviations from standard enterprise master agreements are logged with risk ratings.',
-      humanCheckpoint: 'Commercial Legal Counsel must review and countersign all custom SLA and limitation of liability clauses.',
-      auditTrail: 'Complete redline version history and exception approvals logged in contract repository.'
+      "title": "Enterprise FinTech Infrastructure",
+      "segment": "Payments Processing ($450M ARR)",
+      "situation": "Non-standard custom deals took 8 business days to navigate manual deal desk reviews, causing 32% of competitive deals to slip or stall.",
+      "approach": "Deployed Deal Desk Intelligence to automate approvals within pre-approved margin and SLA guardrails.",
+      "result": "Compressed deal desk turnaround from 8 days to 3.2 hours, accelerating end-of-quarter deal velocity and capturing an additional $4.8M in quarterly bookings.",
+      "metrics": [
+        {
+          "label": "Deal Desk Turnaround",
+          "value": "< 3.5 Hours"
+        },
+        {
+          "label": "Automated Approvals",
+          "value": "74.2%"
+        },
+        {
+          "label": "Quarterly Bookings Lift",
+          "value": "+$4.8M"
+        }
+      ]
     }
   ],
-
-  relatedCapabilities: [
+  "dashboardTitle": "Pricing Intelligence & Margin Telemetry",
+  "dashboardSubtitle": "Live realized discount percentages, deal desk turnaround speeds, recovered revenue leakage, and contract gross margin performance.",
+  "dashboardBadge": "Operational Telemetry",
+  "dashboardMetrics": [
     {
-      title: 'Revenue Acceleration',
-      path: '/ai-native-sales/revenue-acceleration',
-      summary: 'Prevent late-stage negotiation delays and manage deal war rooms with commercial clarity.',
-      badge: 'Pillar 05'
+      "label": "Average Discount",
+      "value": "10.8%",
+      "change": "-16 pts vs LY",
+      "note": "Strict give-get governance enforced"
     },
     {
-      title: 'Customer Growth Intelligence',
-      path: '/ai-native-sales/customer-growth-intelligence',
-      summary: 'Ensure expansion and renewal contracts capture ongoing customer willingness to pay.',
-      badge: 'Pillar 08'
+      "label": "Deal Desk Speed",
+      "value": "3.2 Hours",
+      "change": "94% Faster",
+      "note": "Average turnaround on custom proposals"
     },
     {
-      title: 'Autonomous GTM Command Center',
-      path: '/ai-native-sales/autonomous-gtm-command-center',
-      summary: 'Monitor margin realization and discounting trends across all territories and products.',
-      badge: 'Pillar 09'
+      "label": "Recovered Leakage",
+      "value": "$2.8M ARR",
+      "change": "+34% YoY",
+      "note": "Unbilled usage and auto-renewal uplifts"
+    },
+    {
+      "label": "Gross Margin Realized",
+      "value": "82.4%",
+      "change": "+5.8 pts",
+      "note": "Protected across all enterprise contracts"
     }
   ],
-
-  closingCtaHeadline: 'Protect Gross Margin Without Sacrificing Sales Velocity',
-  closingCtaDescription: 'Replace arbitrary end-of-quarter discounting with dynamic pricing intelligence and rigorous commercial optimization. Schedule an executive briefing.'
+  "dashboardVisualType": "matrix",
+  "kpiFrameworkTitle": "Pricing Intelligence Operational Performance Metrics",
+  "kpis": [
+    {
+      "name": "Realized Discount Percentage",
+      "formula": "(List Price ARR - Contracted Price ARR) / List Price ARR",
+      "definition": "The average percentage concession granted across new and renewal enterprise software contracts.",
+      "reportingWindow": "Monthly",
+      "illustrativeValue": "10.8%",
+      "interpretation": "Lower discount percentages directly expand gross margin, accelerate cash flow, and enhance enterprise SaaS valuation."
+    },
+    {
+      "name": "Deal Desk Velocity",
+      "formula": "Timestamp of Commercial Approval - Timestamp of Proposal Submission",
+      "definition": "Speed of reviewing, adjusting, and authorizing non-standard commercial proposals.",
+      "reportingWindow": "Weekly Pipeline Inspection",
+      "illustrativeValue": "3.2 Hours",
+      "interpretation": "Sub-4-hour turnaround eliminates buyer evaluation stalls and maintains deal momentum through contract signing."
+    },
+    {
+      "name": "Revenue Leakage Recovery Rate",
+      "formula": "Audited Unbilled Revenue Successfully Invoiced / Total Audited Revenue",
+      "definition": "The proportion of uncollected ARR recovered through continuous telemetry and contract audits.",
+      "reportingWindow": "Quarterly Financial Review",
+      "illustrativeValue": "96.4%",
+      "interpretation": "Recovering leakage adds pure gross profit directly to bottom-line EBITDA with zero customer acquisition expense."
+    }
+  ],
+  "governanceTitle": "Pricing Intelligence Governance & Commercial Controls",
+  "governanceSubtitle": "Strict delegation of authority matrices, audit-proof concession tracking, SOX compliance, and transparent pricing controls.",
+  "governanceItems": [
+    {
+      "area": "Delegation of Authority (DoA) Limits",
+      "policy": "Reps can approve up to 10% discount; Managers up to 20%; VP Sales up to 30%; CFO/CRO approval required for >30%.",
+      "humanCheckpoint": "Finance controller automatically audits all signed contracts against approved DoA matrices before ERP booking.",
+      "auditTrail": "Time-stamped electronic signatures and approval authorizations logged for every contract."
+    },
+    {
+      "area": "SOX 404 Revenue Recognition Integrity",
+      "policy": "Non-standard payment terms, extended cancellation rights, or future deliverable promises must be pre-approved by Revenue Accounting.",
+      "humanCheckpoint": "Technical Accounting Director reviews and signs off on custom contract structures prior to execution.",
+      "auditTrail": "Complete contract addenda and accounting memo documentation archived permanently in financial vault."
+    },
+    {
+      "area": "Customer Pricing Equity Protection",
+      "policy": "Customers within identical industry, size, and usage tiers cannot be quoted rates diverging by more than 15%.",
+      "humanCheckpoint": "Deal Desk rejects quotes violating customer equity thresholds to prevent future renewal disputes.",
+      "auditTrail": "Historical customer pricing dispersion graphs maintained and reported quarterly to the Board Audit Committee."
+    }
+  ]
 };
-

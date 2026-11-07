@@ -1,320 +1,491 @@
 import { AiSalesCapabilityPageData } from '../types';
 
 export const page07EcosystemRevenueGrowth: AiSalesCapabilityPageData = {
-  pageNumber: '07',
-  title: 'Ecosystem Revenue Growth',
-  slug: 'ecosystem-revenue-growth',
-  canonicalPath: '/ai-native-sales/ecosystem-revenue-growth',
-  eyebrow: 'AI NATIVE SALES / ECOSYSTEM REVENUE',
-  heroHeadline: 'Turn Partner Relationships Into a More Coordinated Revenue Ecosystem',
-  heroSupporting: 'Partners, technology alliances, referral networks, distributors, and strategic relationships can extend market reach and create new revenue opportunities. But disconnected partner data, unclear ownership, limited attribution, and inconsistent co-selling can make ecosystem performance difficult to manage. Ecosystem Revenue Growth helps organizations understand partner potential, coordinate joint opportunities, and evaluate how ecosystem relationships contribute to commercial outcomes.',
-  primaryCTA: 'Orchestrate Partner Ecosystems',
-  secondaryCTA: 'Book a Consultation',
-  targetDecisionMakers: [
-    'Chief Revenue Officers (CROs)',
-    'VP Global Alliances & Ecosystems',
-    'Heads of Channel & Partner Sales',
-    'Corporate Development Executives',
-    'Strategic Partner Directors'
+  "pageNumber": "07",
+  "title": "Ecosystem Revenue Growth",
+  "slug": "ecosystem-revenue-growth",
+  "canonicalPath": "/ai-native-sales/ecosystem-revenue-growth",
+  "eyebrow": "AI NATIVE SALES / ECOSYSTEM GROWTH",
+  "heroHeadline": "Scale Enterprise Revenue Through Partner Alliances and Co-Selling",
+  "heroSupporting": "Modern enterprise software buyers rely on trusted system integrators, technology alliances, and regional advisory partners to guide their buying decisions. Ecosystem Revenue Growth identifies high-affinity partners, maps account overlaps securely, automates co-selling orchestration, and eliminates channel conflict to drive partner-attached ARR at scale.",
+  "primaryCTA": "Explore Ecosystem Growth",
+  "secondaryCTA": "Book a Consultation",
+  "targetDecisionMakers": [
+    "Chief Revenue Officers (CROs)",
+    "VP Global Alliances & Channels",
+    "Heads of Ecosystem Strategy",
+    "Partner Operations Directors",
+    "Commercial Ecosystem Leaders"
   ],
-  visualTheme: 'ecosystem',
-
-  businessProblemTitle: 'Why B2B Partner Ecosystems Consistently Underperform Their Potential',
-  businessProblemSubtitle: 'Most enterprise partner programs suffer from channel conflict, invisible account overlaps, zero co-selling coordination, and disputed revenue attribution.',
-  businessProblems: [
+  "visualTheme": "ecosystem",
+  "businessProblemTitle": "Why Enterprise Partner Programs Fail to Produce Predictable Pipeline",
+  "businessProblemSubtitle": "Disconnected spreadsheets, manual account mapping, lack of field alignment, and channel conflict cause multi-million dollar alliance investments to produce negligible revenue.",
+  "businessProblems": [
     {
-      id: 'blind-overlaps',
-      title: 'Invisible Account Overlaps & Missed Warm Intros',
-      symptom: 'Direct sales reps cold-call enterprise accounts where existing technology partners already possess trusted C-suite relationships.',
-      rootCause: 'Lack of automated, privacy-compliant account mapping across partner CRMs and ecosystem graphs.',
-      impact: 'Reps waste months attempting cold outreach while competitors leverage warm partner introductions to close faster.'
+      "id": "blind-account-overlap",
+      "title": "Manual & Opaque Account Mapping",
+      "symptom": "Alliance teams spend weeks manually trading spreadsheets to identify customer overlaps, exposing confidential data.",
+      "rootCause": "Lack of secure, automated cross-company account matching and identity resolution platforms.",
+      "impact": "Reps pursue cold accounts unaware that a certified system integrator partner already owns a trusted relationship."
     },
     {
-      id: 'channel-conflict',
-      title: 'Channel Conflict & Disputed Attribution',
-      symptom: 'Direct sales teams clash with channel partners over deal ownership, commission splits, and account territory rights.',
-      rootCause: 'Ambiguous deal registration rules and lack of unified partner co-selling governance workflows.',
-      impact: 'Ecosystem trust breaks down, causing top tier-1 system integrators to deprioritize recommending your platform.'
+      "id": "field-disconnection",
+      "title": "Broken Field-to-Field Co-Selling",
+      "symptom": "Partners register leads in portals that field sales reps ignore, leading to partner frustration and dropped deals.",
+      "rootCause": "Disparate CRM instances with no real-time conversational channels or automated rep-to-rep introduction protocols.",
+      "impact": "Over 65% of partner-registered opportunities stall or fail due to lack of joint sales execution."
     },
     {
-      id: 'dormant-partners',
-      title: 'Dormant Partner Roster & Low Enablement Velocity',
-      symptom: '85% of signed partner agreements yield zero pipeline because partners lack timely co-selling enablement and collateral.',
-      rootCause: 'Manual partner onboarding processes fail to provide automated co-branded assets and deal registration portals.',
-      impact: 'Investments in partner recruitment generate negligible revenue returns and high relationship management overhead.'
+      "id": "channel-conflict",
+      "title": "Destructive Direct vs Channel Conflict",
+      "symptom": "Direct sales reps compete against certified partners on the same account, confusing the buyer and destroying trust.",
+      "rootCause": "Ambiguous rules of engagement and misaligned representative incentive compensation structures.",
+      "impact": "Alienated strategic alliance partners who take their multi-million dollar implementation practices to rival platforms."
     }
   ],
-
-  subSubmenus: [
+  "subSubmenus": [
     {
-      id: 'partner-intelligence',
-      title: 'Partner Intelligence',
-      badge: 'Alliances Scoring Matrix',
-      businessQuestion: 'Which system integrators, technology partners, and consultancies have the highest propensity to generate active pipeline?',
-      description: 'Scores existing and prospective ecosystem partners across market alignment, account overlap, joint win rates, and certified technical capacity.',
-      businessProblem: 'Alliances teams invest equal time in hundreds of signed partners without knowing which 10% actually generate 90% of joint revenue.',
-      howItWorks: 'Evaluates partner customer segment overlaps, historical referral velocity, technical certification counts, and regional market presence.',
-      informationUsed: [
-        'Partner customer footprint, industry vertical specialization, and geographic reach',
-        'Certified partner engineer counts and implementation competency ratings',
-        'Historical joint win/loss records, co-sell deal velocity, and average contract values',
-        'Ecosystem customer overlap density and mutual account tier matching'
+      "id": "partner-intelligence",
+      "title": "Partner Intelligence",
+      "badge": "Alliance Mapping",
+      "businessQuestion": "Which global system integrators, advisory firms, and technology partners possess verified relationships inside our target accounts?",
+      "description": "Maps the complete global partner landscape, assessing partner vertical depth, technical certifications, and account influence.",
+      "businessProblem": "Alliance leaders invest in marquee global partners who look impressive on paper but lack active influence in target territories.",
+      "howItWorks": "Analyzes partner client case studies, certified consultant counts, public customer references, and regional delivery hubs to score partner capability.",
+      "informationUsed": [
+        "Partner certified consultant headcounts and technical specialization badges",
+        "Verified enterprise client delivery portfolios and public reference stories",
+        "Regional territory footprints and local enterprise executive connections",
+        "Historical joint win rates, co-selling velocity, and customer retention metrics"
       ],
-      workflowSupport: 'Produces a prioritized Partner Tiering Matrix directing alliance managers to focus co-selling efforts on high-yield partners.',
-      outcomesSupported: 'Concentrates partner resources on top-performing relationships, lifting partner-sourced pipeline by 3.8x.',
-      humanOversight: 'VP Alliances validates partner tier designations and approves joint strategic business commitments.',
-      kpis: [
-        { metric: 'Partner-Sourced Pipeline', definition: 'New qualified pipeline value originated directly by ecosystem partners', target: '$6.4M/Qtr' },
-        { metric: 'Active Partner Ratio', definition: 'Percentage of signed partners actively registering qualified deals', target: '44.5%' },
-        { metric: 'Co-Sell Win Rate Premium', definition: 'Win rate improvement on deals executed jointly with certified partners', target: '+28.4%' }
+      "workflowSupport": "Provides alliance managers with comprehensive capability profiles on every potential and active ecosystem partner.",
+      "outcomesSupported": "Enables strategic alliance focus on top-decile partners that drive 80%+ of partner-sourced pipeline.",
+      "humanOversight": "VP Global Alliances signs off on strategic partner tier classifications and joint business plan commitments.",
+      "kpis": [
+        {
+          "metric": "Partner Capability Index",
+          "definition": "Score evaluating partner technical certification depth and delivery capacity",
+          "target": "92.4%"
+        },
+        {
+          "metric": "Account Influence Coverage",
+          "definition": "Percentage of target enterprise accounts covered by at least 1 certified partner",
+          "target": "78.2%"
+        },
+        {
+          "metric": "Partner-Sourced Win Rate",
+          "definition": "Win rate on opportunities co-sold with certified Tier-1 ecosystem partners",
+          "target": "58.6%"
+        }
       ]
     },
     {
-      id: 'partner-revenue-os',
-      title: 'Partner Revenue OS',
-      badge: 'Co-Sell Coordination',
-      businessQuestion: 'How can direct sales reps and partner account managers seamlessly co-sell without conflict or communication lag?',
-      description: 'A shared collaborative operating environment for joint account planning, deal registration, lead routing, and co-branded enablement.',
-      businessProblem: 'Partner co-selling stalls in uncoordinated email threads and spreadsheets, leading to duplicated outreach and lost momentum.',
-      howItWorks: 'Synchronizes deal stages between partner portals and CRM, automating deal registration approvals, commission rules, and mutual action plans.',
-      informationUsed: [
-        'Registered partner deals, opportunity timestamps, and expiration thresholds',
-        'Territory routing rules, partner commission matrices, and co-sell SLAs',
-        'Co-branded sales collateral, joint solution architectures, and mutual case studies',
-        'Partner portal activity logs and shared deal discussion comments'
+      "id": "partner-discovery-engine",
+      "title": "Partner Discovery Engine",
+      "badge": "Partner Identification",
+      "businessQuestion": "Which prospective advisory, consulting, and technology firms should we recruit to accelerate regional expansion?",
+      "description": "Systematically discovers and scores prospective ecosystem partners across target industries, evaluating complementary software stacks and client overlap.",
+      "businessProblem": "Recruiting partners is ad-hoc; alliance teams attend conferences without knowing which regional integrators hold key customer relationships.",
+      "howItWorks": "Scans technology ecosystems, professional services registries, and customer implementations to identify firms serving identical customer cohorts.",
+      "informationUsed": [
+        "Global technology alliance directories and certified consultant registries",
+        "Customer technology stack co-occurrence and complementary software deployments",
+        "Regional system integrator hiring velocity for specialized cloud skill sets",
+        "Industry analyst ecosystem market maps and partner satisfaction benchmarks"
       ],
-      workflowSupport: 'Instantly alerts direct reps when a partner registers an account in their territory and launches a collaborative co-sell workspace.',
-      outcomesSupported: 'Cuts deal registration turnaround from 5 days to 2 hours and prevents 98% of channel territory disputes.',
-      humanOversight: 'Channel Director and Regional VP Sales review and authorize deal registrations and co-selling commission allocations.',
-      kpis: [
-        { metric: 'Deal Registration Speed', definition: 'Hours from partner submission to verified territory approval', target: '< 2 Hours' },
-        { metric: 'Channel Conflict Incident Rate', definition: 'Percentage of deals contested between direct and partner sales', target: '< 1.5%' },
-        { metric: 'Co-Sell Cycle Acceleration', definition: 'Days saved on enterprise deals closed with certified partner support', target: '24 Days' }
+      "workflowSupport": "Generates prioritized partner recruitment queues for alliance directors, complete with verified overlap data and partnership value propositions.",
+      "outcomesSupported": "Accelerates partner ecosystem recruitment by 3.5x and identifies high-impact regional boutique integrators overlooked by competitors.",
+      "humanOversight": "Alliance directors review partner candidates to ensure cultural fit and absence of competitive conflicts.",
+      "kpis": [
+        {
+          "metric": "Partner Recruitment Velocity",
+          "definition": "Days from initial partner outreach to executed alliance agreement",
+          "target": "< 45 Days"
+        },
+        {
+          "metric": "Recruited Partner Activation Rate",
+          "definition": "Percentage of newly recruited partners who register an opportunity within 90 days",
+          "target": "64.0%"
+        },
+        {
+          "metric": "Regional Territory Coverage Lift",
+          "definition": "Increase in covered enterprise accounts following partner onboarding",
+          "target": "+38.5%"
+        }
       ]
     },
     {
-      id: 'ecosystem-intelligence-graph',
-      title: 'Ecosystem Intelligence Graph',
-      badge: 'Network Topology',
-      businessQuestion: 'Which partners possess active, trusted relationships with the target enterprise accounts in our sales pipeline?',
-      description: 'A privacy-safe enterprise relationship graph linking target accounts, technology installations, advisory partners, and executive connections.',
-      businessProblem: 'Reps spend months attempting cold outreach to enterprise accounts where a key technology partner has weekly executive meetings.',
-      howItWorks: 'Uses cryptographic data escrow to cross-reference target account lists against partner client rosters, revealing mutual accounts without exposing raw CRM records.',
-      informationUsed: [
-        'Encrypted corporate account identifiers and mutual customer rosters',
-        'Verified technology integrations and installed third-party software feeds',
-        'System integrator master service agreements and active implementation contracts',
-        'Executive advisory and board member ecosystem affiliations'
+      "id": "channel-sales-intelligence",
+      "title": "Channel Sales Intelligence",
+      "badge": "Channel Telemetry",
+      "businessQuestion": "How are our distribution channels, value-added resellers, and regional partners performing across product lines and territories?",
+      "description": "Delivers real-time visibility into channel pipeline generation, certification progress, deal registration velocity, and revenue contribution.",
+      "businessProblem": "Channel leaders operate blind, relying on end-of-quarter partner spreadsheets that hide underperforming distributors and stalled pipeline.",
+      "howItWorks": "Connects partner portals, distributor EDI feeds, and CRM records into a unified channel analytics telemetry stream.",
+      "informationUsed": [
+        "Partner deal registration submissions, stage advancement, and conversion rates",
+        "Partner consultant certification completions and enablement exam scores",
+        "Distributor inventory turnover, order fulfillment, and discount realization metrics",
+        "Co-marketing market development fund (MDF) utilization and ROI attribution"
       ],
-      workflowSupport: 'Shows reps exactly which partner can provide a warm executive introduction and provides a one-click introduction request workflow.',
-      outcomesSupported: 'Converts cold enterprise outreach into warm partner introductions, boosting initial meeting acceptance rates by 4.2x.',
-      humanOversight: 'Partner Account Manager verifies relationship status and approves introduction requests before reaching out to the partner.',
-      kpis: [
-        { metric: 'Warm Introduction Conversion', definition: 'Partner intro requests resulting in held executive discovery meetings', target: '58.2%' },
-        { metric: 'Account Overlap Density', definition: 'Percentage of target enterprise pipeline with 1+ certified partner relationships', target: '76.0%' },
-        { metric: 'Cold Outreach Avoidance', definition: 'Accounts transitioned from cold sequences to warm partner introductions', target: '340 Accts' }
+      "workflowSupport": "Provides channel executives with live performance scorecards, highlighting top-producing partners and alerting to inactive resellers.",
+      "outcomesSupported": "Improves channel predictability by 45% and identifies underperforming reseller relationships early enough to reallocate MDF funds.",
+      "humanOversight": "Channel managers review monthly partner scorecards with partner principals to guide joint business planning.",
+      "kpis": [
+        {
+          "metric": "Channel Pipeline Visibility",
+          "definition": "Percentage of channel pipeline tracked with real-time stage telemetry",
+          "target": "98.5%"
+        },
+        {
+          "metric": "Deal Registration Conversion",
+          "definition": "Percentage of approved registered partner deals successfully closed as won",
+          "target": "46.2%"
+        },
+        {
+          "metric": "MDF Return on Investment",
+          "definition": "Partner-sourced ARR generated per dollar of market development funds invested",
+          "target": "8.4x"
+        }
       ]
     },
     {
-      id: 'ecosystem-growth-engine',
-      title: 'Ecosystem Growth Engine',
-      badge: 'Influence Attribution',
-      businessQuestion: 'How much revenue is genuinely sourced, influenced, or accelerated by ecosystem partners across our business?',
-      description: 'Multi-touch attribution models that quantify partner-sourced vs partner-influenced pipeline, revenue, and retention impact.',
-      businessProblem: 'Finance and executive leadership underfund partner programs because legacy single-touch attribution fails to capture partner influence.',
-      howItWorks: 'Tracks partner touchpoints throughout the deal lifecycle—from initial intro to technical validation and executive sponsorship—calculating fair influence weight.',
-      informationUsed: [
-        'Partner registration timestamps, joint meeting attendance, and shared document views',
-        'Customer procurement surveys and win/loss interview partner feedback',
-        'Historical renewal and retention rates of partner-implemented customer cohorts',
-        'Contract commission payouts and referral fee financial ledgers'
+      "id": "partner-recruitment-automation",
+      "title": "Partner Recruitment Automation",
+      "badge": "Onboarding Workflows",
+      "businessQuestion": "How can we streamline partner onboarding, legal agreements, and technical enablement from months to days?",
+      "description": "Automates partner recruitment journeys: executes automated NDA exchanges, partner agreement sign-offs, portal provisioning, and training paths.",
+      "businessProblem": "Prospective partners lose interest during onboarding because executing contracts and granting portal access takes 8+ weeks.",
+      "howItWorks": "Coordinates self-service partner onboarding portals with automated agreement workflows and progressive digital training modules.",
+      "informationUsed": [
+        "Partner corporate entity verification, tax ID, and banking coordinates",
+        "Standardized mutual non-disclosure and master alliance agreement templates",
+        "Role-specific training curriculum paths for sales, pre-sales, and implementation consultants",
+        "Partner portal credential provisioning and single sign-on federation"
       ],
-      workflowSupport: 'Provides CFO and CRO with an executive dashboard demonstrating the ROI, CAC reduction, and LTV premium of ecosystem-led revenue.',
-      outcomesSupported: 'Justifies expanded ecosystem investment and proves that partner-influenced deals close 30% faster with 22% higher average contract value.',
-      humanOversight: 'Finance Controller audits quarterly partner commission calculations and influence attribution allocations.',
-      kpis: [
-        { metric: 'Partner-Influenced Revenue Share', definition: 'Percentage of total enterprise ARR influenced by ecosystem partners', target: '38.5%' },
-        { metric: 'Ecosystem LTV Premium', definition: 'Net revenue retention lift on customers implemented by certified partners', target: '+16.4%' },
-        { metric: 'Partner Program ROI', definition: 'Gross margin generated from partner deals vs total ecosystem expenditure', target: '5.8x' }
-      ]
-    }
-  ],
-
-  workflowTitle: 'Ecosystem Revenue Orchestration & Co-Selling Lifecycle',
-  workflowSubtitle: 'From privacy-safe account overlap mapping to coordinated co-selling and multi-touch influence attribution.',
-  workflowSteps: [
-    {
-      step: '01',
-      name: 'Privacy-Safe Account Overlap Mapping',
-      description: 'Cross-references target accounts against partner customer rosters via encrypted escrow.',
-      inputs: 'CRM account lists, partner client rosters, installed technographic feeds',
-      aiAction: 'Identifies high-value overlaps and flags warm introduction pathways.',
-      humanGate: 'Alliances manager confirms partner relationship standing.',
-      output: 'Prioritized Account Overlap Matrix & Warm Intro Queue'
-    },
-    {
-      step: '02',
-      name: 'Automated Deal Registration & SLA Routing',
-      description: 'Validates partner deal submissions against territory rules and anti-conflict policies.',
-      inputs: 'Partner deal registrations, territory assignment tables, CRM pipeline',
-      aiAction: 'Checks for duplicates, applies commission rules, and alerts direct AE.',
-      humanGate: 'Channel Director approves registration and commits exclusivity period.',
-      output: 'Authorized Deal Registration with 90-Day Protection Window'
-    },
-    {
-      step: '03',
-      name: 'Collaborative Co-Selling Execution',
-      description: 'Unites direct sales rep and partner champion in a shared deal room with joint collateral.',
-      inputs: 'Joint solution briefs, mutual customer ROI models, meeting availability',
-      aiAction: 'Stages co-branded proposals, tracks task dependencies, and syncs milestones.',
-      humanGate: 'Direct AE and Partner Rep conduct joint discovery presentation.',
-      output: 'Accelerated Enterprise Deal Advancement with Partner Endorsement'
-    },
-    {
-      step: '04',
-      name: 'Multi-Touch Influence & Commission Clearance',
-      description: 'Calculates verified partner influence and triggers accurate revenue commission payouts.',
-      inputs: 'Executed customer contract, partner activity telemetry, commission agreement',
-      aiAction: 'Computes influence weighting and generates automated commission ledger.',
-      humanGate: 'Finance Controller validates payout and authorizes partner compensation.',
-      output: 'Automated Partner Payout & Transparent Ecosystem Attribution'
-    }
-  ],
-
-  useCases: [
-    {
-      title: 'Global System Integrator Co-Selling Orchestration',
-      segment: 'Enterprise ERP & Financial Automation',
-      situation: 'A tier-1 ERP vendor struggled to engage Fortune 500 accounts because Big-4 consulting firms controlled the client relationship and favored legacy rivals.',
-      approach: 'Deployed Ecosystem Revenue OS and Intelligence Graph to identify shared banking clients, offering certified Big-4 consultants co-branded implementation toolkits.',
-      result: 'Partner-sourced pipeline expanded from $2.1M to $18.4M within two quarters; joint co-sell deals achieved a 72% win rate against legacy incumbents.',
-      metrics: [
-        { label: 'Pipeline Sourced', value: '$18.4M' },
-        { label: 'Co-Sell Win Rate', value: '72.4%' }
+      "workflowSupport": "Guides new partners through a frictionless 5-step onboarding journey, certifying their first consultants in under 14 days.",
+      "outcomesSupported": "Shortens partner time-to-first-deal by 65% and doubles partner certification completion rates.",
+      "humanOversight": "Alliance legal teams and partner managers verify partner credentials before granting full commercial portal access.",
+      "kpis": [
+        {
+          "metric": "Partner Onboarding Duration",
+          "definition": "Days from agreement execution to first certified consultant credential",
+          "target": "< 14 Days"
+        },
+        {
+          "metric": "Enablement Completion Rate",
+          "definition": "Percentage of enrolled partner consultants who complete certification exams",
+          "target": "88.4%"
+        },
+        {
+          "metric": "Time to First Registered Deal",
+          "definition": "Days from partner agreement execution to first registered customer deal",
+          "target": "< 60 Days"
+        }
       ]
     },
     {
-      title: 'Warm Partner Introduction Displacement Campaign',
-      segment: 'Cloud Security & Identity Governance',
-      situation: 'Direct sales reps faced 9-month sales cycles attempting cold outreach into Fortune 1000 CISOs who had strict vendor gatekeepers.',
-      approach: 'Mapped account overlaps against cloud platform partners (AWS, Microsoft, Snowflake), securing warm peer introductions to existing security leads.',
-      result: 'Cold discovery meeting rates of 1.2% were replaced by warm partner intro acceptance of 58%, cutting sales cycle duration by 45 days.',
-      metrics: [
-        { label: 'Intro Acceptance', value: '58.2%' },
-        { label: 'Cycle Compression', value: '-45 Days' }
+      "id": "co-selling-intelligence",
+      "title": "Co-Selling Intelligence",
+      "badge": "Account Overlap AI",
+      "businessQuestion": "Which active pipeline opportunities can our partners help us close, and which of their accounts can we help them expand?",
+      "description": "Facilitates secure, automated account mapping (zero-knowledge data matching) to identify mutual account relationships and introduce reps.",
+      "businessProblem": "Reps in the field do not know who their counterpart rep is at the partner firm, missing critical opportunities to co-sell together.",
+      "howItWorks": "Performs cryptographically hashed account overlap matching, automatically introducing matched account executives with joint deal playbooks.",
+      "informationUsed": [
+        "Hashed CRM account domains, customer tiers, and active pipeline stages",
+        "Partner account executive contact coordinates and territory coverage maps",
+        "Joint value propositions, co-selling battlecards, and customer references",
+        "Historical co-sell win rates and average deal size multipliers"
+      ],
+      "workflowSupport": "Introduces direct reps to partner reps inside automated Slack/Teams channels with pre-built joint pursuit briefs.",
+      "outcomesSupported": "Increases enterprise deal win rates by 34% and expands average deal size by 28% through verified partner endorsement.",
+      "humanOversight": "Sales representatives confirm co-selling engagement terms and mutual customer approach guidelines before sharing deal context.",
+      "kpis": [
+        {
+          "metric": "Account Overlap Match Speed",
+          "definition": "Minutes required to run cryptographically secure territory overlap audit",
+          "target": "< 5 Mins"
+        },
+        {
+          "metric": "Co-Sell Meeting Connect Rate",
+          "definition": "Percentage of partner rep introductions that lead to joint customer discovery calls",
+          "target": "74.2%"
+        },
+        {
+          "metric": "Co-Sell Deal Size Lift",
+          "definition": "Percentage increase in average contract value on partner co-sold opportunities",
+          "target": "+28.0%"
+        }
       ]
     },
     {
-      title: 'Zero-Conflict Deal Registration Governance',
-      segment: 'Healthcare Data Interoperability SaaS',
-      situation: 'Channel partners were demoralized by frequent territory disputes where direct sales reps claimed commission on partner-originated healthcare deals.',
-      approach: 'Implemented automated Partner Revenue OS with instant timestamped registration, transparent SLA tracking, and dual-compensation incentives.',
-      result: 'Channel conflict incidents fell by 94%, active partner registration volume tripled, and partner-influenced ARR reached 41% of company bookings.',
-      metrics: [
-        { label: 'Conflict Drop', value: '-94.0%' },
-        { label: 'Partner ARR Share', value: '41.2%' }
+      "id": "ecosystem-pipeline-generation",
+      "title": "Ecosystem Pipeline Generation",
+      "badge": "Partner-Sourced ARR",
+      "businessQuestion": "How can we transform our partner network into a predictable, self-sustaining pipeline generation engine?",
+      "description": "Orchestrates partner co-marketing campaigns, joint webinar follow-ups, and ecosystem lead distribution workflows.",
+      "businessProblem": "Partner marketing events produce shared lead lists that sit untouched in spreadsheets because neither company takes ownership.",
+      "howItWorks": "Automates joint lead ingestion, deduplication, and attribution routing, instantly assigning leads to matched direct and partner reps.",
+      "informationUsed": [
+        "Joint co-marketing event registrations, webinar attendee logs, and content downloads",
+        "Partner lead registration submissions and lead validation criteria",
+        "Territory routing rules, partner tier exclusivity agreements, and SLA policies",
+        "Historical closed-won conversion velocity on partner-sourced opportunities"
+      ],
+      "workflowSupport": "Automatically enriches and routes partner-sourced leads to territory account executives, tracking joint follow-up compliance.",
+      "outcomesSupported": "Drives 30-45% of total enterprise pipeline from partner ecosystem channels at significantly lower CAC than direct outbound.",
+      "humanOversight": "Channel managers audit lead distribution equity and resolve lead attribution disputes between direct and partner teams.",
+      "kpis": [
+        {
+          "metric": "Ecosystem Sourced Pipeline",
+          "definition": "Total qualified pipeline generated directly from partner registrations and joint campaigns",
+          "target": "$12.4M/Qtr"
+        },
+        {
+          "metric": "Partner Lead Follow-Up SLA",
+          "definition": "Percentage of partner-sourced leads contacted by reps within 24 hours",
+          "target": "96.2%"
+        },
+        {
+          "metric": "Partner CAC Efficiency",
+          "definition": "Customer acquisition cost of partner-sourced deals vs direct sales benchmark",
+          "target": "-42.0%"
+        }
+      ]
+    },
+    {
+      "id": "partner-performance-intelligence",
+      "title": "Partner Performance Intelligence",
+      "badge": "Ecosystem Scorecard",
+      "businessQuestion": "Which partners are truly driving incremental ARR versus merely registering deals that direct sales would have closed anyway?",
+      "description": "Measures genuine partner influence, sourcing contribution, customer satisfaction, and implementation quality across the ecosystem.",
+      "businessProblem": "Vendors pay rich partner commissions on deals where the partner contributed zero value, while high-effort partners are under-rewarded.",
+      "howItWorks": "Analyzes digital footprint telemetry, meeting attendance logs, and post-sale customer implementation reviews to score partner impact.",
+      "informationUsed": [
+        "Customer post-implementation CSAT surveys and time-to-value milestones",
+        "Partner contribution telemetry: meeting attendance, RFP support, technical proof-of-concept delivery",
+        "Customer retention, renewal rates, and expansion ARR on partner-implemented accounts",
+        "Commission payout history, margin contribution, and partner tier tiering metrics"
+      ],
+      "workflowSupport": "Generates objective Partner Contribution Indices, informing tier advancements, advisory board seats, and commission tiers.",
+      "outcomesSupported": "Eliminates commission waste on passive partners while directing top incentives to high-performing strategic partners.",
+      "humanOversight": "VP Alliances and CFO review quarterly partner contribution audits before distributing executive bonuses and tier rewards.",
+      "kpis": [
+        {
+          "metric": "Partner Contribution Index",
+          "definition": "Score measuring verified partner impact on deal progression and post-sale success",
+          "target": "88.5%"
+        },
+        {
+          "metric": "Partner Account Retention Rate",
+          "definition": "Annual net revenue retention on accounts managed by certified ecosystem partners",
+          "target": "118.4%"
+        },
+        {
+          "metric": "Commission ROI Attribution",
+          "definition": "Incremental ARR generated per dollar of partner commission and margin payout",
+          "target": "6.2x"
+        }
+      ]
+    },
+    {
+      "id": "ecosystem-revenue-optimization",
+      "title": "Ecosystem Revenue Optimization",
+      "badge": "Holistic Ecosystem",
+      "businessQuestion": "How can we structure ecosystem incentives, marketplace listings, and multi-partner co-selling to maximize total enterprise revenue?",
+      "description": "Coordinates multi-partner ecosystem motions: cloud marketplace transactions, cloud commit drawdown programs, and multi-vendor solutions.",
+      "businessProblem": "Enterprise buyers want to purchase software through AWS, Azure, or GCP marketplace commits, but vendor sales processes are built for direct paper.",
+      "howItWorks": "Automates cloud marketplace private offer generation, integrates CPQ with cloud commit drawdowns, and manages multi-party revenue shares.",
+      "informationUsed": [
+        "Customer cloud marketplace commitment balances (AWS EDP, Azure MACC, GCP Commit)",
+        "Cloud hyperscaler partner co-sell incentive matrices and marketplace fee schedules",
+        "Multi-vendor joint architecture solution blueprints and verified reference stacks",
+        "Consolidated marketplace billing telemetry and disbursement reconciliation feeds"
+      ],
+      "workflowSupport": "Allows reps to issue cloud marketplace private offers in minutes, enabling buyers to retire existing enterprise cloud commitments.",
+      "outcomesSupported": "Compresses procurement approval cycles from 6 weeks to 48 hours and increases cloud marketplace-attached ARR by 65%.",
+      "humanOversight": "Deal Desk and Cloud Alliance Directors review and sign off on all marketplace private offer margins and fee structures.",
+      "kpis": [
+        {
+          "metric": "Cloud Marketplace ARR",
+          "definition": "Total annualized recurring revenue contracted through hyperscaler marketplaces",
+          "target": "$18.2M/Yr"
+        },
+        {
+          "metric": "Commit Drawdown Velocity",
+          "definition": "Days from private offer presentation to cloud marketplace contract execution",
+          "target": "< 48 Hours"
+        },
+        {
+          "metric": "Multi-Partner Deal Yield",
+          "definition": "Win rate on complex enterprise deals involving both cloud and SI partners",
+          "target": "72.4%"
+        }
       ]
     }
   ],
-
-  dashboardTitle: 'Ecosystem Revenue Telemetry & Partner Performance',
-  dashboardSubtitle: 'Real-time monitoring of partner-sourced pipeline, co-sell deal velocity, and multi-touch influence attribution.',
-  dashboardBadge: 'Ecosystem Alliances Engine v2.4',
-  dashboardMetrics: [
-    { label: 'Partner-Sourced Pipeline', value: '$24.8M', change: '+52% YoY', note: 'Directly originated by ecosystem' },
-    { label: 'Partner-Influenced ARR', value: '38.5%', change: '+14.2 pts', note: 'Total revenue touchpoint share' },
-    { label: 'Co-Sell Win Rate', value: '64.8%', change: '+22.4 pts vs direct', note: 'Deals closed with certified partner' },
-    { label: 'Registration Approval Time', value: '1.8 Hours', change: '-96% reduction', note: 'Rapid conflict-free routing' }
-  ],
-  dashboardVisualType: 'network',
-
-  kpiFrameworkTitle: 'Ecosystem Revenue KPI & Measurement Framework',
-  kpis: [
+  "workflowTitle": "The Ecosystem Co-Selling Operating Model",
+  "workflowSubtitle": "From secure account overlap discovery to joint field execution and cloud marketplace closing: orchestrating predictable partner revenue.",
+  "workflowSteps": [
     {
-      name: 'Partner-Sourced Revenue (PSR)',
-      formula: 'Closed Contract Value where Opportunity Lead Source = Registered Certified Partner',
-      definition: 'Monetary revenue directly originated and submitted by an ecosystem partner through formal deal registration.',
-      reportingWindow: 'Quarterly Audit',
-      illustrativeValue: '$6.4M/Qtr',
-      interpretation: 'Pure inbound leverage; high PSR reduces corporate reliance on expensive direct sales development capacity.'
+      "step": "01",
+      "name": "Zero-Knowledge Account Overlap",
+      "description": "Performs cryptographically secure data matching across partner CRM accounts.",
+      "inputs": "Hashed enterprise customer domains, partner territory account rosters",
+      "aiAction": "Identifies high-propensity mutual accounts without exposing non-overlapping data.",
+      "humanGate": "Alliance Directors authorize joint territory overlap review.",
+      "output": "Verified mutual account target list"
     },
     {
-      name: 'Partner-Influenced Revenue (PIR)',
-      formula: 'Closed Contract Value where Certified Partner Participated in Discovery or Validation Stages',
-      definition: 'Revenue where an ecosystem partner provided strategic endorsement, technical integration, or executive access to accelerate the deal.',
-      reportingWindow: 'Quarterly Audit',
-      illustrativeValue: '38.5%',
-      interpretation: 'Measures ecosystem gravity; partner-influenced deals close faster with higher contract values.'
+      "step": "02",
+      "name": "Automated Field Introduction",
+      "description": "Introduces direct account executives to matched partner counterparts inside joint channels.",
+      "inputs": "Rep contact coordinates, account engagement history, partner battlecards",
+      "aiAction": "Stages joint pursuit briefing deck and outlines agreed rules of engagement.",
+      "humanGate": "Direct and partner reps confirm mutual customer engagement strategy.",
+      "output": "Live collaborative pursuit channel & brief"
     },
     {
-      name: 'Co-Sell Deal Acceleration Rate',
-      formula: 'Average Direct Sales Cycle Duration - Average Co-Sell Sales Cycle Duration',
-      definition: 'Net calendar days saved closing opportunities when co-selling alongside certified implementation partners.',
-      reportingWindow: 'Annual Rolling',
-      illustrativeValue: '24.2 Days',
-      interpretation: 'Reflects buyer trust transfer; third-party validation compresses procurement and security evaluation.'
+      "step": "03",
+      "name": "Co-Selling & Deal Progression",
+      "description": "Coordinates joint customer discovery calls, technical evaluations, and executive endorsements.",
+      "inputs": "Discovery notes, partner architecture diagrams, customer pain statements",
+      "aiAction": "Tracks multi-threading milestones and alerts teams to unaddressed committee concerns.",
+      "humanGate": "AE and Partner Lead review mutual action plan with customer champion.",
+      "output": "Fully-aligned multi-stakeholder proposal"
     },
     {
-      name: 'Ecosystem Net Retention Multiplier',
-      formula: 'Net Revenue Retention of Partner-Implemented Cohorts ÷ Direct-Implemented Cohorts',
-      definition: 'Long-term expansion and renewal differential for enterprise clients onboarded by certified ecosystem partners.',
-      reportingWindow: '12-Month Cohort',
-      illustrativeValue: '1.16x (128% NRR)',
-      interpretation: 'Customers onboarded by certified partners experience deeper workflow adoption and significantly lower churn.'
+      "step": "04",
+      "name": "Cloud Marketplace Execution",
+      "description": "Provisions cloud marketplace private offers to retire existing buyer cloud commitments.",
+      "inputs": "Approved commercial terms, customer AWS/Azure/GCP account IDs",
+      "aiAction": "Generates private offer, coordinates hyperscaler approvals, and reconciles billing.",
+      "humanGate": "Deal Desk reviews private offer margin and partner commission split.",
+      "output": "Executed cloud contract & verified ARR"
     }
   ],
-
-  governanceTitle: 'Partner Confidentiality, Anti-Trust & Attribution Governance',
-  governanceSubtitle: 'Strict enterprise guardrails ensuring zero unauthorized account data leakage, fair competition, and audit-ready commission ledgers.',
-  governanceItems: [
+  "useCases": [
     {
-      area: 'Cryptographic Account Overlap Escrow',
-      policy: 'Account matching uses SHA-256 hashed domain matching; neither party ever sees raw CRM databases or unshared prospect lists.',
-      humanCheckpoint: 'InfoSec and Privacy Officers inspect data clean room encryption protocols annually.',
-      auditTrail: 'Zero-knowledge cryptographic verification proofs stored with every match query.'
+      "title": "Global Data Governance SaaS",
+      "segment": "Enterprise Data Platform ($280M ARR)",
+      "situation": "Direct sales reps were struggling to penetrate Fortune 500 financial institutions, with cold outbound cycles taking 12+ months.",
+      "approach": "Deployed Co-Selling Intelligence and Account Overlap matching with Big 4 advisory firms and cloud hyperscaler partner teams.",
+      "result": "Increased partner-attached pipeline from $12M to $48M in 12 months, cutting sales cycles by 48 days and lifting win rate to 64%.",
+      "metrics": [
+        {
+          "label": "Partner Pipeline Lift",
+          "value": "4.0x"
+        },
+        {
+          "label": "Cycle Duration",
+          "value": "-48 Days"
+        },
+        {
+          "label": "Win Rate with Partners",
+          "value": "64.2%"
+        }
+      ]
     },
     {
-      area: 'Deal Registration Exclusivity & SLA Rules',
-      policy: 'Approved deal registrations guarantee 90 days of exclusive territory protection, extendable only upon verified mutual milestone progression.',
-      humanCheckpoint: 'Channel Director must formally review and sign off before any partner deal protection is revoked.',
-      auditTrail: 'Complete timestamped deal registration lifecycle and extension history archived.'
-    },
-    {
-      area: 'Fair Channel Compensation & Anti-Split Disputes',
-      policy: 'Dual-credit and commission split matrices are pre-codified to prevent direct sales reps from suffering compensation penalties when co-selling.',
-      humanCheckpoint: 'Compensation Committee reviews and approves sales compensation rules prior to annual plan kickoff.',
-      auditTrail: 'Commission calculation formulas and dispute resolution determinations preserved in ERP.'
-    },
-    {
-      area: 'Anti-Bribery & FCPA Partner Compliance',
-      policy: 'All ecosystem partners must complete certified anti-corruption onboarding, background checks, and annual ethical compliance certifications.',
-      humanCheckpoint: 'Corporate Compliance Officer validates partner certification status prior to commission disbursement.',
-      auditTrail: 'Signed FCPA/UK Bribery Act compliance documentation linked to partner records.'
+      "title": "Enterprise AI Infrastructure",
+      "segment": "Cloud Native Software ($190M ARR)",
+      "situation": "Enterprise deals were stalling in procurement due to budget freezes, despite enthusiastic engineering champion support.",
+      "approach": "Activated Ecosystem Revenue Optimization to issue automated AWS and Azure Marketplace private offers drawing down customer cloud commits.",
+      "result": "Shortened procurement turnaround from 7 weeks to 3 days, closing $14.2M in cloud marketplace bookings in the first 2 quarters.",
+      "metrics": [
+        {
+          "label": "Procurement Turnaround",
+          "value": "< 3 Days"
+        },
+        {
+          "label": "Marketplace ARR",
+          "value": "$14.2M"
+        },
+        {
+          "label": "Deal Stall Reduction",
+          "value": "-62.0%"
+        }
+      ]
     }
   ],
-
-  relatedCapabilities: [
+  "dashboardTitle": "Ecosystem & Alliance Revenue Telemetry",
+  "dashboardSubtitle": "Live partner-sourced pipeline, co-selling win rates, cloud marketplace commit drawdowns, and partner contribution metrics.",
+  "dashboardBadge": "Operational Telemetry",
+  "dashboardMetrics": [
     {
-      title: 'Revenue Intelligence',
-      path: '/ai-native-sales/revenue-intelligence',
-      summary: 'Identify partner account overlaps and map stakeholder buying committees in target accounts.',
-      badge: 'Pillar 01'
+      "label": "Partner Sourced ARR",
+      "value": "$24.6M",
+      "change": "+48% YoY",
+      "note": "38% of total new enterprise bookings"
     },
     {
-      title: 'Autonomous Pipeline Generation',
-      path: '/ai-native-sales/autonomous-pipeline-generation',
-      summary: 'Coordinate joint outbound prospecting swarms with strategic ecosystem alliances.',
-      badge: 'Pillar 02'
+      "label": "Active Overlaps",
+      "value": "4,820 Accts",
+      "change": "82 Certified Partners",
+      "note": "Verified mutual relationships"
     },
     {
-      title: 'Customer Growth Intelligence',
-      path: '/ai-native-sales/customer-growth-intelligence',
-      summary: 'Leverage ecosystem implementation partners to drive long-term retention and account expansion.',
-      badge: 'Pillar 08'
+      "label": "Co-Sell Win Rate",
+      "value": "62.8%",
+      "change": "+18.4 pts",
+      "note": "Versus direct-only sales benchmark"
+    },
+    {
+      "label": "Marketplace Velocity",
+      "value": "4.2 Days",
+      "change": "88% Faster",
+      "note": "Private offer to contract execution"
     }
   ],
-
-  closingCtaHeadline: 'Turn Your Partner Network Into a Scalable Revenue Engine',
-  closingCtaDescription: 'Eliminate channel conflict and unlock warm enterprise account overlaps with Ecosystem Revenue Growth. Schedule an alliances briefing today.'
+  "dashboardVisualType": "network",
+  "kpiFrameworkTitle": "Ecosystem Revenue Operational Performance Metrics",
+  "kpis": [
+    {
+      "name": "Partner Attachment Rate",
+      "formula": "Enterprise Deals Closed with Certified Partner Involvement / Total Enterprise Deals",
+      "definition": "The proportion of closed-won revenue opportunities that actively leveraged ecosystem alliances.",
+      "reportingWindow": "Monthly",
+      "illustrativeValue": "46.4%",
+      "interpretation": "High attachment correlates with larger contract values, faster closing velocity, and superior customer retention."
+    },
+    {
+      "name": "Partner-Sourced Pipeline Ratio",
+      "formula": "Qualified Pipeline Sourced Directly from Partner Registrations / Total Pipeline",
+      "definition": "Measures the self-sustaining outbound generation power of the global partner and distribution ecosystem.",
+      "reportingWindow": "Quarterly",
+      "illustrativeValue": "38.2%",
+      "interpretation": "Ecosystem pipeline diversifies revenue generation and insulates the business from direct sales headcount ramp delays."
+    },
+    {
+      "name": "Co-Selling Win Rate Multiplier",
+      "formula": "Win Rate on Partner Co-Sold Deals / Win Rate on Direct-Only Opportunities",
+      "definition": "The statistical performance lift achieved by involving ecosystem partners during enterprise sales cycles.",
+      "reportingWindow": "Annual Audit",
+      "illustrativeValue": "1.42x",
+      "interpretation": "Demonstrates the commercial ROI of alliance co-selling and justifies partner margin sharing models."
+    }
+  ],
+  "governanceTitle": "Ecosystem Revenue Governance & Partner Security",
+  "governanceSubtitle": "Strict data privacy in account mapping, objective rules of engagement, deal registration governance, and dispute resolution protocols.",
+  "governanceItems": [
+    {
+      "area": "Zero-Knowledge Account Mapping",
+      "policy": "Account overlap matching operates strictly on one-way cryptographic SHA-256 hashes of customer domain names.",
+      "humanCheckpoint": "Information Security Officer audits account matching encryption architecture semi-annually.",
+      "auditTrail": "Zero raw customer records or contact details are shared across company borders during matching."
+    },
+    {
+      "area": "Deal Registration Exclusivity Rules",
+      "policy": "Approved partner deal registrations grant 90-day exclusive co-selling protection, renewable upon verified milestone completion.",
+      "humanCheckpoint": "Channel Director mediates and approves all deal registration extension requests.",
+      "auditTrail": "Time-stamped registration approval, expiration, and extension logs maintained in central portal."
+    },
+    {
+      "area": "Channel Conflict Dispute Resolution",
+      "policy": "Direct sales reps cannot solicit accounts with active partner registrations without written CRO authorization.",
+      "humanCheckpoint": "Chief Revenue Officer chairs monthly conflict resolution steering committee to adjudicate disputed accounts.",
+      "auditTrail": "Formal dispute findings, evidence submissions, and commission split determinations recorded in audit ledger."
+    }
+  ]
 };
-

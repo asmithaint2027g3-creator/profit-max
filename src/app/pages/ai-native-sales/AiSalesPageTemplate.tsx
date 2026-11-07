@@ -20,8 +20,10 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
   useEffect(() => {
     document.title = `${data.title} | AI Native Sales | ProfitMachines`;
 
-    if (location.hash) {
-      const targetId = location.hash.replace(/^#/, '');
+    const scrollToAnchor = (rawHash: string) => {
+      const targetId = rawHash.replace(/^#/, '');
+      if (!targetId) return;
+
       const match = data.subSubmenus.find(
         (s) => s.id.toLowerCase() === targetId.toLowerCase()
       );
@@ -29,22 +31,49 @@ export default function AiSalesPageTemplate({ data }: AiSalesPageTemplateProps) 
         setActiveSubId(match.id);
       }
 
-      // Smooth scroll target with header offset
-      const timer = setTimeout(() => {
-        const el = document.getElementById(targetId);
+      const executeScroll = () => {
+        const el = document.getElementById(targetId) ||
+                   document.getElementById(targetId.toLowerCase()) ||
+                   document.querySelector(`[name="${targetId}"]`) ||
+                   document.querySelector(`[data-section-id="${targetId}"]`);
         if (el) {
-          const navOffset = 90;
+          const navOffset = 95;
           const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
           window.scrollTo({
             top: Math.max(0, elementPosition - navOffset),
             behavior: 'smooth'
           });
+          return true;
         }
-      }, 100);
+        return false;
+      };
 
-      return () => clearTimeout(timer);
+      if (!executeScroll()) {
+        const t1 = setTimeout(executeScroll, 60);
+        const t2 = setTimeout(executeScroll, 180);
+        const t3 = setTimeout(executeScroll, 400);
+        return () => {
+          clearTimeout(t1);
+          clearTimeout(t2);
+          clearTimeout(t3);
+        };
+      }
+    };
+
+    if (location.hash) {
+      scrollToAnchor(location.hash);
     }
-  }, [location.hash, data]);
+
+    // Direct listener for custom hash navigation events from mega-menu
+    const handleCustomNav = (e: any) => {
+      if (e?.detail?.hash) {
+        scrollToAnchor(e.detail.hash);
+      }
+    };
+
+    window.addEventListener('pm:hash-navigate', handleCustomNav);
+    return () => window.removeEventListener('pm:hash-navigate', handleCustomNav);
+  }, [location.hash, location.pathname, data]);
 
   // Visual icon mapping
   const getPageIcon = () => {

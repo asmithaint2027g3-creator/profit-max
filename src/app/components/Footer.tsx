@@ -1,7 +1,7 @@
 import React from 'react';
-import { 
+import {
     Linkedin, Twitter, Facebook, Mail, Phone,
-    Cloud, Share2, LayoutGrid, Box, Server, ArrowUpRight 
+    Cloud, Share2, LayoutGrid, Box, Server, ArrowUpRight
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -103,7 +103,7 @@ export default function Footer() {
                 { name: 'Automation Excellence', path: '/resources-hub#automation-excellence' },
                 { name: 'Continuous Improvement', path: '/resources-hub#continuous-sales-improvement' },
                 { name: 'Strategy & Transformation', path: '/resources-hub#strategy-transformation' },
-                { name: 'Frameworks & Templates', path: '/resources-hub#frameworks-templates' },
+                { name: 'Frameworks & Templates', path: '/resources-hub/frameworks-templates-hub' },
                 { name: 'Tools & Calculators', path: '/resources-hub#tools-calculators' },
             ]
         },
@@ -155,14 +155,14 @@ export default function Footer() {
                         </p>
                     </div>
                     <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 w-full lg:w-auto">
-                        <Link 
-                            to="/book-consultation" 
+                        <Link
+                            to="/book-consultation"
                             className="w-full sm:w-auto px-6 py-3.5 rounded-xl font-bold text-sm text-white bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-600/30 transition-all hover:scale-[1.02] active:scale-[0.98] text-center"
                         >
                             Get Free Revenue Audit →
                         </Link>
-                        <a 
-                            href="mailto:consulting@profitmachines.ai" 
+                        <a
+                            href="mailto:consulting@profitmachines.ai"
                             className="w-full sm:w-auto px-6 py-3.5 rounded-xl font-bold text-sm text-slate-200 border border-slate-700 hover:border-slate-500 hover:bg-white/5 transition-all text-center"
                         >
                             Email Us Directly
@@ -188,8 +188,8 @@ export default function Footer() {
 
                             {/* Circular Contact Badges */}
                             <div className="space-y-4 mb-8">
-                                <a 
-                                    href="mailto:consulting@profitmachines.ai" 
+                                <a
+                                    href="mailto:consulting@profitmachines.ai"
                                     className="group flex items-center gap-4 text-slate-400 hover:text-white transition-colors duration-300"
                                 >
                                     <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-blue-500 group-hover:bg-blue-600 transition-all shrink-0">
@@ -198,8 +198,8 @@ export default function Footer() {
                                     <span className="font-normal text-sm tracking-wide">consulting@profitmachines.ai</span>
                                 </a>
 
-                                <a 
-                                    href="tel:+919513288612" 
+                                <a
+                                    href="tel:+919513288612"
                                     className="group flex items-center gap-4 text-slate-400 hover:text-white transition-colors duration-300"
                                 >
                                     <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-blue-500 group-hover:bg-blue-600 transition-all shrink-0">
@@ -212,11 +212,11 @@ export default function Footer() {
                             {/* Social Buttons */}
                             <div className="flex gap-4">
                                 {[Linkedin, Twitter, Facebook].map((Icon, i) => (
-                                    <a 
-                                        key={i} 
-                                        href="#" 
-                                        aria-label={['LinkedIn', 'Twitter', 'Facebook'][i]} 
-                                        title={['LinkedIn', 'Twitter', 'Facebook'][i]} 
+                                    <a
+                                        key={i}
+                                        href="#"
+                                        aria-label={['LinkedIn', 'Twitter', 'Facebook'][i]}
+                                        title={['LinkedIn', 'Twitter', 'Facebook'][i]}
                                         className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-white hover:bg-blue-600 hover:border-blue-500 transition-all hover:shadow-[0_0_15px_rgba(37,99,235,0.5)] hover:-translate-y-1"
                                     >
                                         <Icon className="w-4 h-4" />
@@ -231,8 +231,8 @@ export default function Footer() {
                     <div className="xl:col-span-9 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-7 gap-6 xl:gap-4 2xl:gap-6">
                         {linkGroups.map((group, groupIndex) => (
                             <div key={groupIndex} className="space-y-3.5">
-                                <Link 
-                                    to={group.path} 
+                                <Link
+                                    to={group.path}
                                     className="group inline-flex items-center gap-1 text-[11px] font-bold text-white uppercase tracking-wider border-b border-white/10 pb-2.5 hover:text-blue-400 transition-colors w-full"
                                 >
                                     <span>{group.title}</span>
@@ -241,8 +241,8 @@ export default function Footer() {
                                 <ul className="space-y-2.5 text-xs">
                                     {group.links.map((link, linkIndex) => (
                                         <li key={linkIndex}>
-                                            <Link 
-                                                to={link.path} 
+                                            <Link
+                                                to={link.path}
                                                 className="text-slate-400 hover:text-blue-400 transition-colors block leading-relaxed font-normal hover:translate-x-0.5 transform duration-150"
                                             >
                                                 {link.name}
@@ -293,9 +293,9 @@ export default function Footer() {
                     </p>
                     <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 font-normal">
                         {legalLinks.map((item, i) => (
-                            <Link 
-                                key={i} 
-                                to={item.path} 
+                            <Link
+                                key={i}
+                                to={item.path}
                                 className="hover:text-blue-400 transition-colors"
                             >
                                 {item.name}

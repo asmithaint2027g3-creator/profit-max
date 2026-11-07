@@ -17,6 +17,7 @@ import AdvancedAnalyticalToolsPage from './pages/resources-hub/AdvancedAnalytica
 import AiAgenticAutomationHubPage from './pages/resources-hub/AiAgenticAutomationHubPage';
 import AutomationExcellenceHubPage from './pages/resources-hub/AutomationExcellenceHubPage';
 import ContinuousSalesImprovementHubPage from './pages/resources-hub/ContinuousSalesImprovementHubPage';
+import FrameworksTemplatesHubPage from './pages/resources-hub/FrameworksTemplatesHubPage';
 
 const SignIn = lazy(() => import('./pages/SignIn'));
 const Register = lazy(() => import('./pages/Register'));
@@ -309,6 +310,8 @@ export default function App() {
               <Route path="/resources-hub/ai-agentic-automation-hub" element={<AiAgenticAutomationHubPage />} />
               <Route path="/resources-hub/automation-excellence" element={<AutomationExcellenceHubPage />} />
               <Route path="/resources-hub/continuous-sales-improvement-hub" element={<ContinuousSalesImprovementHubPage />} />
+              <Route path="/resources-hub/frameworks-templates-hub" element={<FrameworksTemplatesHubPage />} />
+              <Route path="/resources-hub/frameworks-templates" element={<FrameworksTemplatesHubPage />} />
               <Route path="/resources-hub/case-studies" element={<CaseStudiesHub />} />
               <Route path="/resources-hub/case-studies/by-industry" element={<ByIndustryCaseStudiesPage />} />
               <Route path="/resources-hub/case-studies/by-function" element={<ByFunctionCaseStudiesPage />} />

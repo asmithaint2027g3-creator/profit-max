@@ -440,11 +440,11 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
     number: '11',
     title: 'Frameworks & Templates Hub',
     slug: 'frameworks-templates',
-    shortIntro: 'Access practical business frameworks, templates, checklists and structured resources for business execution.',
-    purpose: 'Equip operational teams with ready-to-deploy blueprints, SOPs and execution rubrics.',
+    shortIntro: 'Access practical business frameworks, assessment templates, maturity models, financial justification tools, checklists, and playbooks.',
+    purpose: 'Equip enterprise leaders with structured execution resources, financial ROI models, and operational SOPs to accelerate revenue performance.',
     icon: FileText,
     ctaText: 'Explore Frameworks & Templates',
-    path: '/resources-hub#frameworks-templates',
+    path: '/resources-hub/frameworks-templates-hub',
     previewLabels: [
       'Playbooks',
       'Assessment Templates',
@@ -456,14 +456,14 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       'Workshops'
     ],
     subItems: [
-      { title: 'Playbooks', description: 'Curated enterprise playbooks for outbound prospecting and multi-threading.', path: '/resources-hub#playbooks', icon: BookOpen, badge: 'Playbooks' },
-      { title: 'Assessment Templates', description: 'Diagnostic audit templates to evaluate operational bottlenecks and pipeline drag.', path: '/resources-hub#assessment-templates', icon: CheckCircle2, badge: 'Diagnostics' },
-      { title: 'Maturity Models', description: '5-stage progression matrices to assess organizational capability readiness.', path: '/resources-hub#maturity-models', icon: Award, badge: 'Maturity' },
-      { title: 'Business Cases', description: 'Executive justification templates for C-suite and board investment sign-offs.', path: '/resources-hub#business-cases', icon: DollarSign, badge: 'Justification' },
-      { title: 'ROI Models', description: 'Financial return calculation templates and payback timeline models.', path: '/resources-hub#roi-models', icon: Calculator, badge: 'ROI' },
-      { title: 'Checklists', description: 'Stage-gate verification checklists for deal closure and technical validation.', path: '/resources-hub#checklists', icon: Sliders, badge: 'Hygiene' },
-      { title: 'SOPs', description: 'Standard Operating Procedures for RevOps CRM hygiene and pipeline staging.', path: '/resources-hub#sops', icon: Workflow, badge: 'SOPs' },
-      { title: 'Workshops', description: 'Facilitation agendas and canvas templates for executive strategy alignment.', path: '/resources-hub#workshops', icon: Users, badge: 'Canvas' }
+      { title: 'Playbooks', description: 'Curated enterprise playbooks for outbound prospecting and multi-threading.', path: '/resources-hub/frameworks-templates-hub#playbooks', icon: BookOpen, badge: 'Playbooks' },
+      { title: 'Assessment Templates', description: 'Diagnostic audit templates to evaluate operational bottlenecks and pipeline drag.', path: '/resources-hub/frameworks-templates-hub#assessment-templates', icon: CheckCircle2, badge: 'Diagnostics' },
+      { title: 'Maturity Models', description: '5-stage progression matrices to assess organizational capability readiness.', path: '/resources-hub/frameworks-templates-hub#maturity-models', icon: Award, badge: 'Maturity' },
+      { title: 'Business Cases', description: 'Executive justification templates for C-suite and board investment sign-offs.', path: '/resources-hub/frameworks-templates-hub#business-cases', icon: DollarSign, badge: 'Justification' },
+      { title: 'ROI Models', description: 'Financial return calculation templates and payback timeline models.', path: '/resources-hub/frameworks-templates-hub#roi-models', icon: Calculator, badge: 'ROI' },
+      { title: 'Checklists', description: 'Stage-gate verification checklists for deal closure and technical validation.', path: '/resources-hub/frameworks-templates-hub#checklists', icon: Sliders, badge: 'Hygiene' },
+      { title: 'SOPs', description: 'Standard Operating Procedures for RevOps CRM hygiene and pipeline staging.', path: '/resources-hub/frameworks-templates-hub#sops', icon: Workflow, badge: 'SOPs' },
+      { title: 'Workshops', description: 'Facilitation agendas and canvas templates for executive strategy alignment.', path: '/resources-hub/frameworks-templates-hub#workshops', icon: Users, badge: 'Canvas' }
     ]
   },
 

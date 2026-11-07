@@ -2923,21 +2923,21 @@ export default function Navigation() {
                         />
 
                         {/* Unified Compact Mega-Menu Container (ProfitMachines Slate/Blue Palette - ZERO EXCESS WHITESPACE) */}
-                        <div className="max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8 pt-1">
+                        <div className="max-w-[1040px] mx-auto px-4 sm:px-6 lg:px-8 pt-1">
                             <div className="bg-white rounded-2xl shadow-xl border border-slate-200/90 ring-1 ring-slate-900/5 overflow-hidden flex flex-col">
                                 <div className="flex flex-col lg:flex-row items-stretch">
-                                    {/* ── LEFT SIDEBAR (COMPACT, BOTTOM ANCHORED LINK, ZERO DEAD SPACE) ── */}
-                                    <aside className="w-full lg:w-[260px] xl:w-[275px] bg-slate-50/95 text-slate-900 p-3 sm:p-3.5 flex flex-col justify-between shrink-0 border-r border-slate-200/80">
-                                            <div className={`${currentMenu.categories.length > 7 ? 'space-y-1' : 'space-y-2'}`}>
+                                    {/* ── LEFT SIDEBAR (COMPACT, CONGESTED, ZERO DEAD SPACE) ── */}
+                                    <aside className="w-full lg:w-[240px] xl:w-[250px] bg-slate-50/95 text-slate-900 p-3 sm:p-3.5 flex flex-col justify-start shrink-0 border-r border-slate-200/80">
+                                            <div className={`${currentMenu.categories.length > 7 ? 'space-y-1' : 'space-y-1.5'}`}>
                                                 {/* Section Label */}
                                                 <div>
                                                     <span className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-blue-600 block">
                                                         {activeConfig.sectionTag}
                                                     </span>
-                                                    <h2 className="text-base sm:text-lg font-extrabold text-slate-900 font-heading tracking-tight mt-0.5">
+                                                    <h2 className="text-sm sm:text-base font-extrabold text-slate-900 font-heading tracking-tight mt-0.5">
                                                         {currentMenu.name}
                                                     </h2>
-                                                    <p className="text-[11px] text-slate-500 mt-0.5 leading-snug line-clamp-2">
+                                                    <p className="text-[11px] text-slate-500 mt-0.5 leading-snug line-clamp-1">
                                                         {currentMenu.summary}
                                                     </p>
                                                 </div>
@@ -2972,8 +2972,8 @@ export default function Navigation() {
                                                 </nav>
                                             </div>
 
-                                            {/* Bottom Link - Anchored neatly at the baseline */}
-                                            <div className="pt-2 border-t border-slate-200/70 mt-3">
+                                            {/* Bottom Link - Anchored neatly right beneath category list */}
+                                            <div className="pt-2 border-t border-slate-200/70 mt-2.5">
                                                 <Link
                                                     to={currentMenu.path}
                                                     onClick={() => setActiveMenuId(null)}
@@ -2985,12 +2985,12 @@ export default function Navigation() {
                                             </div>
                                         </aside>
 
-                                        {/* ── RIGHT CONTENT PANEL (2-COLUMN CARDS, ZERO DESCRIPTIONS, ZERO WHITE SPACE) ── */}
-                                        <main className="flex-1 bg-white p-4 sm:p-5 flex flex-col justify-between">
+                                        {/* ── RIGHT CONTENT PANEL (2-COLUMN CARDS, COMPACT CONGESTED SPACING, ZERO WHITE SPACE) ── */}
+                                        <main className="flex-1 bg-white p-3 sm:p-3.5 flex flex-col justify-start">
                                             {/* Top Section: Header + 2-Column Cards Grid */}
-                                            <div className="space-y-3">
+                                            <div>
                                                 {/* Top Header Area */}
-                                                <div className="flex items-center justify-between pb-2.5 border-b border-slate-100 shrink-0">
+                                                <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-100 shrink-0">
                                                     <span className="text-[11px] font-mono font-extrabold uppercase tracking-[0.18em] text-slate-500">
                                                         {currentCategory.title}
                                                     </span>
@@ -3001,8 +3001,8 @@ export default function Navigation() {
                                                     </span>
                                                 </div>
 
-                                                {/* Main Content Grid: Exactly 2 Columns Across All Menus, No Descriptions */}
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-2.5 content-start">
+                                                {/* Main Content Grid: Exactly 2 Columns Across All Menus, Compact & Congested */}
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5 sm:gap-2">
                                                     {allLinks.map((card, idx) => {
                                                         const CardIcon = card.icon || Target;
 
@@ -3011,15 +3011,15 @@ export default function Navigation() {
                                                                 key={idx}
                                                                 to={card.path}
                                                                 onClick={() => handleSubMenuCardClick(card.path)}
-                                                                className="group p-2.5 sm:p-3 rounded-xl bg-white hover:bg-slate-50/90 border border-slate-200/90 hover:border-blue-400 hover:shadow-xs transition-all duration-150 flex items-center gap-2.5 cursor-pointer"
+                                                                className="group p-2 px-2.5 rounded-lg bg-white hover:bg-blue-50/40 border border-slate-200/90 hover:border-blue-400 hover:shadow-2xs transition-all duration-150 flex items-center gap-2 cursor-pointer"
                                                             >
-                                                                {/* Clean Icon Container */}
-                                                                <div className="w-8 h-8 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-600 group-hover:bg-blue-50 group-hover:border-blue-200 group-hover:text-blue-600 flex items-center justify-center shrink-0 transition-colors shadow-2xs">
-                                                                    <CardIcon className="w-4 h-4" />
+                                                                {/* Clean Compact Icon Container */}
+                                                                <div className="w-7 h-7 rounded-md bg-slate-50 border border-slate-200/80 text-slate-600 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 flex items-center justify-center shrink-0 transition-colors shadow-2xs">
+                                                                    <CardIcon className="w-3.5 h-3.5" />
                                                                 </div>
 
                                                                 {/* Title Alone - Zero Description Clutter */}
-                                                                <span className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors truncate flex-1 min-w-0">
+                                                                <span className="text-xs font-semibold text-slate-900 group-hover:text-blue-600 transition-colors truncate flex-1 min-w-0">
                                                                     {card.title}
                                                                 </span>
 
@@ -3031,8 +3031,8 @@ export default function Navigation() {
                                                 </div>
                                             </div>
 
-                                            {/* Footer Row inside Right Panel: "Direct practice access" & "Browse all [Category] →" */}
-                                            <div className="pt-2.5 mt-2.5 border-t border-slate-100 flex items-center justify-between text-xs shrink-0">
+                                            {/* Footer Row inside Right Panel: "Direct practice access" & "Browse all [Category] →" (Anchored directly below cards) */}
+                                            <div className="pt-2 mt-2.5 border-t border-slate-100 flex items-center justify-between text-xs shrink-0">
                                                 <span className="text-[11px] font-mono text-slate-400">
                                                     Direct practice access
                                                 </span>
@@ -3049,15 +3049,15 @@ export default function Navigation() {
                                         </main>
                                     </div>
 
-                                    {/* Bottom Executive Consultation Banner (Consistent across all mega menus) */}
-                                    <div className="px-5 py-2.5 bg-slate-50 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
+                                    {/* Bottom Executive Consultation Banner (Tight, docked directly) */}
+                                    <div className="px-4 py-2 bg-slate-50/90 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
                                         <span className="font-semibold text-slate-700 text-xs">
                                             Need help identifying the right AI opportunity for your business?
                                         </span>
                                         <Link
                                             to="/book-consultation"
                                             onClick={() => setActiveMenuId(null)}
-                                            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs transition-colors shadow-xs shrink-0 cursor-pointer"
+                                            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs transition-colors shadow-xs shrink-0 cursor-pointer"
                                         >
                                             <span>Talk to an Expert</span>
                                             <ArrowRight className="w-3.5 h-3.5" />

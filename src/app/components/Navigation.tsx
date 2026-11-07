@@ -2927,50 +2927,48 @@ export default function Navigation() {
                             <div className="bg-white rounded-2xl shadow-xl border border-slate-200/90 ring-1 ring-slate-900/5 overflow-hidden flex flex-col">
                                 <div className="flex flex-col lg:flex-row items-stretch">
                                     {/* ── LEFT SIDEBAR (COMPACT, NO DESCRIPTION, ZERO DEAD SPACE) ── */}
-                                    <aside className="w-full lg:w-[240px] xl:w-[250px] bg-slate-50/95 text-slate-900 p-3 sm:p-3.5 flex flex-col justify-between shrink-0 border-r border-slate-200/80">
-                                            <div className="flex flex-col flex-1">
-                                                {/* Section Label Alone - Zero Description Clutter */}
-                                                <div className="pb-1.5 border-b border-slate-200/60 mb-1.5">
-                                                    <span className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-blue-600 block">
-                                                        {activeConfig.sectionTag}
-                                                    </span>
-                                                    <h2 className="text-sm sm:text-base font-extrabold text-slate-900 font-heading tracking-tight mt-0.5">
-                                                        {currentMenu.name}
-                                                    </h2>
-                                                </div>
-
-                                                {/* Category List (Tight Vertical Rhythm - No Unnecessary Scrollbars) */}
-                                                <nav className={`flex-1 flex flex-col ${currentMenu.categories.length > 7 ? "gap-0.5" : "gap-1"}`}>
-                                                    {currentMenu.categories.map((cat) => {
-                                                        const isCatActive = currentCategory?.id === cat.id;
-
-                                                        return (
-                                                            <div
-                                                                key={cat.id}
-                                                                onMouseEnter={() => setActiveCategoryId(cat.id)}
-                                                                onClick={() => setActiveCategoryId(cat.id)}
-                                                                className={`w-full group px-2.5 rounded-lg text-xs font-bold transition-all duration-150 flex items-center justify-between cursor-pointer border ${currentMenu.categories.length > 7 ? "py-1" : "py-1.5"} ${
-                                                                    isCatActive
-                                                                        ? 'bg-blue-600 text-white border-blue-600 shadow-sm shadow-blue-600/25'
-                                                                        : 'text-slate-700 hover:text-blue-600 hover:bg-slate-100/90 border-transparent'
-                                                                }`}
-                                                            >
-                                                                <span className="truncate block text-xs font-bold tracking-tight">
-                                                                    {cat.title}
-                                                                </span>
-                                                                <ChevronRight
-                                                                    className={`w-3.5 h-3.5 transition-transform duration-150 shrink-0 ${
-                                                                        isCatActive ? 'text-white translate-x-0.5' : 'text-slate-400 group-hover:text-blue-600'
-                                                                    }`}
-                                                                />
-                                                            </div>
-                                                        );
-                                                    })}
-                                                </nav>
+                                    <aside className="w-full lg:w-[240px] xl:w-[250px] bg-slate-50/95 text-slate-900 p-3 sm:p-3.5 flex flex-col justify-start shrink-0 border-r border-slate-200/80">
+                                            {/* Section Label Alone - Zero Description Clutter */}
+                                            <div className="pb-1.5 border-b border-slate-200/60 mb-1.5">
+                                                <span className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-blue-600 block">
+                                                    {activeConfig.sectionTag}
+                                                </span>
+                                                <h2 className="text-sm sm:text-base font-extrabold text-slate-900 font-heading tracking-tight mt-0.5">
+                                                    {currentMenu.name}
+                                                </h2>
                                             </div>
 
+                                            {/* Category List (Tight Vertical Rhythm - No Unnecessary Scrollbars) */}
+                                            <nav className={`flex flex-col ${currentMenu.categories.length > 7 ? "gap-0.5" : "gap-1"}`}>
+                                                {currentMenu.categories.map((cat) => {
+                                                    const isCatActive = currentCategory?.id === cat.id;
+
+                                                    return (
+                                                        <div
+                                                            key={cat.id}
+                                                            onMouseEnter={() => setActiveCategoryId(cat.id)}
+                                                            onClick={() => setActiveCategoryId(cat.id)}
+                                                            className={`w-full group px-2.5 rounded-lg text-xs font-bold transition-all duration-150 flex items-center justify-between cursor-pointer border ${currentMenu.categories.length > 7 ? "py-1" : "py-1.5"} ${
+                                                                isCatActive
+                                                                    ? 'bg-blue-600 text-white border-blue-600 shadow-sm shadow-blue-600/25'
+                                                                    : 'text-slate-700 hover:text-blue-600 hover:bg-slate-100/90 border-transparent'
+                                                            }`}
+                                                        >
+                                                            <span className="truncate block text-xs font-bold tracking-tight">
+                                                                {cat.title}
+                                                            </span>
+                                                            <ChevronRight
+                                                                className={`w-3.5 h-3.5 transition-transform duration-150 shrink-0 ${
+                                                                    isCatActive ? 'text-white translate-x-0.5' : 'text-slate-400 group-hover:text-blue-600'
+                                                                }`}
+                                                            />
+                                                        </div>
+                                                    );
+                                                })}
+                                            </nav>
+
                                             {/* Bottom Link - Anchored neatly right beneath category list */}
-                                            <div className="pt-2 border-t border-slate-200/70 mt-2 shrink-0">
+                                            <div className="pt-2 border-t border-slate-200/70 mt-2.5 shrink-0">
                                                 <Link
                                                     to={currentMenu.path}
                                                     onClick={() => setActiveMenuId(null)}
@@ -2982,60 +2980,82 @@ export default function Navigation() {
                                             </div>
                                         </aside>
 
-                                        {/* ── RIGHT CONTENT PANEL (DYNAMIC COLUMNS BASED ON SUBMENU ITEMS - ZERO DEAD WHITE SPACE) ── */}
-                                        <main className="flex-1 bg-white p-3 sm:p-3.5 flex flex-col justify-between">
-                                            {/* Top Section: Header + Dynamic Cards Grid */}
-                                            <div className="flex flex-col flex-1">
-                                                {/* Top Header Area */}
-                                                <div className="flex items-center justify-between pb-1.5 mb-2 border-b border-slate-100 shrink-0">
-                                                    <span className="text-[11px] font-mono font-extrabold uppercase tracking-[0.18em] text-slate-500">
-                                                        {currentCategory.title}
-                                                    </span>
+                                        {/* ── RIGHT CONTENT PANEL (EXACTLY 2 COLUMNS, NO INSIDE/BOTTOM WHITE SPACE) ── */}
+                                        <main className="flex-1 bg-white p-3 sm:p-3.5 flex flex-col justify-start">
+                                            {/* Top Header Area */}
+                                            <div className="flex items-center justify-between pb-1.5 mb-2 border-b border-slate-100 shrink-0">
+                                                <span className="text-[11px] font-mono font-extrabold uppercase tracking-[0.18em] text-slate-500">
+                                                    {currentCategory.title}
+                                                </span>
 
-                                                    {/* Metadata Count Badge */}
-                                                    <span className="text-[11px] font-mono font-bold text-slate-400">
-                                                        {allLinks.length} items
-                                                    </span>
-                                                </div>
-
-                                                {/* Main Content Grid: Dynamically adjusted based on submenu items count so there is ZERO white space */}
-                                                <div className={`grid gap-1.5 sm:gap-2 flex-1 my-0.5 ${
-                                                    allLinks.length <= 4
-                                                        ? 'grid-cols-1'
-                                                        : 'grid-cols-1 md:grid-cols-2'
-                                                }`}>
-                                                    {allLinks.map((card, idx) => {
-                                                        const CardIcon = card.icon || Target;
-
-                                                        return (
-                                                            <Link
-                                                                key={idx}
-                                                                to={card.path}
-                                                                onClick={() => handleSubMenuCardClick(card.path)}
-                                                                className="group p-2 px-2.5 rounded-lg bg-white hover:bg-blue-50/40 border border-slate-200/90 hover:border-blue-400 hover:shadow-2xs transition-all duration-150 flex items-center justify-between gap-2.5 cursor-pointer h-full"
-                                                            >
-                                                                <div className="flex items-center gap-2.5 min-w-0 flex-1">
-                                                                    {/* Clean Compact Icon Container */}
-                                                                    <div className="w-7 h-7 rounded-md bg-slate-50 border border-slate-200/80 text-slate-600 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 flex items-center justify-center shrink-0 transition-colors shadow-2xs">
-                                                                        <CardIcon className="w-3.5 h-3.5" />
-                                                                    </div>
-
-                                                                    {/* Title Alone - Zero Description Clutter */}
-                                                                    <span className="text-xs font-semibold text-slate-900 group-hover:text-blue-600 transition-colors truncate">
-                                                                        {card.title}
-                                                                    </span>
-                                                                </div>
-
-                                                                {/* Subtle Arrow Indicator on Hover */}
-                                                                <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all shrink-0 ml-1" />
-                                                            </Link>
-                                                        );
-                                                    })}
-                                                </div>
+                                                {/* Metadata Count Badge */}
+                                                <span className="text-[11px] font-mono font-bold text-slate-400">
+                                                    {allLinks.length} items
+                                                </span>
                                             </div>
 
+                                            {/* Main Content Grid: Exactly 2 Columns with Normal Proportions (Zero Card Whitespace) */}
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5 sm:gap-2">
+                                                {allLinks.map((card, idx) => {
+                                                    const CardIcon = card.icon || Target;
+
+                                                    return (
+                                                        <Link
+                                                            key={idx}
+                                                            to={card.path}
+                                                            onClick={() => handleSubMenuCardClick(card.path)}
+                                                            className="group p-2 px-2.5 rounded-lg bg-white hover:bg-blue-50/40 border border-slate-200/90 hover:border-blue-400 hover:shadow-2xs transition-all duration-150 flex items-center justify-between gap-2.5 cursor-pointer"
+                                                        >
+                                                            <div className="flex items-center gap-2.5 min-w-0 flex-1">
+                                                                {/* Clean Compact Icon Container */}
+                                                                <div className="w-7 h-7 rounded-md bg-slate-50 border border-slate-200/80 text-slate-600 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 flex items-center justify-center shrink-0 transition-colors shadow-2xs">
+                                                                    <CardIcon className="w-3.5 h-3.5" />
+                                                                </div>
+
+                                                                {/* Title Alone - Zero Description Clutter */}
+                                                                <span className="text-xs font-semibold text-slate-900 group-hover:text-blue-600 transition-colors truncate">
+                                                                    {card.title}
+                                                                </span>
+                                                            </div>
+
+                                                            {/* Subtle Arrow Indicator on Hover */}
+                                                            <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all shrink-0 ml-1" />
+                                                        </Link>
+                                                    );
+                                                })}
+                                            </div>
+
+                                            {/* Architectural Context & Commercial Impact Strip (Eliminates bottom white space in 4-item menus) */}
+                                            {allLinks.length <= 6 && (
+                                                <div className="mt-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200/80 flex flex-col gap-1.5">
+                                                    <div className="flex items-center justify-between gap-2">
+                                                        <div className="flex items-center gap-1.5 min-w-0">
+                                                            <Sparkles className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                                                            <span className="text-[11px] font-mono font-bold text-slate-700 truncate">
+                                                                {currentCategory.desc || 'Architectural Revenue Intelligence'}
+                                                            </span>
+                                                        </div>
+                                                        {displayOutcomeBadge && (
+                                                            <span className="text-[10px] font-mono font-extrabold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 border border-blue-200/80 shrink-0">
+                                                                {displayOutcomeBadge}
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                    {displayBusinessImpacts && displayBusinessImpacts.length > 0 && (
+                                                        <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
+                                                            {displayBusinessImpacts.map((impact: string, i: number) => (
+                                                                <span key={i} className="inline-flex items-center gap-1 text-[11px] font-medium text-slate-600 bg-white px-2 py-0.5 rounded-md border border-slate-200/70 shadow-2xs">
+                                                                    <CheckCircle2 className="w-3 h-3 text-emerald-500 shrink-0" />
+                                                                    <span>{impact}</span>
+                                                                </span>
+                                                            ))}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            )}
+
                                             {/* Footer Row inside Right Panel: "Direct practice access" & "Browse all [Category] →" (Anchored directly below cards) */}
-                                            <div className="pt-2 mt-2 border-t border-slate-100 flex items-center justify-between text-xs shrink-0">
+                                            <div className="pt-2 mt-2.5 border-t border-slate-100 flex items-center justify-between text-xs shrink-0">
                                                 <span className="text-[11px] font-mono text-slate-400">
                                                     Direct practice access
                                                 </span>

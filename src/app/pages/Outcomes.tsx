@@ -733,9 +733,9 @@ export default function Outcomes() {
                                 </Link>
                             </div>
                             <div className="mt-8">
-                                <a href="#" className="inline-flex items-center text-blue-100 font-semibold hover:text-white transition-colors">
+                                <Link to="/book-consultation" className="inline-flex items-center text-blue-100 font-semibold hover:text-white transition-colors">
                                     Start Your AI Revenue Journey <ArrowRight className="ml-2 w-4 h-4" />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>

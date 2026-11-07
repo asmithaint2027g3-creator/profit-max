@@ -3653,7 +3653,7 @@ export default function Navigation() {
                         to="/book-consultation"
                         className="hidden sm:inline-flex items-center gap-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:from-blue-800 active:to-indigo-800 text-white font-bold text-xs xl:text-sm px-3.5 xl:px-4 py-2.5 rounded-xl transition-all shadow-md shadow-blue-600/25 hover:shadow-blue-600/40 hover:-translate-y-px whitespace-nowrap shrink-0 min-h-[40px]"
                     >
-                        <span className="whitespace-nowrap">Book Consultation</span>
+                        <span className="whitespace-nowrap">Get Revenue Audit</span>
                         <ArrowUpRight className="w-4 h-4 shrink-0" />
                     </Link>
 
@@ -4343,7 +4343,7 @@ export default function Navigation() {
                                 onClick={() => setMobileOpen(false)}
                                 className="w-full min-h-[44px] flex items-center justify-center gap-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-2.5 px-4 rounded-xl text-xs sm:text-sm shadow-sm transition-colors"
                             >
-                                <span>Book Consultation</span>
+                                <span>Get Revenue Audit</span>
                                 <ArrowUpRight className="w-4 h-4" />
                             </Link>
                             <div className="text-center text-[11px] text-slate-400">

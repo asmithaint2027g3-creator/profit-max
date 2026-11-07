@@ -45,7 +45,7 @@ export default function EngagementDeliveryTracks() {
 
             <div className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 text-xs sm:text-sm text-slate-300 leading-relaxed max-w-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-inner">
               <span>Review technical capability comparison:</span>
-              <Link to="/offerings/delivery-tracks" className="text-blue-400 hover:text-blue-300 font-bold shrink-0 flex items-center gap-1">
+              <Link to="/offerings#delivery-tracks" className="text-blue-400 hover:text-blue-300 font-bold shrink-0 flex items-center gap-1">
                 <span>View Offerings Delivery Tracks</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </Link>

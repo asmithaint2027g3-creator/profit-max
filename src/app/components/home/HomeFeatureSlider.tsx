@@ -471,7 +471,7 @@ export default function HomeFeatureSlider() {
                                         >
                                             <Button className="w-full sm:w-auto bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:from-blue-800 active:to-indigo-800 text-white font-bold px-7 py-6 rounded-xl shadow-lg shadow-blue-600/30 text-sm transition-all hover:-translate-y-0.5 group cursor-pointer">
                                                 <span className="flex items-center justify-center">
-                                                    <span>Book Strategy Consultation</span>
+                                                    <span>Claim Your Revenue Audit</span>
                                                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                                 </span>
                                             </Button>
@@ -483,7 +483,7 @@ export default function HomeFeatureSlider() {
                                         >
                                             <Button variant="outline" className="w-full sm:w-auto border-slate-300 bg-white hover:bg-slate-50 text-slate-800 font-bold px-6 py-6 rounded-xl text-sm shadow-xs transition-all cursor-pointer">
                                                 <span className="flex items-center justify-center">
-                                                    <span>Calculate Revenue Leakage</span>
+                                                    <span>Calculate Margin Leakage (Free)</span>
                                                     <span className="ml-1.5 px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-300">PRO</span>
                                                     <ArrowUpRight className="ml-1.5 w-3.5 h-3.5 text-slate-500" />
                                                 </span>

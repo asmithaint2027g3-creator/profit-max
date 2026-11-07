@@ -233,7 +233,7 @@ export default function EngagementStagePlaybooks() {
             <span>
               <strong>Note:</strong> Technical bundle codes (e.g. F1-A1, F7-A2) correspond to verified offering families mapped across Consulting (Track A) and AI Automation (Track B).
             </span>
-            <Link to="/offerings/families" className="text-blue-600 hover:underline shrink-0 font-medium">
+            <Link to="/offerings#capabilities" className="text-blue-600 hover:underline shrink-0 font-medium">
               View Detailed Offering Families →
             </Link>
           </div>

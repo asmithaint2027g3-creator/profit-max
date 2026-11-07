@@ -32,29 +32,29 @@ export default function FinalCTASection() {
                             Autonomous Revenue OS?
                         </span>
                     </h2>
-                    
+
                     <p className="text-base sm:text-xl text-slate-300 mb-5 max-w-2xl mx-auto font-normal leading-relaxed">
                         Join forward-thinking enterprise teams replacing fragmented tools with a unified, self-learning GTM intelligence infrastructure.
                     </p>
-                    
+
                     <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
-                        <Link 
-                            to="/book-consultation" 
+                        <Link
+                            to="/book-consultation"
                             onClick={() => trackEvent({ eventName: 'FINAL_CTA_BOOK_CLICK' })}
                             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-blue-600/30 transition-all hover:-translate-y-0.5 group"
                         >
-                            <span>Discuss Your Revenue Growth Priorities</span>
+                            <span>Claim Your Revenue Architecture Plan</span>
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </Link>
-                        <Link 
-                            to="/offerings" 
+                        <Link
+                            to="/offerings"
                             onClick={() => trackEvent({ eventName: 'FINAL_CTA_OFFERINGS_CLICK' })}
                             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-8 py-4 rounded-xl border border-slate-700 transition-all hover:-translate-y-0.5"
                         >
-                            <span>Explore Our Revenue Capabilities</span>
+                            <span>Explore Platform Capabilities</span>
                         </Link>
                     </div>
-                    
+
                     <div className="flex flex-wrap items-center justify-center gap-6 text-xs font-medium text-slate-400 border-t border-slate-800/80 pt-6">
                         <div className="flex items-center gap-2">
                             <CheckCircle2 className="w-4 h-4 text-emerald-400" />

@@ -211,16 +211,22 @@ export default function Footer() {
 
                             {/* Social Buttons */}
                             <div className="flex gap-4">
-                                {[Linkedin, Twitter, Facebook].map((Icon, i) => (
+                                {[
+                                    { icon: Linkedin, label: 'LinkedIn', url: 'https://www.linkedin.com/company/profitmachines' },
+                                    { icon: Twitter, label: 'Twitter', url: 'https://twitter.com/profitmachines' },
+                                    { icon: Facebook, label: 'Facebook', url: 'https://facebook.com/profitmachines' }
+                                ].map((item, i) => (
                                     <a
                                         key={i}
-                                        href="#"
-                                        aria-label={['LinkedIn', 'Twitter', 'Facebook'][i]}
-                                        title={['LinkedIn', 'Twitter', 'Facebook'][i]}
+                                        href={item.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label={item.label}
+                                        title={item.label}
                                         className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-white hover:bg-blue-600 hover:border-blue-500 transition-all hover:shadow-[0_0_15px_rgba(37,99,235,0.5)] hover:-translate-y-1"
                                     >
-                                        <Icon className="w-4 h-4" />
-                                        <span className="sr-only">{['LinkedIn', 'Twitter', 'Facebook'][i]}</span>
+                                        <item.icon className="w-4 h-4" />
+                                        <span className="sr-only">{item.label}</span>
                                     </a>
                                 ))}
                             </div>

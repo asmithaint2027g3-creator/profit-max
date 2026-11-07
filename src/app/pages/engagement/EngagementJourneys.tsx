@@ -576,7 +576,7 @@ export default function EngagementJourneys() {
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
-              to="/offerings/commercials"
+              to="/offerings#commercial-models"
               className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-white font-bold px-6 py-3.5 rounded-xl transition-all text-sm border border-white/15"
             >
               <span>View Commercials & Guardrails</span>

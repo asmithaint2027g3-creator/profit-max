@@ -9,8 +9,11 @@ import {
     Sparkles,
     Lock,
     ArrowRight,
+    ArrowLeft,
     Clock,
-    Globe
+    Globe,
+    ShieldCheck,
+    Check
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -41,6 +44,8 @@ export default function BookConsultation() {
         consent: true
     });
 
+    const [currentStep, setCurrentStep] = useState<1 | 2>(1);
+    const [step1Error, setStep1Error] = useState<string | null>(null);
     const [emailError, setEmailError] = useState<string | null>(null);
     const [phoneError, setPhoneError] = useState<string | null>(null);
     const [submitError, setSubmitError] = useState<string | null>(null);
@@ -56,6 +61,35 @@ export default function BookConsultation() {
         setEmailError(null);
         setPhoneError(null);
         setSubmitError(null);
+        setStep1Error(null);
+        setCurrentStep(1);
+    };
+
+    const handleStep1Next = (e: React.MouseEvent) => {
+        e.preventDefault();
+        setStep1Error(null);
+        setEmailError(null);
+
+        if (!formData.firstName.trim()) {
+            setStep1Error('Please enter your first name.');
+            return;
+        }
+        if (!formData.lastName.trim()) {
+            setStep1Error('Please enter your last name.');
+            return;
+        }
+        const emailVal = validateBusinessEmail(formData.email);
+        if (!emailVal.valid) {
+            setEmailError(emailVal.message || 'Please provide a valid corporate work email.');
+            return;
+        }
+        if (!formData.company.trim()) {
+            setStep1Error('Please enter your company name.');
+            return;
+        }
+
+        trackEvent({ eventName: 'BOOKING_STEP_1_COMPLETE', category: 'CONVERSION', label: formData.company });
+        setCurrentStep(2);
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -251,168 +285,233 @@ export default function BookConsultation() {
                                 </div>
                             ) : (
                                 <>
+                                    {/* Header & Progressive Disclosure Indicator */}
                                     <div className="mb-6 border-b border-slate-100 pb-5">
-                                        <h3 className="text-2xl font-bold text-slate-900">Request Executive Consultation</h3>
-                                        <p className="text-xs text-slate-500 mt-1">Please provide your corporate details to route to the appropriate sector practice.</p>
-                                    </div>
-
-                                    <form onSubmit={handleSubmit} className="space-y-4">
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                            <div>
-                                                <Label className="text-xs font-bold text-slate-700">First Name *</Label>
-                                                <Input
-                                                    required
-                                                    name="firstName"
-                                                    value={formData.firstName}
-                                                    onChange={handleChange}
-                                                    placeholder="Sarah"
-                                                    className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
-                                                />
-                                            </div>
-                                            <div>
-                                                <Label className="text-xs font-bold text-slate-700">Last Name *</Label>
-                                                <Input
-                                                    required
-                                                    name="lastName"
-                                                    value={formData.lastName}
-                                                    onChange={handleChange}
-                                                    placeholder="Jenkins"
-                                                    className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
-                                                />
-                                            </div>
+                                        <div className="flex items-center justify-between gap-4 mb-3">
+                                            <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
+                                                {currentStep === 1 ? 'Step 1: Executive Profile' : 'Step 2: Revenue Scoping'}
+                                            </h3>
+                                            <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-100">
+                                                Step {currentStep} of 2
+                                            </span>
                                         </div>
-
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                            <div>
-                                                <Label className="text-xs font-bold text-slate-700">Corporate Work Email *</Label>
-                                                <Input
-                                                    required
-                                                    type="email"
-                                                    name="email"
-                                                    value={formData.email}
-                                                    onChange={handleChange}
-                                                    placeholder="sarah@enterprise.com"
-                                                    className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
-                                                />
-                                                {emailError && (
-                                                    <p className="text-[11px] text-red-600 font-semibold mt-1">{emailError}</p>
-                                                )}
-                                            </div>
-                                            <div>
-                                                <Label className="text-xs font-bold text-slate-700">Phone Number *</Label>
-                                                <Input
-                                                    required
-                                                    type="tel"
-                                                    name="phone"
-                                                    value={formData.phone}
-                                                    onChange={handleChange}
-                                                    placeholder="+1 (555) 000-0000"
-                                                    className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
-                                                />
-                                                {phoneError && (
-                                                    <p className="text-[11px] text-red-600 font-semibold mt-1">{phoneError}</p>
-                                                )}
-                                            </div>
-                                        </div>
-
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                            <div>
-                                                <Label className="text-xs font-bold text-slate-700">Company Name *</Label>
-                                                <Input
-                                                    required
-                                                    name="company"
-                                                    value={formData.company}
-                                                    onChange={handleChange}
-                                                    placeholder="Acme Global Inc."
-                                                    className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
-                                                />
-                                            </div>
-                                            <div>
-                                                <Label className="text-xs font-bold text-slate-700">Designation / Title *</Label>
-                                                <Input
-                                                    required
-                                                    name="jobTitle"
-                                                    value={formData.jobTitle}
-                                                    onChange={handleChange}
-                                                    placeholder="Chief Revenue Officer / VP"
-                                                    className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
-                                                />
-                                            </div>
-                                        </div>
-
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                            <div>
-                                                <Label className="text-xs font-bold text-slate-700">Annual Revenue Stage</Label>
-                                                <select
-                                                    name="revenue"
-                                                    value={formData.revenue}
-                                                    onChange={handleChange}
-                                                    className="w-full mt-1 h-11 px-3 rounded-xl bg-slate-50/70 border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                                                >
-                                                    <option value="Under $5M ARR">Under $5M ARR</option>
-                                                    <option value="$5M - $20M ARR">$5M - $20M ARR</option>
-                                                    <option value="$20M - $100M ARR">$20M - $100M ARR</option>
-                                                    <option value="$100M+ Enterprise">$100M+ Enterprise</option>
-                                                </select>
-                                            </div>
-                                            <div>
-                                                <Label className="text-xs font-bold text-slate-700">Primary Strategic Focus</Label>
-                                                <select
-                                                    name="interest"
-                                                    value={formData.interest}
-                                                    onChange={handleChange}
-                                                    className="w-full mt-1 h-11 px-3 rounded-xl bg-slate-50/70 border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                                                >
-                                                    <option value="AI Revenue Engine & Autonomous SDR">AI Revenue Engine & Autonomous SDR</option>
-                                                    <option value="Intent Demand Discovery">Intent Demand Discovery</option>
-                                                    <option value="Hidden Revenue & Leak Capture">Hidden Revenue & Leak Capture</option>
-                                                    <option value="Brand & Reputation Acceleration">Brand & Reputation Acceleration</option>
-                                                    <option value="B2B / Web3 Enterprise Scale">B2B / Web3 Enterprise Scale</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <Label className="text-xs font-bold text-slate-700">Specific Architecture Goals or Requirements</Label>
-                                            <Textarea
-                                                name="message"
-                                                rows={3}
-                                                value={formData.message}
-                                                onChange={handleChange}
-                                                placeholder="Outline your primary growth bottleneck, existing stack, or target timeline..."
-                                                className="mt-1 rounded-xl bg-slate-50/70 border-slate-200 text-xs leading-relaxed"
+                                        <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                                            <div 
+                                                className="bg-gradient-to-r from-blue-600 to-indigo-600 h-1.5 rounded-full transition-all duration-300" 
+                                                style={{ width: currentStep === 1 ? '50%' : '100%' }}
                                             />
                                         </div>
+                                        <p className="text-xs text-slate-500 mt-2">
+                                            {currentStep === 1 
+                                                ? 'Start with your corporate contact details to route to the appropriate practice.'
+                                                : 'Define your revenue targets and current bottlenecks for our Principal Architects.'}
+                                        </p>
+                                    </div>
 
-                                        <HoneypotField value={honeypot} onChange={setHoneypot} />
+                                    {step1Error && (
+                                        <div className="mb-4 p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700 font-medium">
+                                            {step1Error}
+                                        </div>
+                                    )}
 
-                                        {submitError && (
-                                            <FormErrorBanner message={submitError} onDismiss={() => setSubmitError(null)} />
+                                    <form onSubmit={handleSubmit} className="space-y-4">
+                                        {/* STEP 1: Executive Information */}
+                                        {currentStep === 1 && (
+                                            <div className="space-y-4">
+                                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                                    <div>
+                                                        <Label className="text-xs font-bold text-slate-700">First Name *</Label>
+                                                        <Input
+                                                            required
+                                                            name="firstName"
+                                                            value={formData.firstName}
+                                                            onChange={handleChange}
+                                                            placeholder="Sarah"
+                                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                                        />
+                                                    </div>
+                                                    <div>
+                                                        <Label className="text-xs font-bold text-slate-700">Last Name *</Label>
+                                                        <Input
+                                                            required
+                                                            name="lastName"
+                                                            value={formData.lastName}
+                                                            onChange={handleChange}
+                                                            placeholder="Jenkins"
+                                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                                <div>
+                                                    <Label className="text-xs font-bold text-slate-700">Corporate Work Email *</Label>
+                                                    <Input
+                                                        required
+                                                        type="email"
+                                                        name="email"
+                                                        value={formData.email}
+                                                        onChange={handleChange}
+                                                        placeholder="sarah@enterprise.com"
+                                                        className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                                    />
+                                                    {emailError && (
+                                                        <p className="text-[11px] text-red-600 font-semibold mt-1">{emailError}</p>
+                                                    )}
+                                                </div>
+
+                                                <div>
+                                                    <Label className="text-xs font-bold text-slate-700">Company Name *</Label>
+                                                    <Input
+                                                        required
+                                                        name="company"
+                                                        value={formData.company}
+                                                        onChange={handleChange}
+                                                        placeholder="Acme Global Inc."
+                                                        className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                                    />
+                                                </div>
+
+                                                <div className="pt-2">
+                                                    <Button
+                                                        type="button"
+                                                        onClick={handleStep1Next}
+                                                        className="w-full py-3.5 h-12 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-600/25 transition-all flex items-center justify-center gap-2 group cursor-pointer"
+                                                    >
+                                                        <span>Continue to Revenue Scoping</span>
+                                                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                                    </Button>
+                                                </div>
+                                            </div>
                                         )}
 
-                                        <div className="pt-2">
-                                            <Button
-                                                type="submit"
-                                                disabled={isSubmitting}
-                                                className="w-full py-3.5 h-12 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-600/25 transition-all flex items-center justify-center gap-2 group"
-                                            >
-                                                {isSubmitting ? (
-                                                    <div className="flex items-center gap-2">
-                                                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                                                        <span>Connecting to Enterprise Gateway...</span>
+                                        {/* STEP 2: Revenue Scoping & Submission */}
+                                        {currentStep === 2 && (
+                                            <div className="space-y-4">
+                                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                                    <div>
+                                                        <Label className="text-xs font-bold text-slate-700">Designation / Title *</Label>
+                                                        <Input
+                                                            required
+                                                            name="jobTitle"
+                                                            value={formData.jobTitle}
+                                                            onChange={handleChange}
+                                                            placeholder="Chief Revenue Officer / VP"
+                                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                                        />
                                                     </div>
-                                                ) : (
-                                                    <>
-                                                        <span>Confirm Consultation Request</span>
-                                                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                                    </>
-                                                )}
-                                            </Button>
-                                        </div>
+                                                    <div>
+                                                        <Label className="text-xs font-bold text-slate-700">Phone Number *</Label>
+                                                        <Input
+                                                            required
+                                                            type="tel"
+                                                            name="phone"
+                                                            value={formData.phone}
+                                                            onChange={handleChange}
+                                                            placeholder="+1 (555) 000-0000"
+                                                            className="mt-1 h-11 rounded-xl bg-slate-50/70 border-slate-200"
+                                                        />
+                                                        {phoneError && (
+                                                            <p className="text-[11px] text-red-600 font-semibold mt-1">{phoneError}</p>
+                                                        )}
+                                                    </div>
+                                                </div>
 
-                                        <div className="flex items-center justify-center gap-2 text-[11px] text-slate-400 text-center pt-2">
-                                            <Lock className="w-3.5 h-3.5 text-slate-400" />
-                                            <span>Encrypted submission • Protected by Mutual Enterprise NDA</span>
+                                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                                    <div>
+                                                        <Label className="text-xs font-bold text-slate-700">Annual Revenue Stage</Label>
+                                                        <select
+                                                            name="revenue"
+                                                            value={formData.revenue}
+                                                            onChange={handleChange}
+                                                            className="w-full mt-1 h-11 px-3 rounded-xl bg-slate-50/70 border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                                        >
+                                                            <option value="Under $5M ARR">Under $5M ARR</option>
+                                                            <option value="$5M - $20M ARR">$5M - $20M ARR</option>
+                                                            <option value="$20M - $100M ARR">$20M - $100M ARR</option>
+                                                            <option value="$100M+ Enterprise">$100M+ Enterprise</option>
+                                                        </select>
+                                                    </div>
+                                                    <div>
+                                                        <Label className="text-xs font-bold text-slate-700">Primary Strategic Focus</Label>
+                                                        <select
+                                                            name="interest"
+                                                            value={formData.interest}
+                                                            onChange={handleChange}
+                                                            className="w-full mt-1 h-11 px-3 rounded-xl bg-slate-50/70 border border-slate-200 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                                        >
+                                                            <option value="AI Revenue Engine & Autonomous SDR">AI Revenue Engine & Autonomous SDR</option>
+                                                            <option value="Intent Demand Discovery">Intent Demand Discovery</option>
+                                                            <option value="Hidden Revenue & Leak Capture">Hidden Revenue & Leak Capture</option>
+                                                            <option value="Brand & Reputation Acceleration">Brand & Reputation Acceleration</option>
+                                                            <option value="B2B / Web3 Enterprise Scale">B2B / Web3 Enterprise Scale</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div>
+                                                    <Label className="text-xs font-bold text-slate-700">Specific Architecture Goals or Requirements</Label>
+                                                    <Textarea
+                                                        name="message"
+                                                        rows={2}
+                                                        value={formData.message}
+                                                        onChange={handleChange}
+                                                        placeholder="Outline your primary growth bottleneck, existing stack, or target timeline..."
+                                                        className="mt-1 rounded-xl bg-slate-50/70 border-slate-200 text-xs leading-relaxed"
+                                                    />
+                                                </div>
+
+                                                <HoneypotField value={honeypot} onChange={setHoneypot} />
+
+                                                {submitError && (
+                                                    <FormErrorBanner message={submitError} onDismiss={() => setSubmitError(null)} />
+                                                )}
+
+                                                <div className="pt-2 flex flex-col sm:flex-row gap-3">
+                                                    <Button
+                                                        type="button"
+                                                        onClick={() => setCurrentStep(1)}
+                                                        variant="outline"
+                                                        className="w-full sm:w-auto px-5 py-3.5 h-12 border-slate-300 text-slate-700 hover:bg-slate-50 font-bold rounded-xl flex items-center justify-center gap-1.5 cursor-pointer shrink-0"
+                                                    >
+                                                        <ArrowLeft className="w-4 h-4" />
+                                                        <span>Back</span>
+                                                    </Button>
+
+                                                    <Button
+                                                        type="submit"
+                                                        disabled={isSubmitting}
+                                                        className="flex-1 py-3.5 h-12 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-600/25 transition-all flex items-center justify-center gap-2 group cursor-pointer"
+                                                    >
+                                                        {isSubmitting ? (
+                                                            <div className="flex items-center gap-2">
+                                                                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                                                <span>Routing to Sector Practice...</span>
+                                                            </div>
+                                                        ) : (
+                                                            <>
+                                                                <span>Confirm Consultation Request</span>
+                                                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                                            </>
+                                                        )}
+                                                    </Button>
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        {/* Micro-Trust Badges Strip */}
+                                        <div className="pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500 font-medium">
+                                            <span className="flex items-center gap-1">
+                                                <Lock className="w-3.5 h-3.5 text-slate-400" />
+                                                256-Bit Encrypted
+                                            </span>
+                                            <span className="flex items-center gap-1">
+                                                <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+                                                Mutual NDA Protected
+                                            </span>
+                                            <span className="flex items-center gap-1">
+                                                <Clock className="w-3.5 h-3.5 text-blue-500" />
+                                                2-Hour Response SLA
+                                            </span>
                                         </div>
                                     </form>
                                 </>

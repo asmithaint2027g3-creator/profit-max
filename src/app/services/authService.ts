@@ -473,7 +473,70 @@ export const authService = {
   async login(identifier: string, password: string): Promise<UserProfile> {
     const cleanId = identifier.trim();
 
-    // 1. Validate directly with Google Sheets 'User_Credentials' vault
+    // 1. Try Vercel Serverless Authentication API (Redis Cloud + JWT + Google Sheets Session_Logs)
+    try {
+      const apiRes = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ identifier: cleanId, password })
+      });
+
+      if (apiRes.ok) {
+        const data = await apiRes.json();
+        if (data && data.success && data.user) {
+          const u = data.user;
+          const now = new Date();
+          const profile: UserProfile = {
+            registrationId: u.registrationId || ('PM-REG-' + now.toISOString().slice(0, 10).replace(/-/g, '') + '-' + Math.floor(1000 + Math.random() * 9000)),
+            fullName: u.fullName || cleanId,
+            email: u.email || (cleanId.includes('@') ? cleanId : ''),
+            mobile: u.mobile || '',
+            userId: u.userId || cleanId,
+            company: u.company || '',
+            country: u.country || '',
+            industry: u.industry || '',
+            headcount: u.headcount || '1-10',
+            operations: u.operations || [],
+            consentStatus: 'Accepted',
+            registrationDate: u.registrationDate || now.toISOString(),
+            accountStatus: (u.accountStatus as any) || 'Active'
+          };
+
+          // Cache locally for offline state continuity
+          const accounts = getStoredAccounts();
+          const existingIdx = accounts.findIndex(
+            a => a.profile.userId.toLowerCase() === profile.userId.toLowerCase() || a.profile.email.toLowerCase() === profile.email.toLowerCase()
+          );
+          if (existingIdx >= 0) {
+            accounts[existingIdx].profile = profile;
+            accounts[existingIdx].lastLoginAt = now.toISOString();
+          } else {
+            const { saltHex, hashHex } = await hashPassword(password);
+            accounts.push({
+              profile,
+              saltHex,
+              hashHex,
+              createdAt: now.toISOString(),
+              lastLoginAt: now.toISOString()
+            });
+          }
+          saveStoredAccounts(accounts);
+          this.createSession(profile);
+          return profile;
+        }
+      } else if (apiRes.status === 401 || apiRes.status === 429) {
+        const errJson = await apiRes.json().catch(() => ({}));
+        throw new Error(errJson.error || 'Authentication failed. Please verify your credentials.');
+      }
+    } catch (apiErr: any) {
+      if (apiErr.message && (apiErr.message.includes('password') || apiErr.message.includes('credentials') || apiErr.message.includes('Too many login attempts'))) {
+        throw apiErr;
+      }
+      console.warn('Vercel API login endpoint unavailable, attempting direct fallback:', apiErr.message || apiErr);
+    }
+
+    // 2. Validate directly with Google Sheets 'User_Credentials' vault fallback
     try {
       const remoteRes = await dispatchWebhook({
         action: 'verify_login',
@@ -601,6 +664,16 @@ export const authService = {
    */
   logout(): void {
     const user = this.getCurrentUser();
+
+    // 1. Call Vercel Serverless Logout API to revoke Redis session & update Session_Logs
+    try {
+      fetch('/api/auth/logout', {
+        method: 'POST',
+        credentials: 'include'
+      }).catch(e => console.warn('Server logout revocation call warning:', e));
+    } catch {}
+
+    // 2. Dispatch legacy webhook login activity
     if (user) {
       try {
         dispatchWebhook({

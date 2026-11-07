@@ -225,12 +225,21 @@ var TAB_CONFIGS = {
     "Verification ID", "Verification Code", "User ID", "Business Email", "Full Name",
     "Mobile Number", "Company Name", "Country", "Industry", "Headcount", "Operations",
     "Created Timestamp", "Expires Timestamp", "Status"
+  ],
+
+  // 18. Security Session Audit Logs (Redis Cloud + JWT Session Synchronization)
+  "Session_Logs": [
+    "Session_ID", "User_ID", "JWT_ID", "Login_Time", "Expires_At", "Last_Active", "Status", "Revoked_At"
   ]
 };
 
 // Aliases mapping incoming form sheetNames to canonical tab names
 var SHEET_NAME_ALIASES = {
   // Master 95-Column Live Behavioral Telemetry
+  "session_logs": "Session_Logs",
+  "sessionlogs": "Session_Logs",
+  "session_log": "Session_Logs",
+  "sessionlog": "Session_Logs",
   "telemetry_95": "Live_Traffic_Events",
   "telemetry": "Live_Traffic_Events",
   "livetrafficevents": "Live_Traffic_Events",
@@ -496,6 +505,18 @@ function doPost(e) {
       var ssReg = SpreadsheetApp.openById(CONFIG.MAIN_SPREADSHEET_ID);
       var regResult = handleUserRegistration(ssReg, data);
       return ContentService.createTextOutput(JSON.stringify(regResult)).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    if (action === "create_session_log" || action === "record_session_log") {
+      var ssSess = SpreadsheetApp.openById(CONFIG.MAIN_SPREADSHEET_ID);
+      var sessResult = handleCreateSessionLog(ssSess, data);
+      return ContentService.createTextOutput(JSON.stringify(sessResult)).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    if (action === "update_session_log" || action === "revoke_session_log") {
+      var ssSessUp = SpreadsheetApp.openById(CONFIG.MAIN_SPREADSHEET_ID);
+      var upResult = handleUpdateSessionLog(ssSessUp, data);
+      return ContentService.createTextOutput(JSON.stringify(upResult)).setMimeType(ContentService.MimeType.JSON);
     }
 
     if (action === "login_activity" || action === "record_login") {
@@ -4047,6 +4068,117 @@ function handleLoginActivity(ss, data) {
     return { status: "success", activityId: actId, message: "Login activity recorded" };
   } catch (err) {
     console.error("Error in handleLoginActivity: " + err.toString());
+    return { status: "error", message: err.toString() };
+  }
+}
+
+/**
+ * 18. Security Session Audit Logs: Records or updates a session in 'Session_Logs' tab.
+ * Columns: Session_ID | User_ID | JWT_ID | Login_Time | Expires_At | Last_Active | Status | Revoked_At
+ */
+function handleCreateSessionLog(ss, data) {
+  try {
+    var sheet = findSheetFlexible(ss, "Session_Logs");
+    var defaultHeaders = TAB_CONFIGS["Session_Logs"] || [
+      "Session_ID", "User_ID", "JWT_ID", "Login_Time", "Expires_At", "Last_Active", "Status", "Revoked_At"
+    ];
+
+    if (!sheet) {
+      sheet = ss.insertSheet("Session_Logs");
+      sheet.getRange(1, 1, 1, defaultHeaders.length)
+           .setValues([defaultHeaders])
+           .setFontWeight("bold")
+           .setBackground("#0f172a")
+           .setFontColor("#ffffff");
+      sheet.setFrozenRows(1);
+    } else if (sheet.getLastRow() === 0) {
+      sheet.getRange(1, 1, 1, defaultHeaders.length)
+           .setValues([defaultHeaders])
+           .setFontWeight("bold")
+           .setBackground("#0f172a")
+           .setFontColor("#ffffff");
+      sheet.setFrozenRows(1);
+    }
+
+    var sessionId = (data.sessionId || data.session_id || "").toString().trim();
+    if (!sessionId) {
+      return { status: "error", message: "Missing sessionId" };
+    }
+
+    var userId = (data.userId || data.user_id || "").toString().trim();
+    var jwtId = (data.jwtId || data.jwt_id || data.jti || "").toString().trim();
+    var loginTime = (data.loginTime || data.login_time || Utilities.formatDate(new Date(), "GMT", "yyyy-MM-dd'T'HH:mm:ss'Z'")).toString().trim();
+    var expiresAt = (data.expiresAt || data.expires_at || "").toString().trim();
+    var lastActive = (data.lastActive || data.last_active || loginTime).toString().trim();
+    var status = (data.status || "ACTIVE").toString().trim();
+    var revokedAt = (data.revokedAt || data.revoked_at || "").toString().trim();
+
+    // Check for existing row with this Session_ID to prevent duplicate rows on retries
+    var lastRow = sheet.getLastRow();
+    if (lastRow > 1) {
+      var sessCol = sheet.getRange(2, 1, lastRow - 1, 1).getValues().flat();
+      var existingIdx = sessCol.indexOf(sessionId);
+      if (existingIdx !== -1) {
+        var rowNum = existingIdx + 2;
+        sheet.getRange(rowNum, 6).setValue(lastActive);
+        sheet.getRange(rowNum, 7).setValue(status);
+        if (revokedAt) sheet.getRange(rowNum, 8).setValue(revokedAt);
+        return { status: "success", action: "updated", sessionId: sessionId, row: rowNum };
+      }
+    }
+
+    var newRow = [
+      sessionId, userId, jwtId, loginTime, expiresAt, lastActive, status, revokedAt
+    ];
+    sheet.appendRow(newRow);
+
+    return { status: "success", action: "created", sessionId: sessionId, row: sheet.getLastRow() };
+  } catch (err) {
+    console.error("Error in handleCreateSessionLog: " + err.toString());
+    return { status: "error", message: err.toString() };
+  }
+}
+
+/**
+ * Updates an existing session row in 'Session_Logs' tab (e.g. status change to REVOKED).
+ */
+function handleUpdateSessionLog(ss, data) {
+  try {
+    var sheet = findSheetFlexible(ss, "Session_Logs");
+    if (!sheet) {
+      return { status: "error", message: "Session_Logs tab does not exist" };
+    }
+
+    var sessionId = (data.sessionId || data.session_id || "").toString().trim();
+    if (!sessionId) {
+      return { status: "error", message: "Missing sessionId" };
+    }
+
+    var lastRow = sheet.getLastRow();
+    if (lastRow <= 1) {
+      return { status: "error", message: "Session_Logs is empty" };
+    }
+
+    var sessCol = sheet.getRange(2, 1, lastRow - 1, 1).getValues().flat();
+    var idx = sessCol.indexOf(sessionId);
+    if (idx === -1) {
+      return { status: "error", message: "Session ID not found in Session_Logs" };
+    }
+
+    var rowNum = idx + 2;
+    if (data.status) {
+      sheet.getRange(rowNum, 7).setValue(data.status.toString().trim());
+    }
+    if (data.lastActive || data.last_active) {
+      sheet.getRange(rowNum, 6).setValue((data.lastActive || data.last_active).toString().trim());
+    }
+    if (data.revokedAt || data.revoked_at) {
+      sheet.getRange(rowNum, 8).setValue((data.revokedAt || data.revoked_at).toString().trim());
+    }
+
+    return { status: "success", action: "updated", sessionId: sessionId, row: rowNum };
+  } catch (err) {
+    console.error("Error in handleUpdateSessionLog: " + err.toString());
     return { status: "error", message: err.toString() };
   }
 }

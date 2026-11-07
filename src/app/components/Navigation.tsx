@@ -2926,24 +2926,21 @@ export default function Navigation() {
                         <div className="max-w-[1040px] mx-auto px-4 sm:px-6 lg:px-8 pt-1">
                             <div className="bg-white rounded-2xl shadow-xl border border-slate-200/90 ring-1 ring-slate-900/5 overflow-hidden flex flex-col">
                                 <div className="flex flex-col lg:flex-row items-stretch">
-                                    {/* ── LEFT SIDEBAR (COMPACT, CONGESTED, ZERO DEAD SPACE) ── */}
-                                    <aside className="w-full lg:w-[240px] xl:w-[250px] bg-slate-50/95 text-slate-900 p-3 sm:p-3.5 flex flex-col justify-start shrink-0 border-r border-slate-200/80">
-                                            <div className={`${currentMenu.categories.length > 7 ? 'space-y-1' : 'space-y-1.5'}`}>
-                                                {/* Section Label */}
-                                                <div>
+                                    {/* ── LEFT SIDEBAR (COMPACT, NO DESCRIPTION, ZERO DEAD SPACE) ── */}
+                                    <aside className="w-full lg:w-[240px] xl:w-[250px] bg-slate-50/95 text-slate-900 p-3 sm:p-3.5 flex flex-col justify-between shrink-0 border-r border-slate-200/80">
+                                            <div className="flex flex-col flex-1">
+                                                {/* Section Label Alone - Zero Description Clutter */}
+                                                <div className="pb-1.5 border-b border-slate-200/60 mb-1.5">
                                                     <span className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-blue-600 block">
                                                         {activeConfig.sectionTag}
                                                     </span>
                                                     <h2 className="text-sm sm:text-base font-extrabold text-slate-900 font-heading tracking-tight mt-0.5">
                                                         {currentMenu.name}
                                                     </h2>
-                                                    <p className="text-[11px] text-slate-500 mt-0.5 leading-snug line-clamp-1">
-                                                        {currentMenu.summary}
-                                                    </p>
                                                 </div>
 
                                                 {/* Category List (Tight Vertical Rhythm - No Unnecessary Scrollbars) */}
-                                                <nav className={`pt-0.5 ${currentMenu.categories.length > 7 ? "space-y-0.5" : "space-y-1"}`}>
+                                                <nav className={`flex-1 flex flex-col ${currentMenu.categories.length > 7 ? "gap-0.5" : "gap-1"}`}>
                                                     {currentMenu.categories.map((cat) => {
                                                         const isCatActive = currentCategory?.id === cat.id;
 
@@ -2973,7 +2970,7 @@ export default function Navigation() {
                                             </div>
 
                                             {/* Bottom Link - Anchored neatly right beneath category list */}
-                                            <div className="pt-2 border-t border-slate-200/70 mt-2.5">
+                                            <div className="pt-2 border-t border-slate-200/70 mt-2 shrink-0">
                                                 <Link
                                                     to={currentMenu.path}
                                                     onClick={() => setActiveMenuId(null)}
@@ -2985,12 +2982,12 @@ export default function Navigation() {
                                             </div>
                                         </aside>
 
-                                        {/* ── RIGHT CONTENT PANEL (2-COLUMN CARDS, COMPACT CONGESTED SPACING, ZERO WHITE SPACE) ── */}
-                                        <main className="flex-1 bg-white p-3 sm:p-3.5 flex flex-col justify-start">
-                                            {/* Top Section: Header + 2-Column Cards Grid */}
-                                            <div>
+                                        {/* ── RIGHT CONTENT PANEL (DYNAMIC COLUMNS BASED ON SUBMENU ITEMS - ZERO DEAD WHITE SPACE) ── */}
+                                        <main className="flex-1 bg-white p-3 sm:p-3.5 flex flex-col justify-between">
+                                            {/* Top Section: Header + Dynamic Cards Grid */}
+                                            <div className="flex flex-col flex-1">
                                                 {/* Top Header Area */}
-                                                <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-100 shrink-0">
+                                                <div className="flex items-center justify-between pb-1.5 mb-2 border-b border-slate-100 shrink-0">
                                                     <span className="text-[11px] font-mono font-extrabold uppercase tracking-[0.18em] text-slate-500">
                                                         {currentCategory.title}
                                                     </span>
@@ -3001,8 +2998,12 @@ export default function Navigation() {
                                                     </span>
                                                 </div>
 
-                                                {/* Main Content Grid: Exactly 2 Columns Across All Menus, Compact & Congested */}
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5 sm:gap-2">
+                                                {/* Main Content Grid: Dynamically adjusted based on submenu items count so there is ZERO white space */}
+                                                <div className={`grid gap-1.5 sm:gap-2 flex-1 my-0.5 ${
+                                                    allLinks.length <= 4
+                                                        ? 'grid-cols-1'
+                                                        : 'grid-cols-1 md:grid-cols-2'
+                                                }`}>
                                                     {allLinks.map((card, idx) => {
                                                         const CardIcon = card.icon || Target;
 
@@ -3011,17 +3012,19 @@ export default function Navigation() {
                                                                 key={idx}
                                                                 to={card.path}
                                                                 onClick={() => handleSubMenuCardClick(card.path)}
-                                                                className="group p-2 px-2.5 rounded-lg bg-white hover:bg-blue-50/40 border border-slate-200/90 hover:border-blue-400 hover:shadow-2xs transition-all duration-150 flex items-center gap-2 cursor-pointer"
+                                                                className="group p-2 px-2.5 rounded-lg bg-white hover:bg-blue-50/40 border border-slate-200/90 hover:border-blue-400 hover:shadow-2xs transition-all duration-150 flex items-center justify-between gap-2.5 cursor-pointer h-full"
                                                             >
-                                                                {/* Clean Compact Icon Container */}
-                                                                <div className="w-7 h-7 rounded-md bg-slate-50 border border-slate-200/80 text-slate-600 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 flex items-center justify-center shrink-0 transition-colors shadow-2xs">
-                                                                    <CardIcon className="w-3.5 h-3.5" />
-                                                                </div>
+                                                                <div className="flex items-center gap-2.5 min-w-0 flex-1">
+                                                                    {/* Clean Compact Icon Container */}
+                                                                    <div className="w-7 h-7 rounded-md bg-slate-50 border border-slate-200/80 text-slate-600 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 flex items-center justify-center shrink-0 transition-colors shadow-2xs">
+                                                                        <CardIcon className="w-3.5 h-3.5" />
+                                                                    </div>
 
-                                                                {/* Title Alone - Zero Description Clutter */}
-                                                                <span className="text-xs font-semibold text-slate-900 group-hover:text-blue-600 transition-colors truncate flex-1 min-w-0">
-                                                                    {card.title}
-                                                                </span>
+                                                                    {/* Title Alone - Zero Description Clutter */}
+                                                                    <span className="text-xs font-semibold text-slate-900 group-hover:text-blue-600 transition-colors truncate">
+                                                                        {card.title}
+                                                                    </span>
+                                                                </div>
 
                                                                 {/* Subtle Arrow Indicator on Hover */}
                                                                 <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all shrink-0 ml-1" />
@@ -3032,7 +3035,7 @@ export default function Navigation() {
                                             </div>
 
                                             {/* Footer Row inside Right Panel: "Direct practice access" & "Browse all [Category] →" (Anchored directly below cards) */}
-                                            <div className="pt-2 mt-2.5 border-t border-slate-100 flex items-center justify-between text-xs shrink-0">
+                                            <div className="pt-2 mt-2 border-t border-slate-100 flex items-center justify-between text-xs shrink-0">
                                                 <span className="text-[11px] font-mono text-slate-400">
                                                     Direct practice access
                                                 </span>

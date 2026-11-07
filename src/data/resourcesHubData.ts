@@ -37,7 +37,10 @@ import {
   Activity,
   Boxes,
   ShieldCheck,
-  Scale
+  Scale,
+  Sparkles,
+  LineChart,
+  Globe
 } from 'lucide-react';
 
 export interface ResourceSubItem {
@@ -160,14 +163,24 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       'By Function',
       'By Technology',
       'By Business Outcome',
-      'Customer Success Stories'
+      'Customer Success Stories',
+      'Featured Transformations',
+      'AI Native Transformations',
+      'Enterprise SaaS Growth',
+      'Manufacturing Expansion',
+      'Financial Services AI'
     ],
     subItems: [
       { title: 'By Industry', description: 'Review enterprise SaaS, manufacturing, fintech, and healthcare dossiers.', path: '/resources-hub/case-studies/by-industry', icon: Factory, badge: 'Sectors' },
       { title: 'By Function', description: 'Filter by sales velocity, revops overhaul, and customer expansion.', path: '/resources-hub/case-studies/by-function', icon: Target, badge: 'Functions' },
       { title: 'By Technology', description: 'Inspect live deployments of AI SDRs, intent meshes and control planes.', path: '/resources-hub/case-studies/by-technology', icon: BrainCircuit, badge: 'AI Native' },
       { title: 'By Business Outcome', description: 'Empirical proof of margin expansion, pipeline lift and cycle reduction.', path: '/resources-hub/case-studies/by-business-outcome', icon: TrendingUp, badge: 'ROI Outcomes' },
-      { title: 'Customer Success Stories', description: 'Direct customer interview archives and multi-year transformation retrospectives.', path: '/resources-hub/case-studies/customer-success-stories', icon: Users, badge: 'Client Voices' }
+      { title: 'Customer Success Stories', description: 'Direct customer interview archives and multi-year transformation retrospectives.', path: '/resources-hub/case-studies/customer-success-stories', icon: Users, badge: 'Client Voices' },
+      { title: 'Featured Transformations', description: 'Flagship boardroom case studies detailing enterprise ARR inflection points.', path: '/case-studies/featured', icon: Sparkles, badge: 'Featured' },
+      { title: 'AI Native Transformations', description: 'Autonomous agent implementations driving 24/7 commercial pipeline generation.', path: '/case-studies/ai-native', icon: Cpu, badge: 'AI Systems' },
+      { title: 'Enterprise SaaS Pipeline Growth', description: 'Scalable B2B outbound engine delivering +240% qualified pipeline volume.', path: '/case-studies/enterprise-saas-pipeline-growth', icon: LineChart, badge: '+240% Lift' },
+      { title: 'Global Manufacturing Expansion', description: 'Cross-border commercial execution yielding +32% margin recovery.', path: '/case-studies/global-manufacturing-expansion', icon: Globe, badge: '+32% Margin' },
+      { title: 'Financial Services AI Deployment', description: 'Regulated institution deploying deterministic intelligence with zero model drift.', path: '/case-studies/financial-services-ai-transformation', icon: Landmark, badge: 'Governance' }
     ]
   },
 
@@ -190,7 +203,9 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       'Revenue Operations',
       'Account-Based Selling',
       'Territory Planning',
-      'Sales Productivity Frameworks'
+      'Sales Productivity Frameworks',
+      'Sales Enablement & Coaching',
+      'Executive Deal Desk Governance'
     ],
     subItems: [
       { title: 'Sales Methodologies', description: 'MEDDPICC, Command of the Message and value-engineering frameworks.', path: '/resources-hub/sales-acceleration-hub#sales-methodologies', icon: Compass, badge: 'Core Method' },
@@ -200,7 +215,9 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       { title: 'Revenue Operations', description: 'Unified CRM pipeline telemetry and automated data integrity controls.', path: '/resources-hub/sales-acceleration-hub#revenue-operations', icon: Workflow, badge: 'RevOps' },
       { title: 'Account-Based Selling', description: 'Tier-1 target account mapping and multi-stakeholder orchestration.', path: '/resources-hub/sales-acceleration-hub#account-based-selling', icon: Target, badge: 'ABS' },
       { title: 'Territory Planning', description: 'Market capacity modeling and deterministic quota allocation.', path: '/resources-hub/sales-acceleration-hub#territory-planning', icon: Layers, badge: 'Planning' },
-      { title: 'Sales Productivity Frameworks', description: 'Rep time-allocation rebalancing and administrative overhead removal.', path: '/resources-hub/sales-acceleration-hub#sales-productivity-frameworks', icon: TrendingUp, badge: 'Productivity' }
+      { title: 'Sales Productivity Frameworks', description: 'Rep time-allocation rebalancing and administrative overhead removal.', path: '/resources-hub/sales-acceleration-hub#sales-productivity-frameworks', icon: TrendingUp, badge: 'Productivity' },
+      { title: 'Sales Enablement & Coaching', description: 'Empirical coaching telemetry, rep ramp acceleration, and live deal guidance.', path: '/resources-hub/sales-acceleration-hub#sales-methodologies', icon: Award, badge: 'Coaching' },
+      { title: 'Executive Deal Desk Governance', description: 'Multi-tiered discounting thresholds, contract guardrails, and margin protection.', path: '/resources-hub/sales-acceleration-hub#pipeline-optimization', icon: ShieldCheck, badge: 'Governance' }
     ]
   },
 
@@ -223,7 +240,9 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       'Revenue Intelligence',
       'Forecasting Models',
       'Capacity Planning',
-      'Revenue Growth Frameworks'
+      'Revenue Growth Frameworks',
+      'Lead Routing & Ingestion',
+      'Pipeline Data Hygiene'
     ],
     subItems: [
       { title: 'ICP Frameworks', description: 'Firmographic, technographic and behavioral ideal customer definitions.', path: '/resources-hub/gtm-revenue-operations-hub#icp-frameworks', icon: Target, badge: 'Targeting' },
@@ -233,7 +252,9 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       { title: 'Revenue Intelligence', description: 'Real-time pipeline intent signals and conversational diagnostic traces.', path: '/resources-hub/gtm-revenue-operations-hub#revenue-intelligence', icon: BrainCircuit, badge: 'Telemetry' },
       { title: 'Forecasting Models', description: 'Triangulated statistical forecasts mitigating subjective rep bias.', path: '/resources-hub/gtm-revenue-operations-hub#forecasting-models', icon: BarChart3, badge: 'Accuracy' },
       { title: 'Capacity Planning', description: 'Headcount ramp dynamics and quota attainment elasticity models.', path: '/resources-hub/gtm-revenue-operations-hub#capacity-planning', icon: Users, badge: 'Capacity' },
-      { title: 'Revenue Growth Frameworks', description: 'Multi-vector growth blueprints for scalable enterprise expansion.', path: '/resources-hub/gtm-revenue-operations-hub#revenue-growth-frameworks', icon: TrendingUp, badge: 'Growth' }
+      { title: 'Revenue Growth Frameworks', description: 'Multi-vector growth blueprints for scalable enterprise expansion.', path: '/resources-hub/gtm-revenue-operations-hub#revenue-growth-frameworks', icon: TrendingUp, badge: 'Growth' },
+      { title: 'Lead Routing & Ingestion', description: 'Deterministic automated qualification, round-robin rules, and SLA tracking.', path: '/resources-hub/gtm-revenue-operations-hub#funnel-optimization', icon: Zap, badge: 'Routing' },
+      { title: 'Pipeline Data Hygiene', description: 'Continuous schema reconciliation, contact deduplication, and CRM data health.', path: '/resources-hub/gtm-revenue-operations-hub#revops-frameworks', icon: ShieldCheck, badge: 'Hygiene' }
     ]
   },
 
@@ -254,7 +275,11 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       'Predictive Revenue Intelligence',
       'Marketing & Customer Economics',
       'Advanced Analytical Tools',
-      'Industry Benchmarks & Performance'
+      'Industry Benchmarks & Performance',
+      'Revenue Gap Simulator',
+      '25 Mathematical Models',
+      'GTM Architecture Stack',
+      'Revenue Physics Engine'
     ],
     subItems: [
       {
@@ -298,6 +323,34 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
         path: '/resources-hub/advanced-analytical-tools-sales-acceleration#industry-benchmarks',
         icon: TrendingUp,
         badge: 'Quartile Baselines'
+      },
+      {
+        title: 'Revenue Gap Simulator',
+        description: 'Quantify latent commercial drag, customer churn friction, and pipeline shortfall.',
+        path: '/resources-hub/advanced-analytical-tools-sales-acceleration#revenue-gap-simulator',
+        icon: Gauge,
+        badge: 'Interactive Sim'
+      },
+      {
+        title: '25 Mathematical Models',
+        description: 'Deterministic formulas for revenue velocity, CAC payback, and customer retention compounding.',
+        path: '/resources-hub/advanced-analytical-tools-sales-acceleration#mathematical-models',
+        icon: LineChart,
+        badge: 'Parametric OS'
+      },
+      {
+        title: 'GTM Architecture Stack',
+        description: 'Full architectural stack connecting signals, CRM pipelines, and autonomous execution.',
+        path: '/resources-hub/advanced-analytical-tools-sales-acceleration#gtm-stack',
+        icon: Layers,
+        badge: 'Integrated GTM'
+      },
+      {
+        title: 'Revenue Physics Engine',
+        description: 'First-principles mechanics deconstructing conversion velocity and margin expansion.',
+        path: '/resources-hub/advanced-analytical-tools-sales-acceleration#revenue-physics',
+        icon: Activity,
+        badge: 'Deterministic'
       }
     ]
   },
@@ -321,7 +374,9 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       'Multi-Agent Systems',
       'AI Governance',
       'AI Security',
-      'Agentic Operating Models'
+      'Agentic Operating Models',
+      'Continuous Evaluation',
+      'Human-in-the-Loop Controls'
     ],
     subItems: [
       { title: 'AI Use Cases', description: 'Enterprise AI applications connected to measurable commercial revenue outcomes.', path: '/resources-hub/ai-agentic-automation-hub#ai-use-cases', icon: Zap, badge: 'Enterprise' },
@@ -331,7 +386,9 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       { title: 'Multi-Agent Systems', description: 'Coordinated agent networks working together across complex, multi-functional enterprise workflows.', path: '/resources-hub/ai-agentic-automation-hub#multi-agent-systems', icon: Layers, badge: 'Swarms' },
       { title: 'AI Governance', description: 'Enterprise oversight, accountability, auditability, and responsible AI operational controls.', path: '/resources-hub/ai-agentic-automation-hub#ai-governance', icon: ShieldCheck, badge: 'Governance' },
       { title: 'AI Security', description: 'Enterprise security, identity, data protection, and proactive risk management for AI systems.', path: '/resources-hub/ai-agentic-automation-hub#ai-security', icon: Shield, badge: 'Security' },
-      { title: 'Agentic Operating Models', description: 'Organizational architectures for orchestrating hybrid human and AI-agent workforces together.', path: '/resources-hub/ai-agentic-automation-hub#agentic-operating-models', icon: Sliders, badge: 'Operations' }
+      { title: 'Agentic Operating Models', description: 'Organizational architectures for orchestrating hybrid human and AI-agent workforces together.', path: '/resources-hub/ai-agentic-automation-hub#agentic-operating-models', icon: Sliders, badge: 'Operations' },
+      { title: 'Continuous Model Evaluation', description: 'Deterministic latency benchmarks, output quality auditing, and guardrail verification.', path: '/resources-hub/ai-agentic-automation-hub#ai-governance', icon: Gauge, badge: 'Evaluation' },
+      { title: 'Human-in-the-Loop Controls', description: 'Supervisory override interfaces and escalation protocols for high-stakes enterprise decisions.', path: '/resources-hub/ai-agentic-automation-hub#agentic-operating-models', icon: UserCheck, badge: 'HITL Controls' }
     ]
   },
 
@@ -354,7 +411,9 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       'AI Agent Workflows',
       'Business Process Automation',
       'Revenue Operations Automation',
-      'Intelligent System Integration'
+      'Intelligent System Integration',
+      'Order-to-Cash Automation',
+      'Executive Notification Mesh'
     ],
     subItems: [
       { title: 'Sales Workflow Automation', description: 'Lead assignment, follow-up cadence, and deal movement automation.', path: '/resources-hub/automation-excellence#sales-workflow-automation', icon: Workflow, badge: 'Sales Execution' },
@@ -364,7 +423,9 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       { title: 'AI Agent Workflows', description: 'Multi-agent orchestration, intent routing, and autonomous research.', path: '/resources-hub/automation-excellence#ai-agent-workflows', icon: BrainCircuit, badge: 'Cognitive Agents' },
       { title: 'Business Process Automation', description: 'Approval routings, contract generation, and discount governance.', path: '/resources-hub/automation-excellence#business-process-automation', icon: Zap, badge: 'Process Efficiency' },
       { title: 'Revenue Operations Automation', description: 'Cross-functional telemetry, pipeline velocity, and forecast rollups.', path: '/resources-hub/automation-excellence#revenue-operations-automation', icon: BarChart3, badge: 'RevOps' },
-      { title: 'Intelligent System Integration', description: 'Bi-directional webhooks, unified schemas, and enterprise data mesh.', path: '/resources-hub/automation-excellence#system-integration', icon: GitMerge, badge: 'API Integration' }
+      { title: 'Intelligent System Integration', description: 'Bi-directional webhooks, unified schemas, and enterprise data mesh.', path: '/resources-hub/automation-excellence#system-integration', icon: GitMerge, badge: 'API Integration' },
+      { title: 'Order-to-Cash Automation', description: 'Automated contract execution, invoice provisioning, and billing milestone synchronization.', path: '/resources-hub/automation-excellence#business-process-automation', icon: DollarSign, badge: 'FinOps' },
+      { title: 'Executive Notification Mesh', description: 'Real-time incident, anomaly, and pipeline milestone dispatching across enterprise channels.', path: '/resources-hub/automation-excellence#system-integration', icon: Radio, badge: 'Event Mesh' }
     ]
   },
 
@@ -387,7 +448,9 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       'Total Quality Management',
       'Operational Excellence',
       'Baldrige Framework',
-      'EFQM Excellence Model'
+      'EFQM Excellence Model',
+      'Sales Velocity Kaizen',
+      'Forensic Root-Cause Audits'
     ],
     subItems: [
       { title: 'Lean Sales', description: 'Waste elimination in the sales pipeline: removing deal drag and over-qualification.', path: '/resources-hub/continuous-sales-improvement-hub#lean-sales', icon: Sliders, badge: 'Waste Elimination' },
@@ -397,7 +460,9 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       { title: 'Total Quality Management', description: 'Total Quality Management principles applied to enterprise client onboarding.', path: '/resources-hub/continuous-sales-improvement-hub#total-quality-management', icon: CheckCircle2, badge: 'Customer Quality' },
       { title: 'Operational Excellence', description: 'Cross-functional cadences aligning product, marketing and customer success.', path: '/resources-hub/continuous-sales-improvement-hub#operational-excellence', icon: Award, badge: 'RevOps Scale' },
       { title: 'Baldrige Framework', description: 'Performance excellence criteria for organizational competitiveness and leadership.', path: '/resources-hub/continuous-sales-improvement-hub#baldrige-framework', icon: Landmark, badge: 'Organizational Maturity' },
-      { title: 'EFQM Excellence Model', description: 'Direction, execution and results management framework for sustainable transformation.', path: '/resources-hub/continuous-sales-improvement-hub#efqm-excellence-model', icon: Shield, badge: 'Sustainable Value' }
+      { title: 'EFQM Excellence Model', description: 'Direction, execution and results management framework for sustainable transformation.', path: '/resources-hub/continuous-sales-improvement-hub#efqm-excellence-model', icon: Shield, badge: 'Sustainable Value' },
+      { title: 'Sales Velocity Kaizen', description: 'Cycle compression sprints systematically removing deal stalling at legal and security stages.', path: '/resources-hub/continuous-sales-improvement-hub#kaizen', icon: Gauge, badge: 'Velocity' },
+      { title: 'Forensic Root-Cause Audits', description: '5-Whys and Ishikawa fishbone analysis applied to lost enterprise deals and customer churn.', path: '/resources-hub/continuous-sales-improvement-hub#lean-sales', icon: Activity, badge: 'Root Cause' }
     ]
   },
 
@@ -420,7 +485,9 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       'Value Creation Frameworks',
       'Digital Transformation',
       'Business Architecture',
-      'Operating Models'
+      'Operating Models',
+      'Commercial M&A Integration',
+      'Enterprise Change Architecture'
     ],
     subItems: [
       { title: 'Strategy Maps', description: 'Visual cause-and-effect roadmaps linking internal capabilities to financial returns.', path: '/resources-hub#strategy-maps', icon: Compass, badge: 'Roadmaps' },
@@ -430,7 +497,9 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       { title: 'Value Creation Frameworks', description: 'EBITDA expansion and enterprise multiple acceleration blueprints.', path: '/resources-hub#value-creation-frameworks', icon: DollarSign, badge: 'EBITDA' },
       { title: 'Digital Transformation', description: 'Legacy architecture modernization and cloud-native commercial migration.', path: '/resources-hub#digital-transformation', icon: Cloud, badge: 'Transformation' },
       { title: 'Business Architecture', description: 'Enterprise capability mapping connecting value streams to operational platforms.', path: '/resources-hub#business-architecture', icon: Layers, badge: 'Architecture' },
-      { title: 'Operating Models', description: 'Target operating models (TOM) for global revenue scaling and regional governance.', path: '/resources-hub#operating-models', icon: Workflow, badge: 'TOM' }
+      { title: 'Operating Models', description: 'Target operating models (TOM) for global revenue scaling and regional governance.', path: '/resources-hub#operating-models', icon: Workflow, badge: 'TOM' },
+      { title: 'Commercial M&A Integration', description: 'Post-merger revenue stack unification, customer account cross-pollination, and churn defense.', path: '/resources-hub#operating-models', icon: GitMerge, badge: 'M&A Synergy' },
+      { title: 'Enterprise Change Architecture', description: 'Executive sponsorship models and behavior adoption matrices for autonomous AI rollouts.', path: '/resources-hub#business-architecture', icon: Award, badge: 'Adoption' }
     ]
   },
 
@@ -453,7 +522,9 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       'ROI Models',
       'Checklists',
       'SOPs',
-      'Workshops'
+      'Workshops',
+      'Governance Charters',
+      'Executive Steering Matrix'
     ],
     subItems: [
       { title: 'Playbooks', description: 'Curated enterprise playbooks for outbound prospecting and multi-threading.', path: '/resources-hub/frameworks-templates-hub#playbooks', icon: BookOpen, badge: 'Playbooks' },
@@ -463,7 +534,9 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       { title: 'ROI Models', description: 'Financial return calculation templates and payback timeline models.', path: '/resources-hub/frameworks-templates-hub#roi-models', icon: Calculator, badge: 'ROI' },
       { title: 'Checklists', description: 'Stage-gate verification checklists for deal closure and technical validation.', path: '/resources-hub/frameworks-templates-hub#checklists', icon: Sliders, badge: 'Hygiene' },
       { title: 'SOPs', description: 'Standard Operating Procedures for RevOps CRM hygiene and pipeline staging.', path: '/resources-hub/frameworks-templates-hub#sops', icon: Workflow, badge: 'SOPs' },
-      { title: 'Workshops', description: 'Facilitation agendas and canvas templates for executive strategy alignment.', path: '/resources-hub/frameworks-templates-hub#workshops', icon: Users, badge: 'Canvas' }
+      { title: 'Workshops', description: 'Facilitation agendas and canvas templates for executive strategy alignment.', path: '/resources-hub/frameworks-templates-hub#workshops', icon: Users, badge: 'Canvas' },
+      { title: 'Governance Charters', description: 'Enterprise compliance frameworks, data residency charters, and audit sign-off templates.', path: '/resources-hub/frameworks-templates-hub#sops', icon: ShieldCheck, badge: 'Charters' },
+      { title: 'Executive Steering Matrix', description: 'Cross-functional program management cadence and decision authority thresholds.', path: '/resources-hub/frameworks-templates-hub#maturity-models', icon: Target, badge: 'Steering' }
     ]
   },
 
@@ -487,7 +560,8 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       'Automation Readiness Assessment',
       'Lean Waste Assessment',
       'Sales Process Automation Assessment',
-      'GTM Maturity Assessment'
+      'GTM Maturity Assessment',
+      'Pipeline Leakage Assessment'
     ],
     subItems: [
       { title: 'Revenue Calculator', description: 'Interactive suite modeling top-line revenue from acquisition and account expansion.', path: '/resources-hub/tools-calculators-hub#revenue-performance', icon: Calculator, badge: 'Live Calculator' },
@@ -498,7 +572,8 @@ export const RESOURCES_HUB_CATEGORIES: ResourceCategory[] = [
       { title: 'Automation Readiness Assessment', description: 'Process candidate scoring rubric for hyperautomation and agent prioritization.', path: '/resources-hub/tools-calculators-hub#ai-readiness', icon: Zap, badge: 'Assessment' },
       { title: 'Lean Waste Assessment', description: 'Diagnostic audit quantifying commercial pipeline non-value-added time and annual drag.', path: '/resources-hub/tools-calculators-hub#sales-optimization', icon: Sliders, badge: 'Assessment' },
       { title: 'Sales Process Automation Assessment', description: 'Milestone coverage evaluation across 8 core stages from lead capture to forecasting.', path: '/resources-hub/tools-calculators-hub#gtm-maturity', icon: Workflow, badge: 'Assessment' },
-      { title: 'GTM Maturity Assessment', description: 'Benchmark organizational alignment across 10 strategic commercial dimensions.', path: '/resources-hub/tools-calculators-hub#gtm-maturity', icon: Award, badge: 'Assessment' }
+      { title: 'GTM Maturity Assessment', description: 'Benchmark organizational alignment across 10 strategic commercial dimensions.', path: '/resources-hub/tools-calculators-hub#gtm-maturity', icon: Award, badge: 'Assessment' },
+      { title: 'Pipeline Leakage Assessment', description: 'Quantify conversion drop-offs and unbilled usage recovery potential across stages.', path: '/resources-hub/tools-calculators-hub#sales-optimization', icon: Scale, badge: 'Assessment' }
     ]
   }
 ];

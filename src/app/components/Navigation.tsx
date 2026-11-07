@@ -8,7 +8,8 @@ import {
     Network, Clock, BookOpen, HelpCircle, Landmark, HeartPulse, GraduationCap,
     Lightbulb, Shield, BarChart3, CheckCircle2, Phone, Radio, Factory, Server, Box, Scale,
     Flame, Store, Building, Cloud, HeartHandshake, Radar, LineChart, RefreshCw,
-    Percent, GitMerge, Award, Workflow, Gauge, Calculator, LogIn, LogOut, User
+    Percent, GitMerge, Award, Workflow, Gauge, Calculator, LogIn, LogOut, User,
+    AlertTriangle, Mail, MessageSquare, FolderGit2, Database
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 

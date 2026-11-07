@@ -393,10 +393,10 @@ export default function EngagementJourneys() {
                           </div>
 
                           <h4 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                            {step?.modelName || 'Stage Execution'}
+                            {step.modelName}
                           </h4>
                           <p className="text-xs text-blue-600 font-semibold mt-0.5">
-                            {step?.focus || ''}
+                            {step.focus}
                           </p>
                         </div>
 
@@ -405,7 +405,7 @@ export default function EngagementJourneys() {
                             Key Output:
                           </span>
                           <p className="text-xs text-slate-600 leading-snug">
-                            {step?.deliverable || ''}
+                            {step.deliverable}
                           </p>
                         </div>
                       </div>

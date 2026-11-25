@@ -128,6 +128,14 @@ const RevenueLeakageRecoveryPage = lazy(() => import('./pages/growth-science/Rev
 const RevenueBundlingOfferEngineeringPage = lazy(() => import('./pages/growth-science/RevenueBundlingOfferEngineeringPage'));
 const ValueCaptureEngineeringPage = lazy(() => import('./pages/growth-science/ValueCaptureEngineeringPage'));
 const ProductInnovationRevenueExpansionPage = lazy(() => import('./pages/growth-science/ProductInnovationRevenueExpansionPage'));
+
+// ── 6 DEDICATED RESOURCES PAGES ──
+const IndustryFunctionalIntelligencePage = lazy(() => import('./pages/resources-hub/IndustryFunctionalIntelligencePage'));
+const CaseStudiesSuccessStoriesPage = lazy(() => import('./pages/resources-hub/CaseStudiesSuccessStoriesPage'));
+const SalesGtmRevenueGrowthPage = lazy(() => import('./pages/resources-hub/SalesGtmRevenueGrowthPage'));
+const AnalyticsDecisionSciencePage = lazy(() => import('./pages/resources-hub/AnalyticsDecisionSciencePage'));
+const AiAutomationOperationalExcellencePage = lazy(() => import('./pages/resources-hub/AiAutomationOperationalExcellencePage'));
+const StrategyFrameworksBusinessToolsPage = lazy(() => import('./pages/resources-hub/StrategyFrameworksBusinessToolsPage'));
 const RevenueAccelerationPage = lazy(() => import('./pages/growth-science/RevenueAccelerationPage'));
 const ExecutiveRevenueCommandCenterPage = lazy(() => import('./pages/growth-science/ExecutiveRevenueCommandCenterPage'));
 const GlobalAccelerationHub = lazy(() => import('./pages/global-acceleration/GlobalAccelerationHub'));
@@ -303,6 +311,13 @@ export default function App() {
               <Route path="/demand-pulse" element={<DemandPulse />} />
               <Route path="/outcomes" element={<Outcomes />} />
               <Route path="/resources-hub" element={<ResourcesHubLandingPage />} />
+              {/* 6 APPROVED DEDICATED RESOURCES PAGES */}
+              <Route path="/resources-hub/industry-functional-intelligence" element={<IndustryFunctionalIntelligencePage />} />
+              <Route path="/resources-hub/case-studies-success-stories" element={<CaseStudiesSuccessStoriesPage />} />
+              <Route path="/resources-hub/sales-gtm-revenue-growth" element={<SalesGtmRevenueGrowthPage />} />
+              <Route path="/resources-hub/analytics-decision-science" element={<AnalyticsDecisionSciencePage />} />
+              <Route path="/resources-hub/ai-automation-operational-excellence" element={<AiAutomationOperationalExcellencePage />} />
+              <Route path="/resources-hub/strategy-frameworks-business-tools" element={<StrategyFrameworksBusinessToolsPage />} />
               <Route path="/resources-hub/industry-resource-hubs" element={<IndustryResourceHubsPage />} />
               <Route path="/resources-hub/functional-resource-hubs" element={<FunctionalResourceHubsPage />} />
               <Route path="/resources-hub/sales-acceleration-hub" element={<SalesAccelerationHubPage />} />

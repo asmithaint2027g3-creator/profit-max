@@ -17,4 +17,6 @@ profitmachines-youtube-videos/
 *.tar
 *.tar.gz
 *.zip
+__pycache__/
+*.pyc
 

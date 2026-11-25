@@ -22,6 +22,7 @@ import {
     IndustryCapabilityItem
 } from '../../data/navigationArchitecture';
 import { RESOURCES_HUB_CATEGORIES } from '../../data/resourcesHubData';
+import { RESOURCES_MAIN_MENUS } from '../../data/resourcesNavigationData';
 
 export { offeringsArchitecture, industriesArchitecture };
 export type { OfferingCategoryDetail, OfferingCapabilityItem, IndustryCategoryDetail, IndustryCapabilityItem };
@@ -145,14 +146,14 @@ const spotlightConfigs: Record<string, SpotlightConfig> = {
         accentGlow: 'from-blue-700/30 to-emerald-600/30'
     },
     'resources-hub': {
-        badge: 'Enterprise Knowledge Hub',
-        tagline: '12 Curated Resource Hubs',
-        title: 'Complete Resources Hub',
+        badge: 'Enterprise Knowledge Platform',
+        tagline: '6 Dedicated Main Pages · 33 Submenus',
+        title: 'Executive Resources',
         description: 'Explore business intelligence, analytical models, practical frameworks, and interactive calculators engineered for scalable growth.',
-        kpi: '12 Hubs',
-        kpiLabel: 'Curated Categories',
+        kpi: '33 Submenus',
+        kpiLabel: '6 Main Pages',
         path: '/resources-hub',
-        ctaText: 'Explore Resources Hub',
+        ctaText: 'Explore Resources',
         icon: BookOpen,
         accentGlow: 'from-blue-600/30 to-indigo-700/30'
     },
@@ -244,15 +245,15 @@ const menuPresentationConfigs: Record<string, MenuPresentationConfig> = {
     },
     'resources-hub': {
         sectionTag: 'RESOURCES',
-        capabilitiesLabel: 'CURATED RESOURCE CLUSTERS',
-        outcomeBadge: '12 Complete Categories',
+        capabilitiesLabel: 'CURATED INTELLIGENCE PLATFORMS',
+        outcomeBadge: '6 Dedicated Main Pages',
         recommendedFor: ['Enterprise Executives', 'Revenue Leaders', 'Operational Teams'],
         businessImpacts: [
-            '12 Dedicated Category Hubs',
+            '33 Detailed Submenu Capabilities',
             'Approved 25 Mathematical Models',
             'Interactive Diagnostics & Tools'
         ],
-        ctaText: 'Explore Resources Hub'
+        ctaText: 'Explore Resources'
     },
     'about-us': {
         sectionTag: 'THE EXECUTIVE ADVISORY',
@@ -2948,7 +2949,7 @@ export default function Navigation() {
             ]
         },
 
-        // 6. RESOURCES HUB (COMPLETE 12-CATEGORY APPROVED HIERARCHY)
+        // 6. RESOURCES HUB (EXACT APPROVED 6-MENU, 33-SUBMENU ARCHITECTURE)
         {
             id: 'resources-hub',
             name: 'Resources Hub',
@@ -2957,59 +2958,28 @@ export default function Navigation() {
             icon: BookOpen,
             badge: 'Knowledge Architecture',
             summary: 'Explore industry intelligence, functional playbooks, empirical models, AI frameworks, and interactive calculators.',
-            categories: RESOURCES_HUB_CATEGORIES.map(cat => ({
-                id: cat.id,
-                title: cat.title,
-                desc: cat.shortIntro,
-                path: cat.path,
-                badge: cat.previewLabels.slice(0, 2).join(' • '),
-                icon: cat.icon,
-                columns: cat.subGroups
-                    ? cat.subGroups.map(grp => ({
-                        header: grp.groupName,
-                        badge: grp.badge || 'Suite',
-                        icon: grp.items[0]?.icon || cat.icon,
-                        cards: grp.items.map(it => ({
-                            title: it.title,
-                            description: it.description || '',
-                            path: it.path,
-                            badge: it.badge || grp.groupName,
-                            icon: it.icon || cat.icon,
-                            tags: [grp.groupName]
+            categories: RESOURCES_MAIN_MENUS.map(menu => ({
+                id: menu.id,
+                title: menu.title,
+                desc: menu.shortIntro,
+                path: menu.route,
+                badge: `${menu.submenus.length} Submenus`,
+                icon: menu.icon,
+                columns: [
+                    {
+                        header: `${menu.title} · Submenus (01-0${menu.submenus.length})`,
+                        badge: 'Strategic',
+                        icon: menu.icon,
+                        cards: menu.submenus.map(sub => ({
+                            title: sub.title,
+                            description: sub.description,
+                            path: `${menu.route}#${sub.anchor}`,
+                            badge: sub.badge,
+                            icon: sub.icon,
+                            tags: [menu.title]
                         }))
-                    }))
-                    : [
-                        {
-                            header: cat.id === 'analytics-decision-science' 
-                                ? 'Executive & Pipeline Intelligence' 
-                                : `${cat.title} · Core Modules`,
-                            badge: cat.id === 'analytics-decision-science' ? 'Telemetry & Velocity' : 'Essential',
-                            icon: cat.icon,
-                            cards: (cat.subItems ? cat.subItems.slice(0, Math.ceil((cat.subItems.length || 0) / 2)) : []).map(it => ({
-                                title: it.title,
-                                description: it.description || '',
-                                path: it.path,
-                                badge: it.badge,
-                                icon: it.icon || cat.icon,
-                                tags: [cat.title]
-                            }))
-                        },
-                        {
-                            header: cat.id === 'analytics-decision-science' 
-                                ? 'Economics, Advanced Tools & Benchmarks' 
-                                : `${cat.title} · Advanced Modules`,
-                            badge: cat.id === 'analytics-decision-science' ? 'Flagship Analytical Stack' : 'Operational',
-                            icon: cat.icon,
-                            cards: (cat.subItems ? cat.subItems.slice(Math.ceil((cat.subItems.length || 0) / 2)) : []).map(it => ({
-                                title: it.title,
-                                description: it.description || '',
-                                path: it.path,
-                                badge: it.badge,
-                                icon: it.icon || cat.icon,
-                                tags: [cat.title]
-                            }))
-                        }
-                    ]
+                    }
+                ]
             }))
         },
         // 7. ABOUT US
@@ -3832,25 +3802,13 @@ export default function Navigation() {
                                             {/* Top Section: Header + Cards Grid */}
                                             <div className="space-y-2.5">
                                                 {/* Top Header Area */}
-                                                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-slate-100 gap-1.5 shrink-0">
-                                                    <div>
-                                                        <span className="text-[9px] font-extrabold uppercase tracking-[0.16em] text-slate-400">
-                                                            {activeConfig.capabilitiesLabel}
-                                                        </span>
-                                                        <h3 className="text-sm sm:text-base font-extrabold text-slate-900 font-heading tracking-tight">
-                                                            {currentCategory.title}
-                                                        </h3>
-                                                    </div>
-
-                                                    {/* Metadata Badges */}
-                                                    <div className="flex flex-wrap items-center gap-1.5">
-                                                        <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[10px] font-bold font-mono">
-                                                            {allLinks.length} Items
-                                                        </span>
-                                                        <span className="px-2 py-0.5 rounded bg-blue-50 text-blue-700 text-[10px] font-bold border border-blue-200/60">
-                                                            {displayOutcomeBadge}
-                                                        </span>
-                                                    </div>
+                                                <div className="pb-2 border-b border-slate-100 shrink-0">
+                                                    <span className="text-[9px] font-extrabold uppercase tracking-[0.16em] text-slate-400">
+                                                        {activeConfig.capabilitiesLabel}
+                                                    </span>
+                                                    <h3 className="text-sm sm:text-base font-extrabold text-slate-900 font-heading tracking-tight">
+                                                        {currentCategory.title}
+                                                    </h3>
                                                 </div>
 
                                                 {/* Main Content Grid: Cards hug content tightly */}
@@ -3869,11 +3827,11 @@ export default function Navigation() {
                                                                     <CardIcon className="w-3.5 h-3.5" />
                                                                 </div>
                                                                 <div className="min-w-0 flex-1 flex flex-col justify-center">
-                                                                    <span className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+                                                                    <span className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug break-words">
                                                                         {card.title}
                                                                     </span>
                                                                     {(card.badge || (card.tags && card.tags[0])) && (
-                                                                        <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-slate-400 group-hover:text-blue-600 transition-colors mt-0.5">
+                                                                        <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-slate-400 group-hover:text-blue-600 transition-colors mt-0.5 break-words">
                                                                             {card.badge || card.tags[0]}
                                                                         </span>
                                                                     )}

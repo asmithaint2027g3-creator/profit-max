@@ -223,6 +223,26 @@ export default function SalesGtmRevenueGrowthPage() {
               <div className="rounded-2xl bg-white border border-slate-200/90 shadow-md p-6 sm:p-8 space-y-6 relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600" />
                 
+                {/* Visual Image Banner for Active Methodology */}
+                <div className="relative h-44 sm:h-52 rounded-xl overflow-hidden border border-slate-200/80 bg-slate-100">
+                  <img
+                    src="/images/hero-revenue-acceleration.png"
+                    alt={current.name}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+                    <div className="text-white">
+                      <div className="text-[10px] font-mono uppercase tracking-wider text-blue-300 font-bold">{current.focus}</div>
+                      <div className="text-xl sm:text-2xl font-bold text-white font-heading">{current.name}</div>
+                    </div>
+                    <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-blue-600 text-white shadow-xs">
+                      Enterprise Standard
+                    </span>
+                  </div>
+                </div>
+
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-slate-100 gap-2">
                   <div>
                     <h3 className="text-lg sm:text-xl font-bold text-slate-900 font-heading">{current.name}</h3>

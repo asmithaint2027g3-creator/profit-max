@@ -172,41 +172,71 @@ export default function AnalyticsDecisionSciencePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-2xl bg-white border border-slate-200/90 hover:border-cyan-400 hover:shadow-xl hover:-translate-y-0.5 space-y-3 shadow-sm transition-all">
-              <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-cyan-50 text-cyan-700 border border-cyan-200">
-                Data Pillar 01
-              </span>
-              <h3 className="text-lg font-bold text-slate-900 font-heading">Single Source of Truth (SSOT)</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                Reconciling conflicting ARR, MRR, churn, and booking metrics between ERP (NetSuite/SAP), CRM (Salesforce/HubSpot), and billing gateways (Stripe/Zuora).
-              </p>
-              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono text-emerald-700 font-bold">
+            <div className="group rounded-2xl bg-white border border-slate-200/90 hover:border-cyan-400 hover:shadow-xl hover:-translate-y-0.5 p-5 flex flex-col justify-between shadow-sm transition-all overflow-hidden">
+              <div className="space-y-4">
+                <div className="relative h-36 rounded-xl overflow-hidden border border-slate-200/80 bg-slate-100">
+                  <img
+                    src="/images/hero-data-intelligence.png"
+                    alt="Single Source of Truth (SSOT)"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+                  <span className="absolute bottom-2.5 left-2.5 px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-white/95 text-cyan-800 shadow-xs">
+                    Data Pillar 01
+                  </span>
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 font-heading">Single Source of Truth (SSOT)</h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                  Reconciling conflicting ARR, MRR, churn, and booking metrics between ERP (NetSuite/SAP), CRM (Salesforce/HubSpot), and billing gateways (Stripe/Zuora).
+                </p>
+              </div>
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono text-emerald-700 font-bold mt-4">
                 Eliminates 100% of executive board dispute over ARR definitions.
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 hover:shadow-xl hover:-translate-y-0.5 space-y-3 shadow-sm transition-all">
-              <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-blue-50 text-blue-700 border border-blue-200">
-                Data Pillar 02
-              </span>
-              <h3 className="text-lg font-bold text-slate-900 font-heading">Entity Graph Resolution</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                Automated parent-child corporate hierarchy linkage (Ultimate Parent D-U-N-S, subsidiaries, mergers) preventing fragmented account representation across reps.
-              </p>
-              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono text-blue-700 font-bold">
+            <div className="group rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 hover:shadow-xl hover:-translate-y-0.5 p-5 flex flex-col justify-between shadow-sm transition-all overflow-hidden">
+              <div className="space-y-4">
+                <div className="relative h-36 rounded-xl overflow-hidden border border-slate-200/80 bg-slate-100">
+                  <img
+                    src="/images/demand-pulse-dashboard.png"
+                    alt="Entity Graph Resolution"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+                  <span className="absolute bottom-2.5 left-2.5 px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-white/95 text-blue-800 shadow-xs">
+                    Data Pillar 02
+                  </span>
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 font-heading">Entity Graph Resolution</h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                  Automated parent-child corporate hierarchy linkage (Ultimate Parent D-U-N-S, subsidiaries, mergers) preventing fragmented account representation across reps.
+                </p>
+              </div>
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono text-blue-700 font-bold mt-4">
                 Consolidates multi-subsidiary spend into unified master contracts.
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white border border-slate-200/90 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-0.5 space-y-3 shadow-sm transition-all">
-              <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
-                Data Pillar 03
-              </span>
-              <h3 className="text-lg font-bold text-slate-900 font-heading">Audit Trail & Lineage</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                Immutable event timestamping for deal creation, stage migration, discount approval, and close-date slips, establishing forensic causality.
-              </p>
-              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono text-indigo-700 font-bold">
+            <div className="group rounded-2xl bg-white border border-slate-200/90 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-0.5 p-5 flex flex-col justify-between shadow-sm transition-all overflow-hidden">
+              <div className="space-y-4">
+                <div className="relative h-36 rounded-xl overflow-hidden border border-slate-200/80 bg-slate-100">
+                  <img
+                    src="/images/hero-profit-pool.png"
+                    alt="Audit Trail & Lineage"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+                  <span className="absolute bottom-2.5 left-2.5 px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-white/95 text-indigo-800 shadow-xs">
+                    Data Pillar 03
+                  </span>
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 font-heading">Audit Trail & Lineage</h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                  Immutable event timestamping for deal creation, stage migration, discount approval, and close-date slips, establishing forensic causality.
+                </p>
+              </div>
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono text-indigo-700 font-bold mt-4">
                 Enables statistical backtesting and machine learning validation.
               </div>
             </div>

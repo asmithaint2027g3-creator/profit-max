@@ -16,6 +16,47 @@ import {
   TESTIMONIALS_DATA
 } from '../../../data/caseStudiesData';
 
+const industryImages: Record<string, string> = {
+  saas: '/images/industry-saas.png',
+  manufacturing: '/images/industry-manufacturing.png',
+  'financial-services': '/images/industry-fintech.png',
+  healthcare: '/images/industry-healthcare.png',
+  'professional-services': '/images/hero-data-intelligence.png',
+  'retail-ecommerce': '/images/industry-retail.png'
+};
+
+const functionImages: Record<string, string> = {
+  'sales-bd': '/images/hero-revenue-acceleration.png',
+  'marketing-demand': '/images/demand-pulse-dashboard.png',
+  revops: '/images/hero-data-intelligence.png',
+  'customer-success': '/images/home-hero-dashboard.png',
+  'pricing-strategy': '/images/hero-profit-pool.png',
+  'executive-management': '/images/hero-end-to-end-transformation.png'
+};
+
+const techImages: Record<string, string> = {
+  'ai-native-sales': '/images/hero-agentic-ai.png',
+  'ai-prospecting': '/images/demand-pulse-dashboard.png',
+  'intelligent-sales-agents': '/images/hero-ai-transformation.png',
+  'revenue-intelligence': '/images/hero-data-intelligence.png',
+  'demand-intelligence': '/images/revenue-acceleration-engine.png',
+  'revops-automation': '/images/outcomes-metrics.png',
+  'decision-intelligence': '/images/hero-profit-pool.png',
+  'integrated-gtm-systems': '/images/home-hero-dashboard.png'
+};
+
+const outcomeImages: Record<string, string> = {
+  'revenue-growth': '/images/hero-revenue-acceleration.png',
+  'pipeline-growth': '/images/demand-pulse-dashboard.png',
+  'lead-quality': '/images/hero-profit-pool.png',
+  'cycle-optimization': '/images/revenue-acceleration-engine.png',
+  'conversion-improvement': '/images/hero-ai-transformation.png',
+  'cac-efficiency': '/images/outcomes-metrics.png',
+  'retention-expansion': '/images/home-hero-dashboard.png',
+  'visibility-forecasting': '/images/hero-data-intelligence.png',
+  'operational-efficiency': '/images/hero-end-to-end-transformation.png'
+};
+
 export default function CaseStudiesSuccessStoriesPage() {
   const location = useLocation();
 
@@ -158,51 +199,72 @@ export default function CaseStudiesSuccessStoriesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {INDUSTRY_CASE_STUDIES_DATA.map((item, idx) => (
-              <div
-                key={idx}
-                className="rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 hover:shadow-xl hover:-translate-y-0.5 p-6 flex flex-col justify-between transition-all duration-200 shadow-sm"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-blue-50 text-blue-700 border border-blue-200">
-                      {item.industry}
-                    </span>
-                    <span className="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                      {item.highlightMetric}
-                    </span>
+            {INDUSTRY_CASE_STUDIES_DATA.map((item, idx) => {
+              const imageSrc = industryImages[item.id] || '/images/hero-revenue-acceleration.png';
+              const targetSlug = item.relevantStorySlugs?.[0] || 'enterprise-saas-pipeline-growth';
+
+              return (
+                <div
+                  key={idx}
+                  className="group rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 hover:shadow-xl hover:-translate-y-0.5 p-5 flex flex-col justify-between transition-all duration-200 shadow-sm"
+                >
+                  <div className="space-y-4">
+                    {/* Visual Card Image */}
+                    <div className="relative h-44 rounded-xl overflow-hidden border border-slate-200/80 bg-slate-100">
+                      <img
+                        src={imageSrc}
+                        alt={item.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                      <div className="absolute top-2.5 left-2.5">
+                        <span className="px-2.5 py-1 rounded-md text-[11px] font-mono font-bold bg-white/95 text-blue-700 shadow-xs border border-blue-200/60 backdrop-blur-xs">
+                          {item.badge}
+                        </span>
+                      </div>
+                      <div className="absolute top-2.5 right-2.5">
+                        <span className="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-emerald-600 text-white shadow-xs">
+                          {item.stat}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3 className="text-lg font-bold text-slate-900 font-heading leading-snug">
+                        {item.name}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal mt-1.5">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-xl bg-slate-50/90 border border-slate-200/80 text-xs space-y-2 text-slate-700">
+                      <div>
+                        <span className="font-bold text-slate-900 font-heading">Core Challenges: </span>
+                        <span className="text-slate-600">{item.challenges.join(' · ')}</span>
+                      </div>
+                      <div>
+                        <span className="font-bold text-slate-900 font-heading">Revenue Model: </span>
+                        <span className="text-slate-600">{item.revenueModel}</span>
+                      </div>
+                    </div>
                   </div>
 
-                  <h3 className="text-base sm:text-lg font-bold text-slate-900 font-heading leading-snug">
-                    {item.title}
-                  </h3>
-
-                  <div className="p-3.5 rounded-xl bg-slate-50/80 border border-slate-200/80 text-xs space-y-2 text-slate-700">
-                    <div>
-                      <span className="font-bold text-slate-900 font-heading">Challenge: </span>
-                      <span className="text-slate-600">{item.challenge}</span>
+                  <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
+                    <div className="text-[11px] text-slate-500 font-mono">
+                      Impact: <span className="text-slate-900 font-bold">{item.statLabel}</span>
                     </div>
-                    <div>
-                      <span className="font-bold text-slate-900 font-heading">Transformation: </span>
-                      <span className="text-slate-600">{item.solution}</span>
-                    </div>
+                    <Link
+                      to={`/case-studies/stories/${targetSlug}`}
+                      className="inline-flex items-center gap-1 text-xs font-bold font-mono text-blue-600 hover:text-blue-700 group/link cursor-pointer"
+                    >
+                      <span>Read Study</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" />
+                    </Link>
                   </div>
                 </div>
-
-                <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
-                  <div className="text-[11px] text-slate-500 font-mono">
-                    Impact: <span className="text-slate-900 font-bold">{item.impact}</span>
-                  </div>
-                  <Link
-                    to={item.detailPath || '/contact'}
-                    className="inline-flex items-center gap-1 text-xs font-bold font-mono text-blue-600 hover:text-blue-700 group"
-                  >
-                    <span>Read Study</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                  </Link>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
@@ -222,53 +284,70 @@ export default function CaseStudiesSuccessStoriesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {FUNCTION_CASE_STUDIES_DATA.map((item, idx) => (
-              <div
-                key={idx}
-                className="rounded-2xl bg-white border border-slate-200/90 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-0.5 p-6 flex flex-col justify-between transition-all duration-200 shadow-sm"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
-                      {item.function}
-                    </span>
-                    <span className="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                      {item.primaryMetric}
-                    </span>
+            {FUNCTION_CASE_STUDIES_DATA.map((item, idx) => {
+              const imageSrc = functionImages[item.id] || '/images/hero-agentic-ai.png';
+              const targetSlug = item.relevantStorySlugs?.[0] || 'enterprise-saas-pipeline-growth';
+
+              return (
+                <div
+                  key={idx}
+                  className="group rounded-2xl bg-white border border-slate-200/90 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-0.5 p-5 flex flex-col justify-between transition-all duration-200 shadow-sm"
+                >
+                  <div className="space-y-4">
+                    {/* Visual Card Image */}
+                    <div className="relative h-44 rounded-xl overflow-hidden border border-slate-200/80 bg-slate-100">
+                      <img
+                        src={imageSrc}
+                        alt={item.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                      <div className="absolute top-2.5 left-2.5">
+                        <span className="px-2.5 py-1 rounded-md text-[11px] font-mono font-bold bg-white/95 text-indigo-700 shadow-xs border border-indigo-200/60 backdrop-blur-xs">
+                          {item.badge}
+                        </span>
+                      </div>
+                      <div className="absolute top-2.5 right-2.5">
+                        <span className="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-indigo-600 text-white shadow-xs">
+                          {item.kpi}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3 className="text-lg font-bold text-slate-900 font-heading leading-snug">
+                        {item.name}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal mt-1.5">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                      <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                        <div className="text-[10px] text-slate-500 uppercase font-mono font-bold">Baseline Bottlenecks</div>
+                        <div className="font-semibold text-slate-800 mt-1">{item.bottlenecks.join(' · ')}</div>
+                      </div>
+                      <div className="p-3.5 rounded-xl bg-emerald-50/70 border border-emerald-200">
+                        <div className="text-[10px] text-emerald-800 uppercase font-mono font-bold">Post-Deployment Solution</div>
+                        <div className="font-bold text-emerald-900 mt-1">{item.enablement}</div>
+                      </div>
+                    </div>
                   </div>
 
-                  <h3 className="text-lg font-bold text-slate-900 font-heading">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {item.overview}
-                  </p>
-
-                  <div className="grid grid-cols-2 gap-3 text-xs">
-                    <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                      <div className="text-[10px] text-slate-500 uppercase font-mono font-bold">Baseline State</div>
-                      <div className="font-semibold text-slate-800 mt-0.5">{item.baseline}</div>
-                    </div>
-                    <div className="p-3 rounded-xl bg-emerald-50/50 border border-emerald-200">
-                      <div className="text-[10px] text-emerald-700 uppercase font-mono font-bold">Post-Deployment</div>
-                      <div className="font-bold text-emerald-800 mt-0.5">{item.postDeployment}</div>
-                    </div>
+                  <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
+                    <span className="text-[11px] text-slate-500 font-mono">Impact: <span className="font-bold text-slate-800">{item.kpi}</span></span>
+                    <Link
+                      to={`/case-studies/stories/${targetSlug}`}
+                      className="inline-flex items-center gap-1 text-xs font-bold font-mono text-indigo-600 hover:text-indigo-700 group/link cursor-pointer"
+                    >
+                      <span>View Functional Brief</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" />
+                    </Link>
                   </div>
                 </div>
-
-                <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-[11px] text-slate-500 font-mono">Methodology: {item.playbookUsed}</span>
-                  <Link
-                    to={item.detailPath || '/contact'}
-                    className="inline-flex items-center gap-1 text-xs font-bold font-mono text-indigo-600 hover:text-indigo-700"
-                  >
-                    <span>View Functional Brief</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
@@ -288,53 +367,65 @@ export default function CaseStudiesSuccessStoriesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {TECHNOLOGY_CASE_STUDIES_DATA.map((item, idx) => (
-              <div
-                key={idx}
-                className="rounded-2xl bg-white border border-slate-200/90 hover:border-cyan-400 hover:shadow-xl hover:-translate-y-0.5 p-6 flex flex-col justify-between transition-all duration-200 shadow-sm"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-cyan-50 text-cyan-700 border border-cyan-200">
-                      {item.techPillar}
-                    </span>
-                    <span className="text-xs font-mono font-bold text-slate-500">
-                      {item.integrationType}
-                    </span>
+            {TECHNOLOGY_CASE_STUDIES_DATA.map((item, idx) => {
+              const imageSrc = techImages[item.id] || '/images/hero-agentic-ai.png';
+              const targetSlug = item.relevantStorySlugs?.[0] || 'financial-services-ai-transformation';
+
+              return (
+                <div
+                  key={idx}
+                  className="group rounded-2xl bg-white border border-slate-200/90 hover:border-cyan-400 hover:shadow-xl hover:-translate-y-0.5 p-5 flex flex-col justify-between transition-all duration-200 shadow-sm"
+                >
+                  <div className="space-y-4">
+                    {/* Visual Card Image */}
+                    <div className="relative h-40 rounded-xl overflow-hidden border border-slate-200/80 bg-slate-100">
+                      <img
+                        src={imageSrc}
+                        alt={item.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                      <div className="absolute top-2.5 left-2.5">
+                        <span className="px-2.5 py-1 rounded-md text-[11px] font-mono font-bold bg-white/95 text-cyan-800 shadow-xs border border-cyan-200/60 backdrop-blur-xs">
+                          {item.badge}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3 className="text-base sm:text-lg font-bold text-slate-900 font-heading">
+                        {item.name}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal mt-1.5">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2 text-xs text-slate-700">
+                      <div>
+                        <span className="font-bold text-slate-900 font-mono">Workflow Architecture:</span>
+                        <p className="text-slate-600 mt-0.5 leading-relaxed">{item.workflow}</p>
+                      </div>
+                      <div className="pt-2 border-t border-slate-200">
+                        <span className="font-bold text-emerald-800 font-mono">Enterprise Governance:</span>
+                        <p className="text-slate-600 mt-0.5 leading-relaxed">{item.governance}</p>
+                      </div>
+                    </div>
                   </div>
 
-                  <h3 className="text-base sm:text-lg font-bold text-slate-900 font-heading">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {item.architectureSummary}
-                  </p>
-
-                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5 text-xs text-slate-700">
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-500">Stack:</span>
-                      <span className="text-slate-900 font-mono text-[11px] font-bold">{item.stackComponents}</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-500">Deployment Cycle:</span>
-                      <span className="text-emerald-700 font-mono text-[11px] font-bold">{item.deploymentDuration}</span>
-                    </div>
+                  <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
+                    <span className="text-[11px] text-slate-500 font-mono">Telemetry: Active</span>
+                    <Link
+                      to={`/case-studies/stories/${targetSlug}`}
+                      className="inline-flex items-center gap-1 text-xs font-bold font-mono text-cyan-700 hover:text-cyan-800 group/link cursor-pointer"
+                    >
+                      <span>Inspect Stack Architecture</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" />
+                    </Link>
                   </div>
                 </div>
-
-                <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-[11px] text-slate-500 font-mono">Telemetry: Active</span>
-                  <Link
-                    to={item.detailPath || '/contact'}
-                    className="inline-flex items-center gap-1 text-xs font-bold font-mono text-cyan-700 hover:text-cyan-800"
-                  >
-                    <span>Inspect Stack Architecture</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
@@ -354,49 +445,72 @@ export default function CaseStudiesSuccessStoriesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {OUTCOME_CASE_STUDIES_DATA.map((item, idx) => (
-              <div
-                key={idx}
-                className="rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-400 hover:shadow-xl hover:-translate-y-0.5 p-6 flex flex-col justify-between transition-all duration-200 shadow-sm"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                      {item.outcomeCategory}
-                    </span>
-                    <span className="text-sm font-black font-mono text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">
-                      {item.quantifiedGain}
-                    </span>
+            {OUTCOME_CASE_STUDIES_DATA.map((item, idx) => {
+              const imageSrc = outcomeImages[item.id] || '/images/outcomes-metrics.png';
+              const targetSlug = item.relevantStorySlugs?.[0] || 'global-manufacturing-expansion';
+
+              return (
+                <div
+                  key={idx}
+                  className="group rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-400 hover:shadow-xl hover:-translate-y-0.5 p-5 flex flex-col justify-between transition-all duration-200 shadow-sm"
+                >
+                  <div className="space-y-4">
+                    {/* Visual Card Image */}
+                    <div className="relative h-44 rounded-xl overflow-hidden border border-slate-200/80 bg-slate-100">
+                      <img
+                        src={imageSrc}
+                        alt={item.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                      <div className="absolute top-2.5 left-2.5">
+                        <span className="px-2.5 py-1 rounded-md text-[11px] font-mono font-bold bg-white/95 text-emerald-800 shadow-xs border border-emerald-200/60 backdrop-blur-xs">
+                          {item.badge}
+                        </span>
+                      </div>
+                      <div className="absolute top-2.5 right-2.5">
+                        <span className="px-2.5 py-1 rounded-md text-xs font-mono font-black bg-emerald-600 text-white shadow-xs">
+                          {item.metric}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3 className="text-lg font-bold text-slate-900 font-heading">
+                        {item.name}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal mt-1.5">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2 text-xs">
+                      <div>
+                        <span className="font-bold text-slate-900 font-mono">Empirical Benchmark:</span>
+                        <p className="text-slate-600 font-medium mt-0.5 leading-relaxed">{item.intendedVsMeasured}</p>
+                      </div>
+                      <div className="pt-2 border-t border-slate-200">
+                        <span className="font-bold text-emerald-800 font-mono">Governed KPIs:</span>
+                        <p className="text-slate-600 mt-0.5">{item.kpis.join(' · ')}</p>
+                      </div>
+                    </div>
                   </div>
 
-                  <h3 className="text-lg font-bold text-slate-900 font-heading">
-                    {item.clientProfile}
-                  </h3>
-
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {item.executiveSummary}
-                  </p>
-
-                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5 text-xs">
-                    <div className="text-[11px] font-mono font-bold uppercase text-slate-500">Attribution Model:</div>
-                    <div className="text-slate-800 font-mono">{item.attributionModel}</div>
+                  <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
+                    <div className="text-[11px] text-slate-500 font-mono">
+                      Audit Status: <span className="text-emerald-700 font-bold">Verified</span>
+                    </div>
+                    <Link
+                      to={`/case-studies/stories/${targetSlug}`}
+                      className="inline-flex items-center gap-1 text-xs font-bold font-mono text-emerald-700 hover:text-emerald-800 group/link cursor-pointer"
+                    >
+                      <span>View Financial Model</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" />
+                    </Link>
                   </div>
                 </div>
-
-                <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
-                  <div className="text-[11px] text-slate-500 font-mono">
-                    Audit Status: <span className="text-emerald-700 font-bold">Verified</span>
-                  </div>
-                  <Link
-                    to={item.detailPath || '/outcomes'}
-                    className="inline-flex items-center gap-1 text-xs font-bold font-mono text-emerald-700 hover:text-emerald-800"
-                  >
-                    <span>View Financial Model</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
@@ -415,17 +529,22 @@ export default function CaseStudiesSuccessStoriesPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {TESTIMONIALS_DATA.map((t, idx) => (
               <div
                 key={idx}
                 className="rounded-2xl bg-white border border-slate-200/90 hover:border-amber-400 hover:shadow-xl hover:-translate-y-0.5 p-6 flex flex-col justify-between space-y-4 shadow-sm transition-all"
               >
                 <div className="space-y-3">
-                  <div className="flex items-center gap-1 text-amber-500">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-current" />
-                    ))}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-1 text-amber-500">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-3.5 h-3.5 fill-current" />
+                      ))}
+                    </div>
+                    <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                      {t.impact}
+                    </span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-700 italic leading-relaxed">
                     "{t.quote}"
@@ -434,12 +553,16 @@ export default function CaseStudiesSuccessStoriesPage() {
 
                 <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                   <div>
-                    <div className="text-xs font-bold text-slate-900 font-heading">{t.author}</div>
-                    <div className="text-[11px] text-slate-500">{t.role} · {t.company}</div>
+                    <div className="text-sm font-bold text-slate-900 font-heading">{t.name}</div>
+                    <div className="text-xs text-slate-500">{t.title} · {t.company}</div>
                   </div>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 text-slate-700 border border-slate-200">
-                    {t.industry}
-                  </span>
+                  <Link
+                    to={`/case-studies/stories/${t.storySlug}`}
+                    className="inline-flex items-center gap-1 text-xs font-bold font-mono text-blue-600 hover:text-blue-700 group cursor-pointer"
+                  >
+                    <span>Read Story</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  </Link>
                 </div>
               </div>
             ))}
@@ -467,26 +590,39 @@ export default function CaseStudiesSuccessStoriesPage() {
                   key={study.id}
                   className="p-5 hover:bg-slate-50 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs"
                 >
-                  <div className="space-y-1 max-w-2xl">
-                    <div className="flex items-center gap-2">
-                      <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-slate-100 text-slate-700 border border-slate-200">
-                        {study.industry}
-                      </span>
-                      <span className="text-slate-500 font-mono text-[11px]">
-                        Duration: {study.duration || '6 Months'}
-                      </span>
-                    </div>
-                    <div className="font-bold text-slate-900 text-sm font-heading">
-                      {study.title}
-                    </div>
-                    <div className="text-slate-600 leading-relaxed">
-                      {study.executiveSummary}
+                  <div className="flex items-start gap-4 max-w-2xl">
+                    <img
+                      src={study.image || '/images/hero-revenue-acceleration.png'}
+                      alt={study.title}
+                      className="w-16 h-16 rounded-xl object-cover border border-slate-200 shrink-0 hidden sm:block"
+                    />
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-slate-100 text-slate-700 border border-slate-200">
+                          {study.industry}
+                        </span>
+                        <span className="text-slate-500 font-mono text-[11px]">
+                          Timeline: {study.timeline || '6 Months'}
+                        </span>
+                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                          {study.storyType}
+                        </span>
+                      </div>
+                      <div className="font-bold text-slate-900 text-sm font-heading">
+                        {study.title}
+                      </div>
+                      <div className="text-slate-600 leading-relaxed text-xs">
+                        {study.summary}
+                      </div>
                     </div>
                   </div>
 
-                  <div className="sm:text-right shrink-0">
-                    <div className="font-mono font-bold text-emerald-700 text-sm">
-                      {study.keyMetric}
+                  <div className="sm:text-right shrink-0 flex sm:flex-col items-center sm:items-end justify-between gap-2">
+                    <div className="font-mono font-bold text-emerald-700 text-base">
+                      {study.metricBig}
+                    </div>
+                    <div className="text-[10px] text-slate-500 font-mono">
+                      {study.metricLabel}
                     </div>
                     <Link
                       to={`/case-studies/stories/${study.slug}`}

@@ -8,6 +8,15 @@ import {
 } from 'lucide-react';
 import { trackEvent } from '../../../lib/analytics';
 
+const verticalImages: Record<string, string> = {
+  saas: '/images/industry-saas.png',
+  manufacturing: '/images/industry-manufacturing.png',
+  fintech: '/images/industry-fintech.png',
+  healthcare: '/images/industry-healthcare.png',
+  retail: '/images/industry-retail.png',
+  services: '/images/hero-data-intelligence.png'
+};
+
 export default function IndustryFunctionalIntelligencePage() {
   const location = useLocation();
   const [activeVertical, setActiveVertical] = useState('saas');
@@ -317,6 +326,26 @@ export default function IndustryFunctionalIntelligencePage() {
               <div className="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200/90 shadow-md space-y-6 relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600" />
                 
+                {/* Visual Image Banner for Active Vertical */}
+                <div className="relative h-48 sm:h-56 rounded-xl overflow-hidden border border-slate-200/80 bg-slate-100">
+                  <img
+                    src={verticalImages[current.id] || '/images/hero-revenue-acceleration.png'}
+                    alt={current.title}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/25 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+                    <div className="text-white">
+                      <div className="text-[10px] font-mono uppercase tracking-wider text-blue-300 font-bold">{current.badge} Architecture</div>
+                      <div className="text-xl sm:text-2xl font-bold text-white font-heading">{current.title}</div>
+                    </div>
+                    <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-blue-600 text-white shadow-xs">
+                      Active Blueprint
+                    </span>
+                  </div>
+                </div>
+
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-slate-100 gap-3">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-200 text-blue-700 flex items-center justify-center shrink-0">
@@ -384,9 +413,17 @@ export default function IndustryFunctionalIntelligencePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 hover:shadow-xl hover:-translate-y-0.5 transition-all shadow-sm space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-200 text-blue-700 flex items-center justify-center font-bold text-sm">
-                01
+            <div className="group p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 hover:shadow-xl hover:-translate-y-0.5 transition-all shadow-sm space-y-4">
+              <div className="relative h-40 rounded-xl overflow-hidden border border-slate-200/80 bg-slate-100">
+                <img
+                  src="/images/industry-saas.png"
+                  alt="Enterprise Cloud & Infrastructure"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <span className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-white/95 text-blue-700 shadow-xs border border-blue-200/60">
+                  Cloud Infrastructure
+                </span>
               </div>
               <h3 className="text-lg font-bold text-slate-900 font-heading">Enterprise Cloud & Infrastructure</h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
@@ -398,9 +435,17 @@ export default function IndustryFunctionalIntelligencePage() {
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white border border-slate-200/90 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-0.5 transition-all shadow-sm space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-700 flex items-center justify-center font-bold text-sm">
-                02
+            <div className="group p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-0.5 transition-all shadow-sm space-y-4">
+              <div className="relative h-40 rounded-xl overflow-hidden border border-slate-200/80 bg-slate-100">
+                <img
+                  src="/images/industry-retail.png"
+                  alt="Omnichannel E-Commerce & Retail"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <span className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-white/95 text-indigo-700 shadow-xs border border-indigo-200/60">
+                  Omnichannel Retail
+                </span>
               </div>
               <h3 className="text-lg font-bold text-slate-900 font-heading">Omnichannel E-Commerce & Retail</h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
@@ -412,9 +457,17 @@ export default function IndustryFunctionalIntelligencePage() {
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white border border-slate-200/90 hover:border-cyan-400 hover:shadow-xl hover:-translate-y-0.5 transition-all shadow-sm space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-sky-50 border border-sky-200 text-sky-700 flex items-center justify-center font-bold text-sm">
-                03
+            <div className="group p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-cyan-400 hover:shadow-xl hover:-translate-y-0.5 transition-all shadow-sm space-y-4">
+              <div className="relative h-40 rounded-xl overflow-hidden border border-slate-200/80 bg-slate-100">
+                <img
+                  src="/images/hero-agentic-ai.png"
+                  alt="Telecommunications & Networks"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <span className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-white/95 text-sky-700 shadow-xs border border-sky-200/60">
+                  Enterprise Networks
+                </span>
               </div>
               <h3 className="text-lg font-bold text-slate-900 font-heading">Telecommunications & Networks</h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">

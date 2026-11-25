@@ -170,35 +170,71 @@ export default function StrategyFrameworksBusinessToolsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 hover:shadow-xl hover:-translate-y-0.5 space-y-3 shadow-sm transition-all">
-              <span className="text-xs font-mono font-bold text-blue-700 uppercase">Architecture 01</span>
-              <h3 className="text-lg font-bold text-slate-900 font-heading">4-Perspective Strategy Mapping</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                Connecting Financial targets (EBITDA, NRR) down through Customer value propositions, Internal operating processes, to Organizational learning and telemetry.
-              </p>
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 font-mono text-xs text-slate-800">
+            <div className="group rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 hover:shadow-xl hover:-translate-y-0.5 p-5 flex flex-col justify-between shadow-sm transition-all overflow-hidden">
+              <div className="space-y-4">
+                <div className="relative h-36 rounded-xl overflow-hidden border border-slate-200/80 bg-slate-100">
+                  <img
+                    src="/images/hero-end-to-end-transformation.png"
+                    alt="4-Perspective Strategy Mapping"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+                  <span className="absolute bottom-2.5 left-2.5 px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-white/95 text-blue-800 shadow-xs">
+                    Architecture 01
+                  </span>
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 font-heading">4-Perspective Strategy Mapping</h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                  Connecting Financial targets (EBITDA, NRR) down through Customer value propositions, Internal operating processes, to Organizational learning and telemetry.
+                </p>
+              </div>
+              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 font-mono text-xs text-slate-800 mt-4">
                 Guarantees strategic initiatives directly fund shareholder ROI mandates.
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white border border-slate-200/90 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-0.5 space-y-3 shadow-sm transition-all">
-              <span className="text-xs font-mono font-bold text-indigo-700 uppercase">Architecture 02</span>
-              <h3 className="text-lg font-bold text-slate-900 font-heading">Market Horizon Expansion Model</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                Horizon 1 (Defend core cash cows), Horizon 2 (High-velocity adjacent market penetration), and Horizon 3 (Autonomous agentic revenue business models).
-              </p>
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 font-mono text-xs text-slate-800">
+            <div className="group rounded-2xl bg-white border border-slate-200/90 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-0.5 p-5 flex flex-col justify-between shadow-sm transition-all overflow-hidden">
+              <div className="space-y-4">
+                <div className="relative h-36 rounded-xl overflow-hidden border border-slate-200/80 bg-slate-100">
+                  <img
+                    src="/images/hero-revenue-acceleration.png"
+                    alt="Market Horizon Expansion Model"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+                  <span className="absolute bottom-2.5 left-2.5 px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-white/95 text-indigo-800 shadow-xs">
+                    Architecture 02
+                  </span>
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 font-heading">Market Horizon Expansion Model</h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                  Horizon 1 (Defend core cash cows), Horizon 2 (High-velocity adjacent market penetration), and Horizon 3 (Autonomous agentic revenue business models).
+                </p>
+              </div>
+              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 font-mono text-xs text-slate-800 mt-4">
                 Balances quarterly commercial delivery with long-term defensible moats.
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-400 hover:shadow-xl hover:-translate-y-0.5 space-y-3 shadow-sm transition-all">
-              <span className="text-xs font-mono font-bold text-emerald-700 uppercase">Architecture 03</span>
-              <h3 className="text-lg font-bold text-slate-900 font-heading">Forensic Margin Leakage Recovery</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                Deconstructing commercial contracts to identify unbilled scope creep, discretionary discounting, and SLA penalties eroding operating margins.
-              </p>
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 font-mono text-xs text-slate-800">
+            <div className="group rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-400 hover:shadow-xl hover:-translate-y-0.5 p-5 flex flex-col justify-between shadow-sm transition-all overflow-hidden">
+              <div className="space-y-4">
+                <div className="relative h-36 rounded-xl overflow-hidden border border-slate-200/80 bg-slate-100">
+                  <img
+                    src="/images/hero-profit-pool.png"
+                    alt="Forensic Margin Leakage Recovery"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+                  <span className="absolute bottom-2.5 left-2.5 px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-white/95 text-emerald-800 shadow-xs">
+                    Architecture 03
+                  </span>
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 font-heading">Forensic Margin Leakage Recovery</h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                  Deconstructing commercial contracts to identify unbilled scope creep, discretionary discounting, and SLA penalties eroding operating margins.
+                </p>
+              </div>
+              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 font-mono text-xs text-slate-800 mt-4">
                 Unlocks 3.2 to 6.8 percentage points in gross margin within 90 days.
               </div>
             </div>

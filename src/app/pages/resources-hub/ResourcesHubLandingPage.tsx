@@ -660,7 +660,7 @@ export default function ResourcesHubLandingPage() {
           </div>
 
           {/* Dual CTAs */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-10">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
             <a
               href="#six-resource-categories"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm tracking-wide shadow-lg shadow-blue-600/30 transition-all hover:-translate-y-0.5 cursor-pointer"
@@ -675,63 +675,6 @@ export default function ResourcesHubLandingPage() {
               <span>Explore Business Tools</span>
               <Calculator className="w-4 h-4 text-blue-400" />
             </a>
-          </div>
-
-          {/* ── Enterprise Knowledge & Telemetry HUD Visual ── */}
-          <div className="rounded-3xl bg-white border border-slate-200/90 shadow-2xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600" />
-
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-100">
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 rounded-full bg-emerald-500 animate-ping" />
-                <div>
-                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">
-                    Live Enterprise Knowledge &amp; Telemetry
-                  </div>
-                  <div className="text-lg font-bold text-slate-900 font-mono flex items-center gap-2">
-                    <span>PROFITMACHINES // DECISION ARCHITECTURE</span>
-                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono font-bold">
-                      ACTIVE PLATFORM
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono">
-                <span className="px-3 py-1 rounded-lg bg-slate-50 border border-slate-200 text-slate-700">
-                  Main Categories: <strong className="text-slate-900">6 Dedicated Pages</strong>
-                </span>
-                <span className="px-3 py-1 rounded-lg bg-slate-50 border border-slate-200 text-slate-700">
-                  Approved Submenus: <strong className="text-slate-900">33 Capabilities</strong>
-                </span>
-                <span className="px-3 py-1 rounded-lg bg-slate-50 border border-slate-200 text-slate-700">
-                  Mathematical Models: <strong className="text-slate-900">25 Stack</strong>
-                </span>
-              </div>
-            </div>
-
-            {/* Representative Telemetry Dashboard Cards */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
-                <div className="text-xs font-mono text-slate-500 uppercase tracking-wider">Revenue Precision</div>
-                <div className="text-2xl font-mono font-extrabold text-slate-900 mt-1">&lt;1.8% Variance</div>
-                <div className="text-[11px] font-mono text-emerald-700 font-bold mt-1">Bayesian Sentry Calibrated</div>
-              </div>
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
-                <div className="text-xs font-mono text-slate-500 uppercase tracking-wider">Cycle Compression</div>
-                <div className="text-2xl font-mono font-extrabold text-slate-900 mt-1">-48% Duration</div>
-                <div className="text-[11px] font-mono text-blue-700 font-bold mt-1">Enterprise Sales Motion</div>
-              </div>
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
-                <div className="text-xs font-mono text-slate-500 uppercase tracking-wider">Margin Recovery</div>
-                <div className="text-2xl font-mono font-extrabold text-slate-900 mt-1">5–15 Pts Margin</div>
-                <div className="text-[11px] font-mono text-emerald-700 font-bold mt-1">Forensic Discount Audit</div>
-              </div>
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
-                <div className="text-xs font-mono text-slate-500 uppercase tracking-wider">Net Retention</div>
-                <div className="text-2xl font-mono font-extrabold text-slate-900 mt-1">138% NRR</div>
-                <div className="text-[11px] font-mono text-indigo-700 font-bold mt-1">Behavioral Sentry Active</div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

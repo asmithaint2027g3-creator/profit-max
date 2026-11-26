@@ -415,6 +415,23 @@ function doGet(e) {
       var verifyCodeRes = handleVerifyEmailCode(ss, e.parameter);
       return ContentService.createTextOutput(JSON.stringify(verifyCodeRes)).setMimeType(ContentService.MimeType.JSON);
     }
+    if (getAction === "test_email" || getAction === "email_diagnostics") {
+      var targetEmail = (e.parameter.email || "sreevarthini2906@gmail.com").toString().trim();
+      var quota = -1;
+      try { quota = MailApp.getRemainingDailyQuota(); } catch (qe) { quota = qe.toString(); }
+      var testResult = sendEmailDirect({
+        to: targetEmail,
+        subject: "[TEST] ProfitMachines Email Diagnostic",
+        body: "Testing MailApp email delivery. Remaining quota: " + quota,
+        htmlBody: "<h3>ProfitMachines Email Diagnostic</h3><p>Remaining quota: <strong>" + quota + "</strong></p>"
+      });
+      return ContentService.createTextOutput(JSON.stringify({
+        status: "ok",
+        target: targetEmail,
+        quota: quota,
+        result: testResult
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
     if (getAction === "check_user_exists") {
       var checkResult = handleCheckUserExists(ss, e.parameter);
       return ContentService.createTextOutput(JSON.stringify(checkResult)).setMimeType(ContentService.MimeType.JSON);
@@ -3358,7 +3375,7 @@ function sendVerificationCodeEmail(email, fullName, verificationCode, verificati
     "</div>" +
     "</div></body></html>";
 
-  sendEmailDirect({
+  return sendEmailDirect({
     to: email,
     subject: subject,
     body: plainBody,
@@ -3479,9 +3496,11 @@ function handleInitiateRegistration(ss, data) {
     pendingSheet.appendRow(pendingRow);
 
     // 7. Dispatch Verification Email with Code & One-Click Link
+    var emailDelivery = { ok: true, via: "MailApp" };
     try {
-      sendVerificationCodeEmail(email, fullName, verificationCode, verificationToken);
+      emailDelivery = sendVerificationCodeEmail(email, fullName, verificationCode, verificationToken) || emailDelivery;
     } catch (mailErr) {
+      emailDelivery = { ok: false, error: mailErr.toString() };
       console.warn("sendVerificationCodeEmail warning: " + mailErr.toString());
     }
 
@@ -3490,6 +3509,7 @@ function handleInitiateRegistration(ss, data) {
       verificationToken: verificationToken,
       verificationCode: verificationCode,
       email: email,
+      emailDelivery: emailDelivery,
       expiresAt: expiresTimestamp,
       message: "Security verification code sent to " + email + ". Enter the code to activate your account."
     };

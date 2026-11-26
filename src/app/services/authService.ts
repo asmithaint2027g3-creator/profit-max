@@ -110,6 +110,7 @@ interface StoredAccount {
 
 interface AuthSession {
   token: string;
+  sessionId?: string;
   userId: string;
   email: string;
   expiresAt: number;
@@ -625,17 +626,45 @@ export const authService = {
   },
 
   /**
-   * Creates an active authenticated session stored in localStorage.
+   * Creates an active authenticated session stored in localStorage and synchronizes with Session_Logs.
    */
   createSession(profile: UserProfile): void {
     const token = 'PMSESS_' + Math.random().toString(36).substring(2) + Date.now().toString(36);
+    const sessionId = 'sess_' + Math.random().toString(36).substring(2, 10) + Date.now().toString(36);
+    const expiresAtMs = Date.now() + 7 * 24 * 60 * 60 * 1000; // 7 days session
+    const expiresAtIso = new Date(expiresAtMs).toISOString();
+    const nowIso = new Date().toISOString();
+
     const session: AuthSession = {
       token,
+      sessionId,
       userId: profile.userId,
       email: profile.email,
-      expiresAt: Date.now() + 7 * 24 * 60 * 60 * 1000 // 7 days session
+      expiresAt: expiresAtMs
     };
     localStorage.setItem(STORAGE_KEY_SESSION, JSON.stringify(session));
+
+    // Synchronize to Google Sheets 'Session_Logs' tab immediately!
+    dispatchWebhook({
+      action: 'create_session_log',
+      sessionId: sessionId,
+      userId: profile.userId,
+      jwtId: token,
+      loginTime: nowIso,
+      expiresAt: expiresAtIso,
+      lastActive: nowIso,
+      status: 'ACTIVE'
+    }).catch(err => console.warn('Session_Logs webhook dispatch warning:', err));
+
+    // Also record in Login_Activity
+    dispatchWebhook({
+      action: 'login_activity',
+      userId: profile.userId,
+      fullName: profile.fullName,
+      email: profile.email,
+      loginStatus: 'Success',
+      loginTime: nowIso
+    }).catch(() => {});
   },
 
   /**
@@ -670,7 +699,7 @@ export const authService = {
   logout(): void {
     const user = this.getCurrentUser();
 
-    // 1. Call Vercel Serverless Logout API to revoke Redis session & update Session_Logs
+    // 1. Call Vercel Serverless Logout API to revoke Redis session
     try {
       fetch('/api/auth/logout', {
         method: 'POST',
@@ -678,17 +707,30 @@ export const authService = {
       }).catch(e => console.warn('Server logout revocation call warning:', e));
     } catch {}
 
-    // 2. Dispatch legacy webhook login activity
+    // 2. Dispatch Session_Logs revocation & login activity to Google Sheets
     if (user) {
       try {
+        const rawSession = localStorage.getItem(STORAGE_KEY_SESSION);
+        const parsed = rawSession ? JSON.parse(rawSession) : null;
+        const currentSessionId = parsed?.sessionId || ('sess_' + user.userId);
+        const nowIso = new Date().toISOString();
+
+        // Update Session_Logs tab in Google Sheets to REVOKED
+        dispatchWebhook({
+          action: 'update_session_log',
+          sessionId: currentSessionId,
+          status: 'REVOKED',
+          revokedAt: nowIso
+        }).catch(() => {});
+
         dispatchWebhook({
           action: 'login_activity',
           userId: user.userId,
           fullName: user.fullName,
           email: user.email,
           loginStatus: 'Logged Out',
-          logoutTime: new Date().toISOString()
-        });
+          logoutTime: nowIso
+        }).catch(() => {});
       } catch {}
     }
     localStorage.removeItem(STORAGE_KEY_SESSION);

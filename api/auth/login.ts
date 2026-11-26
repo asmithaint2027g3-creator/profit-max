@@ -1,11 +1,11 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { v4 as uuidv4 } from 'uuid';
-import { generateSessionId } from '../_lib/session-id';
-import { createRedisSession, revokeRedisSession } from '../_lib/redis';
-import { logSessionToGoogleSheets } from '../_lib/google-sheets-sessions';
-import { signAccessToken } from '../_lib/jwt';
-import { setAuthCookies } from '../_lib/cookies';
-import { checkRateLimit } from '../_lib/rate-limiter';
+import { generateSessionId } from '../_lib/session-id.js';
+import { createRedisSession, revokeRedisSession } from '../_lib/redis.js';
+import { logSessionToGoogleSheets } from '../_lib/google-sheets-sessions.js';
+import { signAccessToken } from '../_lib/jwt.js';
+import { setAuthCookies } from '../_lib/cookies.js';
+import { checkRateLimit } from '../_lib/rate-limiter.js';
 
 const SESSION_TTL_SECONDS = 7 * 24 * 60 * 60; // 7 days session lifetime in Redis
 

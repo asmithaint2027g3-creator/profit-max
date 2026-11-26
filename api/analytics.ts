@@ -1,7 +1,7 @@
 
 
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { submitToGoogleScript, fetchAnalyticsFromGoogleScript } from './_lib/google-sheets';
+import { submitToGoogleScript, fetchAnalyticsFromGoogleScript } from './_lib/google-sheets.js';
 
 const ALLOWED_GET_ACTIONS = ['daily_analytics', 'weekly_analytics', 'dashboard_data', 'sheet2_dashboard', 'sheet2_tab'];
 

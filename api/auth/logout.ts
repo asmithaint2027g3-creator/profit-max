@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { extractAuthToken, clearAuthCookies } from '../_lib/cookies';
-import { verifyAccessToken } from '../_lib/jwt';
-import { revokeRedisSession } from '../_lib/redis';
-import { updateSessionInGoogleSheets } from '../_lib/google-sheets-sessions';
+import { extractAuthToken, clearAuthCookies } from '../_lib/cookies.js';
+import { verifyAccessToken } from '../_lib/jwt.js';
+import { revokeRedisSession } from '../_lib/redis.js';
+import { updateSessionInGoogleSheets } from '../_lib/google-sheets-sessions.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // CORS configuration

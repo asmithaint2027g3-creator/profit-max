@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { extractAuthToken, validateCsrf } from './cookies';
-import { verifyAccessToken, TokenClaims } from './jwt';
-import { getRedisSession, RedisSessionData } from './redis';
+import { extractAuthToken, validateCsrf } from './cookies.js';
+import { verifyAccessToken, TokenClaims } from './jwt.js';
+import { getRedisSession, RedisSessionData } from './redis.js';
 
 export interface AuthenticatedContext {
   userId: string;

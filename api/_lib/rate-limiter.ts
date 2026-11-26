@@ -1,4 +1,4 @@
-import { getRedisClient } from './redis';
+import { getRedisClient } from './redis.js';
 
 /**
  * Sliding window rate limiter backed by Redis Cloud, with in-memory fallback.

@@ -37,40 +37,26 @@ export async function getRedisClient(): Promise<RedisClientType> {
     return global.__redisClient;
   }
 
-  // Avoid concurrent connection attempts
-  if (global.__redisConnecting) {
-    return global.__redisConnecting;
-  }
-
-  global.__redisConnecting = (async () => {
-    try {
-      const client: RedisClientType = createClient({
-        url: redisUrl,
-        socket: {
-          connectTimeout: 5000,
-          reconnectStrategy: (retries: number) => {
-            if (retries > 3) {
-              return new Error('Redis connection retry limit reached');
-            }
-            return Math.min(retries * 200, 1000);
-          }
+  const client: RedisClientType = createClient({
+    url: redisUrl,
+    socket: {
+      connectTimeout: 5000,
+      reconnectStrategy: (retries: number) => {
+        if (retries > 3) {
+          return new Error('Redis connection retry limit reached');
         }
-      });
-
-      client.on('error', (err) => {
-        // Log safe message without leaking REDIS_URL or credentials
-        console.error('[Redis Cloud] Client error occurred:', err.message || 'Connection error');
-      });
-
-      await client.connect();
-      global.__redisClient = client;
-      return client;
-    } finally {
-      global.__redisConnecting = undefined;
+        return Math.min(retries * 200, 1000);
+      }
     }
-  })();
+  });
 
-  return global.__redisConnecting;
+  client.on('error', (err) => {
+    console.error('[Redis Cloud] Client error occurred:', err.message || 'Connection error');
+  });
+
+  await client.connect();
+  global.__redisClient = client;
+  return client;
 }
 
 /**

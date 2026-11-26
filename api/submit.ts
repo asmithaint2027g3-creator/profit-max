@@ -1,6 +1,6 @@
 
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { submitToGoogleScript } from './_lib/google-sheets';
+import { submitToGoogleScript } from './_lib/google-sheets.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
     // CORS headers for browser requests

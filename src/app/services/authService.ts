@@ -188,7 +188,8 @@ async function dispatchWebhook(payload: Record<string, any>): Promise<any> {
     const response = await fetch(SCRIPT_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
+      keepalive: true
     });
 
     try {
@@ -374,7 +375,7 @@ export const authService = {
     });
     saveStoredAccounts(accounts);
 
-    this.createSession(profile);
+    await this.createSession(profile);
     return profile;
   },
 
@@ -467,7 +468,7 @@ export const authService = {
     }
 
     // Auto-create active session upon registration
-    this.createSession(profile);
+    await this.createSession(profile);
     return profile;
   },
 
@@ -528,7 +529,7 @@ export const authService = {
             });
           }
           saveStoredAccounts(accounts);
-          this.createSession(profile);
+          await this.createSession(profile);
           return profile;
         }
       } else if (apiRes.status === 401 || apiRes.status === 429) {
@@ -590,7 +591,7 @@ export const authService = {
         saveStoredAccounts(accounts);
 
         // Create session
-        this.createSession(profile);
+        await this.createSession(profile);
         return profile;
       } else if (remoteRes && remoteRes.status === 'error') {
         throw new Error(remoteRes.message || 'Authentication failed. Please verify your credentials.');
@@ -620,7 +621,7 @@ export const authService = {
 
     account.lastLoginAt = new Date().toISOString();
     saveStoredAccounts(accounts);
-    this.createSession(account.profile);
+    await this.createSession(account.profile);
 
     return account.profile;
   },
@@ -628,7 +629,7 @@ export const authService = {
   /**
    * Creates an active authenticated session stored in localStorage and synchronizes with Session_Logs.
    */
-  createSession(profile: UserProfile): void {
+  async createSession(profile: UserProfile): Promise<AuthSession> {
     const token = 'PMSESS_' + Math.random().toString(36).substring(2) + Date.now().toString(36);
     const sessionId = 'sess_' + Math.random().toString(36).substring(2, 10) + Date.now().toString(36);
     const expiresAtMs = Date.now() + 7 * 24 * 60 * 60 * 1000; // 7 days session
@@ -644,27 +645,35 @@ export const authService = {
     };
     localStorage.setItem(STORAGE_KEY_SESSION, JSON.stringify(session));
 
-    // Synchronize to Google Sheets 'Session_Logs' tab immediately!
-    dispatchWebhook({
-      action: 'create_session_log',
-      sessionId: sessionId,
-      userId: profile.userId,
-      jwtId: token,
-      loginTime: nowIso,
-      expiresAt: expiresAtIso,
-      lastActive: nowIso,
-      status: 'ACTIVE'
-    }).catch(err => console.warn('Session_Logs webhook dispatch warning:', err));
+    // Synchronize to Google Sheets 'Session_Logs' tab immediately and wait for it!
+    try {
+      await dispatchWebhook({
+        action: 'create_session_log',
+        sessionId: sessionId,
+        userId: profile.userId,
+        jwtId: token,
+        loginTime: nowIso,
+        expiresAt: expiresAtIso,
+        lastActive: nowIso,
+        status: 'ACTIVE'
+      });
+    } catch (err) {
+      console.warn('Session_Logs webhook dispatch warning:', err);
+    }
 
     // Also record in Login_Activity
-    dispatchWebhook({
-      action: 'login_activity',
-      userId: profile.userId,
-      fullName: profile.fullName,
-      email: profile.email,
-      loginStatus: 'Success',
-      loginTime: nowIso
-    }).catch(() => {});
+    try {
+      await dispatchWebhook({
+        action: 'login_activity',
+        userId: profile.userId,
+        fullName: profile.fullName,
+        email: profile.email,
+        loginStatus: 'Success',
+        loginTime: nowIso
+      });
+    } catch {}
+
+    return session;
   },
 
   /**
@@ -687,7 +696,24 @@ export const authService = {
              a.profile.email.toLowerCase() === session.email.toLowerCase()
       );
 
-      return match ? match.profile : null;
+      if (match) return match.profile;
+
+      // Fallback profile if registry was cleared on another tab
+      return {
+        registrationId: 'PM-REG-RECOVERED',
+        fullName: session.userId,
+        email: session.email,
+        mobile: '',
+        userId: session.userId,
+        company: '',
+        country: '',
+        industry: '',
+        headcount: '1-10',
+        operations: [],
+        consentStatus: 'Accepted',
+        registrationDate: new Date().toISOString(),
+        accountStatus: 'Active'
+      };
     } catch {
       return null;
     }
@@ -697,42 +723,46 @@ export const authService = {
    * Logs out the active user and clears the session.
    */
   logout(): void {
-    const user = this.getCurrentUser();
+    const rawSession = localStorage.getItem(STORAGE_KEY_SESSION);
+    const parsed = rawSession ? JSON.parse(rawSession) : null;
+    const currentSessionId = parsed?.sessionId;
+    const currentUserId = parsed?.userId;
+    const nowIso = new Date().toISOString();
 
     // 1. Call Vercel Serverless Logout API to revoke Redis session
     try {
       fetch('/api/auth/logout', {
         method: 'POST',
-        credentials: 'include'
+        credentials: 'include',
+        keepalive: true
       }).catch(e => console.warn('Server logout revocation call warning:', e));
     } catch {}
 
     // 2. Dispatch Session_Logs revocation & login activity to Google Sheets
-    if (user) {
+    if (currentSessionId) {
       try {
-        const rawSession = localStorage.getItem(STORAGE_KEY_SESSION);
-        const parsed = rawSession ? JSON.parse(rawSession) : null;
-        const currentSessionId = parsed?.sessionId || ('sess_' + user.userId);
-        const nowIso = new Date().toISOString();
-
-        // Update Session_Logs tab in Google Sheets to REVOKED
         dispatchWebhook({
           action: 'update_session_log',
           sessionId: currentSessionId,
           status: 'REVOKED',
           revokedAt: nowIso
         }).catch(() => {});
+      } catch {}
+    }
 
+    if (currentUserId) {
+      try {
         dispatchWebhook({
           action: 'login_activity',
-          userId: user.userId,
-          fullName: user.fullName,
-          email: user.email,
+          userId: currentUserId,
+          fullName: currentUserId,
+          email: parsed?.email || '',
           loginStatus: 'Logged Out',
           logoutTime: nowIso
         }).catch(() => {});
       } catch {}
     }
+
     localStorage.removeItem(STORAGE_KEY_SESSION);
   },
 

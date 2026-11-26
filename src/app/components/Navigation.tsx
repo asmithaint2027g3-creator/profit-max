@@ -3523,7 +3523,7 @@ export default function Navigation() {
                 </div>
 
                 {/* Center: 7 Main Menus Horizontally (>= xl) */}
-                <nav className="hidden xl:flex items-center gap-1 xl:gap-1.5 2xl:gap-2 h-full whitespace-nowrap shrink-0">
+                <nav className="hidden xl:flex items-center gap-0.5 xl:gap-1 2xl:gap-1.5 h-full whitespace-nowrap shrink-0">
                     {mainMenus.map((menu) => {
                         const isCurrentActive = isMenuActive(menu);
                         const isDropdownOpen = activeMenuId === menu.id;
@@ -3536,7 +3536,7 @@ export default function Navigation() {
                                 onMouseEnter={hasSubNav ? () => handleMenuMouseEnter(menu.id) : undefined}
                             >
                                 <div
-                                    className={`flex items-center rounded-xl text-xs xl:text-[13px] 2xl:text-sm font-semibold tracking-tight transition-all duration-150 whitespace-nowrap shrink-0 ${
+                                    className={`flex items-center rounded-xl text-xs xl:text-[12.5px] 2xl:text-sm font-semibold tracking-tight transition-all duration-150 whitespace-nowrap shrink-0 ${
                                         isDropdownOpen
                                             ? 'bg-blue-50 text-blue-600 shadow-2xs font-bold'
                                             : isCurrentActive
@@ -3547,8 +3547,8 @@ export default function Navigation() {
                                     <Link
                                         to={menu.path}
                                         onClick={() => setActiveMenuId(null)}
-                                        className={`px-2.5 xl:px-3 py-1.5 xl:py-2 flex items-center cursor-pointer transition-colors whitespace-nowrap shrink-0 ${
-                                            !hasSubNav ? 'px-3.5 xl:px-4' : ''
+                                        className={`px-2 xl:px-2.5 py-1.5 xl:py-2 flex items-center cursor-pointer transition-colors whitespace-nowrap shrink-0 ${
+                                            !hasSubNav ? 'px-2.5 xl:px-3' : ''
                                         }`}
                                     >
                                         <span className="whitespace-nowrap shrink-0 select-none">{menu.shortName || menu.name}</span>
@@ -3566,7 +3566,7 @@ export default function Navigation() {
                                                 }
                                             }}
                                             aria-label={`Toggle ${menu.name} dropdown`}
-                                            className="pr-2 py-1.5 xl:py-2 pl-0 text-slate-400 hover:text-blue-600 cursor-pointer transition-colors shrink-0"
+                                            className="pr-1.5 py-1.5 xl:py-2 pl-0 text-slate-400 hover:text-blue-600 cursor-pointer transition-colors shrink-0"
                                         >
                                             <ChevronDown
                                                 className={`w-3 h-3 transition-transform duration-200 opacity-60 shrink-0 ${
@@ -3586,14 +3586,15 @@ export default function Navigation() {
                             <Link
                                 to="/sales-calculators"
                                 onClick={() => setActiveMenuId(null)}
-                                className={`flex items-center gap-1.5 px-2.5 xl:px-3 py-1.5 xl:py-2 rounded-xl text-xs xl:text-[13px] 2xl:text-sm font-semibold tracking-tight transition-all duration-150 whitespace-nowrap shrink-0 ${
+                                className={`flex items-center gap-1.5 px-2 xl:px-2.5 py-1.5 xl:py-2 rounded-xl text-xs xl:text-[12.5px] 2xl:text-sm font-semibold tracking-tight transition-all duration-150 whitespace-nowrap shrink-0 ${
                                     location.pathname.startsWith('/sales-calculators')
                                         ? 'bg-blue-600 text-white shadow-sm font-bold'
                                         : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50/60'
                                 }`}
                             >
                                 <Calculator className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                                <span>Sales Calculators</span>
+                                <span className="hidden 2xl:inline">Sales Calculators</span>
+                                <span className="2xl:hidden">Calculators</span>
                                 <span className="ml-1 px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-700 border border-amber-300/60">
                                     PRO
                                 </span>
@@ -3603,92 +3604,109 @@ export default function Navigation() {
                 </nav>
 
                 {/* Right: Actions */}
-                <div className="flex items-center gap-1.5 sm:gap-2 xl:gap-2.5 shrink-0 ml-2">
+                <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 ml-1 sm:ml-2">
                     {/* Search Trigger Button with Shortcut Pill */}
                     <button
                         type="button"
                         onClick={() => setSearchOpen(true)}
-                        className="h-10 px-2.5 sm:px-3 rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100 border border-slate-200/80 hover:border-slate-300 transition-all flex items-center gap-2 text-xs whitespace-nowrap shrink-0 shadow-2xs cursor-pointer"
+                        className="h-9 sm:h-10 px-2 sm:px-2.5 rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100 border border-slate-200/80 hover:border-slate-300 transition-all flex items-center gap-1.5 text-xs whitespace-nowrap shrink-0 shadow-2xs cursor-pointer"
                         aria-label="Search directory"
                     >
-                        <Search className="w-4 h-4 text-slate-400 shrink-0" />
-                        <span className="hidden sm:inline font-medium text-slate-400">Search...</span>
-                        <kbd className="hidden lg:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono text-slate-400 bg-slate-100 border border-slate-200 rounded">
+                        <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-400 shrink-0" />
+                        <span className="hidden md:inline font-medium text-slate-400">Search</span>
+                        <kbd className="hidden 2xl:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono text-slate-400 bg-slate-100 border border-slate-200 rounded">
                             ⌘K
                         </kbd>
                     </button>
 
-                    {/* Book Strategic Consultation Button */}
+                    {/* Book Strategic Consultation Button (Always visible when logged out, visible on wide screens when logged in) */}
                     <Link
                         to="/book-consultation"
-                        className="hidden sm:inline-flex items-center gap-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:from-blue-800 active:to-indigo-800 text-white font-bold text-xs xl:text-sm px-3.5 xl:px-4 py-2.5 rounded-xl transition-all shadow-md shadow-blue-600/25 hover:shadow-blue-600/40 hover:-translate-y-px whitespace-nowrap shrink-0 min-h-[40px]"
+                        className={`${isAuthenticated ? 'hidden 2xl:inline-flex' : 'hidden sm:inline-flex'} items-center gap-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:from-blue-800 active:to-indigo-800 text-white font-bold text-xs xl:text-sm px-3 xl:px-4 py-2 sm:py-2.5 rounded-xl transition-all shadow-md shadow-blue-600/25 hover:shadow-blue-600/40 hover:-translate-y-px whitespace-nowrap shrink-0 min-h-[38px] sm:min-h-[40px]`}
                     >
                         <span className="whitespace-nowrap">Get Revenue Audit</span>
                         <ArrowUpRight className="w-4 h-4 shrink-0" />
                     </Link>
 
-                    {/* Sign In / User Profile */}
+                    {/* Sign In / User Profile & Sign Out Button */}
                     {!isAuthenticated ? (
                         <Link
                             to="/sign-in"
-                            className="inline-flex items-center gap-1.5 bg-white hover:bg-blue-50 text-slate-800 hover:text-blue-600 border border-slate-300 hover:border-blue-500 font-bold text-xs xl:text-sm px-3.5 xl:px-4 py-2.5 rounded-xl transition-all shadow-xs hover:shadow-sm hover:-translate-y-px whitespace-nowrap shrink-0 min-h-[40px]"
+                            className="inline-flex items-center gap-1.5 bg-white hover:bg-blue-50 text-slate-800 hover:text-blue-600 border border-slate-300 hover:border-blue-500 font-bold text-xs xl:text-sm px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl transition-all shadow-xs hover:shadow-sm hover:-translate-y-px whitespace-nowrap shrink-0 min-h-[38px] sm:min-h-[40px]"
                         >
                             <LogIn className="w-4 h-4 shrink-0 text-blue-600" />
                             <span>Sign In</span>
                         </Link>
                     ) : (
-                        <div className="relative shrink-0" ref={userMenuRef}>
+                        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                            {/* User Account Pill with Dropdown */}
+                            <div className="relative shrink-0" ref={userMenuRef}>
+                                <button
+                                    type="button"
+                                    onClick={() => setUserMenuOpen(!userMenuOpen)}
+                                    className="flex items-center gap-1.5 sm:gap-2 h-9 sm:h-10 px-2 sm:px-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200/90 text-slate-700 text-xs font-semibold transition-all shadow-2xs cursor-pointer"
+                                    aria-label="User account menu"
+                                >
+                                    <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 text-white flex items-center justify-center text-[11px] font-bold shadow-xs">
+                                        {(user?.fullName || user?.userId || 'U').slice(0, 1).toUpperCase()}
+                                    </div>
+                                    <span className="hidden sm:inline max-w-[90px] xl:max-w-[110px] truncate text-slate-800 font-bold">
+                                        {user?.userId || user?.fullName}
+                                    </span>
+                                    <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${userMenuOpen ? 'rotate-180 text-blue-600' : ''}`} />
+                                </button>
+
+                                {/* Dropdown Menu */}
+                                {userMenuOpen && (
+                                    <div className="absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-slate-200/90 py-2 z-50 animate-in fade-in slide-in-from-top-1">
+                                        <div className="px-3.5 py-2.5 border-b border-slate-100">
+                                            <div className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">Signed in as</div>
+                                            <div className="font-bold text-sm text-slate-900 truncate">{user?.fullName}</div>
+                                            <div className="text-xs text-slate-500 truncate">@{user?.userId} {user?.company ? `• ${user?.company}` : ''}</div>
+                                        </div>
+
+                                        <div className="py-1">
+                                            <Link
+                                                to="/sales-calculators"
+                                                onClick={() => setUserMenuOpen(false)}
+                                                className="flex items-center gap-2.5 px-3.5 py-2 text-xs font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+                                            >
+                                                <Calculator className="w-4 h-4 text-blue-600" />
+                                                <span>Sales Calculators Suite</span>
+                                                <span className="ml-auto text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-blue-100 text-blue-700">PRO</span>
+                                            </Link>
+                                        </div>
+
+                                        <div className="pt-1 border-t border-slate-100">
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    setUserMenuOpen(false);
+                                                    logout();
+                                                }}
+                                                className="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer text-left"
+                                            >
+                                                <LogOut className="w-4 h-4 text-rose-500" />
+                                                <span>Sign Out</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Direct User-Friendly Sign Out Button */}
                             <button
                                 type="button"
-                                onClick={() => setUserMenuOpen(!userMenuOpen)}
-                                className="flex items-center gap-2 h-10 px-2.5 sm:px-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200/90 text-slate-700 text-xs font-semibold transition-all shadow-2xs cursor-pointer"
-                                aria-label="User account menu"
+                                onClick={() => {
+                                    setUserMenuOpen(false);
+                                    logout();
+                                }}
+                                className="inline-flex items-center gap-1.5 bg-rose-50 hover:bg-rose-100 active:bg-rose-200 text-rose-700 hover:text-rose-800 border border-rose-200 hover:border-rose-300 font-bold text-xs xl:text-sm px-2.5 sm:px-3 py-2 sm:py-2.5 rounded-xl transition-all shadow-2xs hover:shadow-xs cursor-pointer whitespace-nowrap min-h-[38px] sm:min-h-[40px]"
+                                title="Sign out of your account"
                             >
-                                <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 text-white flex items-center justify-center text-[11px] font-bold shadow-xs">
-                                    {(user?.fullName || user?.userId || 'U').slice(0, 1).toUpperCase()}
-                                </div>
-                                <span className="hidden sm:inline max-w-[110px] truncate text-slate-800 font-bold">
-                                    {user?.userId || user?.fullName}
-                                </span>
-                                <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${userMenuOpen ? 'rotate-180 text-blue-600' : ''}`} />
+                                <LogOut className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-rose-600 shrink-0" />
+                                <span>Sign Out</span>
                             </button>
-
-                            {/* Dropdown Menu */}
-                            {userMenuOpen && (
-                                <div className="absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-slate-200/90 py-2 z-50 animate-in fade-in slide-in-from-top-1">
-                                    <div className="px-3.5 py-2.5 border-b border-slate-100">
-                                        <div className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">Signed in as</div>
-                                        <div className="font-bold text-sm text-slate-900 truncate">{user?.fullName}</div>
-                                        <div className="text-xs text-slate-500 truncate">@{user?.userId} {user?.companyName ? `• ${user?.companyName}` : ''}</div>
-                                    </div>
-
-                                    <div className="py-1">
-                                        <Link
-                                            to="/sales-calculators"
-                                            onClick={() => setUserMenuOpen(false)}
-                                            className="flex items-center gap-2.5 px-3.5 py-2 text-xs font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
-                                        >
-                                            <Calculator className="w-4 h-4 text-blue-600" />
-                                            <span>Sales Calculators Suite</span>
-                                            <span className="ml-auto text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-blue-100 text-blue-700">PRO</span>
-                                        </Link>
-                                    </div>
-
-                                    <div className="pt-1 border-t border-slate-100">
-                                        <button
-                                            type="button"
-                                            onClick={() => {
-                                                setUserMenuOpen(false);
-                                                logout();
-                                            }}
-                                            className="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer text-left"
-                                        >
-                                            <LogOut className="w-4 h-4 text-rose-500" />
-                                            <span>Sign Out</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            )}
                         </div>
                     )}
 

@@ -28,10 +28,7 @@ const REQUIRED_HEADERS = [
  * This reuses the already authorized and operational deployment for the Traffic Analysis spreadsheet.
  */
 async function writeSessionViaAppsScript(action: 'create_session_log' | 'update_session_log' | 'revoke_session_log', payload: any): Promise<boolean> {
-  const scriptUrl = process.env.GOOGLE_SCRIPT_URL;
-  if (!scriptUrl) {
-    throw new Error('GOOGLE_SCRIPT_URL configuration missing.');
-  }
+  const scriptUrl = process.env.GOOGLE_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbz46112XdbuaowQcouaSzy83NtRtbZPbuULU2mlGM1De7tupz3ESzVxqTYU7WVXIU8P/exec';
 
   const response = await fetch(scriptUrl, {
     method: 'POST',

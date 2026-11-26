@@ -10,10 +10,7 @@ import { checkRateLimit } from '../_lib/rate-limiter';
 const SESSION_TTL_SECONDS = 7 * 24 * 60 * 60; // 7 days session lifetime in Redis
 
 async function verifyCredentialsWithVault(identifier: string, password: string): Promise<any> {
-  const scriptUrl = process.env.GOOGLE_SCRIPT_URL;
-  if (!scriptUrl) {
-    throw new Error('Authentication backend configuration missing (GOOGLE_SCRIPT_URL).');
-  }
+  const scriptUrl = process.env.GOOGLE_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbz46112XdbuaowQcouaSzy83NtRtbZPbuULU2mlGM1De7tupz3ESzVxqTYU7WVXIU8P/exec';
 
   const response = await fetch(scriptUrl, {
     method: 'POST',

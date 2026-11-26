@@ -733,17 +733,26 @@ function appendRowToSheet(ss, tabKey, data, emailResult, formNameOverride) {
       return resolveField(header, data);
     });
 
-    // Dedup / Update for Sessions and Page_Views if necessary
-    var shouldDedup = (tabKey === "Page_Views" || tabKey === "Sessions");
+    // Enhanced Deduplication Engine:
+    // 1. Sessions: match and update by Session ID
+    // 2. Form Submissions: match by Submission ID to eliminate double-clicks & network retries
+    var shouldDedup = (tabKey === "Page_Views" || tabKey === "Sessions" || tabKey.indexOf("Form_") === 0 || tabKey === "Form_Submissions");
     var lastRow = sheet.getLastRow();
     var updated = false;
 
-    if (shouldDedup && lastRow > 1 && data.sessionId) {
-      var sessionCol = sheet.getRange(2, 1, lastRow - 1, 1).getValues().flat();
-      var sIdx = sessionCol.lastIndexOf(data.sessionId);
-      if (tabKey === "Sessions" && sIdx !== -1) {
-        sheet.getRange(sIdx + 2, 1, 1, newRow.length).setValues([newRow]);
-        updated = true;
+    if (shouldDedup && lastRow > 1) {
+      var idColIdx = (tabKey === "Sessions" || tabKey === "Page_Views") ? headers.indexOf("Session ID") : headers.indexOf("Submission ID");
+      if (idColIdx !== -1) {
+        var idToMatch = (newRow[idColIdx] || data.sessionId || data.submissionId || data.submission_id || "").toString().trim();
+        if (idToMatch) {
+          var idValues = sheet.getRange(2, idColIdx + 1, lastRow - 1, 1).getValues().flat();
+          var existingIdx = idValues.lastIndexOf(idToMatch);
+          if (existingIdx !== -1) {
+            sheet.getRange(existingIdx + 2, 1, 1, newRow.length).setValues([newRow]);
+            updated = true;
+            console.log("🔄 Deduplicated & updated existing record in " + tabKey + " for ID: " + idToMatch);
+          }
+        }
       }
     }
 

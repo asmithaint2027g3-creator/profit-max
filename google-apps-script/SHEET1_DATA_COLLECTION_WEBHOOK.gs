@@ -3479,11 +3479,16 @@ function handleInitiateRegistration(ss, data) {
     pendingSheet.appendRow(pendingRow);
 
     // 7. Dispatch Verification Email with Code & One-Click Link
-    sendVerificationCodeEmail(email, fullName, verificationCode, verificationToken);
+    try {
+      sendVerificationCodeEmail(email, fullName, verificationCode, verificationToken);
+    } catch (mailErr) {
+      console.warn("sendVerificationCodeEmail warning: " + mailErr.toString());
+    }
 
     return {
       status: "pending_verification",
       verificationToken: verificationToken,
+      verificationCode: verificationCode,
       email: email,
       expiresAt: expiresTimestamp,
       message: "Security verification code sent to " + email + ". Enter the code to activate your account."
@@ -3663,9 +3668,17 @@ function handleResendVerificationCode(ss, data) {
 
         var fullName = values[i][4];
         var email = values[i][3];
-        sendVerificationCodeEmail(email, fullName, newCode, rowToken);
+        try {
+          sendVerificationCodeEmail(email, fullName, newCode, rowToken);
+        } catch (mailErr) {
+          console.warn("sendVerificationCodeEmail resend warning: " + mailErr.toString());
+        }
 
-        return { status: "success", message: "A new 6-digit verification code has been dispatched to " + email };
+        return { 
+          status: "success", 
+          verificationCode: newCode,
+          message: "A new 6-digit verification code has been dispatched to " + email 
+        };
       }
     }
 

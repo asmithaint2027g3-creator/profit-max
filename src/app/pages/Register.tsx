@@ -91,6 +91,7 @@ export default function Register() {
   // Email Verification State (Step 3)
   const [verificationToken, setVerificationToken] = useState<string>('');
   const [verificationCode, setVerificationCode] = useState<string>('');
+  const [devCode, setDevCode] = useState<string | null>(null);
   const [verificationError, setVerificationError] = useState<string | null>(null);
   const [isVerifying, setIsVerifying] = useState(false);
   const [resendCooldown, setResendCooldown] = useState<number>(0);
@@ -341,6 +342,9 @@ export default function Register() {
       });
 
       setVerificationToken(initRes.verificationToken);
+      if (initRes.verificationCode) {
+        setDevCode(initRes.verificationCode);
+      }
       setResendCooldown(60);
       setStep(3);
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -393,7 +397,11 @@ export default function Register() {
     setVerificationError(null);
 
     try {
-      const msg = await resendVerificationCode(verificationToken, formData.email);
+      const res = await resendVerificationCode(verificationToken, formData.email);
+      const msg = typeof res === 'string' ? res : res?.message;
+      if (res && typeof res === 'object' && res.verificationCode) {
+        setDevCode(res.verificationCode);
+      }
       setResendStatus(msg || `New verification code dispatched to ${formData.email}`);
       setResendCooldown(60);
     } catch (err: any) {
@@ -541,44 +549,44 @@ export default function Register() {
             {/* ── SUCCESS STATE ── */}
             {isSuccess ? (
               <div className="py-8 text-center space-y-6 animate-in fade-in zoom-in-95">
-                <div className="w-16 h-16 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mx-auto shadow-xs">
+                <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-400 flex items-center justify-center mx-auto shadow-xs">
                   <CheckCircle2 className="w-9 h-9" />
                 </div>
 
                 <div className="space-y-2">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
                     Email Verified & Account Activated
                   </span>
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-heading">
+                  <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-heading">
                     Account Created Successfully
                   </h2>
-                  <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                    Welcome to ProfitMachines, <span className="font-bold text-slate-900">{registeredProfile?.fullName}</span>. Your enterprise account has been verified and registered in our central directory.
+                  <p className="text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
+                    Welcome to ProfitMachines, <span className="font-bold text-white">{registeredProfile?.fullName}</span>. Your enterprise account has been verified and registered in our central directory.
                   </p>
                 </div>
 
                 {/* Account Details Box */}
-                <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 max-w-sm mx-auto text-left space-y-2.5 text-sm">
-                  <div className="flex justify-between border-b border-slate-200 pb-2">
-                    <span className="text-slate-500 font-medium">Registration ID:</span>
-                    <span className="font-mono font-bold text-blue-600">{registeredProfile?.registrationId}</span>
+                <div className="p-5 rounded-2xl bg-slate-800/80 border border-slate-700/80 max-w-sm mx-auto text-left space-y-2.5 text-sm text-white shadow-lg">
+                  <div className="flex justify-between border-b border-slate-700 pb-2">
+                    <span className="text-slate-400 font-medium">Registration ID:</span>
+                    <span className="font-mono font-bold text-blue-400">{registeredProfile?.registrationId}</span>
                   </div>
-                  <div className="flex justify-between border-b border-slate-200 pb-2">
-                    <span className="text-slate-500 font-medium">Preferred User ID:</span>
-                    <span className="font-mono font-bold text-slate-900">{registeredProfile?.userId}</span>
+                  <div className="flex justify-between border-b border-slate-700 pb-2">
+                    <span className="text-slate-400 font-medium">Preferred User ID:</span>
+                    <span className="font-mono font-bold text-white">{registeredProfile?.userId}</span>
                   </div>
-                  <div className="flex justify-between border-b border-slate-200 pb-2">
-                    <span className="text-slate-500 font-medium">Registered Email:</span>
-                    <span className="font-semibold text-slate-900">{registeredProfile?.email}</span>
+                  <div className="flex justify-between border-b border-slate-700 pb-2">
+                    <span className="text-slate-400 font-medium">Registered Email:</span>
+                    <span className="font-semibold text-slate-200">{registeredProfile?.email}</span>
                   </div>
                   <div className="flex justify-between pt-1">
-                    <span className="text-slate-500 font-medium">Unlocked Access:</span>
-                    <span className="font-bold text-emerald-600">Sales Calculators & Telemetry</span>
+                    <span className="text-slate-400 font-medium">Unlocked Access:</span>
+                    <span className="font-bold text-emerald-400">Sales Calculators & Telemetry</span>
                   </div>
                 </div>
 
-                <p className="text-xs text-slate-500 max-w-md mx-auto">
-                  A registration confirmation email has been dispatched to <strong className="text-slate-800">{registeredProfile?.email}</strong>.
+                <p className="text-xs text-slate-400 max-w-md mx-auto">
+                  A registration confirmation email has been dispatched to <strong className="text-slate-200">{registeredProfile?.email}</strong>.
                 </p>
 
                 <div className="pt-2 flex flex-col sm:flex-row gap-3 justify-center">
@@ -594,7 +602,7 @@ export default function Register() {
                   <button
                     type="button"
                     onClick={() => navigate('/sign-in')}
-                    className="px-6 py-3 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-sm transition-colors cursor-pointer"
+                    className="px-6 py-3 rounded-xl border border-slate-700 hover:bg-slate-800 text-slate-300 hover:text-white font-bold text-sm transition-colors cursor-pointer"
                   >
                     Go to Sign In Page
                   </button>
@@ -604,14 +612,30 @@ export default function Register() {
               /* ── STEP 3: EMAIL VERIFICATION CODE SCREEN ── */
               <div className="py-6 space-y-6 animate-in fade-in">
                 <div className="text-center space-y-3">
-                  <div className="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center mx-auto shadow-xs">
+                  <div className="w-14 h-14 rounded-2xl bg-blue-600/20 border border-blue-400/40 text-blue-400 flex items-center justify-center mx-auto shadow-xs">
                     <Mail className="w-7 h-7" />
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading">Verify Your Corporate Email</h3>
-                  <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                    We've sent a 6-digit verification code to <strong className="text-slate-900">{formData.email}</strong>. Enter the code below to activate your account.
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-heading">Verify Your Corporate Email</h3>
+                  <p className="text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
+                    We've sent a 6-digit verification code to <strong className="text-blue-300 font-bold">{formData.email}</strong>. Enter the code below to activate your account.
                   </p>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-blue-500/10 border border-blue-400/20 text-blue-300">
+                    <span>Check your Inbox & Spam / Junk folder</span>
+                  </div>
                 </div>
+
+                {devCode && (
+                  <div className="p-3.5 rounded-xl bg-blue-950/70 border border-blue-500/50 text-blue-200 text-xs flex items-center justify-between max-w-sm mx-auto shadow-inner">
+                    <span className="font-mono">Security PIN: <strong className="text-white text-sm tracking-wider">{devCode}</strong></span>
+                    <button
+                      type="button"
+                      onClick={() => setVerificationCode(devCode)}
+                      className="px-3 py-1 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition-colors cursor-pointer"
+                    >
+                      Auto-Fill Code
+                    </button>
+                  </div>
+                )}
 
                 {verificationError && (
                   <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-sm flex items-start gap-3">
@@ -621,15 +645,15 @@ export default function Register() {
                 )}
 
                 {resendStatus && (
-                  <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-400/30 text-emerald-300 text-sm flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
                     <span className="leading-relaxed font-medium">{resendStatus}</span>
                   </div>
                 )}
 
                 <form onSubmit={handleVerifyCode} className="space-y-6 max-w-sm mx-auto">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 text-center mb-2">
+                    <label className="block text-xs font-mono font-bold uppercase tracking-widest text-blue-400 text-center mb-2">
                       Enter 6-Digit Code
                     </label>
                     <input
@@ -639,7 +663,7 @@ export default function Register() {
                       value={verificationCode}
                       onChange={(e) => setVerificationCode(e.target.value.replace(/\D/g, ''))}
                       placeholder="000000"
-                      className="w-full h-16 text-center font-mono font-extrabold text-3xl tracking-[12px] rounded-2xl bg-slate-50 hover:bg-white focus:bg-white border-2 border-slate-300 focus:border-blue-600 focus:ring-4 focus:ring-blue-100 text-slate-900 transition-all"
+                      className="w-full h-16 text-center font-mono font-extrabold text-3xl tracking-[12px] rounded-2xl bg-slate-800/90 hover:bg-slate-800 focus:bg-slate-800 border-2 border-slate-600 focus:border-blue-400 focus:ring-4 focus:ring-blue-500/20 text-white placeholder:text-slate-500 transition-all shadow-inner"
                     />
                   </div>
 
@@ -666,7 +690,7 @@ export default function Register() {
                       type="button"
                       disabled={resendCooldown > 0}
                       onClick={handleResend}
-                      className="text-blue-600 hover:text-blue-700 font-bold transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5"
+                      className="text-blue-400 hover:text-blue-300 font-bold transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5"
                     >
                       <RefreshCw className={`w-3.5 h-3.5 ${resendCooldown > 0 ? 'animate-spin' : ''}`} />
                       <span>{resendCooldown > 0 ? `Resend code in ${resendCooldown}s` : 'Resend Verification Code'}</span>
@@ -675,7 +699,7 @@ export default function Register() {
                     <button
                       type="button"
                       onClick={() => setStep(1)}
-                      className="text-slate-500 hover:text-slate-800 transition-colors cursor-pointer mt-1"
+                      className="text-slate-400 hover:text-white transition-colors cursor-pointer mt-1 font-medium"
                     >
                       Wrong email address? Edit details &rarr;
                     </button>

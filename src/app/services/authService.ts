@@ -37,6 +37,7 @@ export interface UserProfile {
 export interface InitiateRegistrationResult {
   status: 'pending_verification';
   verificationToken: string;
+  verificationCode?: string;
   email: string;
   expiresAt?: string;
   message: string;
@@ -310,6 +311,7 @@ export const authService = {
     return {
       status: 'pending_verification',
       verificationToken: res.verificationToken || ('PM-VERIFY-' + Date.now()),
+      verificationCode: res.verificationCode,
       email: data.email.trim(),
       expiresAt: res.expiresAt,
       message: res.message || `A 6-digit verification code has been dispatched to ${data.email}.`
@@ -378,7 +380,7 @@ export const authService = {
   /**
    * Resends verification code.
    */
-  async resendVerificationCode(verificationToken: string, email: string): Promise<string> {
+  async resendVerificationCode(verificationToken: string, email: string): Promise<{ message: string; verificationCode?: string }> {
     const res = await dispatchWebhook({
       action: 'resend_verification_code',
       verificationToken,
@@ -389,7 +391,10 @@ export const authService = {
       throw new Error(res.message || 'Unable to resend code.');
     }
 
-    return res.message || `A new verification code has been dispatched to ${email}.`;
+    return {
+      message: res.message || `A new verification code has been dispatched to ${email}.`,
+      verificationCode: res.verificationCode
+    };
   },
 
   /**

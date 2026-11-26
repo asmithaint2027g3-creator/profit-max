@@ -9,7 +9,7 @@ interface AuthContextType {
   register: (payload: RegisterPayload) => Promise<UserProfile>;
   initiateRegistration: (data: RegisterPayload & { honeypot?: string; timeElapsedMs?: number }) => Promise<any>;
   verifyEmailCode: (params: { verificationToken: string; code: string; email: string; registrationData: RegisterPayload }) => Promise<UserProfile>;
-  resendVerificationCode: (verificationToken: string, email: string) => Promise<string>;
+  resendVerificationCode: (verificationToken: string, email: string) => Promise<any>;
   checkDuplicate: (userId: string, email: string, mobile?: string) => Promise<{ exists: boolean; field: 'userId' | 'email' | 'mobile' | null; message?: string }>;
   logout: () => void;
   resetPassword: (identifier: string, newPassword: string) => Promise<boolean>;
@@ -55,7 +55,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return newUser;
   };
 
-  const resendVerificationCode = async (verificationToken: string, email: string): Promise<string> => {
+  const resendVerificationCode = async (verificationToken: string, email: string): Promise<any> => {
     return authService.resendVerificationCode(verificationToken, email);
   };
 

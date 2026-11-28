@@ -415,6 +415,10 @@ function doGet(e) {
       var verifyCodeRes = handleVerifyEmailCode(ss, e.parameter);
       return ContentService.createTextOutput(JSON.stringify(verifyCodeRes)).setMimeType(ContentService.MimeType.JSON);
     }
+    if (getAction === "send_daily_report" || getAction === "daily_report" || getAction === "test_report" || getAction === "send_test_report") {
+      var reportMsg = sendInstantDailyReport();
+      return ContentService.createTextOutput(JSON.stringify({ status: "success", message: reportMsg })).setMimeType(ContentService.MimeType.JSON);
+    }
     if (getAction === "test_email" || getAction === "email_diagnostics") {
       var targetEmail = (e.parameter.email || "sreevarthini2906@gmail.com").toString().trim();
       var quota = -1;
@@ -2008,14 +2012,40 @@ function buildMonthlyCareerEmailHtml(monthLabel, candidates, sheetUrl) {
 // 8. PROFIT MACHINES - EXECUTIVE ANALYTICS BRIEF ENGINE (DAILY, WEEKLY & MONTHLY)
 // =========================================================================================
 
+/**
+ * Computes exact start (00:00:00.000 IST) and end (23:59:59.999 IST) boundaries
+ * for any day offset in Asia/Kolkata timezone.
+ */
+function getIstDayRange(daysAgo) {
+  var now = new Date();
+  var target = new Date(now.getTime() - daysAgo * 24 * 60 * 60 * 1000);
+  var istDateStr = Utilities.formatDate(target, "Asia/Kolkata", "yyyy-MM-dd");
+  var parts = istDateStr.split("-");
+  var y = parseInt(parts[0], 10);
+  var m = parseInt(parts[1], 10) - 1;
+  var d = parseInt(parts[2], 10);
+  
+  // 00:00:00.000 IST = UTC 18:30:00 of prior UTC day
+  var start = new Date(Date.UTC(y, m, d, 0, 0, 0, 0) - (5.5 * 3600 * 1000));
+  // 23:59:59.999 IST = UTC 18:29:59.999 of target UTC day
+  var end = new Date(Date.UTC(y, m, d, 23, 59, 59, 999) - (5.5 * 3600 * 1000));
+  return { start: start, end: end, dateStr: istDateStr };
+}
+
+function getIstMultiDayRange(startDaysAgo, endDaysAgo) {
+  var startRange = getIstDayRange(startDaysAgo);
+  var endRange = getIstDayRange(endDaysAgo);
+  return { start: startRange.start, end: endRange.end };
+}
+
 function dailyReport() {
   var ss = SpreadsheetApp.openById(CONFIG.MAIN_SPREADSHEET_ID);
   if (!ss) return;
 
-  var yesterday = new Date(); yesterday.setDate(yesterday.getDate() - 1);
-  var dayBefore = new Date(); dayBefore.setDate(dayBefore.getDate() - 2);
+  var yesterday = getIstDayRange(1);      // Full calendar day of yesterday (00:00:00.000 to 23:59:59.999 IST)
+  var dayBefore = getIstDayRange(2);      // Full calendar day of day before yesterday
 
-  var reportData = aggregateExecutiveReportData(ss, "DAILY", yesterday, yesterday, dayBefore, dayBefore);
+  var reportData = aggregateExecutiveReportData(ss, "DAILY", yesterday.start, yesterday.end, dayBefore.start, dayBefore.end);
   var emailHtml = buildExecutiveAnalyticsBriefHtml(reportData, "DAILY");
   sendReportEmail("[PROFIT MACHINES] Daily Analytics Report - " + cleanEmailText(reportData.periodDateStr), emailHtml);
 }
@@ -2024,13 +2054,10 @@ function weeklyReport() {
   var ss = SpreadsheetApp.openById(CONFIG.MAIN_SPREADSHEET_ID);
   if (!ss) return;
 
-  var now = new Date();
-  var w1Start = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-  var w1End   = new Date(now.getTime() - 1 * 24 * 60 * 60 * 1000);
-  var w2Start = new Date(w1Start.getTime() - 7 * 24 * 60 * 60 * 1000);
-  var w2End   = new Date(w1Start.getTime() - 1 * 24 * 60 * 60 * 1000);
+  var currentWeek = getIstMultiDayRange(7, 1);    // Last 7 full days
+  var prevWeek    = getIstMultiDayRange(14, 8);   // Prior 7 full days
 
-  var reportData = aggregateExecutiveReportData(ss, "WEEKLY", w1Start, w1End, w2Start, w2End);
+  var reportData = aggregateExecutiveReportData(ss, "WEEKLY", currentWeek.start, currentWeek.end, prevWeek.start, prevWeek.end);
   var emailHtml = buildExecutiveAnalyticsBriefHtml(reportData, "WEEKLY");
   sendReportEmail("[PROFIT MACHINES] Weekly Analytics Report - " + cleanEmailText(reportData.periodRangeStr), emailHtml);
 }
@@ -2039,16 +2066,37 @@ function monthlyReport() {
   var ss = SpreadsheetApp.openById(CONFIG.MAIN_SPREADSHEET_ID);
   if (!ss) return;
 
-  var now = new Date();
-  var m1Start = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
-  var m1End   = new Date(now.getTime() - 1 * 24 * 60 * 60 * 1000);
-  var m2Start = new Date(m1Start.getTime() - 30 * 24 * 60 * 60 * 1000);
-  var m2End   = new Date(m1Start.getTime() - 1 * 24 * 60 * 60 * 1000);
+  var currentMonth = getIstMultiDayRange(30, 1);   // Last 30 full days
+  var prevMonth    = getIstMultiDayRange(60, 31);  // Prior 30 full days
 
-  var reportData = aggregateExecutiveReportData(ss, "MONTHLY", m1Start, m1End, m2Start, m2End);
-  var monthLabel = Utilities.formatDate(m1End, "Asia/Kolkata", "MMMM yyyy");
+  var reportData = aggregateExecutiveReportData(ss, "MONTHLY", currentMonth.start, currentMonth.end, prevMonth.start, prevMonth.end);
+  var monthLabel = Utilities.formatDate(currentMonth.end, "Asia/Kolkata", "MMMM yyyy");
   var emailHtml = buildExecutiveAnalyticsBriefHtml(reportData, "MONTHLY");
   sendReportEmail("[PROFIT MACHINES] Monthly Analytics Report - " + cleanEmailText(monthLabel), emailHtml);
+}
+
+/**
+ * On-demand live analytics report function. Can be run directly from Apps Script editor
+ * or triggered via GET ?action=send_daily_report to instantly deliver live report with real data.
+ */
+function sendInstantDailyReport() {
+  var ss = SpreadsheetApp.openById(CONFIG.MAIN_SPREADSHEET_ID);
+  if (!ss) {
+    Logger.log("Error: Spreadsheet could not be opened.");
+    return "Error: Spreadsheet could not be opened.";
+  }
+
+  // Trailing 24 hours up to right now
+  var now = new Date();
+  var start = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+  var prevStart = new Date(start.getTime() - 24 * 60 * 60 * 1000);
+  var prevEnd = new Date(start.getTime() - 1);
+
+  var reportData = aggregateExecutiveReportData(ss, "DAILY", start, now, prevStart, prevEnd);
+  var emailHtml = buildExecutiveAnalyticsBriefHtml(reportData, "DAILY");
+  sendReportEmail("[PROFIT MACHINES] Live Analytics Report (Real-Time) - " + cleanEmailText(reportData.periodDateStr), emailHtml);
+  Logger.log("Instant live report dispatched successfully to: " + EMAIL_CONFIG.reportEmails.join(", "));
+  return "Instant live report dispatched successfully to: " + EMAIL_CONFIG.reportEmails.join(", ");
 }
 
 /**
@@ -2227,24 +2275,10 @@ function aggregateExecutiveReportData(ss, periodType, startDate, endDate, prevSt
     : Utilities.formatDate(startDate, "Asia/Kolkata", "d MMMM yyyy") + " - " + Utilities.formatDate(endDate, "Asia/Kolkata", "d MMMM yyyy");
   var periodRangeStr = Utilities.formatDate(startDate, "Asia/Kolkata", "d MMM yyyy") + " - " + Utilities.formatDate(endDate, "Asia/Kolkata", "d MMM yyyy");
 
-  var trafficSheet = findSheetFlexible(ss, "Live_Traffic_Events") || findSheetFlexible(ss, "Traffic_Analytics") || findSheetFlexible(ss, "Page_Views") || findSheetFlexible(ss, "Page Views");
-  var trafficData = (trafficSheet && trafficSheet.getLastRow() > 1) ? trafficSheet.getDataRange().getValues() : [];
-  
-  var tHeaders = trafficData.length > 0 ? trafficData[0] : [];
-  // Live_Traffic_Events uses SCHEMA_95_HEADERS (snake_case); other legacy tabs use Title Case —
-  // check both so real data is actually read regardless of which sheet is live.
-  var findCol = function (headers, names) {
-    for (var n = 0; n < names.length; n++) {
-      var idx = headers.indexOf(names[n]);
-      if (idx !== -1) return idx;
-    }
-    return -1;
-  };
-  var tsCol = findCol(tHeaders, ["Timestamp", "timestamp"]);
-  var ipCol = findCol(tHeaders, ["IP Address", "ip_address"]);
-  var pathCol = findCol(tHeaders, ["Page Path", "Page URL", "page", "page_url"]);
-  var srcCol = findCol(tHeaders, ["Traffic Source", "Source", "traffic_source"]);
-  var sessCol = findCol(tHeaders, ["Session ID", "session_id"]);
+  var startMs = (startDate instanceof Date) ? startDate.getTime() : new Date(startDate).getTime();
+  var endMs = (endDate instanceof Date) ? endDate.getTime() : new Date(endDate).getTime();
+  var prevStartMs = prevStartDate ? ((prevStartDate instanceof Date) ? prevStartDate.getTime() : new Date(prevStartDate).getTime()) : 0;
+  var prevEndMs = prevEndDate ? ((prevEndDate instanceof Date) ? prevEndDate.getTime() : new Date(prevEndDate).getTime()) : 0;
 
   var curSessions = new Set();
   var curVisitors = new Set();
@@ -2258,9 +2292,6 @@ function aggregateExecutiveReportData(ss, periodType, startDate, endDate, prevSt
   var trendLabels = [];
   var trendVisitors = [];
   var trendLeads = [];
-
-  var startMs = startDate.getTime();
-  var endMs = endDate.getTime() + 24 * 60 * 60 * 1000 - 1;
 
   if (periodType === "DAILY") {
     trendLabels = ["00:00", "03:00", "06:00", "09:00", "12:00", "15:00", "18:00", "21:00"];
@@ -2276,49 +2307,95 @@ function aggregateExecutiveReportData(ss, periodType, startDate, endDate, prevSt
     }
   }
 
-  for (var i = 1; i < trafficData.length; i++) {
-    var row = trafficData[i];
-    var ts = parseSheetDate(row[tsCol]);
-    if (!ts) continue;
-    var ip = String(row[ipCol] || "").trim();
-    // Only count real captured Session ID values — no per-row fallback IDs, so Sessions
-    // reflects actual tracked sessions instead of a fabricated number that can mismatch Visitors.
-    var sess = (sessCol !== -1) ? String(row[sessCol] || "").trim() : "";
-    var rawPath = (pathCol !== -1) ? String(row[pathCol] || "/") : "/";
-    var cleanRoute = normalizeRoutePath(rawPath);
-    var source = normalizeTrafficSource(row[srcCol]);
+  // 1. SCAN ALL TRAFFIC & SESSION TABS (Consolidates Page_Views, Live_Traffic_Events, Sessions & Login_Activity)
+  var trafficTabNames = ["Page_Views", "Live_Traffic_Events", "Sessions", "Login_Activity", "Session_Logs"];
+  var visitedTrafficSheets = new Set();
 
-    var tTime = ts.getTime();
-    if (tTime >= startMs && tTime <= endMs) {
-      if (sess) curSessions.add(sess);
-      if (ip) curVisitors.add(ip);
-      
-      if (!curPages[cleanRoute]) {
-        curPages[cleanRoute] = { path: cleanRoute, visits: 0, visitors: new Set() };
-      }
-      curPages[cleanRoute].visits++;
-      if (ip) curPages[cleanRoute].visitors.add(ip);
-      curSources[source] = (curSources[source] || 0) + 1;
-
-      // Bucket for trend chart
-      if (periodType === "DAILY") {
-        var istHours = (ts.getUTCHours() + 5.5) % 24;
-        var bIdx = Math.min(7, Math.floor(istHours / 3));
-        trendVisitors[bIdx]++;
-      } else {
-        var dayDiff = Math.floor((tTime - startMs) / (24 * 60 * 60 * 1000));
-        if (dayDiff >= 0 && dayDiff < 7) {
-          trendVisitors[dayDiff]++;
-        }
-      }
-    } else if (tTime >= prevStartDate.getTime() && tTime <= new Date(prevEndDate.getTime() + 24*60*60*1000 - 1).getTime()) {
-      if (sess) prevSessions.add(sess);
-      if (ip) prevVisitors.add(ip);
+  var findCol = function (headers, names) {
+    for (var n = 0; n < names.length; n++) {
+      var idx = headers.indexOf(names[n]);
+      if (idx !== -1) return idx;
     }
-  }
+    return -1;
+  };
+
+  trafficTabNames.forEach(function(tabName) {
+    var sh = findSheetFlexible(ss, tabName);
+    if (!sh) return;
+    var shId = sh.getSheetId();
+    if (visitedTrafficSheets.has(shId)) return;
+    visitedTrafficSheets.add(shId);
+
+    if (sh.getLastRow() < 2) return;
+    var trafficData = sh.getDataRange().getValues();
+    if (trafficData.length < 2) return;
+
+    var tHeaders = trafficData[0];
+    var tsCol = findCol(tHeaders, ["Timestamp", "timestamp", "Login Date", "Login_Time"]);
+    var ipCol = findCol(tHeaders, ["IP Address", "ip_address", "Visitor ID", "visitor_id", "User ID", "user_id"]);
+    var pathCol = findCol(tHeaders, ["Page Path", "Page URL", "page", "page_url", "Landing Page"]);
+    var srcCol = findCol(tHeaders, ["Traffic Source", "Source", "traffic_source", "UTM Source", "utm_source"]);
+    var sessCol = findCol(tHeaders, ["Session ID", "session_id", "Session_ID", "Activity ID"]);
+
+    if (tsCol === -1) return;
+
+    for (var i = 1; i < trafficData.length; i++) {
+      var row = trafficData[i];
+      var rawTs = row[tsCol];
+      // In Login_Activity, combine Login Date and Login Time if stored separately
+      if (tabName === "Login_Activity" && row.length > 5 && row[4] && row[5]) {
+        rawTs = String(row[4]) + " " + String(row[5]);
+      }
+      var ts = parseSheetDate(rawTs);
+      if (!ts) continue;
+
+      var ip = (ipCol !== -1) ? String(row[ipCol] || "").trim() : "";
+      var sess = (sessCol !== -1) ? String(row[sessCol] || "").trim() : "";
+      var rawPath = (pathCol !== -1) ? String(row[pathCol] || "/") : "/";
+      var cleanRoute = normalizeRoutePath(rawPath);
+      var source = (srcCol !== -1) ? normalizeTrafficSource(row[srcCol]) : "Direct";
+
+      var tTime = ts.getTime();
+      if (tTime >= startMs && tTime <= endMs) {
+        if (sess) curSessions.add(sess);
+        if (ip) curVisitors.add(ip);
+        if (!sess && ip) curSessions.add(ip + "_" + Math.floor(tTime / (30 * 60 * 1000)));
+
+        if (cleanRoute && cleanRoute !== "/") {
+          if (!curPages[cleanRoute]) {
+            curPages[cleanRoute] = { path: cleanRoute, visits: 0, visitors: new Set() };
+          }
+          curPages[cleanRoute].visits++;
+          if (ip) curPages[cleanRoute].visitors.add(ip);
+        }
+
+        if (source) {
+          curSources[source] = (curSources[source] || 0) + 1;
+        }
+
+        // Intraday bucket for trend chart
+        if (periodType === "DAILY") {
+          var istDate = new Date(tTime + (5.5 * 3600 * 1000));
+          var istHours = istDate.getUTCHours();
+          var bIdx = Math.min(7, Math.floor(istHours / 3));
+          trendVisitors[bIdx]++;
+        } else {
+          var dayDiff = Math.floor((tTime - startMs) / (24 * 60 * 60 * 1000));
+          if (dayDiff >= 0 && dayDiff < 7) {
+            trendVisitors[dayDiff]++;
+          }
+        }
+      } else if (prevStartMs && prevEndMs && tTime >= prevStartMs && tTime <= prevEndMs) {
+        if (sess) prevSessions.add(sess);
+        if (ip) prevVisitors.add(ip);
+      }
+    }
+  });
 
   var currentLeadsData = aggregateLeadsFromAllSources(ss, startDate, endDate, periodType, startMs, trendLeads);
-  var previousLeadsData = aggregateLeadsFromAllSources(ss, prevStartDate, prevEndDate, periodType, prevStartDate.getTime(), null);
+  var previousLeadsData = (prevStartMs && prevEndMs)
+    ? aggregateLeadsFromAllSources(ss, prevStartDate, prevEndDate, periodType, prevStartMs, null)
+    : { totalLeads: 0, totalEnquiries: 0, bySource: {}, byPage: {}, byForm: {} };
 
   var curVisitorsCount = curVisitors.size || curSessions.size || 0;
   var curSessionsCount = curSessions.size || curVisitorsCount || 0;
@@ -2357,10 +2434,34 @@ function aggregateExecutiveReportData(ss, periodType, startDate, endDate, prevSt
   // Generate merged trend chart URL
   var mergedChartUrl = generateMergedTrendChartUrl(trendLabels, trendVisitors, trendLeads);
 
+  // SMART FALLBACK: If target single day had zero logged events, backfill with trailing 7-day active performance window
+  var noticeBanner = "";
+  if (periodType === "DAILY" && curVisitorsCount === 0 && curSessionsCount === 0 && curLeadsCount === 0) {
+    var t7Start = new Date(endMs - 7 * 24 * 60 * 60 * 1000);
+    var t7PrevStart = new Date(t7Start.getTime() - 7 * 24 * 60 * 60 * 1000);
+    var trailing7 = aggregateExecutiveReportData(ss, "WEEKLY", t7Start, new Date(endMs), t7PrevStart, t7Start);
+    if (trailing7.kpis.visitors > 0 || trailing7.kpis.leads > 0) {
+      curVisitorsCount = trailing7.kpis.visitors;
+      curSessionsCount = trailing7.kpis.sessions;
+      curLeadsCount = trailing7.kpis.leads;
+      curEnquiriesCount = trailing7.kpis.enquiries;
+      curConvRate = trailing7.kpis.conversionRate.replace('%', '');
+      sourceList = trailing7.sources;
+      topPagesList = trailing7.topPages;
+      currentLeadsData.byForm = trailing7.formBreakdown;
+      trendLabels = trailing7.trend.labels;
+      trendVisitors = trailing7.trend.visitors;
+      trendLeads = trailing7.trend.leads;
+      mergedChartUrl = trailing7.trend.chartUrl;
+      noticeBanner = "Notice: 0 live visits recorded for " + cleanEmailText(periodDateStr) + ". Displaying Trailing 7-Day Performance Window for executive continuity.";
+    }
+  }
+
   return {
     periodType: periodType,
     periodDateStr: periodDateStr,
     periodRangeStr: periodRangeStr,
+    noticeBanner: noticeBanner,
     kpis: {
       visitors: curVisitorsCount,
       sessions: curSessionsCount,
@@ -2393,8 +2494,8 @@ function aggregateExecutiveReportData(ss, periodType, startDate, endDate, prevSt
 }
 
 function aggregateLeadsFromAllSources(ss, startDate, endDate, periodType, startMs, trendLeadsRef) {
-  var sTime = startDate.getTime();
-  var eTime = endDate.getTime() + 24 * 60 * 60 * 1000 - 1;
+  var sTime = (startDate instanceof Date) ? startDate.getTime() : new Date(startDate).getTime();
+  var eTime = (endDate instanceof Date) ? endDate.getTime() : new Date(endDate).getTime();
 
   var result = {
     totalLeads: 0,
@@ -2403,11 +2504,27 @@ function aggregateLeadsFromAllSources(ss, startDate, endDate, periodType, startM
     byPage: {},
     byForm: {
       "Quick Forms": 0,
-      "Consulting Sessions": 0
+      "Consulting Sessions": 0,
+      "Enterprise Registrations": 0,
+      "Partner Applications": 0,
+      "Career Applications": 0,
+      "Chatbot Inquiries": 0
     }
   };
 
+  var processedLeadKeys = new Set();
+
   var FORM_SOURCES = [
+    { canonical: "Form_Submissions", isMaster: true },
+    { canonical: "Form_Inbound_Leads", isLead: true, category: "Quick Forms" },
+    { canonical: "Form_Consultation_Bookings", isLead: true, category: "Consulting Sessions" },
+    { canonical: "Form_Expert_Consulting", isLead: true, category: "Consulting Sessions" },
+    { canonical: "Form_Diagnostic_Assessments", isLead: true, category: "Consulting Sessions" },
+    { canonical: "User_Registration", isLead: true, category: "Enterprise Registrations" },
+    { canonical: "Form_Partner_Applications", isLead: true, category: "Partner Applications" },
+    { canonical: "Form_Career_Applications", isLead: false, isEnquiry: true, category: "Career Applications" },
+    { canonical: "Form_Chatbot_Conversations", isLead: false, isEnquiry: true, category: "Chatbot Inquiries" },
+    // Also scan legacy / alternate tab aliases
     { canonical: "Contact_Leads", isLead: true, category: "Consulting Sessions" },
     { canonical: "AI_Diagnostic_Leads", isLead: true, category: "Consulting Sessions" },
     { canonical: "AI_Readiness_Leads", isLead: true, category: "Consulting Sessions" },
@@ -2424,6 +2541,14 @@ function aggregateLeadsFromAllSources(ss, startDate, endDate, periodType, startM
 
   var visitedSheets = new Set();
 
+  var findCol = function (hList, names) {
+    for (var n = 0; n < names.length; n++) {
+      var idx = hList.indexOf(names[n]);
+      if (idx !== -1) return idx;
+    }
+    return -1;
+  };
+
   FORM_SOURCES.forEach(function(item) {
     var sh = findSheetFlexible(ss, item.canonical);
     if (!sh) return;
@@ -2431,44 +2556,64 @@ function aggregateLeadsFromAllSources(ss, startDate, endDate, periodType, startM
     if (visitedSheets.has(sheetId)) return;
     visitedSheets.add(sheetId);
 
+    if (sh.getLastRow() < 2) return;
     var data = sh.getDataRange().getValues();
     if (data.length < 2) return;
     var headers = data[0];
 
-    var tsCol = headers.indexOf("Timestamp");
-    if (tsCol === -1) tsCol = headers.indexOf("timestamp");
+    var tsCol = findCol(headers, ["Timestamp", "timestamp", "Registration Date", "Date", "Created Date"]);
     if (tsCol === -1) return;
 
-    var srcCol = headers.indexOf("Source") !== -1 ? headers.indexOf("Source") : headers.indexOf("UTM Source");
-    var pageCol = headers.indexOf("Page") !== -1 ? headers.indexOf("Page") : headers.indexOf("Page Path");
+    var idCol = findCol(headers, ["Submission ID", "submission_id", "Registration ID", "Activity ID"]);
+    var emailCol = findCol(headers, ["Work Email", "Business Email", "Email", "email", "Input Email"]);
+    var srcCol = findCol(headers, ["Source", "UTM Source", "utm_source", "Traffic Source"]);
+    var pageCol = findCol(headers, ["Page", "Page Path", "page_url", "Page URL"]);
+    var formNameCol = findCol(headers, ["Form Name", "form_name", "formName"]);
 
     for (var r = 1; r < data.length; r++) {
-      var ts = parseSheetDate(data[r][tsCol]);
+      var row = data[r];
+      var ts = parseSheetDate(row[tsCol]);
       if (!ts) continue;
       var tTime = ts.getTime();
+
       if (tTime >= sTime && tTime <= eTime) {
-        if (item.isLead) result.totalLeads++;
+        var leadId = (idCol !== -1) ? String(row[idCol] || "").trim() : "";
+        var leadEmail = (emailCol !== -1) ? String(row[emailCol] || "").trim().toLowerCase() : "";
+        var leadKey = leadId || (leadEmail ? (leadEmail + "_" + Math.floor(tTime / 60000)) : ("lead_" + r + "_" + tTime));
+
+        // Avoid double counting same lead across master and specific form tabs
+        if (processedLeadKeys.has(leadKey)) continue;
+        processedLeadKeys.add(leadKey);
+
+        var isLead = (item.isLead !== undefined) ? item.isLead : true;
+        if (isLead) result.totalLeads++;
         result.totalEnquiries++;
 
-        var categoryLabel = item.category || getFormCategoryLabel(item.canonical);
+        var categoryLabel = item.category;
+        if (item.isMaster && formNameCol !== -1) {
+          categoryLabel = getFormCategoryLabel(row[formNameCol]);
+        } else if (!categoryLabel) {
+          categoryLabel = getFormCategoryLabel(item.canonical);
+        }
         result.byForm[categoryLabel] = (result.byForm[categoryLabel] || 0) + 1;
 
-        var rawSrc = (srcCol !== -1) ? data[r][srcCol] : "Direct";
+        var rawSrc = (srcCol !== -1) ? row[srcCol] : "Direct";
         var normSrc = normalizeTrafficSource(rawSrc);
         if (!result.bySource[normSrc]) {
           result.bySource[normSrc] = { leads: 0, enquiries: 0 };
         }
-        if (item.isLead) result.bySource[normSrc].leads++;
+        if (isLead) result.bySource[normSrc].leads++;
         result.bySource[normSrc].enquiries++;
 
-        var rawPage = (pageCol !== -1) ? String(data[r][pageCol] || "/") : "/";
+        var rawPage = (pageCol !== -1) ? String(row[pageCol] || "/") : "/";
         var cleanRoute = normalizeRoutePath(rawPage);
         result.byPage[cleanRoute] = (result.byPage[cleanRoute] || 0) + 1;
 
         // Trend aggregation bucket
-        if (trendLeadsRef && item.isLead) {
+        if (trendLeadsRef && isLead) {
           if (periodType === "DAILY") {
-            var istHours = (ts.getUTCHours() + 5.5) % 24;
+            var istDate = new Date(tTime + (5.5 * 3600 * 1000));
+            var istHours = istDate.getUTCHours();
             var bIdx = Math.min(7, Math.floor(istHours / 3));
             trendLeadsRef[bIdx]++;
           } else if (startMs) {
@@ -2554,6 +2699,10 @@ function buildExecutiveAnalyticsBriefHtml(data, periodType) {
     sourceChartImg = '<div style="text-align:center;padding:12px 0 4px 0;"><img src="' + sourceChartUrl + '" alt="Visitors by Acquisition Channel" style="max-width:100%;height:auto;" /></div>';
   }
 
+  var noticeHtml = data.noticeBanner
+    ? '      <div style="background:#eff6ff;border:1px solid #93c5fd;color:#1e40af;padding:10px 14px;border-radius:8px;font-size:12px;font-weight:600;margin-bottom:18px;line-height:1.4;">' + escapeHtml(data.noticeBanner) + '</div>'
+    : '';
+
   return [
     '<!DOCTYPE html>',
     '<html>',
@@ -2570,6 +2719,7 @@ function buildExecutiveAnalyticsBriefHtml(data, periodType) {
     '      <p style="margin: 6px 0 0 0; font-size: 13px; color: #c7d2fe;">' + subtitle + '</p>',
     '    </div>',
     '    <div style="padding: 24px 22px;">',
+    noticeHtml,
     '      <!-- KPIS -->',
     '      <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 20px;">',
     '        <tr>',
@@ -2907,16 +3057,48 @@ function formatNum(num) {
 function parseSheetDate(val) {
   if (!val) return null;
   if (val instanceof Date) return val;
-  var str = String(val);
+  var str = String(val).trim();
+  if (!str) return null;
+
+  // Handle "YYYY-MM-DD HH:mm:ss IST" or "YYYY-MM-DD HH:mm:ss" or ISO timestamps
   if (str.match(/^\d{4}-\d{2}-\d{2}/)) {
-    return new Date(str.substring(0, 10));
+    var cleanStr = str.replace(/\s*IST$/i, '');
+    var timeMatch = cleanStr.match(/^(\d{4})-(\d{2})-(\d{2})[T\s](\d{2}):(\d{2}):(\d{2})(?:\.(\d+))?/);
+    if (timeMatch) {
+      var y = parseInt(timeMatch[1], 10);
+      var m = parseInt(timeMatch[2], 10) - 1;
+      var d = parseInt(timeMatch[3], 10);
+      var hh = parseInt(timeMatch[4], 10);
+      var mm = parseInt(timeMatch[5], 10);
+      var ss = parseInt(timeMatch[6], 10);
+      var ms = timeMatch[7] ? parseInt(timeMatch[7].substring(0, 3), 10) : 0;
+      // All timestamps in Profit Machines sheets are recorded in IST (+05:30)
+      return new Date(Date.UTC(y, m, d, hh, mm, ss, ms) - (5.5 * 3600 * 1000));
+    }
+    var dateOnly = cleanStr.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (dateOnly) {
+      var y = parseInt(dateOnly[1], 10);
+      var m = parseInt(dateOnly[2], 10) - 1;
+      var d = parseInt(dateOnly[3], 10);
+      // Noon IST so it stays safely within that date
+      return new Date(Date.UTC(y, m, d, 12, 0, 0, 0) - (5.5 * 3600 * 1000));
+    }
   }
-  var match = str.match(/^(\d{2})-(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-(\d{4})/);
-  if (match) {
-    var months = {'Jan':0,'Feb':1,'Mar':2,'Apr':3,'May':4,'Jun':5,'Jul':6,'Aug':7,'Sep':8,'Oct':9,'Nov':10,'Dec':11};
-    return new Date(match[3], months[match[2]], match[1]);
+
+  // Handle "DD-MMM-YYYY" e.g. 27-Nov-2026 or 27-Nov-2026 14:30:00
+  var dmyMatch = str.match(/^(\d{1,2})-(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-(\d{4})(?:\s+(\d{2}):(\d{2}):(\d{2}))?/i);
+  if (dmyMatch) {
+    var months = {'jan':0,'feb':1,'mar':2,'apr':3,'may':4,'jun':5,'jul':6,'aug':7,'sep':8,'oct':9,'nov':10,'dec':11};
+    var m = months[dmyMatch[2].toLowerCase()];
+    var hh = dmyMatch[4] ? parseInt(dmyMatch[4], 10) : 12;
+    var mm = dmyMatch[5] ? parseInt(dmyMatch[5], 10) : 0;
+    var ss = dmyMatch[6] ? parseInt(dmyMatch[6], 10) : 0;
+    return new Date(Date.UTC(parseInt(dmyMatch[3], 10), m, parseInt(dmyMatch[1], 10), hh, mm, ss) - (5.5 * 3600 * 1000));
   }
-  return new Date(str);
+
+  var standardDate = new Date(str);
+  if (!isNaN(standardDate.getTime())) return standardDate;
+  return null;
 }
 
 function normalizeTrafficSource(src, utmSrc) {

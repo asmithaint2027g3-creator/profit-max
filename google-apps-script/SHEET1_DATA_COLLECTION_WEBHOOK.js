@@ -419,6 +419,10 @@ function doGet(e) {
       var reportMsg = sendInstantDailyReport();
       return ContentService.createTextOutput(JSON.stringify({ status: "success", message: reportMsg })).setMimeType(ContentService.MimeType.JSON);
     }
+    if (getAction === "set_night_trigger" || getAction === "reschedule_night" || getAction === "night_trigger") {
+      var nightTriggerMsg = setDailyReportTimeToNight();
+      return ContentService.createTextOutput(JSON.stringify({ status: "success", message: nightTriggerMsg })).setMimeType(ContentService.MimeType.JSON);
+    }
     if (getAction === "test_email" || getAction === "email_diagnostics") {
       var targetEmail = (e.parameter.email || "sreevarthini2906@gmail.com").toString().trim();
       var quota = -1;
@@ -2042,12 +2046,30 @@ function dailyReport() {
   var ss = SpreadsheetApp.openById(CONFIG.MAIN_SPREADSHEET_ID);
   if (!ss) return;
 
-  var yesterday = getIstDayRange(1);      // Full calendar day of yesterday (00:00:00.000 to 23:59:59.999 IST)
-  var dayBefore = getIstDayRange(2);      // Full calendar day of day before yesterday
+  var now = new Date();
+  var istDate = new Date(now.getTime() + (5.5 * 3600 * 1000));
+  var istHours = istDate.getUTCHours();
 
-  var reportData = aggregateExecutiveReportData(ss, "DAILY", yesterday.start, yesterday.end, dayBefore.start, dayBefore.end);
+  // If executing in evening / night (>= 17:00 IST / 5:00 PM), report on TODAY!
+  // If executing in morning (< 12:00 IST), report on yesterday.
+  var isNightlyToday = (istHours >= 17);
+  var targetDayOffset = isNightlyToday ? 0 : 1;
+  var prevDayOffset = targetDayOffset + 1;
+
+  var targetRange = getIstDayRange(targetDayOffset);
+  var prevRange = getIstDayRange(prevDayOffset);
+
+  // For tonight's report, upper boundary is now (or end of today)
+  var reportEnd = isNightlyToday ? now : targetRange.end;
+
+  var reportData = aggregateExecutiveReportData(ss, "DAILY", targetRange.start, reportEnd, prevRange.start, prevRange.end);
   var emailHtml = buildExecutiveAnalyticsBriefHtml(reportData, "DAILY");
-  sendReportEmail("[PROFIT MACHINES] Daily Analytics Report - " + cleanEmailText(reportData.periodDateStr), emailHtml);
+
+  var subjectTitle = isNightlyToday
+    ? "[PROFIT MACHINES] Daily Analytics Report (Tonight's Performance) - " + cleanEmailText(reportData.periodDateStr)
+    : "[PROFIT MACHINES] Daily Analytics Report - " + cleanEmailText(reportData.periodDateStr);
+
+  sendReportEmail(subjectTitle, emailHtml);
 }
 
 function weeklyReport() {
@@ -2310,6 +2332,7 @@ function aggregateExecutiveReportData(ss, periodType, startDate, endDate, prevSt
   // 1. SCAN ALL TRAFFIC & SESSION TABS (Consolidates Page_Views, Live_Traffic_Events, Sessions & Login_Activity)
   var trafficTabNames = ["Page_Views", "Live_Traffic_Events", "Sessions", "Login_Activity", "Session_Logs"];
   var visitedTrafficSheets = new Set();
+  var recentVisitors = [];
 
   var findCol = function (headers, names) {
     for (var n = 0; n < names.length; n++) {
@@ -2336,6 +2359,8 @@ function aggregateExecutiveReportData(ss, periodType, startDate, endDate, prevSt
     var pathCol = findCol(tHeaders, ["Page Path", "Page URL", "page", "page_url", "Landing Page"]);
     var srcCol = findCol(tHeaders, ["Traffic Source", "Source", "traffic_source", "UTM Source", "utm_source"]);
     var sessCol = findCol(tHeaders, ["Session ID", "session_id", "Session_ID", "Activity ID"]);
+    var deviceCol = findCol(tHeaders, ["Device", "device", "device_type", "OS", "os"]);
+    var locCol = findCol(tHeaders, ["IP Location", "ip_location", "geo_city", "geo_country"]);
 
     if (tsCol === -1) return;
 
@@ -2373,6 +2398,21 @@ function aggregateExecutiveReportData(ss, periodType, startDate, endDate, prevSt
           curSources[source] = (curSources[source] || 0) + 1;
         }
 
+        // Collect individual visitor engagement record for tonight's audit log
+        var rawDev = (deviceCol !== -1 && row[deviceCol]) ? String(row[deviceCol]).trim() : "Desktop";
+        var rawLoc = (locCol !== -1 && row[locCol]) ? String(row[locCol]).trim() : "";
+        var visLabel = ip || sess || "Visitor";
+        if (visLabel.length > 22) visLabel = visLabel.substring(0, 19) + "...";
+
+        recentVisitors.push({
+          timeMs: tTime,
+          timeStr: Utilities.formatDate(ts, "Asia/Kolkata", "hh:mm a"),
+          visitorId: visLabel,
+          path: cleanRoute || "/",
+          source: source,
+          device: rawLoc ? (rawDev + " (" + rawLoc + ")") : rawDev
+        });
+
         // Intraday bucket for trend chart
         if (periodType === "DAILY") {
           var istDate = new Date(tTime + (5.5 * 3600 * 1000));
@@ -2391,6 +2431,9 @@ function aggregateExecutiveReportData(ss, periodType, startDate, endDate, prevSt
       }
     }
   });
+
+  recentVisitors.sort(function(a, b) { return b.timeMs - a.timeMs; });
+  var topVisitorsList = recentVisitors.slice(0, 10);
 
   var currentLeadsData = aggregateLeadsFromAllSources(ss, startDate, endDate, periodType, startMs, trendLeads);
   var previousLeadsData = (prevStartMs && prevEndMs)
@@ -2489,6 +2532,8 @@ function aggregateExecutiveReportData(ss, periodType, startDate, endDate, prevSt
     formBreakdown: currentLeadsData.byForm,
     sources: sourceList,
     topPages: topPagesList,
+    recentVisitors: topVisitorsList || [],
+    recentLeads: currentLeadsData.recentLeads || [],
     dashboardUrl: ss.getUrl()
   };
 }
@@ -2509,7 +2554,8 @@ function aggregateLeadsFromAllSources(ss, startDate, endDate, periodType, startM
       "Partner Applications": 0,
       "Career Applications": 0,
       "Chatbot Inquiries": 0
-    }
+    },
+    recentLeads: []
   };
 
   var processedLeadKeys = new Set();
@@ -2569,6 +2615,8 @@ function aggregateLeadsFromAllSources(ss, startDate, endDate, periodType, startM
     var srcCol = findCol(headers, ["Source", "UTM Source", "utm_source", "Traffic Source"]);
     var pageCol = findCol(headers, ["Page", "Page Path", "page_url", "Page URL"]);
     var formNameCol = findCol(headers, ["Form Name", "form_name", "formName"]);
+    var nameCol = findCol(headers, ["Full Name", "Name", "name", "full_name"]);
+    var compCol = findCol(headers, ["Company Name", "Company", "company", "Organization"]);
 
     for (var r = 1; r < data.length; r++) {
       var row = data[r];
@@ -2609,6 +2657,20 @@ function aggregateLeadsFromAllSources(ss, startDate, endDate, periodType, startM
         var cleanRoute = normalizeRoutePath(rawPage);
         result.byPage[cleanRoute] = (result.byPage[cleanRoute] || 0) + 1;
 
+        // Collect individual lead info for tonight's audit log
+        var lName = (nameCol !== -1 && row[nameCol]) ? String(row[nameCol]).trim() : "Direct Lead";
+        var lComp = (compCol !== -1 && row[compCol]) ? String(row[compCol]).trim() : "";
+        result.recentLeads.push({
+          timeMs: tTime,
+          timeStr: Utilities.formatDate(ts, "Asia/Kolkata", "hh:mm a"),
+          name: lName,
+          company: lComp,
+          email: leadEmail,
+          category: categoryLabel,
+          source: normSrc,
+          page: cleanRoute
+        });
+
         // Trend aggregation bucket
         if (trendLeadsRef && isLead) {
           if (periodType === "DAILY") {
@@ -2626,6 +2688,9 @@ function aggregateLeadsFromAllSources(ss, startDate, endDate, periodType, startM
       }
     }
   });
+
+  result.recentLeads.sort(function(a, b) { return b.timeMs - a.timeMs; });
+  result.recentLeads = result.recentLeads.slice(0, 10);
 
   return result;
 }
@@ -2698,6 +2763,28 @@ function buildExecutiveAnalyticsBriefHtml(data, periodType) {
     var sourceChartUrl = generateBreakdownChartUrl('horizontalBar', data.sources.map(function (s) { return s.source; }), data.sources.map(function (s) { return s.visitors; }), 'Visitors by Acquisition Channel');
     sourceChartImg = '<div style="text-align:center;padding:12px 0 4px 0;"><img src="' + sourceChartUrl + '" alt="Visitors by Acquisition Channel" style="max-width:100%;height:auto;" /></div>';
   }
+
+  // LIVE VISITOR AUDIT LOG rows (who visited today)
+  var visitorRows = (data.recentVisitors || []).map(function(v) {
+    return '<tr style="border-bottom: 1px solid #f1f5f9;">' +
+           '  <td style="padding: 8px 10px; font-size: 11px; color: #64748b; white-space: nowrap;">' + escapeHtml(v.timeStr) + '</td>' +
+           '  <td style="padding: 8px 10px; font-size: 11px; font-weight: 600; color: #0f172a; font-family: monospace;">' + escapeHtml(v.visitorId) + '</td>' +
+           '  <td style="padding: 8px 10px; font-size: 11px; color: #4338ca; font-weight: 600;">' + escapeHtml(v.path) + '</td>' +
+           '  <td style="padding: 8px 10px; font-size: 11px; color: #475569;">' + escapeHtml(v.source) + '</td>' +
+           '  <td style="padding: 8px 10px; font-size: 11px; text-align: right; color: #64748b;">' + escapeHtml(v.device) + '</td>' +
+           '</tr>';
+  }).join('');
+
+  // INBOUND LEADS LOG rows (leads received today)
+  var leadRows = (data.recentLeads || []).map(function(l) {
+    var compStr = l.company ? (' <span style="color:#64748b;">(' + escapeHtml(l.company) + ')</span>') : '';
+    return '<tr style="border-bottom: 1px solid #f1f5f9;">' +
+           '  <td style="padding: 8px 10px; font-size: 11px; color: #64748b; white-space: nowrap;">' + escapeHtml(l.timeStr) + '</td>' +
+           '  <td style="padding: 8px 10px; font-size: 12px; font-weight: 700; color: #0f172a;">' + escapeHtml(l.name) + compStr + '</td>' +
+           '  <td style="padding: 8px 10px; font-size: 11px; color: #059669; font-weight: 600;">' + escapeHtml(l.email || "Direct Enquiry") + '</td>' +
+           '  <td style="padding: 8px 10px; font-size: 11px; color: #6366f1; font-weight: 600;">' + escapeHtml(l.category) + '</td>' +
+           '</tr>';
+  }).join('');
 
   var noticeHtml = data.noticeBanner
     ? '      <div style="background:#eff6ff;border:1px solid #93c5fd;color:#1e40af;padding:10px 14px;border-radius:8px;font-size:12px;font-weight:600;margin-bottom:18px;line-height:1.4;">' + escapeHtml(data.noticeBanner) + '</div>'
@@ -2796,6 +2883,39 @@ function buildExecutiveAnalyticsBriefHtml(data, periodType) {
     '            </tr>',
     '          </thead>',
     '          <tbody>' + (sourceRows || '<tr><td colspan="4" style="padding:10px;text-align:center;color:#94a3b8;">No data</td></tr>') + '</tbody>',
+    '        </table>',
+    '      </div>',
+    '',
+    '      <!-- LIVE VISITOR TRAFFIC LOG (WHO VISITED TODAY) -->',
+    '      <div style="margin-bottom: 20px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">',
+    '        <div style="background: #f8fafc; padding: 10px 14px; border-bottom: 1px solid #e2e8f0; font-size: 11px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.05em;">TODAY\'S VISITOR ENGAGEMENT LOG</div>',
+    '        <table width="100%" cellpadding="0" cellspacing="0">',
+    '          <thead>',
+    '            <tr style="background:#f1f5f9;font-size:11px;color:#64748b;">',
+    '              <th style="padding:6px 10px;text-align:left;">Time (IST)</th>',
+    '              <th style="padding:6px 10px;text-align:left;">Visitor ID / IP</th>',
+    '              <th style="padding:6px 10px;text-align:left;">Page Visited</th>',
+    '              <th style="padding:6px 10px;text-align:left;">Source</th>',
+    '              <th style="padding:6px 10px;text-align:right;">Device / Location</th>',
+    '            </tr>',
+    '          </thead>',
+    '          <tbody>' + (visitorRows || '<tr><td colspan="5" style="padding:10px;text-align:center;color:#94a3b8;font-size:12px;">No individual visitor hits recorded today</td></tr>') + '</tbody>',
+    '        </table>',
+    '      </div>',
+    '',
+    '      <!-- INBOUND LEADS & INQUIRIES LOG -->',
+    '      <div style="margin-bottom: 20px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">',
+    '        <div style="background: #f8fafc; padding: 10px 14px; border-bottom: 1px solid #e2e8f0; font-size: 11px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.05em;">TODAY\'S CAPTURED LEADS & INQUIRIES</div>',
+    '        <table width="100%" cellpadding="0" cellspacing="0">',
+    '          <thead>',
+    '            <tr style="background:#f1f5f9;font-size:11px;color:#64748b;">',
+    '              <th style="padding:6px 10px;text-align:left;">Time (IST)</th>',
+    '              <th style="padding:6px 10px;text-align:left;">Lead Name & Company</th>',
+    '              <th style="padding:6px 10px;text-align:left;">Contact Email</th>',
+    '              <th style="padding:6px 10px;text-align:right;">Form Category</th>',
+    '            </tr>',
+    '          </thead>',
+    '          <tbody>' + (leadRows || '<tr><td colspan="4" style="padding:10px;text-align:center;color:#94a3b8;font-size:12px;">No lead submissions recorded today</td></tr>') + '</tbody>',
     '        </table>',
     '      </div>',
     '',
@@ -3124,11 +3244,11 @@ function setupAllProfitMachinesTriggers() {
   var triggers = ScriptApp.getProjectTriggers();
   triggers.forEach(function(t) { ScriptApp.deleteTrigger(t); });
 
-  // 1. Daily Report at 8:30 AM IST
+  // 1. Nightly Daily Report at 10:30 PM - 11:00 PM IST (summarizes today's live visitors and leads)
   ScriptApp.newTrigger("dailyReport")
     .timeBased()
     .everyDays(1)
-    .atHour(8)
+    .atHour(22) // 10:00 PM - 11:00 PM IST
     .create();
 
   // 2. Weekly Report on Friday at 8:30 AM IST
@@ -3153,6 +3273,30 @@ function setupAllProfitMachinesTriggers() {
     .create();
 
   console.log("All PROFIT MACHINES automation triggers successfully scheduled.");
+}
+
+/**
+ * One-click helper to reschedule only the dailyReport trigger to run at night (10:00 PM - 11:00 PM IST)
+ * so executives receive a complete summary of today's visitors, sessions, and leads.
+ */
+function setDailyReportTimeToNight() {
+  var triggers = ScriptApp.getProjectTriggers();
+  var removed = 0;
+  triggers.forEach(function(t) {
+    if (t.getHandlerFunction() === "dailyReport") {
+      ScriptApp.deleteTrigger(t);
+      removed++;
+    }
+  });
+
+  ScriptApp.newTrigger("dailyReport")
+    .timeBased()
+    .everyDays(1)
+    .atHour(22) // 10:00 PM - 11:00 PM IST
+    .create();
+
+  console.log("Daily report trigger successfully rescheduled to run every night at 10:00 PM - 11:00 PM IST.");
+  return "Daily report trigger successfully rescheduled to run every night at 10:00 PM - 11:00 PM IST (removed " + removed + " prior triggers).";
 }
 
 /**
